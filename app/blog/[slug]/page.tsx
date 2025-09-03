@@ -46,6 +46,13 @@ export default function BlogPostPage() {
     try {
       setLoading(true)
       
+      // Vérifier si Supabase est configuré
+      if (!supabase) {
+        console.log('Supabase non configuré, utilisation des données de démonstration')
+        loadDemoPost()
+        return
+      }
+      
       // Récupérer l'article depuis Supabase
       const { data, error } = await supabase
         .from('blog_posts')
@@ -71,6 +78,8 @@ export default function BlogPostPage() {
 
   const fetchRelatedPosts = async (category: string, currentId: string) => {
     try {
+      if (!supabase) return
+      
       const { data } = await supabase
         .from('blog_posts')
         .select('*')

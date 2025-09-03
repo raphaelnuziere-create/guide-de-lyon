@@ -38,6 +38,13 @@ export default function BlogPage() {
     try {
       setLoading(true)
       
+      // Vérifier si Supabase est configuré
+      if (!supabase) {
+        console.log('Supabase non configuré, utilisation des données de démonstration')
+        loadDemoData()
+        return
+      }
+      
       // Récupérer les articles depuis Supabase
       const { data, error } = await supabase
         .from('blog_posts')
