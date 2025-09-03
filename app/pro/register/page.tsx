@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Building2, Mail, Lock, User, Phone, ArrowRight } from 'lucide-react'
-import { supabase } from '@/lib/supabase'
+import { useAuth } from '@/lib/auth/auth-context'
 
 export default function RegisterPage() {
   const router = useRouter()
@@ -19,6 +19,8 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
+  const { registerMerchant } = useAuth()
+  
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
@@ -44,30 +46,15 @@ export default function RegisterPage() {
     }
 
     try {
-      // 1. Créer le compte auth
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-      })
-
-      if (authError) throw authError
-
-      // 2. Créer le profil merchant
-      const { error: merchantError } = await supabase
-        .from('merchants')
-        .insert({
-          id: authData.user?.id,
-          email: formData.email,
-          company_name: formData.companyName,
-          phone: formData.phone,
-          plan: 'free',
-          created_at: new Date().toISOString()
-        })
-
-      if (merchantError) throw merchantError
-
-      // 3. Rediriger vers l'onboarding
-      router.push('/pro/onboarding')
+      await registerMerchant(
+        formData.email,
+        formData.password,
+        formData.companyName,
+        formData.phone
+      )
+      
+      // Rediriger vers le dashboard
+      router.push('/pro/dashboard')
     } catch (error: any) {
       console.error('Erreur inscription:', error)
       setError(error.message || 'Erreur lors de l\'inscription')

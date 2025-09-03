@@ -1,0 +1,82 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isMerchant(merchantId) {
+      return isAuthenticated() && request.auth.uid == merchantId;
+    }
+    
+    // Events collection - Public read, merchant write
+    match /events_live/{eventId} {
+      allow read: if true; // Public events
+      allow create: if isAuthenticated();
+      allow update, delete: if isMerchant(resource.data.merchantId);
+      
+      // Comments sub-collection
+      match /comments/{commentId} {
+        allow read: if true;
+        allow create: if isAuthenticated();
+        allow update, delete: if isOwner(resource.data.authorId);
+      }
+      
+      // Attendees sub-collection
+      match /attendees/{userId} {
+        allow read: if true;
+        allow write: if isOwner(userId);
+      }
+    }
+    
+    // Calendar configuration - Private to merchant
+    match /calendar_config/{merchantId}/{document=**} {
+      allow read, write: if isMerchant(merchantId);
+    }
+    
+    // Chat messages
+    match /chat_rooms/{roomId} {
+      allow read: if isAuthenticated() && 
+        (request.auth.uid in resource.data.participants);
+      allow create: if isAuthenticated();
+      
+      match /messages/{messageId} {
+        allow read: if isAuthenticated() && 
+          (request.auth.uid in get(/databases/$(database)/documents/chat_rooms/$(roomId)).data.participants);
+        allow create: if isAuthenticated();
+        allow update: if isOwner(resource.data.senderId);
+      }
+    }
+    
+    // Notifications
+    match /notifications/{userId}/{notificationId} {
+      allow read, write: if isOwner(userId);
+    }
+    
+    // Merchant settings (Firebase side)
+    match /merchant_settings/{merchantId} {
+      allow read: if true; // Public profile info
+      allow write: if isMerchant(merchantId);
+    }
+    
+    // Analytics events
+    match /analytics_events/{eventId} {
+      allow read: if isAuthenticated();
+      allow create: if true; // Anyone can log events
+      allow update, delete: if false; // Immutable
+    }
+    
+    // Real-time counters
+    match /counters/{counterId} {
+      allow read: if true;
+      allow update: if isAuthenticated(); // Increment only
+      allow create, delete: if false;
+    }
+  }
+}
