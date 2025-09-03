@@ -9,8 +9,7 @@ import {
   Sparkles,
   MapPin,
   Calendar,
-  HardDrive,
-  Zap
+  HardDrive
 } from 'lucide-react'
 import { quotaManager, QuotaUsage, PlanLimits, PlanType } from '@/lib/quotas/quota-manager'
 import Link from 'next/link'
@@ -206,14 +205,14 @@ export function QuotaDisplay({ merchantId, plan, onUpgrade }: QuotaDisplayProps)
           </div>
         </div>
 
-        {/* API */}
+        {/* Événements promus */}
         <div className="bg-white rounded-lg border shadow-sm p-4">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center">
-              <Zap className="h-5 w-5 text-gray-400 mr-2" />
-              <span className="text-sm font-medium text-gray-600">API</span>
+              <Sparkles className="h-5 w-5 text-gray-400 mr-2" />
+              <span className="text-sm font-medium text-gray-600">Mis en avant</span>
             </div>
-            {limits.apiAccess ? (
+            {limits.eventsOnHomepage ? (
               <CheckCircle className="h-4 w-4 text-green-500" />
             ) : (
               <XCircle className="h-4 w-4 text-gray-400" />
@@ -223,10 +222,10 @@ export function QuotaDisplay({ merchantId, plan, onUpgrade }: QuotaDisplayProps)
           <div className="space-y-2">
             <div className="flex justify-between items-baseline">
               <span className="text-2xl font-bold text-gray-900">
-                {limits.apiAccess ? usage.apiCallsUsed : '—'}
+                {limits.eventsOnHomepage ? usage.eventsPromotedUsed : '—'}
               </span>
               <span className="text-sm text-gray-500">
-                {limits.apiAccess ? (plan === 'pro_visibility' ? '/ 1000' : 'Illimité') : 'Non disponible'}
+                {limits.eventsOnHomepage ? `/ ${limits.eventsPromoted}` : 'Non disponible'}
               </span>
             </div>
           </div>
@@ -251,13 +250,24 @@ export function QuotaDisplay({ merchantId, plan, onUpgrade }: QuotaDisplayProps)
           </div>
           
           <div className="flex items-center">
-            {limits.customDomain ? (
+            {limits.socialMediaPush ? (
               <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
             ) : (
               <XCircle className="h-4 w-4 text-gray-400 mr-2" />
             )}
-            <span className={limits.customDomain ? 'text-gray-900' : 'text-gray-400'}>
-              Domaine personnalisé
+            <span className={limits.socialMediaPush ? 'text-gray-900' : 'text-gray-400'}>
+              Publication réseaux sociaux
+            </span>
+          </div>
+          
+          <div className="flex items-center">
+            {limits.monthlyBlogPost ? (
+              <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+            ) : (
+              <XCircle className="h-4 w-4 text-gray-400 mr-2" />
+            )}
+            <span className={limits.monthlyBlogPost ? 'text-gray-900' : 'text-gray-400'}>
+              Article SEO mensuel
             </span>
           </div>
           
@@ -268,12 +278,6 @@ export function QuotaDisplay({ merchantId, plan, onUpgrade }: QuotaDisplayProps)
             </span>
           </div>
           
-          <div className="flex items-center">
-            <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-            <span className="text-gray-900">
-              {limits.teamMembers} membre{limits.teamMembers > 1 ? 's' : ''}
-            </span>
-          </div>
         </div>
       </div>
 
