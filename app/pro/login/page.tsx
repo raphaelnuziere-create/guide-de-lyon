@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Building2, Mail, Lock, ArrowRight, Chrome } from 'lucide-react'
+import { Building2, Mail, Lock, ArrowRight, Chrome, Key } from 'lucide-react'
 import { useAuth } from '@/lib/auth/auth-context'
 
 export default function LoginPage() {
@@ -20,11 +20,13 @@ export default function LoginPage() {
     setError('')
 
     try {
+      console.log('Tentative de connexion avec:', email)
       await signIn(email, password)
+      console.log('Connexion réussie, redirection...')
       router.push('/pro/dashboard')
     } catch (error: any) {
+      console.error('Erreur de connexion:', error)
       setError(error.message || 'Erreur de connexion')
-    } finally {
       setLoading(false)
     }
   }
@@ -34,13 +36,20 @@ export default function LoginPage() {
     setError('')
     
     try {
+      console.log('Tentative de connexion Google...')
       await signInWithGoogle()
+      console.log('Connexion Google réussie')
       router.push('/pro/dashboard')
     } catch (error: any) {
+      console.error('Erreur connexion Google:', error)
       setError(error.message || 'Erreur lors de la connexion avec Google')
-    } finally {
       setLoading(false)
     }
+  }
+
+  const useTestAccount = () => {
+    setEmail('merchant@guide-de-lyon.fr')
+    setPassword('Merchant2025!')
   }
 
   return (
@@ -168,6 +177,18 @@ export default function LoginPage() {
             </svg>
             Connexion avec Google
           </button>
+
+          {/* Test Account Button */}
+          <div className="mt-4">
+            <button
+              type="button"
+              onClick={useTestAccount}
+              className="w-full flex items-center justify-center px-4 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm"
+            >
+              <Key className="mr-2 h-4 w-4" />
+              Utiliser le compte test merchant
+            </button>
+          </div>
 
           <div className="mt-6">
             <div className="relative">

@@ -29,17 +29,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Initialiser l'écouteur d'authentification
+    console.log('[AuthContext] Initialisation de l\'auth listener');
     const unsubscribe = authService.init((authUser) => {
+      console.log('[AuthContext] Auth state changé:', authUser ? 'connecté' : 'déconnecté');
       setUser(authUser);
       setLoading(false);
 
       // Sauvegarder le token dans un cookie pour le middleware
       if (authUser) {
         firebaseAuth.currentUser?.getIdToken().then(token => {
+          console.log('[AuthContext] Token récupéré et sauvegardé dans cookie');
           document.cookie = `auth-token=${token}; path=/; max-age=3600; SameSite=Lax`;
+        }).catch(error => {
+          console.error('[AuthContext] Erreur lors de la récupération du token:', error);
         });
       } else {
         // Supprimer le cookie si pas d'utilisateur
+        console.log('[AuthContext] Suppression du cookie auth-token');
         document.cookie = 'auth-token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
       }
 
@@ -68,8 +74,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [pathname]);
 
   const signIn = async (email: string, password: string) => {
-    const authUser = await authService.signIn(email, password);
-    setUser(authUser);
+    try {
+      console.log('[AuthContext] Début de signIn');
+      const authUser = await authService.signIn(email, password);
+      console.log('[AuthContext] SignIn réussi, mise à jour du state');
+      setUser(authUser);
+      return authUser;
+    } catch (error) {
+      console.error('[AuthContext] Erreur dans signIn:', error);
+      throw error;
+    }
   };
 
   const signInWithGoogle = async () => {

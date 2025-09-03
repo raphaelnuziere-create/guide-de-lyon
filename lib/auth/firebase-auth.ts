@@ -43,8 +43,17 @@ class AuthService {
 
   // Enrichir les données utilisateur avec Firestore
   private async enrichUserData(firebaseUser: User): Promise<AuthUser> {
-    const userDoc = await getDoc(doc(firebaseDb, 'users', firebaseUser.uid));
-    const userData = userDoc.data();
+    console.log('[AuthService] Enrichissement des données pour:', firebaseUser.uid);
+    
+    let userData: any = {};
+    try {
+      const userDoc = await getDoc(doc(firebaseDb, 'users', firebaseUser.uid));
+      userData = userDoc.data() || {};
+      console.log('[AuthService] Données Firestore récupérées:', userData);
+    } catch (error) {
+      console.warn('[AuthService] Erreur lors de la récupération des données Firestore:', error);
+      // On continue avec les données par défaut
+    }
 
     // Vérifier si c'est un merchant
     let merchantData = null;
@@ -174,15 +183,26 @@ class AuthService {
   // Connexion email/password
   async signIn(email: string, password: string): Promise<AuthUser> {
     try {
+      console.log('[AuthService] Tentative de connexion pour:', email);
       const userCredential = await signInWithEmailAndPassword(firebaseAuth, email, password);
+      console.log('[AuthService] Connexion Firebase réussie');
       
       // Mettre à jour dernière connexion
-      await setDoc(doc(firebaseDb, 'users', userCredential.user.uid), {
-        lastLogin: serverTimestamp()
-      }, { merge: true });
+      try {
+        await setDoc(doc(firebaseDb, 'users', userCredential.user.uid), {
+          lastLogin: serverTimestamp()
+        }, { merge: true });
+        console.log('[AuthService] Mise à jour lastLogin réussie');
+      } catch (firestoreError) {
+        console.warn('[AuthService] Erreur lors de la mise à jour lastLogin:', firestoreError);
+        // On continue quand même, ce n'est pas critique
+      }
 
-      return await this.enrichUserData(userCredential.user);
+      const userData = await this.enrichUserData(userCredential.user);
+      console.log('[AuthService] Données utilisateur enrichies:', userData);
+      return userData;
     } catch (error: any) {
+      console.error('[AuthService] Erreur de connexion:', error);
       throw this.handleAuthError(error);
     }
   }

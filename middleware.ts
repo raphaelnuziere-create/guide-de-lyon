@@ -8,6 +8,7 @@ const publicRoutes = [
   '/register',
   '/pro/login',
   '/pro/register',
+  '/admin/login',
   '/api/public',
   '/api/homepage',
   '/blog',
