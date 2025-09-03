@@ -4,11 +4,10 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Shield, Mail, Lock, ArrowRight, Key } from 'lucide-react'
-import { useAuth } from '@/lib/auth/auth-context'
+import { simpleAuth } from '@/lib/auth/simple-auth'
 
 export default function AdminLoginPage() {
   const router = useRouter()
-  const { signIn } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -20,10 +19,11 @@ export default function AdminLoginPage() {
     setError('')
 
     try {
-      await signIn(email, password)
-      router.push('/admin/dashboard')
+      await simpleAuth.signIn(email, password)
+      // Redirection après connexion réussie
+      window.location.href = '/administration/dashboard'
     } catch (error: any) {
-      setError('Email ou mot de passe incorrect')
+      setError(error.message || 'Erreur de connexion')
     } finally {
       setLoading(false)
     }
@@ -102,15 +102,21 @@ export default function AdminLoginPage() {
           <div className="mt-6 pt-6 border-t border-gray-700">
             <button
               onClick={useTestAccount}
-              className="w-full flex items-center justify-center px-4 py-2 bg-gray-700 text-gray-300 rounded-lg text-sm hover:bg-gray-600 transition"
+              className="w-full flex items-center justify-center px-4 py-2 bg-green-800 text-green-300 rounded-lg text-sm hover:bg-green-700 transition"
             >
               <Key className="mr-2 h-4 w-4" />
               Utiliser le compte test admin
             </button>
+            <div className="mt-3 text-center">
+              <p className="text-xs text-gray-500">
+                Email: admin@guide-de-lyon.fr<br/>
+                Mot de passe: Admin2025!
+              </p>
+            </div>
           </div>
 
           <div className="mt-6 text-center">
-            <Link href="/pro/login" className="text-sm text-gray-400 hover:text-gray-300">
+            <Link href="/professionnel/connexion" className="text-sm text-gray-400 hover:text-gray-300">
               ← Espace professionnel
             </Link>
           </div>

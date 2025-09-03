@@ -1,11 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import Link from 'next/link'
 import { Home, MapPin, Calendar, Menu } from 'lucide-react'
 import { AuthProvider } from '@/lib/auth/auth-context'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Guide de Lyon - Annuaire des entreprises et événements',

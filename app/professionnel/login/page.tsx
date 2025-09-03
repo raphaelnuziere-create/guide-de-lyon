@@ -23,7 +23,7 @@ export default function LoginPage() {
       console.log('Tentative de connexion avec:', email)
       await signIn(email, password)
       console.log('Connexion réussie, redirection...')
-      router.push('/pro/dashboard')
+      router.push('/professionnel/dashboard')
     } catch (error: any) {
       console.error('Erreur de connexion:', error)
       setError(error.message || 'Erreur de connexion')
@@ -39,7 +39,7 @@ export default function LoginPage() {
       console.log('Tentative de connexion Google...')
       await signInWithGoogle()
       console.log('Connexion Google réussie')
-      router.push('/pro/dashboard')
+      router.push('/professionnel/dashboard')
     } catch (error: any) {
       console.error('Erreur connexion Google:', error)
       setError(error.message || 'Erreur lors de la connexion avec Google')
@@ -202,7 +202,7 @@ export default function LoginPage() {
 
             <div className="mt-6">
               <Link
-                href="/pro/register"
+                href="/professionnel/register"
                 className="w-full flex justify-center items-center px-4 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors"
               >
                 Créer un compte professionnel

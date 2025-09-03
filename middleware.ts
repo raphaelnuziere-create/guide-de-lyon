@@ -6,9 +6,9 @@ const publicRoutes = [
   '/',
   '/login',
   '/register',
-  '/pro/login',
-  '/pro/register',
-  '/admin/login',
+  '/professionnel/login',
+  '/professionnel/register',
+  '/administration/login',
   '/api/public',
   '/api/homepage',
   '/blog',
@@ -33,19 +33,19 @@ const publicRoutes = [
 
 // Routes réservées aux merchants
 const merchantRoutes = [
-  '/pro/dashboard',
-  '/pro/places',
-  '/pro/events',
-  '/pro/analytics',
-  '/pro/billing',
-  '/pro/settings',
-  '/pro/upgrade',
+  '/professionnel/dashboard',
+  '/professionnel/places',
+  '/professionnel/events',
+  '/professionnel/analytics',
+  '/professionnel/billing',
+  '/professionnel/settings',
+  '/professionnel/upgrade',
   '/api/merchant'
 ];
 
 // Routes réservées aux admins
 const adminRoutes = [
-  '/admin',
+  '/administration',
   '/api/admin'
 ];
 
@@ -88,17 +88,17 @@ export async function middleware(request: NextRequest) {
 
   if (!token) {
     // Éviter la redirection si on est déjà sur une page de login
-    if (pathname === '/pro/login' || pathname === '/admin/login' || pathname === '/login') {
+    if (pathname === '/professionnel/login' || pathname === '/administration/login' || pathname === '/login') {
       console.log('[Middleware] Already on login page, allowing access:', pathname);
       return NextResponse.next();
     }
     
     // Rediriger vers login si pas de token
-    if (pathname.startsWith('/pro')) {
-      return NextResponse.redirect(new URL('/pro/login', request.url));
+    if (pathname.startsWith('/professionnel')) {
+      return NextResponse.redirect(new URL('/professionnel/login', request.url));
     }
-    if (pathname.startsWith('/admin')) {
-      return NextResponse.redirect(new URL('/admin/login', request.url));
+    if (pathname.startsWith('/administration')) {
+      return NextResponse.redirect(new URL('/administration/login', request.url));
     }
     return NextResponse.redirect(new URL('/login', request.url));
   }
@@ -127,7 +127,7 @@ export async function middleware(request: NextRequest) {
   } catch (error) {
     // Token invalide, rediriger vers login
     const response = NextResponse.redirect(
-      new URL(pathname.startsWith('/pro') ? '/pro/login' : '/login', request.url)
+      new URL(pathname.startsWith('/professionnel') ? '/professionnel/login' : '/login', request.url)
     );
     response.cookies.delete('auth-token');
     return response;

@@ -52,20 +52,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       // Redirections automatiques
       if (authUser) {
         // Si merchant sur page de login, rediriger vers dashboard
-        if (pathname === '/pro/login' && authUser.role === 'merchant') {
-          router.push('/pro/dashboard');
+        if (pathname === '/professionnel/login' && authUser.role === 'merchant') {
+          router.push('/professionnel/dashboard');
         }
         // Si admin sur page de login, rediriger vers admin
-        if (pathname === '/admin/login' && authUser.role === 'admin') {
-          router.push('/admin/dashboard');
+        if (pathname === '/administration/login' && authUser.role === 'admin') {
+          router.push('/administration/dashboard');
         }
       } else {
         // Si non connecté et sur page protégée
-        if (pathname.startsWith('/pro/') && pathname !== '/pro/login' && pathname !== '/pro/register') {
-          router.push('/pro/login');
+        if (pathname.startsWith('/professionnel/') && pathname !== '/professionnel/login' && pathname !== '/professionnel/register') {
+          router.push('/professionnel/login');
         }
-        if (pathname.startsWith('/admin/') && pathname !== '/admin/login') {
-          router.push('/admin/login');
+        if (pathname.startsWith('/administration/') && pathname !== '/administration/login') {
+          router.push('/administration/login');
         }
       }
     });
