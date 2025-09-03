@@ -22,7 +22,7 @@ export interface AuthUser {
   emailVerified: boolean;
   role: 'user' | 'merchant' | 'admin';
   merchantId?: string;
-  plan?: 'free' | 'pro_events' | 'pro_boost';
+  plan?: 'free' | 'pro_visibility' | 'pro_boost';
 }
 
 class AuthService {
