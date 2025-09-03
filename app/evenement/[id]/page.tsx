@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import { Calendar, MapPin, Clock, Users, ChevronLeft } from 'lucide-react'
 
-export default function EventDetailPage({ params }: { params: { id: string } }) {
+export default async function EventDetailPage({ params }: { params: Promise<{ id: string }> }) {
   // Page simplifiee pour eviter les erreurs d'encodage
+  const resolvedParams = await params;
   const event = {
-    id: params.id,
+    id: resolvedParams.id,
     title: 'Festival des Lumieres 2025',
     description: 'Le plus grand evenement lumineux de Lyon revient illuminer la ville pendant 4 soirees exceptionnelles.',
     date: '2025-12-05',

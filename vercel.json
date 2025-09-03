@@ -1,0 +1,18 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "regions": ["cdg1"],
+  "functions": {
+    "app/auth/page.tsx": {
+      "maxDuration": 10
+    },
+    "app/login-admin/page.tsx": {
+      "maxDuration": 10
+    },
+    "app/login-pro/page.tsx": {
+      "maxDuration": 10
+    }
+  }
+}
