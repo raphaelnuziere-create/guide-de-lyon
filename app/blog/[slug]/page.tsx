@@ -103,7 +103,7 @@ export default function BlogPostPage() {
 
   const loadDemoPost = () => {
     // Article de démonstration si non trouvé
-    const demoPost: BlogPost = {
+    const demoPost: any = {
       id: '1',
       slug: slug,
       title: 'Découvrir le Vieux Lyon : Un voyage dans le temps',
@@ -205,7 +205,7 @@ export default function BlogPostPage() {
               </span>
               <span className="flex items-center text-sm">
                 <Calendar className="w-4 h-4 mr-1" />
-                {formatDate(post.created_at || post.published_at || new Date().toISOString())}
+                {formatDate((post as any).created_at || (post as any).published_at || new Date().toISOString())}
               </span>
               <span className="flex items-center text-sm">
                 <Clock className="w-4 h-4 mr-1" />
@@ -235,7 +235,7 @@ export default function BlogPostPage() {
                 <User className="w-6 h-6 text-blue-600" />
               </div>
               <div className="ml-4">
-                <p className="font-semibold text-gray-900">{post.author_name || post.author?.name || 'Auteur'}</p>
+                <p className="font-semibold text-gray-900">{(post as any).author_name || post.author?.name || 'Auteur'}</p>
                 {(post.author?.bio) && (
                   <p className="text-sm text-gray-600">{post.author.bio}</p>
                 )}
