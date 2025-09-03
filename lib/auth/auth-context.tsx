@@ -79,7 +79,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const authUser = await authService.signIn(email, password);
       console.log('[AuthContext] SignIn réussi, mise à jour du state');
       setUser(authUser);
-      return authUser;
     } catch (error) {
       console.error('[AuthContext] Erreur dans signIn:', error);
       throw error;
