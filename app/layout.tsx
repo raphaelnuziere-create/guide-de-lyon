@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className={inter.className}>
+      <body>
         <AuthProvider>
           {/* Header */}
         <header className="sticky top-0 z-50 bg-white border-b shadow-sm">
