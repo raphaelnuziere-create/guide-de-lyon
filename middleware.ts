@@ -12,7 +12,22 @@ const publicRoutes = [
   '/api/homepage',
   '/blog',
   '/about',
-  '/contact'
+  '/contact',
+  '/a-propos',
+  '/mentions-legales',
+  '/annuaire',
+  '/etablissement',
+  '/evenements',
+  '/evenement',
+  '/restaurants',
+  '/hotels',
+  '/bars',
+  '/culture',
+  '/tourisme',
+  '/shopping',
+  '/transports',
+  '/tarifs',
+  '/inscription'
 ];
 
 // Routes réservées aux merchants
