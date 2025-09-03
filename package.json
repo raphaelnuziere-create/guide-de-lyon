@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "start": "next start"
+    "start": "next start",
+    "setup:db": "node scripts/setup-database.js",
+    "setup:env": "cp .env.local.example .env.local && echo '✅ .env.local créé - Ajoutez vos clés API'"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.0",
@@ -20,6 +22,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.2.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
