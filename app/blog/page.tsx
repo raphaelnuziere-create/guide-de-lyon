@@ -60,7 +60,7 @@ export default function BlogPage() {
       } else if (data && data.length > 0) {
         setPosts(data)
         // Extraire les catégories uniques
-        const uniqueCategories = [...new Set(data.map((post: BlogPost) => post.category))].filter(Boolean)
+        const uniqueCategories = [...new Set(data.map((post: BlogPost) => post.category))].filter(Boolean) as string[]
         setCategories(['all', ...uniqueCategories])
       } else {
         loadDemoData()
