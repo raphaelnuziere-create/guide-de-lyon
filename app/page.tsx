@@ -1,103 +1,277 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { Search, MapPin, Calendar, Star, Users, TrendingUp } from 'lucide-react'
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Guide de Lyon
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-blue-100">
+              L'annuaire des entreprises et l'agenda des événements lyonnais
+            </p>
+            
+            {/* Search Bar */}
+            <div className="max-w-2xl mx-auto mb-8">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Rechercher une entreprise, un restaurant, un événement..."
+                  className="w-full px-6 py-4 pr-12 rounded-full text-gray-900 placeholder-gray-500 shadow-xl focus:outline-none focus:ring-4 focus:ring-white/50"
+                />
+                <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition">
+                  <Search className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/annuaire"
+                className="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg"
+              >
+                <MapPin className="w-5 h-5 mr-2" />
+                Explorer l'annuaire
+              </Link>
+              <Link
+                href="/evenements"
+                className="inline-flex items-center justify-center px-8 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-400 transition shadow-lg"
+              >
+                <Calendar className="w-5 h-5 mr-2" />
+                Voir les événements
+              </Link>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-12 bg-gray-50 border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-3xl font-bold text-gray-900">500+</div>
+              <div className="text-gray-600">Entreprises</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-gray-900">50+</div>
+              <div className="text-gray-600">Événements/mois</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-gray-900">10k+</div>
+              <div className="text-gray-600">Visiteurs/mois</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-gray-900">4.8/5</div>
+              <div className="text-gray-600">Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
+            Explorez par catégorie
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { name: 'Restaurants', icon: '🍴', count: '150+' },
+              { name: 'Shopping', icon: '🛍️', count: '80+' },
+              { name: 'Culture', icon: '🎭', count: '45+' },
+              { name: 'Services', icon: '💼', count: '120+' },
+              { name: 'Santé', icon: '⚕️', count: '60+' },
+              { name: 'Sport', icon: '⚽', count: '35+' },
+              { name: 'Beauté', icon: '💅', count: '40+' },
+              { name: 'Éducation', icon: '🎓', count: '25+' },
+            ].map((category) => (
+              <Link
+                key={category.name}
+                href={`/annuaire?categorie=${category.name.toLowerCase()}`}
+                className="group p-6 bg-gray-50 rounded-xl hover:bg-blue-50 hover:shadow-lg transition-all"
+              >
+                <div className="text-4xl mb-3">{category.icon}</div>
+                <h3 className="font-semibold text-gray-900 group-hover:text-blue-600">
+                  {category.name}
+                </h3>
+                <p className="text-sm text-gray-500">{category.count}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Businesses */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Entreprises à la une
+            </h2>
+            <Link href="/annuaire" className="text-blue-600 hover:text-blue-700 font-semibold">
+              Voir tout →
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: 'Restaurant Paul Bocuse',
+                category: 'Gastronomie',
+                rating: 4.9,
+                image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400',
+              },
+              {
+                name: 'Spa Lyon Plage',
+                category: 'Bien-être',
+                rating: 4.7,
+                image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400',
+              },
+              {
+                name: 'Boutique Créateurs',
+                category: 'Shopping',
+                rating: 4.8,
+                image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400',
+              },
+            ].map((business) => (
+              <div key={business.name} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
+                <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300"></div>
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-bold text-lg text-gray-900">{business.name}</h3>
+                    <div className="flex items-center text-yellow-500">
+                      <Star className="w-4 h-4 fill-current" />
+                      <span className="text-sm ml-1 text-gray-600">{business.rating}</span>
+                    </div>
+                  </div>
+                  <p className="text-gray-600 text-sm mb-4">{business.category}</p>
+                  <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                    Voir détails
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Events */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Événements à venir
+            </h2>
+            <Link href="/evenements" className="text-blue-600 hover:text-blue-700 font-semibold">
+              Voir tout →
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: 'Festival Lumière 2024',
+                date: '15 Décembre',
+                location: 'Vieux Lyon',
+                category: 'Culture',
+              },
+              {
+                title: 'Marché de Noël',
+                date: '20 Décembre',
+                location: 'Place Carnot',
+                category: 'Shopping',
+              },
+              {
+                title: 'Concert Jazz',
+                date: '22 Décembre',
+                location: 'Opéra de Lyon',
+                category: 'Musique',
+              },
+            ].map((event) => (
+              <div key={event.title} className="border rounded-lg p-6 hover:shadow-lg transition">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <div className="text-sm text-blue-600 font-semibold mb-1">
+                      {event.category}
+                    </div>
+                    <h3 className="font-bold text-lg text-gray-900">{event.title}</h3>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-2xl font-bold text-gray-900">
+                      {event.date.split(' ')[0]}
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      {event.date.split(' ')[1]}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center text-gray-600 text-sm">
+                  <MapPin className="w-4 h-4 mr-1" />
+                  {event.location}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">
+            Vous êtes une entreprise lyonnaise ?
+          </h2>
+          <p className="text-xl mb-8 text-blue-100">
+            Rejoignez notre annuaire et boostez votre visibilité
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/inscription"
+              className="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition"
+            >
+              <Users className="w-5 h-5 mr-2" />
+              Inscription gratuite
+            </Link>
+            <Link
+              href="/tarifs"
+              className="inline-flex items-center justify-center px-8 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-400 transition"
+            >
+              <TrendingUp className="w-5 h-5 mr-2" />
+              Voir les offres Premium
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4 text-gray-900">
+            Restez informé
+          </h2>
+          <p className="text-gray-600 mb-8">
+            Recevez les dernières actualités et événements de Lyon
+          </p>
+          <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Votre adresse email"
+              className="flex-1 px-6 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              type="submit"
+              className="px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
+            >
+              S'abonner
+            </button>
+          </form>
+        </div>
+      </section>
     </div>
-  );
+  )
 }
