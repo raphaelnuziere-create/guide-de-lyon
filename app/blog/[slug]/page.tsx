@@ -55,18 +55,24 @@ export default function BlogPostPage() {
       
       // Récupérer l'article depuis Supabase
       const { data, error } = await supabase
-        .from('blog_posts')
+        .from('original_blog_posts')
         .select('*')
         .eq('slug', slug)
-        .eq('status', 'published')
         .single()
 
       if (error || !data) {
         console.error('Article non trouvé:', error)
         loadDemoPost()
       } else {
-        setPost(data)
-        fetchRelatedPosts(data.category, data.id)
+        // Adapter les données si nécessaire
+        const postWithSlug = {
+          ...data,
+          slug: data.slug || slug,
+          author: data.author || { name: data.author_name || 'Guide de Lyon' },
+          tags: data.tags || []
+        }
+        setPost(postWithSlug)
+        fetchRelatedPosts(postWithSlug.category, postWithSlug.id)
       }
     } catch (error) {
       console.error('Erreur:', error)
@@ -81,10 +87,9 @@ export default function BlogPostPage() {
       if (!supabase) return
       
       const { data } = await supabase
-        .from('blog_posts')
+        .from('original_blog_posts')
         .select('*')
         .eq('category', category)
-        .eq('status', 'published')
         .neq('id', currentId)
         .limit(3)
 
@@ -134,13 +139,14 @@ export default function BlogPostPage() {
       featured_image: 'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=1200',
       category: 'Tourisme',
       tags: ['patrimoine', 'histoire', 'UNESCO', 'architecture', 'Renaissance'],
+      author_name: 'Marie Dubois',
       author: { 
         name: 'Marie Dubois',
         bio: 'Guide touristique passionnée par l\'histoire de Lyon'
       },
+      created_at: new Date().toISOString(),
       published_at: new Date().toISOString(),
-      reading_time: 5,
-      status: 'published'
+      reading_time: 5
     }
     setPost(demoPost)
   }
@@ -199,11 +205,11 @@ export default function BlogPostPage() {
               </span>
               <span className="flex items-center text-sm">
                 <Calendar className="w-4 h-4 mr-1" />
-                {formatDate(post.published_at)}
+                {formatDate(post.created_at || post.published_at || new Date().toISOString())}
               </span>
               <span className="flex items-center text-sm">
                 <Clock className="w-4 h-4 mr-1" />
-                {post.reading_time} min de lecture
+                {post.reading_time || 5} min de lecture
               </span>
             </div>
             
@@ -229,8 +235,8 @@ export default function BlogPostPage() {
                 <User className="w-6 h-6 text-blue-600" />
               </div>
               <div className="ml-4">
-                <p className="font-semibold text-gray-900">{post.author.name}</p>
-                {post.author.bio && (
+                <p className="font-semibold text-gray-900">{post.author_name || post.author?.name || 'Auteur'}</p>
+                {(post.author?.bio) && (
                   <p className="text-sm text-gray-600">{post.author.bio}</p>
                 )}
               </div>
@@ -252,7 +258,7 @@ export default function BlogPostPage() {
             />
 
             {/* Tags */}
-            {post.tags && post.tags.length > 0 && (
+            {post.tags && Array.isArray(post.tags) && post.tags.length > 0 && (
               <div className="mt-12 pt-8 border-t">
                 <div className="flex flex-wrap gap-2">
                   <span className="text-gray-600 font-semibold">Tags:</span>

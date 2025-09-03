@@ -13,14 +13,16 @@ interface BlogPost {
   content: string
   featured_image: string | null
   category: string
-  tags: string[]
-  author: {
+  tags: string[] | null
+  author_name?: string
+  author?: {
     name: string
     avatar?: string
   }
-  published_at: string
-  reading_time: number
-  status: string
+  created_at: string
+  published_at?: string
+  reading_time?: number
+  status?: string
 }
 
 export default function BlogPage() {
@@ -47,10 +49,9 @@ export default function BlogPage() {
       
       // Récupérer les articles depuis Supabase
       const { data, error } = await supabase
-        .from('blog_posts')
+        .from('original_blog_posts')
         .select('*')
-        .eq('status', 'published')
-        .order('published_at', { ascending: false })
+        .order('created_at', { ascending: false })
         .limit(50)
 
       if (error) {
@@ -58,11 +59,19 @@ export default function BlogPage() {
         // Utiliser des données de démonstration en cas d'erreur
         loadDemoData()
       } else if (data && data.length > 0) {
-        setPosts(data)
+        // Générer les slugs si ils n'existent pas
+        const postsWithSlugs = data.map((post: any) => ({
+          ...post,
+          slug: post.slug || post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+          author: post.author || { name: post.author_name || 'Guide de Lyon' },
+          tags: post.tags || []
+        }))
+        setPosts(postsWithSlugs)
         // Extraire les catégories uniques
-        const uniqueCategories = [...new Set(data.map((post: BlogPost) => post.category))].filter(Boolean) as string[]
+        const uniqueCategories = [...new Set(postsWithSlugs.map((post: BlogPost) => post.category))].filter(Boolean) as string[]
         setCategories(['all', ...uniqueCategories])
       } else {
+        console.log('Aucun article trouvé dans la base de données')
         loadDemoData()
       }
     } catch (error) {
@@ -85,8 +94,9 @@ export default function BlogPage() {
         featured_image: 'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=800',
         category: 'Tourisme',
         tags: ['patrimoine', 'histoire', 'UNESCO'],
+        author_name: 'Marie Dubois',
         author: { name: 'Marie Dubois' },
-        published_at: new Date().toISOString(),
+        created_at: new Date().toISOString(),
         reading_time: 5,
         status: 'published'
       },
@@ -99,8 +109,9 @@ export default function BlogPage() {
         featured_image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800',
         category: 'Gastronomie',
         tags: ['restaurants', 'cuisine', 'tradition'],
+        author_name: 'Pierre Martin',
         author: { name: 'Pierre Martin' },
-        published_at: new Date(Date.now() - 86400000).toISOString(),
+        created_at: new Date(Date.now() - 86400000).toISOString(),
         reading_time: 8,
         status: 'published'
       },
@@ -113,8 +124,9 @@ export default function BlogPage() {
         featured_image: 'https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=800',
         category: 'Événements',
         tags: ['festival', 'lumières', 'décembre'],
+        author_name: 'Sophie Laurent',
         author: { name: 'Sophie Laurent' },
-        published_at: new Date(Date.now() - 172800000).toISOString(),
+        created_at: new Date(Date.now() - 172800000).toISOString(),
         reading_time: 6,
         status: 'published'
       }
@@ -227,7 +239,7 @@ export default function BlogPage() {
                         </span>
                         <span className="ml-4 text-gray-500 text-sm flex items-center">
                           <Calendar className="w-4 h-4 mr-1" />
-                          {formatDate(filteredPosts[0].published_at)}
+                          {formatDate(filteredPosts[0].created_at)}
                         </span>
                       </div>
                       
@@ -242,10 +254,10 @@ export default function BlogPage() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center text-sm text-gray-500">
                           <User className="w-4 h-4 mr-1" />
-                          {filteredPosts[0].author.name}
+                          {filteredPosts[0].author_name || filteredPosts[0].author?.name || 'Auteur'}
                           <span className="mx-2">•</span>
                           <Clock className="w-4 h-4 mr-1" />
-                          {filteredPosts[0].reading_time} min
+                          {filteredPosts[0].reading_time || 5} min
                         </div>
                         
                         <Link 
@@ -276,7 +288,7 @@ export default function BlogPage() {
                         {post.category}
                       </span>
                       <span className="text-gray-500 text-sm">
-                        {formatDate(post.published_at)}
+                        {formatDate(post.created_at)}
                       </span>
                     </div>
                     
@@ -291,7 +303,7 @@ export default function BlogPage() {
                     </p>
                     
                     {/* Tags */}
-                    {post.tags && post.tags.length > 0 && (
+                    {post.tags && Array.isArray(post.tags) && post.tags.length > 0 && (
                       <div className="flex flex-wrap gap-2 mb-4">
                         {post.tags.slice(0, 3).map((tag, index) => (
                           <span key={index} className="text-xs text-gray-500 flex items-center">
@@ -306,7 +318,7 @@ export default function BlogPage() {
                     <div className="flex items-center justify-between pt-4 border-t">
                       <div className="flex items-center text-sm text-gray-500">
                         <User className="w-4 h-4 mr-1" />
-                        {post.author.name}
+                        {post.author_name || post.author?.name || 'Auteur'}
                       </div>
                       
                       <Link 
