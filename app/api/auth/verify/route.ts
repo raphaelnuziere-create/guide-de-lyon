@@ -19,7 +19,8 @@ if (!admin.apps.length) {
 
 export async function POST(request: NextRequest) {
   try {
-    const authHeader = headers().get('authorization');
+    const headersList = await headers();
+    const authHeader = headersList.get('authorization');
     
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json(
