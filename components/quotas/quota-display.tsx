@@ -95,7 +95,7 @@ export function QuotaDisplay({ merchantId, plan, onUpgrade }: QuotaDisplayProps)
                   className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
                 >
                   <TrendingUp className="h-4 w-4 mr-1.5" />
-                  Passer au plan {upgradesuggestion.suggestedPlan === 'pro_events' ? 'Pro Events' : 'Pro Boost'}
+                  Passer au plan {upgradesuggestion.suggestedPlan === 'pro_visibility' ? 'Pro Visibilité' : 'Pro Boost'}
                 </button>
               </div>
             </div>

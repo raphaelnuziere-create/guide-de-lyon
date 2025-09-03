@@ -219,7 +219,7 @@ export function useChat(roomId: string) {
       const msgs = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data()
-      }));
+      })) as any[];
       
       // Sort by timestamp
       msgs.sort((a, b) => {

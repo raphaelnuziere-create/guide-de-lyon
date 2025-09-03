@@ -1,0 +1,15 @@
+[2025-09-03 22:53:26] [INFO] Démarrage du monitoring...
+[2025-09-03 22:53:26] [ERROR] Site principal inaccessible (HTTP 401)
+[2025-09-03 22:53:26] [ALERT] Site principal DOWN - HTTP 401
+[2025-09-03 22:53:27] [INFO] Certificat SSL expire dans 74 jours
+[2025-09-03 22:53:27] [SUCCESS] Certificat SSL valide (74 jours restants)
+[2025-09-03 22:53:28] [ERROR] Endpoint /api/health inaccessible (HTTP 401)
+[2025-09-03 22:53:28] [ALERT] Endpoint critique DOWN: /api/health
+[2025-09-03 22:53:28] [ERROR] Endpoint /annuaire inaccessible (HTTP 401)
+[2025-09-03 22:53:28] [ALERT] Endpoint critique DOWN: /annuaire
+[2025-09-03 22:53:29] [ERROR] Endpoint /evenements inaccessible (HTTP 401)
+[2025-09-03 22:53:29] [ALERT] Endpoint critique DOWN: /evenements
+[2025-09-03 22:53:29] [ERROR] Endpoint /pro/login inaccessible (HTTP 401)
+[2025-09-03 22:53:29] [ALERT] Endpoint critique DOWN: /pro/login
+[2025-09-03 22:53:29] [ALERT] Espace disque critique: 91%
+[2025-09-03 22:53:29] [ERROR] Monitoring terminé - SITE DOWN

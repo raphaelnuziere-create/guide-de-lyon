@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
-import { Search, MapPin, Phone, Globe, Star, Filter } from 'lucide-react'
-import { supabase } from '@/lib/supabase'
+import { Search, MapPin, Phone, Globe, Star, Filter, ChevronDown, Grid, List, Clock } from 'lucide-react'
+import { useSearchParams } from 'next/navigation'
 
 interface Business {
   id: string
@@ -16,11 +16,14 @@ interface Business {
   rating?: number
 }
 
-export default function AnnuairePage() {
+function DirectoryContent() {
+  const searchParams = useSearchParams()
   const [businesses, setBusinesses] = useState<Business[]>([])
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState(searchParams.get('categorie') || '')
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [showFilters, setShowFilters] = useState(false)
 
   // Données de démonstration
   const demoBusinesses: Business[] = [
@@ -227,5 +230,13 @@ export default function AnnuairePage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function AnnuairePage() {
+  return (
+    <Suspense fallback={<div>Chargement...</div>}>
+      <DirectoryContent />
+    </Suspense>
   )
 }

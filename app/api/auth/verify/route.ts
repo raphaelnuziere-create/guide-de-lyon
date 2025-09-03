@@ -3,15 +3,27 @@ import { headers } from 'next/headers';
 import * as admin from 'firebase-admin';
 
 // Initialiser Firebase Admin SDK
+let adminInitialized = false;
+
 if (!admin.apps.length) {
   try {
-    admin.initializeApp({
-      credential: admin.credential.cert({
-        projectId: process.env.FIREBASE_ADMIN_PROJECT_ID,
-        clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-        privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n')
-      })
-    });
+    // Vérifier que toutes les variables sont présentes et valides
+    if (process.env.FIREBASE_ADMIN_PROJECT_ID && 
+        process.env.FIREBASE_ADMIN_CLIENT_EMAIL && 
+        process.env.FIREBASE_ADMIN_PRIVATE_KEY &&
+        process.env.FIREBASE_ADMIN_PRIVATE_KEY.length > 100) {
+      
+      admin.initializeApp({
+        credential: admin.credential.cert({
+          projectId: process.env.FIREBASE_ADMIN_PROJECT_ID,
+          clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
+          privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n')
+        })
+      });
+      adminInitialized = true;
+    } else {
+      console.log('Firebase Admin SDK not configured - using client-side auth only');
+    }
   } catch (error) {
     console.error('Firebase admin initialization error:', error);
   }
@@ -26,6 +38,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Token manquant' },
         { status: 401 }
+      );
+    }
+
+    if (!adminInitialized) {
+      // Si Firebase Admin n'est pas initialisé, retourner une erreur temporaire
+      return NextResponse.json(
+        { error: 'Service temporairement indisponible - Firebase Admin non configuré' },
+        { status: 503 }
       );
     }
 

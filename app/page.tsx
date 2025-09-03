@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Search, MapPin, Calendar, Star, Users, TrendingUp } from 'lucide-react'
+import { UpcomingEventsSection } from '@/components/homepage/upcoming-events-section'
 
 export default function Home() {
   return (
@@ -161,64 +162,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Upcoming Events */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">
-              Événements à venir
-            </h2>
-            <Link href="/evenements" className="text-blue-600 hover:text-blue-700 font-semibold">
-              Voir tout →
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: 'Festival Lumière 2024',
-                date: '15 Décembre',
-                location: 'Vieux Lyon',
-                category: 'Culture',
-              },
-              {
-                title: 'Marché de Noël',
-                date: '20 Décembre',
-                location: 'Place Carnot',
-                category: 'Shopping',
-              },
-              {
-                title: 'Concert Jazz',
-                date: '22 Décembre',
-                location: 'Opéra de Lyon',
-                category: 'Musique',
-              },
-            ].map((event) => (
-              <div key={event.title} className="border rounded-lg p-6 hover:shadow-lg transition">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <div className="text-sm text-blue-600 font-semibold mb-1">
-                      {event.category}
-                    </div>
-                    <h3 className="font-bold text-lg text-gray-900">{event.title}</h3>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-gray-900">
-                      {event.date.split(' ')[0]}
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      {event.date.split(' ')[1]}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center text-gray-600 text-sm">
-                  <MapPin className="w-4 h-4 mr-1" />
-                  {event.location}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Upcoming Events - Dynamic Section */}
+      <UpcomingEventsSection />
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
