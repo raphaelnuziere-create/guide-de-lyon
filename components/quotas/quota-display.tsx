@@ -201,7 +201,7 @@ export function QuotaDisplay({ merchantId, plan, onUpgrade }: QuotaDisplayProps)
             </div>
             
             <div className="text-xs text-gray-500">
-              {plan === 'free' ? '100 MB max' : plan === 'pro_events' ? '500 MB max' : 'Illimité'}
+              {plan === 'free' ? '100 MB max' : plan === 'pro_visibility' ? '500 MB max' : 'Illimité'}
             </div>
           </div>
         </div>
@@ -226,7 +226,7 @@ export function QuotaDisplay({ merchantId, plan, onUpgrade }: QuotaDisplayProps)
                 {limits.apiAccess ? usage.apiCallsUsed : '—'}
               </span>
               <span className="text-sm text-gray-500">
-                {limits.apiAccess ? (plan === 'pro_events' ? '/ 1000' : 'Illimité') : 'Non disponible'}
+                {limits.apiAccess ? (plan === 'pro_visibility' ? '/ 1000' : 'Illimité') : 'Non disponible'}
               </span>
             </div>
           </div>
@@ -236,7 +236,7 @@ export function QuotaDisplay({ merchantId, plan, onUpgrade }: QuotaDisplayProps)
       {/* Fonctionnalités du plan */}
       <div className="bg-gray-50 rounded-lg p-4">
         <h3 className="text-sm font-medium text-gray-900 mb-3">
-          Fonctionnalités de votre plan {plan === 'free' ? 'Gratuit' : plan === 'pro_events' ? 'Pro Events' : 'Pro Boost'}
+          Fonctionnalités de votre plan {plan === 'free' ? 'Gratuit' : plan === 'pro_visibility' ? 'Pro Visibilité' : 'Pro Boost'}
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
           <div className="flex items-center">
