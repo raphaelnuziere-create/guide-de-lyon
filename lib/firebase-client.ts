@@ -6,15 +6,15 @@ import { getFunctions, Functions } from 'firebase/functions';
 import { getAnalytics, Analytics, isSupported } from 'firebase/analytics';
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY?.trim(),
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN?.trim(),
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID?.trim(),
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET?.trim(),
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID?.trim(),
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID?.trim()
 };
 
-// Vérifier que la configuration est présente
+// Vérifier que la configuration est présente et valide
 if (!firebaseConfig.apiKey || !firebaseConfig.authDomain || !firebaseConfig.projectId) {
   console.error('[Firebase] Configuration incomplète:', {
     apiKey: !!firebaseConfig.apiKey,
@@ -26,6 +26,11 @@ if (!firebaseConfig.apiKey || !firebaseConfig.authDomain || !firebaseConfig.proj
   });
 } else {
   console.log('[Firebase] Configuration chargée avec succès');
+  // Vérifier qu'il n'y a pas de caractères indésirables
+  if (firebaseConfig.authDomain?.includes('\n') || firebaseConfig.authDomain?.includes('\r')) {
+    console.error('[Firebase] ERREUR: authDomain contient des retours à la ligne!');
+    console.error('authDomain:', JSON.stringify(firebaseConfig.authDomain));
+  }
 }
 
 let app: FirebaseApp;
