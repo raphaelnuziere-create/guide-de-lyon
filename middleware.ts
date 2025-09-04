@@ -4,11 +4,19 @@ import type { NextRequest } from 'next/server';
 // Routes publiques qui ne nécessitent pas d'authentification
 const publicRoutes = [
   '/',
+  '/connexion',
   '/login',
   '/register',
   '/professionnel/login',
   '/professionnel/register',
   '/administration/login',
+  '/administration/connexion',
+  '/professionnel/connexion',
+  '/login-admin',
+  '/login-pro',
+  '/test',
+  '/diagnostic',
+  '/auth',
   '/api/public',
   '/api/homepage',
   '/blog',
@@ -28,7 +36,11 @@ const publicRoutes = [
   '/shopping',
   '/transports',
   '/tarifs',
-  '/inscription'
+  '/inscription',
+  '/professionnel',
+  '/administration',
+  '/tableau-de-bord',
+  '/espace-pro'
 ];
 
 // Routes réservées aux merchants
@@ -88,19 +100,20 @@ export async function middleware(request: NextRequest) {
 
   if (!token) {
     // Éviter la redirection si on est déjà sur une page de login
-    if (pathname === '/professionnel/login' || pathname === '/administration/login' || pathname === '/login') {
+    if (pathname === '/connexion' || pathname === '/professionnel/connexion' || pathname === '/administration/connexion' || 
+        pathname === '/professionnel/login' || pathname === '/administration/login' || pathname === '/login') {
       console.log('[Middleware] Already on login page, allowing access:', pathname);
       return NextResponse.next();
     }
     
-    // Rediriger vers login si pas de token
+    // Rediriger vers connexion si pas de token
     if (pathname.startsWith('/professionnel')) {
-      return NextResponse.redirect(new URL('/professionnel/login', request.url));
+      return NextResponse.redirect(new URL('/professionnel/connexion', request.url));
     }
     if (pathname.startsWith('/administration')) {
-      return NextResponse.redirect(new URL('/administration/login', request.url));
+      return NextResponse.redirect(new URL('/administration/connexion', request.url));
     }
-    return NextResponse.redirect(new URL('/login', request.url));
+    return NextResponse.redirect(new URL('/connexion', request.url));
   }
 
   try {
@@ -125,9 +138,9 @@ export async function middleware(request: NextRequest) {
     
     return NextResponse.next();
   } catch (error) {
-    // Token invalide, rediriger vers login
+    // Token invalide, rediriger vers connexion
     const response = NextResponse.redirect(
-      new URL(pathname.startsWith('/professionnel') ? '/professionnel/login' : '/login', request.url)
+      new URL(pathname.startsWith('/professionnel') ? '/professionnel/connexion' : '/connexion', request.url)
     );
     response.cookies.delete('auth-token');
     return response;
