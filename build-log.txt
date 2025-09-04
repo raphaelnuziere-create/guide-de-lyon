@@ -1,0 +1,78 @@
+
+> guide-lyon-v2@0.1.0 build
+> next build
+
+ ⚠ Invalid next.config.ts options detected: 
+ ⚠     Unrecognized key(s) in object: 'swcMinify'
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/raphaellebestplusbeauquejaime/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/raphaellebestplusbeauquejaime/Desktop/guide-lyon-v2/package-lock.json
+
+   ▲ Next.js 15.5.2
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 3.2s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+Firebase Admin SDK not configured - using client-side auth only
+   Generating static pages (0/32) ...
+[Firebase] Configuration chargée avec succès
+[Firebase] Configuration chargée avec succès
+   Generating static pages (8/32) 
+   Generating static pages (16/32) 
+Firebase Admin SDK not configured - using client-side auth only
+   Generating static pages (24/32) 
+ ✓ Generating static pages (32/32)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    4.01 kB         239 kB
+├ ○ /_not-found                            995 B         103 kB
+├ ○ /a-propos                              168 B         105 kB
+├ ○ /administration                        550 B         102 kB
+├ ○ /administration/connexion            3.02 kB         108 kB
+├ ○ /administration/dashboard            3.08 kB         274 kB
+├ ○ /administration/events               4.52 kB         276 kB
+├ ○ /administration/login                2.47 kB         274 kB
+├ ○ /administration/test                   144 B         102 kB
+├ ○ /annuaire                            3.46 kB         105 kB
+├ ƒ /api/auth/verify                       144 B         102 kB
+├ ○ /auth                                  144 B         102 kB
+├ ○ /blog                                4.54 kB         149 kB
+├ ƒ /blog/[slug]                         5.13 kB         150 kB
+├ ○ /contact                             3.58 kB         105 kB
+├ ○ /diagnostic                          1.13 kB         103 kB
+├ ƒ /etablissement/[id]                  6.76 kB         112 kB
+├ ƒ /evenement/[id]                        168 B         105 kB
+├ ○ /evenements                          4.31 kB         110 kB
+├ ○ /login-admin                         1.13 kB         103 kB
+├ ○ /login-pro                           1.12 kB         103 kB
+├ ○ /mentions-legales                      144 B         102 kB
+├ ○ /professionnel                       4.51 kB         149 kB
+├ ○ /professionnel/connexion             3.18 kB         108 kB
+├ ○ /professionnel/dashboard             3.66 kB         275 kB
+├ ○ /professionnel/events                4.16 kB         280 kB
+├ ○ /professionnel/events/create         7.11 kB         278 kB
+├ ○ /professionnel/login                 3.04 kB         274 kB
+├ ○ /professionnel/places/new            3.68 kB         280 kB
+├ ○ /professionnel/register              3.52 kB         275 kB
+├ ○ /professionnel/upgrade               6.36 kB         277 kB
+└ ○ /test                                  144 B         102 kB
++ First Load JS shared by all             102 kB
+  ├ chunks/1255-83cb42014f6de1e2.js      45.7 kB
+  ├ chunks/4bd1b696-f785427dddbba9fb.js  54.2 kB
+  └ other shared chunks (total)          1.93 kB
+
+
+ƒ Middleware                             33.4 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

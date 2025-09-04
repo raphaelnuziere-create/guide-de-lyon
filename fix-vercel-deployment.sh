@@ -68,7 +68,7 @@ if [[ $IS_PRIVATE == "true" ]]; then
     
     if [[ "$response" == "y" ]]; then
         print_info "Passage du repository en PUBLIC..."
-        gh repo edit raphaelnuziere-create/guide-de-lyon --visibility public
+        gh repo edit raphaelnuziere-create/guide-de-lyon --visibility public --accept-visibility-change-consequences
         
         if [ $? -eq 0 ]; then
             print_success "Repository maintenant PUBLIC!"
