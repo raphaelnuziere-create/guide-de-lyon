@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { checkRedirect } from './app/blog/redirects';
+import { getRedirection, needsRedirection } from './app/seo/redirects-map';
 
 // Routes publiques qui ne nécessitent pas d'authentification
 const publicRoutes = [
@@ -35,7 +36,17 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // Vérifier les redirections SEO pour le blog
+  // Vérifier les redirections SEO pour les anciennes URLs
+  if (needsRedirection(pathname)) {
+    const newPath = getRedirection(pathname);
+    if (newPath) {
+      const url = req.nextUrl.clone();
+      url.pathname = newPath;
+      return NextResponse.redirect(url, 301); // 301 permanent pour le SEO
+    }
+  }
+  
+  // Vérifier les redirections du blog
   const redirectTo = checkRedirect(pathname);
   if (redirectTo) {
     const url = req.nextUrl.clone();
