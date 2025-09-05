@@ -16,13 +16,13 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     // Rediriger si pas admin
     if (!user) {
-      router.push('/admin/login')
+      router.push('/connexion/admin')
     }
   }, [user])
 
   const handleLogout = async () => {
     await signOut()
-    router.push('/admin/login')
+    router.push('/connexion/admin')
   }
 
   const stats = {

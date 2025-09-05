@@ -128,8 +128,11 @@ export default function ProLoginPage() {
             </div>
           </div>
 
-          <div className="mt-6 text-center">
-            <Link href="/administration/connexion" className="text-sm text-blue-600 hover:text-blue-500">
+          <div className="mt-6 text-center space-y-2">
+            <Link href="/inscription" className="block text-sm text-blue-600 hover:text-blue-500">
+              Pas encore de compte ? S'inscrire
+            </Link>
+            <Link href="/connexion/admin" className="block text-sm text-gray-500 hover:text-gray-700">
               → Accès administrateur
             </Link>
           </div>

@@ -38,7 +38,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!user) {
-      router.push('/pro/login')
+      router.push('/connexion/pro')
       return
     }
     loadDashboard()

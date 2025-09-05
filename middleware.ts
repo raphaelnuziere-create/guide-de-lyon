@@ -1,71 +1,46 @@
+import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 // Routes publiques qui ne nécessitent pas d'authentification
 const publicRoutes = [
   '/',
-  '/connexion',
-  '/login',
-  '/register',
-  '/professionnel/login',
-  '/professionnel/register',
-  '/administration/login',
-  '/administration/connexion',
-  '/professionnel/connexion',
-  '/login-admin',
-  '/login-pro',
-  '/test',
-  '/diagnostic',
-  '/auth',
-  '/api/public',
-  '/api/homepage',
-  '/blog',
-  '/about',
-  '/contact',
-  '/a-propos',
-  '/mentions-legales',
   '/annuaire',
   '/etablissement',
   '/evenements',
-  '/evenement',
-  '/restaurants',
-  '/hotels',
-  '/bars',
-  '/culture',
-  '/tourisme',
-  '/shopping',
-  '/transports',
-  '/tarifs',
+  '/blog',
+  '/contact',
+  '/a-propos',
+  '/mentions-legales',
+  '/connexion/pro',
+  '/connexion/admin',
   '/inscription',
-  '/professionnel',
-  '/administration',
-  '/tableau-de-bord',
-  '/espace-pro'
+  // Anciennes routes pour compatibilité temporaire
+  '/professionnel/connexion',
+  '/professionnel/register',
+  '/administration/connexion',
 ];
 
-// Routes réservées aux merchants
+// Routes protégées par rôle
 const merchantRoutes = [
   '/professionnel/dashboard',
   '/professionnel/places',
   '/professionnel/events',
-  '/professionnel/analytics',
-  '/professionnel/billing',
   '/professionnel/settings',
   '/professionnel/upgrade',
-  '/api/merchant'
 ];
 
-// Routes réservées aux admins
 const adminRoutes = [
-  '/administration',
-  '/api/admin'
+  '/administration/dashboard',
+  '/administration/users',
+  '/administration/places',
+  '/administration/reports',
 ];
 
-export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  
-  // Log pour debug en production
-  console.log('[Middleware] Processing:', pathname);
+export async function middleware(req: NextRequest) {
+  const res = NextResponse.next();
+  const supabase = createMiddlewareClient({ req, res });
+  const { pathname } = req.nextUrl;
 
   // Skip pour les assets statiques
   if (
@@ -73,90 +48,74 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith('/static') ||
     pathname.includes('.') // fichiers avec extension
   ) {
-    console.log('[Middleware] Skipping static asset:', pathname);
-    return NextResponse.next();
+    return res;
   }
 
   // Vérifier si la route est publique
-  // Amélioration: vérifier exactement les routes pour éviter les conflits
   const isPublicRoute = publicRoutes.some(route => {
-    // Vérifier la correspondance exacte
     if (pathname === route) return true;
-    // Vérifier si c'est une sous-route (avec un / à la fin)
     if (route !== '/' && pathname.startsWith(route + '/')) return true;
-    // Pour la racine, ne pas matcher les sous-routes
-    if (route === '/' && pathname === '/') return true;
     return false;
   });
 
+  // Si route publique, autoriser l'accès
   if (isPublicRoute) {
-    console.log('[Middleware] Public route, allowing access:', pathname);
-    return NextResponse.next();
+    return res;
   }
 
-  // Récupérer le token depuis les cookies
-  const token = request.cookies.get('auth-token')?.value;
-  console.log('[Middleware] Token present:', !!token);
+  // Récupérer la session
+  const { data: { session } } = await supabase.auth.getSession();
 
-  if (!token) {
-    // Éviter la redirection si on est déjà sur une page de login
-    if (pathname === '/connexion' || pathname === '/professionnel/connexion' || pathname === '/administration/connexion' || 
-        pathname === '/professionnel/login' || pathname === '/administration/login' || pathname === '/login') {
-      console.log('[Middleware] Already on login page, allowing access:', pathname);
-      return NextResponse.next();
-    }
-    
-    // Rediriger vers connexion si pas de token
+  // Si pas de session, rediriger vers la connexion
+  if (!session) {
     if (pathname.startsWith('/professionnel')) {
-      return NextResponse.redirect(new URL('/professionnel/connexion', request.url));
+      return NextResponse.redirect(new URL('/connexion/pro', req.url));
     }
     if (pathname.startsWith('/administration')) {
-      return NextResponse.redirect(new URL('/administration/connexion', request.url));
+      return NextResponse.redirect(new URL('/connexion/admin', req.url));
     }
-    return NextResponse.redirect(new URL('/connexion', request.url));
+    return NextResponse.redirect(new URL('/', req.url));
   }
 
-  try {
-    // Vérifier le token avec Firebase Admin SDK (à implémenter côté serveur)
-    // Pour l'instant, on fait confiance au token client-side
-    
-    // TODO: Appeler une API route pour vérifier le token et le rôle
-    // const verifyResponse = await fetch(`${request.nextUrl.origin}/api/auth/verify`, {
-    //   headers: {
-    //     'Authorization': `Bearer ${token}`
-    //   }
-    // });
-    
-    // if (!verifyResponse.ok) {
-    //   throw new Error('Invalid token');
-    // }
-    
-    // const userData = await verifyResponse.json();
+  // Vérifier les permissions pour les routes protégées
+  if (merchantRoutes.some(route => pathname.startsWith(route))) {
+    // Récupérer le rôle depuis la base de données
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', session.user.id)
+      .single();
 
-    // Pour l'instant, on laisse passer si token présent
-    // En production, il faudra vérifier le rôle pour les routes merchant/admin
-    
-    return NextResponse.next();
-  } catch (error) {
-    // Token invalide, rediriger vers connexion
-    const response = NextResponse.redirect(
-      new URL(pathname.startsWith('/professionnel') ? '/professionnel/connexion' : '/connexion', request.url)
-    );
-    response.cookies.delete('auth-token');
-    return response;
+    if (profile?.role !== 'merchant' && profile?.role !== 'admin') {
+      return NextResponse.redirect(new URL('/', req.url));
+    }
   }
+
+  if (adminRoutes.some(route => pathname.startsWith(route))) {
+    // Récupérer le rôle depuis la base de données
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', session.user.id)
+      .single();
+
+    if (profile?.role !== 'admin') {
+      return NextResponse.redirect(new URL('/', req.url));
+    }
+  }
+
+  return res;
 }
 
 export const config = {
   matcher: [
     /*
      * Match toutes les routes sauf:
-     * - api/public (routes API publiques)
+     * - api (routes API)
      * - _next/static (fichiers statiques)
      * - _next/image (optimisation d'images)
      * - favicon.ico (favicon)
-     * - public folder
      */
-    '/((?!api/public|_next/static|_next/image|favicon.ico|public).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 };

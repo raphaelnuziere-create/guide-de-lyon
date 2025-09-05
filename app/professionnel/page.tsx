@@ -42,7 +42,7 @@ export default function MerchantDashboard() {
       const { data: { user } } = await supabase.auth.getUser()
       
       if (!user) {
-        router.push('/pro/login')
+        router.push('/connexion/pro')
         return
       }
 
@@ -54,7 +54,7 @@ export default function MerchantDashboard() {
         .single()
 
       if (!merchantData) {
-        router.push('/pro/register')
+        router.push('/inscription')
         return
       }
 
@@ -73,13 +73,13 @@ export default function MerchantDashboard() {
       setLoading(false)
     } catch (error) {
       console.error('Erreur:', error)
-      router.push('/pro/login')
+      router.push('/connexion/pro')
     }
   }
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
-    router.push('/pro/login')
+    router.push('/connexion/pro')
   }
 
   if (loading) {

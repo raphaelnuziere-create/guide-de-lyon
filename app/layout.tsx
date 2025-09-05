@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Link from 'next/link'
 import { Home, MapPin, Calendar, Menu } from 'lucide-react'
-import { AuthProvider } from '@/lib/auth/auth-context'
+import { AuthProvider } from '@/lib/auth/AuthContext'
 
 export const metadata: Metadata = {
   title: 'Guide de Lyon - Annuaire des entreprises et événements',
@@ -54,12 +54,20 @@ export default function RootLayout({
                 <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition">
                   Contact
                 </Link>
-                <Link
-                  href="/inscription"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-                >
-                  Inscription Pro
-                </Link>
+                <div className="flex items-center space-x-2">
+                  <Link
+                    href="/connexion/pro"
+                    className="text-gray-700 hover:text-blue-600 transition"
+                  >
+                    Connexion
+                  </Link>
+                  <Link
+                    href="/inscription"
+                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                  >
+                    Inscription Pro
+                  </Link>
+                </div>
               </div>
               
               <button className="md:hidden p-2">

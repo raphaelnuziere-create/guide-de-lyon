@@ -113,7 +113,7 @@ export default function AdminLoginPage() {
           </div>
 
           <div className="mt-6 text-center">
-            <Link href="/professionnel/connexion" className="text-sm text-gray-400 hover:text-gray-300">
+            <Link href="/connexion/pro" className="text-sm text-gray-400 hover:text-gray-300">
               ← Espace professionnel
             </Link>
           </div>
