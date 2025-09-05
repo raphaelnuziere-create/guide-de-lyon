@@ -2,14 +2,20 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createEstablishment, createSubscription, getPlanBySlug } from '@/app/lib/supabase/subscription-client';
+import { createClient } from '@supabase/supabase-js';
 import { PLAN_FEATURES, type PlanType } from '@/app/lib/types/subscription';
 import { CheckIcon } from '@heroicons/react/24/solid';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 export default function InscriptionPro() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [selectedPlan, setSelectedPlan] = useState<PlanType>('basic');
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
   
@@ -50,8 +56,44 @@ export default function InscriptionPro() {
     'Autre'
   ];
 
+  // Fonction pour formater les URLs
+  const formatUrl = (url: string, type: 'website' | 'facebook' | 'instagram') => {
+    if (!url) return '';
+    
+    // Retirer les espaces
+    url = url.trim();
+    
+    // Si c'est déjà une URL complète, la retourner
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      return url;
+    }
+    
+    // Pour les réseaux sociaux, accepter juste le username
+    if (type === 'facebook') {
+      if (url.includes('facebook.com')) {
+        return `https://${url}`;
+      }
+      return `https://facebook.com/${url}`;
+    }
+    
+    if (type === 'instagram') {
+      if (url.includes('instagram.com')) {
+        return `https://${url}`;
+      }
+      return `https://instagram.com/${url.replace('@', '')}`;
+    }
+    
+    // Pour les sites web, ajouter https:// si nécessaire
+    if (type === 'website') {
+      return `https://${url}`;
+    }
+    
+    return url;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
     
     if (step < 3) {
       setStep(step + 1);
@@ -59,44 +101,148 @@ export default function InscriptionPro() {
     }
 
     setLoading(true);
+    
     try {
+      // Vérifier l'authentification
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user) {
+        // Créer un compte utilisateur d'abord
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+          email: formData.email || `${Date.now()}@pro.guidedelyon.fr`,
+          password: Math.random().toString(36).slice(-12),
+        });
+        
+        if (authError) {
+          console.error('Erreur création compte:', authError);
+          throw new Error('Erreur lors de la création du compte');
+        }
+        
+        if (!authData.user) {
+          throw new Error('Impossible de créer le compte utilisateur');
+        }
+      }
+
+      // Récupérer l'utilisateur actuel
+      const { data: { user: currentUser } } = await supabase.auth.getUser();
+      
+      if (!currentUser) {
+        throw new Error('Vous devez être connecté');
+      }
+
+      // Formater les URLs
+      const formattedData = {
+        ...formData,
+        website: formatUrl(formData.website, 'website'),
+        facebook_url: formatUrl(formData.facebook_url, 'facebook'),
+        instagram_url: formatUrl(formData.instagram_url, 'instagram'),
+      };
+
       // Créer l'établissement
-      const establishment = await createEstablishment({
-        name: formData.name,
-        vat_number: formData.vat_number,
-        email: formData.email,
-        phone: formData.phone,
-        address: formData.address,
-        description: formData.description
-      });
+      const { data: establishment, error: establishmentError } = await supabase
+        .from('establishments')
+        .insert({
+          user_id: currentUser.id,
+          name: formattedData.name,
+          vat_number: formattedData.vat_number,
+          siret: formattedData.siret,
+          email: formattedData.email,
+          phone: formattedData.phone,
+          website: formattedData.website,
+          address: formattedData.address,
+          postal_code: formattedData.postal_code,
+          facebook_url: formattedData.facebook_url,
+          instagram_url: formattedData.instagram_url,
+          description: formattedData.description,
+          category: formattedData.category,
+          status: 'pending'
+        })
+        .select()
+        .single();
+
+      if (establishmentError) {
+        console.error('Erreur création établissement:', establishmentError);
+        throw new Error('Erreur lors de la création de l\'établissement');
+      }
+
+      // Récupérer le plan sélectionné
+      const { data: plan, error: planError } = await supabase
+        .from('subscription_plans')
+        .select('*')
+        .eq('slug', selectedPlan)
+        .single();
+
+      if (planError) {
+        console.error('Erreur récupération plan:', planError);
+        throw new Error('Plan non trouvé');
+      }
 
       // Créer l'abonnement
-      const plan = await getPlanBySlug(selectedPlan);
-      await createSubscription(establishment.id, plan.id);
+      const { data: subscription, error: subscriptionError } = await supabase
+        .from('subscriptions')
+        .insert({
+          establishment_id: establishment.id,
+          plan_id: plan.id,
+          status: selectedPlan === 'basic' ? 'active' : 'trialing',
+          billing_cycle: billingCycle,
+          trial_start: new Date().toISOString(),
+          trial_end: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+          current_period_start: new Date().toISOString(),
+          current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+        })
+        .select();
 
-      // Si plan payant, rediriger vers Stripe
-      if (selectedPlan !== 'basic') {
-        router.push(`/pro/checkout?establishment=${establishment.id}&plan=${selectedPlan}&cycle=${billingCycle}`);
+      if (subscriptionError) {
+        console.error('Erreur création abonnement:', subscriptionError);
+        throw new Error('Erreur lors de la création de l\'abonnement');
+      }
+
+      // Redirection selon le plan
+      if (selectedPlan === 'basic') {
+        router.push('/pro/dashboard');
       } else {
+        // TODO: Intégrer Stripe pour les plans payants
         router.push('/pro/dashboard');
       }
-    } catch (error) {
-      console.error('Erreur inscription:', error);
-      alert('Une erreur est survenue. Veuillez réessayer.');
+      
+    } catch (err: any) {
+      console.error('Erreur complète:', err);
+      setError(err.message || 'Une erreur est survenue. Veuillez réessayer.');
     } finally {
       setLoading(false);
     }
   };
 
+  // Fonction pour obtenir le prix à afficher
+  const getPriceDisplay = (plan: PlanType) => {
+    if (plan === 'basic') return { monthly: '0€', yearly: '0€', save: '' };
+    
+    const prices = {
+      pro: { monthly: 19, yearly: 182.40 },
+      expert: { monthly: 49, yearly: 470.40 }
+    };
+    
+    const p = prices[plan as keyof typeof prices];
+    const yearlyMonthly = (p.yearly / 12).toFixed(2);
+    const savings = ((p.monthly * 12) - p.yearly).toFixed(0);
+    
+    return {
+      monthly: `${p.monthly}€`,
+      yearly: `${p.yearly}€`,
+      yearlyMonthly: `${yearlyMonthly}€/mois`,
+      save: `Économisez ${savings}€`
+    };
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-3xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-50 py-8 px-4">
+      <div className="max-w-4xl mx-auto">
         {/* Progress bar */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
-            <div className={`flex-1 h-2 bg-${step >= 1 ? 'blue-600' : 'gray-200'} rounded-l`} />
-            <div className={`flex-1 h-2 bg-${step >= 2 ? 'blue-600' : 'gray-200'}`} />
-            <div className={`flex-1 h-2 bg-${step >= 3 ? 'blue-600' : 'gray-200'} rounded-r`} />
+            <div className={`flex-1 h-2 ${step >= 1 ? 'bg-blue-600' : 'bg-gray-200'} rounded-l`} />
+            <div className={`flex-1 h-2 ${step >= 2 ? 'bg-blue-600' : 'bg-gray-200'} mx-1`} />
+            <div className={`flex-1 h-2 ${step >= 3 ? 'bg-blue-600' : 'bg-gray-200'} rounded-r`} />
           </div>
           <div className="flex justify-between mt-2 text-sm text-gray-600">
             <span>Informations</span>
@@ -105,7 +251,13 @@ export default function InscriptionPro() {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-8">
+        {error && (
+          <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-6 md:p-8">
           {/* Étape 1: Informations entreprise */}
           {step === 1 && (
             <>
@@ -125,7 +277,7 @@ export default function InscriptionPro() {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-1">
                       Numéro de TVA *
@@ -196,7 +348,7 @@ export default function InscriptionPro() {
               <h2 className="text-2xl font-bold mb-6">Informations de contact</h2>
               
               <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-1">
                       Email professionnel
@@ -227,12 +379,13 @@ export default function InscriptionPro() {
                     Site web
                   </label>
                   <input
-                    type="url"
+                    type="text"
                     value={formData.website}
                     onChange={(e) => setFormData({...formData, website: e.target.value})}
-                    placeholder="https://..."
+                    placeholder="www.monsite.fr"
                     className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
+                  <p className="text-xs text-gray-500 mt-1">Entrez simplement www.monsite.fr</p>
                 </div>
 
                 <div>
@@ -259,18 +412,19 @@ export default function InscriptionPro() {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-1">
                       Facebook
                     </label>
                     <input
-                      type="url"
+                      type="text"
                       value={formData.facebook_url}
                       onChange={(e) => setFormData({...formData, facebook_url: e.target.value})}
-                      placeholder="https://facebook.com/..."
+                      placeholder="votrepagefacebook"
                       className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
+                    <p className="text-xs text-gray-500 mt-1">Juste le nom de la page</p>
                   </div>
                   
                   <div>
@@ -278,12 +432,13 @@ export default function InscriptionPro() {
                       Instagram
                     </label>
                     <input
-                      type="url"
+                      type="text"
                       value={formData.instagram_url}
                       onChange={(e) => setFormData({...formData, instagram_url: e.target.value})}
-                      placeholder="https://instagram.com/..."
+                      placeholder="@votrecompte"
                       className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
+                    <p className="text-xs text-gray-500 mt-1">Avec ou sans @</p>
                   </div>
                 </div>
               </div>
@@ -323,10 +478,10 @@ export default function InscriptionPro() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-3 gap-4 md:gap-6">
                 {/* Plan Basic */}
                 <div 
-                  className={`border-2 rounded-lg p-6 cursor-pointer transition ${
+                  className={`border-2 rounded-lg p-4 md:p-6 cursor-pointer transition ${
                     selectedPlan === 'basic' 
                       ? 'border-gray-600 bg-gray-50' 
                       : 'border-gray-200 hover:border-gray-300'
@@ -334,10 +489,10 @@ export default function InscriptionPro() {
                   onClick={() => setSelectedPlan('basic')}
                 >
                   <h3 className="text-xl font-bold mb-2">Basic</h3>
-                  <p className="text-3xl font-bold mb-4">
-                    0€
-                    <span className="text-sm font-normal text-gray-500">/mois</span>
-                  </p>
+                  <div className="mb-4">
+                    <p className="text-3xl font-bold">0€</p>
+                    <p className="text-sm text-gray-500">Gratuit pour toujours</p>
+                  </div>
                   
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start">
@@ -357,7 +512,7 @@ export default function InscriptionPro() {
 
                 {/* Plan Pro */}
                 <div 
-                  className={`border-2 rounded-lg p-6 cursor-pointer transition relative ${
+                  className={`border-2 rounded-lg p-4 md:p-6 cursor-pointer transition relative ${
                     selectedPlan === 'pro' 
                       ? 'border-blue-600 bg-blue-50' 
                       : 'border-gray-200 hover:border-gray-300'
@@ -369,10 +524,20 @@ export default function InscriptionPro() {
                   </div>
                   
                   <h3 className="text-xl font-bold mb-2">Pro</h3>
-                  <p className="text-3xl font-bold mb-4">
-                    {billingCycle === 'monthly' ? '19' : '15.20'}€
-                    <span className="text-sm font-normal text-gray-500">/mois</span>
-                  </p>
+                  <div className="mb-4">
+                    {billingCycle === 'monthly' ? (
+                      <>
+                        <p className="text-3xl font-bold">19€</p>
+                        <p className="text-sm text-gray-500">par mois</p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-3xl font-bold">182€</p>
+                        <p className="text-sm text-gray-500">par an</p>
+                        <p className="text-xs text-green-600 font-semibold">Économisez 46€</p>
+                      </>
+                    )}
+                  </div>
                   
                   <p className="text-xs text-green-600 font-semibold mb-4">
                     7 jours d'essai gratuit
@@ -389,11 +554,11 @@ export default function InscriptionPro() {
                     </li>
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span>3 événements homepage + newsletter</span>
+                      <span>Événements homepage + newsletter</span>
                     </li>
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span>Badge "Professionnel Vérifié"</span>
+                      <span>Badge "Pro Vérifié"</span>
                     </li>
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
@@ -404,7 +569,7 @@ export default function InscriptionPro() {
 
                 {/* Plan Expert */}
                 <div 
-                  className={`border-2 rounded-lg p-6 cursor-pointer transition ${
+                  className={`border-2 rounded-lg p-4 md:p-6 cursor-pointer transition ${
                     selectedPlan === 'expert' 
                       ? 'border-yellow-600 bg-yellow-50' 
                       : 'border-gray-200 hover:border-gray-300'
@@ -414,10 +579,20 @@ export default function InscriptionPro() {
                   <h3 className="text-xl font-bold mb-2">
                     Expert ⭐
                   </h3>
-                  <p className="text-3xl font-bold mb-4">
-                    {billingCycle === 'monthly' ? '49' : '39.20'}€
-                    <span className="text-sm font-normal text-gray-500">/mois</span>
-                  </p>
+                  <div className="mb-4">
+                    {billingCycle === 'monthly' ? (
+                      <>
+                        <p className="text-3xl font-bold">49€</p>
+                        <p className="text-sm text-gray-500">par mois</p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-3xl font-bold">470€</p>
+                        <p className="text-sm text-gray-500">par an</p>
+                        <p className="text-xs text-green-600 font-semibold">Économisez 118€</p>
+                      </>
+                    )}
+                  </div>
                   
                   <p className="text-xs text-green-600 font-semibold mb-4">
                     7 jours d'essai gratuit
