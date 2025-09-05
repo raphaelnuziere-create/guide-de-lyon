@@ -1,23 +1,43 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@supabase/supabase-js';
 import { PLAN_FEATURES, type PlanType } from '@/app/lib/types/subscription';
-import { CheckIcon } from '@heroicons/react/24/solid';
+import { CheckIcon, StarIcon } from '@heroicons/react/24/solid';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-export default function InscriptionPro() {
+function InscriptionProContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [selectedPlan, setSelectedPlan] = useState<PlanType>('basic');
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
+  
+  // Pré-sélection du plan depuis l'URL
+  useEffect(() => {
+    const plan = searchParams.get('plan');
+    const billing = searchParams.get('billing');
+    
+    if (plan && ['basic', 'pro', 'expert'].includes(plan)) {
+      setSelectedPlan(plan as PlanType);
+      // Si c'est un plan gratuit, on passe directement à l'étape 1
+      if (plan === 'basic') {
+        setStep(1);
+      }
+    }
+    
+    if (billing && ['monthly', 'yearly'].includes(billing)) {
+      setBillingCycle(billing as 'monthly' | 'yearly');
+    }
+  }, [searchParams]);
   
   const [formData, setFormData] = useState({
     // Infos entreprise
@@ -520,10 +540,10 @@ export default function InscriptionPro() {
                   onClick={() => setSelectedPlan('pro')}
                 >
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-3 py-1 rounded-full text-xs">
-                    Populaire
+                    🔥 Le plus populaire
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-2">Pro</h3>
+                  <h3 className="text-xl font-bold mb-2 text-blue-600">Pro</h3>
                   <div className="mb-4">
                     {billingCycle === 'monthly' ? (
                       <>
@@ -546,23 +566,35 @@ export default function InscriptionPro() {
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span>Tout le plan Basic</span>
+                      <span className="font-medium">Tout le plan Basic +</span>
                     </li>
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span>6 photos en carrousel</span>
+                      <span>Galerie 6 photos en carrousel</span>
                     </li>
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span>Événements homepage + newsletter</span>
+                      <span><strong>3 événements/mois en page d'accueil</strong></span>
                     </li>
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span>Badge "Pro Vérifié"</span>
+                      <span><strong>Diffusion newsletter</strong> (5000+ abonnés)</span>
                     </li>
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span>Statistiques 30 jours</span>
+                      <span>Badge "Professionnel Vérifié" ✓</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
+                      <span>Position prioritaire annuaire</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
+                      <span>Statistiques détaillées (30 jours)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
+                      <span>Support prioritaire</span>
                     </li>
                   </ul>
                 </div>
@@ -601,15 +633,19 @@ export default function InscriptionPro() {
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span>Tout le plan Pro</span>
+                      <span className="font-medium">Tout le plan Pro +</span>
                     </li>
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span>10 photos en carrousel</span>
+                      <span>Galerie 10 photos premium</span>
                     </li>
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span>5 événements + réseaux sociaux</span>
+                      <span><strong>5 événements/mois multi-canal</strong></span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
+                      <span><strong>Publication Facebook & Instagram</strong></span>
                     </li>
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
@@ -621,12 +657,39 @@ export default function InscriptionPro() {
                     </li>
                     <li className="flex items-start">
                       <CheckIcon className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                      <span>Menu PDF + Réservation</span>
+                      <span>Statistiques avancées (90 jours)</span>
                     </li>
                   </ul>
+                  
+                  {billingCycle === 'yearly' && (
+                    <div className="mt-4 p-3 bg-yellow-100 rounded-lg">
+                      <p className="text-xs font-medium text-yellow-900 mb-1">💎 BONUS ANNUEL :</p>
+                      <ul className="space-y-1 text-xs text-gray-700">
+                        <li>• Support dédié par téléphone</li>
+                        <li>• 2 articles blog SEO avec liens</li>
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </div>
             </>
+          )}
+
+          {/* Plan pré-sélectionné */}
+          {selectedPlan !== 'basic' && step === 1 && (
+            <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <p className="text-sm text-blue-800">
+                <strong>Plan sélectionné :</strong> {selectedPlan === 'pro' ? 'Pro' : 'Expert ⭐'} 
+                {billingCycle === 'yearly' ? ' (Annuel)' : ' (Mensuel)'}
+              </p>
+              <button
+                type="button"
+                onClick={() => router.push('/pro')}
+                className="text-sm text-blue-600 underline mt-1"
+              >
+                Changer de plan
+              </button>
+            </div>
           )}
 
           {/* Boutons navigation */}
@@ -654,5 +717,13 @@ export default function InscriptionPro() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function InscriptionPro() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div></div>}>
+      <InscriptionProContent />
+    </Suspense>
   );
 }
