@@ -11,8 +11,16 @@ const fetch = require('node-fetch');
 const PEXELS_API_KEY = process.argv[2] || 'COLLEZ_VOTRE_CLE_API_ICI';
 
 // Configuration Supabase (déjà configurée)
-const SUPABASE_URL = 'https://gscrocmpqsakzmpvhrir.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzY3JvY21wcXNha3ptcHZocmlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk3OTU0NDMsImV4cCI6MjA0NTM3MTQ0M30.HlCJpdUKDdMuHROiMOGD7rzddPqpXgh5c7yChzQEfJU';
+// Charger les variables d'environnement
+require('dotenv').config({ path: '.env.local' });
+
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+if (!SUPABASE_URL || !SUPABASE_KEY) {
+  console.error('❌ ERREUR: Variables d\'environnement Supabase manquantes dans .env.local');
+  process.exit(1);
+}
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 

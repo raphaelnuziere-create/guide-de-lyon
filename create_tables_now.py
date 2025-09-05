@@ -92,10 +92,23 @@ SELECT 'Tables créées avec succès !' as message;
     import urllib.request
     import urllib.parse
     
-    url = "https://ikefyhxelzydaogrnwxi.supabase.co/rest/v1/merchants"
+    # Charger les variables d'environnement depuis .env.local
+    import os
+    from dotenv import load_dotenv
+    load_dotenv('.env.local')
+    
+    supabase_url = os.getenv('NEXT_PUBLIC_SUPABASE_URL')
+    supabase_key = os.getenv('NEXT_PUBLIC_SUPABASE_ANON_KEY')
+    
+    if not supabase_url or not supabase_key:
+        print("❌ ERREUR: Variables d'environnement manquantes dans .env.local")
+        print("Vérifiez que NEXT_PUBLIC_SUPABASE_URL et NEXT_PUBLIC_SUPABASE_ANON_KEY sont définies")
+        return
+    
+    url = f"{supabase_url}/rest/v1/merchants"
     headers = {
-        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlrZWZ5aHhlbHp5ZGFvZ3Jud3hpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU2OTY3NTQsImV4cCI6MjA3MTI3Mjc1NH0.vJHDlWKUK0xUoXB_CCxNkVNnWhb7Wpq-mA097blKmzc',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlrZWZ5aHhlbHp5ZGFvZ3Jud3hpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU2OTY3NTQsImV4cCI6MjA3MTI3Mjc1NH0.vJHDlWKUK0xUoXB_CCxNkVNnWhb7Wpq-mA097blKmzc'
+        'apikey': supabase_key,
+        'Authorization': f'Bearer {supabase_key}'
     }
     
     try:

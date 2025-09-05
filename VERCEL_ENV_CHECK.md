@@ -7,8 +7,8 @@ Allez sur : https://vercel.com/[votre-username]/guide-de-lyon/settings/environme
 ### Variables Supabase (OBLIGATOIRES)
 
 ```
-NEXT_PUBLIC_SUPABASE_URL=https://gscrocmpqsakzmpvhrir.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzY3JvY21wcXNha3ptcHZocmlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk3OTU0NDMsImV4cCI6MjA0NTM3MTQ0M30.HlCJpdUKDdMuHROiMOGD7rzddPqpXgh5c7yChzQEfJU
+NEXT_PUBLIC_SUPABASE_URL=[VOTRE_URL_SUPABASE]
+NEXT_PUBLIC_SUPABASE_ANON_KEY=[VOTRE_CLE_ANON_SUPABASE]
 ```
 
 ### Variables Firebase (optionnelles mais utiles)

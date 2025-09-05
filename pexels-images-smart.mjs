@@ -10,8 +10,17 @@ import { createClient } from '@supabase/supabase-js';
 const PEXELS_API_KEY = process.argv[2] || 'COLLEZ_VOTRE_CLE_API_PEXELS';
 
 // Configuration Supabase
-const SUPABASE_URL = 'https://ikefyhxelzydaogrnwxi.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlrZWZ5aHhlbHp5ZGFvZ3Jud3hpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU2OTY3NTQsImV4cCI6MjA3MTI3Mjc1NH0.vJHDlWKUK0xUoXB_CCxNkVNnWhb7Wpq-mA097blKmzc';
+// Charger les variables d'environnement
+import dotenv from 'dotenv';
+dotenv.config({ path: '.env.local' });
+
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+if (!SUPABASE_URL || !SUPABASE_KEY) {
+  console.error('❌ ERREUR: Variables d\'environnement Supabase manquantes dans .env.local');
+  process.exit(1);
+}
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 

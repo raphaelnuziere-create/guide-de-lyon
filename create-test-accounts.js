@@ -5,15 +5,25 @@ const { initializeApp } = require('firebase/app');
 const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } = require('firebase/auth');
 const { getFirestore, doc, setDoc } = require('firebase/firestore');
 
-// Configuration Firebase (remplacer par vos valeurs)
+// Charger les variables d'environnement
+require('dotenv').config({ path: '.env.local' });
+
+// Configuration Firebase depuis les variables d'environnement
 const firebaseConfig = {
-  apiKey: "AIzaSyCx6EvZlp_pX9GaRu_NvCHTa3Tk_k18OU4",
-  authDomain: "guide-de-lyon-b6a38.firebaseapp.com",
-  projectId: "guide-de-lyon-b6a38",
-  storageBucket: "guide-de-lyon-b6a38.firebasestorage.app",
-  messagingSenderId: "173827247208",
-  appId: "1:173827247208:web:899a74bd3a5a24f1f63fdd"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
+
+// Validation des variables d'environnement Firebase
+if (!firebaseConfig.apiKey || !firebaseConfig.authDomain || !firebaseConfig.projectId) {
+  console.error('❌ ERREUR: Variables d\'environnement Firebase manquantes dans .env.local');
+  console.error('Vérifiez que toutes les variables NEXT_PUBLIC_FIREBASE_* sont définies');
+  process.exit(1);
+}
 
 // Initialiser Firebase
 const app = initializeApp(firebaseConfig);
