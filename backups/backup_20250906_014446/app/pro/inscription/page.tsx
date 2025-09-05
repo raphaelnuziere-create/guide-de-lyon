@@ -18,7 +18,6 @@ function InscriptionProContent() {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<PlanType>('basic');
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
   
@@ -61,11 +60,7 @@ function InscriptionProContent() {
     
     // Description
     description: '',
-    category: '',
-    
-    // Authentification
-    password: '',
-    confirmPassword: ''
+    category: ''
   });
 
   const categories = [
@@ -128,41 +123,32 @@ function InscriptionProContent() {
     setLoading(true);
     
     try {
-      // Vérifications de base
-      if (!formData.email) {
-        throw new Error('L\'email est obligatoire');
-      }
+      // Vérifier l'authentification
+      const { data: { user } } = await supabase.auth.getUser();
       
-      if (formData.password !== formData.confirmPassword) {
-        throw new Error('Les mots de passe ne correspondent pas');
-      }
-      
-      if (formData.password.length < 6) {
-        throw new Error('Le mot de passe doit contenir au moins 6 caractères');
+      if (!user) {
+        // Créer un compte utilisateur d'abord
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+          email: formData.email || `${Date.now()}@pro.guidedelyon.fr`,
+          password: Math.random().toString(36).slice(-12),
+        });
+        
+        if (authError) {
+          console.error('Erreur création compte:', authError);
+          throw new Error('Erreur lors de la création du compte');
+        }
+        
+        if (!authData.user) {
+          throw new Error('Impossible de créer le compte utilisateur');
+        }
       }
 
-      console.log('📝 Création du compte pour:', formData.email);
+      // Récupérer l'utilisateur actuel
+      const { data: { user: currentUser } } = await supabase.auth.getUser();
       
-      // Créer le compte utilisateur
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email: formData.email.trim().toLowerCase(),
-        password: formData.password,
-      });
-      
-      if (authError) {
-        console.error('❌ Erreur création compte:', authError);
-        if (authError.message.includes('already registered')) {
-          throw new Error('Cet email est déjà utilisé. Connectez-vous ou utilisez un autre email.');
-        }
-        throw new Error(authError.message);
+      if (!currentUser) {
+        throw new Error('Vous devez être connecté');
       }
-      
-      if (!authData.user) {
-        throw new Error('Impossible de créer le compte');
-      }
-      
-      const currentUser = authData.user;
-      console.log('✅ Compte créé avec succès:', currentUser.id);
 
       // Formater les URLs
       const formattedData = {
@@ -231,16 +217,13 @@ function InscriptionProContent() {
         throw new Error('Erreur lors de la création de l\'abonnement');
       }
 
-      // Message de succès
-      setError('');
-      setSuccess(true);
-      
-      console.log('🎉 Inscription terminée avec succès !');
-      
-      // Redirection après 3 secondes
-      setTimeout(() => {
-        router.push('/connexion/pro');
-      }, 3000)
+      // Redirection selon le plan
+      if (selectedPlan === 'basic') {
+        router.push('/pro/dashboard');
+      } else {
+        // TODO: Intégrer Stripe pour les plans payants
+        router.push('/pro/dashboard');
+      }
       
     } catch (err: any) {
       console.error('Erreur complète:', err);
@@ -270,39 +253,6 @@ function InscriptionProContent() {
       save: `Économisez ${savings}€`
     };
   };
-
-  // Page de succès
-  if (success) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-xl p-8 text-center">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <CheckIcon className="w-10 h-10 text-green-600" />
-          </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Inscription réussie !
-          </h2>
-          <p className="text-gray-600 mb-4">
-            Votre compte professionnel a été créé avec succès.
-          </p>
-          <p className="text-sm text-gray-500 mb-6">
-            Vérifiez votre boîte mail pour confirmer votre adresse email.
-          </p>
-          <div className="space-y-3">
-            <a
-              href="/connexion/pro"
-              className="block w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
-            >
-              Se connecter maintenant
-            </a>
-            <p className="text-xs text-gray-500">
-              Redirection automatique dans 3 secondes...
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -412,7 +362,7 @@ function InscriptionProContent() {
             </>
           )}
 
-          {/* Étape 2: Contact, adresse et mot de passe */}
+          {/* Étape 2: Contact et adresse */}
           {step === 2 && (
             <>
               <h2 className="text-2xl font-bold mb-6">Informations de contact</h2>
@@ -509,44 +459,6 @@ function InscriptionProContent() {
                       className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
                     <p className="text-xs text-gray-500 mt-1">Avec ou sans @</p>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h3 className="text-lg font-medium text-gray-900 mb-4">Créez votre compte</h3>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Mot de passe *
-                      </label>
-                      <input
-                        type="password"
-                        required
-                        minLength={6}
-                        value={formData.password}
-                        onChange={(e) => setFormData({...formData, password: e.target.value})}
-                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                        placeholder="Minimum 6 caractères"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Confirmer le mot de passe *
-                      </label>
-                      <input
-                        type="password"
-                        required
-                        value={formData.confirmPassword}
-                        onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
-                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                        placeholder="Confirmez votre mot de passe"
-                      />
-                      {formData.password && formData.confirmPassword && formData.password !== formData.confirmPassword && (
-                        <p className="text-xs text-red-500 mt-1">Les mots de passe ne correspondent pas</p>
-                      )}
-                    </div>
                   </div>
                 </div>
               </div>

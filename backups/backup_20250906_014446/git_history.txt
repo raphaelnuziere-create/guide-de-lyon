@@ -1,0 +1,20 @@
+4d241dd Fix connexion Supabase + page reset password
+0472a23 Architecture SaaS optimisée avec page de vente /pro
+968e6d4 Fix inscription pro: design responsive + prix annuels + URLs simplifiées
+c7bb0e9 Système d'abonnement Pro complet (Basic/Pro/Expert)
+e701dba Configuration Email Professionnelle Complète ✅
+8ff5540 Fix: Configuration email avec Gmail validé
+a67b078 FIX: Dashboard Admin fonctionnel + Corrections build
+197cddc Système Email Complet avec Automations et Tracking
+ab9d375 Système Email & Paiements complet - Production Ready
+a50dd21 SÉCURITÉ: Suppression complète des secrets exposés et sécurisation du projet
+f03d8d1 SEO: Système complet de redirections pour anciennes URLs
+9198c0c Ajout support API Pexels et redirections SEO
+1e0ad8b Ajout des images au blog et bouton dans le footer
+f1114ed Fix: Erreur de syntaxe dans inscription/page.tsx et suppression swcMinify obsolète
+3794065 Ajout du système de confirmation email complet
+ccc918f Fix: Correction du build - imports et middleware
+0a81e36 Refonte complète du système d'authentification avec Supabase
+ca2d3c1 Fix: Correction middleware - redirection vers /connexion au lieu de /login
+9e48aec Ajout page Espace Pro complète - Authentification sans Firebase fonctionnelle
+c5374e7 FIX DÉFINITIF: Configuration Next.js complète + debug

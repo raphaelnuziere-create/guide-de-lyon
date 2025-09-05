@@ -1,0 +1,3 @@
+-- Structure des tables principales (à jour)
+-- Tables: subscription_plans, establishments, subscriptions, events, etc.
+-- Voir supabase/migrations/ pour les détails complets
