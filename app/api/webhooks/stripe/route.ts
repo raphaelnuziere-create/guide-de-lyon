@@ -2,17 +2,38 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { emailTemplates } from '@/app/services/email';
 
-// Initialisation Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-12-18.acacia'
-});
-
-// Clé secrète du webhook (à récupérer depuis Stripe Dashboard)
-const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+// Fonction pour obtenir l'instance Stripe
+function getStripe() {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    console.warn('Stripe non configuré - STRIPE_SECRET_KEY manquante');
+    return null;
+  }
+  return new Stripe(key, {
+    apiVersion: '2024-12-18.acacia'
+  });
+}
 
 export async function POST(request: NextRequest) {
+  const stripe = getStripe();
+  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  
+  if (!stripe || !endpointSecret) {
+    return NextResponse.json(
+      { error: 'Stripe non configuré' },
+      { status: 503 }
+    );
+  }
+  
   const body = await request.text();
-  const sig = request.headers.get('stripe-signature')!;
+  const sig = request.headers.get('stripe-signature');
+  
+  if (!sig) {
+    return NextResponse.json(
+      { error: 'Signature manquante' },
+      { status: 400 }
+    );
+  }
   
   let event: Stripe.Event;
   

@@ -192,16 +192,16 @@ export const dbRedirects = {
 
 // Catégories détectées
 export const categoryPatterns = {
-  'monuments-lyon': 30 // URLs,
-  'visite-de-lyon': 49 // URLs,
-  'hebergement-lyon': 20 // URLs,
-  'divers': 34 // URLs,
-  'restaurant-lyon': 30 // URLs,
+  'monuments-lyon': 30, // URLs
+  'visite-de-lyon': 49, // URLs
+  'hebergement-lyon': 20, // URLs
+  'divers': 34, // URLs
+  'restaurant-lyon': 30, // URLs
   'les-bars': 20 // URLs
 };
 
 // Fonction pour obtenir la redirection depuis l'ancienne URL
-export function getDbRedirect(oldUrl) {
+export function getDbRedirect(oldUrl: string): string | null {
   // Nettoyer l'URL
   let cleanUrl = oldUrl;
   if (cleanUrl.startsWith('http')) {

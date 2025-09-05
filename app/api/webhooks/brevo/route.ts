@@ -1,11 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-// Initialisation Supabase
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+// Fonction pour obtenir le client Supabase
+function getSupabaseClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  
+  if (!url || !key) {
+    console.warn('Supabase configuration manquante pour webhook Brevo');
+    return null;
+  }
+  
+  return createClient(url, key);
+}
 
 // Types des événements Brevo
 interface BrevoWebhookEvent {
@@ -72,6 +79,12 @@ async function processBrevoEvent(event: BrevoWebhookEvent) {
   
   console.log(`Processing: ${eventType} for ${email}`);
   
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    console.warn('Supabase non configuré, tracking désactivé');
+    return;
+  }
+  
   // Mettre à jour le log d'email si on a un message_id
   if (message_id) {
     const updates: any = {
@@ -137,6 +150,9 @@ function mapEventToStatus(event: string): string {
  * Gère les désinscriptions
  */
 async function handleUnsubscribe(email: string) {
+  const supabase = getSupabaseClient();
+  if (!supabase) return;
+  
   // Trouver l'utilisateur
   const { data: user } = await supabase
     .from('profiles')
@@ -163,6 +179,9 @@ async function handleUnsubscribe(email: string) {
  * Gère les bounces et spam
  */
 async function handleBounce(email: string, type: string) {
+  const supabase = getSupabaseClient();
+  if (!supabase) return;
+  
   // Créer une entrée dans une table de blacklist
   await supabase
     .from('email_blacklist')

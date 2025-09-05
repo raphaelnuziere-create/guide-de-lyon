@@ -17,6 +17,8 @@ const publicRoutes = [
   '/connexion/admin',
   '/inscription',
   '/login',
+  '/admin', // Dashboard admin
+  '/admin/emails', // Dashboard emails
   // Anciennes routes pour compatibilité temporaire
   '/professionnel/connexion',
   '/professionnel/register',
