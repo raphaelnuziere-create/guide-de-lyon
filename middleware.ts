@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { checkRedirect } from './app/blog/redirects';
 
 // Routes publiques qui ne nécessitent pas d'authentification
 const publicRoutes = [
@@ -32,6 +33,14 @@ export async function middleware(req: NextRequest) {
     pathname.includes('.')
   ) {
     return NextResponse.next();
+  }
+
+  // Vérifier les redirections SEO pour le blog
+  const redirectTo = checkRedirect(pathname);
+  if (redirectTo) {
+    const url = req.nextUrl.clone();
+    url.pathname = redirectTo;
+    return NextResponse.redirect(url, 301); // 301 pour le SEO
   }
 
   // Vérifier si la route est publique
