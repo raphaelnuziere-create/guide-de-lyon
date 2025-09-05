@@ -16,6 +16,7 @@ export default function RegisterPage() {
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState(false)
 
   const { signUpMerchant } = useAuth()
   
@@ -51,7 +52,9 @@ export default function RegisterPage() {
         formData.phone
       )
       
-      // La redirection est gérée automatiquement par AuthContext
+      // Afficher le message de succès
+      setSuccess(true)
+      setError('')
     } catch (error: any) {
       console.error('Erreur inscription:', error)
       setError(error.message || 'Erreur lors de l\'inscription')
@@ -87,6 +90,35 @@ export default function RegisterPage() {
 
         {/* Form */}
         <div className="bg-white py-8 px-6 shadow-xl rounded-xl">
+          {success ? (
+            <div className="text-center py-8">
+              <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
+                <svg className="h-8 w-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-medium text-gray-900 mb-2">
+                Inscription réussie !
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Un email de confirmation a été envoyé à <strong>{formData.email}</strong>
+              </p>
+              <p className="text-sm text-gray-500 mb-6">
+                Veuillez vérifier votre boîte de réception et cliquer sur le lien de confirmation pour activer votre compte.
+              </p>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <p className="text-sm text-blue-800">
+                  💡 N'oubliez pas de vérifier vos spams si vous ne trouvez pas l'email
+                </p>
+              </div>
+              <Link
+                href="/connexion/pro"
+                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+              >
+                Aller à la connexion
+              </Link>
+            </div>
+          ) : (
           <form onSubmit={handleRegister} className="space-y-6">
             {error && (
               <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
@@ -249,6 +281,7 @@ export default function RegisterPage() {
               </Link>
             </div>
           </div>
+          )}
         </div>
 
         {/* Avantages */}
