@@ -261,26 +261,29 @@ export default function RegisterPage() {
               )}
             </button>
           </form>
+          )}
 
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Déjà inscrit ?</span>
-              </div>
-            </div>
-
+          {/* Section Déjà inscrit */}
+          {!success && (
             <div className="mt-6">
-              <Link
-                href="/connexion/pro"
-                className="w-full flex justify-center items-center px-4 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-              >
-                Se connecter
-              </Link>
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-300"></div>
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-2 bg-white text-gray-500">Déjà inscrit ?</span>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <Link
+                  href="/connexion/pro"
+                  className="w-full flex justify-center items-center px-4 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                >
+                  Se connecter
+                </Link>
+              </div>
             </div>
-          </div>
           )}
         </div>
 
