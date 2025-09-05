@@ -1,4 +1,3 @@
-import Link from 'next/link';
 
 export default function AdminDashboard() {
   return (
@@ -6,21 +5,6 @@ export default function AdminDashboard() {
       <h1 className="text-3xl font-bold mb-8">Dashboard Administration</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Card Email */}
-        <Link href="/admin/emails">
-          <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition cursor-pointer">
-            <div className="flex items-center mb-4">
-              <span className="text-3xl mr-3">📧</span>
-              <h2 className="text-xl font-semibold">Gestion Emails</h2>
-            </div>
-            <p className="text-gray-600">
-              Tester l'envoi d'emails, voir les templates et gérer les campagnes.
-            </p>
-            <div className="mt-4 text-blue-600 font-medium">
-              Accéder →
-            </div>
-          </div>
-        </Link>
         
         {/* Card Stats */}
         <div className="bg-white p-6 rounded-lg shadow-md">
