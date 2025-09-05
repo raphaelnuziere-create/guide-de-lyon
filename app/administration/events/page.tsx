@@ -31,7 +31,7 @@ import {
   Timestamp
 } from 'firebase/firestore'
 import { firebaseDb } from '@/lib/firebase-client'
-import { useAuth } from '@/lib/auth/auth-context'
+import { useAuth } from '@/lib/auth/AuthContext'
 import { useRouter } from 'next/navigation'
 
 interface Event {

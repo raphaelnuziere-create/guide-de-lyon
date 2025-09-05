@@ -7,7 +7,7 @@ import {
   Shield, Users, Calendar, Building2, TrendingUp, 
   Settings, LogOut, Eye, CheckCircle, XCircle, Clock 
 } from 'lucide-react'
-import { useAuth } from '@/lib/auth/auth-context'
+import { useAuth } from '@/lib/auth/AuthContext'
 
 export default function AdminDashboardPage() {
   const router = useRouter()

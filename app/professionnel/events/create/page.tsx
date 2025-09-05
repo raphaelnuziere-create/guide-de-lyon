@@ -19,7 +19,7 @@ import {
   Share2,
   FileText
 } from 'lucide-react'
-import { useAuth } from '@/lib/auth/auth-context'
+import { useAuth } from '@/lib/auth/AuthContext'
 import { quotaManager } from '@/lib/quotas/quota-manager'
 import { 
   collection, 

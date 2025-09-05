@@ -1,4 +1,3 @@
-import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -15,40 +14,24 @@ const publicRoutes = [
   '/connexion/pro',
   '/connexion/admin',
   '/inscription',
+  '/login',
   // Anciennes routes pour compatibilité temporaire
   '/professionnel/connexion',
   '/professionnel/register',
   '/administration/connexion',
 ];
 
-// Routes protégées par rôle
-const merchantRoutes = [
-  '/professionnel/dashboard',
-  '/professionnel/places',
-  '/professionnel/events',
-  '/professionnel/settings',
-  '/professionnel/upgrade',
-];
-
-const adminRoutes = [
-  '/administration/dashboard',
-  '/administration/users',
-  '/administration/places',
-  '/administration/reports',
-];
-
 export async function middleware(req: NextRequest) {
-  const res = NextResponse.next();
-  const supabase = createMiddlewareClient({ req, res });
   const { pathname } = req.nextUrl;
 
-  // Skip pour les assets statiques
+  // Skip pour les assets statiques et API
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/static') ||
-    pathname.includes('.') // fichiers avec extension
+    pathname.startsWith('/api') ||
+    pathname.includes('.')
   ) {
-    return res;
+    return NextResponse.next();
   }
 
   // Vérifier si la route est publique
@@ -58,53 +41,13 @@ export async function middleware(req: NextRequest) {
     return false;
   });
 
-  // Si route publique, autoriser l'accès
   if (isPublicRoute) {
-    return res;
+    return NextResponse.next();
   }
 
-  // Récupérer la session
-  const { data: { session } } = await supabase.auth.getSession();
-
-  // Si pas de session, rediriger vers la connexion
-  if (!session) {
-    if (pathname.startsWith('/professionnel')) {
-      return NextResponse.redirect(new URL('/connexion/pro', req.url));
-    }
-    if (pathname.startsWith('/administration')) {
-      return NextResponse.redirect(new URL('/connexion/admin', req.url));
-    }
-    return NextResponse.redirect(new URL('/', req.url));
-  }
-
-  // Vérifier les permissions pour les routes protégées
-  if (merchantRoutes.some(route => pathname.startsWith(route))) {
-    // Récupérer le rôle depuis la base de données
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('role')
-      .eq('id', session.user.id)
-      .single();
-
-    if (profile?.role !== 'merchant' && profile?.role !== 'admin') {
-      return NextResponse.redirect(new URL('/', req.url));
-    }
-  }
-
-  if (adminRoutes.some(route => pathname.startsWith(route))) {
-    // Récupérer le rôle depuis la base de données
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('role')
-      .eq('id', session.user.id)
-      .single();
-
-    if (profile?.role !== 'admin') {
-      return NextResponse.redirect(new URL('/', req.url));
-    }
-  }
-
-  return res;
+  // Pour l'instant, on laisse passer toutes les autres routes
+  // La protection sera gérée côté client par AuthContext
+  return NextResponse.next();
 }
 
 export const config = {

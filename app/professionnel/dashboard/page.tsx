@@ -18,7 +18,7 @@ import {
   ChevronRight,
   Sparkles
 } from 'lucide-react'
-import { useAuth } from '@/lib/auth/auth-context'
+import { useAuth } from '@/lib/auth/AuthContext'
 import { firebaseDb } from '@/lib/firebase-client'
 import { doc, getDoc } from 'firebase/firestore'
 import { QuotaDisplay } from '@/components/quotas/quota-display'
