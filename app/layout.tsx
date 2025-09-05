@@ -100,6 +100,7 @@ export default function RootLayout({
                 <ul className="space-y-2 text-gray-400 text-sm">
                   <li><Link href="/annuaire" className="hover:text-white transition">Annuaire</Link></li>
                   <li><Link href="/evenements" className="hover:text-white transition">Événements</Link></li>
+                  <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
                   <li><Link href="/inscription" className="hover:text-white transition">Inscription Pro</Link></li>
                   <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
                 </ul>

@@ -11,7 +11,9 @@ interface BlogPost {
   title: string
   excerpt: string
   content: string
-  featured_image: string | null
+  image_url?: string | null
+  image_alt?: string | null
+  featured_image?: string | null
   category: string
   tags: string[] | null
   author_name?: string
@@ -49,9 +51,10 @@ export default function BlogPage() {
       
       // Récupérer les articles depuis Supabase
       const { data, error } = await supabase
-        .from('original_blog_posts')
+        .from('blog_posts')
         .select('*')
-        .order('created_at', { ascending: false })
+        .eq('published', true)
+        .order('published_at', { ascending: false })
         .limit(50)
 
       if (error) {
@@ -230,7 +233,15 @@ export default function BlogPage() {
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                   <div className="md:flex">
                     <div className="md:w-1/2">
-                      <div className="h-64 md:h-full bg-gradient-to-br from-blue-400 to-blue-600"></div>
+                      {filteredPosts[0].image_url || filteredPosts[0].featured_image ? (
+                        <img 
+                          src={filteredPosts[0].image_url || filteredPosts[0].featured_image || ''} 
+                          alt={filteredPosts[0].image_alt || filteredPosts[0].title}
+                          className="h-64 md:h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div className="h-64 md:h-full bg-gradient-to-br from-blue-400 to-blue-600"></div>
+                      )}
                     </div>
                     <div className="md:w-1/2 p-8">
                       <div className="flex items-center mb-4">
@@ -277,9 +288,17 @@ export default function BlogPage() {
             {/* Articles Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {(selectedCategory === 'all' && !searchQuery ? filteredPosts.slice(1) : filteredPosts).map((post) => (
-                <article key={post.id} className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow">
-                  {/* Image placeholder */}
-                  <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300 rounded-t-xl"></div>
+                <article key={post.id} className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow overflow-hidden">
+                  {/* Image */}
+                  {post.image_url || post.featured_image ? (
+                    <img 
+                      src={post.image_url || post.featured_image || ''} 
+                      alt={post.image_alt || post.title}
+                      className="h-48 w-full object-cover"
+                    />
+                  ) : (
+                    <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300"></div>
+                  )}
                   
                   <div className="p-6">
                     {/* Category & Date */}
