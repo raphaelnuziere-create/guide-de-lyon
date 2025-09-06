@@ -40,6 +40,9 @@ export async function POST(request: Request) {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          emailRedirectTo: 'https://www.guide-de-lyon.fr/auth/verify',
+        }
       });
       
       if (error) {
@@ -112,10 +115,13 @@ export async function POST(request: Request) {
       });
       
     } else if (action === 'resend') {
-      // RESEND CONFIRMATION EMAIL
+      // RESEND CONFIRMATION EMAIL  
       const { error } = await supabase.auth.resend({
         type: 'signup',
         email,
+        options: {
+          emailRedirectTo: 'https://www.guide-de-lyon.fr/auth/verify',
+        }
       });
       
       if (error) {
