@@ -128,51 +128,51 @@ function InscriptionProContent() {
     
     try {
       // Récupérer l'utilisateur connecté
-      const { data: { user: currentUser } } = await supabase.auth.getUser();
+      const { data: { user } } = await supabase.auth.getUser();
+      let currentUser = user;
       
       if (!currentUser) {
-        // Si pas connecté, créer le compte (cas où on vient de /pro sans être connecté)
+        // Si pas connecté, créer le compte
         if (!formData.email) {
           throw new Error('L\'email est obligatoire');
         }
         
-        if (formData.password && formData.password !== formData.confirmPassword) {
+        if (!formData.password) {
+          throw new Error('Le mot de passe est obligatoire');
+        }
+        
+        if (formData.password !== formData.confirmPassword) {
           throw new Error('Les mots de passe ne correspondent pas');
         }
         
-        if (formData.password && formData.password.length < 6) {
+        if (formData.password.length < 6) {
           throw new Error('Le mot de passe doit contenir au moins 6 caractères');
         }
 
-        // Créer le compte uniquement si pas connecté
-        if (formData.password) {
-          console.log('📝 Création du compte pour:', formData.email);
-          
-          const { data: authData, error: authError } = await supabase.auth.signUp({
-            email: formData.email.trim().toLowerCase(),
-            password: formData.password,
-          });
-          
-          if (authError) {
-            console.error('❌ Erreur création compte:', authError);
-            if (authError.message.includes('already registered')) {
-              throw new Error('Cet email est déjà utilisé. Connectez-vous ou utilisez un autre email.');
-            }
-            // Traduire le message de sécurité
-            if (authError.message.includes('For security purposes')) {
-              throw new Error('Pour des raisons de sécurité, veuillez attendre 60 secondes avant de réessayer.');
-            }
-            throw new Error(authError.message);
+        console.log('📝 Création du compte pour:', formData.email);
+        
+        const { data: authData, error: authError } = await supabase.auth.signUp({
+          email: formData.email.trim().toLowerCase(),
+          password: formData.password,
+        });
+        
+        if (authError) {
+          console.error('❌ Erreur création compte:', authError);
+          if (authError.message.includes('already registered')) {
+            throw new Error('Cet email est déjà utilisé. Connectez-vous ou utilisez un autre email.');
           }
-          
-          if (!authData.user) {
-            throw new Error('Impossible de créer le compte');
+          // Traduire le message de sécurité
+          if (authError.message.includes('For security purposes')) {
+            throw new Error('Pour des raisons de sécurité, veuillez attendre 60 secondes avant de réessayer.');
           }
-          
-          currentUser = authData.user;
-        } else {
-          throw new Error('Veuillez vous connecter ou créer un compte');
+          throw new Error(authError.message);
         }
+        
+        if (!authData.user) {
+          throw new Error('Impossible de créer le compte');
+        }
+        
+        currentUser = authData.user;
       }
       
       console.log('✅ Utilisateur:', currentUser.id);
@@ -419,24 +419,63 @@ function InscriptionProContent() {
           {/* Étape 2: Contact, adresse et mot de passe */}
           {step === 2 && (
             <>
-              <h2 className="text-2xl font-bold mb-6">Informations de contact</h2>
+              <h2 className="text-2xl font-bold mb-6">Créez votre compte</h2>
               
               <div className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-1">
-                      Email professionnel <span className="text-gray-500 text-xs">(optionnel)</span>
-                    </label>
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      placeholder="contact@monentreprise.fr"
-                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                    />
-                    <p className="text-xs text-gray-500 mt-1">Laissez vide pour utiliser votre email de connexion</p>
-                  </div>
+                {/* Section Compte */}
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                  <h3 className="font-semibold text-blue-900 mb-3">Votre compte professionnel</h3>
                   
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block text-sm font-medium mb-1">
+                        Email de connexion *
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        placeholder="votre@email.fr"
+                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                      />
+                      <p className="text-xs text-gray-500 mt-1">Cet email sera utilisé pour vous connecter</p>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium mb-1">
+                        Mot de passe *
+                      </label>
+                      <input
+                        type="password"
+                        required
+                        value={formData.password}
+                        onChange={(e) => setFormData({...formData, password: e.target.value})}
+                        placeholder="Minimum 6 caractères"
+                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-medium mb-1">
+                        Confirmer le mot de passe *
+                      </label>
+                      <input
+                        type="password"
+                        required
+                        value={formData.confirmPassword}
+                        onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
+                        placeholder="Répétez le mot de passe"
+                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Informations de contact */}
+                <h3 className="font-semibold mb-2">Coordonnées de l'établissement</h3>
+                
+                <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-1">
                       Téléphone
@@ -448,21 +487,21 @@ function InscriptionProContent() {
                       className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium mb-1">
+                      Site web <span className="text-gray-500 text-xs">(optionnel)</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.website}
+                      onChange={(e) => setFormData({...formData, website: e.target.value})}
+                      placeholder="www.monsite.fr"
+                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Site web <span className="text-gray-500 text-xs">(optionnel)</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.website}
-                    onChange={(e) => setFormData({...formData, website: e.target.value})}
-                    placeholder="www.monsite.fr"
-                    className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                  />
-                  <p className="text-xs text-gray-500 mt-1">Entrez simplement www.monsite.fr</p>
-                </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-1">
@@ -517,8 +556,6 @@ function InscriptionProContent() {
                     <p className="text-xs text-gray-500 mt-1">Avec ou sans @</p>
                   </div>
                 </div>
-
-                {/* Suppression de la section mot de passe car déjà créé */}
               </div>
             </>
           )}
