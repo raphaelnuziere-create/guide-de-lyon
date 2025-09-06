@@ -52,9 +52,14 @@ export default function RegisterPage() {
         formData.phone
       )
       
-      // Afficher le message de succès
+      // Afficher le message de succès et rediriger
       setSuccess(true)
       setError('')
+      
+      // Rediriger vers la page d'ajout d'établissement après 2 secondes
+      setTimeout(() => {
+        window.location.href = '/pro/inscription';
+      }, 2000)
     } catch (error: any) {
       console.error('Erreur inscription:', error)
       setError(error.message || 'Erreur lors de l\'inscription')
@@ -98,25 +103,22 @@ export default function RegisterPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-2">
-                Inscription réussie !
+                Compte créé avec succès !
               </h3>
               <p className="text-gray-600 mb-6">
-                Un email de confirmation a été envoyé à <strong>{formData.email}</strong>
+                Bienvenue <strong>{formData.companyName}</strong>
               </p>
-              <p className="text-sm text-gray-500 mb-6">
-                Veuillez vérifier votre boîte de réception et cliquer sur le lien de confirmation pour activer votre compte.
-              </p>
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                <p className="text-sm text-blue-800">
-                  💡 N'oubliez pas de vérifier vos spams si vous ne trouvez pas l'email
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                <p className="text-sm text-green-800">
+                  ✅ Votre compte est créé et actif
+                </p>
+                <p className="text-sm text-green-800 mt-2">
+                  Vous allez être redirigé automatiquement pour compléter votre profil établissement...
                 </p>
               </div>
-              <Link
-                href="/connexion/pro"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-              >
-                Aller à la connexion
-              </Link>
+              <div className="animate-pulse">
+                <p className="text-sm text-gray-500">Redirection en cours...</p>
+              </div>
             </div>
           ) : (
           <form onSubmit={handleRegister} className="space-y-6">
