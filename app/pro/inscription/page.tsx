@@ -43,19 +43,20 @@ function InscriptionProContent() {
   const [formData, setFormData] = useState({
     // Infos entreprise
     name: '',
-    vat_number: '',
+    vat_number: '', // Optionnel au début
     siret: '',
     
     // Contact
     email: '',
     phone: '',
-    website: '',
+    website: '', // Optionnel
     
     // Adresse
     address: '',
     postal_code: '',
+    city: 'Lyon', // Ajout de la ville
     
-    // Réseaux sociaux
+    // Réseaux sociaux (optionnels)
     facebook_url: '',
     instagram_url: '',
     
@@ -63,7 +64,7 @@ function InscriptionProContent() {
     description: '',
     category: '',
     
-    // Authentification
+    // Authentification (retiré car déjà créé avant)
     password: '',
     confirmPassword: ''
   });
@@ -128,41 +129,55 @@ function InscriptionProContent() {
     setLoading(true);
     
     try {
-      // Vérifications de base
-      if (!formData.email) {
-        throw new Error('L\'email est obligatoire');
-      }
+      // Récupérer l'utilisateur connecté
+      const { data: { user: currentUser } } = await supabase.auth.getUser();
       
-      if (formData.password !== formData.confirmPassword) {
-        throw new Error('Les mots de passe ne correspondent pas');
-      }
-      
-      if (formData.password.length < 6) {
-        throw new Error('Le mot de passe doit contenir au moins 6 caractères');
-      }
-
-      console.log('📝 Création du compte pour:', formData.email);
-      
-      // Créer le compte utilisateur
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email: formData.email.trim().toLowerCase(),
-        password: formData.password,
-      });
-      
-      if (authError) {
-        console.error('❌ Erreur création compte:', authError);
-        if (authError.message.includes('already registered')) {
-          throw new Error('Cet email est déjà utilisé. Connectez-vous ou utilisez un autre email.');
+      if (!currentUser) {
+        // Si pas connecté, créer le compte (cas où on vient de /pro sans être connecté)
+        if (!formData.email) {
+          throw new Error('L\'email est obligatoire');
         }
-        throw new Error(authError.message);
+        
+        if (formData.password && formData.password !== formData.confirmPassword) {
+          throw new Error('Les mots de passe ne correspondent pas');
+        }
+        
+        if (formData.password && formData.password.length < 6) {
+          throw new Error('Le mot de passe doit contenir au moins 6 caractères');
+        }
+
+        // Créer le compte uniquement si pas connecté
+        if (formData.password) {
+          console.log('📝 Création du compte pour:', formData.email);
+          
+          const { data: authData, error: authError } = await supabase.auth.signUp({
+            email: formData.email.trim().toLowerCase(),
+            password: formData.password,
+          });
+          
+          if (authError) {
+            console.error('❌ Erreur création compte:', authError);
+            if (authError.message.includes('already registered')) {
+              throw new Error('Cet email est déjà utilisé. Connectez-vous ou utilisez un autre email.');
+            }
+            // Traduire le message de sécurité
+            if (authError.message.includes('For security purposes')) {
+              throw new Error('Pour des raisons de sécurité, veuillez attendre 60 secondes avant de réessayer.');
+            }
+            throw new Error(authError.message);
+          }
+          
+          if (!authData.user) {
+            throw new Error('Impossible de créer le compte');
+          }
+          
+          currentUser = authData.user;
+        } else {
+          throw new Error('Veuillez vous connecter ou créer un compte');
+        }
       }
       
-      if (!authData.user) {
-        throw new Error('Impossible de créer le compte');
-      }
-      
-      const currentUser = authData.user;
-      console.log('✅ Compte créé avec succès:', currentUser.id);
+      console.log('✅ Utilisateur:', currentUser.id);
 
       // Formater les URLs
       const formattedData = {
@@ -177,17 +192,19 @@ function InscriptionProContent() {
         .from('establishments')
         .insert({
           user_id: currentUser.id,
+          user_id: currentUser.id,
           name: formattedData.name,
-          vat_number: formattedData.vat_number,
-          siret: formattedData.siret,
-          email: formattedData.email,
-          phone: formattedData.phone,
-          website: formattedData.website,
-          address: formattedData.address,
-          postal_code: formattedData.postal_code,
-          facebook_url: formattedData.facebook_url,
-          instagram_url: formattedData.instagram_url,
-          description: formattedData.description,
+          vat_number: formattedData.vat_number || null,
+          siret: formattedData.siret || null,
+          email: formattedData.email || currentUser.email,
+          phone: formattedData.phone || null,
+          website: formattedData.website || null,
+          address: formattedData.address || null,
+          postal_code: formattedData.postal_code || null,
+          city: formattedData.city || 'Lyon',
+          facebook_url: formattedData.facebook_url || null,
+          instagram_url: formattedData.instagram_url || null,
+          description: formattedData.description || null,
           category: formattedData.category,
           status: 'pending'
         })
@@ -196,7 +213,14 @@ function InscriptionProContent() {
 
       if (establishmentError) {
         console.error('Erreur création établissement:', establishmentError);
-        throw new Error('Erreur lors de la création de l\'établissement');
+        // Message d'erreur plus précis
+        if (establishmentError.message?.includes('duplicate key')) {
+          throw new Error('Un établissement existe déjà pour ce compte');
+        } else if (establishmentError.message?.includes('violates foreign key')) {
+          throw new Error('Compte utilisateur non trouvé. Veuillez vous reconnecter.');
+        } else {
+          throw new Error(`Erreur: ${establishmentError.message || 'Impossible de créer l\'établissement'}`);
+        }
       }
 
       // Récupérer le plan sélectionné
@@ -212,7 +236,7 @@ function InscriptionProContent() {
       }
 
       // Créer l'abonnement
-      const { data: subscription, error: subscriptionError } = await supabase
+      const { error: subscriptionError } = await supabase
         .from('subscriptions')
         .insert({
           establishment_id: establishment.id,
@@ -350,16 +374,16 @@ function InscriptionProContent() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-1">
-                      Numéro de TVA *
+                      Numéro de TVA <span className="text-gray-500 text-xs">(optionnel)</span>
                     </label>
                     <input
                       type="text"
-                      required
                       value={formData.vat_number}
                       onChange={(e) => setFormData({...formData, vat_number: e.target.value})}
                       placeholder="FR12345678901"
                       className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
+                    <p className="text-xs text-gray-500 mt-1">Vous pourrez l'ajouter plus tard</p>
                   </div>
                   
                   <div>
@@ -421,14 +445,16 @@ function InscriptionProContent() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-1">
-                      Email professionnel
+                      Email professionnel <span className="text-gray-500 text-xs">(optionnel)</span>
                     </label>
                     <input
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      placeholder="contact@monentreprise.fr"
                       className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                     />
+                    <p className="text-xs text-gray-500 mt-1">Laissez vide pour utiliser votre email de connexion</p>
                   </div>
                   
                   <div>
@@ -446,7 +472,7 @@ function InscriptionProContent() {
 
                 <div>
                   <label className="block text-sm font-medium mb-1">
-                    Site web
+                    Site web <span className="text-gray-500 text-xs">(optionnel)</span>
                   </label>
                   <input
                     type="text"
@@ -485,7 +511,7 @@ function InscriptionProContent() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-1">
-                      Facebook
+                      Facebook <span className="text-gray-500 text-xs">(optionnel)</span>
                     </label>
                     <input
                       type="text"
@@ -499,7 +525,7 @@ function InscriptionProContent() {
                   
                   <div>
                     <label className="block text-sm font-medium mb-1">
-                      Instagram
+                      Instagram <span className="text-gray-500 text-xs">(optionnel)</span>
                     </label>
                     <input
                       type="text"
@@ -512,43 +538,7 @@ function InscriptionProContent() {
                   </div>
                 </div>
 
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h3 className="text-lg font-medium text-gray-900 mb-4">Créez votre compte</h3>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Mot de passe *
-                      </label>
-                      <input
-                        type="password"
-                        required
-                        minLength={6}
-                        value={formData.password}
-                        onChange={(e) => setFormData({...formData, password: e.target.value})}
-                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                        placeholder="Minimum 6 caractères"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Confirmer le mot de passe *
-                      </label>
-                      <input
-                        type="password"
-                        required
-                        value={formData.confirmPassword}
-                        onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
-                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                        placeholder="Confirmez votre mot de passe"
-                      />
-                      {formData.password && formData.confirmPassword && formData.password !== formData.confirmPassword && (
-                        <p className="text-xs text-red-500 mt-1">Les mots de passe ne correspondent pas</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
+                {/* Suppression de la section mot de passe car déjà créé */}
               </div>
             </>
           )}
