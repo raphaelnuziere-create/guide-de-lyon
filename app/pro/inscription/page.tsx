@@ -60,10 +60,15 @@ export default function ProInscriptionPage() {
 
   // Vérifier si l'utilisateur est connecté
   useEffect(() => {
-    if (!authLoading && !user) {
-      // Rediriger vers la page d'inscription si pas connecté
-      router.push('/inscription');
-    }
+    // Attendre un peu pour être sûr que l'auth est chargée
+    const timer = setTimeout(() => {
+      if (!authLoading && !user) {
+        // Rediriger vers la page d'inscription si pas connecté
+        router.push('/inscription');
+      }
+    }, 1000); // Attendre 1 seconde pour éviter les redirections trop rapides
+    
+    return () => clearTimeout(timer);
   }, [user, authLoading, router]);
 
   // Vérifier si l'utilisateur a déjà un établissement

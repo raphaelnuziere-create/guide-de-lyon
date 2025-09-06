@@ -41,6 +41,19 @@ class SupabaseAuthService {
       if (authError) throw authError;
       if (!authData.user) throw new Error('Erreur lors de la création du compte');
 
+      // 1.5 IMPORTANT: Se connecter automatiquement après inscription
+      console.log('🔐 Connexion automatique après inscription...');
+      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (signInError) {
+        console.error('⚠️ Connexion automatique échouée:', signInError);
+      } else {
+        console.log('✅ Connexion automatique réussie');
+      }
+
       // 2. Créer le profil merchant
       const { error: merchantError } = await supabase
         .from('merchants')

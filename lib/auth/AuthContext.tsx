@@ -123,11 +123,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
     } else if (!loading && !user) {
       // Protection des routes - mais PAS pendant l'inscription
+      // Exclure /pro/dashboard de la protection car il gère sa propre redirection
       if ((pathname.startsWith('/pro/') && 
            pathname !== '/pro' && 
            pathname !== '/pro/inscription' && 
            pathname !== '/pro/dashboard') || 
           (pathname.startsWith('/professionnel/') && 
+          pathname !== '/professionnel/dashboard' &&
           !pathname.includes('/connexion') && 
           !pathname.includes('/register'))) {
         router.push('/connexion/pro');
@@ -267,8 +269,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     
     const authUser = await supabaseAuth.signUpMerchant(email, password, companyName, phone);
     setUser(authUser);
-    // Redirection après inscription réussie
-    router.push('/connexion/pro');
+    // Ne pas rediriger ici - laissons la page inscription gérer la redirection
   };
 
   const signUpUser = async (
