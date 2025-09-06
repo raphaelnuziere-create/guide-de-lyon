@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { action, email, password } = body;
+    const { action, email, password, token } = body;
     
     if (!email || !password || !action) {
       return NextResponse.json({ 
@@ -136,6 +136,50 @@ export async function POST(request: Request) {
         success: true,
         message: 'Nouveau lien de confirmation envoyé'
       });
+      
+    } else if (action === 'verify') {
+      // VERIFY OTP TOKEN
+      const { token } = body;
+      
+      if (!token) {
+        return NextResponse.json({ 
+          success: false,
+          error: 'Token requis pour la vérification' 
+        }, { status: 400 });
+      }
+      
+      const { data, error } = await supabase.auth.verifyOtp({
+        email,
+        token,
+        type: 'signup',
+      });
+      
+      if (error) {
+        return NextResponse.json({ 
+          success: false,
+          error: error.message 
+        }, { status: 400 });
+      }
+      
+      if (data.session) {
+        // Vérifier si établissement existe
+        const { data: establishment } = await supabase
+          .from('establishments')
+          .select('id')
+          .eq('user_id', data.user.id)
+          .maybeSingle();
+        
+        return NextResponse.json({
+          success: true,
+          message: 'Email vérifié avec succès',
+          redirectTo: establishment ? '/pro/dashboard' : '/pro/inscription'
+        });
+      }
+      
+      return NextResponse.json({ 
+        success: false,
+        error: 'Vérification échouée' 
+      }, { status: 400 });
     }
     
     return NextResponse.json({ 
