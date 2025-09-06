@@ -1,16 +1,19 @@
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
+import { getBaseUrl, getCallbackUrl } from '@/app/lib/utils/url';
 
-export async function GET() {
+export async function GET(request: Request) {
   const cookieStore = await cookies();
   
   // Test de configuration
   const config = {
     supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
     hasAnonKey: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    currentUrl: process.env.NEXT_PUBLIC_APP_URL || 'non défini',
+    currentUrl: getBaseUrl(),
     nodeEnv: process.env.NODE_ENV,
+    vercelUrl: process.env.NEXT_PUBLIC_VERCEL_URL || 'non défini',
+    appUrl: process.env.NEXT_PUBLIC_APP_URL || 'non défini',
   };
 
   // Créer le client Supabase
@@ -75,10 +78,14 @@ export async function GET() {
     database: {
       status: dbStatus,
     },
-    callbackUrl: `${config.currentUrl}/auth/callback`,
+    callbackUrl: getCallbackUrl(),
     help: {
       message: 'Vérifiez que callbackUrl est bien dans les Redirect URLs de Supabase Dashboard',
       dashboard: 'https://supabase.com/dashboard/project/ikefyhxelzydaogrnwxi/auth/url-configuration',
+      requiredUrls: [
+        'https://www.guide-de-lyon.fr/auth/callback',
+        'https://guide-de-lyon.fr/auth/callback',
+      ]
     }
   }, { 
     status: 200,

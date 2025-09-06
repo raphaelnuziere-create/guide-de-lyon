@@ -137,7 +137,7 @@ export default function InscriptionProPage() {
                 },
               }}
               providers={[]}
-              redirectTo={typeof window !== 'undefined' ? `${window.location.origin}/auth/callback` : '/auth/callback'}
+              redirectTo={'https://www.guide-de-lyon.fr/auth/callback'}
               showLinks={false}
             />
             
