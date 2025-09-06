@@ -6,27 +6,37 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
-  const token = requestUrl.searchParams.get('token');
-  const type = requestUrl.searchParams.get('type');
-  const next = requestUrl.searchParams.get('next') ?? '/';
+  const code = requestUrl.searchParams.get('code');
 
-  if (token && type) {
+  if (code) {
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
     
-    // Vérifier le token
-    const { error } = await supabase.auth.verifyOtp({
-      token_hash: token,
-      type: type as any,
-    });
+    // Échanger le code contre une session
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (!error) {
-      // Rediriger vers le dashboard après confirmation
-      if (type === 'signup' || type === 'email') {
-        return NextResponse.redirect(new URL('/pro/dashboard', requestUrl.origin));
+      // Vérifier si l'utilisateur est connecté
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (user) {
+        // Vérifier si l'utilisateur a déjà un établissement
+        const { data: establishment } = await supabase
+          .from('establishments')
+          .select('id')
+          .eq('user_id', user.id)
+          .maybeSingle();
+        
+        if (establishment) {
+          // Si établissement existe, aller au dashboard
+          return NextResponse.redirect(new URL('/pro/dashboard', requestUrl.origin));
+        } else {
+          // Sinon, aller à la page d'inscription établissement
+          return NextResponse.redirect(new URL('/pro/inscription', requestUrl.origin));
+        }
       }
     }
   }
 
-  // Redirection par défaut
-  return NextResponse.redirect(new URL(next, requestUrl.origin));
+  // En cas d'erreur ou pas de code, rediriger vers la page auth
+  return NextResponse.redirect(new URL('/auth/pro', requestUrl.origin));
 }
