@@ -110,6 +110,32 @@ export async function POST(request: Request) {
         success: true,
         message: 'Email de réinitialisation envoyé'
       });
+      
+    } else if (action === 'resend') {
+      // RESEND CONFIRMATION EMAIL
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email,
+      });
+      
+      if (error) {
+        // Si l'utilisateur n'existe pas, essayer de le créer à nouveau
+        if (error.message.includes('not found')) {
+          return NextResponse.json({ 
+            success: false,
+            error: 'Cet email n\'est pas inscrit. Veuillez créer un compte.' 
+          }, { status: 400 });
+        }
+        return NextResponse.json({ 
+          success: false,
+          error: error.message 
+        }, { status: 400 });
+      }
+      
+      return NextResponse.json({
+        success: true,
+        message: 'Nouveau lien de confirmation envoyé'
+      });
     }
     
     return NextResponse.json({ 

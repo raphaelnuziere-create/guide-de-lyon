@@ -1,17 +1,31 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { Building2, Lock, Mail, AlertCircle } from 'lucide-react';
+import { Building2, Lock, Mail, AlertCircle, RefreshCw } from 'lucide-react';
 
-export default function ConnexionProPage() {
+function ConnexionProContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showReset, setShowReset] = useState(false);
+  const [showResendLink, setShowResendLink] = useState(false);
+  
+  useEffect(() => {
+    const errorParam = searchParams.get('error');
+    const errorCode = searchParams.get('error_code');
+    
+    if (errorParam === 'access_denied' && errorCode === 'otp_expired') {
+      setError('Le lien de confirmation a expiré. Cliquez rapidement sur le lien dans votre email.');
+      setShowResendLink(true);
+    } else if (errorParam) {
+      setError('Erreur de connexion. Veuillez réessayer.');
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,7 +72,7 @@ export default function ConnexionProPage() {
         body: JSON.stringify({
           action: 'reset',
           email,
-          password: 'dummy', // Required by API but not used for reset
+          password: 'dummy',
         }),
       });
 
@@ -73,6 +87,42 @@ export default function ConnexionProPage() {
       }
     } catch (err) {
       setError('Erreur lors de l\'envoi de l\'email');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const handleResendConfirmation = async () => {
+    if (!email) {
+      setError('Veuillez entrer votre email pour renvoyer le lien');
+      return;
+    }
+    
+    setError('');
+    setLoading(true);
+
+    try {
+      const response = await fetch('/api/auth/pro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'resend',
+          email,
+          password: 'dummy',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setError('');
+        setShowResendLink(false);
+        alert('Nouveau lien envoyé ! Cliquez RAPIDEMENT sur le lien dans votre email (valide 1h).');
+      } else {
+        setError(data.error);
+      }
+    } catch (err) {
+      setError('Erreur lors de l\'envoi du lien');
     } finally {
       setLoading(false);
     }
@@ -102,16 +152,26 @@ export default function ConnexionProPage() {
             {error && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                 <div className="flex items-start">
-                  <AlertCircle className="h-5 w-5 text-red-600 mt-0.5 mr-3" />
+                  <AlertCircle className="h-5 w-5 text-red-600 mt-0.5 mr-3 flex-shrink-0" />
                   <div className="flex-1">
                     <p className="text-sm text-red-700">{error}</p>
                     {showReset && (
                       <button
                         type="button"
                         onClick={handleReset}
-                        className="mt-2 text-sm text-blue-600 hover:underline"
+                        className="mt-2 text-sm text-blue-600 hover:underline block"
                       >
                         → Réinitialiser mon mot de passe
+                      </button>
+                    )}
+                    {showResendLink && (
+                      <button
+                        type="button"
+                        onClick={handleResendConfirmation}
+                        className="mt-2 text-sm text-blue-600 hover:underline flex items-center gap-1"
+                      >
+                        <RefreshCw className="h-3 w-3" />
+                        Renvoyer un nouveau lien de confirmation
                       </button>
                     )}
                   </div>
@@ -176,5 +236,20 @@ export default function ConnexionProPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ConnexionProPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Chargement...</p>
+        </div>
+      </div>
+    }>
+      <ConnexionProContent />
+    </Suspense>
   );
 }

@@ -45,15 +45,15 @@ export default function InscriptionProPage() {
       const data = await response.json();
 
       if (data.success) {
-        setSuccess(true);
         if (data.redirectTo) {
-          // Si connecté directement, rediriger
+          // Si connecté directement (sans confirmation email), rediriger
+          setSuccess(true);
           setTimeout(() => {
             router.push(data.redirectTo);
           }, 2000);
         } else if (data.needsConfirmation) {
-          // Si confirmation email requise
-          setError('Vérifiez votre email pour confirmer votre inscription');
+          // Si confirmation email requise, rediriger vers page d'attente
+          router.push('/auth/pro/attente-confirmation');
         }
       } else {
         setError(data.error);
