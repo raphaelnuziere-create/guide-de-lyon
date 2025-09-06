@@ -1,169 +1,188 @@
 'use client';
 
-import { Auth } from '@supabase/auth-ui-react';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Building2, CheckCircle, Users, TrendingUp } from 'lucide-react';
-import { supabase, checkEstablishment } from '@/app/lib/supabase/client';
+import { Building2, UserPlus, Mail, Lock, AlertCircle, CheckCircle } from 'lucide-react';
 
 export default function InscriptionProPage() {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-    // NE PAS rediriger automatiquement après inscription
-    // L'utilisateur doit d'abord confirmer son email
-    
-    // Vérifier si déjà connecté (utilisateur existant)
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      if (session) {
-        setIsLoading(true);
-        // Si déjà connecté, vérifier l'établissement
-        const { hasEstablishment } = await checkEstablishment(session.user.id);
-        
-        if (hasEstablishment) {
-          // A déjà un établissement, aller au dashboard
-          router.push('/pro/dashboard');
-        } else {
-          // Pas d'établissement, aller créer un établissement
-          router.push('/pro/inscription');
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    // Validation
+    if (password !== confirmPassword) {
+      setError('Les mots de passe ne correspondent pas');
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('Le mot de passe doit faire au moins 6 caractères');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch('/api/auth/pro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'signup',
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSuccess(true);
+        if (data.redirectTo) {
+          // Si connecté directement, rediriger
+          setTimeout(() => {
+            router.push(data.redirectTo);
+          }, 2000);
+        } else if (data.needsConfirmation) {
+          // Si confirmation email requise
+          setError('Vérifiez votre email pour confirmer votre inscription');
         }
-        setIsLoading(false);
+      } else {
+        setError(data.error);
       }
-    });
-  }, [router]);
+    } catch (err) {
+      setError('Erreur de connexion au serveur');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4 py-8">
-      <div className="max-w-4xl w-full flex gap-8">
-        {/* Section gauche - Marketing */}
-        <div className="hidden lg:flex flex-col justify-center flex-1 text-gray-800">
-          <h2 className="text-3xl font-bold mb-6">
-            Rejoignez la communauté des professionnels lyonnais
-          </h2>
-          
-          <div className="space-y-4 mb-8">
-            <div className="flex items-start space-x-3">
-              <CheckCircle className="h-6 w-6 text-green-500 mt-0.5" />
-              <div>
-                <h3 className="font-semibold">100% GRATUIT</h3>
-                <p className="text-sm text-gray-600">Référencez votre établissement sans frais cachés</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start space-x-3">
-              <Users className="h-6 w-6 text-blue-500 mt-0.5" />
-              <div>
-                <h3 className="font-semibold">Visibilité maximale</h3>
-                <p className="text-sm text-gray-600">Touchez des milliers de visiteurs chaque mois</p>
-              </div>
-            </div>
-            
-            <div className="flex items-start space-x-3">
-              <TrendingUp className="h-6 w-6 text-purple-500 mt-0.5" />
-              <div>
-                <h3 className="font-semibold">Développez votre activité</h3>
-                <p className="text-sm text-gray-600">Publiez vos événements et actualités</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white/50 backdrop-blur p-4 rounded-lg">
-            <p className="text-sm text-gray-700 italic">
-              "Depuis que nous sommes sur Guide de Lyon, nous avons doublé notre clientèle touristique !"
+  if (success) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white py-8 px-6 shadow-xl rounded-xl">
+          <div className="text-center">
+            <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              Inscription réussie !
+            </h2>
+            <p className="text-gray-600">
+              Redirection vers la création de votre établissement...
             </p>
-            <p className="text-xs text-gray-500 mt-2">- Restaurant Le Bouchon Lyonnais</p>
           </div>
         </div>
+      </div>
+    );
+  }
 
-        {/* Section droite - Formulaire */}
-        <div className="flex-1 max-w-md">
-          {/* Header */}
-          <div className="text-center mb-6">
-            <Link href="/" className="inline-flex items-center space-x-2 mb-4">
-              <Building2 className="h-10 w-10 text-blue-600" />
-              <span className="text-2xl font-bold text-gray-900">Guide de Lyon</span>
-            </Link>
-            <h1 className="text-2xl font-bold text-gray-900">
-              Créez votre compte professionnel
-            </h1>
-            <p className="mt-2 text-gray-600">
-              Commencez à référencer votre établissement
-            </p>
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4">
+      <div className="max-w-md w-full">
+        <div className="text-center mb-8">
+          <Link href="/" className="inline-flex items-center space-x-2 mb-6">
+            <Building2 className="h-10 w-10 text-blue-600" />
+            <span className="text-2xl font-bold text-gray-900">Guide de Lyon</span>
+          </Link>
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+            <UserPlus className="h-8 w-8 text-blue-600" />
           </div>
+          <h1 className="text-3xl font-bold text-gray-900">
+            Créer mon compte Pro
+          </h1>
+          <p className="mt-2 text-gray-600">
+            Référencez gratuitement votre établissement
+          </p>
+        </div>
 
-          {/* Formulaire d'inscription */}
-          <div className="bg-white py-8 px-6 shadow-xl rounded-xl relative">
-            {isLoading && (
-              <div className="absolute inset-0 bg-white/80 flex items-center justify-center rounded-xl z-10">
-                <div className="text-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                  <p className="mt-2 text-gray-600">Création du compte...</p>
+        <div className="bg-white py-8 px-6 shadow-xl rounded-xl">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {error && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                <div className="flex items-start">
+                  <AlertCircle className="h-5 w-5 text-red-600 mt-0.5 mr-3" />
+                  <p className="text-sm text-red-700">{error}</p>
                 </div>
               </div>
             )}
-            <Auth
-              supabaseClient={supabase}
-              view="sign_up"
-              appearance={{
-                theme: ThemeSupa,
-                variables: {
-                  default: {
-                    colors: {
-                      brand: '#2563eb',
-                      brandAccent: '#1d4ed8',
-                    },
-                  },
-                },
-                className: {
-                  container: 'w-full',
-                  label: 'text-gray-700 text-sm font-medium mb-2',
-                  button: 'w-full px-4 py-2 rounded-lg font-medium transition',
-                  input: 'w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent',
-                },
-              }}
-              localization={{
-                variables: {
-                  sign_up: {
-                    email_label: 'Email professionnel',
-                    password_label: 'Mot de passe (min. 6 caractères)',
-                    button_label: "Créer mon compte",
-                    loading_button_label: 'Création du compte...',
-                    email_input_placeholder: 'contact@monentreprise.fr',
-                    password_input_placeholder: 'Choisissez un mot de passe sécurisé',
-                  },
-                },
-              }}
-              providers={[]}
-              redirectTo={'https://www.guide-de-lyon.fr/auth/callback'}
-              showLinks={false}
-            />
-            
-            <div className="mt-4 text-center">
-              <p className="text-sm text-gray-600">
-                Déjà un compte ?{' '}
-                <Link href="/auth/pro/connexion" className="text-blue-600 hover:underline font-medium">
-                  Se connecter
-                </Link>
-              </p>
-            </div>
-          </div>
 
-          {/* Footer */}
-          <div className="mt-6 text-center">
-            <p className="text-xs text-gray-600">
-              En créant votre compte, vous acceptez nos{' '}
-              <Link href="/mentions-legales" className="text-blue-600 hover:underline">
-                conditions d'utilisation
-              </Link>
-            </p>
-            <div className="mt-4">
-              <Link href="/" className="text-sm text-gray-500 hover:text-gray-700">
-                ← Retour à l'accueil
-              </Link>
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Email professionnel
+              </label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  placeholder="contact@monentreprise.fr"
+                />
+              </div>
             </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Mot de passe
+              </label>
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  placeholder="Minimum 6 caractères"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Confirmer le mot de passe
+              </label>
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  placeholder="Confirmez votre mot de passe"
+                />
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+            >
+              {loading ? 'Création...' : 'Créer mon compte'}
+            </button>
+          </form>
+
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <p className="text-center text-gray-600">
+              Déjà un compte ?
+            </p>
+            <Link 
+              href="/auth/pro/connexion" 
+              className="mt-3 w-full inline-flex justify-center items-center px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50"
+            >
+              Se connecter
+            </Link>
           </div>
         </div>
       </div>
