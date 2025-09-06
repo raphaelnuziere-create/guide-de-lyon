@@ -35,8 +35,53 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       console.log('Auth event:', event);
       
       if (session?.user) {
-        const profile = await supabaseAuth.getProfile(session.user.id);
-        setUser(profile);
+        try {
+          // Pour les professionnels, on vérifie s'ils ont un établissement
+          const { data: establishment } = await supabase
+            .from('establishments')
+            .select('*')
+            .eq('user_id', session.user.id)
+            .single();
+          
+          // Si c'est un professionnel avec établissement
+          if (establishment) {
+            setUser({
+              id: session.user.id,
+              email: session.user.email || '',
+              role: 'merchant',
+              displayName: establishment.name,
+              merchantData: {
+                companyName: establishment.name,
+                phone: establishment.phone,
+                plan: 'free',
+                verified: establishment.status === 'active',
+                settings: {}
+              }
+            });
+          } else {
+            // Sinon, essayer de récupérer le profil standard
+            try {
+              const profile = await supabaseAuth.getProfile(session.user.id);
+              setUser(profile);
+            } catch (error) {
+              // Si pas de profil, créer un utilisateur minimal
+              setUser({
+                id: session.user.id,
+                email: session.user.email || '',
+                role: 'user',
+                displayName: session.user.email?.split('@')[0]
+              });
+            }
+          }
+        } catch (error) {
+          console.error('Erreur récupération profil:', error);
+          setUser({
+            id: session.user.id,
+            email: session.user.email || '',
+            role: 'user',
+            displayName: session.user.email?.split('@')[0]
+          });
+        }
       } else {
         setUser(null);
       }
@@ -51,18 +96,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!loading && user) {
       // Redirection après connexion
       if ((pathname === '/connexion/pro' || pathname === '/professionnel/connexion') && user.role === 'merchant') {
-        router.push('/professionnel/dashboard');
+        router.push('/pro/dashboard');
       } else if ((pathname === '/connexion/admin' || pathname === '/administration/connexion') && user.role === 'admin') {
-        router.push('/administration/dashboard');
+        router.push('/admin');
       }
     } else if (!loading && !user) {
       // Protection des routes
-      if (pathname.startsWith('/professionnel/') && 
+      if ((pathname.startsWith('/pro/') && pathname !== '/pro' && pathname !== '/pro/inscription') || 
+          (pathname.startsWith('/professionnel/') && 
           !pathname.includes('/connexion') && 
-          !pathname.includes('/register')) {
+          !pathname.includes('/register'))) {
         router.push('/connexion/pro');
-      } else if (pathname.startsWith('/administration/') && 
-                 !pathname.includes('/connexion')) {
+      } else if ((pathname.startsWith('/admin') && pathname !== '/admin') || 
+                 (pathname.startsWith('/administration/') && 
+                 !pathname.includes('/connexion'))) {
         router.push('/connexion/admin');
       }
     }
@@ -70,8 +117,52 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const checkSession = async () => {
     try {
-      const currentUser = await supabaseAuth.getCurrentUser();
-      setUser(currentUser);
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (user) {
+        // Vérifier si c'est un professionnel avec établissement
+        const { data: establishment } = await supabase
+          .from('establishments')
+          .select('*')
+          .eq('user_id', user.id)
+          .single();
+        
+        if (establishment) {
+          setUser({
+            id: user.id,
+            email: user.email || '',
+            role: 'merchant',
+            displayName: establishment.name,
+            merchantData: {
+              companyName: establishment.name,
+              phone: establishment.phone,
+              plan: 'free',
+              verified: establishment.status === 'active',
+              settings: {}
+            }
+          });
+        } else {
+          // Vérifier si c'est un admin
+          if (user.email === 'admin@guide-de-lyon.fr') {
+            setUser({
+              id: user.id,
+              email: user.email || '',
+              role: 'admin',
+              displayName: 'Administrateur'
+            });
+          } else {
+            // Utilisateur standard
+            setUser({
+              id: user.id,
+              email: user.email || '',
+              role: 'user',
+              displayName: user.email?.split('@')[0]
+            });
+          }
+        }
+      } else {
+        setUser(null);
+      }
     } catch (error) {
       console.error('Erreur vérification session:', error);
       setUser(null);
@@ -81,8 +172,53 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signIn = async (email: string, password: string) => {
-    const authUser = await supabaseAuth.signIn(email, password);
-    setUser(authUser);
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email.trim().toLowerCase(),
+      password
+    });
+    
+    if (error) throw error;
+    if (!data.user) throw new Error('Erreur de connexion');
+    
+    // Vérifier si c'est un professionnel avec établissement
+    const { data: establishment } = await supabase
+      .from('establishments')
+      .select('*')
+      .eq('user_id', data.user.id)
+      .single();
+    
+    if (establishment) {
+      const authUser = {
+        id: data.user.id,
+        email: data.user.email || '',
+        role: 'merchant' as const,
+        displayName: establishment.name,
+        merchantData: {
+          companyName: establishment.name,
+          phone: establishment.phone,
+          plan: 'free' as const,
+          verified: establishment.status === 'active',
+          settings: {}
+        }
+      };
+      setUser(authUser);
+    } else if (data.user.email === 'admin@guide-de-lyon.fr') {
+      const authUser = {
+        id: data.user.id,
+        email: data.user.email || '',
+        role: 'admin' as const,
+        displayName: 'Administrateur'
+      };
+      setUser(authUser);
+    } else {
+      const authUser = {
+        id: data.user.id,
+        email: data.user.email || '',
+        role: 'user' as const,
+        displayName: data.user.email?.split('@')[0]
+      };
+      setUser(authUser);
+    }
   };
 
   const signUpMerchant = async (
@@ -93,6 +229,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   ) => {
     const authUser = await supabaseAuth.signUpMerchant(email, password, companyName, phone);
     setUser(authUser);
+    // Redirection après inscription réussie
+    router.push('/connexion/pro');
   };
 
   const signUpUser = async (

@@ -1,18 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Building2, Mail, Lock, ArrowRight, AlertCircle, CheckCircle } from 'lucide-react'
-import { createClient } from '@supabase/supabase-js'
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+import { Building2, Mail, Lock, ArrowRight, AlertCircle, CheckCircle, Key } from 'lucide-react'
+import { useAuth } from '@/lib/auth/AuthContext'
 
 export default function ProLoginPage() {
-  const router = useRouter()
+  const { signIn } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -26,93 +20,18 @@ export default function ProLoginPage() {
     setSuccess('')
 
     try {
-      console.log('🔐 Tentative de connexion Supabase pour:', email)
-      
-      // Connexion avec Supabase
-      const { data, error: signInError } = await supabase.auth.signInWithPassword({
-        email: email.trim().toLowerCase(),
-        password: password
-      })
-
-      if (signInError) {
-        console.error('❌ Erreur Supabase:', signInError)
-        
-        if (signInError.message.includes('Invalid login credentials')) {
-          setError('Email ou mot de passe incorrect')
-        } else if (signInError.message.includes('Email not confirmed')) {
-          setError('Veuillez confirmer votre email avant de vous connecter')
-        } else {
-          setError(signInError.message)
-        }
-        setLoading(false)
-        return
-      }
-
-      if (data.user) {
-        console.log('✅ Connexion réussie pour:', data.user.email)
-        setSuccess('Connexion réussie ! Redirection...')
-        
-        // Vérifier si l'utilisateur a un établissement
-        const { data: establishment } = await supabase
-          .from('establishments')
-          .select('id, name, status')
-          .eq('user_id', data.user.id)
-          .single()
-
-        if (establishment) {
-          console.log('🏢 Établissement trouvé:', establishment.name)
-          router.push('/pro/dashboard')
-        } else {
-          console.log('📝 Pas d\'établissement, redirection vers inscription')
-          router.push('/pro/inscription')
-        }
-      }
+      await signIn(email, password)
+      setSuccess('Connexion réussie ! Redirection...')
+      // La redirection est gérée automatiquement par AuthContext
     } catch (error: any) {
-      console.error('❌ Erreur inattendue:', error)
       setError(error.message || 'Erreur de connexion')
       setLoading(false)
     }
   }
 
-  const handlePasswordReset = async () => {
-    if (!email) {
-      setError('Veuillez entrer votre email d\'abord')
-      return
-    }
-
-    setLoading(true)
-    try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/auth/reset-password`,
-      })
-
-      if (error) {
-        setError('Erreur lors de l\'envoi du mail')
-      } else {
-        setSuccess('Email de réinitialisation envoyé ! Vérifiez votre boîte mail.')
-      }
-    } catch (err: any) {
-      setError('Erreur lors de la réinitialisation')
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  // Fonction de test de connexion à Supabase
-  const testSupabaseConnection = async () => {
-    try {
-      const { data, error } = await supabase.from('subscription_plans').select('name')
-      if (error) {
-        console.error('❌ Erreur connexion Supabase:', error)
-        setError(`Erreur DB: ${error.message}`)
-      } else {
-        console.log('✅ Connexion Supabase OK, plans:', data)
-        setSuccess(`Connexion OK ! ${data.length} plans trouvés`)
-      }
-    } catch (err: any) {
-      console.error('❌ Erreur test:', err)
-      setError(`Erreur: ${err.message}`)
-    }
+  const useTestAccount = () => {
+    setEmail('merchant@guide-de-lyon.fr')
+    setPassword('Merchant2025!')
   }
 
   return (
@@ -190,21 +109,12 @@ export default function ProLoginPage() {
             </div>
 
             <div className="flex items-center justify-between text-sm">
-              <button
-                type="button"
-                onClick={handlePasswordReset}
+              <Link
+                href="/auth/reset-password"
                 className="text-blue-600 hover:text-blue-500"
-                disabled={loading}
               >
                 Mot de passe oublié ?
-              </button>
-              <button
-                type="button"
-                onClick={testSupabaseConnection}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                Tester DB
-              </button>
+              </Link>
             </div>
 
             <button
@@ -237,19 +147,28 @@ export default function ProLoginPage() {
             </div>
           </div>
 
+          <div className="mt-6 pt-6 border-t border-gray-300">
+            <button
+              onClick={useTestAccount}
+              type="button"
+              className="w-full flex items-center justify-center px-4 py-2 bg-green-100 text-green-700 rounded-lg text-sm hover:bg-green-200 transition"
+            >
+              <Key className="mr-2 h-4 w-4" />
+              Utiliser le compte test marchand
+            </button>
+            <div className="mt-2 text-center">
+              <p className="text-xs text-gray-500">
+                Email: merchant@guide-de-lyon.fr<br/>
+                Mot de passe: Merchant2025!
+              </p>
+            </div>
+          </div>
+
           <div className="mt-6 text-center">
             <Link href="/" className="text-sm text-gray-500 hover:text-gray-700">
               ← Retour à l'accueil
             </Link>
           </div>
-
-          {/* Info de debug en développement */}
-          {process.env.NODE_ENV === 'development' && (
-            <div className="mt-4 p-3 bg-gray-100 rounded text-xs text-gray-600">
-              <p className="font-mono">Mode: Supabase Auth</p>
-              <p className="font-mono">URL: {process.env.NEXT_PUBLIC_SUPABASE_URL?.substring(0, 30)}...</p>
-            </div>
-          )}
         </div>
       </div>
     </div>
