@@ -8,12 +8,13 @@ export default function TestAuthPage() {
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
 
-  const testAuth = async (action: 'signin' | 'signup') => {
+  const testAuth = async (action: 'signin' | 'signup', useAlt = false) => {
     setLoading(true);
     setResult(null);
     
     try {
-      const response = await fetch('/api/debug-auth', {
+      const endpoint = useAlt ? '/api/auth-pro' : '/api/debug-auth';
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,6 +28,13 @@ export default function TestAuthPage() {
       
       const data = await response.json();
       setResult(data);
+      
+      // Si connexion réussie avec redirection
+      if (data.success && data.redirectTo) {
+        setTimeout(() => {
+          window.location.href = data.redirectTo;
+        }, 2000);
+      }
     } catch (error) {
       setResult({ error: 'Erreur réseau: ' + (error as Error).message });
     } finally {
@@ -63,22 +71,42 @@ export default function TestAuthPage() {
               />
             </div>
             
-            <div className="flex gap-4">
-              <button
-                onClick={() => testAuth('signup')}
-                disabled={loading || !email || !password}
-                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:opacity-50"
-              >
-                Test Inscription
-              </button>
+            <div className="space-y-2">
+              <div className="flex gap-4">
+                <button
+                  onClick={() => testAuth('signup')}
+                  disabled={loading || !email || !password}
+                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:opacity-50"
+                >
+                  Test Inscription
+                </button>
+                
+                <button
+                  onClick={() => testAuth('signin')}
+                  disabled={loading || !email || !password}
+                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
+                >
+                  Test Connexion
+                </button>
+              </div>
               
-              <button
-                onClick={() => testAuth('signin')}
-                disabled={loading || !email || !password}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
-              >
-                Test Connexion
-              </button>
+              <div className="flex gap-4">
+                <button
+                  onClick={() => testAuth('signup', true)}
+                  disabled={loading || !email || !password}
+                  className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 disabled:opacity-50"
+                >
+                  🚀 Inscription Pro (sans confirmation)
+                </button>
+                
+                <button
+                  onClick={() => testAuth('signin', true)}
+                  disabled={loading || !email || !password}
+                  className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 disabled:opacity-50"
+                >
+                  🚀 Connexion Pro
+                </button>
+              </div>
             </div>
           </div>
         </div>
