@@ -17,10 +17,21 @@ export async function GET(request: Request) {
   if (code) {
     const cookieStore = await cookies();
     
+    // Nettoyer les variables d'environnement (retirer espaces et retours à la ligne)
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!.trim();
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!.trim();
+    
+    console.log('🔐 Config Supabase:', {
+      url: supabaseUrl,
+      urlLength: supabaseUrl.length,
+      hasKey: !!supabaseAnonKey,
+      keyLength: supabaseAnonKey.length
+    });
+    
     // Créer le client Supabase avec gestion des cookies SSR
     const supabase = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      supabaseUrl,
+      supabaseAnonKey,
       {
         cookies: {
           getAll() {
