@@ -2,59 +2,51 @@
 
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
-import { createClient } from '@supabase/supabase-js';
-import { useEffect } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { Building2, Lock, CheckCircle } from 'lucide-react';
+import { Building2, Lock, CheckCircle, AlertCircle } from 'lucide-react';
+import { supabase, checkEstablishment } from '@/app/lib/supabase/client';
 
-// Client Supabase
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
-export default function ConnexionProPage() {
+function ConnexionProContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isConfirmed = searchParams.get('confirmed') === 'true';
+  const hasError = searchParams.get('error');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // Écouter les changements d'authentification
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === 'SIGNED_IN' && session) {
+        setIsLoading(true);
         // Vérifier si l'utilisateur a déjà un établissement
-        const { data: establishment } = await supabase
-          .from('establishments')
-          .select('id')
-          .eq('user_id', session.user.id)
-          .maybeSingle();
+        const { hasEstablishment } = await checkEstablishment(session.user.id);
         
-        if (establishment) {
+        if (hasEstablishment) {
           // Si établissement existe, aller au dashboard
           router.push('/pro/dashboard');
         } else {
           // Sinon, aller à la page d'inscription établissement
           router.push('/pro/inscription');
         }
+        setIsLoading(false);
       }
     });
 
     // Vérifier si déjà connecté
     supabase.auth.getSession().then(async ({ data: { session } }) => {
       if (session) {
+        setIsLoading(true);
         // Même logique : vérifier l'établissement
-        const { data: establishment } = await supabase
-          .from('establishments')
-          .select('id')
-          .eq('user_id', session.user.id)
-          .maybeSingle();
+        const { hasEstablishment } = await checkEstablishment(session.user.id);
         
-        if (establishment) {
+        if (hasEstablishment) {
           router.push('/pro/dashboard');
         } else {
           router.push('/pro/inscription');
         }
+        setIsLoading(false);
       }
     });
 
@@ -97,9 +89,36 @@ export default function ConnexionProPage() {
             </div>
           </div>
         )}
+        
+        {/* Message d'erreur si problème */}
+        {hasError && (
+          <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+            <div className="flex items-start">
+              <AlertCircle className="h-5 w-5 text-red-600 mt-0.5 mr-3" />
+              <div>
+                <h3 className="text-sm font-semibold text-red-900">
+                  Erreur de connexion
+                </h3>
+                <p className="text-sm text-red-700 mt-1">
+                  {hasError === 'auth_failed' 
+                    ? 'Authentification échouée. Vérifiez vos identifiants.'
+                    : 'Une erreur inattendue s\'est produite. Veuillez réessayer.'}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Formulaire de connexion */}
-        <div className="bg-white py-8 px-6 shadow-xl rounded-xl">
+        <div className="bg-white py-8 px-6 shadow-xl rounded-xl relative">
+          {isLoading && (
+            <div className="absolute inset-0 bg-white/80 flex items-center justify-center rounded-xl z-10">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                <p className="mt-2 text-gray-600">Connexion en cours...</p>
+              </div>
+            </div>
+          )}
           <Auth
             supabaseClient={supabase}
             view="sign_in"
@@ -175,5 +194,20 @@ export default function ConnexionProPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ConnexionProPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Chargement...</p>
+        </div>
+      </div>
+    }>
+      <ConnexionProContent />
+    </Suspense>
   );
 }

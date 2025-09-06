@@ -2,38 +2,37 @@
 
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
-import { createClient } from '@supabase/supabase-js';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Building2, CheckCircle, Users, TrendingUp } from 'lucide-react';
-
-// Client Supabase
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { supabase, checkEstablishment } from '@/app/lib/supabase/client';
 
 export default function InscriptionProPage() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Écouter les changements d'authentification
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event === 'SIGNED_IN' && session) {
-        // Après inscription, rediriger vers la création d'établissement
-        router.push('/pro/inscription');
-      }
-    });
-
-    // Vérifier si déjà connecté
+    // NE PAS rediriger automatiquement après inscription
+    // L'utilisateur doit d'abord confirmer son email
+    
+    // Vérifier si déjà connecté (utilisateur existant)
     supabase.auth.getSession().then(async ({ data: { session } }) => {
       if (session) {
-        router.push('/pro/inscription');
+        setIsLoading(true);
+        // Si déjà connecté, vérifier l'établissement
+        const { hasEstablishment } = await checkEstablishment(session.user.id);
+        
+        if (hasEstablishment) {
+          // A déjà un établissement, aller au dashboard
+          router.push('/pro/dashboard');
+        } else {
+          // Pas d'établissement, aller créer un établissement
+          router.push('/pro/inscription');
+        }
+        setIsLoading(false);
       }
     });
-
-    return () => subscription.unsubscribe();
   }, [router]);
 
   return (
@@ -96,7 +95,15 @@ export default function InscriptionProPage() {
           </div>
 
           {/* Formulaire d'inscription */}
-          <div className="bg-white py-8 px-6 shadow-xl rounded-xl">
+          <div className="bg-white py-8 px-6 shadow-xl rounded-xl relative">
+            {isLoading && (
+              <div className="absolute inset-0 bg-white/80 flex items-center justify-center rounded-xl z-10">
+                <div className="text-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                  <p className="mt-2 text-gray-600">Création du compte...</p>
+                </div>
+              </div>
+            )}
             <Auth
               supabaseClient={supabase}
               view="sign_up"
