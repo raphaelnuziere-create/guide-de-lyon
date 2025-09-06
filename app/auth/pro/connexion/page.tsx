@@ -101,9 +101,27 @@ function ConnexionProContent() {
                 </h3>
                 <p className="text-sm text-red-700 mt-1">
                   {hasError === 'auth_failed' 
-                    ? 'Authentification échouée. Vérifiez vos identifiants.'
+                    ? 'Le lien de confirmation a expiré ou est invalide. Veuillez vous inscrire à nouveau.'
+                    : hasError === 'code_expired'
+                    ? 'Le lien de confirmation a expiré. Veuillez demander un nouveau lien.'
+                    : hasError === 'invalid_code'
+                    ? 'Le lien de confirmation est invalide. Veuillez vous inscrire à nouveau.'
+                    : hasError === 'no_session'
+                    ? 'Impossible de créer la session. Veuillez réessayer.'
+                    : hasError === 'access_denied'
+                    ? 'Accès refusé. Vérifiez que votre email est confirmé.'
                     : 'Une erreur inattendue s\'est produite. Veuillez réessayer.'}
                 </p>
+                {(hasError === 'auth_failed' || hasError === 'code_expired') && (
+                  <div className="mt-3">
+                    <Link 
+                      href="/auth/pro/inscription" 
+                      className="text-sm text-blue-600 hover:underline font-medium"
+                    >
+                      → Créer un nouveau compte
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>

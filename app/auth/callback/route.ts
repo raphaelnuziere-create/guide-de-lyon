@@ -1,65 +1,119 @@
-import { createClient } from '@supabase/supabase-js';
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
-  
-  // Log pour debug
-  console.log('🔍 Callback reçu avec params:', requestUrl.search);
-  
   const code = requestUrl.searchParams.get('code');
-  const type = requestUrl.searchParams.get('type');
-  const redirectTo = requestUrl.searchParams.get('redirect_to');
+  const next = requestUrl.searchParams.get('next') ?? '/';
   
-  // Si pas de code, c'est une confirmation email
-  if (!code) {
-    console.log('📧 Confirmation email détectée (pas de code)');
-    // Après confirmation email, rediriger vers la page de connexion avec message de succès
-    return NextResponse.redirect(new URL('/auth/pro/connexion?confirmed=true', requestUrl.origin));
+  console.log('🔍 Callback URL:', requestUrl.toString());
+  console.log('📦 Params:', {
+    code: code ? 'présent' : 'absent',
+    search: requestUrl.search,
+    origin: requestUrl.origin
+  });
+
+  if (code) {
+    const cookieStore = await cookies();
+    
+    // Créer le client Supabase avec gestion des cookies SSR
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() {
+            return cookieStore.getAll();
+          },
+          setAll(cookiesToSet) {
+            try {
+              cookiesToSet.forEach(({ name, value, options }) => {
+                cookieStore.set(name, value, options);
+              });
+            } catch (error) {
+              console.error('Erreur setting cookies:', error);
+            }
+          },
+        },
+      }
+    );
+
+    try {
+      // Échanger le code pour une session
+      console.log('🔄 Échange du code pour une session...');
+      const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+      
+      if (error) {
+        console.error('❌ Erreur échange code:', error);
+        console.error('Details:', {
+          message: error.message,
+          status: error.status,
+          name: error.name
+        });
+        
+        // Différents types d'erreurs
+        if (error.message?.includes('expired')) {
+          return NextResponse.redirect(new URL('/auth/pro/connexion?error=code_expired', requestUrl.origin));
+        } else if (error.message?.includes('invalid')) {
+          return NextResponse.redirect(new URL('/auth/pro/connexion?error=invalid_code', requestUrl.origin));
+        }
+        
+        return NextResponse.redirect(new URL('/auth/pro/connexion?error=auth_failed', requestUrl.origin));
+      }
+      
+      if (data?.session) {
+        console.log('✅ Session créée avec succès');
+        const user = data.session.user;
+        console.log('👤 User ID:', user.id);
+        console.log('📧 User email:', user.email);
+        
+        // Vérifier si l'utilisateur a un établissement
+        const { data: establishment, error: establishmentError } = await supabase
+          .from('establishments')
+          .select('id')
+          .eq('user_id', user.id)
+          .maybeSingle();
+        
+        if (establishmentError) {
+          console.error('⚠️ Erreur recherche établissement (non bloquant):', establishmentError);
+        }
+        
+        // Déterminer la redirection basée sur l'existence d'un établissement
+        const redirectUrl = establishment 
+          ? '/pro/dashboard' 
+          : '/pro/inscription';
+        
+        console.log('🔀 Redirection vers:', redirectUrl);
+        
+        return NextResponse.redirect(new URL(redirectUrl, requestUrl.origin));
+      } else {
+        console.log('⚠️ Pas de session créée malgré l\'absence d\'erreur');
+        return NextResponse.redirect(new URL('/auth/pro/connexion?error=no_session', requestUrl.origin));
+      }
+    } catch (error) {
+      console.error('❌ Erreur inattendue:', error);
+      return NextResponse.redirect(new URL('/auth/pro/connexion?error=unexpected', requestUrl.origin));
+    }
   }
   
-  // Si code présent, échanger contre une session
-  const supabase = createClient(supabaseUrl, supabaseAnonKey);
+  // Si pas de code (confirmation email sans auto-login)
+  console.log('📧 Callback sans code - probablement une confirmation email');
   
-  try {
-    console.log('🔄 Échange du code pour une session...');
-    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
-    
-    if (error) {
-      console.error('❌ Erreur échange code:', error);
-      return NextResponse.redirect(new URL('/auth/pro/connexion?error=auth_failed', requestUrl.origin));
-    }
-    
-    if (data?.session) {
-      console.log('✅ Session créée avec succès');
-      const user = data.session.user;
-      
-      // Vérifier si l'utilisateur a un établissement
-      const { data: establishment, error: establishmentError } = await supabase
-        .from('establishments')
-        .select('id')
-        .eq('user_id', user.id)
-        .maybeSingle();
-      
-      if (establishmentError) {
-        console.error('❌ Erreur recherche établissement:', establishmentError);
-      }
-      
-      // Déterminer la redirection
-      if (establishment) {
-        console.log('🏢 Établissement trouvé, redirection vers dashboard');
-        return NextResponse.redirect(new URL('/pro/dashboard', requestUrl.origin));
-      } else {
-        console.log('📝 Pas d\'établissement, redirection vers inscription');
-        return NextResponse.redirect(new URL('/pro/inscription', requestUrl.origin));
-      }
-    }
-  } catch (error) {
-    console.error('❌ Erreur callback:', error);
-    return NextResponse.redirect(new URL('/auth/pro/connexion?error=unexpected', requestUrl.origin));
+  // Vérifier les différents paramètres possibles
+  const type = requestUrl.searchParams.get('type');
+  const errorCode = requestUrl.searchParams.get('error');
+  const errorDescription = requestUrl.searchParams.get('error_description');
+  
+  if (errorCode) {
+    console.error('❌ Erreur Supabase:', errorCode, errorDescription);
+    return NextResponse.redirect(new URL(`/auth/pro/connexion?error=${errorCode}`, requestUrl.origin));
+  }
+  
+  // Si c'est une confirmation email réussie (type=signup ou email_change)
+  if (type === 'signup' || type === 'email_change' || type === 'recovery') {
+    console.log('✅ Confirmation email type:', type);
+    return NextResponse.redirect(new URL('/auth/pro/connexion?confirmed=true', requestUrl.origin));
   }
   
   // Par défaut, rediriger vers connexion
