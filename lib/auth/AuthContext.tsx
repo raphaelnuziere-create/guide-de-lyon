@@ -3,7 +3,19 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { supabaseAuth, AuthUser } from './supabase-auth';
-import { supabase } from '@/lib/supabase';
+import { createClient } from '@supabase/supabase-js';
+
+// Créer le client Supabase avec vérification
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+let supabase: any = null;
+
+if (supabaseUrl && supabaseAnonKey) {
+  supabase = createClient(supabaseUrl, supabaseAnonKey);
+} else {
+  console.warn('⚠️ Variables Supabase manquantes. Connexion désactivée.');
+}
 
 interface AuthContextType {
   user: AuthUser | null;
@@ -27,6 +39,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Si Supabase n'est pas configuré, on arrête là
+    if (!supabase) {
+      setLoading(false);
+      console.error('❌ Supabase non configuré. Vérifiez les variables d\'environnement.');
+      return;
+    }
+    
     // Vérifier la session au chargement
     checkSession();
 
@@ -117,6 +136,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const checkSession = async () => {
     try {
+      if (!supabase) {
+        setUser(null);
+        setLoading(false);
+        return;
+      }
+      
       const { data: { user } } = await supabase.auth.getUser();
       
       if (user) {
@@ -172,6 +197,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signIn = async (email: string, password: string) => {
+    if (!supabase) {
+      throw new Error('Service de connexion indisponible. Vérifiez la configuration.');
+    }
+    
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email.trim().toLowerCase(),
       password
@@ -227,6 +256,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     companyName: string, 
     phone?: string
   ) => {
+    if (!supabase) {
+      throw new Error('Service d\'inscription indisponible. Vérifiez la configuration.');
+    }
+    
     const authUser = await supabaseAuth.signUpMerchant(email, password, companyName, phone);
     setUser(authUser);
     // Redirection après inscription réussie
@@ -243,7 +276,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const signOut = async () => {
-    await supabaseAuth.signOut();
+    if (supabase) {
+      await supabaseAuth.signOut();
+    }
     setUser(null);
     router.push('/');
   };

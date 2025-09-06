@@ -13,10 +13,13 @@ import {
   CheckCircleIcon
 } from '@heroicons/react/24/outline';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+// Créer le client Supabase avec vérification
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+const supabase = (supabaseUrl && supabaseAnonKey) 
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;
 
 export default function SimpleDashboardPro() {
   const router = useRouter();
@@ -36,6 +39,12 @@ export default function SimpleDashboardPro() {
 
   const loadEstablishment = async () => {
     if (!user) return;
+    
+    if (!supabase) {
+      console.error('❌ Supabase non configuré');
+      setLoading(false);
+      return;
+    }
     
     try {
       const { data, error } = await supabase
@@ -71,6 +80,14 @@ export default function SimpleDashboardPro() {
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
           <p className="mt-4 text-gray-600">Chargement...</p>
+          {!supabase && (
+            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg max-w-md">
+              <p className="text-red-700 font-semibold">⚠️ Configuration manquante</p>
+              <p className="text-red-600 text-sm mt-2">
+                Les variables d'environnement Supabase ne sont pas configurées sur ce serveur.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     );
