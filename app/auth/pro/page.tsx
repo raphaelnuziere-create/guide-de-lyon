@@ -76,10 +76,19 @@ export default function AuthProPage() {
           </p>
         </div>
 
+        {/* Message marketing */}
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-4 rounded-lg mb-6">
+          <h2 className="text-lg font-bold mb-1">🚀 Référencez votre entreprise GRATUITEMENT !</h2>
+          <p className="text-sm opacity-95">
+            Rejoignez des centaines de professionnels lyonnais et augmentez votre visibilité
+          </p>
+        </div>
+
         {/* Supabase Auth UI */}
         <div className="bg-white py-8 px-6 shadow-xl rounded-xl">
           <Auth
             supabaseClient={supabase}
+            view="sign_up"
             appearance={{
               theme: ThemeSupa,
               variables: {
@@ -112,6 +121,8 @@ export default function AuthProPage() {
                   button_label: "S'inscrire",
                   loading_button_label: 'Inscription...',
                   link_text: 'Déjà un compte ? Connectez-vous',
+                  email_input_placeholder: 'votre@email.com',
+                  password_input_placeholder: 'Votre mot de passe',
                 },
                 forgotten_password: {
                   link_text: 'Mot de passe oublié ?',
