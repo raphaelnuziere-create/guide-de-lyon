@@ -65,7 +65,7 @@ export default function EvenementsPage() {
       // Charger l'établissement
       const establishmentData = await EstablishmentService.getEstablishment(user.id);
       if (!establishmentData) {
-        router.push('/pro/etablissement/creation');
+        router.push('/pro/inscription');
         return;
       }
 

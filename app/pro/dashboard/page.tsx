@@ -62,7 +62,7 @@ export default function DashboardPro() {
     const establishmentData = await EstablishmentService.getEstablishment(session.user.id);
 
     if (!establishmentData) {
-      router.push('/pro/etablissement/creation');
+      router.push('/pro/inscription');
       return;
     }
 

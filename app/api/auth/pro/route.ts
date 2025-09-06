@@ -57,7 +57,7 @@ export async function POST(request: Request) {
         return NextResponse.json({
           success: true,
           message: 'Inscription réussie',
-          redirectTo: '/pro/etablissement/creation'
+          redirectTo: '/pro/inscription'
         });
       }
       
@@ -92,7 +92,7 @@ export async function POST(request: Request) {
         return NextResponse.json({
           success: true,
           message: 'Connexion réussie',
-          redirectTo: establishment ? '/pro/dashboard' : '/pro/etablissement/creation'
+          redirectTo: establishment ? '/pro/dashboard' : '/pro/inscription'
         });
       }
       
@@ -213,7 +213,7 @@ export async function POST(request: Request) {
         return NextResponse.json({
           success: true,
           message: 'Email vérifié avec succès',
-          redirectTo: establishment ? '/pro/dashboard' : '/pro/etablissement/creation'
+          redirectTo: establishment ? '/pro/dashboard' : '/pro/inscription'
         });
       }
       
