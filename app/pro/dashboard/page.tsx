@@ -5,59 +5,44 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { 
   Building2, 
-  TrendingUp, 
   Calendar, 
-  Users, 
-  Star, 
-  MessageSquare,
   Camera,
   Settings,
-  BarChart3,
   Eye,
-  MousePointer,
-  Heart,
-  Share2,
+  Clock,
+  Phone,
+  Mail,
+  Globe,
+  Facebook,
+  Instagram,
   Bell,
-  CreditCard,
   Sparkles,
   Lock,
   ChevronRight,
   Plus,
   Edit,
-  Image as ImageIcon,
+  CheckCircle,
+  XCircle,
+  TrendingUp,
+  Share2,
   FileText,
-  Megaphone,
+  Shield,
   Crown,
   Zap,
-  CheckIcon
+  AlertCircle
 } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase/client';
+import { EstablishmentService, EstablishmentData, PlanLimits } from '@/app/lib/services/establishmentService';
 
-type UserPlan = 'basic' | 'pro' | 'premium';
-
-interface DashboardStats {
-  views: number;
-  clicks: number;
-  favorites: number;
-  shares: number;
-  rating: number;
-  reviews: number;
-}
+type UserPlan = 'basic' | 'pro' | 'expert';
 
 export default function DashboardPro() {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
-  const [establishment, setEstablishment] = useState<any>(null);
-  const [userPlan, setUserPlan] = useState<UserPlan>('basic');
+  const [establishment, setEstablishment] = useState<EstablishmentData | null>(null);
+  const [planLimits, setPlanLimits] = useState<PlanLimits | null>(null);
   const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState<DashboardStats>({
-    views: 1247,
-    clicks: 89,
-    favorites: 34,
-    shares: 12,
-    rating: 4.5,
-    reviews: 23
-  });
+  const [hoveredSection, setHoveredSection] = useState<string | null>(null);
 
   useEffect(() => {
     checkUser();
@@ -73,12 +58,8 @@ export default function DashboardPro() {
 
     setUser(session.user);
 
-    // Récupérer l'établissement
-    const { data: establishmentData } = await supabase
-      .from('establishments')
-      .select('*')
-      .eq('user_id', session.user.id)
-      .single();
+    // Récupérer les vraies données de l'établissement
+    const establishmentData = await EstablishmentService.getEstablishment(session.user.id);
 
     if (!establishmentData) {
       router.push('/pro/inscription');
@@ -86,14 +67,17 @@ export default function DashboardPro() {
     }
 
     setEstablishment(establishmentData);
-    // Pour l'instant, on simule le plan (à récupérer depuis la DB)
-    setUserPlan(establishmentData.plan || 'basic');
+
+    // Récupérer les limites du plan
+    const limits = await EstablishmentService.getPlanLimits(establishmentData.plan);
+    setPlanLimits(limits);
+
     setLoading(false);
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
           <p className="mt-4 text-gray-600">Chargement du dashboard...</p>
@@ -102,11 +86,22 @@ export default function DashboardPro() {
     );
   }
 
-  const isPro = userPlan === 'pro' || userPlan === 'premium';
-  const isPremium = userPlan === 'premium';
+  const plan = establishment?.plan || 'basic';
+  const isPro = plan === 'pro' || plan === 'expert';
+  const isExpert = plan === 'expert';
+
+  // Limites selon les plans
+  const limits = {
+    basic: { photos: 1, events: 3 },
+    pro: { photos: 6, events: 3 },
+    expert: { photos: 10, events: 6 }
+  };
+
+  const currentLimits = limits[plan];
+  const eventsRemaining = currentLimits.events - (establishment?.events_this_month || 0);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -117,29 +112,30 @@ export default function DashboardPro() {
                 <span className="text-xl font-bold">Guide de Lyon</span>
               </Link>
               <span className="text-gray-400">|</span>
-              <span className="text-gray-600 font-medium">Espace Pro</span>
+              <span className="text-gray-600 font-medium">Dashboard Pro</span>
             </div>
 
             <div className="flex items-center space-x-4">
-              {/* Badge Plan */}
-              <div className={`px-3 py-1 rounded-full text-sm font-medium ${
-                isPremium ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white' :
-                isPro ? 'bg-blue-100 text-blue-700' :
-                'bg-gray-100 text-gray-700'
+              {/* Badge Plan avec design amélioré */}
+              <div className={`px-4 py-2 rounded-full font-medium flex items-center space-x-2 ${
+                isExpert ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg' :
+                isPro ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md' :
+                'bg-gray-100 text-gray-700 border border-gray-300'
               }`}>
-                {isPremium && <Crown className="inline h-3 w-3 mr-1" />}
-                {userPlan === 'basic' ? 'Plan Basic' : userPlan === 'pro' ? 'Plan Pro' : 'Plan Premium'}
+                {isExpert && <Crown className="h-4 w-4" />}
+                {isPro && !isExpert && <Shield className="h-4 w-4" />}
+                <span>Plan {plan.charAt(0).toUpperCase() + plan.slice(1)}</span>
+                {establishment?.verified && (
+                  <CheckCircle className="h-4 w-4 ml-1" />
+                )}
               </div>
 
               <button className="relative p-2 text-gray-600 hover:text-gray-900">
                 <Bell className="h-5 w-5" />
-                <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
+                {isPro && <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>}
               </button>
 
-              <Link 
-                href="/pro/settings"
-                className="p-2 text-gray-600 hover:text-gray-900"
-              >
+              <Link href="/pro/settings" className="p-2 text-gray-600 hover:text-gray-900">
                 <Settings className="h-5 w-5" />
               </Link>
             </div>
@@ -148,341 +144,458 @@ export default function DashboardPro() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Welcome Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold mb-2">
-                Bienvenue, {establishment?.name || 'Votre établissement'} !
-              </h1>
-              <p className="text-blue-100">
-                Votre dashboard pour gérer votre présence sur Guide de Lyon
-              </p>
-            </div>
-            <div className="hidden md:block">
-              <Sparkles className="h-16 w-16 text-white/30" />
-            </div>
+        {/* Section Bienvenue avec gradient */}
+        <div className={`rounded-2xl p-8 text-white mb-8 relative overflow-hidden ${
+          isExpert ? 'bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600' :
+          isPro ? 'bg-gradient-to-r from-blue-600 to-indigo-600' :
+          'bg-gradient-to-r from-gray-700 to-gray-900'
+        }`}>
+          <div className="absolute top-0 right-0 opacity-10">
+            <Building2 className="h-64 w-64" />
           </div>
+          
+          <div className="relative z-10">
+            <h1 className="text-3xl font-bold mb-2">
+              Bonjour, {establishment?.name} !
+            </h1>
+            <p className="text-white/90 mb-6">
+              {isExpert ? 'Profitez de tous les outils Expert pour maximiser votre visibilité' :
+               isPro ? 'Vos outils Pro sont actifs. Développez votre présence en ligne !' :
+               'Commencez à développer votre présence sur Guide de Lyon'}
+            </p>
 
-          {!isPro && (
-            <div className="mt-6 bg-white/10 backdrop-blur rounded-lg p-4">
-              <p className="text-sm mb-2">
-                <Zap className="inline h-4 w-4 mr-1" />
-                Débloquez plus de fonctionnalités avec le Plan Pro
-              </p>
-              <Link 
-                href="/pro/upgrade"
-                className="inline-flex items-center text-white font-medium hover:underline"
-              >
-                Découvrir les avantages <ChevronRight className="h-4 w-4 ml-1" />
-              </Link>
-            </div>
-          )}
-        </div>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <div className="flex items-center justify-between mb-4">
-              <Eye className="h-8 w-8 text-blue-500" />
-              <span className="text-xs text-green-600 font-medium">+12%</span>
-            </div>
-            <p className="text-2xl font-bold">{stats.views.toLocaleString()}</p>
-            <p className="text-gray-600 text-sm">Vues ce mois</p>
-          </div>
-
-          <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <div className="flex items-center justify-between mb-4">
-              <MousePointer className="h-8 w-8 text-green-500" />
-              <span className="text-xs text-green-600 font-medium">+8%</span>
-            </div>
-            <p className="text-2xl font-bold">{stats.clicks}</p>
-            <p className="text-gray-600 text-sm">Clics sur contact</p>
-          </div>
-
-          <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <div className="flex items-center justify-between mb-4">
-              <Heart className="h-8 w-8 text-red-500" />
-              <span className="text-xs text-green-600 font-medium">+5</span>
-            </div>
-            <p className="text-2xl font-bold">{stats.favorites}</p>
-            <p className="text-gray-600 text-sm">Favoris</p>
-          </div>
-
-          <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
-            <div className="flex items-center justify-between mb-4">
-              <Star className="h-8 w-8 text-yellow-500" />
-              <span className="text-xs text-gray-500">{stats.reviews} avis</span>
-            </div>
-            <p className="text-2xl font-bold">{stats.rating}</p>
-            <p className="text-gray-600 text-sm">Note moyenne</p>
+            {!isPro && (
+              <div className="bg-white/10 backdrop-blur rounded-lg p-4 inline-block">
+                <p className="text-sm mb-2 flex items-center">
+                  <Zap className="h-4 w-4 mr-2" />
+                  Passez au Plan Pro pour débloquer plus de fonctionnalités
+                </p>
+                <Link 
+                  href="/pro/upgrade"
+                  className="inline-flex items-center text-white font-medium hover:underline"
+                >
+                  Voir les avantages <ChevronRight className="h-4 w-4 ml-1" />
+                </Link>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left Column - Actions */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Quick Actions */}
-            <div className="bg-white rounded-xl p-6 shadow-sm">
+        {/* Grid principal */}
+        <div className="grid lg:grid-cols-3 gap-6">
+          {/* Colonne gauche - Informations de base */}
+          <div className="space-y-6">
+            {/* Carte Info établissement */}
+            <div className="bg-white rounded-xl shadow-sm p-6">
               <h2 className="text-lg font-semibold mb-4 flex items-center">
-                <Zap className="h-5 w-5 mr-2 text-yellow-500" />
-                Actions rapides
+                <Building2 className="h-5 w-5 mr-2 text-blue-600" />
+                Informations de base
               </h2>
               
-              <div className="grid grid-cols-2 gap-4">
-                <Link 
-                  href="/pro/etablissement/edit"
-                  className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
-                >
-                  <Edit className="h-5 w-5 text-gray-600 mr-3" />
-                  <div>
-                    <p className="font-medium">Modifier ma fiche</p>
-                    <p className="text-sm text-gray-500">Infos, horaires, contact</p>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center">
+                    <Phone className="h-4 w-4 text-gray-500 mr-2" />
+                    <span className="text-sm">Téléphone</span>
                   </div>
-                </Link>
+                  <span className="text-sm font-medium">
+                    {establishment?.phone || 'Non renseigné'}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center">
+                    <Mail className="h-4 w-4 text-gray-500 mr-2" />
+                    <span className="text-sm">Email</span>
+                  </div>
+                  <span className="text-sm font-medium">
+                    {establishment?.email || 'Non renseigné'}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center">
+                    <Clock className="h-4 w-4 text-gray-500 mr-2" />
+                    <span className="text-sm">Horaires</span>
+                  </div>
+                  <Link href="/pro/horaires" className="text-sm text-blue-600 hover:underline">
+                    Modifier
+                  </Link>
+                </div>
+              </div>
+
+              <Link 
+                href="/pro/etablissement/edit"
+                className="mt-4 w-full flex items-center justify-center py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              >
+                <Edit className="h-4 w-4 mr-2" />
+                Modifier les informations
+              </Link>
+            </div>
+
+            {/* Carte Réseaux sociaux */}
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <h2 className="text-lg font-semibold mb-4 flex items-center">
+                <Share2 className="h-5 w-5 mr-2 text-blue-600" />
+                Liens & Réseaux
+              </h2>
+              
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Globe className="h-4 w-4 text-gray-500 mr-2" />
+                    <span className="text-sm">Site web</span>
+                  </div>
+                  {establishment?.website ? (
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                  ) : (
+                    <XCircle className="h-4 w-4 text-gray-300" />
+                  )}
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Facebook className="h-4 w-4 text-blue-600 mr-2" />
+                    <span className="text-sm">Facebook</span>
+                  </div>
+                  {establishment?.facebook ? (
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                  ) : (
+                    <XCircle className="h-4 w-4 text-gray-300" />
+                  )}
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Instagram className="h-4 w-4 text-pink-600 mr-2" />
+                    <span className="text-sm">Instagram</span>
+                  </div>
+                  {establishment?.instagram ? (
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                  ) : (
+                    <XCircle className="h-4 w-4 text-gray-300" />
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Colonne centrale - Fonctionnalités principales */}
+          <div className="space-y-6">
+            {/* Carte Photos */}
+            <div 
+              className="bg-white rounded-xl shadow-sm p-6 relative"
+              onMouseEnter={() => setHoveredSection('photos')}
+              onMouseLeave={() => setHoveredSection(null)}
+            >
+              <h2 className="text-lg font-semibold mb-4 flex items-center justify-between">
+                <div className="flex items-center">
+                  <Camera className="h-5 w-5 mr-2 text-green-600" />
+                  Photos
+                </div>
+                <span className="text-sm font-normal text-gray-500">
+                  {establishment?.photos_count}/{currentLimits.photos}
+                </span>
+              </h2>
+
+              <div className="space-y-4">
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium">Photos utilisées</span>
+                    <span className="text-sm text-gray-600">
+                      {establishment?.photos_count} sur {currentLimits.photos}
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div 
+                      className="bg-green-500 h-2 rounded-full transition-all"
+                      style={{ width: `${(establishment?.photos_count || 0) / currentLimits.photos * 100}%` }}
+                    />
+                  </div>
+                </div>
+
+                {plan === 'basic' && (
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                    <p className="text-xs text-yellow-800">
+                      <Lock className="inline h-3 w-3 mr-1" />
+                      Plan Pro : 6 photos | Plan Expert : 10 photos
+                    </p>
+                  </div>
+                )}
 
                 <Link 
                   href="/pro/photos"
-                  className={`flex items-center p-4 rounded-lg transition ${
-                    isPro ? 'bg-gray-50 hover:bg-gray-100' : 'bg-gray-50 opacity-60 cursor-not-allowed'
-                  }`}
-                  onClick={(e) => !isPro && e.preventDefault()}
+                  className="w-full flex items-center justify-center py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
                 >
-                  <ImageIcon className="h-5 w-5 text-gray-600 mr-3" />
-                  <div>
-                    <p className="font-medium">Gérer mes photos</p>
-                    <p className="text-sm text-gray-500">
-                      {isPro ? 'Galerie illimitée' : '1 photo (Pro: illimité)'}
-                    </p>
-                  </div>
-                  {!isPro && <Lock className="h-4 w-4 text-gray-400 ml-auto" />}
-                </Link>
-
-                <Link 
-                  href="/pro/events"
-                  className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
-                >
-                  <Calendar className="h-5 w-5 text-gray-600 mr-3" />
-                  <div>
-                    <p className="font-medium">Mes événements</p>
-                    <p className="text-sm text-gray-500">
-                      {isPro ? 'Illimités' : '3/mois'}
-                    </p>
-                  </div>
-                </Link>
-
-                <Link 
-                  href="/pro/blog"
-                  className={`flex items-center p-4 rounded-lg transition ${
-                    isPro ? 'bg-gray-50 hover:bg-gray-100' : 'bg-gray-50 opacity-60 cursor-not-allowed'
-                  }`}
-                  onClick={(e) => !isPro && e.preventDefault()}
-                >
-                  <FileText className="h-5 w-5 text-gray-600 mr-3" />
-                  <div>
-                    <p className="font-medium">Articles blog</p>
-                    <p className="text-sm text-gray-500">
-                      {isPro ? 'Créer des articles' : 'Pro uniquement'}
-                    </p>
-                  </div>
-                  {!isPro && <Lock className="h-4 w-4 text-gray-400 ml-auto" />}
+                  <Plus className="h-4 w-4 mr-2" />
+                  Gérer mes photos
                 </Link>
               </div>
             </div>
 
-            {/* Premium Features */}
-            {isPro && (
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
-                <h2 className="text-lg font-semibold mb-4 flex items-center">
-                  <Crown className="h-5 w-5 mr-2 text-purple-600" />
-                  Outils Pro
-                </h2>
-                
-                <div className="space-y-3">
-                  <Link 
-                    href="/pro/newsletter"
-                    className={`flex items-center justify-between p-4 bg-white rounded-lg hover:shadow-md transition ${
-                      !isPremium && 'opacity-75'
-                    }`}
-                  >
-                    <div className="flex items-center">
-                      <Megaphone className="h-5 w-5 text-purple-600 mr-3" />
-                      <div>
-                        <p className="font-medium">Newsletter</p>
-                        <p className="text-sm text-gray-500">
-                          {isPremium ? 'Envoyez vos actualités' : 'Premium uniquement'}
-                        </p>
-                      </div>
-                    </div>
-                    {isPremium ? (
-                      <ChevronRight className="h-5 w-5 text-gray-400" />
+            {/* Carte Événements */}
+            <div 
+              className="bg-white rounded-xl shadow-sm p-6 relative"
+              onMouseEnter={() => setHoveredSection('events')}
+              onMouseLeave={() => setHoveredSection(null)}
+            >
+              <h2 className="text-lg font-semibold mb-4 flex items-center justify-between">
+                <div className="flex items-center">
+                  <Calendar className="h-5 w-5 mr-2 text-purple-600" />
+                  Événements
+                </div>
+                <span className="text-sm font-normal text-gray-500">
+                  {eventsRemaining} restants
+                </span>
+              </h2>
+
+              <div className="space-y-4">
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium">Ce mois-ci</span>
+                    <span className="text-sm text-gray-600">
+                      {establishment?.events_this_month}/{currentLimits.events}
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div 
+                      className={`h-2 rounded-full transition-all ${
+                        eventsRemaining > 0 ? 'bg-purple-500' : 'bg-red-500'
+                      }`}
+                      style={{ width: `${(establishment?.events_this_month || 0) / currentLimits.events * 100}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Diffusion des événements */}
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-gray-700 mb-1">Diffusion :</p>
+                  
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="flex items-center">
+                      <Eye className="h-3 w-3 mr-1" />
+                      Page entreprise
+                    </span>
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                  </div>
+
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="flex items-center">
+                      <Building2 className="h-3 w-3 mr-1" />
+                      Page d'accueil
+                    </span>
+                    {isPro ? (
+                      <CheckCircle className="h-4 w-4 text-green-500" />
                     ) : (
                       <Lock className="h-4 w-4 text-gray-400" />
                     )}
-                  </Link>
+                  </div>
 
-                  <Link 
-                    href="/pro/analytics"
-                    className="flex items-center justify-between p-4 bg-white rounded-lg hover:shadow-md transition"
-                  >
-                    <div className="flex items-center">
-                      <BarChart3 className="h-5 w-5 text-blue-600 mr-3" />
-                      <div>
-                        <p className="font-medium">Analytics avancés</p>
-                        <p className="text-sm text-gray-500">Statistiques détaillées</p>
-                      </div>
-                    </div>
-                    <ChevronRight className="h-5 w-5 text-gray-400" />
-                  </Link>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="flex items-center">
+                      <Mail className="h-3 w-3 mr-1" />
+                      Newsletter
+                    </span>
+                    {isPro ? (
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                    ) : (
+                      <Lock className="h-4 w-4 text-gray-400" />
+                    )}
+                  </div>
 
-                  <Link 
-                    href="/pro/reviews"
-                    className="flex items-center justify-between p-4 bg-white rounded-lg hover:shadow-md transition"
-                  >
-                    <div className="flex items-center">
-                      <MessageSquare className="h-5 w-5 text-green-600 mr-3" />
-                      <div>
-                        <p className="font-medium">Gestion des avis</p>
-                        <p className="text-sm text-gray-500">Répondre aux clients</p>
-                      </div>
-                    </div>
-                    <ChevronRight className="h-5 w-5 text-gray-400" />
-                  </Link>
-                </div>
-              </div>
-            )}
-
-            {/* Recent Activity */}
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h2 className="text-lg font-semibold mb-4">Activité récente</h2>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="h-2 w-2 bg-green-500 rounded-full mt-2"></div>
-                  <div>
-                    <p className="text-sm">Nouvel avis 5 étoiles de <span className="font-medium">Marie D.</span></p>
-                    <p className="text-xs text-gray-500">Il y a 2 heures</p>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="flex items-center">
+                      <Share2 className="h-3 w-3 mr-1" />
+                      Réseaux sociaux
+                    </span>
+                    {isExpert ? (
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                    ) : (
+                      <Lock className="h-4 w-4 text-gray-400" />
+                    )}
                   </div>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <div className="h-2 w-2 bg-blue-500 rounded-full mt-2"></div>
-                  <div>
-                    <p className="text-sm">23 nouvelles vues sur votre fiche</p>
-                    <p className="text-xs text-gray-500">Aujourd'hui</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="h-2 w-2 bg-purple-500 rounded-full mt-2"></div>
-                  <div>
-                    <p className="text-sm">Votre événement "Soirée Jazz" commence dans 3 jours</p>
-                    <p className="text-xs text-gray-500">Rappel</p>
-                  </div>
-                </div>
+
+                <Link 
+                  href="/pro/events"
+                  className="w-full flex items-center justify-center py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition"
+                >
+                  <Plus className="h-4 w-4 mr-2" />
+                  Créer un événement
+                </Link>
               </div>
             </div>
           </div>
 
-          {/* Right Column - Sidebar */}
+          {/* Colonne droite - Upgrade et stats */}
           <div className="space-y-6">
-            {/* Upgrade Card */}
-            {!isPremium && (
+            {/* Carte Upgrade contextuelle */}
+            {!isExpert && (
               <div className={`rounded-xl p-6 text-white shadow-lg ${
                 isPro 
                   ? 'bg-gradient-to-br from-purple-600 to-pink-600' 
-                  : 'bg-gradient-to-br from-blue-600 to-purple-600'
+                  : 'bg-gradient-to-br from-blue-600 to-indigo-600'
               }`}>
-                <h3 className="text-lg font-semibold mb-2">
-                  {isPro ? 'Passez au Premium' : 'Passez au Pro'}
-                </h3>
+                <div className="flex items-center mb-3">
+                  <Sparkles className="h-6 w-6 mr-2" />
+                  <h3 className="text-lg font-semibold">
+                    {isPro ? 'Passez Expert' : 'Passez Pro'}
+                  </h3>
+                </div>
+                
                 <p className="text-sm mb-4 opacity-90">
                   {isPro 
-                    ? 'Accédez à la newsletter et à tous les outils marketing'
-                    : 'Débloquez les photos illimitées, articles blog et plus'
+                    ? 'Maximisez votre visibilité avec 6 événements/mois et diffusion sur les réseaux sociaux'
+                    : 'Multipliez par 6 vos photos et diffusez vos événements dans la newsletter'
                   }
                 </p>
+
                 <ul className="space-y-2 mb-4">
                   {isPro ? (
                     <>
-                      <li className="text-sm flex items-center">
-                        <CheckIcon className="h-4 w-4 mr-2" />
-                        Newsletter 5000+ abonnés
+                      <li className="text-sm flex items-start">
+                        <CheckCircle className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>6 événements/mois (vs 3)</span>
                       </li>
-                      <li className="text-sm flex items-center">
-                        <CheckIcon className="h-4 w-4 mr-2" />
-                        Bannière publicitaire
+                      <li className="text-sm flex items-start">
+                        <CheckCircle className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>10 photos (vs 6)</span>
                       </li>
-                      <li className="text-sm flex items-center">
-                        <CheckIcon className="h-4 w-4 mr-2" />
-                        Support prioritaire
+                      <li className="text-sm flex items-start">
+                        <CheckCircle className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Diffusion réseaux sociaux</span>
+                      </li>
+                      <li className="text-sm flex items-start">
+                        <CheckCircle className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>2 articles blog/an</span>
                       </li>
                     </>
                   ) : (
                     <>
-                      <li className="text-sm flex items-center">
-                        <CheckIcon className="h-4 w-4 mr-2" />
-                        Photos illimitées
+                      <li className="text-sm flex items-start">
+                        <CheckCircle className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>6 photos (vs 1)</span>
                       </li>
-                      <li className="text-sm flex items-center">
-                        <CheckIcon className="h-4 w-4 mr-2" />
-                        Articles blog SEO
+                      <li className="text-sm flex items-start">
+                        <CheckCircle className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Événements dans newsletter</span>
                       </li>
-                      <li className="text-sm flex items-center">
-                        <CheckIcon className="h-4 w-4 mr-2" />
-                        Analytics avancés
+                      <li className="text-sm flex items-start">
+                        <CheckCircle className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Badge vérifié</span>
+                      </li>
+                      <li className="text-sm flex items-start">
+                        <CheckCircle className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
+                        <span>Position prioritaire</span>
                       </li>
                     </>
                   )}
                 </ul>
+
                 <Link 
                   href="/pro/upgrade"
                   className="block w-full bg-white text-blue-600 py-2 px-4 rounded-lg text-center font-medium hover:bg-gray-50 transition"
                 >
-                  Upgrader maintenant
+                  Découvrir {isPro ? 'Expert' : 'Pro'}
                 </Link>
               </div>
             )}
 
-            {/* Support Card */}
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="text-lg font-semibold mb-4">Besoin d'aide ?</h3>
-              <div className="space-y-3">
-                <Link 
-                  href="/pro/guide"
-                  className="flex items-center text-gray-700 hover:text-blue-600"
-                >
-                  <FileText className="h-5 w-5 mr-2" />
-                  Guide d'utilisation
-                </Link>
-                <Link 
-                  href="/pro/faq"
-                  className="flex items-center text-gray-700 hover:text-blue-600"
-                >
-                  <MessageSquare className="h-5 w-5 mr-2" />
-                  FAQ
-                </Link>
-                <Link 
-                  href="/contact"
-                  className="flex items-center text-gray-700 hover:text-blue-600"
-                >
-                  <Users className="h-5 w-5 mr-2" />
-                  Contacter le support
-                </Link>
+            {/* Carte Statistiques */}
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <h2 className="text-lg font-semibold mb-4 flex items-center">
+                <TrendingUp className="h-5 w-5 mr-2 text-blue-600" />
+                Statistiques du mois
+              </h2>
+              
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Eye className="h-4 w-4 text-gray-500 mr-2" />
+                    <span className="text-sm">Vues</span>
+                  </div>
+                  <span className="text-lg font-semibold">247</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Phone className="h-4 w-4 text-gray-500 mr-2" />
+                    <span className="text-sm">Clics téléphone</span>
+                  </div>
+                  <span className="text-lg font-semibold">18</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <Globe className="h-4 w-4 text-gray-500 mr-2" />
+                    <span className="text-sm">Visites site web</span>
+                  </div>
+                  <span className="text-lg font-semibold">34</span>
+                </div>
+
+                <hr className="my-3" />
+
+                {!isPro && (
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-xs text-gray-600 flex items-start">
+                      <Lock className="h-3 w-3 mr-1 mt-0.5 flex-shrink-0" />
+                      Analytics détaillés disponibles avec le Plan Pro
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
 
-            {/* Tips Card */}
-            <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
-              <h3 className="text-lg font-semibold mb-3 flex items-center">
-                <Sparkles className="h-5 w-5 mr-2 text-yellow-600" />
-                Astuce du jour
-              </h3>
-              <p className="text-sm text-gray-700">
-                Les fiches avec au moins 5 photos ont <span className="font-medium">3x plus de clics</span>. 
-                {!isPro && ' Passez au Pro pour ajouter plus de photos !'}
-              </p>
-            </div>
+            {/* Articles blog (bonus annuel) */}
+            {isPro && (
+              <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl p-6 border border-yellow-200">
+                <h2 className="text-lg font-semibold mb-3 flex items-center">
+                  <FileText className="h-5 w-5 mr-2 text-orange-600" />
+                  Articles Blog SEO
+                </h2>
+                
+                <p className="text-sm text-gray-700 mb-3">
+                  Bonus abonnement annuel
+                </p>
+                
+                <div className="bg-white rounded-lg p-3">
+                  <p className="text-xs text-gray-600">
+                    {isExpert ? '2 articles' : '1 article'} optimisé(s) SEO avec lien vers votre site
+                  </p>
+                </div>
+                
+                {plan === 'basic' && (
+                  <p className="text-xs text-orange-600 mt-2">
+                    Disponible avec l'abonnement annuel Pro ou Expert
+                  </p>
+                )}
+              </div>
+            )}
           </div>
         </div>
+
+        {/* Alerte TVA pour les plans payants */}
+        {isPro && !establishment?.verified && (
+          <div className="mt-8 bg-yellow-50 border border-yellow-200 rounded-xl p-6">
+            <div className="flex items-start">
+              <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5 mr-3 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-yellow-900 mb-1">
+                  Vérification TVA requise
+                </h3>
+                <p className="text-sm text-yellow-800 mb-3">
+                  Pour activer votre badge vérifié, veuillez fournir votre numéro de TVA.
+                </p>
+                <Link 
+                  href="/pro/verification"
+                  className="inline-flex items-center text-yellow-900 font-medium hover:underline"
+                >
+                  Compléter la vérification <ChevronRight className="h-4 w-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
