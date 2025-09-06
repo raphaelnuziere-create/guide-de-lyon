@@ -30,10 +30,12 @@ export default function SimpleDashboardPro() {
   useEffect(() => {
     if (!authLoading) {
       if (!user) {
-        router.push('/connexion/pro');
+        // Rediriger vers la nouvelle page auth
+        console.log('⚠️ Dashboard: Utilisateur non connecté, redirection vers /auth/pro');
+        router.push('/auth/pro');
       } else {
         // Charger l'établissement pour tout utilisateur connecté
-        // (le rôle 'merchant' est déterminé par la présence d'un établissement)
+        console.log('✅ Dashboard: Utilisateur connecté, chargement établissement');
         loadEstablishment();
       }
     }
@@ -52,40 +54,23 @@ export default function SimpleDashboardPro() {
     }
     
     try {
-      // Première tentative
-      let { data, error } = await supabase
+      // Utiliser maybeSingle pour éviter les erreurs si pas d'établissement
+      const { data, error } = await supabase
         .from('establishments')
         .select('*')
         .eq('user_id', user.id)
-        .single();
-      
-      // Si pas trouvé, attendre un peu et réessayer (pour les nouvelles inscriptions)
-      if (error && error.code === 'PGRST116') {
-        console.log('Établissement non trouvé, nouvelle tentative dans 1 seconde...');
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Deuxième tentative
-        const retry = await supabase
-          .from('establishments')
-          .select('*')
-          .eq('user_id', user.id)
-          .single();
-        
-        data = retry.data;
-        error = retry.error;
-      }
+        .maybeSingle();
       
       if (error) {
-        console.error('Erreur chargement établissement:', error);
-        if (error.code === 'PGRST116') {
-          // Pas d'établissement trouvé après retry
-          console.log('Pas d\'établissement, redirection vers inscription');
-          router.push('/pro/inscription');
-        } else {
-          // Autre erreur
-          setLoading(false);
-        }
+        console.error('❌ Erreur chargement établissement:', error);
+        setLoading(false);
+      } else if (!data) {
+        // Pas d'établissement trouvé
+        console.log('📦 Pas d\'établissement, redirection vers inscription');
+        router.push('/pro/inscription');
       } else {
+        // Établissement trouvé
+        console.log('✅ Établissement chargé:', data.name);
         setEstablishment(data);
         setLoading(false);
       }
@@ -121,15 +106,36 @@ export default function SimpleDashboardPro() {
 
   if (!establishment) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-gray-600">Aucun établissement trouvé</p>
-          <button
-            onClick={() => router.push('/pro/inscription')}
-            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-          >
-            Créer mon établissement
-          </button>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <div className="max-w-md w-full">
+          <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+            <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-4">
+              <BuildingOfficeIcon className="h-8 w-8 text-blue-600" />
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              Bienvenue sur votre espace pro !
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Pour commencer, créez votre établissement et référencez-le sur Guide de Lyon.
+            </p>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+              <p className="text-sm text-blue-800">
+                ✨ C'est gratuit et ne prend que 2 minutes
+              </p>
+            </div>
+            <button
+              onClick={() => router.push('/pro/inscription')}
+              className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium"
+            >
+              Créer mon établissement
+            </button>
+            <button
+              onClick={handleSignOut}
+              className="mt-3 text-sm text-gray-500 hover:text-gray-700"
+            >
+              Me déconnecter
+            </button>
+          </div>
         </div>
       </div>
     );

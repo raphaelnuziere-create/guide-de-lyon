@@ -60,7 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             .from('establishments')
             .select('*')
             .eq('user_id', session.user.id)
-            .single();
+            .maybeSingle();
           
           // Si c'est un professionnel avec établissement
           if (establishment) {
@@ -132,7 +132,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           pathname !== '/professionnel/dashboard' &&
           !pathname.includes('/connexion') && 
           !pathname.includes('/register'))) {
-        router.push('/connexion/pro');
+        router.push('/auth/pro');
       } else if ((pathname.startsWith('/admin') && pathname !== '/admin') || 
                  (pathname.startsWith('/administration/') && 
                  !pathname.includes('/connexion'))) {
@@ -157,7 +157,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           .from('establishments')
           .select('*')
           .eq('user_id', user.id)
-          .single();
+          .maybeSingle();
         
         if (establishment) {
           setUser({
@@ -221,7 +221,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       .from('establishments')
       .select('*')
       .eq('user_id', data.user.id)
-      .single();
+      .maybeSingle();
     
     if (establishment) {
       const authUser = {
@@ -332,7 +332,7 @@ export function withAuth<P extends object>(
           if (requiredRole === 'admin') {
             router.push('/connexion/admin');
           } else if (requiredRole === 'merchant') {
-            router.push('/connexion/pro');
+            router.push('/auth/pro');
           } else {
             router.push('/');
           }
