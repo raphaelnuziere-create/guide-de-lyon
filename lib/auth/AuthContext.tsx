@@ -114,7 +114,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!loading && user) {
       // Redirection après connexion
-      if ((pathname === '/connexion/pro' || pathname === '/professionnel/connexion') && user.role === 'merchant') {
+      if (pathname === '/connexion/pro' || pathname === '/professionnel/connexion') {
+        // Rediriger tous les utilisateurs connectés vers le dashboard
+        // Le dashboard gèrera la redirection vers inscription si pas d'établissement
         router.push('/pro/dashboard');
       } else if ((pathname === '/connexion/admin' || pathname === '/administration/connexion') && user.role === 'admin') {
         router.push('/admin');

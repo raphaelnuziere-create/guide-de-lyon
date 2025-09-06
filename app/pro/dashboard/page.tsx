@@ -31,14 +31,19 @@ export default function SimpleDashboardPro() {
     if (!authLoading) {
       if (!user) {
         router.push('/connexion/pro');
-      } else if (user.role === 'merchant') {
+      } else {
+        // Charger l'établissement pour tout utilisateur connecté
+        // (le rôle 'merchant' est déterminé par la présence d'un établissement)
         loadEstablishment();
       }
     }
   }, [user, authLoading]);
 
   const loadEstablishment = async () => {
-    if (!user) return;
+    if (!user) {
+      setLoading(false);
+      return;
+    }
     
     if (!supabase) {
       console.error('❌ Supabase non configuré');
@@ -57,14 +62,18 @@ export default function SimpleDashboardPro() {
         console.error('Erreur chargement établissement:', error);
         if (error.code === 'PGRST116') {
           // Pas d'établissement trouvé
+          console.log('Pas d\'établissement, redirection vers inscription');
           router.push('/pro/inscription');
+        } else {
+          // Autre erreur
+          setLoading(false);
         }
       } else {
         setEstablishment(data);
+        setLoading(false);
       }
     } catch (error) {
       console.error('Erreur:', error);
-    } finally {
       setLoading(false);
     }
   };
