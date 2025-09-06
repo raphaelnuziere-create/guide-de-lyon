@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { action, email, password, token } = body;
+    const { action, email, password, token, provider } = body;
     
     if (!email || !password || !action) {
       return NextResponse.json({ 
@@ -142,6 +142,41 @@ export async function POST(request: Request) {
         success: true,
         message: 'Nouveau lien de confirmation envoyé'
       });
+      
+    } else if (action === 'oauth') {
+      // OAUTH LOGIN (Google, etc.)
+      if (!provider) {
+        return NextResponse.json({ 
+          success: false,
+          error: 'Provider requis pour OAuth' 
+        }, { status: 400 });
+      }
+      
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: provider as 'google',
+        options: {
+          redirectTo: 'https://www.guide-de-lyon.fr/auth/callback',
+        }
+      });
+      
+      if (error) {
+        return NextResponse.json({ 
+          success: false,
+          error: error.message 
+        }, { status: 400 });
+      }
+      
+      if (data.url) {
+        return NextResponse.json({
+          success: true,
+          redirectUrl: data.url
+        });
+      }
+      
+      return NextResponse.json({ 
+        success: false,
+        error: 'Impossible de générer l\'URL OAuth' 
+      }, { status: 400 });
       
     } else if (action === 'verify') {
       // VERIFY OTP TOKEN

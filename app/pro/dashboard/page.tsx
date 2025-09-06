@@ -1,303 +1,487 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@supabase/supabase-js';
-import { useAuth } from '@/lib/auth/AuthContext';
-import {
-  BuildingOfficeIcon,
-  CalendarIcon,
-  PhotoIcon,
-  CogIcon,
-  ArrowRightIcon,
-  CheckCircleIcon
-} from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import { 
+  Building2, 
+  TrendingUp, 
+  Calendar, 
+  Users, 
+  Star, 
+  MessageSquare,
+  Camera,
+  Settings,
+  BarChart3,
+  Eye,
+  MousePointer,
+  Heart,
+  Share2,
+  Bell,
+  CreditCard,
+  Sparkles,
+  Lock,
+  ChevronRight,
+  Plus,
+  Edit,
+  Image as ImageIcon,
+  FileText,
+  Megaphone,
+  Crown,
+  Zap,
+  CheckIcon
+} from 'lucide-react';
+import { supabase } from '@/app/lib/supabase/client';
 
-// Créer le client Supabase avec vérification
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+type UserPlan = 'basic' | 'pro' | 'premium';
 
-const supabase = (supabaseUrl && supabaseAnonKey) 
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : null;
+interface DashboardStats {
+  views: number;
+  clicks: number;
+  favorites: number;
+  shares: number;
+  rating: number;
+  reviews: number;
+}
 
-export default function SimpleDashboardPro() {
+export default function DashboardPro() {
   const router = useRouter();
-  const { user, loading: authLoading, signOut } = useAuth();
+  const [user, setUser] = useState<any>(null);
   const [establishment, setEstablishment] = useState<any>(null);
+  const [userPlan, setUserPlan] = useState<UserPlan>('basic');
   const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState<DashboardStats>({
+    views: 1247,
+    clicks: 89,
+    favorites: 34,
+    shares: 12,
+    rating: 4.5,
+    reviews: 23
+  });
 
   useEffect(() => {
-    if (!authLoading) {
-      if (!user) {
-        // Rediriger vers la nouvelle page auth
-        console.log('⚠️ Dashboard: Utilisateur non connecté, redirection vers /auth/pro');
-        router.push('/auth/pro');
-      } else {
-        // Charger l'établissement pour tout utilisateur connecté
-        console.log('✅ Dashboard: Utilisateur connecté, chargement établissement');
-        loadEstablishment();
-      }
-    }
-  }, [user, authLoading]);
+    checkUser();
+  }, []);
 
-  const loadEstablishment = async () => {
-    if (!user) {
-      setLoading(false);
+  const checkUser = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    
+    if (!session) {
+      router.push('/auth/pro/connexion');
       return;
     }
-    
-    if (!supabase) {
-      console.error('❌ Supabase non configuré');
-      setLoading(false);
+
+    setUser(session.user);
+
+    // Récupérer l'établissement
+    const { data: establishmentData } = await supabase
+      .from('establishments')
+      .select('*')
+      .eq('user_id', session.user.id)
+      .single();
+
+    if (!establishmentData) {
+      router.push('/pro/inscription');
       return;
     }
-    
-    try {
-      // Utiliser maybeSingle pour éviter les erreurs si pas d'établissement
-      const { data, error } = await supabase
-        .from('establishments')
-        .select('*')
-        .eq('user_id', user.id)
-        .maybeSingle();
-      
-      if (error) {
-        console.error('❌ Erreur chargement établissement:', error);
-        setLoading(false);
-      } else if (!data) {
-        // Pas d'établissement trouvé
-        console.log('📦 Pas d\'établissement, redirection vers inscription');
-        router.push('/pro/inscription');
-      } else {
-        // Établissement trouvé
-        console.log('✅ Établissement chargé:', data.name);
-        setEstablishment(data);
-        setLoading(false);
-      }
-    } catch (error) {
-      console.error('Erreur:', error);
-      setLoading(false);
-    }
+
+    setEstablishment(establishmentData);
+    // Pour l'instant, on simule le plan (à récupérer depuis la DB)
+    setUserPlan(establishmentData.plan || 'basic');
+    setLoading(false);
   };
 
-  const handleSignOut = async () => {
-    await signOut();
-    router.push('/');
-  };
-
-  if (authLoading || loading) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Chargement...</p>
-          {!supabase && (
-            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg max-w-md">
-              <p className="text-red-700 font-semibold">⚠️ Configuration manquante</p>
-              <p className="text-red-600 text-sm mt-2">
-                Les variables d'environnement Supabase ne sont pas configurées sur ce serveur.
-              </p>
-            </div>
-          )}
+          <p className="mt-4 text-gray-600">Chargement du dashboard...</p>
         </div>
       </div>
     );
   }
 
-  if (!establishment) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-        <div className="max-w-md w-full">
-          <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-            <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-4">
-              <BuildingOfficeIcon className="h-8 w-8 text-blue-600" />
-            </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Bienvenue sur votre espace pro !
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Pour commencer, créez votre établissement et référencez-le sur Guide de Lyon.
-            </p>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-              <p className="text-sm text-blue-800">
-                ✨ C'est gratuit et ne prend que 2 minutes
-              </p>
-            </div>
-            <button
-              onClick={() => router.push('/pro/inscription')}
-              className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium"
-            >
-              Créer mon établissement
-            </button>
-            <button
-              onClick={handleSignOut}
-              className="mt-3 text-sm text-gray-500 hover:text-gray-700"
-            >
-              Me déconnecter
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const isPro = userPlan === 'pro' || userPlan === 'premium';
+  const isPremium = userPlan === 'premium';
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-2xl font-bold">{establishment.name}</h1>
-              <p className="text-sm text-gray-600">Tableau de bord professionnel</p>
-            </div>
-            
+      <header className="bg-white shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">{user?.email}</span>
-              <button
-                onClick={handleSignOut}
-                className="px-4 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200"
-              >
-                Déconnexion
+              <Link href="/" className="flex items-center space-x-2">
+                <Building2 className="h-8 w-8 text-blue-600" />
+                <span className="text-xl font-bold">Guide de Lyon</span>
+              </Link>
+              <span className="text-gray-400">|</span>
+              <span className="text-gray-600 font-medium">Espace Pro</span>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              {/* Badge Plan */}
+              <div className={`px-3 py-1 rounded-full text-sm font-medium ${
+                isPremium ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white' :
+                isPro ? 'bg-blue-100 text-blue-700' :
+                'bg-gray-100 text-gray-700'
+              }`}>
+                {isPremium && <Crown className="inline h-3 w-3 mr-1" />}
+                {userPlan === 'basic' ? 'Plan Basic' : userPlan === 'pro' ? 'Plan Pro' : 'Plan Premium'}
+              </div>
+
+              <button className="relative p-2 text-gray-600 hover:text-gray-900">
+                <Bell className="h-5 w-5" />
+                <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
               </button>
+
+              <Link 
+                href="/pro/settings"
+                className="p-2 text-gray-600 hover:text-gray-900"
+              >
+                <Settings className="h-5 w-5" />
+              </Link>
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Contenu principal */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Message de bienvenue */}
-        <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
-          <div className="flex items-start">
-            <CheckCircleIcon className="h-6 w-6 text-green-600 mt-1 mr-3" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Welcome Section */}
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-8">
+          <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-lg font-semibold text-green-900">
-                Bienvenue sur votre espace professionnel !
-              </h2>
-              <p className="mt-1 text-green-700">
-                Votre compte est actif. Vous pouvez maintenant gérer votre établissement.
+              <h1 className="text-3xl font-bold mb-2">
+                Bienvenue, {establishment?.name || 'Votre établissement'} !
+              </h1>
+              <p className="text-blue-100">
+                Votre dashboard pour gérer votre présence sur Guide de Lyon
               </p>
             </div>
+            <div className="hidden md:block">
+              <Sparkles className="h-16 w-16 text-white/30" />
+            </div>
           </div>
-        </div>
 
-        {/* Informations de l'établissement */}
-        <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <h2 className="text-xl font-bold mb-4 flex items-center">
-            <BuildingOfficeIcon className="h-6 w-6 mr-2 text-blue-600" />
-            Mon établissement
-          </h2>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <p className="text-sm text-gray-600">Nom</p>
-              <p className="font-medium">{establishment.name}</p>
-            </div>
-            
-            <div>
-              <p className="text-sm text-gray-600">Email</p>
-              <p className="font-medium">{establishment.email}</p>
-            </div>
-            
-            <div>
-              <p className="text-sm text-gray-600">Téléphone</p>
-              <p className="font-medium">{establishment.phone || 'Non renseigné'}</p>
-            </div>
-            
-            <div>
-              <p className="text-sm text-gray-600">Adresse</p>
-              <p className="font-medium">{establishment.address || 'Non renseignée'}</p>
-            </div>
-            
-            <div>
-              <p className="text-sm text-gray-600">Ville</p>
-              <p className="font-medium">{establishment.city || 'Lyon'}</p>
-            </div>
-            
-            <div>
-              <p className="text-sm text-gray-600">TVA</p>
-              <p className="font-medium">{establishment.vat_number || 'Non renseigné'}</p>
-            </div>
-            
-            <div>
-              <p className="text-sm text-gray-600">Statut</p>
-              <span className={`inline-flex px-2 py-1 rounded text-xs font-medium ${
-                establishment.status === 'active' 
-                  ? 'bg-green-100 text-green-800'
-                  : 'bg-yellow-100 text-yellow-800'
-              }`}>
-                {establishment.status === 'active' ? 'Actif' : 'En attente'}
-              </span>
-            </div>
-            
-            <div>
-              <p className="text-sm text-gray-600">Plan</p>
-              <span className="inline-flex px-2 py-1 rounded text-xs font-medium bg-blue-100 text-blue-800">
-                Basic (Gratuit)
-              </span>
-            </div>
-          </div>
-          
-          {establishment.description && (
-            <div className="mt-4">
-              <p className="text-sm text-gray-600">Description</p>
-              <p className="mt-1">{establishment.description}</p>
+          {!isPro && (
+            <div className="mt-6 bg-white/10 backdrop-blur rounded-lg p-4">
+              <p className="text-sm mb-2">
+                <Zap className="inline h-4 w-4 mr-1" />
+                Débloquez plus de fonctionnalités avec le Plan Pro
+              </p>
+              <Link 
+                href="/pro/upgrade"
+                className="inline-flex items-center text-white font-medium hover:underline"
+              >
+                Découvrir les avantages <ChevronRight className="h-4 w-4 ml-1" />
+              </Link>
             </div>
           )}
         </div>
 
-        {/* Actions rapides */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-lg shadow p-6">
-            <CalendarIcon className="h-8 w-8 text-purple-600 mb-3" />
-            <h3 className="font-semibold mb-1">Événements</h3>
-            <p className="text-sm text-gray-600 mb-3">
-              Créez et gérez vos événements
-            </p>
-            <button className="text-sm text-blue-600 hover:underline flex items-center">
-              Gérer les événements
-              <ArrowRightIcon className="h-3 w-3 ml-1" />
-            </button>
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+            <div className="flex items-center justify-between mb-4">
+              <Eye className="h-8 w-8 text-blue-500" />
+              <span className="text-xs text-green-600 font-medium">+12%</span>
+            </div>
+            <p className="text-2xl font-bold">{stats.views.toLocaleString()}</p>
+            <p className="text-gray-600 text-sm">Vues ce mois</p>
           </div>
-          
-          <div className="bg-white rounded-lg shadow p-6">
-            <PhotoIcon className="h-8 w-8 text-green-600 mb-3" />
-            <h3 className="font-semibold mb-1">Photos</h3>
-            <p className="text-sm text-gray-600 mb-3">
-              Ajoutez des photos de votre établissement
-            </p>
-            <button className="text-sm text-blue-600 hover:underline flex items-center">
-              Gérer les photos
-              <ArrowRightIcon className="h-3 w-3 ml-1" />
-            </button>
+
+          <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+            <div className="flex items-center justify-between mb-4">
+              <MousePointer className="h-8 w-8 text-green-500" />
+              <span className="text-xs text-green-600 font-medium">+8%</span>
+            </div>
+            <p className="text-2xl font-bold">{stats.clicks}</p>
+            <p className="text-gray-600 text-sm">Clics sur contact</p>
           </div>
-          
-          <div className="bg-white rounded-lg shadow p-6">
-            <CogIcon className="h-8 w-8 text-gray-600 mb-3" />
-            <h3 className="font-semibold mb-1">Paramètres</h3>
-            <p className="text-sm text-gray-600 mb-3">
-              Configurez votre compte
-            </p>
-            <button className="text-sm text-blue-600 hover:underline flex items-center">
-              Accéder aux paramètres
-              <ArrowRightIcon className="h-3 w-3 ml-1" />
-            </button>
+
+          <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+            <div className="flex items-center justify-between mb-4">
+              <Heart className="h-8 w-8 text-red-500" />
+              <span className="text-xs text-green-600 font-medium">+5</span>
+            </div>
+            <p className="text-2xl font-bold">{stats.favorites}</p>
+            <p className="text-gray-600 text-sm">Favoris</p>
+          </div>
+
+          <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+            <div className="flex items-center justify-between mb-4">
+              <Star className="h-8 w-8 text-yellow-500" />
+              <span className="text-xs text-gray-500">{stats.reviews} avis</span>
+            </div>
+            <p className="text-2xl font-bold">{stats.rating}</p>
+            <p className="text-gray-600 text-sm">Note moyenne</p>
           </div>
         </div>
 
-        {/* Plan et upgrade */}
-        <div className="mt-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-6 text-white">
-          <h3 className="text-xl font-bold mb-2">Passez au plan Pro</h3>
-          <p className="mb-4">
-            Débloquez plus de fonctionnalités : newsletter, 6 photos, événements sur la homepage...
-          </p>
-          <button
-            onClick={() => router.push('/pro')}
-            className="px-6 py-2 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100"
-          >
-            Découvrir les offres Pro
-          </button>
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Left Column - Actions */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Quick Actions */}
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <h2 className="text-lg font-semibold mb-4 flex items-center">
+                <Zap className="h-5 w-5 mr-2 text-yellow-500" />
+                Actions rapides
+              </h2>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <Link 
+                  href="/pro/etablissement/edit"
+                  className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
+                >
+                  <Edit className="h-5 w-5 text-gray-600 mr-3" />
+                  <div>
+                    <p className="font-medium">Modifier ma fiche</p>
+                    <p className="text-sm text-gray-500">Infos, horaires, contact</p>
+                  </div>
+                </Link>
+
+                <Link 
+                  href="/pro/photos"
+                  className={`flex items-center p-4 rounded-lg transition ${
+                    isPro ? 'bg-gray-50 hover:bg-gray-100' : 'bg-gray-50 opacity-60 cursor-not-allowed'
+                  }`}
+                  onClick={(e) => !isPro && e.preventDefault()}
+                >
+                  <ImageIcon className="h-5 w-5 text-gray-600 mr-3" />
+                  <div>
+                    <p className="font-medium">Gérer mes photos</p>
+                    <p className="text-sm text-gray-500">
+                      {isPro ? 'Galerie illimitée' : '1 photo (Pro: illimité)'}
+                    </p>
+                  </div>
+                  {!isPro && <Lock className="h-4 w-4 text-gray-400 ml-auto" />}
+                </Link>
+
+                <Link 
+                  href="/pro/events"
+                  className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition"
+                >
+                  <Calendar className="h-5 w-5 text-gray-600 mr-3" />
+                  <div>
+                    <p className="font-medium">Mes événements</p>
+                    <p className="text-sm text-gray-500">
+                      {isPro ? 'Illimités' : '3/mois'}
+                    </p>
+                  </div>
+                </Link>
+
+                <Link 
+                  href="/pro/blog"
+                  className={`flex items-center p-4 rounded-lg transition ${
+                    isPro ? 'bg-gray-50 hover:bg-gray-100' : 'bg-gray-50 opacity-60 cursor-not-allowed'
+                  }`}
+                  onClick={(e) => !isPro && e.preventDefault()}
+                >
+                  <FileText className="h-5 w-5 text-gray-600 mr-3" />
+                  <div>
+                    <p className="font-medium">Articles blog</p>
+                    <p className="text-sm text-gray-500">
+                      {isPro ? 'Créer des articles' : 'Pro uniquement'}
+                    </p>
+                  </div>
+                  {!isPro && <Lock className="h-4 w-4 text-gray-400 ml-auto" />}
+                </Link>
+              </div>
+            </div>
+
+            {/* Premium Features */}
+            {isPro && (
+              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
+                <h2 className="text-lg font-semibold mb-4 flex items-center">
+                  <Crown className="h-5 w-5 mr-2 text-purple-600" />
+                  Outils Pro
+                </h2>
+                
+                <div className="space-y-3">
+                  <Link 
+                    href="/pro/newsletter"
+                    className={`flex items-center justify-between p-4 bg-white rounded-lg hover:shadow-md transition ${
+                      !isPremium && 'opacity-75'
+                    }`}
+                  >
+                    <div className="flex items-center">
+                      <Megaphone className="h-5 w-5 text-purple-600 mr-3" />
+                      <div>
+                        <p className="font-medium">Newsletter</p>
+                        <p className="text-sm text-gray-500">
+                          {isPremium ? 'Envoyez vos actualités' : 'Premium uniquement'}
+                        </p>
+                      </div>
+                    </div>
+                    {isPremium ? (
+                      <ChevronRight className="h-5 w-5 text-gray-400" />
+                    ) : (
+                      <Lock className="h-4 w-4 text-gray-400" />
+                    )}
+                  </Link>
+
+                  <Link 
+                    href="/pro/analytics"
+                    className="flex items-center justify-between p-4 bg-white rounded-lg hover:shadow-md transition"
+                  >
+                    <div className="flex items-center">
+                      <BarChart3 className="h-5 w-5 text-blue-600 mr-3" />
+                      <div>
+                        <p className="font-medium">Analytics avancés</p>
+                        <p className="text-sm text-gray-500">Statistiques détaillées</p>
+                      </div>
+                    </div>
+                    <ChevronRight className="h-5 w-5 text-gray-400" />
+                  </Link>
+
+                  <Link 
+                    href="/pro/reviews"
+                    className="flex items-center justify-between p-4 bg-white rounded-lg hover:shadow-md transition"
+                  >
+                    <div className="flex items-center">
+                      <MessageSquare className="h-5 w-5 text-green-600 mr-3" />
+                      <div>
+                        <p className="font-medium">Gestion des avis</p>
+                        <p className="text-sm text-gray-500">Répondre aux clients</p>
+                      </div>
+                    </div>
+                    <ChevronRight className="h-5 w-5 text-gray-400" />
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {/* Recent Activity */}
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <h2 className="text-lg font-semibold mb-4">Activité récente</h2>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="h-2 w-2 bg-green-500 rounded-full mt-2"></div>
+                  <div>
+                    <p className="text-sm">Nouvel avis 5 étoiles de <span className="font-medium">Marie D.</span></p>
+                    <p className="text-xs text-gray-500">Il y a 2 heures</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="h-2 w-2 bg-blue-500 rounded-full mt-2"></div>
+                  <div>
+                    <p className="text-sm">23 nouvelles vues sur votre fiche</p>
+                    <p className="text-xs text-gray-500">Aujourd'hui</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="h-2 w-2 bg-purple-500 rounded-full mt-2"></div>
+                  <div>
+                    <p className="text-sm">Votre événement "Soirée Jazz" commence dans 3 jours</p>
+                    <p className="text-xs text-gray-500">Rappel</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Sidebar */}
+          <div className="space-y-6">
+            {/* Upgrade Card */}
+            {!isPremium && (
+              <div className={`rounded-xl p-6 text-white shadow-lg ${
+                isPro 
+                  ? 'bg-gradient-to-br from-purple-600 to-pink-600' 
+                  : 'bg-gradient-to-br from-blue-600 to-purple-600'
+              }`}>
+                <h3 className="text-lg font-semibold mb-2">
+                  {isPro ? 'Passez au Premium' : 'Passez au Pro'}
+                </h3>
+                <p className="text-sm mb-4 opacity-90">
+                  {isPro 
+                    ? 'Accédez à la newsletter et à tous les outils marketing'
+                    : 'Débloquez les photos illimitées, articles blog et plus'
+                  }
+                </p>
+                <ul className="space-y-2 mb-4">
+                  {isPro ? (
+                    <>
+                      <li className="text-sm flex items-center">
+                        <CheckIcon className="h-4 w-4 mr-2" />
+                        Newsletter 5000+ abonnés
+                      </li>
+                      <li className="text-sm flex items-center">
+                        <CheckIcon className="h-4 w-4 mr-2" />
+                        Bannière publicitaire
+                      </li>
+                      <li className="text-sm flex items-center">
+                        <CheckIcon className="h-4 w-4 mr-2" />
+                        Support prioritaire
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li className="text-sm flex items-center">
+                        <CheckIcon className="h-4 w-4 mr-2" />
+                        Photos illimitées
+                      </li>
+                      <li className="text-sm flex items-center">
+                        <CheckIcon className="h-4 w-4 mr-2" />
+                        Articles blog SEO
+                      </li>
+                      <li className="text-sm flex items-center">
+                        <CheckIcon className="h-4 w-4 mr-2" />
+                        Analytics avancés
+                      </li>
+                    </>
+                  )}
+                </ul>
+                <Link 
+                  href="/pro/upgrade"
+                  className="block w-full bg-white text-blue-600 py-2 px-4 rounded-lg text-center font-medium hover:bg-gray-50 transition"
+                >
+                  Upgrader maintenant
+                </Link>
+              </div>
+            )}
+
+            {/* Support Card */}
+            <div className="bg-white rounded-xl p-6 shadow-sm">
+              <h3 className="text-lg font-semibold mb-4">Besoin d'aide ?</h3>
+              <div className="space-y-3">
+                <Link 
+                  href="/pro/guide"
+                  className="flex items-center text-gray-700 hover:text-blue-600"
+                >
+                  <FileText className="h-5 w-5 mr-2" />
+                  Guide d'utilisation
+                </Link>
+                <Link 
+                  href="/pro/faq"
+                  className="flex items-center text-gray-700 hover:text-blue-600"
+                >
+                  <MessageSquare className="h-5 w-5 mr-2" />
+                  FAQ
+                </Link>
+                <Link 
+                  href="/contact"
+                  className="flex items-center text-gray-700 hover:text-blue-600"
+                >
+                  <Users className="h-5 w-5 mr-2" />
+                  Contacter le support
+                </Link>
+              </div>
+            </div>
+
+            {/* Tips Card */}
+            <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
+              <h3 className="text-lg font-semibold mb-3 flex items-center">
+                <Sparkles className="h-5 w-5 mr-2 text-yellow-600" />
+                Astuce du jour
+              </h3>
+              <p className="text-sm text-gray-700">
+                Les fiches avec au moins 5 photos ont <span className="font-medium">3x plus de clics</span>. 
+                {!isPro && ' Passez au Pro pour ajouter plus de photos !'}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
