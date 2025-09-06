@@ -4,9 +4,9 @@ import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { createClient } from '@supabase/supabase-js';
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { Building2, Lock } from 'lucide-react';
+import { Building2, Lock, CheckCircle } from 'lucide-react';
 
 // Client Supabase
 const supabase = createClient(
@@ -16,6 +16,8 @@ const supabase = createClient(
 
 export default function ConnexionProPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const isConfirmed = searchParams.get('confirmed') === 'true';
 
   useEffect(() => {
     // Écouter les changements d'authentification
@@ -78,6 +80,23 @@ export default function ConnexionProPage() {
             Accédez à votre tableau de bord professionnel
           </p>
         </div>
+
+        {/* Message de confirmation si email validé */}
+        {isConfirmed && (
+          <div className="mb-6 bg-green-50 border border-green-200 rounded-lg p-4">
+            <div className="flex items-start">
+              <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 mr-3" />
+              <div>
+                <h3 className="text-sm font-semibold text-green-900">
+                  Email confirmé avec succès !
+                </h3>
+                <p className="text-sm text-green-700 mt-1">
+                  Vous pouvez maintenant vous connecter avec vos identifiants.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Formulaire de connexion */}
         <div className="bg-white py-8 px-6 shadow-xl rounded-xl">
