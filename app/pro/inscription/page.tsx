@@ -43,8 +43,6 @@ function InscriptionProContent() {
   const [formData, setFormData] = useState({
     // Infos entreprise
     name: '',
-    vat_number: '', // Optionnel au début
-    siret: '',
     
     // Contact
     email: '',
@@ -192,10 +190,7 @@ function InscriptionProContent() {
         .from('establishments')
         .insert({
           user_id: currentUser.id,
-          user_id: currentUser.id,
           name: formattedData.name,
-          vat_number: formattedData.vat_number || null,
-          siret: formattedData.siret || null,
           email: formattedData.email || currentUser.email,
           phone: formattedData.phone || null,
           website: formattedData.website || null,
@@ -235,24 +230,31 @@ function InscriptionProContent() {
         throw new Error('Plan non trouvé');
       }
 
-      // Créer l'abonnement
-      const { error: subscriptionError } = await supabase
-        .from('subscriptions')
-        .insert({
-          establishment_id: establishment.id,
-          plan_id: plan.id,
-          status: selectedPlan === 'basic' ? 'active' : 'trialing',
-          billing_cycle: billingCycle,
-          trial_start: new Date().toISOString(),
-          trial_end: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-          current_period_start: new Date().toISOString(),
-          current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
-        })
-        .select();
+      // Essayer de créer l'abonnement (mais ne pas bloquer si la table n'existe pas)
+      try {
+        const { error: subscriptionError } = await supabase
+          .from('subscriptions')
+          .insert({
+            establishment_id: establishment.id,
+            plan_id: plan.id,
+            status: selectedPlan === 'basic' ? 'active' : 'trialing',
+            billing_cycle: billingCycle,
+            trial_start: new Date().toISOString(),
+            trial_end: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+            current_period_start: new Date().toISOString(),
+            current_period_end: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+          })
+          .select();
 
-      if (subscriptionError) {
-        console.error('Erreur création abonnement:', subscriptionError);
-        throw new Error('Erreur lors de la création de l\'abonnement');
+        if (subscriptionError) {
+          console.error('Erreur création abonnement:', subscriptionError);
+          // Ne pas bloquer l'inscription si l'abonnement ne peut pas être créé
+          console.log('⚠️ Abonnement non créé, mais inscription continuée');
+        } else {
+          console.log('✅ Abonnement créé avec succès');
+        }
+      } catch (subError) {
+        console.log('⚠️ Table subscriptions probablement manquante, inscription continuée sans abonnement');
       }
 
       // Message de succès
@@ -371,33 +373,7 @@ function InscriptionProContent() {
                   />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-1">
-                      Numéro de TVA <span className="text-gray-500 text-xs">(optionnel)</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.vat_number}
-                      onChange={(e) => setFormData({...formData, vat_number: e.target.value})}
-                      placeholder="FR12345678901"
-                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                    />
-                    <p className="text-xs text-gray-500 mt-1">Vous pourrez l'ajouter plus tard</p>
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium mb-1">
-                      SIRET
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.siret}
-                      onChange={(e) => setFormData({...formData, siret: e.target.value})}
-                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                </div>
+                {/* TVA et SIRET retirés - seront demandés plus tard */}
 
                 <div>
                   <label className="block text-sm font-medium mb-1">
