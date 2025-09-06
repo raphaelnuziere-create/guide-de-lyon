@@ -132,6 +132,56 @@ export default function TestAuthPage() {
           </div>
         )}
         
+        {/* Outils de diagnostic */}
+        <div className="bg-white rounded-lg shadow p-6 mb-6">
+          <h3 className="font-semibold mb-4">🔧 Outils de diagnostic</h3>
+          <div className="space-y-2">
+            <button
+              onClick={async () => {
+                if (!email) {
+                  alert('Entrez un email d\'abord');
+                  return;
+                }
+                setLoading(true);
+                const res = await fetch('/api/check-user', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ email })
+                });
+                const data = await res.json();
+                setResult(data);
+                setLoading(false);
+              }}
+              className="w-full px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700"
+            >
+              🔍 Vérifier l'état de l'utilisateur
+            </button>
+            
+            <button
+              onClick={async () => {
+                if (!email || !password) {
+                  alert('Entrez email ET mot de passe');
+                  return;
+                }
+                if (confirm(`Réinitialiser le mot de passe pour ${email} ?`)) {
+                  setLoading(true);
+                  const res = await fetch('/api/force-reset-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, newPassword: password })
+                  });
+                  const data = await res.json();
+                  setResult(data);
+                  setLoading(false);
+                }
+              }}
+              className="w-full px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+            >
+              🔐 Forcer réinitialisation mot de passe
+            </button>
+          </div>
+        </div>
+        
         <div className="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-4">
           <h3 className="font-semibold text-blue-900 mb-2">Instructions:</h3>
           <ol className="list-decimal list-inside text-sm text-blue-800 space-y-1">
