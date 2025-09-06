@@ -52,16 +52,33 @@ export default function SimpleDashboardPro() {
     }
     
     try {
-      const { data, error } = await supabase
+      // Première tentative
+      let { data, error } = await supabase
         .from('establishments')
         .select('*')
         .eq('user_id', user.id)
         .single();
       
+      // Si pas trouvé, attendre un peu et réessayer (pour les nouvelles inscriptions)
+      if (error && error.code === 'PGRST116') {
+        console.log('Établissement non trouvé, nouvelle tentative dans 1 seconde...');
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Deuxième tentative
+        const retry = await supabase
+          .from('establishments')
+          .select('*')
+          .eq('user_id', user.id)
+          .single();
+        
+        data = retry.data;
+        error = retry.error;
+      }
+      
       if (error) {
         console.error('Erreur chargement établissement:', error);
         if (error.code === 'PGRST116') {
-          // Pas d'établissement trouvé
+          // Pas d'établissement trouvé après retry
           console.log('Pas d\'établissement, redirection vers inscription');
           router.push('/pro/inscription');
         } else {
@@ -130,7 +147,7 @@ export default function SimpleDashboardPro() {
             </div>
             
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">{user.email}</span>
+              <span className="text-sm text-gray-600">{user?.email}</span>
               <button
                 onClick={handleSignOut}
                 className="px-4 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200"

@@ -122,8 +122,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         router.push('/admin');
       }
     } else if (!loading && !user) {
-      // Protection des routes
-      if ((pathname.startsWith('/pro/') && pathname !== '/pro' && pathname !== '/pro/inscription') || 
+      // Protection des routes - mais PAS pendant l'inscription
+      if ((pathname.startsWith('/pro/') && 
+           pathname !== '/pro' && 
+           pathname !== '/pro/inscription' && 
+           pathname !== '/pro/dashboard') || 
           (pathname.startsWith('/professionnel/') && 
           !pathname.includes('/connexion') && 
           !pathname.includes('/register'))) {

@@ -263,10 +263,14 @@ function InscriptionProContent() {
       
       console.log('🎉 Inscription terminée avec succès !');
       
-      // Redirection après 3 secondes
+      // Forcer le rafraîchissement de l'auth context avant de rediriger
+      // Cela garantit que l'utilisateur sera bien reconnu comme connecté
+      await supabase.auth.getSession();
+      
+      // Redirection directe vers le dashboard (l'utilisateur est déjà connecté)
       setTimeout(() => {
-        router.push('/connexion/pro');
-      }, 3000)
+        router.push('/pro/dashboard');
+      }, 2000)
       
     } catch (err: any) {
       console.error('Erreur complète:', err);
@@ -315,14 +319,14 @@ function InscriptionProContent() {
             Vérifiez votre boîte mail pour confirmer votre adresse email.
           </p>
           <div className="space-y-3">
-            <a
-              href="/connexion/pro"
+            <button
+              onClick={() => router.push('/pro/dashboard')}
               className="block w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
             >
-              Se connecter maintenant
-            </a>
+              Accéder à mon tableau de bord
+            </button>
             <p className="text-xs text-gray-500">
-              Redirection automatique dans 3 secondes...
+              Redirection automatique dans 2 secondes...
             </p>
           </div>
         </div>
