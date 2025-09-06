@@ -53,7 +53,8 @@ export default function InscriptionProPage() {
           }, 2000);
         } else if (data.needsConfirmation) {
           // Si confirmation email requise, rediriger vers page d'attente
-          router.push('/auth/pro/attente-confirmation');
+          // Redirection directe vers la création d'établissement après inscription
+          router.push('/pro/etablissement/creation');
         }
       } else {
         setError(data.error);
