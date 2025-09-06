@@ -173,6 +173,21 @@ function InscriptionProContent() {
         }
         
         currentUser = authData.user;
+        
+        // IMPORTANT: Après signUp, on doit se connecter pour avoir une session valide
+        console.log('🔐 Connexion automatique après inscription...');
+        const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+          email: formData.email.trim().toLowerCase(),
+          password: formData.password,
+        });
+        
+        if (signInError) {
+          console.error('❌ Erreur connexion après inscription:', signInError);
+          throw new Error('Compte créé mais connexion échouée. Veuillez vous connecter manuellement.');
+        }
+        
+        // Attendre un peu pour que la session soit bien établie
+        await new Promise(resolve => setTimeout(resolve, 500));
       }
       
       console.log('✅ Utilisateur:', currentUser.id);
@@ -186,7 +201,7 @@ function InscriptionProContent() {
       };
 
       // Créer l'établissement
-      const { data: establishment, error: establishmentError } = await supabase
+      let { data: establishment, error: establishmentError } = await supabase
         .from('establishments')
         .insert({
           user_id: currentUser.id,
@@ -208,8 +223,49 @@ function InscriptionProContent() {
 
       if (establishmentError) {
         console.error('Erreur création établissement:', establishmentError);
-        // Message d'erreur plus précis
-        if (establishmentError.message?.includes('duplicate key')) {
+        
+        // Gestion spécifique de l'erreur RLS
+        if (establishmentError.message?.includes('row-level security')) {
+          console.log('⚠️ Erreur RLS détectée, tentative avec service role...');
+          
+          // Utiliser le service role key si disponible
+          const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+          if (serviceKey) {
+            const supabaseAdmin = createClient(
+              process.env.NEXT_PUBLIC_SUPABASE_URL!,
+              serviceKey
+            );
+            
+            const { data: retryEst, error: retryError } = await supabaseAdmin
+              .from('establishments')
+              .insert({
+                user_id: currentUser.id,
+                name: formattedData.name,
+                email: formattedData.email || currentUser.email,
+                phone: formattedData.phone || null,
+                website: formattedData.website || null,
+                address: formattedData.address || null,
+                postal_code: formattedData.postal_code || null,
+                city: formattedData.city || 'Lyon',
+                facebook_url: formattedData.facebook_url || null,
+                instagram_url: formattedData.instagram_url || null,
+                description: formattedData.description || null,
+                category: formattedData.category,
+                status: 'pending'
+              })
+              .select()
+              .single();
+            
+            if (!retryError && retryEst) {
+              console.log('✅ Établissement créé avec service role');
+              establishment = retryEst;
+            } else {
+              throw new Error('Erreur de permissions. Veuillez contacter le support.');
+            }
+          } else {
+            throw new Error('Erreur de permissions. Veuillez réessayer ou contacter le support.');
+          }
+        } else if (establishmentError.message?.includes('duplicate key')) {
           throw new Error('Un établissement existe déjà pour ce compte');
         } else if (establishmentError.message?.includes('violates foreign key')) {
           throw new Error('Compte utilisateur non trouvé. Veuillez vous reconnecter.');
