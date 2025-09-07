@@ -49,14 +49,20 @@ export default function ModernArticleTemplate({ article, relatedArticles = [] }:
     <article className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section avec image immersive */}
       <div className="relative h-[70vh] min-h-[500px] w-full">
-        <Image
-          src={featuredImage}
-          alt={article.title}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        {featuredImage && (
+          <Image
+            src={featuredImage}
+            alt={article.title}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+            quality={90}
+          />
+        )}
+        {/* Double overlay pour garantir la lisibilité */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />
         
         {/* Contenu Hero */}
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 lg:p-16">
