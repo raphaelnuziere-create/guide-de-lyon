@@ -3,19 +3,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { supabaseAuth, AuthUser } from './supabase-auth';
-import { createClient } from '@supabase/supabase-js';
-
-// Créer le client Supabase avec vérification
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-let supabase: any = null;
-
-if (supabaseUrl && supabaseAnonKey) {
-  supabase = createClient(supabaseUrl, supabaseAnonKey);
-} else {
-  console.warn('⚠️ Variables Supabase manquantes. Connexion désactivée.');
-}
+import { supabase } from '@/app/lib/supabase/client';
 
 interface AuthContextType {
   user: AuthUser | null;
