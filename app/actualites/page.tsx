@@ -1,4 +1,5 @@
 'use client'
+// Page actualités - Guide de Lyon
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
