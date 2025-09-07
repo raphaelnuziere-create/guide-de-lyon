@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Calendar, Clock, User, ArrowRight, Search, Tag } from 'lucide-react'
 import { blogService, type BlogPost } from '@/lib/blog/blog-service'
+import LoadingWithTimeout from '@/app/components/LoadingWithTimeout'
 
 /**
  * Version améliorée de la page liste blog
@@ -25,11 +26,22 @@ export default function BlogPage() {
   const fetchPosts = async () => {
     try {
       setLoading(true)
-      const articles = await blogService.getAllPosts()
+      
+      // Ajouter un timeout à la requête
+      const fetchPromise = blogService.getAllPosts()
+      const timeoutPromise = new Promise<BlogPost[]>((_, reject) => 
+        setTimeout(() => reject(new Error('Timeout')), 8000)
+      )
+      
+      const articles = await Promise.race([fetchPromise, timeoutPromise])
       setPosts(articles)
     } catch (error) {
       console.error('Erreur lors de la récupération des articles:', error)
       setPosts([])
+      // Si c'est un timeout, on force quand même l'arrêt du loading
+      if (error instanceof Error && error.message === 'Timeout') {
+        console.log('[Blog] Timeout détecté, arrêt du chargement')
+      }
     } finally {
       setLoading(false)
     }
@@ -115,10 +127,15 @@ export default function BlogPage() {
       {/* Blog Posts Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {loading ? (
-          <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-            <p className="mt-4 text-gray-600">Chargement des articles...</p>
-          </div>
+          <LoadingWithTimeout 
+            timeout={10000}
+            message="Chargement des articles..."
+            onTimeout={() => {
+              console.log('[Blog] Timeout du chargement')
+              setLoading(false)
+              setPosts([])
+            }}
+          />
         ) : filteredPosts.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-600 text-lg">Aucun article trouvé.</p>

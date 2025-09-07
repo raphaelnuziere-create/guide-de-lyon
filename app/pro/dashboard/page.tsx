@@ -34,6 +34,7 @@ import {
 } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase/client';
 import { EstablishmentService, EstablishmentData, PlanLimits } from '@/app/lib/services/establishmentService';
+import LoadingWithTimeout from '@/app/components/LoadingWithTimeout';
 
 type UserPlan = 'basic' | 'pro' | 'expert';
 
@@ -44,65 +45,93 @@ export default function DashboardPro() {
   const [planLimits, setPlanLimits] = useState<PlanLimits | null>(null);
   const [loading, setLoading] = useState(true);
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
+  const [sessionCheckCount, setSessionCheckCount] = useState(0);
+  const MAX_SESSION_CHECKS = 3;
 
   useEffect(() => {
     checkUser();
   }, []);
 
   const checkUser = async () => {
-    console.log('[Dashboard] Checking user session...');
-    const { data: { session } } = await supabase.auth.getSession();
-    
-    if (!session) {
-      console.log('[Dashboard] No session found, waiting for auth...');
-      // Attendre un peu pour laisser le temps à la session de se charger
-      setTimeout(async () => {
-        const { data: { session: retrySession } } = await supabase.auth.getSession();
-        if (!retrySession) {
-          console.log('[Dashboard] Still no session, redirecting to login');
-          router.push('/auth/pro/connexion');
+    try {
+      console.log('[Dashboard] Checking user session... (attempt', sessionCheckCount + 1, ')');
+      
+      // Essayer de récupérer la session avec un timeout
+      const sessionPromise = supabase.auth.getSession();
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Session timeout')), 3000)
+      );
+      
+      const { data: { session } } = await Promise.race([
+        sessionPromise,
+        timeoutPromise
+      ]) as any;
+      
+      if (!session) {
+        // Si pas de session et on n'a pas atteint le max de tentatives
+        if (sessionCheckCount < MAX_SESSION_CHECKS) {
+          console.log('[Dashboard] No session found, retrying...');
+          setSessionCheckCount(prev => prev + 1);
+          
+          // Attendre progressivement plus longtemps entre les tentatives
+          setTimeout(() => {
+            checkUser();
+          }, 1000 * (sessionCheckCount + 1));
+          return;
         } else {
-          console.log('[Dashboard] Session found on retry!');
-          setUser(retrySession.user);
-          // Continuer le chargement...
-          const establishmentData = await EstablishmentService.getEstablishment(retrySession.user.id);
-          if (establishmentData) {
-            setEstablishment(establishmentData);
-            const limits = await EstablishmentService.getPlanLimits(establishmentData.plan);
-            setPlanLimits(limits);
-          }
-          setLoading(false);
+          // Après 3 tentatives, rediriger vers la connexion
+          console.log('[Dashboard] No session after', MAX_SESSION_CHECKS, 'attempts, redirecting to login');
+          router.push('/auth/pro/connexion');
+          return;
         }
-      }, 1000);
-      return;
+      }
+      
+      console.log('[Dashboard] Session found:', session.user.email);
+      setUser(session.user);
+
+      // Récupérer les données avec timeout aussi
+      const dataPromise = EstablishmentService.getEstablishment(session.user.id);
+      const dataTimeoutPromise = new Promise((resolve) => 
+        setTimeout(() => resolve(null), 5000)
+      );
+      
+      const establishmentData = await Promise.race([
+        dataPromise,
+        dataTimeoutPromise
+      ]) as EstablishmentData | null;
+
+      if (establishmentData) {
+        setEstablishment(establishmentData);
+        // Récupérer les limites du plan
+        const limits = await EstablishmentService.getPlanLimits(establishmentData.plan);
+        setPlanLimits(limits);
+      }
+      
+      setLoading(false);
+    } catch (error) {
+      console.error('[Dashboard] Error checking user:', error);
+      
+      // En cas d'erreur, réessayer si on n'a pas atteint le max
+      if (sessionCheckCount < MAX_SESSION_CHECKS) {
+        setSessionCheckCount(prev => prev + 1);
+        setTimeout(() => checkUser(), 2000);
+      } else {
+        // Sinon, arrêter le chargement et afficher une erreur
+        setLoading(false);
+      }
     }
-    
-    console.log('[Dashboard] Session found:', session.user.email);
-
-    setUser(session.user);
-
-    // Récupérer les vraies données de l'établissement
-    const establishmentData = await EstablishmentService.getEstablishment(session.user.id);
-
-    if (establishmentData) {
-      setEstablishment(establishmentData);
-      // Récupérer les limites du plan
-      const limits = await EstablishmentService.getPlanLimits(establishmentData.plan);
-      setPlanLimits(limits);
-    }
-    // Si pas d'établissement, on affiche quand même le dashboard avec une invitation
-
-    setLoading(false);
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Chargement du dashboard...</p>
-        </div>
-      </div>
+      <LoadingWithTimeout 
+        timeout={10000}
+        message="Chargement du dashboard..."
+        onTimeout={() => {
+          console.log('[Dashboard] Loading timeout');
+          setLoading(false);
+        }}
+      />
     );
   }
 
