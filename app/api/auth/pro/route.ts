@@ -69,12 +69,15 @@ export async function POST(request: Request) {
       
     } else if (action === 'signin') {
       // CONNEXION
+      console.log('[API] Tentative de connexion pour:', email);
+      
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
       
       if (error) {
+        console.error('[API] Erreur Supabase:', error);
         return NextResponse.json({ 
           success: false,
           error: error.message 
@@ -82,12 +85,20 @@ export async function POST(request: Request) {
       }
       
       if (data.session) {
+        console.log('[API] Session créée avec succès');
         // Toujours rediriger vers le dashboard après connexion
         return NextResponse.json({
           success: true,
           message: 'Connexion réussie',
           redirectTo: '/pro/dashboard'
         });
+      } else {
+        // Cas où pas d'erreur mais pas de session non plus
+        console.error('[API] Pas de session créée');
+        return NextResponse.json({
+          success: false,
+          error: 'Impossible de créer la session. Vérifiez vos identifiants.'
+        }, { status: 401 });
       }
       
     } else if (action === 'reset') {

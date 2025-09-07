@@ -34,6 +34,8 @@ function ConnexionProContent() {
     setLoading(true);
 
     try {
+      console.log('Tentative de connexion pour:', email);
+      
       const response = await fetch('/api/auth/pro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -44,18 +46,24 @@ function ConnexionProContent() {
         }),
       });
 
+      console.log('Response status:', response.status);
       const data = await response.json();
+      console.log('Response data:', data);
 
       if (data.success) {
-        router.push(data.redirectTo);
+        console.log('Connexion réussie, redirection vers:', data.redirectTo);
+        // Forcer la redirection
+        window.location.href = data.redirectTo;
       } else {
-        setError(data.error);
+        console.error('Erreur de connexion:', data.error);
+        setError(data.error || 'Erreur de connexion');
         // Si invalid credentials, proposer reset
-        if (data.error.includes('Invalid login credentials')) {
+        if (data.error && data.error.includes('Invalid login credentials')) {
           setShowReset(true);
         }
       }
     } catch (err) {
+      console.error('Erreur catch:', err);
       setError('Erreur de connexion au serveur');
     } finally {
       setLoading(false);
