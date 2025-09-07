@@ -50,12 +50,34 @@ export default function DashboardPro() {
   }, []);
 
   const checkUser = async () => {
+    console.log('[Dashboard] Checking user session...');
     const { data: { session } } = await supabase.auth.getSession();
     
     if (!session) {
-      router.push('/auth/pro/connexion');
+      console.log('[Dashboard] No session found, waiting for auth...');
+      // Attendre un peu pour laisser le temps à la session de se charger
+      setTimeout(async () => {
+        const { data: { session: retrySession } } = await supabase.auth.getSession();
+        if (!retrySession) {
+          console.log('[Dashboard] Still no session, redirecting to login');
+          router.push('/auth/pro/connexion');
+        } else {
+          console.log('[Dashboard] Session found on retry!');
+          setUser(retrySession.user);
+          // Continuer le chargement...
+          const establishmentData = await EstablishmentService.getEstablishment(retrySession.user.id);
+          if (establishmentData) {
+            setEstablishment(establishmentData);
+            const limits = await EstablishmentService.getPlanLimits(establishmentData.plan);
+            setPlanLimits(limits);
+          }
+          setLoading(false);
+        }
+      }, 1000);
       return;
     }
+    
+    console.log('[Dashboard] Session found:', session.user.email);
 
     setUser(session.user);
 

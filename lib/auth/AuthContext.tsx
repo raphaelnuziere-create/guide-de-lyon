@@ -100,31 +100,35 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Redirections automatiques basées sur le rôle
   useEffect(() => {
-    if (!loading && user) {
+    // Ne rien faire pendant le chargement initial
+    if (loading) return;
+    
+    if (user) {
       // Redirection après connexion
       if (pathname === '/auth/pro/connexion' || pathname === '/connexion/pro' || pathname === '/professionnel/connexion') {
         console.log('[AuthContext] User logged in on login page, redirecting to dashboard');
-        // Rediriger tous les utilisateurs connectés vers le dashboard
-        // Le dashboard gèrera la redirection vers inscription si pas d'établissement
         router.push('/pro/dashboard');
       } else if ((pathname === '/connexion/admin' || pathname === '/administration/connexion') && user.role === 'admin') {
         router.push('/admin');
       }
-    } else if (!loading && !user) {
-      // Protection des routes - mais PAS pendant l'inscription
-      // Exclure /pro/dashboard de la protection car il gère sa propre redirection
-      if ((pathname.startsWith('/pro/') && 
-           pathname !== '/pro' && 
-           pathname !== '/pro/inscription' && 
-           pathname !== '/pro/dashboard') || 
-          (pathname.startsWith('/professionnel/') && 
-          pathname !== '/professionnel/dashboard' &&
-          !pathname.includes('/connexion') && 
-          !pathname.includes('/register'))) {
-        router.push('/auth/pro');
-      } else if ((pathname.startsWith('/admin') && pathname !== '/admin') || 
-                 (pathname.startsWith('/administration/') && 
-                 !pathname.includes('/connexion'))) {
+    } else {
+      // Protection des routes - seulement après chargement complet
+      // Ne PAS rediriger automatiquement depuis /pro/dashboard
+      // car il gère sa propre logique
+      if (pathname === '/pro/dashboard') {
+        // Le dashboard affichera l'invitation à se connecter
+        return;
+      }
+      
+      // Protéger les autres pages /pro/
+      if (pathname.startsWith('/pro/') && 
+          pathname !== '/pro' && 
+          pathname !== '/pro/inscription') {
+        console.log('[AuthContext] No user, redirecting to auth from:', pathname);
+        router.push('/auth/pro/connexion');
+      } else if (pathname.startsWith('/admin') && 
+                 pathname !== '/admin' &&
+                 !pathname.includes('/connexion')) {
         router.push('/connexion/admin');
       }
     }

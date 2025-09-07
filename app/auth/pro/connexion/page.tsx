@@ -58,8 +58,8 @@ export default function ProConnexionPage() {
         addDebug(`Connexion réussie! Redirection vers: ${data.redirectTo}`);
         console.log('[Page Connexion] Success! Redirecting to:', data.redirectTo);
         
-        // Forcer la redirection immédiatement
-        window.location.href = data.redirectTo || '/pro/dashboard';
+        // Forcer le rechargement complet de l'application avec la nouvelle session
+        window.location.replace(data.redirectTo || '/pro/dashboard');
       } else {
         const errorMsg = data.error || 'Erreur de connexion inconnue';
         addDebug(`Erreur: ${errorMsg}`);
