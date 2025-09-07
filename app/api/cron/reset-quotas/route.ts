@@ -4,20 +4,35 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextResponse } from 'next/server';
 
-// Créer un client Supabase avec la clé service (admin)
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
-  {
+// Fonction pour obtenir le client Supabase
+function getSupabaseAdmin() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  
+  if (!url || !key) {
+    console.error('[CRON] Supabase configuration missing');
+    return null;
+  }
+  
+  return createClient(url, key, {
     auth: {
       autoRefreshToken: false,
       persistSession: false
     }
-  }
-);
+  });
+}
 
 export async function GET(request: Request) {
   try {
+    // Obtenir le client Supabase
+    const supabaseAdmin = getSupabaseAdmin();
+    
+    if (!supabaseAdmin) {
+      return NextResponse.json(
+        { error: 'Database configuration missing' },
+        { status: 503 }
+      );
+    }
     // Vérifier le secret pour sécuriser l'endpoint
     const authHeader = request.headers.get('authorization');
     if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
@@ -102,8 +117,17 @@ export async function POST(request: Request) {
 
     console.log(`[CRON TEST] Resetting quota for establishment ${establishmentId}`);
 
+    // Obtenir le client Supabase pour le test
+    const supabaseTest = getSupabaseAdmin();
+    if (!supabaseTest) {
+      return NextResponse.json(
+        { error: 'Database configuration missing' },
+        { status: 503 }
+      );
+    }
+
     // Reset un seul établissement pour le test
-    const { error } = await supabaseAdmin.rpc('reset_establishment_quotas', {
+    const { error } = await supabaseTest.rpc('reset_establishment_quotas', {
       est_id: establishmentId
     });
 

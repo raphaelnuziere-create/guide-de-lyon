@@ -1,5 +1,5 @@
 // Service pour gérer les sessions de paiement Stripe
-import { stripe, STRIPE_PRODUCTS, StripeMetadata } from './config';
+import { getStripe, STRIPE_PRODUCTS, StripeMetadata } from './config';
 import { supabase } from '@/app/lib/supabase/client';
 
 export interface CreateCheckoutSessionParams {
@@ -19,6 +19,11 @@ export class StripeCheckoutService {
    */
   static async createCheckoutSession(params: CreateCheckoutSessionParams) {
     try {
+      const stripe = getStripe();
+      if (!stripe) {
+        throw new Error('Stripe not configured');
+      }
+
       const {
         userId,
         establishmentId,

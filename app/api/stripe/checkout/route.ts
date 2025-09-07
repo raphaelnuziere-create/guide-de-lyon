@@ -3,10 +3,18 @@ import { NextRequest, NextResponse } from 'next/server';
 import { StripeCheckoutService } from '@/app/lib/stripe/checkout';
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+// Fonction pour obtenir le client Supabase
+function getSupabase() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  
+  if (!url || !key) {
+    console.error('[Stripe Checkout] Supabase configuration missing');
+    return null;
+  }
+  
+  return createClient(url, key);
+}
 
 export async function POST(request: NextRequest) {
   try {

@@ -1,11 +1,22 @@
 // Configuration Stripe
 import Stripe from 'stripe';
 
-// Initialiser Stripe avec la clé secrète
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-12-18.acacia',
-  typescript: true,
-});
+// Fonction pour obtenir l'instance Stripe
+export function getStripe(): Stripe | null {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    console.warn('[Stripe] Configuration missing - STRIPE_SECRET_KEY');
+    return null;
+  }
+  
+  return new Stripe(key, {
+    apiVersion: '2025-01-27.acacia',
+    typescript: true,
+  });
+}
+
+// Export pour compatibilité (sera null si pas configuré)
+export const stripe = getStripe();
 
 // Configuration des produits et prix Stripe
 export const STRIPE_PRODUCTS = {
