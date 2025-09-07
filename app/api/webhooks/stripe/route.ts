@@ -55,20 +55,43 @@ export async function POST(request: NextRequest) {
         const session = event.data.object as Stripe.Checkout.Session;
         console.log('✅ Paiement réussi:', session.id);
         
-        // Récupérer les détails du client
-        const customerEmail = session.customer_email || session.customer_details?.email;
+        // Récupérer les métadonnées
+        const { userId, establishmentId, plan, billingCycle } = session.metadata || {};
         
-        if (customerEmail) {
-          // Envoyer email de confirmation
-          await emailTemplates.sendOrderConfirmation(customerEmail, {
-            reference: session.id,
-            amount: (session.amount_total || 0) / 100, // Convertir de centimes en euros
-            plan: session.metadata?.plan || 'Standard'
-          });
+        if (userId && establishmentId && plan) {
+          // Mettre à jour le plan dans Supabase
+          const { createClient } = await import('@supabase/supabase-js');
+          const supabase = createClient(
+            process.env.NEXT_PUBLIC_SUPABASE_URL!,
+            process.env.SUPABASE_SERVICE_ROLE_KEY!
+          );
+          
+          // Mettre à jour l'établissement
+          await supabase
+            .from('establishments')
+            .update({
+              plan,
+              stripe_customer_id: session.customer as string,
+              stripe_subscription_id: session.subscription as string,
+              subscription_status: 'active',
+              billing_cycle: billingCycle,
+              trial_ends_at: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+              updated_at: new Date().toISOString()
+            })
+            .eq('id', establishmentId);
+          
+          console.log(`✅ Plan ${plan} activé pour établissement ${establishmentId}`);
         }
         
-        // TODO: Mettre à jour la base de données
-        // await updateUserSubscription(session.customer, session.metadata);
+        // Envoyer email de confirmation
+        const customerEmail = session.customer_email || session.customer_details?.email;
+        if (customerEmail) {
+          await emailTemplates.sendOrderConfirmation(customerEmail, {
+            reference: session.id,
+            amount: (session.amount_total || 0) / 100,
+            plan: plan || 'Standard'
+          });
+        }
         
         break;
       }
@@ -117,8 +140,23 @@ export async function POST(request: NextRequest) {
         const subscription = event.data.object as Stripe.Subscription;
         console.log('❌ Abonnement annulé:', subscription.id);
         
-        // TODO: Désactiver l'abonnement
-        // await cancelSubscription(subscription);
+        // Rétrograder au plan Basic
+        const { createClient } = await import('@supabase/supabase-js');
+        const supabase = createClient(
+          process.env.NEXT_PUBLIC_SUPABASE_URL!,
+          process.env.SUPABASE_SERVICE_ROLE_KEY!
+        );
+        
+        await supabase
+          .from('establishments')
+          .update({
+            plan: 'basic',
+            subscription_status: 'canceled',
+            updated_at: new Date().toISOString()
+          })
+          .eq('stripe_subscription_id', subscription.id);
+        
+        console.log('✅ Établissement rétrogradé au plan Basic');
         
         break;
       }
