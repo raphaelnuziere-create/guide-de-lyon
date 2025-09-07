@@ -4,14 +4,29 @@ import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Calendar, Clock, User, ArrowLeft, Share2, Heart, MessageCircle, Tag } from 'lucide-react'
-import { blogService, type BlogPost } from '@/lib/blog/blog-service'
+import { supabase } from '@/lib/supabase'
 
-/**
- * Version améliorée de la page détail blog
- * - Utilise le service unifié pour accéder aux données
- * - Plus de contenu hardcodé
- * - Gestion d'erreur appropriée
- */
+interface BlogPost {
+  id: string
+  slug: string
+  title: string
+  excerpt: string
+  content: string
+  featured_image: string | null
+  category: string
+  tags: string[]
+  author: {
+    name: string
+    avatar?: string
+    bio?: string
+  }
+  published_at: string
+  reading_time: number
+  status: string
+  meta_title?: string
+  meta_description?: string
+}
+
 export default function BlogPostPage() {
   const params = useParams()
   const router = useRouter()
@@ -20,7 +35,6 @@ export default function BlogPostPage() {
   const [post, setPost] = useState<BlogPost | null>(null)
   const [loading, setLoading] = useState(true)
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([])
-  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (slug) {
@@ -31,33 +45,110 @@ export default function BlogPostPage() {
   const fetchPost = async () => {
     try {
       setLoading(true)
-      setError(null)
       
-      // Utiliser le service unifié
-      const article = await blogService.getPostBySlug(slug)
-      
-      if (!article) {
-        setError('Article non trouvé')
-        setPost(null)
+      // Vérifier si Supabase est configuré
+      if (!supabase) {
+        console.log('Supabase non configuré, utilisation des données de démonstration')
+        loadDemoPost()
         return
       }
       
-      setPost(article)
-      
-      // Récupérer les articles similaires
-      if (article.category && article.id) {
-        const related = await blogService.getRelatedPosts(
-          article.category, 
-          article.id
-        )
-        setRelatedPosts(related)
+      // Récupérer l'article depuis Supabase
+      const { data, error } = await supabase
+        .from('original_blog_posts')
+        .select('*')
+        .eq('slug', slug)
+        .single()
+
+      if (error || !data) {
+        console.error('Article non trouvé:', error)
+        loadDemoPost()
+      } else {
+        // Adapter les données si nécessaire
+        const postWithSlug = {
+          ...data,
+          slug: data.slug || slug,
+          author: data.author || { name: data.author_name || 'Guide de Lyon' },
+          tags: data.tags || []
+        }
+        setPost(postWithSlug)
+        fetchRelatedPosts(postWithSlug.category, postWithSlug.id)
       }
     } catch (error) {
-      console.error('Erreur lors de la récupération de l\'article:', error)
-      setError('Erreur lors du chargement de l\'article')
+      console.error('Erreur:', error)
+      loadDemoPost()
     } finally {
       setLoading(false)
     }
+  }
+
+  const fetchRelatedPosts = async (category: string, currentId: string) => {
+    try {
+      if (!supabase) return
+      
+      const { data } = await supabase
+        .from('original_blog_posts')
+        .select('*')
+        .eq('category', category)
+        .neq('id', currentId)
+        .limit(3)
+
+      if (data && data.length > 0) {
+        setRelatedPosts(data)
+      }
+    } catch (error) {
+      console.error('Erreur lors de la récupération des articles liés:', error)
+    }
+  }
+
+  const loadDemoPost = () => {
+    // Article de démonstration si non trouvé
+    const demoPost: any = {
+      id: '1',
+      slug: slug,
+      title: 'Découvrir le Vieux Lyon : Un voyage dans le temps',
+      excerpt: 'Explorez les ruelles médiévales et Renaissance du Vieux Lyon, classé au patrimoine mondial de l\'UNESCO.',
+      content: `
+        <h2>Un quartier chargé d'histoire</h2>
+        <p>Le Vieux Lyon est l'un des quartiers Renaissance les plus vastes d'Europe. Classé au patrimoine mondial de l'UNESCO depuis 1998, il s'étend sur 30 hectares au pied de la colline de Fourvière.</p>
+        
+        <h3>Les traboules, passages secrets de Lyon</h3>
+        <p>Les traboules sont des passages piétons à travers des cours d'immeuble qui permettent de passer d'une rue à une autre. Le Vieux Lyon en compte environ 40 ouvertes au public. Ces passages étaient utilisés par les canuts (ouvriers de la soie) pour transporter leurs marchandises à l'abri des intempéries.</p>
+        
+        <h3>Les incontournables du quartier</h3>
+        <ul>
+          <li><strong>La Cathédrale Saint-Jean</strong> : Joyau de l'architecture gothique</li>
+          <li><strong>Le Musée Gadagne</strong> : Histoire de Lyon et marionnettes du monde</li>
+          <li><strong>La Tour Rose</strong> : Symbole de la Renaissance lyonnaise</li>
+          <li><strong>La Place du Change</strong> : Ancienne bourse de Lyon</li>
+        </ul>
+        
+        <h3>Où manger dans le Vieux Lyon ?</h3>
+        <p>Le quartier regorge de bouchons lyonnais traditionnels où vous pourrez déguster les spécialités locales : quenelles, tablier de sapeur, cervelle de canut... Voici nos recommandations :</p>
+        <ul>
+          <li>Aux Lyonnais : Bouchon traditionnel tenu par Alain Ducasse</li>
+          <li>Daniel et Denise : Champion du monde du pâté croûte</li>
+          <li>Le Bouchon des Filles : Version moderne du bouchon</li>
+        </ul>
+        
+        <h3>Conseils pratiques</h3>
+        <p>Le Vieux Lyon se visite idéalement à pied. Prévoyez une demi-journée pour flâner dans les ruelles et découvrir les traboules. Le quartier est accessible par le métro D (station Vieux Lyon) ou par le funiculaire qui monte à Fourvière.</p>
+        
+        <p>N'hésitez pas à pousser les portes : de nombreuses cours intérieures cachent des trésors architecturaux. Les visites guidées sont recommandées pour ne rien manquer de l'histoire fascinante du quartier.</p>
+      `,
+      featured_image: 'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=1200',
+      category: 'Tourisme',
+      tags: ['patrimoine', 'histoire', 'UNESCO', 'architecture', 'Renaissance'],
+      author_name: 'Marie Dubois',
+      author: { 
+        name: 'Marie Dubois',
+        bio: 'Guide touristique passionnée par l\'histoire de Lyon'
+      },
+      created_at: new Date().toISOString(),
+      published_at: new Date().toISOString(),
+      reading_time: 5
+    }
+    setPost(demoPost)
   }
 
   const formatDate = (dateString: string) => {
@@ -69,29 +160,6 @@ export default function BlogPostPage() {
     })
   }
 
-  const handleShare = (platform: string) => {
-    const url = window.location.href
-    const title = post?.title || ''
-    
-    let shareUrl = ''
-    switch (platform) {
-      case 'facebook':
-        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`
-        break
-      case 'twitter':
-        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`
-        break
-      case 'whatsapp':
-        shareUrl = `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`
-        break
-    }
-    
-    if (shareUrl) {
-      window.open(shareUrl, '_blank', 'width=600,height=400')
-    }
-  }
-
-  // État de chargement
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -103,34 +171,14 @@ export default function BlogPostPage() {
     )
   }
 
-  // État d'erreur ou article non trouvé
-  if (error || !post) {
+  if (!post) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center max-w-md">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            {error || 'Article non trouvé'}
-          </h2>
-          <p className="text-gray-600 mb-6">
-            L'article que vous recherchez n'existe pas ou a été déplacé.
-          </p>
-          <div className="space-y-3">
-            <Link 
-              href="/blog" 
-              className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Retour au blog
-            </Link>
-            <div>
-              <Link 
-                href="/" 
-                className="text-blue-600 hover:text-blue-700"
-              >
-                Aller à l'accueil
-              </Link>
-            </div>
-          </div>
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Article non trouvé</h2>
+          <Link href="/blog" className="text-blue-600 hover:text-blue-700">
+            Retour au blog
+          </Link>
         </div>
       </div>
     )
@@ -140,13 +188,6 @@ export default function BlogPostPage() {
     <div className="min-h-screen bg-white">
       {/* Hero Section with Image */}
       <div className="relative h-96 bg-gradient-to-br from-blue-600 to-indigo-700">
-        {post.featured_image && (
-          <img 
-            src={post.featured_image} 
-            alt={post.title}
-            className="absolute inset-0 w-full h-full object-cover opacity-30"
-          />
-        )}
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
           <div className="text-white">
@@ -164,7 +205,7 @@ export default function BlogPostPage() {
               </span>
               <span className="flex items-center text-sm">
                 <Calendar className="w-4 h-4 mr-1" />
-                {formatDate(post.published_at || post.created_at)}
+                {formatDate((post as any).created_at || (post as any).published_at || new Date().toISOString())}
               </span>
               <span className="flex items-center text-sm">
                 <Clock className="w-4 h-4 mr-1" />
@@ -191,31 +232,17 @@ export default function BlogPostPage() {
             {/* Author Info */}
             <div className="flex items-center mb-8 pb-8 border-b">
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                {post.author?.avatar ? (
-                  <img 
-                    src={post.author.avatar} 
-                    alt={post.author.name}
-                    className="w-full h-full rounded-full object-cover"
-                  />
-                ) : (
-                  <User className="w-6 h-6 text-blue-600" />
-                )}
+                <User className="w-6 h-6 text-blue-600" />
               </div>
               <div className="ml-4">
-                <p className="font-semibold text-gray-900">
-                  {post.author?.name || post.author_name || 'Guide de Lyon'}
-                </p>
-                {post.author?.bio && (
+                <p className="font-semibold text-gray-900">{(post as any).author_name || post.author?.name || 'Auteur'}</p>
+                {(post.author?.bio) && (
                   <p className="text-sm text-gray-600">{post.author.bio}</p>
                 )}
               </div>
               
               <div className="ml-auto flex gap-2">
-                <button 
-                  onClick={() => handleShare('facebook')}
-                  className="p-2 text-gray-600 hover:text-blue-600 transition"
-                  title="Partager sur Facebook"
-                >
+                <button className="p-2 text-gray-600 hover:text-blue-600 transition">
                   <Share2 className="w-5 h-5" />
                 </button>
                 <button className="p-2 text-gray-600 hover:text-red-600 transition">
@@ -226,15 +253,7 @@ export default function BlogPostPage() {
 
             {/* Article Content */}
             <div 
-              className="prose prose-lg max-w-none
-                prose-headings:text-gray-900 
-                prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-8 prose-h2:mb-4
-                prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-3
-                prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4
-                prose-a:text-blue-600 prose-a:hover:text-blue-700
-                prose-ul:my-4 prose-ul:list-disc prose-ul:pl-6
-                prose-li:mb-2
-                prose-img:rounded-lg prose-img:shadow-md"
+              className="prose prose-lg max-w-none"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
@@ -246,7 +265,7 @@ export default function BlogPostPage() {
                   {post.tags.map((tag, index) => (
                     <Link
                       key={index}
-                      href={`/blog?tag=${encodeURIComponent(tag)}`}
+                      href={`/blog?tag=${tag}`}
                       className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-blue-100 hover:text-blue-700 transition"
                     >
                       <Tag className="w-3 h-3 mr-1" />
@@ -261,22 +280,13 @@ export default function BlogPostPage() {
             <div className="mt-12 p-6 bg-gray-50 rounded-lg">
               <p className="text-gray-700 font-semibold mb-4">Partager cet article</p>
               <div className="flex gap-4">
-                <button 
-                  onClick={() => handleShare('facebook')}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                >
+                <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
                   Facebook
                 </button>
-                <button 
-                  onClick={() => handleShare('twitter')}
-                  className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition"
-                >
+                <button className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition">
                   Twitter
                 </button>
-                <button 
-                  onClick={() => handleShare('whatsapp')}
-                  className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-                >
+                <button className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
                   WhatsApp
                 </button>
               </div>
@@ -295,24 +305,13 @@ export default function BlogPostPage() {
                   href={`/blog/${relatedPost.slug}`}
                   className="group"
                 >
-                  <div className="bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition">
-                    {relatedPost.featured_image ? (
-                      <img 
-                        src={relatedPost.featured_image}
-                        alt={relatedPost.title}
-                        className="h-40 w-full object-cover group-hover:opacity-90 transition"
-                      />
-                    ) : (
-                      <div className="h-40 bg-gradient-to-br from-gray-200 to-gray-300 group-hover:opacity-90 transition"></div>
-                    )}
+                  <div className="bg-gray-100 rounded-lg overflow-hidden">
+                    <div className="h-40 bg-gradient-to-br from-gray-200 to-gray-300 group-hover:opacity-90 transition"></div>
                     <div className="p-4">
                       <p className="text-sm text-blue-600 mb-2">{relatedPost.category}</p>
                       <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition line-clamp-2">
                         {relatedPost.title}
                       </h3>
-                      <p className="text-sm text-gray-600 mt-2 line-clamp-2">
-                        {relatedPost.excerpt}
-                      </p>
                     </div>
                   </div>
                 </Link>
@@ -334,7 +333,6 @@ export default function BlogPostPage() {
               type="email"
               placeholder="Votre adresse email"
               className="flex-1 px-6 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
             />
             <button
               type="submit"

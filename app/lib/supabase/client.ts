@@ -1,8 +1,13 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-// Configuration Supabase
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+// Configuration Supabase avec vérification
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+
+// Vérifier que les variables sont définies
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn('[Supabase] Configuration manquante. Les variables NEXT_PUBLIC_SUPABASE_URL et NEXT_PUBLIC_SUPABASE_ANON_KEY doivent être définies.');
+}
 
 // Variable globale pour le singleton (attachée à window en browser)
 declare global {
@@ -12,7 +17,12 @@ declare global {
 }
 
 // Fonction pour obtenir l'instance unique
-function getSupabaseClient(): SupabaseClient {
+function getSupabaseClient(): SupabaseClient | null {
+  // Si les variables ne sont pas configurées, retourner null
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return null;
+  }
+
   // Côté serveur, on retourne toujours une nouvelle instance
   if (typeof window === 'undefined') {
     return createClient(supabaseUrl, supabaseAnonKey);
@@ -44,7 +54,7 @@ function getSupabaseClient(): SupabaseClient {
   return window.__supabase;
 }
 
-// Export de l'instance unique
+// Export de l'instance unique (peut être null si non configuré)
 export const supabase = getSupabaseClient();
 
 // Helper pour vérifier l'authentification

@@ -3,45 +3,139 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Calendar, Clock, User, ArrowRight, Search, Tag } from 'lucide-react'
-import { blogService, type BlogPost } from '@/lib/blog/blog-service'
+import { supabase } from '@/lib/supabase'
 
-/**
- * Version améliorée de la page liste blog
- * - Utilise le service unifié pour accéder aux données
- * - Gestion cohérente des données
- */
+interface BlogPost {
+  id: string
+  slug: string
+  title: string
+  excerpt: string
+  content: string
+  image_url?: string | null
+  image_alt?: string | null
+  featured_image?: string | null
+  category: string
+  tags: string[] | null
+  author_name?: string
+  author?: {
+    name: string
+    avatar?: string
+  }
+  created_at: string
+  published_at?: string
+  reading_time?: number
+  status?: string
+}
+
 export default function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
-  const [categories, setCategories] = useState<string[]>(['all'])
+  const [categories, setCategories] = useState<string[]>([])
 
   useEffect(() => {
     fetchPosts()
-    fetchCategories()
   }, [])
 
   const fetchPosts = async () => {
     try {
       setLoading(true)
-      const articles = await blogService.getAllPosts()
-      setPosts(articles)
+      
+      // Vérifier si Supabase est configuré
+      if (!supabase) {
+        console.log('Supabase non configuré, utilisation des données de démonstration')
+        loadDemoData()
+        return
+      }
+      
+      // Récupérer les articles depuis Supabase
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('published', true)
+        .order('published_at', { ascending: false })
+        .limit(50)
+
+      if (error) {
+        console.error('Erreur lors de la récupération des articles:', error)
+        // Utiliser des données de démonstration en cas d'erreur
+        loadDemoData()
+      } else if (data && data.length > 0) {
+        // Générer les slugs si ils n'existent pas
+        const postsWithSlugs = data.map((post: any) => ({
+          ...post,
+          slug: post.slug || post.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+          author: post.author || { name: post.author_name || 'Guide de Lyon' },
+          tags: post.tags || []
+        }))
+        setPosts(postsWithSlugs)
+        // Extraire les catégories uniques
+        const uniqueCategories = [...new Set(postsWithSlugs.map((post: BlogPost) => post.category))].filter(Boolean) as string[]
+        setCategories(['all', ...uniqueCategories])
+      } else {
+        console.log('Aucun article trouvé dans la base de données')
+        loadDemoData()
+      }
     } catch (error) {
-      console.error('Erreur lors de la récupération des articles:', error)
-      setPosts([])
+      console.error('Erreur:', error)
+      loadDemoData()
     } finally {
       setLoading(false)
     }
   }
 
-  const fetchCategories = async () => {
-    try {
-      const cats = await blogService.getCategories()
-      setCategories(cats)
-    } catch (error) {
-      console.error('Erreur lors de la récupération des catégories:', error)
-    }
+  const loadDemoData = () => {
+    // Données de démonstration si la base est vide ou inaccessible
+    const demoPosts: BlogPost[] = [
+      {
+        id: '1',
+        slug: 'decouvrir-vieux-lyon',
+        title: 'Découvrir le Vieux Lyon : Un voyage dans le temps',
+        excerpt: 'Explorez les ruelles médiévales et Renaissance du Vieux Lyon, classé au patrimoine mondial de l\'UNESCO.',
+        content: 'Le Vieux Lyon est l\'un des quartiers Renaissance les plus vastes d\'Europe...',
+        featured_image: 'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=800',
+        category: 'Tourisme',
+        tags: ['patrimoine', 'histoire', 'UNESCO'],
+        author_name: 'Marie Dubois',
+        author: { name: 'Marie Dubois' },
+        created_at: new Date().toISOString(),
+        reading_time: 5,
+        status: 'published'
+      },
+      {
+        id: '2',
+        slug: 'meilleurs-bouchons-lyonnais',
+        title: 'Les 10 meilleurs bouchons lyonnais authentiques',
+        excerpt: 'Guide complet des bouchons traditionnels où déguster la vraie cuisine lyonnaise.',
+        content: 'La gastronomie lyonnaise est mondialement reconnue...',
+        featured_image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800',
+        category: 'Gastronomie',
+        tags: ['restaurants', 'cuisine', 'tradition'],
+        author_name: 'Pierre Martin',
+        author: { name: 'Pierre Martin' },
+        created_at: new Date(Date.now() - 86400000).toISOString(),
+        reading_time: 8,
+        status: 'published'
+      },
+      {
+        id: '3',
+        slug: 'fete-des-lumieres-2024',
+        title: 'Fête des Lumières 2024 : Programme et nouveautés',
+        excerpt: 'Tout ce qu\'il faut savoir sur l\'édition 2024 de la Fête des Lumières de Lyon.',
+        content: 'La Fête des Lumières illumine Lyon chaque décembre...',
+        featured_image: 'https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=800',
+        category: 'Événements',
+        tags: ['festival', 'lumières', 'décembre'],
+        author_name: 'Sophie Laurent',
+        author: { name: 'Sophie Laurent' },
+        created_at: new Date(Date.now() - 172800000).toISOString(),
+        reading_time: 6,
+        status: 'published'
+      }
+    ]
+    setPosts(demoPosts)
+    setCategories(['all', 'Tourisme', 'Gastronomie', 'Événements', 'Culture', 'Shopping'])
   }
 
   // Filtrer les articles
@@ -139,10 +233,10 @@ export default function BlogPage() {
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                   <div className="md:flex">
                     <div className="md:w-1/2">
-                      {filteredPosts[0].featured_image ? (
+                      {filteredPosts[0].image_url || filteredPosts[0].featured_image ? (
                         <img 
-                          src={filteredPosts[0].featured_image} 
-                          alt={filteredPosts[0].title}
+                          src={filteredPosts[0].image_url || filteredPosts[0].featured_image || ''} 
+                          alt={filteredPosts[0].image_alt || filteredPosts[0].title}
                           className="h-64 md:h-full w-full object-cover"
                         />
                       ) : (
@@ -156,7 +250,7 @@ export default function BlogPage() {
                         </span>
                         <span className="ml-4 text-gray-500 text-sm flex items-center">
                           <Calendar className="w-4 h-4 mr-1" />
-                          {formatDate(filteredPosts[0].published_at || filteredPosts[0].created_at)}
+                          {formatDate(filteredPosts[0].created_at)}
                         </span>
                       </div>
                       
@@ -171,7 +265,7 @@ export default function BlogPage() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center text-sm text-gray-500">
                           <User className="w-4 h-4 mr-1" />
-                          {filteredPosts[0].author?.name || filteredPosts[0].author_name || 'Guide de Lyon'}
+                          {filteredPosts[0].author_name || filteredPosts[0].author?.name || 'Auteur'}
                           <span className="mx-2">•</span>
                           <Clock className="w-4 h-4 mr-1" />
                           {filteredPosts[0].reading_time || 5} min
@@ -196,10 +290,10 @@ export default function BlogPage() {
               {(selectedCategory === 'all' && !searchQuery ? filteredPosts.slice(1) : filteredPosts).map((post) => (
                 <article key={post.id} className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow overflow-hidden">
                   {/* Image */}
-                  {post.featured_image ? (
+                  {post.image_url || post.featured_image ? (
                     <img 
-                      src={post.featured_image} 
-                      alt={post.title}
+                      src={post.image_url || post.featured_image || ''} 
+                      alt={post.image_alt || post.title}
                       className="h-48 w-full object-cover"
                     />
                   ) : (
@@ -213,7 +307,7 @@ export default function BlogPage() {
                         {post.category}
                       </span>
                       <span className="text-gray-500 text-sm">
-                        {formatDate(post.published_at || post.created_at)}
+                        {formatDate(post.created_at)}
                       </span>
                     </div>
                     
@@ -243,7 +337,7 @@ export default function BlogPage() {
                     <div className="flex items-center justify-between pt-4 border-t">
                       <div className="flex items-center text-sm text-gray-500">
                         <User className="w-4 h-4 mr-1" />
-                        {post.author?.name || post.author_name || 'Guide de Lyon'}
+                        {post.author_name || post.author?.name || 'Auteur'}
                       </div>
                       
                       <Link 
@@ -262,13 +356,7 @@ export default function BlogPage() {
             {/* Load More Button */}
             {filteredPosts.length > 9 && (
               <div className="text-center mt-12">
-                <button 
-                  onClick={() => {
-                    // À implémenter : charger plus d'articles
-                    console.log('Charger plus d\'articles')
-                  }}
-                  className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition"
-                >
+                <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
                   Charger plus d'articles
                 </button>
               </div>
@@ -284,19 +372,11 @@ export default function BlogPage() {
           <p className="text-xl mb-8 text-blue-100">
             Inscrivez-vous à notre newsletter pour recevoir nos derniers articles
           </p>
-          <form 
-            onSubmit={(e) => {
-              e.preventDefault()
-              // À implémenter : inscription newsletter
-              console.log('Inscription newsletter')
-            }}
-            className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
-          >
+          <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
               type="email"
               placeholder="Votre adresse email"
               className="flex-1 px-6 py-3 rounded-lg text-gray-900 placeholder-gray-500"
-              required
             />
             <button
               type="submit"
