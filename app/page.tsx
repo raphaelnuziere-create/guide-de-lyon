@@ -1,9 +1,10 @@
 import Link from 'next/link'
-import { Search, MapPin, Calendar, Star, Users, TrendingUp } from 'lucide-react'
+import { Search, MapPin, Calendar, Star, Users, TrendingUp, Newspaper } from 'lucide-react'
 // MIGRATION: Remplacement du composant Firebase par Supabase (7 jan 2025)
 // import { UpcomingEventsSection } from '@/components/homepage/upcoming-events-section' // Firebase version (désactivée)
 // import { EventsSectionSupabase as UpcomingEventsSection } from '@/components/homepage/events-section-supabase' // Version simple (désactivée)
 import { CalendarEventsSection as UpcomingEventsSection } from '@/components/homepage/calendar-events-section' // Version calendrier
+import { NewsSection } from '@/components/homepage/news-section' // Section actualités
 
 export default function Home() {
   return (
@@ -38,14 +39,21 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/annuaire"
-                className="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg"
               >
                 <MapPin className="w-5 h-5 mr-2" />
                 Explorer l'annuaire
               </Link>
               <Link
+                href="/actualites"
+                className="inline-flex items-center justify-center px-6 py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-400 transition shadow-lg"
+              >
+                <Newspaper className="w-5 h-5 mr-2" />
+                Actualités Lyon
+              </Link>
+              <Link
                 href="/evenements"
-                className="inline-flex items-center justify-center px-8 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-400 transition shadow-lg"
+                className="inline-flex items-center justify-center px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-400 transition shadow-lg"
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 Voir les événements
@@ -111,6 +119,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* News Section */}
+      <NewsSection />
 
       {/* Featured Businesses */}
       <section className="py-16 bg-gray-50">
