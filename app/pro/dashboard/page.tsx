@@ -29,7 +29,8 @@ import {
   Shield,
   Crown,
   Zap,
-  AlertCircle
+  AlertCircle,
+  Store
 } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase/client';
 import { EstablishmentService, EstablishmentData, PlanLimits } from '@/app/lib/services/establishmentService';
@@ -61,16 +62,13 @@ export default function DashboardPro() {
     // Récupérer les vraies données de l'établissement
     const establishmentData = await EstablishmentService.getEstablishment(session.user.id);
 
-    if (!establishmentData) {
-      router.push('/pro/inscription');
-      return;
+    if (establishmentData) {
+      setEstablishment(establishmentData);
+      // Récupérer les limites du plan
+      const limits = await EstablishmentService.getPlanLimits(establishmentData.plan);
+      setPlanLimits(limits);
     }
-
-    setEstablishment(establishmentData);
-
-    // Récupérer les limites du plan
-    const limits = await EstablishmentService.getPlanLimits(establishmentData.plan);
-    setPlanLimits(limits);
+    // Si pas d'établissement, on affiche quand même le dashboard avec une invitation
 
     setLoading(false);
   };
@@ -99,6 +97,146 @@ export default function DashboardPro() {
 
   const currentLimits = limits[plan];
   const eventsRemaining = currentLimits.events - (establishment?.events_this_month || 0);
+
+  // Si pas d'établissement, afficher une belle invitation
+  if (!establishment) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+        {/* Header simple */}
+        <header className="bg-white shadow-sm border-b">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <Link href="/" className="flex items-center space-x-2">
+                  <Building2 className="h-8 w-8 text-red-600" />
+                  <span className="text-xl font-bold">Guide de Lyon</span>
+                </Link>
+                <span className="text-gray-400">|</span>
+                <span className="text-gray-600 font-medium">Espace Pro</span>
+              </div>
+              <button 
+                onClick={async () => {
+                  await supabase.auth.signOut();
+                  router.push('/');
+                }}
+                className="text-gray-600 hover:text-gray-900"
+              >
+                Déconnexion
+              </button>
+            </div>
+          </div>
+        </header>
+
+        {/* Contenu d'invitation */}
+        <div className="max-w-4xl mx-auto px-4 py-16">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-red-100 rounded-full mb-6">
+              <Store className="h-10 w-10 text-red-600" />
+            </div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              Bienvenue dans votre Espace Professionnel
+            </h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Référencez gratuitement votre établissement sur Guide de Lyon et touchez des milliers de clients potentiels
+            </p>
+          </div>
+
+          {/* CTA Principal */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Créez votre première fiche établissement
+              </h2>
+              <p className="text-gray-600 mb-6">
+                En quelques minutes, rendez votre entreprise visible sur le premier guide de Lyon
+              </p>
+              <Link
+                href="/pro/inscription"
+                className="inline-flex items-center gap-3 bg-red-600 text-white px-8 py-4 rounded-lg hover:bg-red-700 transition text-lg font-semibold"
+              >
+                <Plus className="h-6 w-6" />
+                Référencer mon établissement gratuitement
+              </Link>
+            </div>
+          </div>
+
+          {/* Avantages */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-white rounded-xl p-6 shadow-md">
+              <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <Eye className="h-6 w-6 text-blue-600" />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Visibilité maximale</h3>
+              <p className="text-sm text-gray-600">
+                Apparaissez dans les recherches et sur notre page d'accueil visitée par des milliers de lyonnais
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-md">
+              <div className="bg-green-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <TrendingUp className="h-6 w-6 text-green-600" />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Statistiques détaillées</h3>
+              <p className="text-sm text-gray-600">
+                Suivez vos performances : vues, clics, appels. Comprenez votre audience
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 shadow-md">
+              <div className="bg-purple-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <Calendar className="h-6 w-6 text-purple-600" />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Événements & Actualités</h3>
+              <p className="text-sm text-gray-600">
+                Publiez vos événements et actualités pour attirer plus de clients
+              </p>
+            </div>
+          </div>
+
+          {/* Plans disponibles */}
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8">
+            <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">
+              Développez votre présence avec nos forfaits
+            </h3>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="bg-white rounded-lg p-4 border-2 border-gray-200">
+                <h4 className="font-semibold text-gray-900 mb-2">Basic</h4>
+                <p className="text-2xl font-bold mb-2">Gratuit</p>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  <li>✓ 1 photo</li>
+                  <li>✓ 3 événements/mois</li>
+                  <li>✓ Statistiques de base</li>
+                </ul>
+              </div>
+              
+              <div className="bg-white rounded-lg p-4 border-2 border-blue-500 relative">
+                <span className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs px-3 py-1 rounded-full">
+                  POPULAIRE
+                </span>
+                <h4 className="font-semibold text-gray-900 mb-2">Pro</h4>
+                <p className="text-2xl font-bold mb-2">19€<span className="text-sm font-normal">/mois</span></p>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  <li>✓ 6 photos</li>
+                  <li>✓ Page d'accueil</li>
+                  <li>✓ Badge vérifié</li>
+                </ul>
+              </div>
+              
+              <div className="bg-white rounded-lg p-4 border-2 border-purple-500">
+                <h4 className="font-semibold text-gray-900 mb-2">Expert</h4>
+                <p className="text-2xl font-bold mb-2">49€<span className="text-sm font-normal">/mois</span></p>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  <li>✓ 10 photos</li>
+                  <li>✓ 6 événements/mois</li>
+                  <li>✓ Réseaux sociaux</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">

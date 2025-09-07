@@ -57,7 +57,7 @@ export async function POST(request: Request) {
         return NextResponse.json({
           success: true,
           message: 'Inscription réussie',
-          redirectTo: '/pro/inscription'
+          redirectTo: '/pro/dashboard'
         });
       }
       
@@ -82,17 +82,11 @@ export async function POST(request: Request) {
       }
       
       if (data.session) {
-        // Vérifier si établissement existe
-        const { data: establishment } = await supabase
-          .from('establishments')
-          .select('id')
-          .eq('user_id', data.user.id)
-          .maybeSingle();
-        
+        // Toujours rediriger vers le dashboard après connexion
         return NextResponse.json({
           success: true,
           message: 'Connexion réussie',
-          redirectTo: establishment ? '/pro/dashboard' : '/pro/inscription'
+          redirectTo: '/pro/dashboard'
         });
       }
       
