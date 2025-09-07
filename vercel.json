@@ -975,6 +975,10 @@
     {
       "path": "/api/cron/reset-quotas",
       "schedule": "0 0 1 * *"
+    },
+    {
+      "path": "/api/cron/scrape-news",
+      "schedule": "0 */2 * * *"
     }
   ]
 }
