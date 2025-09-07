@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Mail, Lock, AlertCircle, Building2, RefreshCw } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase/client';
 import { clearAuthCache } from '@/app/lib/utils/cache-control';
+import { setupAuthStateListener, getSessionWithRetry } from '@/app/lib/utils/auth-persistence';
 
 export default function ProConnexionPage() {
   const router = useRouter();
@@ -18,8 +19,12 @@ export default function ProConnexionPage() {
 
   // Vérifier et nettoyer le cache si problème détecté
   useEffect(() => {
+    // Configurer l'écoute des changements d'auth
+    setupAuthStateListener();
+    
     const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+      // Utiliser la fonction avec retry pour plus de robustesse
+      const session = await getSessionWithRetry();
       if (session) {
         router.push('/pro/dashboard');
       }

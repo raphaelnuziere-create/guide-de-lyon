@@ -186,7 +186,7 @@ function ProInscriptionContent() {
         throw insertError;
       }
 
-      if (!establishment) {
+      if (!data) {
         throw new Error('Établissement non créé');
       }
 
