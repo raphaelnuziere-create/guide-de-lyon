@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Mail, Lock, AlertCircle, Building2 } from 'lucide-react';
+import { Mail, Lock, AlertCircle, Building2, RefreshCw } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase/client';
+import { clearAuthCache } from '@/app/lib/utils/cache-control';
 
 export default function ProConnexionPage() {
   const router = useRouter();
@@ -13,6 +14,26 @@ export default function ProConnexionPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showReset, setShowReset] = useState(false);
+  const [cacheCleared, setCacheCleared] = useState(false);
+
+  // Vérifier et nettoyer le cache si problème détecté
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        router.push('/pro/dashboard');
+      }
+    };
+    checkSession();
+  }, [router]);
+
+  const handleClearCache = () => {
+    clearAuthCache();
+    setCacheCleared(true);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -185,8 +206,8 @@ export default function ProConnexionPage() {
               )}
             </button>
 
-            {/* Lien mot de passe oublié */}
-            <div className="text-center">
+            {/* Liens utiles */}
+            <div className="flex justify-between items-center">
               <button
                 type="button"
                 onClick={() => setShowReset(true)}
@@ -194,7 +215,23 @@ export default function ProConnexionPage() {
               >
                 Mot de passe oublié ?
               </button>
+              
+              <button
+                type="button"
+                onClick={handleClearCache}
+                className="text-sm text-gray-600 hover:text-gray-900 flex items-center gap-1"
+                title="Si vous avez des problèmes de connexion"
+              >
+                <RefreshCw className="w-3 h-3" />
+                Problème de connexion ?
+              </button>
             </div>
+            
+            {cacheCleared && (
+              <div className="mt-3 p-2 bg-green-50 text-green-700 text-sm rounded-lg text-center">
+                Cache nettoyé, rechargement...
+              </div>
+            )}
           </form>
 
           {/* Lien inscription */}

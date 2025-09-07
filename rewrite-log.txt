@@ -1,0 +1,448 @@
+🤖 RÉÉCRITURE INTELLIGENTE DES ARTICLES AVEC OPENAI
+============================================================
+⚙️ Configuration: 
+   - Articles par lot: 2
+   - Pause entre lots: 15s
+   - Pause entre articles: 3s
+   - Mode: Exécution lente et stable
+============================================================
+✅ Clé OpenAI détectée
+
+📊 Articles à traiter: 183
+
+📦 Lot 1/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Wifi Gratuit Lyon - Lyon 2025
+🤖 Génération du contenu pour: Wifi Gratuit Lyon - Lyon 2025
+✅ Article réécrit avec succès (1154 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Coworking Lyon - Lyon 2025
+🤖 Génération du contenu pour: Coworking Lyon - Lyon 2025
+⚠️ Contenu trop court: 984 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Coworking Lyon - Lyon 2025
+🤖 Génération du contenu pour: Coworking Lyon - Lyon 2025
+⚠️ Contenu trop court: 903 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Coworking Lyon - Lyon 2025
+🤖 Génération du contenu pour: Coworking Lyon - Lyon 2025
+✅ Article réécrit avec succès (1170 mots)
+✅ Lot terminé: 2/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 2/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Office Tourisme Lyon - Lyon 2025
+🤖 Génération du contenu pour: Office Tourisme Lyon - Lyon 2025
+⚠️ Contenu trop court: 909 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Office Tourisme Lyon - Lyon 2025
+🤖 Génération du contenu pour: Office Tourisme Lyon - Lyon 2025
+⚠️ Contenu trop court: 736 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Office Tourisme Lyon - Lyon 2025
+🤖 Génération du contenu pour: Office Tourisme Lyon - Lyon 2025
+⚠️ Contenu trop court: 996 mots
+⚠️ Contenu trop générique, régénération...
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Meteo Lyon - Lyon 2025
+🤖 Génération du contenu pour: Meteo Lyon - Lyon 2025
+⚠️ Contenu trop court: 929 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Meteo Lyon - Lyon 2025
+🤖 Génération du contenu pour: Meteo Lyon - Lyon 2025
+⚠️ Contenu trop générique détecté
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Meteo Lyon - Lyon 2025
+🤖 Génération du contenu pour: Meteo Lyon - Lyon 2025
+⚠️ Contenu trop court: 919 mots
+⚠️ Contenu trop générique, régénération...
+✅ Lot terminé: 0/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 3/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Parking Lyon - Lyon 2025
+🤖 Génération du contenu pour: Parking Lyon - Lyon 2025
+⚠️ Contenu trop court: 895 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Parking Lyon - Lyon 2025
+🤖 Génération du contenu pour: Parking Lyon - Lyon 2025
+⚠️ Contenu trop court: 924 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Parking Lyon - Lyon 2025
+🤖 Génération du contenu pour: Parking Lyon - Lyon 2025
+⚠️ Contenu trop court: 872 mots
+⚠️ Contenu trop générique, régénération...
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Transport Lyon - Lyon 2025
+🤖 Génération du contenu pour: Transport Lyon - Lyon 2025
+✅ Article réécrit avec succès (1006 mots)
+✅ Lot terminé: 1/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 4/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Galeries Art Lyon - Lyon 2025
+🤖 Génération du contenu pour: Galeries Art Lyon - Lyon 2025
+⚠️ Contenu trop court: 977 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Galeries Art Lyon - Lyon 2025
+🤖 Génération du contenu pour: Galeries Art Lyon - Lyon 2025
+🤖 RÉÉCRITURE INTELLIGENTE DES ARTICLES AVEC OPENAI
+============================================================
+⚙️ Configuration: 
+   - Articles par lot: 2
+   - Pause entre lots: 15s
+   - Pause entre articles: 3s
+   - Mode: Exécution lente et stable
+============================================================
+✅ Clé OpenAI détectée
+
+📊 Articles à traiter: 183
+
+📦 Lot 1/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Wifi Gratuit Lyon - Lyon 2025
+🤖 Génération du contenu pour: Wifi Gratuit Lyon - Lyon 2025
+✅ Article réécrit avec succès (1051 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Coworking Lyon - Lyon 2025
+🤖 Génération du contenu pour: Coworking Lyon - Lyon 2025
+✅ Article réécrit avec succès (1192 mots)
+✅ Lot terminé: 2/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 2/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Office Tourisme Lyon - Lyon 2025
+🤖 Génération du contenu pour: Office Tourisme Lyon - Lyon 2025
+⚠️ Contenu trop court: 961 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Office Tourisme Lyon - Lyon 2025
+🤖 Génération du contenu pour: Office Tourisme Lyon - Lyon 2025
+⚠️ Contenu trop court: 954 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Office Tourisme Lyon - Lyon 2025
+🤖 Génération du contenu pour: Office Tourisme Lyon - Lyon 2025
+✅ Article réécrit avec succès (1053 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Meteo Lyon - Lyon 2025
+🤖 Génération du contenu pour: Meteo Lyon - Lyon 2025
+⚠️ Contenu trop court: 968 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Meteo Lyon - Lyon 2025
+🤖 Génération du contenu pour: Meteo Lyon - Lyon 2025
+✅ Article réécrit avec succès (1018 mots)
+✅ Lot terminé: 2/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 3/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Parking Lyon - Lyon 2025
+🤖 Génération du contenu pour: Parking Lyon - Lyon 2025
+✅ Article réécrit avec succès (1022 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Transport Lyon - Lyon 2025
+🤖 Génération du contenu pour: Transport Lyon - Lyon 2025
+✅ Article réécrit avec succès (1023 mots)
+✅ Lot terminé: 2/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 4/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Galeries Art Lyon - Lyon 2025
+🤖 Génération du contenu pour: Galeries Art Lyon - Lyon 2025
+⚠️ Contenu trop court: 918 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Galeries Art Lyon - Lyon 2025
+🤖 Génération du contenu pour: Galeries Art Lyon - Lyon 2025
+⚠️ Contenu trop court: 959 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Galeries Art Lyon - Lyon 2025
+🤖 Génération du contenu pour: Galeries Art Lyon - Lyon 2025
+⚠️ Contenu trop court: 948 mots
+⚠️ Contenu trop générique, régénération...
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Bibliotheques Lyon - Lyon 2025
+🤖 Génération du contenu pour: Bibliotheques Lyon - Lyon 2025
+⚠️ Contenu trop court: 885 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Bibliotheques Lyon - Lyon 2025
+🤖 Génération du contenu pour: Bibliotheques Lyon - Lyon 2025
+✅ Article réécrit avec succès (1073 mots)
+✅ Lot terminé: 1/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 5/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Zoo Lyon - Lyon 2025
+🤖 Génération du contenu pour: Zoo Lyon - Lyon 2025
+✅ Article réécrit avec succès (1200 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Aquarium Lyon - Lyon 2025
+🤖 Génération du contenu pour: Aquarium Lyon - Lyon 2025
+⚠️ Contenu trop court: 871 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Aquarium Lyon - Lyon 2025
+🤖 Génération du contenu pour: Aquarium Lyon - Lyon 2025
+✅ Article réécrit avec succès (1044 mots)
+✅ Lot terminé: 2/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 6/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Musee Histoire Lyon - Lyon 2025
+🤖 Génération du contenu pour: Musee Histoire Lyon - Lyon 2025
+✅ Article réécrit avec succès (1160 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Musée Lumière - Monument historique de Lyon 2025
+🤖 Génération du contenu pour: Musée Lumière - Monument historique de Lyon 2025
+⚠️ Contenu trop court: 958 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Musée Lumière - Monument historique de Lyon 2025
+🤖 Génération du contenu pour: Musée Lumière - Monument historique de Lyon 2025
+✅ Article réécrit avec succès (1034 mots)
+✅ Lot terminé: 2/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 7/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Musée des Beaux-Arts - Monument historique de Lyon 2025
+🤖 Génération du contenu pour: Musée des Beaux-Arts - Monument historique de Lyon 2025
+✅ Article réécrit avec succès (1063 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Statues Lyon - Lyon 2025
+🤖 Génération du contenu pour: Statues Lyon - Lyon 2025
+⚠️ Contenu trop court: 791 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Statues Lyon - Lyon 2025
+🤖 Génération du contenu pour: Statues Lyon - Lyon 2025
+⚠️ Contenu trop court: 979 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Statues Lyon - Lyon 2025
+🤖 Génération du contenu pour: Statues Lyon - Lyon 2025
+⚠️ Contenu trop court: 948 mots
+⚠️ Contenu trop générique, régénération...
+✅ Lot terminé: 1/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 8/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Les Ponts de Lyon - Monument historique de Lyon 2025
+🤖 Génération du contenu pour: Les Ponts de Lyon - Monument historique de Lyon 2025
+✅ Article réécrit avec succès (1001 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Eglises Lyon - Lyon 2025
+🤖 Génération du contenu pour: Eglises Lyon - Lyon 2025
+⚠️ Contenu trop court: 968 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Eglises Lyon - Lyon 2025
+🤖 Génération du contenu pour: Eglises Lyon - Lyon 2025
+⚠️ Contenu trop court: 991 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Eglises Lyon - Lyon 2025
+🤖 Génération du contenu pour: Eglises Lyon - Lyon 2025
+⚠️ Contenu trop court: 905 mots
+⚠️ Contenu trop générique, régénération...
+✅ Lot terminé: 1/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 9/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Théâtres Romains de Fourvière - Monument historique de Lyon 2025
+🤖 Génération du contenu pour: Théâtres Romains de Fourvière - Monument historique de Lyon 2025
+⚠️ Contenu trop court: 921 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Théâtres Romains de Fourvière - Monument historique de Lyon 2025
+🤖 Génération du contenu pour: Théâtres Romains de Fourvière - Monument historique de Lyon 2025
+✅ Article réécrit avec succès (1083 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Place Bellecour - Monument historique de Lyon 2025
+🤖 Génération du contenu pour: Place Bellecour - Monument historique de Lyon 2025
+✅ Article réécrit avec succès (1084 mots)
+✅ Lot terminé: 2/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 10/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Hôtel de Ville - Monument historique de Lyon 2025
+🤖 Génération du contenu pour: Hôtel de Ville - Monument historique de Lyon 2025
+✅ Article réécrit avec succès (1148 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Vélo à Lyon - Vélo'v et pistes cyclables 2025 - Guide complet
+🤖 Génération du contenu pour: Vélo à Lyon - Vélo'v et pistes cyclables 2025 - Guide complet
+✅ Article réécrit avec succès (1174 mots)
+✅ Lot terminé: 2/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 11/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Salles de sport à Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Salles de sport à Lyon 2025 - Guide complet
+✅ Article réécrit avec succès (1135 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Brocantes et vide-greniers 2025 - Guide complet
+🤖 Génération du contenu pour: Brocantes et vide-greniers 2025 - Guide complet
+⚠️ Contenu trop court: 872 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Brocantes et vide-greniers 2025 - Guide complet
+🤖 Génération du contenu pour: Brocantes et vide-greniers 2025 - Guide complet
+⚠️ Contenu trop court: 983 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Brocantes et vide-greniers 2025 - Guide complet
+🤖 Génération du contenu pour: Brocantes et vide-greniers 2025 - Guide complet
+✅ Article réécrit avec succès (1093 mots)
+✅ Lot terminé: 2/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 12/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Marchés de Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Marchés de Lyon 2025 - Guide complet
+⚠️ Contenu trop court: 963 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Marchés de Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Marchés de Lyon 2025 - Guide complet
+✅ Article réécrit avec succès (1090 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Festivals de Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Festivals de Lyon 2025 - Guide complet
+⚠️ Contenu trop court: 951 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Festivals de Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Festivals de Lyon 2025 - Guide complet
+⚠️ Contenu trop court: 978 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Festivals de Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Festivals de Lyon 2025 - Guide complet
+⚠️ Contenu trop générique détecté
+⚠️ Contenu trop générique, régénération...
+✅ Lot terminé: 1/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 13/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Concerts à Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Concerts à Lyon 2025 - Guide complet
+⚠️ Contenu trop générique détecté
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Concerts à Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Concerts à Lyon 2025 - Guide complet
+⚠️ Contenu trop court: 872 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Concerts à Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Concerts à Lyon 2025 - Guide complet
+✅ Article réécrit avec succès (1073 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Opéra de Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Opéra de Lyon 2025 - Guide complet
+✅ Article réécrit avec succès (1005 mots)
+✅ Lot terminé: 2/2 réussis
+⏸️ Pause de 15s avant le prochain lot...
+
+📦 Lot 14/92
+
+🚀 Traitement d'un lot de 2 articles...
+
+📝 Traitement: Théâtres de Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Théâtres de Lyon 2025 - Guide complet
+⚠️ Contenu trop court: 898 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Théâtres de Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Théâtres de Lyon 2025 - Guide complet
+✅ Article réécrit avec succès (1111 mots)
+⏸️ Pause de 3s avant le prochain article...
+
+📝 Traitement: Cinémas de Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Cinémas de Lyon 2025 - Guide complet
+⚠️ Contenu trop court: 987 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Cinémas de Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Cinémas de Lyon 2025 - Guide complet
+⚠️ Contenu trop court: 742 mots
+⚠️ Contenu trop générique, régénération...
+
+📝 Traitement: Cinémas de Lyon 2025 - Guide complet
+🤖 Génération du contenu pour: Cinémas de Lyon 2025 - Guide complet

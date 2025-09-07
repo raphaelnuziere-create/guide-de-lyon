@@ -177,13 +177,18 @@ function ProInscriptionContent() {
           plan: selectedPlan,
           plan_billing_cycle: billingCycle,
           vat_number: formData.vat_number || null,
-          verified: selectedPlan !== 'basic',
-          active: true
+          verified: selectedPlan !== 'basic'
         })
         .select()
         .single();
 
-      if (insertError) throw insertError;
+      if (insertError) {
+        throw insertError;
+      }
+
+      if (!establishment) {
+        throw new Error('Établissement non créé');
+      }
 
       setSuccess(true);
       setStep(3);

@@ -64,9 +64,8 @@ export default function BlogPostPage() {
     return (
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center justify-center">
         <div className="text-center">
-          <div className="relative">
-            <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-blue-200"></div>
-            <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent absolute top-0 left-0"></div>
+          <div className="relative inline-block">
+            <div className="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent"></div>
           </div>
           <p className="mt-6 text-lg text-gray-600 font-medium">Chargement de l'article...</p>
         </div>
