@@ -9,6 +9,7 @@ const publicRoutes = [
   '/annuaire',
   '/etablissement',
   '/evenements',
+  '/actualites', // Page actualités
   '/blog',
   '/contact',
   '/a-propos',
