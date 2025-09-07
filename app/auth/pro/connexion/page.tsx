@@ -21,6 +21,10 @@ export default function ProConnexionPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('[Page Connexion] Submit déclenché');
+    console.log('[Page Connexion] Email:', email);
+    console.log('[Page Connexion] Password length:', password.length);
+    
     setError('');
     setLoading(true);
     setDebugInfo([]);
@@ -47,12 +51,10 @@ export default function ProConnexionPage() {
 
       if (data.success) {
         addDebug(`Connexion réussie! Redirection vers: ${data.redirectTo}`);
+        console.log('[Page Connexion] Success! Redirecting to:', data.redirectTo);
         
-        // Attendre un peu pour que la session soit bien établie
-        setTimeout(() => {
-          addDebug('Redirection en cours...');
-          window.location.href = data.redirectTo || '/pro/dashboard';
-        }, 500);
+        // Forcer la redirection immédiatement
+        window.location.href = data.redirectTo || '/pro/dashboard';
       } else {
         const errorMsg = data.error || 'Erreur de connexion inconnue';
         addDebug(`Erreur: ${errorMsg}`);
@@ -235,8 +237,8 @@ export default function ProConnexionPage() {
             </Link>
           </div>
 
-          {/* Debug info (dev only) */}
-          {debugInfo.length > 0 && process.env.NODE_ENV === 'development' && (
+          {/* Debug info (temporairement visible pour diagnostic) */}
+          {debugInfo.length > 0 && (
             <div className="mt-6 p-4 bg-gray-100 rounded-lg">
               <p className="text-xs font-mono text-gray-600 mb-2">Debug Info:</p>
               <div className="text-xs font-mono text-gray-500 space-y-1 max-h-32 overflow-y-auto">

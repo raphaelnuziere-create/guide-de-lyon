@@ -102,7 +102,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!loading && user) {
       // Redirection après connexion
-      if (pathname === '/connexion/pro' || pathname === '/professionnel/connexion') {
+      if (pathname === '/auth/pro/connexion' || pathname === '/connexion/pro' || pathname === '/professionnel/connexion') {
+        console.log('[AuthContext] User logged in on login page, redirecting to dashboard');
         // Rediriger tous les utilisateurs connectés vers le dashboard
         // Le dashboard gèrera la redirection vers inscription si pas d'établissement
         router.push('/pro/dashboard');
