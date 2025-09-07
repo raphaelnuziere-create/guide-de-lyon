@@ -30,21 +30,69 @@ export class ImageService {
   // Télécharger et stocker une image depuis une URL
   async downloadAndStore(imageUrl: string, articleSlug: string): Promise<string | null> {
     try {
-      if (!imageUrl) return null;
+      if (!imageUrl) {
+        console.log('[ImageService] Pas d\'image, utilisation image par défaut');
+        return this.getDefaultImage(articleSlug);
+      }
 
       console.log('[ImageService] Téléchargement image:', imageUrl);
 
-      // Pour l'instant, on utilise directement les images par défaut
-      // car le téléchargement côté serveur nécessite une configuration spéciale
-      // et les images RSS sont souvent protégées par CORS ou hotlinking
+      // Télécharger l'image depuis l'URL
+      const response = await fetch(imageUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; Guide-de-Lyon/1.0; +https://www.guide-de-lyon.fr)'
+        }
+      });
       
-      // Utiliser une image par défaut de qualité selon la catégorie
-      // Les images seront hébergées sur Unsplash qui est fiable et rapide
-      return this.getDefaultImage(articleSlug);
+      if (!response.ok) {
+        console.error('[ImageService] Erreur téléchargement:', response.status);
+        return this.getDefaultImage(articleSlug);
+      }
+
+      // Vérifier le type de contenu
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.startsWith('image/')) {
+        console.error('[ImageService] Type de contenu invalide:', contentType);
+        return this.getDefaultImage(articleSlug);
+      }
+
+      // Récupérer les données de l'image
+      const arrayBuffer = await response.arrayBuffer();
+      const buffer = new Uint8Array(arrayBuffer);
+
+      // Générer un nom unique pour l'image
+      const hash = crypto.createHash('md5').update(imageUrl).digest('hex').substring(0, 8);
+      const extension = this.getExtensionFromUrl(imageUrl) || this.getExtensionFromContentType(contentType) || 'jpg';
+      const fileName = `${articleSlug}-${hash}.${extension}`;
+      const filePath = `articles/${new Date().getFullYear()}/${fileName}`;
+
+      console.log('[ImageService] Upload vers Supabase:', filePath);
+
+      // Uploader vers Supabase Storage
+      const { data, error } = await supabase.storage
+        .from(this.bucketName)
+        .upload(filePath, buffer, {
+          contentType: contentType || `image/${extension}`,
+          upsert: true,
+          cacheControl: '3600'
+        });
+
+      if (error) {
+        console.error('[ImageService] Erreur upload Supabase:', error);
+        return this.getDefaultImage(articleSlug);
+      }
+
+      // Obtenir l'URL publique
+      const { data: { publicUrl } } = supabase.storage
+        .from(this.bucketName)
+        .getPublicUrl(filePath);
+
+      console.log('[ImageService] Image stockée avec succès:', publicUrl);
+      return publicUrl;
 
     } catch (error) {
-      console.error('[ImageService] Erreur:', error);
-      // Retourner une image par défaut si erreur
+      console.error('[ImageService] Erreur complète:', error);
+      // En cas d'erreur, utiliser une image par défaut
       return this.getDefaultImage(articleSlug);
     }
   }
@@ -52,7 +100,19 @@ export class ImageService {
   // Obtenir l'extension depuis l'URL
   private getExtensionFromUrl(url: string): string {
     const match = url.match(/\.(jpg|jpeg|png|webp|gif)(\?|$)/i);
-    return match ? match[1].toLowerCase() : 'jpg';
+    return match ? match[1].toLowerCase() : '';
+  }
+
+  // Obtenir l'extension depuis le content-type
+  private getExtensionFromContentType(contentType: string): string {
+    const mimeToExt: Record<string, string> = {
+      'image/jpeg': 'jpg',
+      'image/jpg': 'jpg',
+      'image/png': 'png',
+      'image/webp': 'webp',
+      'image/gif': 'gif'
+    };
+    return mimeToExt[contentType.toLowerCase()] || 'jpg';
   }
 
   // Image par défaut basée sur la catégorie avec images de Lyon
