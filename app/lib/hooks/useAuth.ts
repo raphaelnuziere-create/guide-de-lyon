@@ -2,13 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/app/lib/supabase/client';
 import type { User } from '@supabase/supabase-js';
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null);
@@ -28,21 +23,21 @@ export function useAuth() {
     return () => subscription.unsubscribe();
   }, []);
 
-  const checkUser = async () => {
+  async function checkUser() {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
     } catch (error) {
-      console.error('Erreur vérification utilisateur:', error);
+      console.error('Error checking auth:', error);
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   const signIn = async (email: string, password: string) => {
     const { data, error } = await supabase.auth.signInWithPassword({
-      email: email.trim().toLowerCase(),
-      password
+      email,
+      password,
     });
     
     if (error) throw error;
@@ -51,8 +46,8 @@ export function useAuth() {
 
   const signUp = async (email: string, password: string) => {
     const { data, error } = await supabase.auth.signUp({
-      email: email.trim().toLowerCase(),
-      password
+      email,
+      password,
     });
     
     if (error) throw error;
@@ -65,30 +60,11 @@ export function useAuth() {
     router.push('/');
   };
 
-  const resetPassword = async (email: string) => {
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth/reset-password`
-    });
-    
-    if (error) throw error;
-  };
-
-  const updatePassword = async (newPassword: string) => {
-    const { error } = await supabase.auth.updateUser({
-      password: newPassword
-    });
-    
-    if (error) throw error;
-  };
-
   return {
     user,
     loading,
     signIn,
     signUp,
     signOut,
-    resetPassword,
-    updatePassword,
-    supabase
   };
 }
