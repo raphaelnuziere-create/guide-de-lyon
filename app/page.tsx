@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { Search, MapPin, Calendar, Star, Users, TrendingUp } from 'lucide-react'
-import { UpcomingEventsSection } from '@/components/homepage/upcoming-events-section'
+// MIGRATION: Remplacement du composant Firebase par Supabase (7 jan 2025)
+// import { UpcomingEventsSection } from '@/components/homepage/upcoming-events-section' // Firebase version (désactivée)
+import { EventsSectionSupabase as UpcomingEventsSection } from '@/components/homepage/events-section-supabase' // Supabase version
 
 export default function Home() {
   return (
