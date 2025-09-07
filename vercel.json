@@ -970,5 +970,11 @@
       "destination": "/blog/les-meilleurs-adresses-pour-se-loger-a-la-croix-rousse-a-lyon-2025",
       "permanent": true
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/reset-quotas",
+      "schedule": "0 0 1 * *"
+    }
   ]
 }
