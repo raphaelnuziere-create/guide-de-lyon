@@ -1,25 +1,47 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 // Configuration Supabase
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
-// Singleton pour éviter les instances multiples
-let supabaseInstance: ReturnType<typeof createClient> | null = null;
+// Variable globale pour le singleton (attachée à window en browser)
+declare global {
+  interface Window {
+    __supabase?: SupabaseClient;
+  }
+}
 
-function getSupabaseClient() {
-  if (!supabaseInstance) {
-    supabaseInstance = createClient(supabaseUrl, supabaseAnonKey, {
+// Fonction pour obtenir l'instance unique
+function getSupabaseClient(): SupabaseClient {
+  // Côté serveur, on retourne toujours une nouvelle instance
+  if (typeof window === 'undefined') {
+    return createClient(supabaseUrl, supabaseAnonKey);
+  }
+
+  // Côté client, on utilise le singleton
+  if (!window.__supabase) {
+    console.log('[Supabase] Creating singleton instance');
+    window.__supabase = createClient(supabaseUrl, supabaseAnonKey, {
       auth: {
         persistSession: true,
         autoRefreshToken: true,
         detectSessionInUrl: true,
         flowType: 'pkce',
-        storage: typeof window !== 'undefined' ? window.localStorage : undefined,
+        storage: window.localStorage,
+        storageKey: 'guide-lyon-auth',
+        debug: true // Pour debug temporairement
       },
     });
+    
+    // Logger les événements auth pour debug
+    window.__supabase.auth.onAuthStateChange((event, session) => {
+      console.log('[Supabase Auth Event]:', event, session?.user?.email);
+    });
+  } else {
+    console.log('[Supabase] Using existing singleton instance');
   }
-  return supabaseInstance;
+  
+  return window.__supabase;
 }
 
 // Export de l'instance unique
@@ -27,26 +49,50 @@ export const supabase = getSupabaseClient();
 
 // Helper pour vérifier l'authentification
 export async function checkAuth() {
-  const { data: { session } } = await supabase.auth.getSession();
-  return session;
+  try {
+    const { data: { session }, error } = await supabase.auth.getSession();
+    if (error) {
+      console.error('[checkAuth] Error:', error);
+      return null;
+    }
+    console.log('[checkAuth] Session:', session?.user?.email || 'No session');
+    return session;
+  } catch (error) {
+    console.error('[checkAuth] Exception:', error);
+    return null;
+  }
 }
 
 // Helper pour vérifier si l'utilisateur a un établissement
 export async function checkEstablishment(userId: string) {
-  const { data, error } = await supabase
-    .from('establishments')
-    .select('id')
-    .eq('user_id', userId)
-    .maybeSingle();
-  
-  return { hasEstablishment: !!data, error };
+  try {
+    const { data, error } = await supabase
+      .from('establishments')
+      .select('id')
+      .eq('user_id', userId)
+      .maybeSingle();
+    
+    console.log('[checkEstablishment] Result:', { hasEstablishment: !!data, error });
+    return { hasEstablishment: !!data, error };
+  } catch (error) {
+    console.error('[checkEstablishment] Exception:', error);
+    return { hasEstablishment: false, error };
+  }
 }
 
 // Helper pour déconnexion
 export async function signOut() {
-  const { error } = await supabase.auth.signOut();
-  if (error) {
-    console.error('Erreur lors de la déconnexion:', error);
+  try {
+    console.log('[signOut] Signing out...');
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error('[signOut] Error:', error);
+      return false;
+    }
+    console.log('[signOut] Success');
+    return true;
+  } catch (error) {
+    console.error('[signOut] Exception:', error);
+    return false;
   }
-  return !error;
 }
