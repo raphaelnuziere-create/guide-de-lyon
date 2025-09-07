@@ -36,7 +36,8 @@ export default function ModernArticleTemplate({ article, relatedArticles = [] }:
   
   const wordCount = article.content?.split(' ').length || 0
   const readingTime = article.reading_time || Math.ceil(wordCount / 200)
-  const featuredImage = article.featured_image || article.image_url || 'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=1200&h=600&fit=crop'
+  // Utiliser l'image_url en priorité (celle visible sur /blog)
+  const featuredImage = article.image_url || article.featured_image || 'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=1200&h=600&fit=crop'
   
   useEffect(() => {
     // Extraire la table des matières du contenu
@@ -170,18 +171,160 @@ export default function ModernArticleTemplate({ article, relatedArticles = [] }:
           
           {/* Contenu de l'article */}
           <main className={tableOfContents.length > 0 ? 'lg:col-span-9' : 'lg:col-span-12 max-w-4xl mx-auto'}>
+            <style jsx global>{`
+              .article-content h2 {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #1f2937;
+                margin-top: 3.5rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 0.75rem;
+                border-bottom: 3px solid #dbeafe;
+                line-height: 1.3;
+              }
+              
+              .article-content h3 {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: #374151;
+                margin-top: 2.5rem;
+                margin-bottom: 1.25rem;
+                line-height: 1.4;
+                padding-left: 1rem;
+                border-left: 4px solid #3b82f6;
+              }
+              
+              .article-content p {
+                font-size: 1.125rem;
+                line-height: 1.9;
+                color: #4b5563;
+                margin-bottom: 1.75rem;
+                font-weight: 400;
+              }
+              
+              .article-content ul, .article-content ol {
+                margin: 2rem 0;
+                padding-left: 2rem;
+              }
+              
+              .article-content li {
+                font-size: 1.125rem;
+                line-height: 1.8;
+                color: #4b5563;
+                margin-bottom: 1rem;
+                position: relative;
+              }
+              
+              .article-content li::before {
+                content: "▸";
+                color: #3b82f6;
+                font-weight: bold;
+                position: absolute;
+                left: -1.5rem;
+              }
+              
+              .article-content strong {
+                font-weight: 600;
+                color: #1f2937;
+                background: linear-gradient(to bottom, transparent 60%, #fef3c7 60%);
+              }
+              
+              .article-content blockquote {
+                margin: 2.5rem 0;
+                padding: 1.5rem 2rem;
+                background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+                border-left: 5px solid #3b82f6;
+                border-radius: 0 1rem 1rem 0;
+                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+              }
+              
+              .article-content blockquote p {
+                margin: 0;
+                font-style: italic;
+                color: #1e40af;
+              }
+              
+              .article-content table {
+                width: 100%;
+                margin: 2.5rem 0;
+                border-collapse: separate;
+                border-spacing: 0;
+                overflow: hidden;
+                border-radius: 0.75rem;
+                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+              }
+              
+              .article-content th {
+                background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+                color: white;
+                padding: 1rem 1.5rem;
+                text-align: left;
+                font-weight: 600;
+                font-size: 1rem;
+              }
+              
+              .article-content td {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid #e5e7eb;
+                font-size: 1rem;
+                color: #4b5563;
+              }
+              
+              .article-content tr:nth-child(even) {
+                background-color: #f9fafb;
+              }
+              
+              .article-content tr:hover {
+                background-color: #f3f4f6;
+              }
+              
+              /* Sections spéciales avec emojis */
+              .article-content h3:has(+ ul) {
+                margin-bottom: 1rem;
+              }
+              
+              /* Espacement entre les sections principales */
+              .article-content > h2:not(:first-child) {
+                margin-top: 4rem;
+              }
+              
+              /* Style pour les listes de lieux */
+              .article-content h3 + p:has(strong) {
+                background: #f9fafb;
+                padding: 1.5rem;
+                border-radius: 0.75rem;
+                margin-top: 1rem;
+                border: 1px solid #e5e7eb;
+              }
+              
+              /* Amélioration des icônes */
+              .article-content p:has(📍),
+              .article-content p:has(💰),
+              .article-content p:has(🎯),
+              .article-content p:has(✨) {
+                margin: 0.5rem 0;
+                padding-left: 0.5rem;
+              }
+              
+              /* Cards pour les établissements */
+              .establishment-card {
+                background: white;
+                border: 1px solid #e5e7eb;
+                border-radius: 1rem;
+                padding: 2rem;
+                margin: 2rem 0;
+                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+                transition: all 0.3s ease;
+              }
+              
+              .establishment-card:hover {
+                box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+                transform: translateY(-2px);
+              }
+            `}</style>
+            
             <div 
-              className="prose prose-lg prose-gray max-w-none
-                       prose-headings:font-bold prose-headings:text-gray-800
-                       prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b-2 prose-h2:border-blue-100
-                       prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-gray-700
-                       prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6
-                       prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
-                       prose-strong:text-gray-800 prose-strong:font-semibold
-                       prose-ul:my-6 prose-ul:space-y-2 prose-li:text-gray-700
-                       prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50
-                       prose-blockquote:rounded-r-lg prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:not-italic
-                       prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8"
+              className="article-content"
               dangerouslySetInnerHTML={{ __html: formatContent(article.content) }}
             />
             
@@ -291,12 +434,16 @@ function extractHeadings(content: string): { id: string; text: string; level: nu
 function formatContent(content: string): string {
   if (!content) return ''
   
-  // Convertir le markdown en HTML basique
+  // Convertir le markdown en HTML avec structure améliorée
   let formatted = content
   
-  // Headers avec IDs pour navigation
+  // Headers avec IDs pour navigation et structure améliorée
   formatted = formatted.replace(/### (.+)/g, (_, text) => {
     const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+    // Ajouter des cards pour certains titres spéciaux
+    if (text.includes('🏢') || text.includes('🎨') || text.includes('🚀')) {
+      return `<div class="establishment-card"><h3 id="${id}">${text}</h3>`
+    }
     return `<h3 id="${id}">${text}</h3>`
   })
   
@@ -305,20 +452,60 @@ function formatContent(content: string): string {
     return `<h2 id="${id}">${text}</h2>`
   })
   
-  // Paragraphes
-  formatted = formatted.replace(/\n\n/g, '</p><p>')
-  formatted = `<p>${formatted}</p>`
+  // Fermer les cards après les sections
+  formatted = formatted.replace(/(<div class="establishment-card"><h3[^>]*>.*?<\/h3>)([\s\S]*?)(?=<h2|<h3|<div class="establishment-card"|$)/g, 
+    '$1$2</div>')
   
-  // Listes
+  // Tableaux avec style amélioré
+  formatted = formatted.replace(/\|([^|]+)\|([^|]+)\|([^|]+)\|([^|]+)\|/g, (match, col1, col2, col3, col4) => {
+    if (match.includes('---')) return '' // Ignorer les lignes de séparation
+    if (col1.includes('Type')) {
+      // Header de tableau
+      return `<table><thead><tr><th>${col1.trim()}</th><th>${col2.trim()}</th><th>${col3.trim()}</th><th>${col4.trim()}</th></tr></thead><tbody>`
+    }
+    return `<tr><td>${col1.trim()}</td><td>${col2.trim()}</td><td>${col3.trim()}</td><td>${col4.trim()}</td></tr>`
+  })
+  
+  // Fermer les tableaux
+  formatted = formatted.replace(/(<\/tr>)(?![\s\S]*<tr>)/, '$1</tbody></table>')
+  
+  // Paragraphes avec meilleur espacement
+  formatted = formatted.split('\n\n').map(paragraph => {
+    // Ne pas wrapper les éléments HTML déjà formatés
+    if (paragraph.startsWith('<') || paragraph.trim() === '') {
+      return paragraph
+    }
+    
+    // Ajouter des classes spéciales pour certains paragraphes
+    if (paragraph.includes('📍') || paragraph.includes('💰') || paragraph.includes('✨')) {
+      return `<p class="info-paragraph">${paragraph}</p>`
+    }
+    
+    return `<p>${paragraph}</p>`
+  }).join('\n')
+  
+  // Listes avec meilleur style
   formatted = formatted.replace(/\n- (.+)/g, '<li>$1</li>')
-  formatted = formatted.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
   
-  // Gras et italique
+  // Grouper les listes consécutives
+  formatted = formatted.replace(/(<li>.*?<\/li>\n?)+/g, (match) => {
+    return `<ul>${match}</ul>`
+  })
+  
+  // Gras avec surbrillance
   formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-  formatted = formatted.replace(/\*(.+?)\*/g, '<em>$1</em>')
   
-  // Liens
-  formatted = formatted.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>')
+  // Italique
+  formatted = formatted.replace(/\*([^*]+?)\*/g, '<em>$1</em>')
+  
+  // Liens avec style
+  formatted = formatted.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-blue-600 hover:text-blue-800 underline">$1</a>')
+  
+  // Blockquotes
+  formatted = formatted.replace(/^> (.+)$/gm, '<blockquote><p>$1</p></blockquote>')
+  
+  // Code inline
+  formatted = formatted.replace(/`([^`]+)`/g, '<code class="bg-gray-100 px-2 py-1 rounded text-sm">$1</code>')
   
   return formatted
 }
