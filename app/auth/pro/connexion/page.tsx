@@ -19,11 +19,16 @@ export default function ProConnexionPage() {
     setDebugInfo(prev => [...prev, `${new Date().toISOString().split('T')[1].split('.')[0]} - ${message}`]);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('[Page Connexion] Submit déclenché');
     console.log('[Page Connexion] Email:', email);
     console.log('[Page Connexion] Password length:', password.length);
+    
+    if (!email || !password) {
+      setError('Email et mot de passe requis');
+      return;
+    }
     
     setError('');
     setLoading(true);
@@ -155,12 +160,14 @@ export default function ProConnexionPage() {
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label htmlFor="email" className="block text-sm font-medium mb-2">
                 Email professionnel
               </label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <input
+                  id="email"
+                  name="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -175,12 +182,14 @@ export default function ProConnexionPage() {
 
             {/* Mot de passe */}
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label htmlFor="password" className="block text-sm font-medium mb-2">
                 Mot de passe
               </label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <input
+                  id="password"
+                  name="password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
