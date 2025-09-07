@@ -10,7 +10,7 @@ export const blogRedirects: Record<string, string> = {
   '/blog/fete-des-lumieres-2024': '/blog/festival-lumieres-2024-programme',
   
   // Redirections depuis les anciennes catégories
-  '/actualites': '/blog',
+  // '/actualites': '/blog', // Commenté car nous avons maintenant une vraie page actualités
   '/news': '/blog',
   '/articles': '/blog',
   
