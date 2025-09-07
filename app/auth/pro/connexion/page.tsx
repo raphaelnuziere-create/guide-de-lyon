@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Mail, Lock, AlertCircle, Building2 } from 'lucide-react';
+import { supabase } from '@/app/lib/supabase/client';
 
 export default function ProConnexionPage() {
   const router = useRouter();
@@ -12,18 +13,9 @@ export default function ProConnexionPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showReset, setShowReset] = useState(false);
-  const [debugInfo, setDebugInfo] = useState<string[]>([]);
-
-  const addDebug = (message: string) => {
-    console.log(`[Connexion] ${message}`);
-    setDebugInfo(prev => [...prev, `${new Date().toISOString().split('T')[1].split('.')[0]} - ${message}`]);
-  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('[Page Connexion] Submit déclenché');
-    console.log('[Page Connexion] Email:', email);
-    console.log('[Page Connexion] Password length:', password.length);
     
     if (!email || !password) {
       setError('Email et mot de passe requis');
@@ -32,50 +24,34 @@ export default function ProConnexionPage() {
     
     setError('');
     setLoading(true);
-    setDebugInfo([]);
     setShowReset(false);
 
     try {
-      addDebug(`Tentative de connexion pour: ${email}`);
-      
-      // Appel à l'API de connexion
-      const response = await fetch('/api/auth/pro', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'signin',
-          email: email.trim(),
-          password: password.trim(),
-        }),
+      // Connexion directe avec Supabase côté client
+      const { data, error: signInError } = await supabase.auth.signInWithPassword({
+        email: email.trim(),
+        password: password.trim(),
       });
-
-      addDebug(`Response status: ${response.status}`);
       
-      const data = await response.json();
-      addDebug(`Response data: ${JSON.stringify(data)}`);
-
-      if (data.success) {
-        addDebug(`Connexion réussie! Redirection vers: ${data.redirectTo}`);
-        console.log('[Page Connexion] Success! Redirecting to:', data.redirectTo);
-        
-        // Forcer le rechargement complet de l'application avec la nouvelle session
-        window.location.replace(data.redirectTo || '/pro/dashboard');
-      } else {
-        const errorMsg = data.error || 'Erreur de connexion inconnue';
-        addDebug(`Erreur: ${errorMsg}`);
-        setError(errorMsg);
+      if (signInError) {
+        setError(signInError.message);
         
         // Si erreur de credentials, proposer reset
-        if (errorMsg.toLowerCase().includes('invalid') || errorMsg.toLowerCase().includes('credentials')) {
+        if (signInError.message.toLowerCase().includes('invalid') || 
+            signInError.message.toLowerCase().includes('credentials')) {
           setShowReset(true);
-          addDebug('Affichage option reset password');
         }
+        return;
+      }
+
+      if (data.session) {
+        // Redirection après succès
+        router.push('/pro/dashboard');
+      } else {
+        setError('Erreur de connexion');
       }
     } catch (err: any) {
-      const errorMsg = err.message || 'Erreur de connexion au serveur';
-      addDebug(`Exception: ${errorMsg}`);
-      console.error('Erreur complète:', err);
-      setError(errorMsg);
+      setError(err.message || 'Erreur de connexion');
     } finally {
       setLoading(false);
     }
@@ -89,31 +65,19 @@ export default function ProConnexionPage() {
 
     setError('');
     setLoading(true);
-    addDebug(`Demande de reset pour: ${email}`);
 
     try {
-      const response = await fetch('/api/auth/pro', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'reset',
-          email: email.trim(),
-          password: 'dummy', // Required by API but not used for reset
-        }),
+      const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+        redirectTo: 'https://www.guide-de-lyon.fr/auth/reset-password',
       });
 
-      const data = await response.json();
-      addDebug(`Reset response: ${JSON.stringify(data)}`);
-
-      if (data.success) {
-        setError('');
+      if (error) {
+        setError(error.message);
+      } else {
         setShowReset(false);
         alert('Email de réinitialisation envoyé ! Vérifiez votre boîte mail.');
-      } else {
-        setError(data.error || 'Erreur lors de la réinitialisation');
       }
-    } catch (err) {
-      addDebug(`Reset error: ${err}`);
+    } catch (err: any) {
       setError('Erreur lors de l\'envoi de l\'email');
     } finally {
       setLoading(false);
@@ -246,17 +210,6 @@ export default function ProConnexionPage() {
             </Link>
           </div>
 
-          {/* Debug info (temporairement visible pour diagnostic) */}
-          {debugInfo.length > 0 && (
-            <div className="mt-6 p-4 bg-gray-100 rounded-lg">
-              <p className="text-xs font-mono text-gray-600 mb-2">Debug Info:</p>
-              <div className="text-xs font-mono text-gray-500 space-y-1 max-h-32 overflow-y-auto">
-                {debugInfo.map((info, i) => (
-                  <div key={i}>{info}</div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>
