@@ -4,6 +4,14 @@
 -- Désactiver temporairement RLS pour l'insertion
 ALTER TABLE scraping_sources DISABLE ROW LEVEL SECURITY;
 
+-- Supprimer les sources existantes si nécessaire
+DELETE FROM scraping_sources WHERE url IN (
+  'https://www.leprogres.fr/edition-lyon-villeurbanne/rss',
+  'https://www.lyoncapitale.fr/feed/',
+  'https://tribunedelyon.fr/feed/',
+  'https://actu.fr/auvergne-rhone-alpes/lyon_69123'
+);
+
 -- Insérer les sources
 INSERT INTO scraping_sources (name, url, type, selectors, frequency_minutes, is_active) 
 VALUES
@@ -62,12 +70,7 @@ VALUES
   }'::jsonb,
   120,
   false -- Désactivé par défaut car nécessite Playwright
-)
-ON CONFLICT (url) DO UPDATE
-SET 
-  name = EXCLUDED.name,
-  selectors = EXCLUDED.selectors,
-  frequency_minutes = EXCLUDED.frequency_minutes;
+);
 
 -- Réactiver RLS
 ALTER TABLE scraping_sources ENABLE ROW LEVEL SECURITY;
