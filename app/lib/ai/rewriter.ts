@@ -52,6 +52,7 @@ export class ArticleRewriterService {
     10. Commence par une introduction accrocheuse (2 phrases max)
     11. Termine par une conclusion qui ouvre sur l'actualité locale
     12. Utilise des données factuelles quand possible
+    13. NE JAMAIS mentionner ou citer les sources originales
     
     FORMAT DE RÉPONSE OBLIGATOIRE (JSON) :
     {
@@ -68,7 +69,8 @@ export class ArticleRewriterService {
     - Vérifier la cohérence et l'exactitude des informations
     - Ne pas inventer de faits
     - Maintenir un ton neutre et professionnel
-    - Citer "selon nos sources" si nécessaire
+    - NE JAMAIS citer ou mentionner les sources (pas de "selon nos sources")
+    - Présenter les informations comme des faits rapportés par notre rédaction
     - Ajouter de la valeur avec du contexte local pertinent
     `;
 
@@ -208,7 +210,9 @@ export class ArticleRewriterService {
           ai_confidence_score: rewritten.confidence,
           openai_tokens_used: rewritten.tokensUsed,
           status: rewritten.confidence > 0.8 ? 'rewritten' : 'rejected',
-          rewritten_at: new Date().toISOString()
+          rewritten_at: new Date().toISOString(),
+          author_name: 'Raphael',
+          author_bio: 'Rédacteur en chef du Guide de Lyon'
         })
         .eq('id', articleId);
 
