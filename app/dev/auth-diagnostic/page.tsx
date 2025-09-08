@@ -81,7 +81,7 @@ export default function AuthDiagnosticPage() {
     if (session?.user) {
       // Chercher l'établissement associé
       const { data: business } = await supabase
-        .from('businesses')
+        .from('establishments')
         .select('*')
         .eq('owner_id', session.user.id)
         .single();
@@ -100,7 +100,7 @@ export default function AuthDiagnosticPage() {
     setDiagnostics([...results]);
     
     try {
-      const { data, error } = await supabase.from('businesses').select('count').limit(1);
+      const { data, error } = await supabase.from('establishments').select('count').limit(1);
       results[results.length - 1] = {
         test: 'Connexion Supabase',
         status: error ? 'error' : 'success',
@@ -129,25 +129,25 @@ export default function AuthDiagnosticPage() {
     };
     setDiagnostics([...results]);
 
-    // 3. Test de la table businesses
-    results.push({ test: 'Table businesses', status: 'pending', message: 'Vérification...' });
+    // 3. Test de la table establishments
+    results.push({ test: 'Table establishments', status: 'pending', message: 'Vérification...' });
     setDiagnostics([...results]);
     
     try {
       const { data, error } = await supabase
-        .from('businesses')
+        .from('establishments')
         .select('id, name, email, plan')
         .limit(5);
       
       results[results.length - 1] = {
-        test: 'Table businesses',
+        test: 'Table establishments',
         status: error ? 'error' : 'success',
         message: error ? `Erreur: ${error.message}` : `${data?.length || 0} établissements trouvés`,
         details: data
       };
     } catch (e: any) {
       results[results.length - 1] = {
-        test: 'Table businesses',
+        test: 'Table establishments',
         status: 'error',
         message: `Exception: ${e.message}`
       };
@@ -161,7 +161,7 @@ export default function AuthDiagnosticPage() {
       
       try {
         const { data, error } = await supabase
-          .from('businesses')
+          .from('establishments')
           .select('*')
           .eq('owner_id', session.user.id)
           .single();
@@ -188,7 +188,7 @@ export default function AuthDiagnosticPage() {
     
     try {
       const { data, error } = await supabase
-        .from('businesses')
+        .from('establishments')
         .select('email, name, plan, owner_id')
         .in('email', TEST_ACCOUNTS.map(a => a.email));
       

@@ -85,7 +85,7 @@ export default function QuickLoginPage() {
     if (session?.user) {
       // Chercher l'établissement
       const { data: business } = await supabase
-        .from('businesses')
+        .from('establishments')
         .select('*')
         .eq('owner_id', session.user.id)
         .single();
