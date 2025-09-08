@@ -38,23 +38,23 @@ export default function HorairesPage() {
       }
 
       // Récupérer l'établissement
-      const { data: business, error: businessError } = await supabase
-        .from('businesses')
+      const { data: establishment, error: establishmentError } = await supabase
+        .from('establishments')
         .select('id, opening_hours')
-        .eq('owner_id', session.user.id)
+        .eq('user_id', session.user.id)
         .single();
 
-      if (businessError || !business) {
+      if (establishmentError || !establishment) {
         setMessage({ type: 'error', text: 'Impossible de charger vos données' });
         setLoading(false);
         return;
       }
 
-      setBusinessId(business.id);
+      setBusinessId(establishment.id);
       
       // Charger les horaires existants
-      if (business.opening_hours) {
-        setHours(business.opening_hours as OpeningHoursData);
+      if (establishment.opening_hours) {
+        setHours(establishment.opening_hours as OpeningHoursData);
       }
       
       setLoading(false);
@@ -73,7 +73,7 @@ export default function HorairesPage() {
 
     try {
       const { error } = await supabase
-        .from('businesses')
+        .from('establishments')
         .update({ 
           opening_hours: newHours,
           updated_at: new Date().toISOString()

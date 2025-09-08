@@ -136,7 +136,7 @@ export function ImageUpload({
       // Si c'est une URL Supabase, supprimer aussi de la base
       if (imageUrl.includes('supabase')) {
         const { error } = await supabase
-          .from('businesses')
+          .from('establishments')
           .update({
             [type === 'profile' ? 'main_image' : 'gallery']: 
               type === 'profile' ? null : newImages.filter(url => url.includes('supabase'))
@@ -155,7 +155,7 @@ export function ImageUpload({
 
   async function saveToDatabase(urls: string[]) {
     const { error } = await supabase
-      .from('businesses')
+      .from('establishments')
       .update({
         [type === 'profile' ? 'main_image' : 'gallery']: 
           type === 'profile' ? urls[0] : [...currentImages, ...urls],

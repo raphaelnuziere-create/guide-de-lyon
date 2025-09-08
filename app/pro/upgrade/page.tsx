@@ -84,9 +84,9 @@ export default function UpgradePage() {
       }
 
       const { data: business } = await supabase
-        .from('businesses')
+        .from('establishments')
         .select('plan, name')
-        .eq('owner_id', session.user.id)
+        .eq('user_id', session.user.id)
         .single();
 
       if (business) {
@@ -112,12 +112,12 @@ export default function UpgradePage() {
 
       // Mettre à jour le plan
       const { error } = await supabase
-        .from('businesses')
+        .from('establishments')
         .update({ 
           plan,
           updated_at: new Date().toISOString()
         })
-        .eq('owner_id', session.user.id);
+        .eq('user_id', session.user.id);
 
       if (error) throw error;
 

@@ -469,18 +469,16 @@ export default function DashboardPage() {
                   <ChevronRight className="w-4 h-4 text-gray-400" />
                 </Link>
                 
-                {!establishment.verified && (
-                  <Link
-                    href="/pro/verification"
-                    className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition bg-yellow-50"
-                  >
-                    <div className="flex items-center">
-                      <CheckCircle className="w-5 h-5 mr-3 text-yellow-600" />
-                      <span className="text-yellow-900">Vérifier mon compte</span>
-                    </div>
-                    <ChevronRight className="w-4 h-4 text-yellow-600" />
-                  </Link>
-                )}
+                <Link
+                  href="/pro/horaires"
+                  className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition"
+                >
+                  <div className="flex items-center">
+                    <Clock className="w-5 h-5 mr-3 text-gray-500" />
+                    <span>Horaires d'ouverture</span>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-gray-400" />
+                </Link>
                 
                 {!isPro && (
                   <Link
