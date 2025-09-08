@@ -220,9 +220,9 @@ export default async function AnnuairePage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <div className="bg-white border-b">
-        <div className="container mx-auto px-4 py-6">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        <div className="container mx-auto px-4 py-4">
+          <div className="text-center max-w-2xl mx-auto">
+            <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
               L'Annuaire de Référence de Lyon
             </h1>
             <p className="text-xl text-gray-600">
@@ -234,7 +234,7 @@ export default async function AnnuairePage() {
 
       {/* Categories avec Top 3 */}
       <div className="container mx-auto px-4 py-4">
-        <div className="space-y-8">
+        <div className="space-y-6">
           {CATEGORIES.map((category) => {
             const Icon = category.icon;
             const data = categoryData[category.dbValue] || { experts: [], others: [] };
@@ -247,7 +247,7 @@ export default async function AnnuairePage() {
             return (
               <section key={category.slug} className="scroll-mt-20" id={category.slug}>
                 {/* Header de catégorie */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-4">
                     <div 
                       className="p-3 rounded-xl"
@@ -283,7 +283,7 @@ export default async function AnnuairePage() {
                   <>
                     {/* Section Experts - 3 grandes fenêtres avec badge doré */}
                     {hasExperts && (
-                      <div className="mb-6">
+                      <div className="mb-4">
                         <div className="flex items-center gap-3 mb-4">
                           <Crown className="w-6 h-6 text-amber-500" />
                           <h3 className="text-xl font-bold text-gray-900">Membres Experts</h3>
@@ -303,7 +303,7 @@ export default async function AnnuairePage() {
                     
                     {/* Section Autres - Carrousel horizontal */}
                     {hasOthers && (
-                      <div className="mb-6">
+                      <div className="mb-4">
                         <div className="flex items-center gap-3 mb-4">
                           <Shield className="w-6 h-6 text-blue-500" />
                           <h3 className="text-xl font-bold text-gray-900">Autres Membres</h3>
