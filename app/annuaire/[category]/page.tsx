@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Crown, Shield } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import { BusinessCard } from '@/components/annuaire/BusinessCard';
+import { ExpertBusinessCard } from '@/components/annuaire/ExpertBusinessCard';
 import { notFound } from 'next/navigation';
 
 // Map des catégories valides
@@ -107,8 +108,10 @@ async function getBusinessesByCategory(categorySlug: string) {
     .eq('status', 'active')
     .eq('category', categoryInfo.dbValue);
     
-  // Mapper et trier les résultats
-  const businesses = businessesRaw ? businessesRaw.map(business => ({
+  if (!businessesRaw) return { experts: [], others: [] };
+
+  // Mapper les données
+  const mapped = businessesRaw.map(business => ({
     id: business.id,
     slug: business.slug,
     name: business.name,
@@ -117,15 +120,23 @@ async function getBusinessesByCategory(categorySlug: string) {
     plan: business.metadata?.plan || 'basic',
     address_district: business.metadata?.address_district,
     views_count: business.metadata?.views_count || 0
-  })).sort((a, b) => {
-    const planOrder = { 'expert': 3, 'pro': 2, 'basic': 1 };
-    const planDiff = (planOrder[b.plan as keyof typeof planOrder] || 0) - 
-                    (planOrder[a.plan as keyof typeof planOrder] || 0);
-    if (planDiff !== 0) return planDiff;
-    return (b.views_count || 0) - (a.views_count || 0);
-  }) : [];
+  }));
 
-  return businesses || [];
+  // Séparer experts et autres
+  const experts = mapped.filter(b => b.plan === 'expert')
+    .sort((a, b) => (b.views_count || 0) - (a.views_count || 0))
+    .slice(0, 3); // Limiter à 3 experts
+
+  const others = mapped.filter(b => b.plan !== 'expert')
+    .sort((a, b) => {
+      const planOrder = { 'pro': 2, 'basic': 1 };
+      const planDiff = (planOrder[b.plan as keyof typeof planOrder] || 0) - 
+                      (planOrder[a.plan as keyof typeof planOrder] || 0);
+      if (planDiff !== 0) return planDiff;
+      return (b.views_count || 0) - (a.views_count || 0);
+    });
+
+  return { experts, others };
 }
 
 export default async function CategoryPage({ params }: { params: { category: string } }) {
@@ -135,7 +146,13 @@ export default async function CategoryPage({ params }: { params: { category: str
     notFound();
   }
 
-  const businesses = await getBusinessesByCategory(params.category);
+  const data = await getBusinessesByCategory(params.category);
+  if (!data) {
+    notFound();
+  }
+
+  const { experts, others } = data;
+  const totalCount = experts.length + others.length;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -157,31 +174,74 @@ export default async function CategoryPage({ params }: { params: { category: str
             {categoryInfo.description}
           </p>
           <p className="text-sm text-gray-500 mt-2">
-            {businesses.length} établissement{businesses.length !== 1 ? 's' : ''} trouvé{businesses.length !== 1 ? 's' : ''}
+            {totalCount} établissement{totalCount !== 1 ? 's' : ''} trouvé{totalCount !== 1 ? 's' : ''}
           </p>
         </div>
       </div>
 
-      {/* Liste des établissements */}
+      {/* Contenu des établissements */}
       <div className="container mx-auto px-4 py-8">
-        {businesses.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {businesses.map((business: any, index: number) => (
-              <BusinessCard 
-                key={business.id} 
-                business={business} 
-                rank={index + 1}
-              />
-            ))}
+        {totalCount > 0 ? (
+          <div className="space-y-12">
+            {/* Section Experts - 3 grandes cartes */}
+            {experts.length > 0 && (
+              <div>
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="p-2 rounded-lg bg-gradient-to-r from-yellow-400 to-amber-500">
+                    <Crown className="w-6 h-6 text-white" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-900">Membres Experts</h2>
+                  <div className="h-px bg-gradient-to-r from-amber-500 to-transparent flex-1" />
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                  {experts.map((business: any, index: number) => (
+                    <ExpertBusinessCard 
+                      key={business.id} 
+                      business={business} 
+                      rank={index + 1}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Section Autres Membres - Grille 4 colonnes */}
+            {others.length > 0 && (
+              <div>
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="p-2 rounded-lg bg-blue-500">
+                    <Shield className="w-6 h-6 text-white" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    {experts.length > 0 ? 'Autres Membres' : 'Tous les Membres'}
+                  </h2>
+                  <div className="h-px bg-gradient-to-r from-blue-500 to-transparent flex-1" />
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {others.map((business: any, index: number) => (
+                    <BusinessCard 
+                      key={business.id} 
+                      business={business} 
+                      rank={experts.length + index + 1}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
-            <p className="text-gray-500 mb-4">
+            <h3 className="text-xl font-semibold text-gray-700 mb-4">
+              {categoryInfo.label}
+            </h3>
+            <p className="text-gray-500 mb-6">
               Aucun établissement dans cette catégorie pour le moment
             </p>
             <Link 
               href="/pro/inscription"
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700"
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
             >
               <span>Soyez le premier à vous inscrire</span>
             </Link>

@@ -14,12 +14,8 @@ import {
   Globe,
   Facebook,
   Instagram,
-  Twitter,
-  Linkedin,
-  Youtube,
   FileText,
   AlertCircle,
-  Camera,
   Loader2
 } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase/client';
@@ -37,9 +33,6 @@ interface EstablishmentData {
   category: string;
   facebook_url?: string;
   instagram_url?: string;
-  twitter_url?: string;
-  linkedin_url?: string;
-  youtube_url?: string;
 }
 
 const CATEGORIES = [
@@ -74,10 +67,7 @@ export default function EditEstablishmentPage() {
     website: '',
     category: '',
     facebook_url: '',
-    instagram_url: '',
-    twitter_url: '',
-    linkedin_url: '',
-    youtube_url: ''
+    instagram_url: ''
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
@@ -136,10 +126,7 @@ export default function EditEstablishmentPage() {
           website: data.website || '',
           category: data.category || '',
           facebook_url: data.facebook_url || '',
-          instagram_url: data.instagram_url || '',
-          twitter_url: data.twitter_url || '',
-          linkedin_url: data.linkedin_url || '',
-          youtube_url: data.youtube_url || ''
+          instagram_url: data.instagram_url || ''
         });
       } else {
         console.log('Aucun établissement trouvé');
@@ -195,23 +182,26 @@ export default function EditEstablishmentPage() {
     setMessage(null);
 
     try {
-      const updateData = {
+      // Ne mettre à jour que les colonnes qui existent dans la base
+      const updateData: any = {
         name: establishment.name,
-        description: establishment.description,
+        description: establishment.description || null,
         address: establishment.address,
-        postal_code: establishment.postal_code,
+        postal_code: establishment.postal_code || null,
         city: establishment.city,
         phone: establishment.phone,
         email: establishment.email,
         website: establishment.website || null,
-        category: establishment.category,
-        facebook_url: establishment.facebook_url || null,
-        instagram_url: establishment.instagram_url || null,
-        twitter_url: establishment.twitter_url || null,
-        linkedin_url: establishment.linkedin_url || null,
-        youtube_url: establishment.youtube_url || null,
-        updated_at: new Date().toISOString()
+        category: establishment.category
       };
+
+      // Ajouter les colonnes optionnelles seulement si elles ont une valeur
+      if (establishment.facebook_url) {
+        updateData.facebook_url = establishment.facebook_url;
+      }
+      if (establishment.instagram_url) {
+        updateData.instagram_url = establishment.instagram_url;
+      }
 
       console.log('Mise à jour avec:', updateData);
 
@@ -232,7 +222,12 @@ export default function EditEstablishmentPage() {
 
       if (error) {
         console.error('Erreur sauvegarde:', error);
-        setMessage({ type: 'error', text: 'Erreur lors de la sauvegarde: ' + error.message });
+        // Message d'erreur plus clair pour l'utilisateur
+        if (error.message?.includes('column')) {
+          setMessage({ type: 'error', text: 'Certains champs ne peuvent pas être sauvegardés. Contactez le support.' });
+        } else {
+          setMessage({ type: 'error', text: 'Erreur lors de la sauvegarde. Veuillez réessayer.' });
+        }
       } else {
         setMessage({ type: 'success', text: 'Établissement mis à jour avec succès !' });
         setTimeout(() => {
@@ -420,7 +415,7 @@ export default function EditEstablishmentPage() {
                   )}
                 </div>
 
-                <div>
+                <div className="md:col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Site web
                   </label>
@@ -492,7 +487,7 @@ export default function EditEstablishmentPage() {
               </div>
             </div>
 
-            {/* Réseaux sociaux */}
+            {/* Réseaux sociaux (seulement Facebook et Instagram) */}
             <div>
               <h2 className="text-lg font-semibold mb-4">
                 Réseaux sociaux
@@ -507,7 +502,7 @@ export default function EditEstablishmentPage() {
                     value={establishment.facebook_url}
                     onChange={handleChange}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="URL Facebook"
+                    placeholder="URL de votre page Facebook"
                   />
                 </div>
 
@@ -519,31 +514,7 @@ export default function EditEstablishmentPage() {
                     value={establishment.instagram_url}
                     onChange={handleChange}
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="URL Instagram"
-                  />
-                </div>
-
-                <div className="flex items-center">
-                  <Twitter className="w-5 h-5 text-gray-400 mr-2" />
-                  <input
-                    type="url"
-                    name="twitter_url"
-                    value={establishment.twitter_url}
-                    onChange={handleChange}
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="URL Twitter"
-                  />
-                </div>
-
-                <div className="flex items-center">
-                  <Linkedin className="w-5 h-5 text-gray-400 mr-2" />
-                  <input
-                    type="url"
-                    name="linkedin_url"
-                    value={establishment.linkedin_url}
-                    onChange={handleChange}
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="URL LinkedIn"
+                    placeholder="URL de votre compte Instagram"
                   />
                 </div>
               </div>

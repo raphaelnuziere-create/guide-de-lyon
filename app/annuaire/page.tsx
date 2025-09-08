@@ -9,6 +9,8 @@ import {
 } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 import { BusinessCard } from '@/components/annuaire/BusinessCard';
+import { ExpertBusinessCard } from '@/components/annuaire/ExpertBusinessCard';
+import { BusinessCarousel } from '@/components/annuaire/BusinessCarousel';
 
 export const metadata: Metadata = {
   title: 'Annuaire des Entreprises Lyon - Guide de Lyon',
@@ -126,8 +128,8 @@ const CATEGORIES = [
   }
 ];
 
-// Fonction pour récupérer les top 3 de chaque catégorie
-async function getTopBusinessesByCategory() {
+// Fonction pour récupérer les établissements par catégorie avec distinction experts/autres
+async function getBusinessesByCategory() {
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -146,8 +148,7 @@ async function getTopBusinessesByCategory() {
     `)
     .eq('status', 'active');
 
-  // Grouper par catégorie et prendre les top 3
-  const grouped: Record<string, any[]> = {};
+  const result: Record<string, { experts: any[], others: any[] }> = {};
   
   if (allBusinesses) {
     // Mapper les données pour extraire depuis metadata
@@ -158,38 +159,50 @@ async function getTopBusinessesByCategory() {
       description: business.description,
       main_image: business.metadata?.main_image,
       plan: business.metadata?.plan || 'basic',
-      sector: business.category, // category est le secteur
+      sector: business.category,
       address_district: business.metadata?.address_district,
       views_count: business.metadata?.views_count || 0
     }));
 
-    // Trier d'abord par plan (expert > pro > basic) puis par vues
-    const planOrder = { 'expert': 3, 'pro': 2, 'basic': 1 };
-    const sortedBusinesses = mappedBusinesses.sort((a, b) => {
-      const planDiff = (planOrder[b.plan as keyof typeof planOrder] || 0) - 
-                      (planOrder[a.plan as keyof typeof planOrder] || 0);
-      if (planDiff !== 0) return planDiff;
-      return (b.views_count || 0) - (a.views_count || 0);
+    // Grouper par catégorie
+    mappedBusinesses.forEach(business => {
+      const sector = business.sector || 'autre';
+      if (!result[sector]) {
+        result[sector] = { experts: [], others: [] };
+      }
+      
+      if (business.plan === 'expert') {
+        result[sector].experts.push(business);
+      } else {
+        result[sector].others.push(business);
+      }
     });
 
-    // Grouper et limiter à 3 par catégorie
-    sortedBusinesses.forEach(business => {
-      const sector = business.sector || 'autre';
-      if (!grouped[sector]) {
-        grouped[sector] = [];
-      }
-      if (grouped[sector].length < 3) {
-        grouped[sector].push(business);
-      }
+    // Trier chaque groupe
+    Object.keys(result).forEach(sector => {
+      // Trier les experts par vues (les meilleurs en premier)
+      result[sector].experts.sort((a, b) => (b.views_count || 0) - (a.views_count || 0));
+      
+      // Trier les autres par plan puis par vues
+      const planOrder = { 'pro': 2, 'basic': 1 };
+      result[sector].others.sort((a, b) => {
+        const planDiff = (planOrder[b.plan as keyof typeof planOrder] || 0) - 
+                        (planOrder[a.plan as keyof typeof planOrder] || 0);
+        if (planDiff !== 0) return planDiff;
+        return (b.views_count || 0) - (a.views_count || 0);
+      });
+      
+      // Limiter à 3 experts max
+      result[sector].experts = result[sector].experts.slice(0, 3);
     });
   }
   
-  return grouped;
+  return result;
 }
 
 export default async function AnnuairePage() {
-  // Récupérer les top 3 de chaque catégorie
-  const categoryData = await getTopBusinessesByCategory();
+  // Récupérer les établissements par catégorie
+  const categoryData = await getBusinessesByCategory();
   
   return (
     <div className="min-h-screen bg-gray-50">
@@ -212,13 +225,17 @@ export default async function AnnuairePage() {
         <div className="space-y-12">
           {CATEGORIES.map((category) => {
             const Icon = category.icon;
-            const businesses = categoryData[category.dbValue] || [];
-            const hasBusinesses = businesses.length > 0;
+            const data = categoryData[category.dbValue] || { experts: [], others: [] };
+            const experts = data.experts || [];
+            const others = data.others || [];
+            const hasExperts = experts.length > 0;
+            const hasOthers = others.length > 0;
+            const hasAny = hasExperts || hasOthers;
             
             return (
               <section key={category.slug} className="scroll-mt-20" id={category.slug}>
                 {/* Header de catégorie */}
-                <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center gap-4">
                     <div 
                       className="p-3 rounded-xl"
@@ -230,60 +247,80 @@ export default async function AnnuairePage() {
                       />
                     </div>
                     <div>
-                      <h2 className="text-2xl font-bold text-gray-900">
+                      <h2 className="text-3xl font-bold text-gray-900">
                         {category.label}
                       </h2>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-gray-600">
                         {category.description}
                       </p>
                     </div>
                   </div>
                   
-                  {hasBusinesses && (
+                  {hasAny && (
                     <Link 
                       href={`/annuaire/${category.slug}`}
                       className="hidden md:flex items-center gap-2 text-blue-600 hover:text-blue-700 transition group"
                     >
-                      <span className="font-medium">Voir tous</span>
+                      <span className="font-medium">Voir tout</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   )}
                 </div>
 
-                {/* Grille Top 3 ou Message vide */}
-                {hasBusinesses ? (
+                {hasAny ? (
                   <>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
-                      {businesses.map((business: any, index: number) => (
-                        <BusinessCard 
-                          key={business.id} 
-                          business={business} 
-                          rank={index + 1}
-                        />
-                      ))}
-                    </div>
+                    {/* Section Experts - 3 grandes fenêtres avec badge doré */}
+                    {hasExperts && (
+                      <div className="mb-10">
+                        <div className="flex items-center gap-3 mb-6">
+                          <Crown className="w-6 h-6 text-amber-500" />
+                          <h3 className="text-xl font-bold text-gray-900">Membres Experts</h3>
+                          <div className="h-px bg-gradient-to-r from-amber-500 to-transparent flex-1" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                          {experts.map((business: any, index: number) => (
+                            <ExpertBusinessCard 
+                              key={business.id} 
+                              business={business} 
+                              rank={index + 1}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )}
                     
-                    {/* Lien "Découvrir les autres" */}
-                    <div className="text-center">
-                      <Link 
-                        href={`/annuaire/${category.slug}`}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-gray-200 rounded-lg hover:border-blue-600 hover:text-blue-600 transition group"
-                      >
-                        <span className="font-medium">Découvrir les autres {category.label.toLowerCase()}</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </div>
+                    {/* Section Autres - Carrousel horizontal */}
+                    {hasOthers && (
+                      <div className="mb-8">
+                        <div className="flex items-center gap-3 mb-6">
+                          <Shield className="w-6 h-6 text-blue-500" />
+                          <h3 className="text-xl font-bold text-gray-900">Autres Membres</h3>
+                          <div className="h-px bg-gradient-to-r from-blue-500 to-transparent flex-1" />
+                        </div>
+                        <BusinessCarousel 
+                          businesses={others}
+                          categorySlug={category.slug}
+                          categoryLabel={category.label}
+                        />
+                      </div>
+                    )}
                   </>
                 ) : (
-                  <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
-                    <p className="text-gray-500 mb-4">
-                      Aucun établissement dans cette catégorie pour le moment
-                    </p>
+                  <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+                    <div className="mb-6">
+                      <Icon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                        {category.label}
+                      </h3>
+                      <p className="text-gray-500">
+                        Aucun établissement dans cette catégorie pour le moment
+                      </p>
+                    </div>
                     <Link 
                       href="/pro/inscription"
-                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700"
+                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
                     >
-                      <span>Ajouter votre établissement</span>
+                      <span>Soyez le premier à vous inscrire</span>
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>

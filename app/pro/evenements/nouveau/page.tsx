@@ -25,12 +25,11 @@ interface EventForm {
   start_time: string;
   end_date: string;
   end_time: string;
-  location: string;
+  address: string;
   max_participants?: number;
   price?: string;
-  registration_link?: string;
-  image_url?: string;
   status: 'draft' | 'published';
+  photo?: File | null;
 }
 
 export default function NouveauEvenementPage() {
@@ -48,13 +47,13 @@ export default function NouveauEvenementPage() {
     start_time: '',
     end_date: '',
     end_time: '',
-    location: '',
+    address: '',
     max_participants: undefined,
     price: '',
-    registration_link: '',
-    image_url: '',
-    status: 'draft'
+    status: 'draft',
+    photo: null
   });
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
 
   useEffect(() => {
     if (!authLoading) {
@@ -90,10 +89,10 @@ export default function NouveauEvenementPage() {
 
       if (data) {
         setEstablishment(data);
-        // Pré-remplir la localisation avec l'adresse de l'établissement
+        // Pré-remplir l'adresse avec celle de l'établissement
         setEventForm(prev => ({
           ...prev,
-          location: data.address || ''
+          address: data.address || ''
         }));
       } else {
         setMessage({ type: 'error', text: 'Vous devez d\'abord créer un établissement' });
@@ -121,8 +120,8 @@ export default function NouveauEvenementPage() {
     if (!eventForm.start_time) {
       newErrors.start_time = 'L\'heure de début est requise';
     }
-    if (!eventForm.location.trim()) {
-      newErrors.location = 'Le lieu est requis';
+    if (!eventForm.address.trim()) {
+      newErrors.address = 'L\'adresse est requise';
     }
     
     // Vérifier que la date de fin est après la date de début
@@ -154,17 +153,34 @@ export default function NouveauEvenementPage() {
         ? `${eventForm.end_date} ${eventForm.end_time}:00`
         : null;
 
+      // Gérer l'upload de photo si présente
+      let imageUrl = null;
+      if (eventForm.photo) {
+        const fileExt = eventForm.photo.name.split('.').pop();
+        const fileName = `${establishment.id}-${Date.now()}.${fileExt}`;
+        const filePath = `events/${fileName}`;
+
+        const { error: uploadError } = await supabase.storage
+          .from('public')
+          .upload(filePath, eventForm.photo);
+
+        if (!uploadError) {
+          const { data: { publicUrl } } = supabase.storage
+            .from('public')
+            .getPublicUrl(filePath);
+          imageUrl = publicUrl;
+        }
+      }
+
       const eventData = {
         establishment_id: establishment.id,
         title: eventForm.title,
         description: eventForm.description,
         start_date: startDateTime,
         end_date: endDateTime,
-        location: eventForm.location,
+        address: eventForm.address,
         max_participants: eventForm.max_participants || null,
         price: eventForm.price || null,
-        registration_link: eventForm.registration_link || null,
-        image_url: eventForm.image_url || null,
         status: eventForm.status,
         show_on_establishment_page: true,
         show_on_homepage: establishment.plan !== 'basic',
@@ -173,6 +189,11 @@ export default function NouveauEvenementPage() {
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString()
       };
+
+      // Ajouter l'image seulement si elle existe
+      if (imageUrl) {
+        (eventData as any).image_url = imageUrl;
+      }
 
       console.log('Création événement:', eventData);
 
@@ -223,6 +244,29 @@ export default function NouveauEvenementPage() {
         ...prev,
         [name]: ''
       }));
+    }
+  };
+
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Vérifier le type de fichier
+      if (!file.type.startsWith('image/')) {
+        setMessage({ type: 'error', text: 'Veuillez sélectionner une image' });
+        return;
+      }
+      // Vérifier la taille (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        setMessage({ type: 'error', text: 'L\'image ne doit pas dépasser 5MB' });
+        return;
+      }
+      setEventForm(prev => ({ ...prev, photo: file }));
+      // Créer un aperçu
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPhotoPreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -412,16 +456,16 @@ export default function NouveauEvenementPage() {
                 </label>
                 <input
                   type="text"
-                  name="location"
-                  value={eventForm.location}
+                  name="address"
+                  value={eventForm.address}
                   onChange={handleChange}
                   className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    errors.location ? 'border-red-500' : 'border-gray-300'
+                    errors.address ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="Ex: 10 rue de la République, 69001 Lyon"
                 />
-                {errors.location && (
-                  <p className="text-red-500 text-sm mt-1">{errors.location}</p>
+                {errors.address && (
+                  <p className="text-red-500 text-sm mt-1">{errors.address}</p>
                 )}
               </div>
             </div>
@@ -462,34 +506,42 @@ export default function NouveauEvenementPage() {
                     placeholder="Ex: Gratuit, 10€, Sur réservation"
                   />
                 </div>
+              </div>
+            </div>
 
+            {/* Photo de l'événement */}
+            <div>
+              <h2 className="text-lg font-semibold mb-4 flex items-center">
+                <ImageIcon className="w-5 h-5 mr-2" />
+                Photo de l'événement
+              </h2>
+              
+              <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Lien d\'inscription
+                    Ajouter une photo
                   </label>
                   <input
-                    type="url"
-                    name="registration_link"
-                    value={eventForm.registration_link}
-                    onChange={handleChange}
+                    type="file"
+                    accept="image/*"
+                    onChange={handlePhotoChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="https://..."
                   />
+                  <p className="text-sm text-gray-500 mt-1">
+                    Format accepté: JPG, PNG (max 5MB)
+                  </p>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    URL de l\'image
-                  </label>
-                  <input
-                    type="url"
-                    name="image_url"
-                    value={eventForm.image_url}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="https://..."
-                  />
-                </div>
+                {photoPreview && (
+                  <div className="mt-4">
+                    <p className="text-sm font-medium text-gray-700 mb-2">Aperçu:</p>
+                    <img
+                      src={photoPreview}
+                      alt="Aperçu"
+                      className="max-w-xs rounded-lg shadow-md"
+                    />
+                  </div>
+                )}
               </div>
             </div>
 
