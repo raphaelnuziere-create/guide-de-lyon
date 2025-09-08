@@ -141,7 +141,7 @@ function ProInscriptionContent() {
     const { data: establishment } = await supabase
       .from('establishments')
       .select('id')
-      .eq('user_id', user.id)
+      .eq('owner_id', user.id)
       .single();
     
     if (establishment) {
@@ -162,7 +162,7 @@ function ProInscriptionContent() {
       const { data, error: insertError } = await supabase
         .from('establishments')
         .insert({
-          user_id: user.id,
+          owner_id: user.id,
           name: formData.name,
           category: formData.category,
           description: formData.description,
