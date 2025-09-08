@@ -18,7 +18,32 @@ const nextConfig: NextConfig = {
 
   // Configuration des images
   images: {
-    domains: ['localhost', 'guide-de-lyon.fr', 'www.guide-de-lyon.fr'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ikefyhxelzydaogrnwxi.supabase.co',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+      },
+      {
+        protocol: 'https',
+        hostname: 'localhost',
+      },
+      {
+        protocol: 'https',
+        hostname: 'guide-de-lyon.fr',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.guide-de-lyon.fr',
+      },
+    ],
   },
   
   // Headers de sécurité
