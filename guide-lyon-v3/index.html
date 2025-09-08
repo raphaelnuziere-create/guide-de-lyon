@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide de Lyon - L'agenda des événements lyonnais, l'annuaire des entreprises</title>
+    <meta name="description" content="Guide de Lyon : 16 ans d'expérience. Découvrez les événements, l'annuaire des entreprises, actualités lyonnaises. 500+ entreprises, 50+ événements/mois.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-content">
+                <div class="logo">
+                    <h1>Guide de Lyon</h1>
+                    <div class="logo-underline"></div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/actualites">Actualités</a></li>
+                    <li><a href="/annuaire">Annuaire</a></li>
+                    <li><a href="/evenements">Événements</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Weather Sub-header -->
+        <div class="weather-banner">
+            <div class="container">
+                <div class="weather-item">
+                    <span class="weather-icon">🌤️</span>
+                    <span>Lyon aujourd'hui : 18°C</span>
+                </div>
+                <div class="weather-item">
+                    <span class="weather-icon">☀️</span>
+                    <span>Demain : 22°C</span>
+                </div>
+                <div class="weather-item">
+                    <span class="weather-icon">🌧️</span>
+                    <span>Mercredi : 16°C</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-video-overlay"></div>
+            <div class="hero-content">
+                <div class="experience-badge">
+                    <div class="badge-icon">◆</div>
+                    <span>16 ans d'excellence</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-main">Guide de Lyon</span>
+                    <span class="title-subtitle">Excellence & Tradition</span>
+                </h1>
+                
+                <p class="hero-description">
+                    L'agenda premium des événements lyonnais<br>
+                    L'annuaire de référence des entreprises d'exception
+                </p>
+                
+                <div class="search-container">
+                    <form class="search-form">
+                        <div class="search-inner">
+                            <input type="text" placeholder="Rechercher un établissement, un événement..." class="search-input">
+                            <button type="submit" class="search-button">
+                                <span>Rechercher</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Trust Indicators Premium -->
+            <div class="trust-section">
+                <div class="container">
+                    <div class="trust-indicators">
+                        <div class="trust-item">
+                            <div class="trust-icon">🏢</div>
+                            <div class="trust-number">500+</div>
+                            <div class="trust-label">Entreprises partenaires</div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon">📅</div>
+                            <div class="trust-number">50+</div>
+                            <div class="trust-label">Événements mensuels</div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon">👥</div>
+                            <div class="trust-number">10k+</div>
+                            <div class="trust-label">Visiteurs mensuels</div>
+                        </div>
+                        <div class="trust-item">
+                            <div class="trust-icon">⭐</div>
+                            <div class="trust-number">4.8/5</div>
+                            <div class="trust-label">Satisfaction client</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="events-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Agenda des Événements</h2>
+                    <div class="section-line"></div>
+                    <p class="section-subtitle">Découvrez les événements d'exception à Lyon</p>
+                </div>
+                
+                <div class="events-grid">
+                    <!-- Calendar Column -->
+                    <div class="calendar-column">
+                        <div class="column-header">
+                            <h3>Calendrier Premium</h3>
+                            <div class="header-accent"></div>
+                        </div>
+                        <div id="calendar-month" class="calendar-container"></div>
+                    </div>
+                    
+                    <!-- Day Events Column -->
+                    <div class="day-events-column">
+                        <div class="column-header">
+                            <h3>Programme Détaillé</h3>
+                            <div class="header-accent"></div>
+                        </div>
+                        <div id="day-events" class="day-events-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Directory Section -->
+        <section class="directory-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Annuaire d'Excellence</h2>
+                    <div class="section-line"></div>
+                    <p class="section-subtitle">Les entreprises de référence à Lyon, classées par secteur</p>
+                </div>
+                
+                <div class="sectors-grid">
+                    <div class="sector-card luxury" data-sector="shopping">
+                        <div class="sector-bg"></div>
+                        <div class="sector-overlay"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🛍️</div>
+                            <h3 class="sector-name">Shopping de Luxe</h3>
+                            <div class="sector-count">85 boutiques d'exception</div>
+                            <div class="sector-accent"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card luxury" data-sector="restaurant">
+                        <div class="sector-bg"></div>
+                        <div class="sector-overlay"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🍽️</div>
+                            <h3 class="sector-name">Gastronomie</h3>
+                            <div class="sector-count">142 tables renommées</div>
+                            <div class="sector-accent"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card luxury" data-sector="culture">
+                        <div class="sector-bg"></div>
+                        <div class="sector-overlay"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🎭</div>
+                            <h3 class="sector-name">Culture & Arts</h3>
+                            <div class="sector-count">67 lieux culturels</div>
+                            <div class="sector-accent"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card luxury" data-sector="bars">
+                        <div class="sector-bg"></div>
+                        <div class="sector-overlay"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🍺</div>
+                            <h3 class="sector-name">Bars Premium</h3>
+                            <div class="sector-count">91 établissements</div>
+                            <div class="sector-accent"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card luxury" data-sector="fitness">
+                        <div class="sector-bg"></div>
+                        <div class="sector-overlay"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">💪</div>
+                            <h3 class="sector-name">Wellness</h3>
+                            <div class="sector-count">43 centres de bien-être</div>
+                            <div class="sector-accent"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card luxury" data-sector="sante">
+                        <div class="sector-bg"></div>
+                        <div class="sector-overlay"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🏥</div>
+                            <h3 class="sector-name">Santé Premium</h3>
+                            <div class="sector-count">78 professionnels</div>
+                            <div class="sector-accent"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card luxury" data-sector="immobilier">
+                        <div class="sector-bg"></div>
+                        <div class="sector-overlay"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🏠</div>
+                            <h3 class="sector-name">Immobilier Haut Gamme</h3>
+                            <div class="sector-count">56 agences</div>
+                            <div class="sector-accent"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card luxury" data-sector="auto">
+                        <div class="sector-bg"></div>
+                        <div class="sector-overlay"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🚗</div>
+                            <h3 class="sector-name">Automobile Prestige</h3>
+                            <div class="sector-count">34 concessionnaires</div>
+                            <div class="sector-accent"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card luxury" data-sector="beaute">
+                        <div class="sector-bg"></div>
+                        <div class="sector-overlay"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">💄</div>
+                            <h3 class="sector-name">Beauté & Spa</h3>
+                            <div class="sector-count">62 instituts</div>
+                            <div class="sector-accent"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card luxury" data-sector="education">
+                        <div class="sector-bg"></div>
+                        <div class="sector-overlay"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🎓</div>
+                            <h3 class="sector-name">Éducation d'Excellence</h3>
+                            <div class="sector-count">29 établissements</div>
+                            <div class="sector-accent"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card luxury" data-sector="services">
+                        <div class="sector-bg"></div>
+                        <div class="sector-overlay"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🛠️</div>
+                            <h3 class="sector-name">Services Premium</h3>
+                            <div class="sector-count">73 professionnels</div>
+                            <div class="sector-accent"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card luxury" data-sector="loisirs">
+                        <div class="sector-bg"></div>
+                        <div class="sector-overlay"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🎪</div>
+                            <h3 class="sector-name">Loisirs Premium</h3>
+                            <div class="sector-count">38 activités</div>
+                            <div class="sector-accent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="news-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Magazine Premium</h2>
+                    <div class="section-line"></div>
+                    <p class="section-subtitle">L'actualité exclusive des entreprises lyonnaises d'exception</p>
+                </div>
+                
+                <div class="news-grid">
+                    <article class="news-item premium" data-sector="restaurant">
+                        <div class="news-image">
+                            <img src="" alt="Actualité restaurant" data-src="">
+                            <div class="news-overlay"></div>
+                            <div class="news-category">Gastronomie</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">8 janvier 2025</span>
+                                <span class="news-reading-time">3 min de lecture</span>
+                            </div>
+                            <h3 class="news-title">Nouveau temple gastronomique à Confluence</h3>
+                            <p class="news-excerpt">Un chef étoilé Michelin inaugure son établissement d'exception dans le quartier moderne de Confluence, proposant une expérience culinaire fusion franco-asiatique inédite...</p>
+                            <a href="#" class="news-link">
+                                <span>Découvrir l'article</span>
+                                <div class="link-icon">→</div>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item premium" data-sector="culture">
+                        <div class="news-image">
+                            <img src="" alt="Actualité culture" data-src="">
+                            <div class="news-overlay"></div>
+                            <div class="news-category">Culture</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">7 janvier 2025</span>
+                                <span class="news-reading-time">4 min de lecture</span>
+                            </div>
+                            <h3 class="news-title">Festival International Street Art 2025</h3>
+                            <p class="news-excerpt">Lyon s'apprête à accueillir le plus prestigieux festival de street art d'Europe avec la participation de 50 artistes internationaux de renommée mondiale transformant la ville en galerie à ciel ouvert...</p>
+                            <a href="#" class="news-link">
+                                <span>Découvrir l'article</span>
+                                <div class="link-icon">→</div>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item premium" data-sector="shopping">
+                        <div class="news-image">
+                            <img src="" alt="Actualité shopping" data-src="">
+                            <div class="news-overlay"></div>
+                            <div class="news-category">Shopping</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">6 janvier 2025</span>
+                                <span class="news-reading-time">2 min de lecture</span>
+                            </div>
+                            <h3 class="news-title">Soldes privés : Adresses confidentielles</h3>
+                            <p class="news-excerpt">Notre sélection exclusive des meilleures maisons lyonnaises pour des soldes d'exception. Accès privilégié aux collections automne-hiver des plus grandes marques avec des réductions jusqu'à 70%...</p>
+                            <a href="#" class="news-link">
+                                <span>Découvrir l'article</span>
+                                <div class="link-icon">→</div>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Premium -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-cta">
+                    <div class="cta-icon">◆</div>
+                    <h3>Professionnel d'Excellence ?</h3>
+                    <p>Rejoignez notre réseau premium de 500+ partenaires d'exception</p>
+                    <a href="/pro" class="cta-button">
+                        <span>Découvrir nos services</span>
+                    </a>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Guide de Lyon Premium</h4>
+                        <ul>
+                            <li><a href="/a-propos">Notre histoire</a></li>
+                            <li><a href="/contact">Contact VIP</a></li>
+                            <li><a href="/mentions-legales">Mentions légales</a></li>
+                            <li><a href="/partenaires">Nos partenaires</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Services Premium</h4>
+                        <ul>
+                            <li><a href="/annuaire">Annuaire d'exception</a></li>
+                            <li><a href="/evenements">Événements VIP</a></li>
+                            <li><a href="/actualites">Magazine premium</a></li>
+                            <li><a href="/concierge">Service concierge</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-left">
+                    <p>&copy; 2025 Guide-de-Lyon.fr - 16 années d'excellence à votre service</p>
+                </div>
+                <div class="footer-right">
+                    <div class="premium-badge">Premium Experience</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="api/pexels-integration.js"></script>
+    <script src="api/events-calendar.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

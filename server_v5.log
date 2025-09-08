@@ -1,0 +1,10 @@
+::ffff:127.0.0.1 - - [08/Sep/2025 22:57:32] "GET / HTTP/1.1" 200 -
+::1 - - [08/Sep/2025 22:57:40] "GET / HTTP/1.1" 200 -
+::1 - - [08/Sep/2025 22:57:40] "GET /assets/css/style.css HTTP/1.1" 200 -
+::1 - - [08/Sep/2025 22:57:40] "GET /api/pexels-integration.js HTTP/1.1" 200 -
+::1 - - [08/Sep/2025 22:57:40] "GET /api/events-calendar.js HTTP/1.1" 200 -
+::1 - - [08/Sep/2025 22:57:40] "GET /assets/js/app.js HTTP/1.1" 200 -
+::1 - - [08/Sep/2025 22:57:40] code 404, message File not found
+::1 - - [08/Sep/2025 22:57:40] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [08/Sep/2025 22:57:40] code 404, message File not found
+::1 - - [08/Sep/2025 22:57:40] "GET /sw.js HTTP/1.1" 404 -

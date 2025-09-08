@@ -305,19 +305,6 @@ export default function SettingsPage() {
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t">
-                  <h3 className="font-medium text-red-600 mb-4">Zone dangereuse</h3>
-                  <button
-                    onClick={handleDeleteAccount}
-                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 flex items-center gap-2"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                    Supprimer mon compte
-                  </button>
-                  <p className="text-xs text-gray-500 mt-2">
-                    Cette action est irréversible et supprimera toutes vos données
-                  </p>
-                </div>
               </div>
             )}
 
@@ -353,18 +340,58 @@ export default function SettingsPage() {
                     />
                   </label>
 
-                  <label className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 cursor-pointer">
-                    <div>
+                  <div className="p-4 border rounded-lg">
+                    <div className="mb-3">
                       <p className="font-medium">Newsletter</p>
-                      <p className="text-sm text-gray-600">Recevez notre newsletter mensuelle</p>
+                      <p className="text-sm text-gray-600">Choisissez la fréquence de réception</p>
                     </div>
-                    <input
-                      type="checkbox"
-                      checked={settings.newsletter}
-                      onChange={(e) => setSettings({ ...settings, newsletter: e.target.checked })}
-                      className="h-5 w-5 text-blue-600 rounded focus:ring-blue-500"
-                    />
-                  </label>
+                    <div className="space-y-2">
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="newsletter"
+                          value="disabled"
+                          checked={!settings.newsletter}
+                          onChange={() => setSettings({ ...settings, newsletter: false })}
+                          className="text-blue-600"
+                        />
+                        <span className="text-sm">Désactivée</span>
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="newsletter"
+                          value="daily"
+                          checked={settings.newsletter}
+                          onChange={() => setSettings({ ...settings, newsletter: true })}
+                          className="text-blue-600"
+                        />
+                        <span className="text-sm">Quotidienne</span>
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="newsletter"
+                          value="weekly"
+                          checked={settings.newsletter}
+                          onChange={() => setSettings({ ...settings, newsletter: true })}
+                          className="text-blue-600"
+                        />
+                        <span className="text-sm">Hebdomadaire</span>
+                      </label>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input
+                          type="radio"
+                          name="newsletter"
+                          value="monthly"
+                          checked={settings.newsletter}
+                          onChange={() => setSettings({ ...settings, newsletter: true })}
+                          className="text-blue-600"
+                        />
+                        <span className="text-sm">Mensuelle</span>
+                      </label>
+                    </div>
+                  </div>
 
                   <label className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 cursor-pointer">
                     <div>
@@ -494,19 +521,17 @@ export default function SettingsPage() {
                   </div>
 
                   <div className="pt-6 border-t">
-                    <h3 className="font-medium mb-4">Authentification à deux facteurs</h3>
-                    <div className="bg-gray-50 rounded-lg p-4">
-                      <div className="flex items-center gap-3">
-                        <Shield className="h-5 w-5 text-gray-400" />
-                        <div>
-                          <p className="font-medium text-gray-700">Non activée</p>
-                          <p className="text-sm text-gray-500">Protégez votre compte avec la 2FA</p>
-                        </div>
-                      </div>
-                      <button className="mt-3 text-blue-600 hover:text-blue-700 text-sm font-medium">
-                        Activer la 2FA →
-                      </button>
-                    </div>
+                    <h3 className="font-medium text-red-600 mb-4">Zone dangereuse</h3>
+                    <button
+                      onClick={handleDeleteAccount}
+                      className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 flex items-center gap-2"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                      Supprimer mon compte
+                    </button>
+                    <p className="text-xs text-gray-500 mt-2">
+                      Cette action est irréversible et supprimera toutes vos données
+                    </p>
                   </div>
                 </div>
               </div>

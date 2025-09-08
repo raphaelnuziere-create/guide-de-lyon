@@ -35,6 +35,7 @@ import {
   Loader2
 } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase/client';
+import { useUserPlan } from '@/lib/auth/useUserPlan';
 
 type UserPlan = 'basic' | 'pro' | 'expert';
 
@@ -58,6 +59,7 @@ interface EstablishmentData {
 
 export default function DashboardPage() {
   const { user, loading: authLoading } = useAuth();
+  const { userPlan, planLimits, loading: planLoading } = useUserPlan();
   const router = useRouter();
   const [establishment, setEstablishment] = useState<EstablishmentData | null>(null);
   const [loadingEstablishment, setLoadingEstablishment] = useState(true);
@@ -137,7 +139,7 @@ export default function DashboardPage() {
   };
 
   // Affichage pendant le chargement
-  if (authLoading || loadingEstablishment) {
+  if (authLoading || loadingEstablishment || planLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
@@ -177,18 +179,11 @@ export default function DashboardPage() {
     );
   }
 
-  const plan = establishment.plan || 'basic';
+  const plan = userPlan || 'basic';
   const isPro = plan === 'pro' || plan === 'expert';
   const isExpert = plan === 'expert';
 
-  // Limites selon les plans
-  const limits = {
-    basic: { photos: 1, events: 3 },
-    pro: { photos: 6, events: 3 },
-    expert: { photos: 20, events: 'Illimité' }
-  };
-
-  const currentLimits = limits[plan];
+  const currentLimits = planLimits;
 
   // Render normal du dashboard
   return (
@@ -289,13 +284,22 @@ export default function DashboardPage() {
                 <Edit className="w-4 h-4" />
                 Modifier
               </Link>
-              {!isPro && (
+              {plan === 'basic' && (
                 <Link
                   href="/pro/upgrade"
                   className="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition flex items-center gap-2"
                 >
                   <Sparkles className="w-4 h-4" />
                   Passer Pro
+                </Link>
+              )}
+              {plan === 'pro' && (
+                <Link
+                  href="/pro/upgrade"
+                  className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition flex items-center gap-2"
+                >
+                  <Crown className="w-4 h-4" />
+                  Passer Expert
                 </Link>
               )}
             </div>
@@ -469,18 +473,7 @@ export default function DashboardPage() {
                   <ChevronRight className="w-4 h-4 text-gray-400" />
                 </Link>
                 
-                <Link
-                  href="/pro/horaires"
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition"
-                >
-                  <div className="flex items-center">
-                    <Clock className="w-5 h-5 mr-3 text-gray-500" />
-                    <span>Horaires d'ouverture</span>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-gray-400" />
-                </Link>
-                
-                {!isPro && (
+                {plan === 'basic' && (
                   <Link
                     href="/pro/upgrade"
                     className="flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 transition"
@@ -490,6 +483,19 @@ export default function DashboardPage() {
                       <span className="text-blue-900 font-medium">Passer Pro</span>
                     </div>
                     <ChevronRight className="w-4 h-4 text-blue-600" />
+                  </Link>
+                )}
+                
+                {plan === 'pro' && (
+                  <Link
+                    href="/pro/upgrade"
+                    className="flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-yellow-50 to-yellow-100 hover:from-yellow-100 hover:to-yellow-200 transition"
+                  >
+                    <div className="flex items-center">
+                      <Crown className="w-5 h-5 mr-3 text-yellow-600" />
+                      <span className="text-yellow-900 font-medium">Passer Expert</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-yellow-600" />
                   </Link>
                 )}
               </div>
