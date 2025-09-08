@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { 
-  Bed, Wifi, Car, Coffee, Dumbbell, Pool, 
-  Utensils, Concierge, Star, Users, Bath,
-  AirVent, Tv, SafeIcon, Baby
+  Bed, Wifi, Car, Coffee, Dumbbell, 
+  Utensils, Star, Users, Bath,
+  AirVent, Tv, Baby
 } from 'lucide-react'
 import type { Establishment, Room } from '@/lib/services/establishment-service'
 
@@ -22,16 +22,16 @@ export default function AccommodationLayout({ establishment }: AccommodationLayo
     { icon: Car, label: 'Parking', key: 'parking' },
     { icon: Coffee, label: 'Petit-déjeuner', key: 'breakfast' },
     { icon: Dumbbell, label: 'Salle de sport', key: 'gym' },
-    { icon: Pool, label: 'Piscine', key: 'pool' },
+    { icon: Dumbbell, label: 'Piscine', key: 'pool' },
     { icon: Utensils, label: 'Restaurant', key: 'restaurant' },
-    { icon: Concierge, label: 'Conciergerie', key: 'concierge' },
+    { icon: Users, label: 'Conciergerie', key: 'concierge' },
     { icon: Bath, label: 'Spa', key: 'spa' }
   ]
 
   const roomAmenities = [
     { icon: AirVent, label: 'Climatisation', key: 'ac' },
     { icon: Tv, label: 'TV écran plat', key: 'tv' },
-    { icon: SafeIcon, label: 'Coffre-fort', key: 'safe' },
+    { icon: Coffee, label: 'Coffre-fort', key: 'safe' },
     { icon: Coffee, label: 'Minibar', key: 'minibar' },
     { icon: Bath, label: 'Salle de bain privée', key: 'bathroom' },
     { icon: Baby, label: 'Lit bébé disponible', key: 'baby' }
@@ -91,7 +91,7 @@ export default function AccommodationLayout({ establishment }: AccommodationLayo
 
         <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg">
           <div className="flex items-center mb-3">
-            <Concierge className="h-6 w-6 text-purple-600 mr-2" />
+            <Users className="h-6 w-6 text-purple-600 mr-2" />
             <h3 className="font-semibold text-gray-900">Services</h3>
           </div>
           <div className="space-y-1 text-sm text-gray-600">

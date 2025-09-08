@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide de Lyon - L'agenda des événements lyonnais, l'annuaire des entreprises</title>
+    <meta name="description" content="Guide de Lyon : L'agenda des événements lyonnais, l'annuaire des entreprises. Découvrez les événements, actualités lyonnaises. 500+ entreprises, 50+ événements/mois.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <button class="lang-btn active" data-lang="fr">🇫🇷 FR</button>
+                        <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+                        <button class="lang-btn" data-lang="it">🇮🇹 IT</button>
+                        <button class="lang-btn" data-lang="cn">🇨🇳 中文</button>
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div class="social-media">
+                        <a href="https://facebook.com/guidelyon" target="_blank" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/guidelyon" target="_blank" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="nav-container">
+            <div class="nav-content">
+                <div class="logo">
+                    <h1>Guide-de-Lyon</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/actualites">Actualités</a></li>
+                    <li><a href="/annuaire">Annuaire</a></li>
+                    <li><a href="/evenements">Événements</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Enhanced Weather Section (outside header) -->
+    <div class="weather-banner">
+        <div class="container">
+            <div class="weather-enhanced">
+                <div class="weather-item">
+                    <span class="weather-icon">🌤️</span>
+                    <div class="weather-details">
+                        <span class="weather-city">Lyon aujourd'hui</span>
+                        <div class="weather-temps">
+                            <span class="temp-morning">Matin: 12°C</span>
+                            <span class="temp-afternoon">Après-midi: 18°C</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather-item">
+                    <span class="weather-icon">☀️</span>
+                    <div class="weather-details">
+                        <span class="weather-city">Demain</span>
+                        <div class="weather-temps">
+                            <span class="temp-morning">Matin: 15°C</span>
+                            <span class="temp-afternoon">Après-midi: 22°C</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather-item">
+                    <span class="weather-icon">🌧️</span>
+                    <div class="weather-details">
+                        <span class="weather-city">Mercredi</span>
+                        <div class="weather-temps">
+                            <span class="temp-morning">Matin: 10°C</span>
+                            <span class="temp-afternoon">Après-midi: 16°C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Guide de Lyon</h1>
+                <p class="hero-subtitle">L'agenda des événements lyonnais, l'annuaire des entreprises</p>
+                
+                <div class="search-container">
+                    <form class="search-form">
+                        <input type="text" placeholder="Rechercher un établissement, un événement..." class="search-input">
+                        <button type="submit" class="search-button">
+                            <span>Rechercher</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Trust Indicators -->
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <div class="trust-number">500+</div>
+                    <div class="trust-label">Entreprises</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">50+</div>
+                    <div class="trust-label">Événements/mois</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">10k+</div>
+                    <div class="trust-label">Visiteurs/mois</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">4.8/5</div>
+                    <div class="trust-label">Satisfaction</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="events-section">
+            <div class="container">
+                <h2 class="section-title">Événements à Lyon</h2>
+                
+                <div class="events-grid">
+                    <!-- Calendar Column -->
+                    <div class="calendar-column">
+                        <div id="calendar-month" class="calendar-container"></div>
+                    </div>
+                    
+                    <!-- Day Events Column -->
+                    <div class="day-events-column">
+                        <div id="day-events" class="day-events-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Directory Section -->
+        <section class="directory-section">
+            <div class="container">
+                <h2 class="section-title">Annuaire par secteur</h2>
+                
+                <div class="sectors-grid">
+                    <div class="sector-card" data-sector="shopping">
+                        <div class="sector-bg"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🛍️</div>
+                            <h3 class="sector-name">Shopping</h3>
+                            <div class="sector-count">85 entreprises</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="restaurant">
+                        <div class="sector-bg"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🍽️</div>
+                            <h3 class="sector-name">Restaurant</h3>
+                            <div class="sector-count">142 entreprises</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="culture">
+                        <div class="sector-bg"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🎭</div>
+                            <h3 class="sector-name">Culture</h3>
+                            <div class="sector-count">67 entreprises</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="bars">
+                        <div class="sector-bg"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🍺</div>
+                            <h3 class="sector-name">Bars</h3>
+                            <div class="sector-count">91 entreprises</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="fitness">
+                        <div class="sector-bg"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">💪</div>
+                            <h3 class="sector-name">Fitness</h3>
+                            <div class="sector-count">43 entreprises</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="sante">
+                        <div class="sector-bg"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🏥</div>
+                            <h3 class="sector-name">Santé</h3>
+                            <div class="sector-count">78 entreprises</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="immobilier">
+                        <div class="sector-bg"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🏠</div>
+                            <h3 class="sector-name">Immobilier</h3>
+                            <div class="sector-count">56 entreprises</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="auto">
+                        <div class="sector-bg"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🚗</div>
+                            <h3 class="sector-name">Auto</h3>
+                            <div class="sector-count">34 entreprises</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="beaute">
+                        <div class="sector-bg"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">💄</div>
+                            <h3 class="sector-name">Beauté</h3>
+                            <div class="sector-count">62 entreprises</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="education">
+                        <div class="sector-bg"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🎓</div>
+                            <h3 class="sector-name">Éducation</h3>
+                            <div class="sector-count">29 entreprises</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="services">
+                        <div class="sector-bg"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🛠️</div>
+                            <h3 class="sector-name">Services</h3>
+                            <div class="sector-count">73 entreprises</div>
+                        </div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="loisirs">
+                        <div class="sector-bg"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🎪</div>
+                            <h3 class="sector-name">Loisirs</h3>
+                            <div class="sector-count">38 entreprises</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced News Section - 5 columns, 2 rows -->
+        <section class="news-section">
+            <div class="container">
+                <h2 class="section-title">Actualités</h2>
+                
+                <div class="news-grid-enhanced">
+                    <!-- Row 1 -->
+                    <article class="news-item featured" data-sector="restaurant">
+                        <div class="news-image">
+                            <img src="" alt="Restaurant lyon" data-src="">
+                            <div class="news-category">Gastronomie</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">8 janvier 2025</span>
+                                <span class="news-reading-time">3 min</span>
+                            </div>
+                            <h3 class="news-title">Nouveau bouchon étoilé à Confluence</h3>
+                            <p class="news-excerpt">Un chef renommé ouvre son établissement dans le quartier moderne, mêlant tradition lyonnaise et innovation culinaire...</p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item" data-sector="culture">
+                        <div class="news-image">
+                            <img src="" alt="Culture lyon" data-src="">
+                            <div class="news-category">Culture</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">7 janvier 2025</span>
+                                <span class="news-reading-time">2 min</span>
+                            </div>
+                            <h3 class="news-title">Festival Street Art International</h3>
+                            <p class="news-excerpt">Lyon accueille 50 artistes du monde entier pour transformer la ville en galerie...</p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item" data-sector="shopping">
+                        <div class="news-image">
+                            <img src="" alt="Shopping lyon" data-src="">
+                            <div class="news-category">Shopping</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">6 janvier 2025</span>
+                                <span class="news-reading-time">4 min</span>
+                            </div>
+                            <h3 class="news-title">Soldes d'hiver : nos meilleures adresses</h3>
+                            <p class="news-excerpt">Notre sélection des boutiques lyonnaises avec les plus belles réductions...</p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item" data-sector="culture">
+                        <div class="news-image">
+                            <img src="" alt="Musee lyon" data-src="">
+                            <div class="news-category">Musées</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">5 janvier 2025</span>
+                                <span class="news-reading-time">3 min</span>
+                            </div>
+                            <h3 class="news-title">Nouvelle exposition au Musée Confluences</h3>
+                            <p class="news-excerpt">Une plongée fascinante dans l'histoire industrielle de Lyon...</p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item" data-sector="bars">
+                        <div class="news-image">
+                            <img src="" alt="Bar lyon" data-src="">
+                            <div class="news-category">Bars</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">4 janvier 2025</span>
+                                <span class="news-reading-time">2 min</span>
+                            </div>
+                            <h3 class="news-title">Top 5 des bars à cocktails créatifs</h3>
+                            <p class="news-excerpt">Découvrez les nouvelles créations des mixologues lyonnais...</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Row 2 -->
+                    <article class="news-item" data-sector="fitness">
+                        <div class="news-image">
+                            <img src="" alt="Sport lyon" data-src="">
+                            <div class="news-category">Sport</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">3 janvier 2025</span>
+                                <span class="news-reading-time">3 min</span>
+                            </div>
+                            <h3 class="news-title">Nouveau complexe sportif à la Part-Dieu</h3>
+                            <p class="news-excerpt">Un espace de 2000m² dédié au fitness et au bien-être...</p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item" data-sector="loisirs">
+                        <div class="news-image">
+                            <img src="" alt="Parc lyon" data-src="">
+                            <div class="news-category">Loisirs</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">2 janvier 2025</span>
+                                <span class="news-reading-time">2 min</span>
+                            </div>
+                            <h3 class="news-title">Activités gratuites dans les parcs</h3>
+                            <p class="news-excerpt">Programme hivernal d'animations pour toute la famille...</p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item" data-sector="immobilier">
+                        <div class="news-image">
+                            <img src="" alt="Immobilier lyon" data-src="">
+                            <div class="news-category">Immobilier</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">1 janvier 2025</span>
+                                <span class="news-reading-time">4 min</span>
+                            </div>
+                            <h3 class="news-title">Marché immobilier 2025 : perspectives</h3>
+                            <p class="news-excerpt">Analyse des tendances et prix dans la métropole...</p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item" data-sector="services">
+                        <div class="news-image">
+                            <img src="" alt="Services lyon" data-src="">
+                            <div class="news-category">Services</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">31 déc 2024</span>
+                                <span class="news-reading-time">3 min</span>
+                            </div>
+                            <h3 class="news-title">Nouvelles lignes de transport</h3>
+                            <p class="news-excerpt">Extensions du métro et nouvelles lignes de bus prévues...</p>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item" data-sector="beaute">
+                        <div class="news-image">
+                            <img src="" alt="Beaute lyon" data-src="">
+                            <div class="news-category">Beauté</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">30 déc 2024</span>
+                                <span class="news-reading-time">2 min</span>
+                            </div>
+                            <h3 class="news-title">Spa urbains : nouvelles tendances</h3>
+                            <p class="news-excerpt">Les dernières innovations bien-être à Lyon...</p>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="news-more">
+                    <a href="/actualites" class="more-news-btn">Voir toutes les actualités</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-content">
+                    <div class="newsletter-header">
+                        <h2 class="newsletter-title">📧 Restez informé avec notre newsletter</h2>
+                        <p class="newsletter-subtitle">Choisissez la fréquence qui vous convient</p>
+                    </div>
+                    
+                    <div class="newsletter-options">
+                        <div class="newsletter-option">
+                            <input type="radio" id="daily" name="newsletter" value="daily" class="newsletter-radio">
+                            <label for="daily" class="newsletter-label">
+                                <div class="option-icon">📅</div>
+                                <div class="option-content">
+                                    <h3 class="option-title">Quotidien</h3>
+                                    <p class="option-description">Chaque matin : événements du jour, météo Lyon, actualités fraîches</p>
+                                    <div class="option-time">Envoi : 7h00</div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="newsletter-option">
+                            <input type="radio" id="weekly" name="newsletter" value="weekly" class="newsletter-radio">
+                            <label for="weekly" class="newsletter-label">
+                                <div class="option-icon">📧</div>
+                                <div class="option-content">
+                                    <h3 class="option-title">Hebdomadaire</h3>
+                                    <p class="option-description">Événements de la semaine à venir, actualités, articles de blog</p>
+                                    <div class="option-time">Envoi : Dimanche 18h00</div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="newsletter-option">
+                            <input type="radio" id="monthly" name="newsletter" value="monthly" class="newsletter-radio">
+                            <label for="monthly" class="newsletter-label">
+                                <div class="option-icon">📖</div>
+                                <div class="option-content">
+                                    <h3 class="option-title">Mensuel</h3>
+                                    <p class="option-description">Portrait du mois lyonnais, dossiers exclusifs, sélection premium</p>
+                                    <div class="option-time">Envoi : 1er du mois</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" placeholder="Votre email" class="newsletter-email" required>
+                            <button type="submit" class="newsletter-submit">S'inscrire</button>
+                        </div>
+                        <p class="newsletter-privacy">Nous respectons votre vie privée. Désabonnement en un clic.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-cta">
+                    <h3>Vous êtes professionnel ?</h3>
+                    <p>Rejoignez nos 500+ partenaires</p>
+                    <a href="/pro" class="cta-button">En savoir plus</a>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Guide de Lyon</h4>
+                        <ul>
+                            <li><a href="/a-propos">À propos</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/mentions-legales">Mentions légales</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="/annuaire">Annuaire</a></li>
+                            <li><a href="/evenements">Événements</a></li>
+                            <li><a href="/actualites">Actualités</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Guide-de-Lyon.fr - L'agenda des événements lyonnais, l'annuaire des entreprises</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="api/pexels-integration.js"></script>
+    <script src="api/events-calendar.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

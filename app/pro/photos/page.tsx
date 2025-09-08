@@ -19,30 +19,25 @@ import {
   Move
 } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase/client';
-import { EstablishmentService } from '@/app/lib/services/establishmentService';
+import { PhotoService, Photo } from '@/lib/services/photoService';
+import { useUserPlan } from '@/lib/auth/useUserPlan';
 
-interface Photo {
-  id: string;
-  url: string;
-  caption?: string;
-  position: number;
-  is_main: boolean;
-  created_at: string;
-}
+// Interface Photo importée depuis PhotoService
 
 export default function PhotosPage() {
   const router = useRouter();
+  const { plan, planLimits, establishmentId, isLoading: planLoading } = useUserPlan();
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [photos, setPhotos] = useState<Photo[]>([]);
-  const [establishment, setEstablishment] = useState<any>(null);
   const [photosRemaining, setPhotosRemaining] = useState(0);
-  const [planLimits, setPlanLimits] = useState<any>(null);
   const [draggedPhoto, setDraggedPhoto] = useState<Photo | null>(null);
 
   useEffect(() => {
-    checkAuthAndLoadData();
-  }, []);
+    if (!planLoading && establishmentId) {
+      loadPhotos();
+    }
+  }, [planLoading, establishmentId]);
 
   const checkAuthAndLoadData = async () => {
     try {
@@ -96,28 +91,41 @@ export default function PhotosPage() {
         return;
       }
 
-      const file = event.target.files[0];
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${establishment.id}_${Date.now()}.${fileExt}`;
-      const filePath = `establishments/${fileName}`;
-
-      // Upload to Supabase Storage
-      const { error: uploadError } = await supabase.storage
-        .from('photos')
-        .upload(filePath, file);
-
-      if (uploadError) {
-        throw uploadError;
+      if (!establishmentId) {
+        throw new Error('Aucun établissement trouvé');
       }
 
-      // Get public URL
-      const { data: { publicUrl } } = supabase.storage
-        .from('photos')
-        .getPublicUrl(filePath);
+      const file = event.target.files[0];
+      
+      // Vérifier les limites
+      const maxPhotos = planLimits.maxPhotos === -1 ? 999 : planLimits.maxPhotos;
+      if (photos.length >= maxPhotos) {
+        throw new Error(`Vous avez atteint la limite de ${maxPhotos} photo${maxPhotos > 1 ? 's' : ''} pour votre plan ${plan}`);
+      }
 
-      // Add to database
-      const { data, error } = await supabase
-        .from('establishment_photos')
+      // Upload via PhotoService
+      const newPhoto = await PhotoService.uploadPhoto(
+        establishmentId,
+        file,
+        '', // caption vide pour l'instant
+        photos.length // position = nombre actuel de photos
+      );
+
+      // Mettre à jour la liste
+      setPhotos(prev => [...prev, newPhoto]);
+      setPhotosRemaining(prev => Math.max(0, prev - 1));
+      
+    } catch (error: any) {
+      console.error('Erreur upload:', error);
+      alert(error.message || 'Erreur lors de l\'upload');
+    } finally {
+      setUploading(false);
+      // Reset input
+      if (event.target) {
+        event.target.value = '';
+      }
+    }
+  };
         .insert({
           establishment_id: establishment.id,
           url: publicUrl,
