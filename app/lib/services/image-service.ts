@@ -6,7 +6,7 @@ export class ImageService {
   private bucketName = 'articles-images';
 
   constructor() {
-    this.ensureBucketExists();
+    // Création du bucket sera fait de manière asynchrone lors du premier usage
   }
 
   // Créer le bucket s'il n'existe pas
@@ -15,21 +15,33 @@ export class ImageService {
       const { data: buckets } = await supabase.storage.listBuckets();
       
       if (!buckets?.find(b => b.name === this.bucketName)) {
-        await supabase.storage.createBucket(this.bucketName, {
+        const { data, error } = await supabase.storage.createBucket(this.bucketName, {
           public: true,
           fileSizeLimit: 5242880, // 5MB
           allowedMimeTypes: ['image/png', 'image/jpeg', 'image/jpg', 'image/webp']
         });
-        console.log('[ImageService] Bucket créé:', this.bucketName);
+        
+        if (error) {
+          console.error('[ImageService] Erreur création bucket:', error);
+          // Si le bucket existe déjà mais n'était pas listé, on continue
+          if (!error.message?.includes('already exists')) {
+            throw error;
+          }
+        } else {
+          console.log('[ImageService] Bucket créé:', this.bucketName);
+        }
       }
     } catch (error) {
-      console.error('[ImageService] Erreur création bucket:', error);
+      console.error('[ImageService] Erreur vérification bucket:', error);
     }
   }
 
   // Télécharger et stocker une image depuis une URL
   async downloadAndStore(imageUrl: string, articleSlug: string): Promise<string | null> {
     try {
+      // S'assurer que le bucket existe
+      await this.ensureBucketExists();
+      
       if (!imageUrl) {
         console.log('[ImageService] Pas d\'image, utilisation image par défaut');
         return this.getDefaultImage(articleSlug);

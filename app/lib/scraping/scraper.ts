@@ -50,13 +50,38 @@ export class NewsScraperService {
     if (item['media:content']?.$ ?.url) return item['media:content'].$.url;
     if (item['media:thumbnail']?.$ ?.url) return item['media:thumbnail'].$.url;
     
+    // Chercher une image dans la description (Le Progrès met les images là)
+    if (item.description) {
+      const $ = cheerio.load(item.description);
+      const firstImg = $('img').first().attr('src');
+      if (firstImg) {
+        // Assurer que l'URL est absolue
+        if (firstImg.startsWith('//')) {
+          return 'https:' + firstImg;
+        }
+        if (firstImg.startsWith('/')) {
+          return 'https://www.leprogres.fr' + firstImg;
+        }
+        return firstImg;
+      }
+    }
+    
     // Chercher une image dans le contenu HTML
     if (item.content) {
       const $ = cheerio.load(item.content);
       const firstImg = $('img').first().attr('src');
-      if (firstImg) return firstImg;
+      if (firstImg) {
+        if (firstImg.startsWith('//')) {
+          return 'https:' + firstImg;
+        }
+        if (firstImg.startsWith('/')) {
+          return 'https://www.leprogres.fr' + firstImg;
+        }
+        return firstImg;
+      }
     }
     
+    console.log('[Scraper] Pas d\'image trouvée pour:', item.title?.substring(0, 50));
     return undefined;
   }
   

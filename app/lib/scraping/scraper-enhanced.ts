@@ -1,18 +1,18 @@
 // Service de scraping amélioré avec gestion des images
 import { NewsScraperService } from './scraper';
 import { ArticleRewriterService } from '../ai/rewriter';
-import { ImageService } from '../services/image-service';
+import { ImageServiceDirect } from '../services/image-service-direct';
 import { supabase } from '@/app/lib/supabase/client';
 
 export class EnhancedScraperService {
   private scraper: NewsScraperService;
   private rewriter: ArticleRewriterService;
-  private imageService: ImageService;
+  private imageService: ImageServiceDirect;
 
   constructor() {
     this.scraper = new NewsScraperService();
     this.rewriter = new ArticleRewriterService();
-    this.imageService = new ImageService();
+    this.imageService = new ImageServiceDirect();
   }
 
   async processSource(source: any): Promise<{ scraped: number; published: number }> {
@@ -22,9 +22,9 @@ export class EnhancedScraperService {
     let totalPublished = 0;
 
     try {
-      // Scraper les articles
+      // Scraper les articles - utiliser feed_url pour RSS
       const articles = source.type === 'rss' 
-        ? await this.scraper.scrapeRSS(source.url)
+        ? await this.scraper.scrapeRSS(source.feed_url || source.url)
         : await this.scraper.scrapeHTML(source.url, source.selectors);
 
       totalScraped = articles.length;
@@ -50,10 +50,10 @@ export class EnhancedScraperService {
           // Générer le slug
           const slug = this.generateSlug(article.title);
 
-          // Télécharger et stocker l'image
+          // Obtenir l'URL de l'image (vérifiée ou par défaut)
           let storedImageUrl = null;
           if (article.image) {
-            storedImageUrl = await this.imageService.downloadAndStore(article.image, slug);
+            storedImageUrl = await this.imageService.downloadAndGetUrl(article.image);
           }
           
           // Si pas d'image ou échec, utiliser une image par défaut
@@ -185,8 +185,7 @@ export class EnhancedScraperService {
         .eq('id', source.id);
     }
 
-    // Nettoyer les anciennes images (plus de 30 jours)
-    await this.imageService.cleanupUnusedImages(30);
+    // Plus de nettoyage d'images car on utilise les URLs directes
 
     console.log('[EnhancedScraper] Scraping terminé');
     console.log(`[EnhancedScraper] Total scrapé: ${totalScraped}`);
