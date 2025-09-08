@@ -1,18 +1,18 @@
 // Service de scraping amélioré avec gestion des images
 import { NewsScraperService } from './scraper';
 import { ArticleRewriterService } from '../ai/rewriter';
-import { UnifiedImageService } from '../services/image-service-unified';
+import { SupabaseImageService } from '../services/supabase-image-service';
 import { supabase } from '@/app/lib/supabase/client';
 
 export class EnhancedScraperService {
   private scraper: NewsScraperService;
   private rewriter: ArticleRewriterService;
-  private imageService: UnifiedImageService;
+  private imageService: SupabaseImageService;
 
   constructor() {
     this.scraper = new NewsScraperService();
     this.rewriter = new ArticleRewriterService();
-    this.imageService = new UnifiedImageService();
+    this.imageService = new SupabaseImageService();
   }
 
   async processSource(source: any): Promise<{ scraped: number; published: number }> {
@@ -50,11 +50,11 @@ export class EnhancedScraperService {
           // Générer le slug
           const slug = this.generateSlug(article.title);
 
-          // Traiter l'image avec le service unifié (OVH si configuré, sinon proxy)
+          // Télécharger et stocker l'image dans Supabase Storage
           let storedImageUrl = null;
           if (article.image) {
-            storedImageUrl = await this.imageService.processImage(article.image, slug);
-            console.log(`[EnhancedScraper] Image traitée: ${storedImageUrl}`);
+            storedImageUrl = await this.imageService.downloadAndStore(article.image, slug);
+            console.log(`[EnhancedScraper] Image stockée: ${storedImageUrl}`);
           }
           
           // Si pas d'image, utiliser une image par défaut
