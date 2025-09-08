@@ -24,3 +24,50 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Animations et effets pour l'annuaire */
+@layer components {
+  /* Effet de hover pour les cards */
+  .business-card-hover {
+    @apply transform transition-all duration-300;
+  }
+  
+  .business-card-hover:hover {
+    @apply -translate-y-1 shadow-xl;
+  }
+  
+  /* Animation pour les badges de rang */
+  @keyframes pulse-rank {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  .rank-badge {
+    animation: pulse-rank 2s infinite;
+  }
+  
+  /* Scrollbar personnalisée pour navigation mobile */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Line clamp utilities */
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+}

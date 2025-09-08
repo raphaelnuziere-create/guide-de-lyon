@@ -1,242 +1,309 @@
-'use client'
+import { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+import { 
+  Utensils, Coffee, ShoppingBag, Scissors, 
+  Hotel, Palette, Activity, Heart, 
+  Briefcase, Building, Car, Grid,
+  ArrowRight, Crown, Shield 
+} from 'lucide-react';
+import { createClient } from '@supabase/supabase-js';
+import { BusinessCard } from '@/components/annuaire/BusinessCard';
 
-import { useState, useEffect, Suspense } from 'react'
-import Link from 'next/link'
-import { Search, MapPin, Phone, Globe, Star, Filter, ChevronDown, Grid, List, Clock } from 'lucide-react'
-import { useSearchParams } from 'next/navigation'
+export const metadata: Metadata = {
+  title: 'Annuaire des Entreprises Lyon - Guide de Lyon',
+  description: 'Découvrez les meilleurs établissements de Lyon par catégorie. Restaurants, bars, shopping, beauté et plus.',
+};
 
-interface Business {
-  id: string
-  name: string
-  category: string
-  description: string
-  address: string
-  phone?: string
-  website?: string
-  rating?: number
+const CATEGORIES = [
+  { 
+    slug: 'restaurants', 
+    label: 'Restaurants & Food', 
+    icon: Utensils, 
+    color: '#EF4444',
+    bgColor: '#FEE2E2',
+    dbValue: 'restaurant-food',
+    description: 'Les meilleures tables lyonnaises'
+  },
+  { 
+    slug: 'bars', 
+    label: 'Bars & Nightlife', 
+    icon: Coffee, 
+    color: '#8B5CF6',
+    bgColor: '#EDE9FE',
+    dbValue: 'bar-nightlife',
+    description: 'Sortir et prendre un verre'
+  },
+  { 
+    slug: 'shopping', 
+    label: 'Shopping & Mode', 
+    icon: ShoppingBag, 
+    color: '#EC4899',
+    bgColor: '#FCE7F3',
+    dbValue: 'shopping-mode',
+    description: 'Boutiques et centres commerciaux'
+  },
+  { 
+    slug: 'beaute', 
+    label: 'Beauté & Bien-être', 
+    icon: Scissors, 
+    color: '#F97316',
+    bgColor: '#FED7AA',
+    dbValue: 'beaute-bienetre',
+    description: 'Prendre soin de soi'
+  },
+  { 
+    slug: 'hotels', 
+    label: 'Hôtels & Hébergement', 
+    icon: Hotel, 
+    color: '#3B82F6',
+    bgColor: '#DBEAFE',
+    dbValue: 'hotel-hebergement',
+    description: 'Où dormir à Lyon'
+  },
+  { 
+    slug: 'culture', 
+    label: 'Culture & Loisirs', 
+    icon: Palette, 
+    color: '#10B981',
+    bgColor: '#D1FAE5',
+    dbValue: 'culture-loisirs',
+    description: 'Musées, théâtres et activités'
+  },
+  { 
+    slug: 'sport', 
+    label: 'Sport & Fitness', 
+    icon: Activity, 
+    color: '#F59E0B',
+    bgColor: '#FED7AA',
+    dbValue: 'sport-fitness',
+    description: 'Salles et clubs sportifs'
+  },
+  { 
+    slug: 'sante', 
+    label: 'Santé & Médical', 
+    icon: Heart, 
+    color: '#EF4444',
+    bgColor: '#FEE2E2',
+    dbValue: 'sante-medical',
+    description: 'Professionnels de santé'
+  },
+  { 
+    slug: 'services', 
+    label: 'Services Pro', 
+    icon: Briefcase, 
+    color: '#6B7280',
+    bgColor: '#F3F4F6',
+    dbValue: 'services-pro',
+    description: 'Services aux entreprises'
+  },
+  { 
+    slug: 'immobilier', 
+    label: 'Immobilier', 
+    icon: Building, 
+    color: '#059669',
+    bgColor: '#D1FAE5',
+    dbValue: 'immobilier',
+    description: 'Agences et annonces'
+  },
+  { 
+    slug: 'auto', 
+    label: 'Auto & Transport', 
+    icon: Car, 
+    color: '#7C3AED',
+    bgColor: '#EDE9FE',
+    dbValue: 'auto-transport',
+    description: 'Garages et concessions'
+  },
+  { 
+    slug: 'autre', 
+    label: 'Autres', 
+    icon: Grid, 
+    color: '#64748B',
+    bgColor: '#F1F5F9',
+    dbValue: 'autre',
+    description: 'Autres services'
+  }
+];
+
+// Fonction pour récupérer les top 3 de chaque catégorie
+async function getTopBusinessesByCategory() {
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+  
+  // Récupérer tous les établissements actifs
+  const { data: allBusinesses } = await supabase
+    .from('establishments')
+    .select(`
+      id,
+      slug,
+      name,
+      description,
+      main_image,
+      plan,
+      sector,
+      address_district,
+      views_count
+    `)
+    .eq('status', 'active')
+    .order('plan', { ascending: false })
+    .order('views_count', { ascending: false });
+
+  // Grouper par catégorie et prendre les top 3
+  const grouped: Record<string, any[]> = {};
+  
+  if (allBusinesses) {
+    // Trier d'abord par plan (expert > pro > basic) puis par vues
+    const planOrder = { 'expert': 3, 'pro': 2, 'basic': 1 };
+    const sortedBusinesses = allBusinesses.sort((a, b) => {
+      const planDiff = (planOrder[b.plan as keyof typeof planOrder] || 0) - 
+                      (planOrder[a.plan as keyof typeof planOrder] || 0);
+      if (planDiff !== 0) return planDiff;
+      return (b.views_count || 0) - (a.views_count || 0);
+    });
+
+    // Grouper et limiter à 3 par catégorie
+    sortedBusinesses.forEach(business => {
+      const sector = business.sector || 'autre';
+      if (!grouped[sector]) {
+        grouped[sector] = [];
+      }
+      if (grouped[sector].length < 3) {
+        grouped[sector].push(business);
+      }
+    });
+  }
+  
+  return grouped;
 }
 
-function DirectoryContent() {
-  const searchParams = useSearchParams()
-  const [businesses, setBusinesses] = useState<Business[]>([])
-  const [loading, setLoading] = useState(true)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState(searchParams.get('categorie') || '')
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
-  const [showFilters, setShowFilters] = useState(false)
-
-  // Données de démonstration
-  const demoBusinesses: Business[] = [
-    {
-      id: '1',
-      name: 'Restaurant Paul Bocuse',
-      category: 'Restaurant',
-      description: 'Restaurant gastronomique étoilé au Guide Michelin',
-      address: '40 Rue de la Plage, 69660 Collonges-au-Mont-d\'Or',
-      phone: '04 72 42 90 90',
-      website: 'www.bocuse.fr',
-      rating: 4.9
-    },
-    {
-      id: '2',
-      name: 'Les Halles de Lyon Paul Bocuse',
-      category: 'Marché',
-      description: 'Marché couvert avec les meilleurs produits lyonnais',
-      address: '102 Cours Lafayette, 69003 Lyon',
-      phone: '04 78 62 39 33',
-      website: 'www.halles-de-lyon-paulbocuse.com',
-      rating: 4.7
-    },
-    {
-      id: '3',
-      name: 'Musée des Confluences',
-      category: 'Culture',
-      description: 'Musée d\'histoire naturelle, d\'anthropologie et des civilisations',
-      address: '86 Quai Perrache, 69002 Lyon',
-      phone: '04 28 38 11 90',
-      website: 'www.museedesconfluences.fr',
-      rating: 4.6
-    },
-    {
-      id: '4',
-      name: 'Spa Lyon Plage',
-      category: 'Bien-être',
-      description: 'Centre de bien-être et spa urbain',
-      address: '8 Quai Augagneur, 69003 Lyon',
-      phone: '04 78 54 32 10',
-      website: 'www.spa-lyon-plage.fr',
-      rating: 4.8
-    },
-    {
-      id: '5',
-      name: 'Centre Commercial Part-Dieu',
-      category: 'Shopping',
-      description: 'Le plus grand centre commercial de Lyon',
-      address: '17 Rue du Docteur Bouchut, 69003 Lyon',
-      phone: '04 72 60 60 60',
-      website: 'www.centrecommercialpartdieu.com',
-      rating: 4.2
-    },
-    {
-      id: '6',
-      name: 'Bouchon Daniel et Denise',
-      category: 'Restaurant',
-      description: 'Cuisine lyonnaise traditionnelle dans un bouchon authentique',
-      address: '156 Rue de Créqui, 69003 Lyon',
-      phone: '04 78 60 66 53',
-      website: 'www.danieletdenise.fr',
-      rating: 4.7
-    },
-  ]
-
-  useEffect(() => {
-    // Simuler le chargement
-    setTimeout(() => {
-      setBusinesses(demoBusinesses)
-      setLoading(false)
-    }, 1000)
-  }, [])
-
-  const categories = ['Tous', 'Restaurant', 'Shopping', 'Culture', 'Services', 'Bien-être', 'Marché']
-
-  const filteredBusinesses = businesses.filter(business => {
-    const matchesSearch = business.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          business.description.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesCategory = selectedCategory === '' || selectedCategory === 'Tous' || 
-                           business.category === selectedCategory
-    return matchesSearch && matchesCategory
-  })
-
+export default async function AnnuairePage() {
+  // Récupérer les top 3 de chaque catégorie
+  const categoryData = await getTopBusinessesByCategory();
+  
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">Annuaire des entreprises</h1>
-          <p className="text-xl text-blue-100">Découvrez les meilleures adresses de Lyon</p>
-        </div>
-      </div>
-
-      {/* Search and Filters */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <div className="flex flex-col md:flex-row gap-4">
-            {/* Search Bar */}
-            <div className="flex-1">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Rechercher une entreprise..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                <Search className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
-              </div>
-            </div>
-            
-            {/* Category Filter */}
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              {categories.map(cat => (
-                <option key={cat} value={cat}>{cat}</option>
-              ))}
-            </select>
+      {/* Hero Section */}
+      <div className="bg-white border-b">
+        <div className="container mx-auto px-4 py-12">
+          <div className="text-center max-w-3xl mx-auto">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              L'Annuaire de Référence de Lyon
+            </h1>
+            <p className="text-xl text-gray-600">
+              Découvrez les meilleurs établissements lyonnais sélectionnés pour vous
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Results */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {loading ? (
-          <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-            <p className="mt-4 text-gray-600">Chargement des entreprises...</p>
-          </div>
-        ) : (
-          <>
-            <div className="mb-4 text-gray-600">
-              {filteredBusinesses.length} entreprise(s) trouvée(s)
-            </div>
+      {/* Categories avec Top 3 */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="space-y-12">
+          {CATEGORIES.map((category) => {
+            const Icon = category.icon;
+            const businesses = categoryData[category.dbValue] || [];
+            const hasBusinesses = businesses.length > 0;
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredBusinesses.map((business) => (
-                <div key={business.id} className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow">
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-3">
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-1">{business.name}</h3>
-                        <span className="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded-full">
-                          {business.category}
-                        </span>
-                      </div>
-                      {business.rating && (
-                        <div className="flex items-center">
-                          <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                          <span className="ml-1 text-sm text-gray-600">{business.rating}</span>
-                        </div>
-                      )}
+            return (
+              <section key={category.slug} className="scroll-mt-20" id={category.slug}>
+                {/* Header de catégorie */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-4">
+                    <div 
+                      className="p-3 rounded-xl"
+                      style={{ backgroundColor: category.bgColor }}
+                    >
+                      <Icon 
+                        className="w-6 h-6" 
+                        style={{ color: category.color }}
+                      />
                     </div>
-                    
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                      {business.description}
-                    </p>
-                    
-                    <div className="space-y-2 text-sm text-gray-600">
-                      <div className="flex items-start">
-                        <MapPin className="w-4 h-4 mr-2 mt-0.5 text-gray-400" />
-                        <span className="line-clamp-2">{business.address}</span>
-                      </div>
-                      
-                      {business.phone && (
-                        <div className="flex items-center">
-                          <Phone className="w-4 h-4 mr-2 text-gray-400" />
-                          <span>{business.phone}</span>
-                        </div>
-                      )}
-                      
-                      {business.website && (
-                        <div className="flex items-center">
-                          <Globe className="w-4 h-4 mr-2 text-gray-400" />
-                          <a 
-                            href={`https://${business.website}`} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:underline"
-                          >
-                            {business.website}
-                          </a>
-                        </div>
-                      )}
+                    <div>
+                      <h2 className="text-2xl font-bold text-gray-900">
+                        {category.label}
+                      </h2>
+                      <p className="text-sm text-gray-600">
+                        {category.description}
+                      </p>
                     </div>
-                    
-                    <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-                      Voir détails
-                    </button>
                   </div>
+                  
+                  {hasBusinesses && (
+                    <Link 
+                      href={`/annuaire/${category.slug}`}
+                      className="hidden md:flex items-center gap-2 text-blue-600 hover:text-blue-700 transition group"
+                    >
+                      <span className="font-medium">Voir tous</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  )}
                 </div>
-              ))}
-            </div>
 
-            {filteredBusinesses.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-gray-600">Aucune entreprise trouvée pour cette recherche.</p>
-              </div>
-            )}
-          </>
-        )}
+                {/* Grille Top 3 ou Message vide */}
+                {hasBusinesses ? (
+                  <>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
+                      {businesses.map((business: any, index: number) => (
+                        <BusinessCard 
+                          key={business.id} 
+                          business={business} 
+                          rank={index + 1}
+                        />
+                      ))}
+                    </div>
+                    
+                    {/* Lien "Découvrir les autres" */}
+                    <div className="text-center">
+                      <Link 
+                        href={`/annuaire/${category.slug}`}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-gray-200 rounded-lg hover:border-blue-600 hover:text-blue-600 transition group"
+                      >
+                        <span className="font-medium">Découvrir les autres {category.label.toLowerCase()}</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </div>
+                  </>
+                ) : (
+                  <div className="bg-white rounded-lg border border-gray-200 p-8 text-center">
+                    <p className="text-gray-500 mb-4">
+                      Aucun établissement dans cette catégorie pour le moment
+                    </p>
+                    <Link 
+                      href="/pro/inscription"
+                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700"
+                    >
+                      <span>Ajouter votre établissement</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                )}
+              </section>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Navigation rapide sur mobile */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t p-4 z-40">
+        <div className="flex gap-2 overflow-x-auto no-scrollbar">
+          {CATEGORIES.map((category) => {
+            const Icon = category.icon;
+            return (
+              <a
+                key={category.slug}
+                href={`#${category.slug}`}
+                className="flex-shrink-0 p-2 rounded-lg border border-gray-200"
+                style={{ borderColor: category.color }}
+              >
+                <Icon className="w-5 h-5" style={{ color: category.color }} />
+              </a>
+            );
+          })}
+        </div>
       </div>
     </div>
-  )
-}
-
-export default function AnnuairePage() {
-  return (
-    <Suspense fallback={<div>Chargement...</div>}>
-      <DirectoryContent />
-    </Suspense>
-  )
+  );
 }
