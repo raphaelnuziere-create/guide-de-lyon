@@ -320,6 +320,33 @@ export class EstablishmentService {
     if (images.length === 0 && data.metadata?.main_image) {
       images = [data.metadata.main_image];
     }
+
+    // Convertir les horaires d'ouverture du format array vers l'objet attendu
+    let openingHours = data.opening_hours || data.metadata?.opening_hours;
+    if (Array.isArray(openingHours)) {
+      const hoursObj: Record<string, string> = {};
+      const dayMap: Record<string, string> = {
+        'lundi': 'monday', 'mardi': 'tuesday', 'mercredi': 'wednesday',
+        'jeudi': 'thursday', 'vendredi': 'friday', 'samedi': 'saturday', 'dimanche': 'sunday'
+      };
+      
+      openingHours.forEach((hourStr: string) => {
+        const [dayFr, hours] = hourStr.split(': ');
+        const dayEn = dayMap[dayFr.toLowerCase()];
+        if (dayEn) {
+          hoursObj[dayEn] = hours === 'Fermé' ? '' : hours;
+        }
+      });
+      openingHours = hoursObj;
+    }
+
+    // Extraire l'adresse complète
+    const fullAddress = data.address || data.metadata?.address || '';
+    const addressParts = fullAddress.split(', ');
+    const address = addressParts.length > 2 ? addressParts.slice(0, -2).join(', ') : fullAddress;
+    const postalCodeCity = addressParts.length > 1 ? addressParts[addressParts.length - 2] : '';
+    const [postalCode, ...cityParts] = postalCodeCity.split(' ');
+    const city = cityParts.join(' ') || 'Lyon';
     
     return {
       id: data.id,
@@ -327,12 +354,12 @@ export class EstablishmentService {
       slug: data.slug,
       category: data.category,
       subcategory: data.subcategory || data.metadata?.subcategory,
-      description: data.description,
+      description: data.description || data.metadata?.description || '',
       shortDescription: data.short_description || data.metadata?.short_description,
       
-      address: data.address || data.metadata?.address,
-      city: data.city || data.metadata?.city || 'Lyon',
-      postalCode: data.postal_code || data.metadata?.postal_code || '69000',
+      address: address,
+      city: city,
+      postalCode: postalCode || data.postal_code || data.metadata?.postal_code || '69000',
       latitude: data.latitude || data.metadata?.latitude,
       longitude: data.longitude || data.metadata?.longitude,
       phone: data.phone || data.metadata?.phone,
@@ -340,10 +367,10 @@ export class EstablishmentService {
       website: data.website || data.metadata?.website,
       
       rating: data.rating || data.metadata?.rating || 4.5,
-      reviewsCount: data.reviews_count || data.metadata?.reviews_count || 0,
+      reviewsCount: data.reviews_count || data.reviews?.count || data.metadata?.reviews_count || 0,
       priceRange: data.price_range || data.metadata?.price_range || '€€',
       
-      openingHours: data.opening_hours || data.metadata?.opening_hours,
+      openingHours: openingHours,
       
       images: images,
       logo: data.logo || data.metadata?.logo,

@@ -242,13 +242,15 @@ export default function DynamicEstablishmentPage() {
               <h3 className="font-semibold text-gray-900 mb-4">Informations pratiques</h3>
               
               <div className="space-y-3">
-                <div className="flex items-start">
-                  <MapPin className="w-5 h-5 text-gray-400 mt-0.5 mr-3" />
-                  <div>
-                    <p className="text-sm text-gray-900">{establishment.address}</p>
-                    <p className="text-sm text-gray-600">{establishment.postalCode} {establishment.city}</p>
+                {establishment.address && (
+                  <div className="flex items-start">
+                    <MapPin className="w-5 h-5 text-gray-400 mt-0.5 mr-3" />
+                    <div>
+                      <p className="text-sm text-gray-900">{establishment.address}</p>
+                      <p className="text-sm text-gray-600">{establishment.postalCode} {establishment.city}</p>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {establishment.phone && (
                   <div className="flex items-center">
@@ -273,13 +275,15 @@ export default function DynamicEstablishmentPage() {
                   </div>
                 )}
 
-                <div className="flex items-start">
-                  <Clock className="w-5 h-5 text-gray-400 mt-0.5 mr-3" />
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">Aujourd'hui</p>
-                    <p className="text-sm text-gray-600">{getCurrentDayHours()}</p>
+                {establishment.openingHours && (
+                  <div className="flex items-start">
+                    <Clock className="w-5 h-5 text-gray-400 mt-0.5 mr-3" />
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">Aujourd'hui</p>
+                      <p className="text-sm text-gray-600">{getCurrentDayHours()}</p>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
               <button className="w-full mt-6 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
