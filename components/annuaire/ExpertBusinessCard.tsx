@@ -28,20 +28,19 @@ export function ExpertBusinessCard({ business, rank }: ExpertBusinessCardProps) 
   return (
     <Link href={`/etablissement/${business.slug}`}>
       <article className="group relative bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden h-full expert-card-hover">
-        {/* Image avec badge expert */}
-        <div className="relative h-80 w-full bg-gray-100">
-          {/* Badge Expert doré */}
+        {/* Image avec indicateur discret */}
+        <div className="relative h-48 sm:h-56 lg:h-64 w-full bg-gray-100">
+          {/* Indicateur discret top */}
           <div className="absolute top-4 right-4 z-20">
-            <div className="bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-xl border-2 border-yellow-300">
+            <div className="bg-white/90 backdrop-blur-sm text-amber-600 p-2 rounded-full shadow-lg">
               <Crown className="w-5 h-5" />
-              <span className="text-sm font-bold tracking-wide">EXPERT</span>
             </div>
           </div>
 
-          {/* Badge de rang Top 1, 2, 3 */}
+          {/* Badge de rang Top 1, 2, 3, 4 */}
           <div className="absolute top-4 left-4 z-20">
-            <div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-xl border-2 border-yellow-300">
-              <span className="font-bold text-lg">#{rank}</span>
+            <div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg">
+              <span className="font-bold text-sm">#{rank}</span>
             </div>
           </div>
           
@@ -70,12 +69,12 @@ export function ExpertBusinessCard({ business, rank }: ExpertBusinessCardProps) 
         </div>
         
         {/* Content premium */}
-        <div className="p-6">
-          <h3 className="font-bold text-xl text-gray-900 mb-3 line-clamp-1 group-hover:text-amber-600 transition">
+        <div className="p-4 sm:p-5 lg:p-6">
+          <h3 className="font-bold text-lg sm:text-xl text-gray-900 mb-2 sm:mb-3 line-clamp-1 group-hover:text-amber-600 transition">
             {business.name}
           </h3>
           
-          <p className="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
+          <p className="text-gray-600 mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3 text-sm sm:text-base leading-relaxed">
             {truncatedDescription}
           </p>
           

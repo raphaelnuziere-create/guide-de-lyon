@@ -192,8 +192,8 @@ async function getBusinessesByCategory() {
         return (b.views_count || 0) - (a.views_count || 0);
       });
       
-      // Limiter à 3 experts max
-      result[sector].experts = result[sector].experts.slice(0, 3);
+      // Limiter à 4 experts max
+      result[sector].experts = result[sector].experts.slice(0, 4);
     });
   }
   
@@ -277,7 +277,7 @@ export default async function AnnuairePage() {
                           <h3 className="text-xl font-bold text-gray-900">Membres Experts</h3>
                           <div className="h-px bg-gradient-to-r from-amber-500 to-transparent flex-1" />
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                           {experts.map((business: any, index: number) => (
                             <ExpertBusinessCard 
                               key={business.id} 

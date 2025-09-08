@@ -125,7 +125,7 @@ async function getBusinessesByCategory(categorySlug: string) {
   // Séparer experts et autres
   const experts = mapped.filter(b => b.plan === 'expert')
     .sort((a, b) => (b.views_count || 0) - (a.views_count || 0))
-    .slice(0, 3); // Limiter à 3 experts
+    .slice(0, 4); // Limiter à 4 experts
 
   const others = mapped.filter(b => b.plan !== 'expert')
     .sort((a, b) => {
@@ -194,7 +194,7 @@ export default async function CategoryPage({ params }: { params: { category: str
                   <div className="h-px bg-gradient-to-r from-amber-500 to-transparent flex-1" />
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                   {experts.map((business: any, index: number) => (
                     <ExpertBusinessCard 
                       key={business.id} 
