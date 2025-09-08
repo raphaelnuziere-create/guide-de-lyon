@@ -205,8 +205,7 @@ export async function GET() {
         status: 'published',
         published_at: item.pubDate ? new Date(item.pubDate).toISOString() : new Date().toISOString(),
         scraped_at: new Date().toISOString(),
-        ai_confidence_score: 0.95,
-        processing_status: 'completed'
+        ai_confidence_score: 0.95
       });
     }
     
