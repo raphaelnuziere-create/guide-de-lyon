@@ -105,6 +105,11 @@ export default function DashboardPro() {
         // Récupérer les limites du plan
         const limits = await EstablishmentService.getPlanLimits(establishmentData.plan);
         setPlanLimits(limits);
+      } else {
+        // Si pas d'établissement, rediriger vers la page d'inscription
+        console.log('[Dashboard] No establishment found, redirecting to inscription');
+        router.push('/pro/inscription');
+        return;
       }
       
       setLoading(false);

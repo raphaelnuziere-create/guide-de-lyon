@@ -130,26 +130,36 @@ function ProInscriptionContent() {
   }, []);
 
   const checkAuth = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      router.push('/auth/pro/inscription');
-      return;
+    try {
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      
+      if (authError || !user) {
+        console.log('[Inscription] Pas d\'utilisateur connecté, redirection vers connexion');
+        router.push('/auth/pro/connexion');
+        return;
+      }
+      
+      console.log('[Inscription] Utilisateur connecté:', user.email);
+      
+      // Vérifier si l'établissement existe déjà
+      const { data: establishment, error: estabError } = await supabase
+        .from('establishments')
+        .select('id')
+        .eq('owner_id', user.id)
+        .maybeSingle();
+      
+      if (establishment) {
+        console.log('[Inscription] Établissement existant, redirection vers dashboard');
+        router.push('/pro/dashboard');
+        return;
+      }
+      
+      console.log('[Inscription] Aucun établissement, l\'utilisateur peut en créer un');
+      setUser(user);
+    } catch (error) {
+      console.error('[Inscription] Erreur lors de la vérification:', error);
+      setError('Erreur lors de la vérification de votre compte');
     }
-    
-    // Vérifier si l'établissement existe déjà
-    const { data: establishment } = await supabase
-      .from('establishments')
-      .select('id')
-      .eq('owner_id', user.id)
-      .single();
-    
-    if (establishment) {
-      router.push('/pro/dashboard');
-      return;
-    }
-    
-    setUser(user);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -158,23 +168,35 @@ function ProInscriptionContent() {
     setError('');
 
     try {
-      // Vérifier que l'utilisateur est connecté
-      if (!user) {
-        const { data: { user: currentUser } } = await supabase.auth.getUser();
-        if (!currentUser) {
-          setError('Vous devez être connecté pour créer un établissement');
+      // Récupérer l'utilisateur actuel pour être sûr
+      const { data: { user: currentUser }, error: authError } = await supabase.auth.getUser();
+      
+      if (authError || !currentUser) {
+        console.error('[Inscription] Utilisateur non connecté lors de la soumission');
+        setError('Session expirée. Veuillez vous reconnecter.');
+        setTimeout(() => {
           router.push('/auth/pro/connexion');
-          return;
-        }
-        setUser(currentUser);
+        }, 2000);
+        return;
       }
+      
+      console.log('[Inscription] Création établissement pour:', currentUser.email);
+
+      // Créer le slug
+      const slug = formData.name
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
 
       // Créer l'établissement
       const { data, error: insertError } = await supabase
         .from('establishments')
         .insert({
-          owner_id: user?.id || (await supabase.auth.getUser()).data.user?.id,
+          owner_id: currentUser.id,
           name: formData.name,
+          slug: slug,
           category: formData.category,
           description: formData.description,
           phone: formData.phone,
@@ -183,23 +205,53 @@ function ProInscriptionContent() {
           address: formData.address,
           postal_code: formData.postal_code,
           city: formData.city,
-          facebook_url: formData.facebook_url,
-          instagram_url: formData.instagram_url,
+          address_district: formData.postal_code === '69001' ? '1er arrondissement' :
+                           formData.postal_code === '69002' ? '2ème arrondissement' :
+                           formData.postal_code === '69003' ? '3ème arrondissement' :
+                           formData.postal_code === '69004' ? '4ème arrondissement' :
+                           formData.postal_code === '69005' ? '5ème arrondissement' :
+                           formData.postal_code === '69006' ? '6ème arrondissement' :
+                           formData.postal_code === '69007' ? '7ème arrondissement' :
+                           formData.postal_code === '69008' ? '8ème arrondissement' :
+                           formData.postal_code === '69009' ? '9ème arrondissement' : null,
+          facebook_url: formData.facebook_url || null,
+          instagram_url: formData.instagram_url || null,
           plan: selectedPlan,
           plan_billing_cycle: billingCycle,
           vat_number: formData.vat_number || null,
-          verified: selectedPlan !== 'basic'
+          status: 'pending',
+          views_count: 0,
+          verified: selectedPlan !== 'basic',
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
         .select()
         .single();
 
       if (insertError) {
-        throw insertError;
+        console.error('[Inscription] Erreur insertion:', insertError);
+        
+        // Gérer les erreurs spécifiques
+        if (insertError.message?.includes('duplicate')) {
+          setError('Un établissement avec ce nom existe déjà');
+        } else if (insertError.message?.includes('owner_id')) {
+          setError('Erreur d\'authentification. Veuillez vous reconnecter.');
+          setTimeout(() => {
+            router.push('/auth/pro/connexion');
+          }, 2000);
+        } else {
+          setError(insertError.message || 'Erreur lors de la création');
+        }
+        return;
       }
 
       if (!data) {
-        throw new Error('Établissement non créé');
+        console.error('[Inscription] Aucune donnée retournée');
+        setError('Erreur lors de la création de l\'établissement');
+        return;
       }
+      
+      console.log('[Inscription] Établissement créé avec succès:', data);
 
       setSuccess(true);
       setStep(3);
@@ -210,8 +262,8 @@ function ProInscriptionContent() {
       }, 2000);
       
     } catch (err: any) {
-      console.error('Error creating establishment:', err);
-      setError(err.message || 'Erreur lors de la création');
+      console.error('[Inscription] Erreur inattendue:', err);
+      setError(err.message || 'Une erreur inattendue est survenue');
     } finally {
       setLoading(false);
     }
