@@ -135,7 +135,7 @@ async function getBusinessesByCategory() {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
   
-  // Récupérer tous les établissements actifs
+  // Récupérer tous les établissements actifs avec leurs médias
   const { data: allBusinesses } = await supabase
     .from('establishments')
     .select(`
@@ -144,25 +144,37 @@ async function getBusinessesByCategory() {
       name,
       description,
       category,
-      metadata
+      metadata,
+      establishment_media (
+        url,
+        type,
+        display_order
+      )
     `)
     .eq('status', 'active');
 
   const result: Record<string, { experts: any[], others: any[] }> = {};
   
   if (allBusinesses) {
-    // Mapper les données pour extraire depuis metadata
-    const mappedBusinesses = allBusinesses.map(business => ({
-      id: business.id,
-      slug: business.slug,
-      name: business.name,
-      description: business.description,
-      main_image: business.metadata?.main_image,
-      plan: business.metadata?.plan || 'basic',
-      sector: business.category,
-      address_district: business.metadata?.address_district,
-      views_count: business.metadata?.views_count || 0
-    }));
+    // Mapper les données pour extraire depuis metadata et establishment_media
+    const mappedBusinesses = allBusinesses.map(business => {
+      // Récupérer la première image depuis establishment_media
+      const firstImage = business.establishment_media
+        ?.filter((media: any) => media.type === 'image')
+        ?.sort((a: any, b: any) => a.display_order - b.display_order)[0];
+      
+      return {
+        id: business.id,
+        slug: business.slug,
+        name: business.name,
+        description: business.description,
+        main_image: firstImage?.url || business.metadata?.main_image, // Priorité aux images de establishment_media
+        plan: business.metadata?.plan || 'basic',
+        sector: business.category,
+        address_district: business.metadata?.address_district,
+        views_count: business.metadata?.views_count || 0
+      };
+    });
 
     // Grouper par catégorie
     mappedBusinesses.forEach(business => {
@@ -208,7 +220,7 @@ export default async function AnnuairePage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <div className="bg-white border-b">
-        <div className="container mx-auto px-4 py-12">
+        <div className="container mx-auto px-4 py-6">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               L'Annuaire de Référence de Lyon
@@ -221,8 +233,8 @@ export default async function AnnuairePage() {
       </div>
 
       {/* Categories avec Top 3 */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="space-y-12">
+      <div className="container mx-auto px-4 py-4">
+        <div className="space-y-8">
           {CATEGORIES.map((category) => {
             const Icon = category.icon;
             const data = categoryData[category.dbValue] || { experts: [], others: [] };
@@ -235,7 +247,7 @@ export default async function AnnuairePage() {
             return (
               <section key={category.slug} className="scroll-mt-20" id={category.slug}>
                 {/* Header de catégorie */}
-                <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-4">
                     <div 
                       className="p-3 rounded-xl"
@@ -271,8 +283,8 @@ export default async function AnnuairePage() {
                   <>
                     {/* Section Experts - 3 grandes fenêtres avec badge doré */}
                     {hasExperts && (
-                      <div className="mb-10">
-                        <div className="flex items-center gap-3 mb-6">
+                      <div className="mb-6">
+                        <div className="flex items-center gap-3 mb-4">
                           <Crown className="w-6 h-6 text-amber-500" />
                           <h3 className="text-xl font-bold text-gray-900">Membres Experts</h3>
                           <div className="h-px bg-gradient-to-r from-amber-500 to-transparent flex-1" />
@@ -291,8 +303,8 @@ export default async function AnnuairePage() {
                     
                     {/* Section Autres - Carrousel horizontal */}
                     {hasOthers && (
-                      <div className="mb-8">
-                        <div className="flex items-center gap-3 mb-6">
+                      <div className="mb-6">
+                        <div className="flex items-center gap-3 mb-4">
                           <Shield className="w-6 h-6 text-blue-500" />
                           <h3 className="text-xl font-bold text-gray-900">Autres Membres</h3>
                           <div className="h-px bg-gradient-to-r from-blue-500 to-transparent flex-1" />

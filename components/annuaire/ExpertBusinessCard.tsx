@@ -37,12 +37,6 @@ export function ExpertBusinessCard({ business, rank }: ExpertBusinessCardProps) 
             </div>
           </div>
 
-          {/* Badge de rang Top 1, 2, 3, 4 */}
-          <div className="absolute top-4 left-4 z-20">
-            <div className="bg-gradient-to-r from-amber-600 to-yellow-500 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg">
-              <span className="font-bold text-sm">#{rank}</span>
-            </div>
-          </div>
           
           {business.main_image ? (
             <Image
