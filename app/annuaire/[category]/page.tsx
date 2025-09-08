@@ -94,23 +94,36 @@ async function getBusinessesByCategory(categorySlug: string) {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
   
-  const { data: businesses } = await supabase
+  const { data: businessesRaw } = await supabase
     .from('establishments')
     .select(`
       id,
       slug,
       name,
       description,
-      main_image,
-      plan,
-      sector,
-      address_district,
-      views_count
+      category,
+      metadata
     `)
     .eq('status', 'active')
-    .eq('sector', categoryInfo.dbValue)
-    .order('plan', { ascending: false })
-    .order('views_count', { ascending: false });
+    .eq('category', categoryInfo.dbValue);
+    
+  // Mapper et trier les résultats
+  const businesses = businessesRaw ? businessesRaw.map(business => ({
+    id: business.id,
+    slug: business.slug,
+    name: business.name,
+    description: business.description,
+    main_image: business.metadata?.main_image,
+    plan: business.metadata?.plan || 'basic',
+    address_district: business.metadata?.address_district,
+    views_count: business.metadata?.views_count || 0
+  })).sort((a, b) => {
+    const planOrder = { 'expert': 3, 'pro': 2, 'basic': 1 };
+    const planDiff = (planOrder[b.plan as keyof typeof planOrder] || 0) - 
+                    (planOrder[a.plan as keyof typeof planOrder] || 0);
+    if (planDiff !== 0) return planDiff;
+    return (b.views_count || 0) - (a.views_count || 0);
+  }) : [];
 
   return businesses || [];
 }

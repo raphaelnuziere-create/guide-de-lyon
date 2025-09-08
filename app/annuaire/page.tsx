@@ -141,23 +141,31 @@ async function getTopBusinessesByCategory() {
       slug,
       name,
       description,
-      main_image,
-      plan,
-      sector,
-      address_district,
-      views_count
+      category,
+      metadata
     `)
-    .eq('status', 'active')
-    .order('plan', { ascending: false })
-    .order('views_count', { ascending: false });
+    .eq('status', 'active');
 
   // Grouper par catégorie et prendre les top 3
   const grouped: Record<string, any[]> = {};
   
   if (allBusinesses) {
+    // Mapper les données pour extraire depuis metadata
+    const mappedBusinesses = allBusinesses.map(business => ({
+      id: business.id,
+      slug: business.slug,
+      name: business.name,
+      description: business.description,
+      main_image: business.metadata?.main_image,
+      plan: business.metadata?.plan || 'basic',
+      sector: business.category, // category est le secteur
+      address_district: business.metadata?.address_district,
+      views_count: business.metadata?.views_count || 0
+    }));
+
     // Trier d'abord par plan (expert > pro > basic) puis par vues
     const planOrder = { 'expert': 3, 'pro': 2, 'basic': 1 };
-    const sortedBusinesses = allBusinesses.sort((a, b) => {
+    const sortedBusinesses = mappedBusinesses.sort((a, b) => {
       const planDiff = (planOrder[b.plan as keyof typeof planOrder] || 0) - 
                       (planOrder[a.plan as keyof typeof planOrder] || 0);
       if (planDiff !== 0) return planDiff;
