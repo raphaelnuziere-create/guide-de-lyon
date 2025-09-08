@@ -1,194 +1,133 @@
-// Script simple pour peupler rapidement la base avec des articles
+#!/usr/bin/env node
+
+/**
+ * Script pour peupler rapidement avec des articles de test
+ * Sans passer par OpenAI pour éviter les timeouts
+ */
+
 const { createClient } = require('@supabase/supabase-js');
+require('dotenv').config({ path: '.env.local' });
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-const articles = [
-  {
-    title: "Lyon lance un nouveau plan de mobilité douce pour 2025",
-    content: "La métropole de Lyon dévoile son ambitieux plan de mobilité douce...",
-    category: "Transport"
-  },
-  {
-    title: "Festival Lumière 2025 : le programme complet dévoilé",
-    content: "Le Festival Lumière revient pour une nouvelle édition exceptionnelle...",
-    category: "Culture"
-  },
-  {
-    title: "Ouverture d'un nouveau marché bio dans le 3ème arrondissement",
-    content: "Un nouveau marché bio s'installe place Guichard...",
-    category: "Commerce"
-  },
-  {
-    title: "Lyon accueillera les championnats d'Europe de natation",
-    content: "La ville de Lyon a été sélectionnée pour accueillir les championnats...",
-    category: "Sport"
-  },
-  {
-    title: "Rénovation complète du parc de la Tête d'Or",
-    content: "Le parc emblématique de Lyon va bénéficier d'une rénovation majeure...",
-    category: "Urbanisme"
-  },
-  {
-    title: "Nouveau campus universitaire dans le quartier de Gerland",
-    content: "Un campus ultramoderne va voir le jour à Gerland...",
-    category: "Education"
-  },
-  {
-    title: "La gastronomie lyonnaise inscrite au patrimoine de l'UNESCO",
-    content: "Une reconnaissance mondiale pour la cuisine lyonnaise...",
-    category: "Gastronomie"
-  },
-  {
-    title: "Extension de la ligne de métro B jusqu'à Saint-Genis-Laval",
-    content: "Le projet d'extension de la ligne B est officiellement lancé...",
-    category: "Transport"
-  },
-  {
-    title: "Lyon devient capitale européenne du numérique",
-    content: "La ville obtient le label de capitale numérique européenne...",
-    category: "Innovation"
-  },
-  {
-    title: "Création de 5000 emplois dans le secteur tech à Lyon",
-    content: "Le secteur technologique lyonnais en pleine expansion...",
-    category: "Economie"
-  }
-];
-
-function generateSlug(title) {
-  return title
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .substring(0, 100);
-}
-
-function generateContent(title, snippet, category) {
-  return `
-<h1>${title}</h1>
-
-<p><strong>${snippet}</strong></p>
-
-<h2>Une actualité importante pour Lyon</h2>
-
-<p>Cette information marque un tournant important pour la métropole lyonnaise. ${snippet} Cette évolution s'inscrit dans la dynamique de transformation de notre ville.</p>
-
-<p>Lyon continue de se positionner comme une métropole européenne majeure, alliant tradition et modernité. Cette actualité en est une nouvelle preuve.</p>
-
-<h2>Impact sur la vie quotidienne</h2>
-
-<p>Les Lyonnais seront directement concernés par cette actualité. Que ce soit dans le domaine ${category.toLowerCase()}, cette évolution aura des répercussions positives sur le quotidien des habitants.</p>
-
-<p>La municipalité travaille activement pour que ces changements bénéficient au plus grand nombre. L'objectif est de renforcer l'attractivité de Lyon tout en préservant la qualité de vie.</p>
-
-<h2>Un projet d'envergure</h2>
-
-<p>Ce projet s'inscrit dans une vision à long terme pour Lyon. Il témoigne de l'ambition de la ville de rester à la pointe de l'innovation tout en respectant son patrimoine historique.</p>
-
-<p>Les investissements prévus permettront de concrétiser cette vision et de positionner Lyon parmi les métropoles les plus dynamiques d'Europe.</p>
-
-<h2>Prochaines étapes</h2>
-
-<p>Les prochains mois seront cruciaux pour la mise en œuvre de ce projet. Des consultations publiques seront organisées pour recueillir l'avis des citoyens.</p>
-
-<p>La transparence et la participation citoyenne sont au cœur de la démarche. Chaque Lyonnais pourra contribuer à façonner l'avenir de sa ville.</p>
-
-<h2>Lyon, ville d'avenir</h2>
-
-<p>Cette actualité confirme le dynamisme de Lyon et sa capacité à se réinventer. Entre patrimoine historique et innovations modernes, la ville trace sa route vers l'avenir.</p>
-
-<p>Les projets en cours et à venir témoignent d'une ambition forte : faire de Lyon une référence européenne en matière de qualité de vie, d'innovation et de développement durable.</p>
-
-<p>Restez connecté pour suivre l'évolution de ce projet et découvrir toutes les actualités qui font bouger Lyon.</p>
-  `.trim();
-}
+console.log('🚀 PEUPLEMENT RAPIDE DE TEST\n');
 
 async function populateArticles() {
-  console.log('🚀 Début du peuplement de la base...');
-  
-  // 1. Supprimer tous les articles existants
-  console.log('🗑️  Suppression des anciens articles...');
-  const { error: deleteError } = await supabase
-    .from('scraped_articles')
-    .delete()
-    .neq('id', '00000000-0000-0000-0000-000000000000');
-  
-  if (deleteError) {
-    console.error('❌ Erreur suppression:', deleteError);
-  } else {
-    console.log('✅ Articles supprimés');
-  }
-  
-  // 2. Préparer les nouveaux articles
-  const articlesToInsert = articles.map(article => {
-    const slug = generateSlug(article.title);
-    const content = generateContent(article.title, article.content, article.category);
+  try {
+    // 1. Nettoyer d'abord
+    console.log('🧹 Nettoyage des articles existants...');
+    const { error: deleteError } = await supabase
+      .from('scraped_articles')
+      .delete()
+      .gte('id', 0); // Supprimer tout
     
-    // Images Lyon depuis Unsplash
-    const lyonImages = [
-      'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=1200',
-      'https://images.unsplash.com/photo-1582806988429-d451912c0e1f?w=1200',
-      'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200',
-      'https://images.unsplash.com/photo-1609770231080-e321deccc34c?w=1200',
-      'https://images.unsplash.com/photo-1563373960-57e7ce1097d0?w=1200'
+    if (deleteError) {
+      console.error('Erreur suppression:', deleteError);
+    }
+
+    // 2. Créer des articles de test
+    console.log('📝 Création d\'articles de test...\n');
+    
+    const testArticles = [
+      {
+        title: "Ouverture du nouveau parc de la Tête d'Or",
+        slug: "ouverture-nouveau-parc-tete-or",
+        original_url: "https://example.com/article1",
+        original_title: "Parc Tête d'Or",
+        original_content: "Le parc s'agrandit",
+        rewritten_content: "Le parc de la Tête d'Or s'agrandit avec une nouvelle zone de 5 hectares dédiée aux familles. Cette extension comprend des aires de jeux innovantes, des espaces de pique-nique ombragés et un parcours sportif adapté à tous les âges. Les travaux, qui ont duré 18 mois, ont permis de créer un espace vert supplémentaire très attendu par les habitants du 6ème arrondissement.",
+        featured_image_url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+        source_name: "20 Minutes Lyon",
+        published_at: new Date().toISOString(),
+        category: "Actualités",
+        is_published: true
+      },
+      {
+        title: "Festival des Lumières 2024 : Le programme dévoilé",
+        slug: "festival-lumieres-2024-programme",
+        original_url: "https://example.com/article2",
+        original_title: "Fête des Lumières",
+        original_content: "Programme du festival",
+        rewritten_content: "La Fête des Lumières 2024 promet d'être exceptionnelle avec plus de 30 installations lumineuses réparties dans toute la ville. Les artistes internationaux proposeront des créations inédites sur les façades des monuments emblématiques. La place Bellecour accueillera une installation monumentale tandis que la cathédrale Saint-Jean bénéficiera d'un mapping vidéo spectaculaire. Le festival se déroulera du 5 au 8 décembre.",
+        featured_image_url: "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=800",
+        source_name: "20 Minutes Lyon",
+        published_at: new Date(Date.now() - 3600000).toISOString(),
+        category: "Culture",
+        is_published: true
+      },
+      {
+        title: "Nouvelle ligne de métro E : Début des travaux",
+        slug: "nouvelle-ligne-metro-e-travaux",
+        original_url: "https://example.com/article3",
+        original_title: "Métro ligne E",
+        original_content: "Travaux du métro",
+        rewritten_content: "Les travaux de la ligne E du métro lyonnais ont officiellement débuté ce matin. Cette nouvelle ligne reliera Alaï à Part-Dieu en passant par le centre-ville, avec 15 stations prévues. Le projet, d'un coût de 2,5 milliards d'euros, devrait être achevé en 2030. Les perturbations de circulation seront minimisées grâce à l'utilisation de tunneliers dernière génération.",
+        featured_image_url: "https://images.unsplash.com/photo-1555149385-c50f336e28b0?w=800",
+        source_name: "20 Minutes Lyon",
+        published_at: new Date(Date.now() - 7200000).toISOString(),
+        category: "Transport",
+        is_published: true
+      },
+      {
+        title: "OL : Victoire éclatante contre Marseille",
+        slug: "ol-victoire-marseille",
+        original_url: "https://example.com/article4",
+        original_title: "OL - OM",
+        original_content: "Match de football",
+        rewritten_content: "L'Olympique Lyonnais s'est imposé 3-1 face à Marseille lors du choc de la 15ème journée. Les buts de Lacazette (2) et Cherki ont permis aux Gones de reprendre la 3ème place du classement. Le Groupama Stadium a vibré devant les 58 000 spectateurs présents. Cette victoire relance les ambitions européennes du club rhodanien qui enchaîne une 5ème victoire consécutive.",
+        featured_image_url: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800",
+        source_name: "20 Minutes Lyon",
+        published_at: new Date(Date.now() - 10800000).toISOString(),
+        category: "Sport",
+        is_published: true
+      },
+      {
+        title: "Gastronomie : Un nouveau restaurant étoilé",
+        slug: "nouveau-restaurant-etoile-lyon",
+        original_url: "https://example.com/article5",
+        original_title: "Restaurant étoilé",
+        original_content: "Nouvelle étoile Michelin",
+        rewritten_content: "Le restaurant 'Les Terrasses de Lyon' vient de décrocher sa première étoile Michelin. Le chef David Delsart propose une cuisine inventive mêlant tradition lyonnaise et modernité. Le menu dégustation à 120€ offre un voyage culinaire en 7 services. La réservation est déjà complète pour les deux prochains mois. Cette distinction porte à 20 le nombre de restaurants étoilés dans la métropole.",
+        featured_image_url: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800",
+        source_name: "20 Minutes Lyon",
+        published_at: new Date(Date.now() - 14400000).toISOString(),
+        category: "Gastronomie",
+        is_published: true
+      }
     ];
+
+    // 3. Insérer les articles
+    const { data, error } = await supabase
+      .from('scraped_articles')
+      .insert(testArticles)
+      .select();
+
+    if (error) {
+      console.error('❌ Erreur insertion:', error);
+      return;
+    }
+
+    console.log('✅ SUCCÈS !');
+    console.log(`📊 ${data.length} articles créés\n`);
     
-    return {
-      id: crypto.randomUUID(),
-      source_name: '20 Minutes Lyon',
-      source_url: 'https://www.20minutes.fr/lyon/',
-      original_url: `https://www.20minutes.fr/lyon/article-${slug}`,
-      original_title: article.title,
-      original_content: article.content,
-      rewritten_title: article.title,
-      rewritten_content: content,
-      slug: slug,
-      category: 'actualite',
-      featured_image_url: lyonImages[Math.floor(Math.random() * lyonImages.length)],
-      status: 'published',
-      published_at: new Date().toISOString(),
-      scraped_at: new Date().toISOString(),
-      ai_confidence_score: 0.95
-    };
-  });
-  
-  // 3. Insérer les articles
-  console.log(`📝 Insertion de ${articlesToInsert.length} articles...`);
-  const { data, error: insertError } = await supabase
-    .from('scraped_articles')
-    .insert(articlesToInsert)
-    .select();
-  
-  if (insertError) {
-    console.error('❌ Erreur insertion:', insertError);
-    return;
+    // 4. Afficher les articles
+    data.forEach(article => {
+      console.log(`- ${article.title}`);
+      console.log(`  ${article.slug}`);
+      console.log(`  ${article.category}\n`);
+    });
+
+    console.log('🔍 Vérifiez sur :');
+    console.log('- LOCAL : http://localhost:3000/actualites');
+    console.log('- PROD : https://www.guide-de-lyon.fr/actualites');
+
+  } catch (error) {
+    console.error('❌ Erreur:', error);
   }
-  
-  console.log(`✅ ${data.length} articles insérés avec succès !`);
-  
-  // 4. Afficher le résultat
-  const { data: allArticles } = await supabase
-    .from('scraped_articles')
-    .select('slug, rewritten_title, status')
-    .eq('status', 'published')
-    .order('published_at', { ascending: false })
-    .limit(5);
-  
-  console.log('\n📰 Articles publiés :');
-  allArticles?.forEach(article => {
-    console.log(`  - ${article.rewritten_title}`);
-    console.log(`    URL: https://www.guide-de-lyon.fr/actualites/${article.slug}`);
-  });
-  
-  console.log('\n🎉 Peuplement terminé !');
-  console.log('👉 Visitez https://www.guide-de-lyon.fr/actualites pour voir les articles');
 }
 
-// Exécuter le script
-populateArticles().catch(console.error);
+// Lancer
+populateArticles();

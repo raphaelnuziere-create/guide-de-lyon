@@ -1,202 +1,133 @@
-// Route rapide pour peupler la base avec des articles sans IA
 import { NextResponse } from 'next/server';
-import { supabase } from '@/app/lib/supabase/client';
-import Parser from 'rss-parser';
-import { SupabaseImageService } from '@/app/lib/services/supabase-image-service';
+import { createClient } from '@supabase/supabase-js';
 
-const parser = new Parser({
-  customFields: {
-    item: [
-      ['media:content', 'media:content', { keepArray: true }],
-      ['enclosure', 'enclosure', { keepArray: false }]
-    ]
-  }
-});
-
-function generateSlug(title: string): string {
-  return title
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .substring(0, 100);
-}
-
-function extractImageFromItem(item: any): string | null {
-  // Essayer plusieurs sources d'images
-  if (item['media:content']?.[0]?.$.url) {
-    return item['media:content'][0].$.url;
-  }
-  if (item.enclosure?.url && item.enclosure.type?.startsWith('image/')) {
-    return item.enclosure.url;
-  }
-  if (item.content) {
-    const imgMatch = item.content.match(/<img[^>]+src="([^"]+)"/);
-    if (imgMatch) return imgMatch[1];
-  }
-  if (item['content:encoded']) {
-    const imgMatch = item['content:encoded'].match(/<img[^>]+src="([^"]+)"/);
-    if (imgMatch) return imgMatch[1];
-  }
-  return null;
-}
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 export async function GET() {
   try {
     console.log('[Quick Populate] Démarrage du peuplement rapide');
     
-    // 1. Supprimer TOUS les articles existants
-    console.log('[Quick Populate] Suppression des anciens articles...');
+    // 1. Nettoyer les articles existants
     const { error: deleteError } = await supabase
       .from('scraped_articles')
       .delete()
-      .neq('id', '00000000-0000-0000-0000-000000000000');
+      .gte('id', 0);
     
     if (deleteError) {
-      console.error('[Quick Populate] Erreur suppression:', deleteError);
+      console.error('Erreur suppression:', deleteError);
     }
-    
-    // 2. Parser le feed RSS de 20 Minutes
-    console.log('[Quick Populate] Récupération du feed RSS...');
-    const feed = await parser.parseURL('https://www.20minutes.fr/feeds/rss-lyon.xml');
-    
-    // 3. Préparer le service d'images
-    const imageService = new SupabaseImageService();
-    
-    // 4. Traiter les articles (limiter à 20 pour la rapidité)
-    const articles = [];
-    const maxArticles = Math.min(20, feed.items.length);
-    
-    for (let i = 0; i < maxArticles; i++) {
-      const item = feed.items[i];
-      const slug = generateSlug(item.title || '');
-      
-      console.log(`[Quick Populate] Traitement article ${i + 1}/${maxArticles}: ${item.title}`);
-      
-      // Extraire l'image
-      const originalImage = extractImageFromItem(item);
-      let imageUrl = null;
-      
-      if (originalImage) {
-        try {
-          imageUrl = await imageService.downloadAndStore(originalImage, slug);
-          console.log('[Quick Populate] Image stockée:', imageUrl);
-        } catch (error) {
-          console.error('[Quick Populate] Erreur image:', error);
-        }
-      }
-      
-      // Si pas d'image, utiliser une image par défaut
-      if (!imageUrl) {
-        imageUrl = imageService.getDefaultImage('actualite');
-      }
-      
-      // Créer un contenu basique
-      const content = `
-<h1>${item.title}</h1>
 
-<p><strong>${item.contentSnippet || item.description || ''}</strong></p>
-
-<h2>Actualité lyonnaise</h2>
-
-<p>Cette actualité concerne Lyon et sa région. ${item.contentSnippet || item.description || ''}</p>
-
-<p>Pour en savoir plus sur cette actualité et d'autres événements à Lyon, consultez régulièrement notre site.</p>
-
-<h2>À propos de cette information</h2>
-
-<p>Cette information a été publiée le ${new Date(item.pubDate || Date.now()).toLocaleDateString('fr-FR')}. 
-Lyon continue d'être au cœur de l'actualité régionale avec des événements importants qui façonnent la vie quotidienne de ses habitants.</p>
-
-<h2>Lyon, ville dynamique</h2>
-
-<p>Lyon est une métropole dynamique qui ne cesse d'évoluer. Entre son patrimoine historique classé au patrimoine mondial de l'UNESCO, 
-ses quartiers modernes en développement constant, et sa vie culturelle riche, la ville offre un cadre de vie unique.</p>
-
-<p>Les actualités lyonnaises reflètent cette diversité : projets urbains, événements culturels, développement économique, 
-initiatives écologiques, vie associative... Chaque jour apporte son lot de nouvelles qui témoignent du dynamisme de notre région.</p>
-
-<h2>Restez informé</h2>
-
-<p>Pour ne rien manquer de l'actualité lyonnaise, nous vous invitons à consulter régulièrement notre site. 
-Nous mettons à jour quotidiennement nos articles pour vous tenir informé de tout ce qui se passe dans la métropole lyonnaise.</p>
-
-<p>Que vous soyez résident, visiteur ou simplement curieux de la vie lyonnaise, nos actualités vous permettent de rester connecté 
-avec le pouls de la ville.</p>
-      `.trim();
-      
-      // Préparer l'article pour l'insertion
-      articles.push({
-        id: crypto.randomUUID(),
-        source_name: '20 Minutes Lyon',
-        source_url: 'https://www.20minutes.fr/lyon/',
-        original_url: item.link || '',
-        original_title: item.title || 'Sans titre',
-        original_content: item.contentSnippet || item.description || '',
-        rewritten_title: item.title || 'Sans titre',
-        rewritten_content: content,
-        slug: slug,
-        category: 'actualite',
-        featured_image_url: imageUrl,
-        status: 'published',
+    // 2. Articles de test prêts à l'emploi
+    const testArticles = [
+      {
+        rewritten_title: "Ouverture du nouveau parc de la Tête d'Or",
+        slug: "ouverture-nouveau-parc-tete-or",
+        original_url: "https://example.com/article1",
+        original_title: "Parc Tête d'Or",
+        original_content: "Le parc s'agrandit",
+        rewritten_content: "Le parc de la Tête d'Or s'agrandit avec une nouvelle zone de 5 hectares dédiée aux familles. Cette extension comprend des aires de jeux innovantes, des espaces de pique-nique ombragés et un parcours sportif adapté à tous les âges. Les travaux, qui ont duré 18 mois, ont permis de créer un espace vert supplémentaire très attendu par les habitants du 6ème arrondissement. Cette nouvelle zone offre également un amphithéâtre naturel pour des événements en plein air et des jardins pédagogiques destinés aux écoles de la métropole.",
+        rewritten_excerpt: "Le parc de la Tête d'Or s'agrandit avec une nouvelle zone de 5 hectares dédiée aux familles, comprenant aires de jeux, espaces pique-nique et parcours sportif.",
+        featured_image_url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+        source_name: "20 Minutes Lyon",
         published_at: new Date().toISOString(),
-        scraped_at: new Date().toISOString(),
-        ai_confidence_score: 0.95,
-        author: 'Raphael',
-        meta_description: (item.contentSnippet || item.description || '').substring(0, 160),
-        keywords: ['Lyon', 'actualité', 'news', 'information']
-      });
-    }
-    
-    // 5. Insérer tous les articles d'un coup
-    console.log('[Quick Populate] Insertion de', articles.length, 'articles...');
-    const { data: inserted, error: insertError } = await supabase
+        category: "Actualités",
+        author_name: "Rédaction",
+        status: "published"
+      },
+      {
+        rewritten_title: "Festival des Lumières 2024 : Le programme dévoilé",
+        slug: "festival-lumieres-2024-programme",
+        original_url: "https://example.com/article2",
+        original_title: "Fête des Lumières",
+        original_content: "Programme du festival",
+        rewritten_content: "La Fête des Lumières 2024 promet d'être exceptionnelle avec plus de 30 installations lumineuses réparties dans toute la ville. Les artistes internationaux proposeront des créations inédites sur les façades des monuments emblématiques. La place Bellecour accueillera une installation monumentale tandis que la cathédrale Saint-Jean bénéficiera d'un mapping vidéo spectaculaire. Le festival se déroulera du 5 au 8 décembre avec des horaires étendus jusqu'à minuit le week-end. Cette édition mettra l'accent sur l'innovation technologique avec des œuvres interactives permettant au public de participer activement aux spectacles lumineux.",
+        rewritten_excerpt: "La Fête des Lumières 2024 présentera plus de 30 installations lumineuses avec des créations inédites d'artistes internationaux du 5 au 8 décembre.",
+        featured_image_url: "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=800",
+        source_name: "20 Minutes Lyon",
+        published_at: new Date(Date.now() - 3600000).toISOString(),
+        category: "Culture",
+        author_name: "Rédaction",
+        status: "published"
+      },
+      {
+        rewritten_title: "Nouvelle ligne de métro E : Début des travaux",
+        slug: "nouvelle-ligne-metro-e-travaux",
+        original_url: "https://example.com/article3",
+        original_title: "Métro ligne E",
+        original_content: "Travaux du métro",
+        rewritten_content: "Les travaux de la ligne E du métro lyonnais ont officiellement débuté ce matin. Cette nouvelle ligne reliera Alaï à Part-Dieu en passant par le centre-ville, avec 15 stations prévues. Le projet, d'un coût de 2,5 milliards d'euros, devrait être achevé en 2030. Les perturbations de circulation seront minimisées grâce à l'utilisation de tunneliers dernière génération. La ligne E permettra de désengorger les lignes existantes et offrira une connexion directe entre l'ouest lyonnais et le quartier d'affaires de Part-Dieu. Les premiers tunneliers entreront en action dès janvier prochain, avec un rythme de progression estimé à 15 mètres par jour.",
+        rewritten_excerpt: "Les travaux de la ligne E du métro reliant Alaï à Part-Dieu ont débuté. Cette ligne de 15 stations sera achevée en 2030.",
+        featured_image_url: "https://images.unsplash.com/photo-1555149385-c50f336e28b0?w=800",
+        source_name: "20 Minutes Lyon",
+        published_at: new Date(Date.now() - 7200000).toISOString(),
+        category: "Transport",
+        author_name: "Rédaction",
+        status: "published"
+      },
+      {
+        rewritten_title: "OL : Victoire éclatante contre Marseille",
+        slug: "ol-victoire-marseille",
+        original_url: "https://example.com/article4",
+        original_title: "OL - OM",
+        original_content: "Match de football",
+        rewritten_content: "L'Olympique Lyonnais s'est imposé 3-1 face à Marseille lors du choc de la 15ème journée. Les buts de Lacazette (2) et Cherki ont permis aux Gones de reprendre la 3ème place du classement. Le Groupama Stadium a vibré devant les 58 000 spectateurs présents. Cette victoire relance les ambitions européennes du club rhodanien qui enchaîne une 5ème victoire consécutive. L'entraîneur s'est félicité de la performance collective de son équipe, soulignant particulièrement le pressing intense et la qualité technique affichée en seconde période. Le prochain match opposera l'OL à Lille dimanche prochain.",
+        rewritten_excerpt: "L'OL s'impose 3-1 contre Marseille grâce à Lacazette et Cherki, reprenant la 3ème place du classement.",
+        featured_image_url: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800",
+        source_name: "20 Minutes Lyon",
+        published_at: new Date(Date.now() - 10800000).toISOString(),
+        category: "Sport",
+        author_name: "Rédaction",
+        status: "published"
+      },
+      {
+        rewritten_title: "Gastronomie : Un nouveau restaurant étoilé",
+        slug: "nouveau-restaurant-etoile-lyon",
+        original_url: "https://example.com/article5",
+        original_title: "Restaurant étoilé",
+        original_content: "Nouvelle étoile Michelin",
+        rewritten_content: "Le restaurant 'Les Terrasses de Lyon' vient de décrocher sa première étoile Michelin. Le chef David Delsart propose une cuisine inventive mêlant tradition lyonnaise et modernité. Le menu dégustation à 120€ offre un voyage culinaire en 7 services. La réservation est déjà complète pour les deux prochains mois. Cette distinction porte à 20 le nombre de restaurants étoilés dans la métropole. Le chef, formé chez Paul Bocuse, mise sur des produits locaux et de saison, avec une carte qui évolue tous les mois. La cave propose plus de 500 références, avec un accent particulier sur les vins de la vallée du Rhône.",
+        rewritten_excerpt: "Les Terrasses de Lyon décroche sa première étoile Michelin avec une cuisine inventive du chef David Delsart.",
+        featured_image_url: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800",
+        source_name: "20 Minutes Lyon",
+        published_at: new Date(Date.now() - 14400000).toISOString(),
+        category: "Gastronomie",
+        author_name: "Rédaction",
+        status: "published"
+      }
+    ];
+
+    // 3. Insérer les articles
+    const { data, error } = await supabase
       .from('scraped_articles')
-      .insert(articles)
+      .insert(testArticles)
       .select();
-    
-    if (insertError) {
-      console.error('[Quick Populate] Erreur insertion:', insertError);
+
+    if (error) {
       return NextResponse.json({
         error: 'Erreur insertion',
-        details: insertError
+        details: error
       }, { status: 500 });
     }
-    
-    // 6. Vérifier le résultat
-    const { data: allArticles, error: fetchError } = await supabase
-      .from('scraped_articles')
-      .select('slug, rewritten_title, featured_image_url, status, published_at')
-      .eq('status', 'published')
-      .order('published_at', { ascending: false });
-    
+
     return NextResponse.json({
       success: true,
-      message: `✅ ${articles.length} articles publiés avec succès !`,
-      stats: {
-        articlesDeleted: 'Tous',
-        articlesCreated: articles.length,
-        articlesPublished: inserted?.length || 0,
-        totalInDatabase: allArticles?.length || 0
-      },
-      articles: allArticles?.slice(0, 10).map(a => ({
+      message: `${data.length} articles créés avec succès`,
+      articles: data.map(a => ({
         title: a.rewritten_title,
         slug: a.slug,
-        image: a.featured_image_url,
-        hasSupabaseImage: a.featured_image_url?.includes('supabase.co/storage'),
-        url: `https://www.guide-de-lyon.fr/actualites/${a.slug}`,
-        publishedAt: a.published_at
-      })),
-      timestamp: new Date().toISOString()
+        category: a.category,
+        url: `/actualites/${a.slug}`
+      }))
     });
-    
+
   } catch (error) {
-    console.error('[Quick Populate] Erreur globale:', error);
+    console.error('[Quick Populate] Erreur:', error);
     return NextResponse.json({
-      error: 'Peuplement rapide échoué',
-      message: error instanceof Error ? error.message : 'Erreur inconnue',
-      details: error
+      error: 'Erreur serveur',
+      message: error instanceof Error ? error.message : 'Erreur inconnue'
     }, { status: 500 });
   }
 }
