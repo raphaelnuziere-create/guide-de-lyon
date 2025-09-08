@@ -39,7 +39,7 @@ function getSupabaseClient(): SupabaseClient | null {
         flowType: 'pkce',
         storage: window.localStorage,
         storageKey: 'guide-lyon-auth',
-        debug: true // Pour debug temporairement
+        debug: false // Désactiver le debug qui peut causer des boucles
       },
     });
     

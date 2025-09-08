@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Calendar, Clock, User, Tag, Eye, Newspaper } from 'lucide-react';
-import { supabase } from '@/app/lib/supabase/client';
+import { createClient } from '@supabase/supabase-js';
 
 interface Article {
   id: string;
@@ -17,6 +17,17 @@ interface Article {
 
 async function getArticles() {
   try {
+    // Créer directement un client Supabase avec les variables d'environnement
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.error('Variables Supabase non configurées');
+      return [];
+    }
+    
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    
     const { data, error } = await supabase
       .from('scraped_articles')
       .select('id, slug, rewritten_title, rewritten_content, featured_image_url, category, published_at, status')
@@ -29,6 +40,7 @@ async function getArticles() {
       return [];
     }
 
+    console.log(`[Actualités] ${data?.length || 0} articles trouvés`);
     return data || [];
   } catch (error) {
     console.error('Erreur:', error);
