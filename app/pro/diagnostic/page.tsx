@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 
 export default function DiagnosticPage() {
@@ -32,7 +30,7 @@ export default function DiagnosticPage() {
         const { data: estabData, error: estabError } = await supabase
           .from('establishments')
           .select('*')
-          .eq('owner_id', user.id)
+          .eq('user_id', user.id)
           .single();
         
         establishment = estabData;
@@ -69,11 +67,9 @@ export default function DiagnosticPage() {
   if (diagnosticData.loading) {
     return (
       <div className="container mx-auto py-10">
-        <Card>
-          <CardContent className="p-6">
-            <p className="text-center">Diagnostic en cours...</p>
-          </CardContent>
-        </Card>
+        <div className="bg-white rounded-lg shadow p-6">
+          <p className="text-center">Diagnostic en cours...</p>
+        </div>
       </div>
     );
   }
@@ -83,14 +79,14 @@ export default function DiagnosticPage() {
       <h1 className="text-3xl font-bold mb-6">Diagnostic Pro</h1>
 
       {/* Authentification */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+      <div className="bg-white rounded-lg shadow mb-6">
+        <div className="p-4 border-b">
+          <h2 className="text-xl font-semibold flex items-center gap-2">
             <StatusIcon status={diagnosticData.auth?.user ? 'ok' : 'error'} />
             Authentification
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+          </h2>
+        </div>
+        <div className="p-4">
           {diagnosticData.auth?.user ? (
             <div className="space-y-2">
               <p className="text-green-600">✓ Connecté</p>
@@ -102,26 +98,26 @@ export default function DiagnosticPage() {
           ) : (
             <div>
               <p className="text-red-600">✗ Non connecté</p>
-              <Button 
+              <button 
                 onClick={() => window.location.href = '/auth/pro/connexion'}
-                className="mt-3"
+                className="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
               >
                 Se connecter
-              </Button>
+              </button>
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Établissement */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+      <div className="bg-white rounded-lg shadow mb-6">
+        <div className="p-4 border-b">
+          <h2 className="text-xl font-semibold flex items-center gap-2">
             <StatusIcon status={diagnosticData.establishment ? 'ok' : 'warning'} />
             Établissement
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+          </h2>
+        </div>
+        <div className="p-4">
           {diagnosticData.establishment ? (
             <div className="space-y-2">
               <p className="text-green-600">✓ Établissement trouvé</p>
@@ -131,38 +127,38 @@ export default function DiagnosticPage() {
                 <p><strong>Plan:</strong> {diagnosticData.establishment.plan}</p>
                 <p><strong>Statut:</strong> {diagnosticData.establishment.status}</p>
               </div>
-              <Button 
+              <button 
                 onClick={() => window.location.href = '/pro/dashboard'}
-                className="mt-3"
+                className="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
               >
                 Aller au tableau de bord
-              </Button>
+              </button>
             </div>
           ) : (
             <div>
               <p className="text-yellow-600">⚠ Aucun établissement trouvé</p>
               {diagnosticData.auth?.user && (
-                <Button 
+                <button 
                   onClick={() => window.location.href = '/pro/inscription'}
-                  className="mt-3"
+                  className="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                 >
                   Créer un établissement
-                </Button>
+                </button>
               )}
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Base de données */}
-      <Card className="mb-6">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+      <div className="bg-white rounded-lg shadow mb-6">
+        <div className="p-4 border-b">
+          <h2 className="text-xl font-semibold flex items-center gap-2">
             <StatusIcon status={diagnosticData.database?.connected ? 'ok' : 'error'} />
             Connexion Base de Données
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+          </h2>
+        </div>
+        <div className="p-4">
           {diagnosticData.database?.connected ? (
             <p className="text-green-600">✓ Base de données accessible</p>
           ) : (
@@ -170,53 +166,52 @@ export default function DiagnosticPage() {
               <p className="text-red-600">✗ Erreur de connexion</p>
               {diagnosticData.database?.error && (
                 <div className="bg-red-50 p-3 rounded text-sm mt-2">
-                  {JSON.stringify(diagnosticData.database.error, null, 2)}
+                  <pre>{JSON.stringify(diagnosticData.database.error, null, 2)}</pre>
                 </div>
               )}
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Actions */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Actions</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <Button 
+      <div className="bg-white rounded-lg shadow">
+        <div className="p-4 border-b">
+          <h2 className="text-xl font-semibold">Actions</h2>
+        </div>
+        <div className="p-4 space-y-3">
+          <button 
             onClick={runDiagnostic}
-            className="w-full"
-            variant="outline"
+            className="w-full border border-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-50"
           >
             Relancer le diagnostic
-          </Button>
+          </button>
           
           <div className="grid grid-cols-2 gap-3">
-            <Button 
+            <button 
               onClick={() => window.location.href = '/auth/pro/connexion'}
-              variant="outline"
+              className="border border-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-50"
             >
               Page de connexion
-            </Button>
-            <Button 
+            </button>
+            <button 
               onClick={() => window.location.href = '/pro/dashboard'}
-              variant="outline"
+              className="border border-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-50"
             >
               Tableau de bord
-            </Button>
+            </button>
           </div>
 
           {diagnosticData.auth?.user && !diagnosticData.establishment && (
-            <Button 
+            <button 
               onClick={() => window.location.href = '/pro/inscription'}
-              className="w-full"
+              className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
             >
               Créer mon établissement
-            </Button>
+            </button>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

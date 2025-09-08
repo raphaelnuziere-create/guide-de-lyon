@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimisez votre visibilité - Guide de Lyon</title>
+    <style>
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 100% !important;
+                padding: 0 20px !important;
+            }
+            .hero-title {
+                font-size: 28px !important;
+            }
+            .button {
+                display: block !important;
+                width: 100% !important;
+                margin: 10px 0 !important;
+            }
+            .progress-item {
+                width: 100% !important;
+                margin-bottom: 15px !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background-color: #f5f5f5;">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f5f5f5;">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                <table class="container" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); padding: 40px 30px; text-align: center;">
+                            <h1 class="hero-title" style="margin: 0; color: #ffffff; font-size: 36px; font-weight: bold;">
+                                Guide de Lyon
+                            </h1>
+                            <p style="margin: 10px 0 0 0; color: #fed7aa; font-size: 18px;">
+                                Optimisez votre profil
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Contenu -->
+                    <tr>
+                        <td style="padding: 40px 30px;">
+                            <div style="text-align: center; margin-bottom: 30px;">
+                                <div style="width: 80px; height: 80px; background-color: #f59e0b; border-radius: 50%; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center; font-size: 40px;">
+                                    📈
+                                </div>
+                                <h2 style="margin: 0 0 15px 0; color: #1f2937; font-size: 24px; font-weight: bold;">
+                                    Boostez votre visibilité !
+                                </h2>
+                            </div>
+                            
+                            <p style="margin: 0 0 25px 0; color: #4b5563; font-size: 16px; line-height: 1.6;">
+                                Bonjour <strong>{{business_name}}</strong>,
+                            </p>
+                            
+                            <p style="margin: 0 0 25px 0; color: #4b5563; font-size: 16px; line-height: 1.6;">
+                                Votre profil sur Guide de Lyon pourrait attirer encore plus de clients ! 
+                                Un profil complet et optimisé génère <strong>3x plus de vues</strong> et de contacts.
+                            </p>
+                            
+                            <!-- Barre de progression -->
+                            <div style="background-color: #f3f4f6; border-radius: 12px; padding: 25px; margin: 30px 0;">
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                                    <h3 style="margin: 0; color: #1f2937; font-size: 18px; font-weight: bold;">
+                                        Complétude de votre profil
+                                    </h3>
+                                    <div style="font-size: 24px; font-weight: bold; color: #f59e0b;">
+                                        {{completion_percentage}}%
+                                    </div>
+                                </div>
+                                
+                                <!-- Barre de progression visuelle -->
+                                <div style="width: 100%; height: 12px; background-color: #e5e7eb; border-radius: 6px; overflow: hidden; margin-bottom: 20px;">
+                                    <div style="height: 100%; background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%); width: {{completion_percentage}}%; border-radius: 6px;"></div>
+                                </div>
+                                
+                                <!-- Liste des améliorations -->
+                                <div style="margin-top: 20px;">
+                                    <h4 style="margin: 0 0 15px 0; color: #1f2937; font-size: 16px; font-weight: bold;">
+                                        Actions recommandées :
+                                    </h4>
+                                    
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                        <tr>
+                                            <td class="progress-item" style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: inline-block; width: 48%; vertical-align: top;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <div style="margin-right: 10px; font-size: 18px;">{{photo_status}}</div>
+                                                    <div style="color: #6b7280; font-size: 14px;">Ajouter des photos</div>
+                                                </div>
+                                            </td>
+                                            <td class="progress-item" style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: inline-block; width: 48%; vertical-align: top;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <div style="margin-right: 10px; font-size: 18px;">{{hours_status}}</div>
+                                                    <div style="color: #6b7280; font-size: 14px;">Horaires complets</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="progress-item" style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: inline-block; width: 48%; vertical-align: top;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <div style="margin-right: 10px; font-size: 18px;">{{description_status}}</div>
+                                                    <div style="color: #6b7280; font-size: 14px;">Description détaillée</div>
+                                                </div>
+                                            </td>
+                                            <td class="progress-item" style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; display: inline-block; width: 48%; vertical-align: top;">
+                                                <div style="display: flex; align-items: center;">
+                                                    <div style="margin-right: 10px; font-size: 18px;">{{contact_status}}</div>
+                                                    <div style="color: #6b7280; font-size: 14px;">Infos de contact</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <!-- Bouton d'action -->
+                            <div style="text-align: center; margin: 40px 0;">
+                                <a href="{{dashboard_link}}" class="button" style="display: inline-block; padding: 16px 40px; background-color: #f59e0b; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px;">
+                                    Compléter mon profil
+                                </a>
+                            </div>
+                            
+                            <!-- Statistiques motivantes -->
+                            <div style="background-color: #fef3c7; border-radius: 8px; padding: 20px; margin: 30px 0; border-left: 4px solid #f59e0b;">
+                                <p style="margin: 0 0 10px 0; color: #92400e; font-weight: bold; font-size: 16px;">
+                                    📊 Le saviez-vous ?
+                                </p>
+                                <ul style="margin: 0; padding-left: 20px; color: #a16207; font-size: 14px; line-height: 1.5;">
+                                    <li>Les profils avec photos reçoivent <strong>65% plus de vues</strong></li>
+                                    <li>Les horaires complets augmentent les visites de <strong>40%</strong></li>
+                                    <li>Une description détaillée améliore le taux de contact de <strong>50%</strong></li>
+                                </ul>
+                            </div>
+                            
+                            <p style="margin: 20px 0 0 0; color: #6b7280; font-size: 14px; text-align: center;">
+                                Cet email est envoyé pour vous aider à maximiser votre présence sur Guide de Lyon.<br>
+                                <a href="{{unsubscribe_link}}" style="color: #6b7280; text-decoration: underline;">Se désabonner des rappels</a>
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding: 30px; background-color: #1f2937; text-align: center;">
+                            <p style="margin: 0 0 15px 0; color: #9ca3af; font-size: 14px;">
+                                Des questions sur l'optimisation de votre profil ?
+                            </p>
+                            <a href="mailto:pro@guide-lyon.com" style="color: #60a5fa; text-decoration: none; font-size: 14px;">
+                                pro@guide-lyon.com
+                            </a>
+                            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #374151;">
+                                <a href="https://guide-lyon.com" style="color: #9ca3af; text-decoration: none; font-size: 12px;">
+                                    © 2025 Guide de Lyon
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -142,11 +142,23 @@ function ProInscriptionContent() {
       console.log('[Inscription] Utilisateur connecté:', user.email);
       
       // Vérifier si l'établissement existe déjà
-      const { data: establishment, error: estabError } = await supabase
+      // Essayer d'abord avec user_id (ancien schéma)
+      let { data: establishment, error: estabError } = await supabase
         .from('establishments')
         .select('id')
-        .eq('owner_id', user.id)
+        .eq('user_id', user.id)
         .maybeSingle();
+      
+      // Si erreur avec user_id, essayer avec owner_id
+      if (estabError && estabError.message?.includes('column')) {
+        const result = await supabase
+          .from('establishments')
+          .select('id')
+          .eq('owner_id', user.id)
+          .maybeSingle();
+        establishment = result.data;
+        estabError = result.error;
+      }
       
       if (establishment) {
         console.log('[Inscription] Établissement existant, redirection vers dashboard');
@@ -190,11 +202,9 @@ function ProInscriptionContent() {
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '');
 
-      // Créer l'établissement
-      const { data, error: insertError } = await supabase
-        .from('establishments')
-        .insert({
-          owner_id: currentUser.id,
+      // Créer l'établissement avec la bonne colonne
+      const establishmentData: any = {
+          user_id: currentUser.id, // Utiliser user_id qui semble être la colonne existante
           name: formData.name,
           slug: slug,
           category: formData.category,
@@ -224,7 +234,12 @@ function ProInscriptionContent() {
           verified: selectedPlan !== 'basic',
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
-        })
+      };
+      
+      // Essayer d'insérer l'établissement
+      const { data, error: insertError } = await supabase
+        .from('establishments')
+        .insert(establishmentData)
         .select()
         .single();
 

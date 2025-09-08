@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouvel avis client - Guide de Lyon</title>
+    <style>
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 100% !important;
+                padding: 0 20px !important;
+            }
+            .hero-title {
+                font-size: 28px !important;
+            }
+            .button {
+                display: block !important;
+                width: 100% !important;
+                margin: 10px 0 !important;
+            }
+            .review-card {
+                padding: 15px !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background-color: #f5f5f5;">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f5f5f5;">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                <table class="container" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 40px 30px; text-align: center;">
+                            <h1 class="hero-title" style="margin: 0; color: #ffffff; font-size: 36px; font-weight: bold;">
+                                Guide de Lyon
+                            </h1>
+                            <p style="margin: 10px 0 0 0; color: #a7f3d0; font-size: 18px;">
+                                Nouvel avis client
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Contenu -->
+                    <tr>
+                        <td style="padding: 40px 30px;">
+                            <div style="text-align: center; margin-bottom: 30px;">
+                                <div style="width: 80px; height: 80px; background-color: #10b981; border-radius: 50%; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center; font-size: 40px;">
+                                    ⭐
+                                </div>
+                                <h2 style="margin: 0 0 15px 0; color: #1f2937; font-size: 24px; font-weight: bold;">
+                                    Vous avez reçu un nouvel avis !
+                                </h2>
+                            </div>
+                            
+                            <p style="margin: 0 0 25px 0; color: #4b5563; font-size: 16px; line-height: 1.6;">
+                                Bonjour <strong>{{business_name}}</strong>,
+                            </p>
+                            
+                            <p style="margin: 0 0 25px 0; color: #4b5563; font-size: 16px; line-height: 1.6;">
+                                Un client vient de laisser un avis sur votre établissement. Voici les détails :
+                            </p>
+                            
+                            <!-- Carte de l'avis -->
+                            <div class="review-card" style="background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 25px; margin: 30px 0;">
+                                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                                    <div style="width: 50px; height: 50px; background-color: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; margin-right: 15px;">
+                                        {{client_initial}}
+                                    </div>
+                                    <div>
+                                        <div style="font-weight: bold; color: #1f2937; font-size: 16px;">{{client_name}}</div>
+                                        <div style="color: #6b7280; font-size: 14px;">{{review_date}}</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Note étoiles -->
+                                <div style="margin: 15px 0;">
+                                    <div style="font-size: 24px; color: #fbbf24;">
+                                        {{stars_display}}
+                                    </div>
+                                    <div style="color: #1f2937; font-weight: bold; font-size: 18px; margin-top: 5px;">
+                                        {{rating}}/5
+                                    </div>
+                                </div>
+                                
+                                <!-- Commentaire -->
+                                <div style="background-color: #ffffff; border-radius: 8px; padding: 20px; margin: 15px 0;">
+                                    <p style="margin: 0; color: #374151; font-size: 16px; line-height: 1.6; font-style: italic;">
+                                        "{{review_comment}}"
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Actions -->
+                            <div style="text-align: center; margin: 40px 0;">
+                                <a href="{{dashboard_link}}" class="button" style="display: inline-block; padding: 16px 40px; background-color: #10b981; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px; margin-right: 10px;">
+                                    Répondre à l'avis
+                                </a>
+                                <a href="{{business_profile_link}}" class="button" style="display: inline-block; padding: 16px 40px; background-color: #ffffff; color: #10b981; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; border: 2px solid #10b981;">
+                                    Voir ma fiche
+                                </a>
+                            </div>
+                            
+                            <div style="background-color: #ecfdf5; border-radius: 8px; padding: 20px; margin: 30px 0; border-left: 4px solid #10b981;">
+                                <p style="margin: 0 0 10px 0; color: #065f46; font-weight: bold; font-size: 16px;">
+                                    💡 Conseil Pro
+                                </p>
+                                <p style="margin: 0; color: #047857; font-size: 14px; line-height: 1.5;">
+                                    Répondre rapidement aux avis (positifs comme négatifs) améliore votre image et montre votre engagement envers vos clients.
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding: 30px; background-color: #1f2937; text-align: center;">
+                            <p style="margin: 0 0 15px 0; color: #9ca3af; font-size: 14px;">
+                                Gérez tous vos avis depuis votre tableau de bord
+                            </p>
+                            <a href="mailto:pro@guide-lyon.com" style="color: #60a5fa; text-decoration: none; font-size: 14px;">
+                                pro@guide-lyon.com
+                            </a>
+                            <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #374151;">
+                                <a href="https://guide-lyon.com" style="color: #9ca3af; text-decoration: none; font-size: 12px;">
+                                    © 2025 Guide de Lyon
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
