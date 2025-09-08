@@ -8,7 +8,7 @@ const supabase = createClient(
 
 export async function GET() {
   try {
-    console.log('[Quick Populate] Démarrage du peuplement rapide');
+    console.log('[Quick Populate] Démarrage du peuplement rapide - v2');
     
     // 1. Nettoyer les articles existants
     const { error: deleteError } = await supabase
