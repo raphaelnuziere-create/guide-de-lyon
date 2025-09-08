@@ -232,9 +232,11 @@ export default function DynamicEstablishmentPage() {
                 </div>
               </div>
 
-              <p className="text-gray-600 leading-relaxed">
-                {establishment.shortDescription || establishment.description}
-              </p>
+              {(establishment.shortDescription || establishment.description) && (
+                <p className="text-gray-600 leading-relaxed">
+                  {establishment.shortDescription || establishment.description}
+                </p>
+              )}
             </div>
 
             {/* Contact Info Card */}
@@ -324,9 +326,11 @@ export default function DynamicEstablishmentPage() {
           {activeTab === 'overview' && (
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">À propos de {establishment.name}</h2>
-              <div className="prose prose-lg max-w-none text-gray-600">
-                <p>{establishment.description}</p>
-              </div>
+              {establishment.description && (
+                <div className="prose prose-lg max-w-none text-gray-600">
+                  <p>{establishment.description}</p>
+                </div>
+              )}
               
               {establishment.features && establishment.features.length > 0 && (
                 <div className="mt-8">
