@@ -30,26 +30,21 @@ CREATE TABLE IF NOT EXISTS scraping_sources (
 -- Supprimer les sources existantes pour repartir sur une base propre
 DELETE FROM scraping_sources;
 
--- Insérer les sources RSS principales pour Lyon
+-- Insérer SEULEMENT 3 sources complémentaires pour éviter les doublons
 INSERT INTO scraping_sources (name, url, feed_url, type, category, frequency_minutes, max_articles_per_run) VALUES
--- Sources locales Lyon
-('Le Progrès - Lyon', 'https://www.leprogres.fr', 'https://www.leprogres.fr/lyon-metropole/rss', 'rss', 'actualite', 60, 5),
-('Lyon Capitale', 'https://www.lyoncapitale.fr', 'https://www.lyoncapitale.fr/feed/', 'rss', 'actualite', 60, 5),
-('Tribune de Lyon', 'https://tribunedelyon.fr', 'https://tribunedelyon.fr/feed/', 'rss', 'actualite', 120, 3),
-('Lyon Mag', 'https://www.lyonmag.com', 'https://www.lyonmag.com/rss', 'rss', 'actualite', 60, 5),
+-- Source principale locale (actualités générales)
+('Le Progrès - Lyon', 'https://www.leprogres.fr', 'https://www.leprogres.fr/lyon-metropole/rss', 'rss', 'actualite', 60, 8),
 
--- Sources nationales avec section Lyon
+-- Source nationale avec section Lyon (angle différent)
 ('20 Minutes Lyon', 'https://www.20minutes.fr/lyon', 'https://www.20minutes.fr/feeds/rss-lyon.xml', 'rss', 'actualite', 60, 5),
-('France 3 Auvergne-Rhône-Alpes', 'https://france3-regions.francetvinfo.fr/auvergne-rhone-alpes', 'https://france3-regions.francetvinfo.fr/auvergne-rhone-alpes/rss', 'rss', 'actualite', 120, 3),
-('BFM Lyon', 'https://www.bfmtv.com/lyon/', 'https://www.bfmtv.com/rss/lyon/', 'rss', 'actualite', 60, 4),
 
--- Sources culturelles
-('Le Petit Bulletin Lyon', 'https://www.petit-bulletin.fr/lyon/', 'https://www.petit-bulletin.fr/lyon/rss', 'rss', 'culture', 120, 3),
-('Lyon Secret', 'https://www.lyonsecret.com', 'https://www.lyonsecret.com/feed/', 'rss', 'culture', 180, 2),
+-- Source culturelle (événements et sorties)
+('Le Petit Bulletin Lyon', 'https://www.petit-bulletin.fr/lyon/', 'https://www.petit-bulletin.fr/lyon/rss', 'rss', 'culture', 120, 3);
 
--- Sources économiques
-('Eco de l\'Ain', 'https://www.eco01.fr', 'https://www.eco01.fr/feed', 'rss', 'economie', 180, 2),
-('Bref Eco', 'https://www.brefeco.com', 'https://www.brefeco.com/feed', 'rss', 'economie', 240, 2);
+-- Note: Avec seulement 3 sources, on évite les doublons tout en ayant:
+-- 1. Le Progrès : actualités locales complètes
+-- 2. 20 Minutes : actualités avec un angle national/différent
+-- 3. Petit Bulletin : focus culture/sorties/événements
 
 -- Vérifier l'insertion
 SELECT 
