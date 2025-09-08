@@ -202,22 +202,38 @@ function ProInscriptionContent() {
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '');
 
-      // Créer l'établissement avec uniquement les colonnes existantes
+      // Créer l'établissement avec la bonne colonne
       const establishmentData: any = {
           user_id: currentUser.id, // Utiliser user_id qui semble être la colonne existante
           name: formData.name,
+          slug: slug,
           category: formData.category,
           description: formData.description,
           phone: formData.phone,
           email: formData.email,
-          website: formData.website || null,
+          website: formData.website,
           address: formData.address,
           postal_code: formData.postal_code,
           city: formData.city,
-          // Colonnes potentiellement existantes - on les inclut conditionnellement
+          address_district: formData.postal_code === '69001' ? '1er arrondissement' :
+                           formData.postal_code === '69002' ? '2ème arrondissement' :
+                           formData.postal_code === '69003' ? '3ème arrondissement' :
+                           formData.postal_code === '69004' ? '4ème arrondissement' :
+                           formData.postal_code === '69005' ? '5ème arrondissement' :
+                           formData.postal_code === '69006' ? '6ème arrondissement' :
+                           formData.postal_code === '69007' ? '7ème arrondissement' :
+                           formData.postal_code === '69008' ? '8ème arrondissement' :
+                           formData.postal_code === '69009' ? '9ème arrondissement' : null,
+          facebook_url: formData.facebook_url || null,
+          instagram_url: formData.instagram_url || null,
           plan: selectedPlan,
+          plan_billing_cycle: billingCycle,
+          vat_number: formData.vat_number || null,
           status: 'pending',
-          verified: selectedPlan !== 'basic'
+          views_count: 0,
+          verified: selectedPlan !== 'basic',
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
       };
       
       // Essayer d'insérer l'établissement
