@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { 
   Shield, Users, Calendar, Building2, TrendingUp, 
-  Settings, LogOut, Eye, CheckCircle, XCircle, Clock 
+  Settings, LogOut, Eye, CheckCircle, XCircle, Clock, Mail 
 } from 'lucide-react'
 import { useAuth } from '@/lib/auth/AuthContext'
 
@@ -74,6 +74,9 @@ export default function AdminDashboardPage() {
             </Link>
             <Link href="/admin/merchants" className="text-gray-300 hover:text-white">
               Merchants
+            </Link>
+            <Link href="/admin/newsletters" className="text-gray-300 hover:text-white">
+              Newsletters
             </Link>
             <Link href="/admin/settings" className="text-gray-300 hover:text-white">
               Paramètres

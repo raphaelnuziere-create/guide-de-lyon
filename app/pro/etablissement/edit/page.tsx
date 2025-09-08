@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/lib/auth/AuthContext';
 import Link from 'next/link';
 import { 
   ArrowLeft, 
@@ -18,127 +19,139 @@ import {
   Youtube,
   FileText,
   AlertCircle,
-  Camera
+  Camera,
+  Loader2
 } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase/client';
 
-interface BusinessData {
+interface EstablishmentData {
   id: string;
   name: string;
   description: string;
   address: string;
+  postal_code: string;
+  city: string;
   phone: string;
   email: string;
   website: string;
   category: string;
-  subcategory: string;
-  social_facebook: string;
-  social_instagram: string;
-  social_twitter: string;
-  social_linkedin: string;
-  social_youtube: string;
-  tags: string[];
+  facebook_url?: string;
+  instagram_url?: string;
+  twitter_url?: string;
+  linkedin_url?: string;
+  youtube_url?: string;
 }
 
 const CATEGORIES = [
-  { value: 'restaurant', label: 'Restaurant' },
-  { value: 'hotel', label: 'Hôtel' },
-  { value: 'boutique', label: 'Boutique' },
-  { value: 'service', label: 'Service' },
-  { value: 'culture', label: 'Culture' },
-  { value: 'sante', label: 'Santé' },
-  { value: 'sport', label: 'Sport & Loisirs' },
-  { value: 'beaute', label: 'Beauté & Bien-être' },
+  { value: 'restaurant-food', label: 'Restaurant & Food' },
+  { value: 'bar-nightlife', label: 'Bar & Nightlife' },
+  { value: 'shopping-mode', label: 'Shopping & Mode' },
+  { value: 'beaute-bienetre', label: 'Beauté & Bien-être' },
+  { value: 'hotel-hebergement', label: 'Hôtel & Hébergement' },
+  { value: 'culture-loisirs', label: 'Culture & Loisirs' },
+  { value: 'sport-fitness', label: 'Sport & Fitness' },
+  { value: 'sante-medical', label: 'Santé & Médical' },
+  { value: 'services-pro', label: 'Services professionnels' },
+  { value: 'immobilier', label: 'Immobilier' },
+  { value: 'auto-transport', label: 'Auto & Transport' },
   { value: 'autre', label: 'Autre' }
 ];
 
 export default function EditEstablishmentPage() {
   const router = useRouter();
+  const { user, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [business, setBusiness] = useState<BusinessData>({
+  const [establishment, setEstablishment] = useState<EstablishmentData>({
     id: '',
     name: '',
     description: '',
     address: '',
+    postal_code: '',
+    city: 'Lyon',
     phone: '',
     email: '',
     website: '',
     category: '',
-    subcategory: '',
-    social_facebook: '',
-    social_instagram: '',
-    social_twitter: '',
-    social_linkedin: '',
-    social_youtube: '',
-    tags: []
+    facebook_url: '',
+    instagram_url: '',
+    twitter_url: '',
+    linkedin_url: '',
+    youtube_url: ''
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
-  const [newTag, setNewTag] = useState('');
 
   useEffect(() => {
-    loadBusinessData();
-  }, []);
-
-  const loadBusinessData = async () => {
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session) {
+    if (!authLoading) {
+      if (!user) {
         router.push('/auth/pro/connexion');
         return;
       }
+      loadEstablishmentData();
+    }
+  }, [user, authLoading]);
 
-      const { data: businessData, error } = await supabase
-        .from('businesses')
-        .select('*')
-        .eq('owner_id', session.user.id)
-        .single();
-
-      if (error || !businessData) {
-        // Si pas d'établissement, créer un nouveau
-        const { data: newBusiness, error: createError } = await supabase
-          .from('businesses')
-          .insert({
-            owner_id: session.user.id,
-            name: '',
-            plan: 'basic',
-            created_at: new Date().toISOString()
-          })
-          .select()
-          .single();
-
-        if (newBusiness) {
-          setBusiness({
-            ...business,
-            id: newBusiness.id
-          });
-        }
-      } else {
-        setBusiness({
-          id: businessData.id,
-          name: businessData.name || '',
-          description: businessData.description || '',
-          address: businessData.address || '',
-          phone: businessData.phone || '',
-          email: businessData.email || '',
-          website: businessData.website || '',
-          category: businessData.category || '',
-          subcategory: businessData.subcategory || '',
-          social_facebook: businessData.social_facebook || '',
-          social_instagram: businessData.social_instagram || '',
-          social_twitter: businessData.social_twitter || '',
-          social_linkedin: businessData.social_linkedin || '',
-          social_youtube: businessData.social_youtube || '',
-          tags: businessData.tags || []
-        });
-      }
+  const loadEstablishmentData = async () => {
+    if (!user || !supabase) return;
+    
+    try {
+      setLoading(true);
       
-      setLoading(false);
+      // Essayer d'abord avec user_id
+      let { data, error } = await supabase
+        .from('establishments')
+        .select('*')
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      // Si erreur de colonne, essayer avec owner_id
+      if (error && error.message?.includes('column')) {
+        const result = await supabase
+          .from('establishments')
+          .select('*')
+          .eq('owner_id', user.id)
+          .maybeSingle();
+        data = result.data;
+        error = result.error;
+      }
+
+      if (error && error.code !== 'PGRST116') {
+        console.error('Erreur chargement établissement:', error);
+        setMessage({ type: 'error', text: 'Erreur lors du chargement des données' });
+        return;
+      }
+
+      if (data) {
+        console.log('Établissement chargé:', data);
+        setEstablishment({
+          id: data.id,
+          name: data.name || '',
+          description: data.description || '',
+          address: data.address || '',
+          postal_code: data.postal_code || '',
+          city: data.city || 'Lyon',
+          phone: data.phone || '',
+          email: data.email || '',
+          website: data.website || '',
+          category: data.category || '',
+          facebook_url: data.facebook_url || '',
+          instagram_url: data.instagram_url || '',
+          twitter_url: data.twitter_url || '',
+          linkedin_url: data.linkedin_url || '',
+          youtube_url: data.youtube_url || ''
+        });
+      } else {
+        console.log('Aucun établissement trouvé');
+        setMessage({ type: 'error', text: 'Aucun établissement trouvé. Veuillez d\'abord créer votre établissement.' });
+        setTimeout(() => {
+          router.push('/pro/inscription');
+        }, 3000);
+      }
     } catch (error) {
       console.error('Erreur:', error);
       setMessage({ type: 'error', text: 'Erreur lors du chargement' });
+    } finally {
       setLoading(false);
     }
   };
@@ -146,112 +159,114 @@ export default function EditEstablishmentPage() {
   const validateForm = () => {
     const newErrors: {[key: string]: string} = {};
     
-    if (!business.name.trim()) {
+    if (!establishment.name.trim()) {
       newErrors.name = 'Le nom est requis';
     }
-    
-    if (!business.address.trim()) {
+    if (!establishment.phone.trim()) {
+      newErrors.phone = 'Le téléphone est requis';
+    }
+    if (!establishment.email.trim()) {
+      newErrors.email = 'L\'email est requis';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(establishment.email)) {
+      newErrors.email = 'Email invalide';
+    }
+    if (!establishment.address.trim()) {
       newErrors.address = 'L\'adresse est requise';
     }
-    
-    if (!business.phone.trim()) {
-      newErrors.phone = 'Le téléphone est requis';
-    } else if (!/^[0-9\s\+\-\(\)]+$/.test(business.phone)) {
-      newErrors.phone = 'Format de téléphone invalide';
-    }
-    
-    if (!business.email.trim()) {
-      newErrors.email = 'L\'email est requis';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(business.email)) {
-      newErrors.email = 'Format d\'email invalide';
-    }
-    
-    if (business.website && !business.website.startsWith('http')) {
-      newErrors.website = 'L\'URL doit commencer par http:// ou https://';
+    if (!establishment.category) {
+      newErrors.category = 'La catégorie est requise';
     }
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSave = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
     if (!validateForm()) {
       setMessage({ type: 'error', text: 'Veuillez corriger les erreurs' });
       return;
     }
-    
+
+    if (!user || !supabase) return;
+
     setSaving(true);
     setMessage(null);
 
     try {
-      const { error } = await supabase
-        .from('businesses')
-        .update({
-          name: business.name,
-          description: business.description,
-          address: business.address,
-          phone: business.phone,
-          email: business.email,
-          website: business.website,
-          category: business.category,
-          subcategory: business.subcategory,
-          social_facebook: business.social_facebook,
-          social_instagram: business.social_instagram,
-          social_twitter: business.social_twitter,
-          social_linkedin: business.social_linkedin,
-          social_youtube: business.social_youtube,
-          tags: business.tags,
-          updated_at: new Date().toISOString()
-        })
-        .eq('id', business.id);
+      const updateData = {
+        name: establishment.name,
+        description: establishment.description,
+        address: establishment.address,
+        postal_code: establishment.postal_code,
+        city: establishment.city,
+        phone: establishment.phone,
+        email: establishment.email,
+        website: establishment.website || null,
+        category: establishment.category,
+        facebook_url: establishment.facebook_url || null,
+        instagram_url: establishment.instagram_url || null,
+        twitter_url: establishment.twitter_url || null,
+        linkedin_url: establishment.linkedin_url || null,
+        youtube_url: establishment.youtube_url || null,
+        updated_at: new Date().toISOString()
+      };
 
-      if (error) throw error;
+      console.log('Mise à jour avec:', updateData);
 
-      setMessage({ type: 'success', text: 'Informations sauvegardées avec succès!' });
-      
-      setTimeout(() => {
-        router.push('/pro/dashboard');
-      }, 2000);
-      
+      // Essayer d'abord avec user_id
+      let { error } = await supabase
+        .from('establishments')
+        .update(updateData)
+        .eq('user_id', user.id);
+
+      // Si erreur de colonne, essayer avec owner_id
+      if (error && error.message?.includes('column')) {
+        const result = await supabase
+          .from('establishments')
+          .update(updateData)
+          .eq('owner_id', user.id);
+        error = result.error;
+      }
+
+      if (error) {
+        console.error('Erreur sauvegarde:', error);
+        setMessage({ type: 'error', text: 'Erreur lors de la sauvegarde: ' + error.message });
+      } else {
+        setMessage({ type: 'success', text: 'Établissement mis à jour avec succès !' });
+        setTimeout(() => {
+          router.push('/pro/dashboard');
+        }, 2000);
+      }
     } catch (error) {
-      console.error('Erreur sauvegarde:', error);
+      console.error('Erreur:', error);
       setMessage({ type: 'error', text: 'Erreur lors de la sauvegarde' });
     } finally {
       setSaving(false);
     }
   };
 
-  const handleChange = (field: keyof BusinessData, value: any) => {
-    setBusiness({ ...business, [field]: value });
-    // Effacer l'erreur quand l'utilisateur corrige
-    if (errors[field]) {
-      setErrors({ ...errors, [field]: '' });
-    }
-  };
-
-  const addTag = () => {
-    if (newTag.trim() && !business.tags.includes(newTag.trim())) {
-      setBusiness({
-        ...business,
-        tags: [...business.tags, newTag.trim()]
-      });
-      setNewTag('');
-    }
-  };
-
-  const removeTag = (tag: string) => {
-    setBusiness({
-      ...business,
-      tags: business.tags.filter(t => t !== tag)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setEstablishment({
+      ...establishment,
+      [e.target.name]: e.target.value
     });
+    // Effacer l'erreur quand l'utilisateur modifie le champ
+    if (errors[e.target.name]) {
+      setErrors({
+        ...errors,
+        [e.target.name]: ''
+      });
+    }
   };
 
-  if (loading) {
+  if (authLoading || loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Chargement...</p>
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-blue-600" />
+          <p>Chargement...</p>
         </div>
       </div>
     );
@@ -259,327 +274,308 @@ export default function EditEstablishmentPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto p-6">
-        {/* Header */}
-        <div className="mb-6">
-          <Link 
-            href="/pro/dashboard" 
-            className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Retour au dashboard
-          </Link>
-          
-          <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-            <Building2 className="h-6 w-6" />
-            Modifier l'établissement
-          </h1>
-          <p className="text-gray-600 mt-2">
-            Complétez et mettez à jour les informations de votre établissement
-          </p>
-        </div>
-
-        {/* Message */}
-        {message && (
-          <div className={`mb-6 p-4 rounded-lg flex items-start gap-3 ${
-            message.type === 'success' 
-              ? 'bg-green-50 text-green-800 border border-green-200' 
-              : 'bg-red-50 text-red-800 border border-red-200'
-          }`}>
-            <AlertCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
-            <span>{message.text}</span>
-          </div>
-        )}
-
-        {/* Formulaire */}
-        <div className="bg-white rounded-lg shadow-sm border p-6 space-y-6">
-          {/* Informations principales */}
-          <div>
-            <h2 className="text-lg font-semibold mb-4">Informations principales</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Nom de l'établissement *
-                </label>
-                <input
-                  type="text"
-                  value={business.name}
-                  onChange={(e) => handleChange('name', e.target.value)}
-                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    errors.name ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  placeholder="Restaurant Le Lyonnais"
-                />
-                {errors.name && (
-                  <p className="text-red-500 text-xs mt-1">{errors.name}</p>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Catégorie
-                </label>
-                <select
-                  value={business.category}
-                  onChange={(e) => handleChange('category', e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="">Sélectionner une catégorie</option>
-                  {CATEGORIES.map(cat => (
-                    <option key={cat.value} value={cat.value}>
-                      {cat.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
+      {/* Header */}
+      <header className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <Link 
+                href="/pro/dashboard" 
+                className="flex items-center text-gray-600 hover:text-gray-900"
+              >
+                <ArrowLeft className="w-5 h-5 mr-2" />
+                Retour au tableau de bord
+              </Link>
             </div>
           </div>
+        </div>
+      </header>
 
-          {/* Description */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Description
-            </label>
-            <textarea
-              value={business.description}
-              onChange={(e) => handleChange('description', e.target.value)}
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Décrivez votre établissement, vos spécialités, votre ambiance..."
-            />
-            <p className="text-xs text-gray-500 mt-1">
-              {business.description.length}/500 caractères
-            </p>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="bg-white rounded-lg shadow">
+          <div className="px-6 py-4 border-b">
+            <h1 className="text-2xl font-bold flex items-center">
+              <Building2 className="w-6 h-6 mr-2" />
+              Modifier mon établissement
+            </h1>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h2 className="text-lg font-semibold mb-4">Informations de contact</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Adresse *
-                </label>
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+          {message && (
+            <div className={`mx-6 mt-4 p-4 rounded-lg flex items-start ${
+              message.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
+            }`}>
+              <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" />
+              <p>{message.text}</p>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="p-6 space-y-6">
+            {/* Informations générales */}
+            <div>
+              <h2 className="text-lg font-semibold mb-4 flex items-center">
+                <FileText className="w-5 h-5 mr-2" />
+                Informations générales
+              </h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Nom de l'établissement *
+                  </label>
                   <input
                     type="text"
-                    value={business.address}
-                    onChange={(e) => handleChange('address', e.target.value)}
-                    className={`w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                      errors.address ? 'border-red-500' : 'border-gray-300'
+                    name="name"
+                    value={establishment.name}
+                    onChange={handleChange}
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      errors.name ? 'border-red-500' : 'border-gray-300'
                     }`}
-                    placeholder="123 rue de la République, 69001 Lyon"
                   />
+                  {errors.name && (
+                    <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                  )}
                 </div>
-                {errors.address && (
-                  <p className="text-red-500 text-xs mt-1">{errors.address}</p>
-                )}
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Catégorie *
+                  </label>
+                  <select
+                    name="category"
+                    value={establishment.category}
+                    onChange={handleChange}
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      errors.category ? 'border-red-500' : 'border-gray-300'
+                    }`}
+                  >
+                    <option value="">Sélectionner une catégorie</option>
+                    {CATEGORIES.map(cat => (
+                      <option key={cat.value} value={cat.value}>
+                        {cat.label}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.category && (
+                    <p className="text-red-500 text-sm mt-1">{errors.category}</p>
+                  )}
+                </div>
               </div>
 
-              <div>
+              <div className="mt-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Téléphone *
+                  Description
                 </label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <textarea
+                  name="description"
+                  value={establishment.description}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Décrivez votre établissement..."
+                />
+              </div>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h2 className="text-lg font-semibold mb-4 flex items-center">
+                <Phone className="w-5 h-5 mr-2" />
+                Contact
+              </h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Téléphone *
+                  </label>
                   <input
                     type="tel"
-                    value={business.phone}
-                    onChange={(e) => handleChange('phone', e.target.value)}
-                    className={`w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    name="phone"
+                    value={establishment.phone}
+                    onChange={handleChange}
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                       errors.phone ? 'border-red-500' : 'border-gray-300'
                     }`}
-                    placeholder="04 78 00 00 00"
                   />
+                  {errors.phone && (
+                    <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                  )}
                 </div>
-                {errors.phone && (
-                  <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
-                )}
-              </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email *
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Email *
+                  </label>
                   <input
                     type="email"
-                    value={business.email}
-                    onChange={(e) => handleChange('email', e.target.value)}
-                    className={`w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    name="email"
+                    value={establishment.email}
+                    onChange={handleChange}
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                       errors.email ? 'border-red-500' : 'border-gray-300'
                     }`}
-                    placeholder="contact@restaurant.fr"
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                  )}
                 </div>
-                {errors.email && (
-                  <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-                )}
-              </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Site web
-                </label>
-                <div className="relative">
-                  <Globe className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Site web
+                  </label>
                   <input
                     type="url"
-                    value={business.website}
-                    onChange={(e) => handleChange('website', e.target.value)}
-                    className={`w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                      errors.website ? 'border-red-500' : 'border-gray-300'
+                    name="website"
+                    value={establishment.website}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="https://..."
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Adresse */}
+            <div>
+              <h2 className="text-lg font-semibold mb-4 flex items-center">
+                <MapPin className="w-5 h-5 mr-2" />
+                Adresse
+              </h2>
+              
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Adresse *
+                  </label>
+                  <input
+                    type="text"
+                    name="address"
+                    value={establishment.address}
+                    onChange={handleChange}
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      errors.address ? 'border-red-500' : 'border-gray-300'
                     }`}
-                    placeholder="https://www.restaurant.fr"
                   />
+                  {errors.address && (
+                    <p className="text-red-500 text-sm mt-1">{errors.address}</p>
+                  )}
                 </div>
-                {errors.website && (
-                  <p className="text-red-500 text-xs mt-1">{errors.website}</p>
-                )}
-              </div>
-            </div>
-          </div>
 
-          {/* Réseaux sociaux */}
-          <div>
-            <h2 className="text-lg font-semibold mb-4">Réseaux sociaux</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Facebook
-                </label>
-                <div className="relative">
-                  <Facebook className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                  <input
-                    type="url"
-                    value={business.social_facebook}
-                    onChange={(e) => handleChange('social_facebook', e.target.value)}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="https://facebook.com/..."
-                  />
-                </div>
-              </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Code postal
+                    </label>
+                    <input
+                      type="text"
+                      name="postal_code"
+                      value={establishment.postal_code}
+                      onChange={handleChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Instagram
-                </label>
-                <div className="relative">
-                  <Instagram className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                  <input
-                    type="url"
-                    value={business.social_instagram}
-                    onChange={(e) => handleChange('social_instagram', e.target.value)}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="https://instagram.com/..."
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Twitter
-                </label>
-                <div className="relative">
-                  <Twitter className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                  <input
-                    type="url"
-                    value={business.social_twitter}
-                    onChange={(e) => handleChange('social_twitter', e.target.value)}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="https://twitter.com/..."
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  LinkedIn
-                </label>
-                <div className="relative">
-                  <Linkedin className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                  <input
-                    type="url"
-                    value={business.social_linkedin}
-                    onChange={(e) => handleChange('social_linkedin', e.target.value)}
-                    className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="https://linkedin.com/..."
-                  />
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Ville
+                    </label>
+                    <input
+                      type="text"
+                      name="city"
+                      value={establishment.city}
+                      onChange={handleChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Tags */}
-          <div>
-            <h2 className="text-lg font-semibold mb-4">Tags</h2>
-            <div className="flex gap-2 mb-3">
-              <input
-                type="text"
-                value={newTag}
-                onChange={(e) => setNewTag(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && addTag()}
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Ajouter un tag (ex: terrasse, wifi, parking...)"
-              />
-              <button
-                onClick={addTag}
-                className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg"
+            {/* Réseaux sociaux */}
+            <div>
+              <h2 className="text-lg font-semibold mb-4">
+                Réseaux sociaux
+              </h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="flex items-center">
+                  <Facebook className="w-5 h-5 text-gray-400 mr-2" />
+                  <input
+                    type="url"
+                    name="facebook_url"
+                    value={establishment.facebook_url}
+                    onChange={handleChange}
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="URL Facebook"
+                  />
+                </div>
+
+                <div className="flex items-center">
+                  <Instagram className="w-5 h-5 text-gray-400 mr-2" />
+                  <input
+                    type="url"
+                    name="instagram_url"
+                    value={establishment.instagram_url}
+                    onChange={handleChange}
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="URL Instagram"
+                  />
+                </div>
+
+                <div className="flex items-center">
+                  <Twitter className="w-5 h-5 text-gray-400 mr-2" />
+                  <input
+                    type="url"
+                    name="twitter_url"
+                    value={establishment.twitter_url}
+                    onChange={handleChange}
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="URL Twitter"
+                  />
+                </div>
+
+                <div className="flex items-center">
+                  <Linkedin className="w-5 h-5 text-gray-400 mr-2" />
+                  <input
+                    type="url"
+                    name="linkedin_url"
+                    value={establishment.linkedin_url}
+                    onChange={handleChange}
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="URL LinkedIn"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Boutons */}
+            <div className="flex justify-end space-x-4 pt-6 border-t">
+              <Link
+                href="/pro/dashboard"
+                className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
               >
-                Ajouter
+                Annuler
+              </Link>
+              <button
+                type="submit"
+                disabled={saving}
+                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+              >
+                {saving ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Enregistrement...
+                  </>
+                ) : (
+                  <>
+                    <Save className="w-4 h-4 mr-2" />
+                    Sauvegarder
+                  </>
+                )}
               </button>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {business.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm"
-                >
-                  {tag}
-                  <button
-                    onClick={() => removeTag(tag)}
-                    className="hover:text-blue-900"
-                  >
-                    ×
-                  </button>
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Actions */}
-        <div className="mt-6 flex justify-between items-center">
-          <Link 
-            href="/pro/dashboard"
-            className="text-gray-600 hover:text-gray-900"
-          >
-            Annuler
-          </Link>
-          
-          <button
-            onClick={handleSave}
-            disabled={saving}
-            className={`px-6 py-2 rounded-lg font-medium flex items-center gap-2 ${
-              saving 
-                ? 'bg-gray-400 text-gray-200 cursor-not-allowed' 
-                : 'bg-blue-600 text-white hover:bg-blue-700'
-            }`}
-          >
-            {saving ? (
-              <>
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                Sauvegarde...
-              </>
-            ) : (
-              <>
-                <Save className="h-4 w-4" />
-                Sauvegarder
-              </>
-            )}
-          </button>
+          </form>
         </div>
       </div>
     </div>
