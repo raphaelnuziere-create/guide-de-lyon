@@ -158,11 +158,22 @@ function ProInscriptionContent() {
     setError('');
 
     try {
+      // Vérifier que l'utilisateur est connecté
+      if (!user) {
+        const { data: { user: currentUser } } = await supabase.auth.getUser();
+        if (!currentUser) {
+          setError('Vous devez être connecté pour créer un établissement');
+          router.push('/auth/pro/connexion');
+          return;
+        }
+        setUser(currentUser);
+      }
+
       // Créer l'établissement
       const { data, error: insertError } = await supabase
         .from('establishments')
         .insert({
-          owner_id: user.id,
+          owner_id: user?.id || (await supabase.auth.getUser()).data.user?.id,
           name: formData.name,
           category: formData.category,
           description: formData.description,
