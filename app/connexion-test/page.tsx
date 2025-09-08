@@ -59,9 +59,9 @@ export default function ConnexionTestPage() {
           setMessage(`✅ Connecté! ${establishment.name} (Plan ${establishment.plan}). Redirection...`);
           setTimeout(() => router.push('/pro/dashboard'), 2000);
         } else if (estError) {
-          setMessage(`⚠️ Connecté mais pas d'établissement trouvé. Erreur: ${estError.message}`);
+          setMessage(`⚠️ Connecté mais pas d\'établissement trouvé. Erreur: ${estError.message}`);
         } else {
-          setMessage('⚠️ Connecté mais pas d'établissement lié à ce compte');
+          setMessage('⚠️ Connecté mais pas d\'établissement lié à ce compte');
         }
       }
     } catch (err: any) {
