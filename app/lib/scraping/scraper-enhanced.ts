@@ -35,15 +35,15 @@ export class EnhancedScraperService {
 
       for (const article of articlesToProcess) {
         try {
-          // Vérifier si l'article existe déjà
+          // Vérifier si l'article existe déjà (par URL ou titre similaire)
           const { data: existing } = await supabase
             .from('scraped_articles')
-            .select('id')
-            .eq('original_url', article.link)
-            .single();
+            .select('id, original_title')
+            .or(`original_url.eq.${article.link},original_title.ilike.%${article.title.substring(0, 50)}%`)
+            .limit(1);
 
-          if (existing) {
-            console.log(`[EnhancedScraper] Article déjà existant: ${article.title}`);
+          if (existing && existing.length > 0) {
+            console.log(`[EnhancedScraper] Article déjà existant (duplication évitée): ${article.title}`);
             continue;
           }
 
