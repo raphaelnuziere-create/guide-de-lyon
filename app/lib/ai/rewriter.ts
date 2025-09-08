@@ -32,49 +32,52 @@ export class ArticleRewriterService {
     }
 
     const prompt = `
-    Tu es un journaliste local expert de Lyon, rédacteur en chef du Guide de Lyon. Réécris complètement cet article en respectant ces règles strictes :
+    Tu es un journaliste professionnel. Réécris cet article avec un ton NEUTRE et FACTUEL :
     
     ARTICLE ORIGINAL :
     Titre : ${originalArticle.original_title}
     Contenu : ${originalArticle.original_content?.substring(0, 3000)}
     Date : ${originalArticle.original_publish_date}
     
-    INSTRUCTIONS IMPÉRATIVES POUR UN ARTICLE LONG ET DÉTAILLÉ :
+    RÈGLES STRICTES DE RÉÉCRITURE :
     
-    1. LONGUEUR MINIMALE : 1200-2000 mots (TRÈS IMPORTANT)
-    2. NE JAMAIS copier de phrases de l'original - reformule TOUT
-    3. Garde TOUS les faits et informations importantes
-    4. ENRICHIS considérablement le contenu avec :
-       - Contexte historique de Lyon si pertinent
-       - Comparaisons avec d'autres villes françaises
-       - Impact sur les différents quartiers lyonnais
-       - Données chiffrées et statistiques
-       - Témoignages fictifs mais réalistes
-       - Perspectives d'avenir
+    1. TON JOURNALISTIQUE NEUTRE :
+       - Style factuel et professionnel
+       - Éviter les formulations promotionnelles
+       - Pas de redondance sur "Lyon" ou "lyonnais"
+       - Mentionner la localisation UNIQUEMENT quand c'est nécessaire
     
-    5. STRUCTURE DÉTAILLÉE OBLIGATOIRE :
-       - Introduction captivante (3-4 phrases) qui pose le contexte
-       - 4-6 sous-sections avec titres H2 accrocheurs
-       - Chaque section : minimum 200-300 mots
-       - Paragraphes de 3-4 phrases maximum pour la lisibilité
-       - Conclusion développée (2 paragraphes) avec ouverture
+    2. STRUCTURE DE L'ARTICLE :
+       - Longueur : 600-1000 mots
+       - Introduction directe (2-3 phrases)
+       - 3-4 sections avec titres H2 informatifs
+       - Paragraphes courts et clairs
+       - Conclusion factuelle
     
-    6. STYLE ET TON :
-       - Professionnel mais accessible
-       - Utilise des phrases variées (courtes et longues)
-       - Inclus des citations fictives de personnalités locales
-       - Ajoute des détails vivants et descriptifs
+    3. CONTENU :
+       - Garder TOUS les faits importants
+       - Reformuler complètement (pas de copier-coller)
+       - Ajouter du contexte SEULEMENT si pertinent
+       - Éviter les digressions inutiles
     
-    7. SEO LOCAL OPTIMISÉ :
-       - Mots-clés : Lyon, ${this.getLocalKeywords()}, actualités Lyon
-       - Mentions naturelles des arrondissements (1er, 2ème, etc.)
-       - Références aux lieux emblématiques (Bellecour, Part-Dieu, Confluence, etc.)
+    4. LOCALISATION SOBRE :
+       - Mentionner Lyon/arrondissement UNE FOIS dans l'intro si nécessaire
+       - Utiliser ensuite "la ville", "le secteur", "la zone" etc.
+       - PAS de références touristiques sauf si le sujet le demande
+       - Éviter les clichés sur Lyon (capitale de la gastronomie, etc.)
     
-    8. ENRICHISSEMENTS CONTEXTUELS :
-       - Si transport : mentionne TCL, Vélo'v, impact sur les trajets quotidiens
-       - Si culture : référence aux événements similaires passés à Lyon
-       - Si économie : impact sur l'emploi local et les entreprises
-       - Si urbanisme : lien avec le Grand Lyon et les projets futurs
+    5. ADAPTATION AU SUJET :
+       - Faits divers/crimes : ton sobre, focus sur les faits
+       - Culture/événements : informatif sans être promotionnel  
+       - Économie/urbanisme : données et impacts concrets
+       - Transport : informations pratiques prioritaires
+    
+    6. CE QU'IL NE FAUT PAS FAIRE :
+       - Répéter "Lyon" dans chaque paragraphe
+       - Ajouter des références locales forcées
+       - Faire de la promotion touristique
+       - Utiliser un ton trop léger sur des sujets sérieux
+       - Inventer des détails non présents dans l'original
     
     9. FORMAT HTML RICHE :
        - Utilise <h2> pour les sous-titres
