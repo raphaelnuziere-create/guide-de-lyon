@@ -95,6 +95,7 @@ async function getBusinessesByCategory(categorySlug: string) {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
   
+  // Récupérer les établissements avec leurs médias
   const { data: businessesRaw } = await supabase
     .from('establishments')
     .select(`
@@ -103,24 +104,36 @@ async function getBusinessesByCategory(categorySlug: string) {
       name,
       description,
       category,
-      metadata
+      metadata,
+      establishment_media (
+        url,
+        type,
+        display_order
+      )
     `)
     .eq('status', 'active')
     .eq('category', categoryInfo.dbValue);
     
   if (!businessesRaw) return { experts: [], others: [] };
 
-  // Mapper les données
-  const mapped = businessesRaw.map(business => ({
-    id: business.id,
-    slug: business.slug,
-    name: business.name,
-    description: business.description,
-    main_image: business.metadata?.main_image,
-    plan: business.metadata?.plan || 'basic',
-    address_district: business.metadata?.address_district,
-    views_count: business.metadata?.views_count || 0
-  }));
+  // Mapper les données avec la première photo de establishment_media
+  const mapped = businessesRaw.map(business => {
+    // Récupérer la première image depuis establishment_media
+    const firstImage = business.establishment_media
+      ?.filter((media: any) => media.type === 'image')
+      ?.sort((a: any, b: any) => a.display_order - b.display_order)[0];
+    
+    return {
+      id: business.id,
+      slug: business.slug,
+      name: business.name,
+      description: business.description,
+      main_image: firstImage?.url || business.metadata?.main_image, // Utiliser l'image de establishment_media en priorité
+      plan: business.metadata?.plan || 'basic',
+      address_district: business.metadata?.address_district,
+      views_count: business.metadata?.views_count || 0
+    };
+  });
 
   // Séparer experts et autres
   const experts = mapped.filter(b => b.plan === 'expert')

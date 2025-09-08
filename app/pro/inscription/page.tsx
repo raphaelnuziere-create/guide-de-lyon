@@ -28,6 +28,7 @@ import {
   Car
 } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase/client';
+import AdaptiveBusinessForm from '@/components/pro/AdaptiveBusinessForm';
 
 type PlanType = 'basic' | 'pro' | 'expert';
 
@@ -59,6 +60,25 @@ function ProInscriptionContent() {
     instagram_url: '',
     // TVA pour plans payants
     vat_number: ''
+  });
+
+  const [businessData, setBusinessData] = useState({
+    category: '',
+    subcategory: '',
+    specialties: [],
+    features: [],
+    services: [],
+    amenities: [],
+    priceRange: '€€' as const,
+    menu: [],
+    cuisineTypes: [],
+    dietaryOptions: [],
+    rooms: [],
+    hotelAmenities: [],
+    productCategories: [],
+    brands: [],
+    paymentMethods: [],
+    openingHours: {}
   });
 
   // Nouvelles catégories simplifiées
@@ -202,12 +222,13 @@ function ProInscriptionContent() {
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '');
 
-      // Créer l'établissement avec la bonne colonne
+      // Créer l'établissement avec la bonne colonne et les données business
       const establishmentData: any = {
           user_id: currentUser.id, // Utiliser user_id qui semble être la colonne existante
           name: formData.name,
           slug: slug,
           category: formData.category,
+          subcategory: businessData.subcategory || null,
           description: formData.description,
           phone: formData.phone,
           email: formData.email,
@@ -226,6 +247,29 @@ function ProInscriptionContent() {
                            formData.postal_code === '69009' ? '9ème arrondissement' : null,
           facebook_url: formData.facebook_url || null,
           instagram_url: formData.instagram_url || null,
+          
+          // Données business spécialisées
+          specialties: businessData.specialties.length > 0 ? businessData.specialties : null,
+          features: businessData.features.length > 0 ? businessData.features : null,
+          services: businessData.services.length > 0 ? businessData.services : null,
+          amenities: businessData.amenities.length > 0 ? businessData.amenities : null,
+          price_range: businessData.priceRange,
+          opening_hours: Object.keys(businessData.openingHours).length > 0 ? businessData.openingHours : null,
+          
+          // Données spécifiques restaurant
+          menu: businessData.menu.length > 0 ? businessData.menu : null,
+          cuisine_types: businessData.cuisineTypes.length > 0 ? businessData.cuisineTypes : null,
+          dietary_options: businessData.dietaryOptions.length > 0 ? businessData.dietaryOptions : null,
+          
+          // Données spécifiques hébergement
+          rooms: businessData.rooms.length > 0 ? businessData.rooms : null,
+          hotel_amenities: businessData.hotelAmenities.length > 0 ? businessData.hotelAmenities : null,
+          
+          // Données spécifiques commerce
+          product_categories: businessData.productCategories.length > 0 ? businessData.productCategories : null,
+          brands: businessData.brands.length > 0 ? businessData.brands : null,
+          payment_methods: businessData.paymentMethods.length > 0 ? businessData.paymentMethods : null,
+          
           plan: selectedPlan,
           plan_billing_cycle: billingCycle,
           vat_number: formData.vat_number || null,
@@ -269,7 +313,7 @@ function ProInscriptionContent() {
       console.log('[Inscription] Établissement créé avec succès:', data);
 
       setSuccess(true);
-      setStep(3);
+      setStep(4);
       
       // Redirection après 2 secondes
       setTimeout(() => {
@@ -295,8 +339,18 @@ function ProInscriptionContent() {
     if (step === 1) {
       return formData.name && formData.category && formData.phone && formData.address && formData.postal_code;
     }
+    if (step === 2) {
+      return true; // Les données business sont optionnelles
+    }
     return true;
   };
+
+  // Synchroniser la catégorie entre formData et businessData
+  useEffect(() => {
+    if (formData.category !== businessData.category) {
+      setBusinessData(prev => ({ ...prev, category: formData.category }));
+    }
+  }, [formData.category]);
 
   const currentPlan = plans[selectedPlan];
   const displayPrice = billingCycle === 'yearly' 
@@ -337,7 +391,7 @@ function ProInscriptionContent() {
                   ${step >= 1 ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>
                   1
                 </div>
-                <span className="hidden sm:inline text-sm font-medium">Informations</span>
+                <span className="hidden sm:inline text-sm font-medium">Base</span>
               </div>
               
               <ChevronRight className="h-4 w-4 text-gray-400" />
@@ -347,7 +401,7 @@ function ProInscriptionContent() {
                   ${step >= 2 ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>
                   2
                 </div>
-                <span className="hidden sm:inline text-sm font-medium">Forfait</span>
+                <span className="hidden sm:inline text-sm font-medium">Détails</span>
               </div>
               
               <ChevronRight className="h-4 w-4 text-gray-400" />
@@ -356,6 +410,16 @@ function ProInscriptionContent() {
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold
                   ${step >= 3 ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>
                   3
+                </div>
+                <span className="hidden sm:inline text-sm font-medium">Forfait</span>
+              </div>
+
+              <ChevronRight className="h-4 w-4 text-gray-400" />
+              
+              <div className={`flex items-center gap-2 ${step >= 4 ? 'text-red-600' : 'text-gray-400'}`}>
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold
+                  ${step >= 4 ? 'bg-red-600 text-white' : 'bg-gray-200'}`}>
+                  4
                 </div>
                 <span className="hidden sm:inline text-sm font-medium">Confirmation</span>
               </div>
@@ -531,8 +595,38 @@ function ProInscriptionContent() {
             </div>
           )}
 
-          {/* Étape 2: Choix du forfait */}
+          {/* Étape 2: Détails spécifiques */}
           {step === 2 && (
+            <div>
+              <AdaptiveBusinessForm
+                category={formData.category}
+                formData={businessData}
+                onChange={setBusinessData}
+              />
+              
+              <div className="flex justify-between mt-8">
+                <button
+                  type="button"
+                  onClick={() => setStep(1)}
+                  className="text-gray-600 hover:text-gray-900 flex items-center gap-2"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  Retour
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setStep(3)}
+                  className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 flex items-center gap-2"
+                >
+                  Suivant
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Étape 3: Choix du forfait */}
+          {step === 3 && (
             <div className="space-y-6">
               <div className="bg-white rounded-xl shadow-lg p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -654,7 +748,7 @@ function ProInscriptionContent() {
                 <div className="flex justify-between mt-8">
                   <button
                     type="button"
-                    onClick={() => setStep(1)}
+                    onClick={() => setStep(2)}
                     className="text-gray-600 hover:text-gray-900 flex items-center gap-2"
                   >
                     <ArrowLeft className="h-4 w-4" />

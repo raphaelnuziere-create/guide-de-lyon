@@ -1,0 +1,1017 @@
+{
+  "sector": "shopping-mode",
+  "count": 40,
+  "collectedAt": "2025-09-08T16:39:32.995Z",
+  "businesses": [
+    {
+      "name": "Les Artpenteuses",
+      "address": "13 Rue Romarin, 69001 Lyon, France",
+      "phone": null,
+      "website": "https://www.lesartpenteuses.fr/",
+      "rating": 4.9,
+      "reviews_count": 23,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 11:00 – 19:00",
+        "mercredi: 11:00 – 19:00",
+        "jeudi: 11:00 – 19:00",
+        "vendredi: 11:00 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJf4AIBfzq9EcRaOHxUVC_tys",
+      "photos": [
+        "ATKogpc5pcIma9CaFLP-0mRuu9ShILZA0w8BIkrRNUBslh1v66WFoO7_HLVzsiX-23v4Y2rCvr7uJ-cQ2RuzimyamYsy8MY68YeLROac2Gqlo8O-wmeDTpn9aQxYUOOmo3BjsYE0g2MTVnNcjnXLDmxeaoumbWD2WC200RvkWx5Hg0Afy6CrXpRngxKfdKgH6HJ-BxuewFAwNALZRC2_kMZWhOOVCKPyGHOyfo1slpJUcEpu5MqQy4W_ccDpEwkG9oTOw2Oc2kLKPZpBixzXW0kg1H-hkk4PAG5EdfT9yjVD6_BSuA",
+        "ATKogpf8F6r4_LX2H-JspTptNnEPHjOn9tiiC2C6ZxMjbXfFdmZq8vY5CmKC98rhIkP6sgbv9UWJeSaVnc1pwOeWsI8yoq9lDkVnvrj68U5-E4LK0oV7XEc6H8RtT5qZmKilJhERshJ_WjnxyeexdTJM091QxtW26fCfE48HwHWYcVrvmSsaa9ie5b3s-vjtuvW53LmqGK0kejn05ypZEsqhtbPOJgOM24v19WAB7NdAPh6Tx_yfflK9XY9bpxNklbjMD1tGDKtAy4T8Vtc_F5q4HwX3ydr2GcWvNOsPB2rffOYk9w",
+        "ATKogpdcWhDJQhuzB8n0kak8IXzHj9ogeYxvtRibufieOK--JOVC5Y4402c3W9KeKyM_g-HkZPzBcBMCPwQcTQBdVPjQ7zGzlpkYMmyp76QmRqVZoIr2lT7Ca9S0aOzXyz0SagrH_N6w8lkgChAbLANQChkntwMaNVHE3X4DzzTHORl_XP2C5LVwGPdx2k24E6EZoixjdAkFmnSLXV-gyWQAULZLXQdDma0EV1JX87oULfvrSWYYas56QP7Mds5t8rAb6MmX1xrCwk0dWBNHyfNAppb0NnX5Ih-X4M0bbTiDmmlvKg"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Le Spot, QG de créateurs",
+      "address": "11 Rue Puits Gaillot, 69001 Lyon, France",
+      "phone": null,
+      "website": null,
+      "rating": 4.9,
+      "reviews_count": 30,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 19:00",
+        "mardi: 14:00 – 19:00",
+        "mercredi: 12:00 – 19:00",
+        "jeudi: 12:00 – 19:00",
+        "vendredi: 12:00 – 19:00",
+        "samedi: 12:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJsfPxfDXr9EcRHjHESBT9DuY",
+      "photos": [
+        "ATKogpf7dx174Hidc6I6Tdwxw5p5izXIucHRgNIOarygzaDOmpZB6WgCgNZugMxGZ4GulICWQze1waF5SD1zZgsPNGx1mA5CnaWfIEbrwCdWjDiSKxYn7xb5WrnnucHM0uqIsH0BZnJth39m43tGhKyrlfDb4GlejMC-mXqBQrk20-KfzZYwMbW9XlXS1LBirazriXPl0wUWxyQvyNBkB-lsjRwHeDgSEh8ZnN-skXadsoaYd6mXMFgQNW-6OgajjRgPm6rxwTP8jW5jjE8iZ7ereN8U6QV3RQQkXBteaAYb9f-dtAFAUULYHGRsv9OLdY6NaIsiDGn-YomGqwGdGUzc7DPOt4R73QqN3Rh3Dhrar7NoZQ_y2miK9gHaIeTto8Wt9vlkP4ndWU_OsSiFIoyFPoVRHEpRAhE-dVEvnMQwEuw",
+        "ATKogpeAAZjvGfnKs3D9xGWT9WMccJS8VHnZoQo-s8RqY1iCPEme8zOrh8Mjt09QzPjKXSk66jzeEuWSnmWZrQVZA6td4DHcbK55XteEU56oUs078lEfLeptVyfz4OOD5xT8Ab6NrpuDOMEi4XGsO0lskcrSnUkpIqNcAJnKk42NTVhu9zVDg2u86V-gzFzgnaQVJTcHum85z-e9Mn7H4rzYcDLCE3lukO--sd_pYveHcTR9UAX7188KljXStHFTOgJn3o4pd91Dbzh_MT-pN11myyss4Qo0hmlaNfRXCs1MTAmRNpueSjg4Fnt0i0ePoqtmNJtMRN5Eca7fjjbg4YXNzP5hvs00YqjtGYftatpmPKE5HTWcKVRSwoEaYnic-9G7_e4KOeeGKHHvtT4s0TJ-pPpQxhViot2mFziNd9EeR9lEaCxG",
+        "ATKogpcL05zLOD58ayxKiaSyBh_xxIMoAyQTciodpvfEbpZYc5ZTPf3-SDiV_JsXSuJ1WY4M6ygiWEtG_kRgGwoNlIS9aKufPOutnHOSzuM9x5T_bKU8oA_-8i-jbnJ9SDY7jirxihvtTYzrf0o4D0vLeLnzOKxH2Q_Q9Ai3sUvT8VEDZUEK9cLPLJDaslc0Agrc3hly6HVl-Xi4l8FZPi0sobspP9ute-BasyC3_3RpordpWkq3E534vkceOBZ3YO6oJcnEoys8BalEHCq_I7FZmDCxqm1TfRC9jSJff4tiyDWhKg"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "La boutique du Village des Créateurs",
+      "address": "Village des Créateurs Bellecour, 3 Pl. Bellecour, 69002 Lyon, France",
+      "phone": "06 95 38 74 16",
+      "website": null,
+      "rating": 5,
+      "reviews_count": 3,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJs1pmNfzq9EcRKRfHSq9rdUc",
+      "photos": [
+        "ATKogpcsbfUBycXBU_O6wCXXNlYivOXOUNRmwgV-13VUtxtCIQa1oul1ED6aILWKBIuPGjHsklMSMtAs-R8Nn4ovLgmi9BljJGD8fZiRF8aeJcK1qxgTgMET2gW9n1OHKJAPrtS4-o86--y84DCtViru2nzQIXOnRlnVCAQDOlrYE7H5WffEkNlDfM5xcmSWk7s3w9W4GVg9SpnbfjbOVG3mnpXhwDs87LP1tncmI_VQvl65md7kHbXVKAR7JQ21aY3gABqi1BgIOr42c1OJsLUDA04RDg0CkUBRr3yiIlE2Zt0BFQ",
+        "ATKogpe-fR3ZI2lVaS_xJsigRQXm-jZPDdzjN0MmpwYU7caGOag-5sMneEqVClJTbz0BU75JA8RVe4EKGNthYDqa3_EZPipCRzsBUFuzCoDsSPpgAjschdC0SWoDv7KOOoj5JF3_ArdUSHB9HJS-enrvklkPdYV86uy1o9TRFlUpRTD4K8asQWHKjjKRSZnulfo0JQnznJ3wZME8FMS_oFfeEjurC5oNW8flfnacPDh8lBunJtGadgKb_ff0Sl-w77zx9HXoNRp1dHPfnEMnjkteFaL8Nwb9FMayHVLY8XHUXLRkiw",
+        "ATKogpe_XxlYkw0Igtlhov_UdMAlZ7g6uY9G2NM1TQEiaYPPJve543dlzoJVlm9S89_Qi_zDgXWhsTUnkSwn0c1V6811pqqmYU7ldAuWi7DIrT4PHFum88tmwOx0ZME4gopxot0kEa4mp80IUPgjl1-xu2kf-0tMtNiHi5p68wDblbVNKeNEH6tbRgkhjBqtCq4dQ7XIc-ci1gLlGzwRypTcucu5sZW9rSJqq9A-isfGJjnsDA3-ILux2ofMs_8f494Xn_lOwWHnxR6nMiHAprwhMsJswKYOV9RU4eAYI8uc3rDvnA"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Labelalyce - Boutique de créatrices lyonnaises",
+      "address": "13 Rue Romarin, 69001 Lyon, France",
+      "phone": "07 83 13 87 38",
+      "website": "https://labelalyce.com/",
+      "rating": 4.8,
+      "reviews_count": 20,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJAQA0ceLq9EcRrhyearKpftk",
+      "photos": [
+        "ATKogpfW_aw8xcHsk5yJe1mn3TMggKtXOEtdwjXhOWmSdoL7-cJeKkzKvg4Pk2xyrdS42Frscq9jHufEx5fkixBrr4lqgnP3RNR9fBaV24NLyQVHQM824xYJwWFLN_8tHsZNY-4RKP7jcQwWcBdwjoqaylcPNCXRT8v9fxS26JPvyJJ4jehn1UzOKIus_z6vajuhk7VYzkQHv2Ravb6EayaPW9Gbg6XRFYSTkaHdFSECVOqgwBzH27Hsf4_Jk-VFLzJI320SeTXnkIvHTKTUEVz8FUjMk_oGwzJJ522vdYv09UCsIA",
+        "ATKogpfbgpiBlcskdMYbwJ4yds4BGxQC12wi7Dp7uvWqte77KC0q1e5FB0wqnEs8We5wfWFawtaTbb99KsW5pPH3K0cEYQz6zy03ygm93NSeVD5hNZndGUviipwGWjt65mlXbOY78_Dz9Z2AAlGQAdymPkfIIPlejYneMICjCWuT6OEJ0wNBk4Trm7dWyaZyoJOQnhfwCEdpr1Vtl7oLgxyj44kHBPKNhVyDJa2gL6cFYn9kS0BMF2dsX6jaPOFo7h_Uub8JMheiAHebUpW_x6wSknfIDV4xsWMSx7SVqJkdekPgWQ",
+        "ATKogpcXSMUGx0_Th_M3u4Cwr8Yyb3TkiCN3I3C51FSo2Ja6-xfJ6B1lnoDjHwycIIzYk_67ibhxMyW-qxS1zMWwZk1_gOgPPeXv7YsT8nuERWx-AZA6AGKnSbkL7JK2ucBTrjAiWmYkk14jphhNXCbFOyegg6LEPxkfltkvJOgigu1wuGtEisdTAE02nHOiphGsPpYbRCISRmR9cBkEIKiDAKRTIA32oAR77b3dH43d9AcMOUHEt_EFw61DKI_cFwTJLzP5Rr6L2vjXNLcEY7y3lTrJuGLsoz2EEJICBviOA56Ysg"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Leonor Roversi",
+      "address": "36 Rue Sainte-Hélène, 69002 Lyon, France",
+      "phone": "07 80 97 38 69",
+      "website": "http://www.leonorroversi.com/",
+      "rating": 4.8,
+      "reviews_count": 127,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 11:00 – 19:00",
+        "mardi: 11:00 – 19:00",
+        "mercredi: 11:00 – 19:00",
+        "jeudi: 11:00 – 19:00",
+        "vendredi: 11:00 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJLTC58cLr9EcRRMrqYxrfYas",
+      "photos": [
+        "ATKogpe2o-qI4QQxGxIZ1r6m0KoGgZndr90Urg6FajhC8KiRqCUIdM1OtzTEXiVvE7jwpmvdJuTGPdOpCjyhsz-xVGX3XcnzZsOiDGA_80w33lgOTvmxWjBInG_0IC46sYRFyuZCKKj0qkD1IZCnfUVaLXYLPNDFykCPAnxK8FkAXVjgoakki1EUymBWIGuGNbOP8pIAKXP_YZfe8DAsHF6t0ZZNokxWmID1uQU7xK03Tirw_yKKuv0SS6KMazdyd2tQO09Kn5X0zCjJufL2bPjHQkP97kj-KJGY36NGY6L1UyMVpA",
+        "ATKogpd081e4Gn_UWGhVeYObMSjb6G4zXE8VoJ52SyATpsEyl_MatIzWopepzfIc_AjlYPix1P1I4tbxLLRFnaYoSn7MrTpQvjrooIYU6BkBu67JJMWT1JMq2jtvZHd39SuJVC1c82y1NYGRThD02JwgHKM0sRjQMUtPRAPTT38NI4tpG_HGLNcC8z1tE6H7QfmIzAfEI5qndMOMqAOFBBjRnWSYz8Ln5o6ISScmw7vRNkmXMi4bvcGLa7cPAJk8qr4Vz4O4wSajIZoj-jr63NkEH2ykpQZqzYsZGIh4WvXGzOJuyA",
+        "ATKogpeU1UIufLnwnhzjsOYrCk8dYCvWIjTIGO2C6XUmHrhNM0qpEefaQ_nEHNqY8buJGCVmFbF4S7ULY9omwlIK1dVrQPWbvnFEATLYrytTErlzIU7fkJQuxDhnW0QbUhA9h0dNT-h5_SMowuhajszNqkBwRgEZ5Bk7GCDR4Aa4qCPjyFE68awc02_HVnUKZ7HKTa3pdpXlthDfZkygwpu3mykIyOa9zh7H-jQtIly_z7JxfOdQSULjE5lDjvAYnNYdfKnhngdqIZ7zjm3xvsO5DivPgZ_SOGjeXyyTuhRSGSM5cg"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Lilikaiali créations Lyon",
+      "address": "91 Mnt de la Grande-Côte, 69001 Lyon, France",
+      "phone": "06 64 33 26 00",
+      "website": "http://www.lilikaiali.fr/",
+      "rating": 4.9,
+      "reviews_count": 23,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:00 – 13:30, 14:30 – 18:00",
+        "mardi: 10:00 – 13:30, 14:30 – 18:00",
+        "mercredi: Fermé",
+        "jeudi: 11:00 – 13:30, 14:30 – 19:00",
+        "vendredi: 11:00 – 13:30, 14:30 – 19:00",
+        "samedi: 11:00 – 13:30, 14:30 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJn9Tuwv3q9EcRkVeZZLAJnD8",
+      "photos": [
+        "ATKogpd_Hr520P1DjkPZo4m011WucvZAchXm-3WrotCciD0Cn7R46kRdYJtDELong37XHJU64y0F2teAKQs6MV0ih-Ja1NKzNYBBXbLiET9fxSRdjcliuNybxa72QMjN5mrSKuZSvtzH35_R0-ge29NhjHM0xV08XC7Yotqu07ePO9T2o9p9IR41yXiTeCz-9b6aDwkMncy1BjbTMZFNLKGG8NG2XIZ75Pw7hsYRtI73tpYZ8urb1ERS-xZ9Ji6qnb8TdyGD7keA9P1TV2BJ5SPscUj3c1entEoJ0S5jflVkXh1nKA",
+        "ATKogpclvCd0NADLtP-5sxZNnpL6sAa8-yDWA3PIA0SqmXwmZZhm6Lgjrg_PxaSnlchqnJjxNmhhTQ7WsB46OuFNBAOYN4cnJBfZP22CMcj-y1FWrG6NspemJGu50czOYTZsv970C9al-6Jg5mTCFLtIGP-MXBuArZOGQnWeY736oDZlyLinLT5qX7-GYWpJWNy1JNK9sbtVxC5YgkaTIJAohUkehNbPvb_qmnyrwfvfwG5TVfvzdMNAiYfA4vwe10vFFwBJuZFqQYp6jAhkVeZzWV_Bwof1TNkqGYJOGHf67sXkYw",
+        "ATKogpeyHlFalnneuqyUK0b1vpcg0K17ok08QIrAd-J9314LlpM4eDzlm4yo5xmgX4EfaOcDvIintlGuWzC-1n-UhSbP5sEt5I54hofgD5pURvbtgbEKQ1YIwrPYOamWUcv4j0OROuU01LofhlE_IWWR9Ae-nroo3r-6hZcqdmyZAFLDoyPRfbcwZP40kJfO6innV97nCpqWmiig3Bq83PhDmnWNwG9rD9-JbQEuUeQm7RLlw71ESka1YtzIjVT9IiSRDxWE-36aqyiSCK7VBOroTo4T6Oc6lW2tQcM6wuBLgCSNZSO6R2scGa2vlA2d4NEdbQhrnuAwEaUmwTESx2j8NTrD2o3yS6PENO3sbGCsQKf1wDJ0hSAo5ki0-rHaz0_EjdSBzfXdLxn2W8nnxm9gQFakF-XBK_ybGJnGn0Jle2y222Qn"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Marthe Duval",
+      "address": "15 Rue René Leynaud, 69001 Lyon, France",
+      "phone": null,
+      "website": "http://www.martheduval.com/",
+      "rating": 5,
+      "reviews_count": 17,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 13:00 – 19:00",
+        "mercredi: 13:00 – 19:00",
+        "jeudi: 13:00 – 19:00",
+        "vendredi: 13:00 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJP7wP427r9EcR54Qilk2dYcM",
+      "photos": [
+        "ATKogpfusFJGTcs0G0OGFgEzdJR0y89HZgpY4T4UQ8bJv1ctx_qaEmTKrA66QyY5NbOBzsc3xUbluszKTpShi09wyIkpbP9U-QUaJC1YfIYbduW3QuWgI31ExkBR8pd5xTaW0M-53dXOvY9qNvPedmDM2Gbg8Kjf045V0X65wiC9hvyz3mcxiJozf6aazERZpOml4HecduoTzcuaQl7QbkqrmSrSs0FSj9l_5NPjjLl6TIaWplPZ2qL6qOa5IziByI6C3AzaqqdFS2DvpLapg-VxEpLNOJS-Ko7gOoS2fCY0QNE3jQ",
+        "ATKogpdIDFmwHVUZvPB3wi1v7fG1C03xztCqHvP5JUv5S_Wpo4_oAYFnQwsEvRzlxpuev423sqJT_fx6UG85m2XeQj0--XCerNBbsqXrUnlH0Kxg39DBT9kzbbnI2YTJfCdOxo-T12_UKjSK58x7NE-8iNZHjEZ86dmFk9Hi7iKZFEyYiPQW9yW5lBIlgnqluytrgno9S11bxdof3y46Hh1XCXrFnMtly9e0OAq2eBXElokN5f_n1kngTsp7q4bbN2PrEaQqC72XJm1z7Jfl_5kzFCCD0q5swfRIHXZCyjRsdxVw4w",
+        "ATKogpc69OHxjaSqP0H4E0XRIInkuXw3ANLa0cWI6gwZbyTdfujVnKzXEj4FO6Jq672WEF6JLt37n9iZfpEuYw37gxC2gUPiBCjYsy5Grwr1xs_bQgRpGXctKKgdEVvQMEyECq5pFdwL5u_4h0brdMKqSxT71lI9bZKoZ3VTuvEkXcubWaEmnzVp0LIpKd0PJRV1HQ1_qMjsJYaVymNPvYg1LzkHQvIlnXa5Gdv7-eXEHjAGHvKRYJiTrfbpRNiyNyYIBm3uwySPjjdaJywIwKAVYChPp6taYKZ1Z3FtljUSqGQquQ"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Boutique XIX",
+      "address": "19 Rue de la Charité, 69002 Lyon, France",
+      "phone": "04 78 38 30 27",
+      "website": "https://www.boutique-dix-neuf.com/",
+      "rating": 4.6,
+      "reviews_count": 14,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 10:00 – 13:00, 14:00 – 19:00",
+        "mercredi: Fermé",
+        "jeudi: 10:00 – 16:00",
+        "vendredi: 10:00 – 13:00, 14:00 – 19:00",
+        "samedi: 10:00 – 13:00, 14:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJyaRhv03q9EcRNlZtrP719jU",
+      "photos": [
+        "ATKogpe425N2zS0w79oTdhAM3yqdlmEDSgaHI9rBfxzSNK8sfhddjZ5LQk2u29u9Ev_pF7hEP8dt79qDtBjk66hLaL8-IzTvGsHEBjb2RvmGiPDYlUrH6hEo0-p9aIQWgItG0Xu3HB3xCEB_Ngp2pShn9auSwUb7SJMIYogpPeUSd-BwU17DYK8-QwSwRApFXllbbYRNEhrtA4PgVceeAbckA4DFq_GGS_ty82I4Gl88BilgUm1J5RlkIvQYg7N-fLtNjKI7TvhuppMqjNKN2QY3HK9Fnu97snrxpRkX0IN9f8RZaS9fcfJMk_HGhCI35TP8u73pM51IBvB8i-NPN4k7KPDxzU4rllDUsBGDZHepY4EQgGJBE-6uwnNiC5H4tLB40qYacKDw1Xe_PZn2cxWNE-tX4PqUc-JXsvKEmEbXMtVLLEg",
+        "ATKogpdQEbeA5MtuyiaGf1RRJcekvqkTVvC65AR1GwNz-RqcKpIIrVpWJhvMltoCuF4x5cUctQIQ1pTBdXt_B9vx4y9_GU3lVYLJ-ToOE3szVEmMO-7bt5eSJnCs-u6rjW39lUDR_k1R2iNTD3qAKeO_8Uaov_9DdJUwnZMPMpRqHMBy8Mo98VdDF5WHoPCogg173RwRN-3VXQw-WejG2f_uxnEthAFdwPPSkAyowMlMFhSMsuW0HWbrzqsb7Iyi-UTPoYXHjE76vOcjFWAUBne1HOM38x4J-5AQd3A82Kr-KCkTGEWbignDH75--4xK7KYvuvGCiPiQScFSBhLuilm2ha8NPBgLtgmiUYvIoqAj4G0IN39tnZxHTb_BkCuA91AJ_Oj3CuxmyfDv6LRRoWPSewEB6Akf0rgDJ5N8FkrtpNA",
+        "ATKogpf3e8lOH3m_3nutT8PE_40oYIoRH7IjhhVqnh-SFArJ37siU-40T36tlqFH_27vzN6xswLnMcDCrWQiQ-FXMUlMvArLtzq25ViCV-2RMXe5Wyv5KcF4IejS3arIjK0IWOdYPrk1t5QrzE-oQMeSB5gzVNINkhJ3XYVp5_hvAa3WmC_M2reKlBt0Pq8aiF6eG1rXznp-zcCg8B87nV0cAvVr2pWS8FpXR_E1FqwadmNVij0CaZJL2SebD0TFx3U0g3mxE9HEc0fIFTg1WtRrb8Z1JlV1mMqiVdqIB3Q-rBHLDg"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Maison Mathûvû",
+      "address": "43 Rue de la Charité, 69002 Lyon, France",
+      "phone": "04 78 60 36 69",
+      "website": "https://maisonmathuvu.fr/",
+      "rating": 4.5,
+      "reviews_count": 113,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJKRzuREzq9EcRkVDtmJhQcpM",
+      "photos": [
+        "ATKogpe0KlEgPuvi-FQJELMMPsC1myjZshQlHYTzhdLPYgetkHcEHqG5xSkD9B1JHGmZgfXE1is1L692i4jkyxfjSJhOFqWhFYENzr4uPH6Y8RKra9lSPaaUrF780xBF-9lVwmsbdH0-ohgG1t7V8jrUzNsl_VdvUhxhekHGSDnK80dZgsio90SM_Se4liwbqS7VakUIyhl05DUyJMnWzubvKtyykWHC131lR4D5Xsk0_P12fI6J6seG7NUc5ptVwVKJ91OKljG9yletkxwd0p0IyXe0YffHdka6tGN2pv32hIo",
+        "ATKogpdpHlo0WIbskJ6Y4BeGo47mH9h8Sy2rRD8ogBfbR5zVsSJ7cYIbFMpAuUHgIVoijr3QsIwHXmsTx5qIXTseh74ZaX8w2C7tuR_Gc64StQoOCQj9gKzILCuZOMljyzyq8SQ5RU3Z-0fcnVhK52tY3HhUVdzbox7t0-XaPUM6egaT3jQAEmB_7q-CwA7HOTJauNlGcSJoCa-_4ayors41mPCLEXWxI_2CRb1jxVYeUh77n6upYPZdsVs048DKrtqMMU3iHzg8NN7oVouhrxSfbtji8hOb91rKVGNVx98C5hs",
+        "ATKogpctVR77Edvq9zVk_DBv3pnOe3luCdAdjauIJWB2bTN2FHtZSYbuU5xlRXD9V_wvniL9icnuc8Rpt8AEjcVqYRODkGCrtbD3-zDuk8nO-OOGeT41UjAgXtnSrxsC1-kyi7hLbY1M6-BR4xtKfFqY3h9382tvHWpG-Da6eoJIOihjmjQzPExQRpHkrX9XH7ZwB_4-L9mhSe3j4JVUQDmHBGv0BJeNeaN34asw16xRoglxs8UbIHdHFQRg4JObOsae2tXHMB_XbpWXhHWVltO7qsRbioq55g3gjr-UVCyzSqk"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Graphiti",
+      "address": "32 Rue du Président Édouard Herriot, 69001 Lyon, France",
+      "phone": "04 78 39 42 94",
+      "website": "https://www.graphiti.fr/",
+      "rating": 3.8,
+      "reviews_count": 159,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:30",
+        "dimanche: 10:00 – 19:00"
+      ],
+      "google_place_id": "ChIJoZVOH__q9EcREbhS-_saCTU",
+      "photos": [
+        "ATKogpcDH0IBaeSDM0eBe6YafRNCuz-1fwEzAjNWXHmMbGYrffFb9t8rSm-fbM6FImZfACHuWk0Xs7KQRrIPmxO2o9vZqB-1-1NhUfdD5H-503BBggu7OuXZOCbN4UDkQEUMUh2ccfAa7yiaXJJMCashyxZnYagwNXnKUPOZW833lEXvgPbY3G88oyDfjESwBAUEv3ikD95Bxku3v__qUd7Yy6ti12Z9mHPmpTIZoEBnvtgaT9AAP0bnXv0YEqwEkXK8vYmPXNErmuoU9I8vXpRdqZMAfkMCfGcuiGVweDkGy-WtqA",
+        "ATKogpeQ82R_6lMgqECsfwrv8rKZXJIFED6FqIenrQ1TVKYlo9-yPADkwNHfX_BRIe25HRbbernVMrjoQlvVyx8mPy8Cf8ByddGSXbgc-bLklVpOpzX28z6-DyrzdVdRhzSRkpsjw1HhXtdzG6U2280qsZX7oym6pp-3jRZNSa2hhrKO8diZ0d8td-7w3bHLRfEWadSKKZHDySHMed6bIZM6uH7g0jiuU_n4k3hcw_V3ay_m4fBQcU0T7TmaBCYKCzZtju504CAeADcEf5KW3zjkeAKl4xVMBMmWkVgNIrs0EkwLLrVEBpAHt5XSK4STV4KSwAAB6lq5n30NvBHqjD-rWe3-9RRui9d83kp-Wy-zbcvn7NcFB0E7Mjdytjenrl2iCA6yHouD67gYMwvbk9JwGokk6pdd_2V5uBQI5kTrGdY",
+        "ATKogpf19rvScl0lbgFnNOzA3ASw2p21E_cOYYLVmoWgVGjFi8uW-rH8AMJOM_sO2rih0qdOIziCvGQRxKBVqUhLUbmL586_FBfpmXYrIfPNTq0qKeu_BeBTE6IenvADCn9aNxsuQXq5TZNgbiAwshhG_QEeWEaZCM3gM2MbCy0agBIlR_Y_4Y6s3kjAdobeysnAF6qcDO_vG0Ejje-qsr3F0gLqYy4SZ3h5-aO1SPQWqp4QXbcE7U6J-kkbM1bpN_4l_oN2cxqlRAivHTmW-PIpFQSAlBMGkHg8oA0p8kzsv0rx7Q"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "INCUB'ART",
+      "address": "8 Rue Romarin, 69001 Lyon, France",
+      "phone": "04 78 29 09 32",
+      "website": "http://incubart.blogspot.fr/",
+      "rating": 4,
+      "reviews_count": 1,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 13:00 – 19:00",
+        "mercredi: 13:00 – 19:00",
+        "jeudi: 13:00 – 19:00",
+        "vendredi: 13:00 – 19:00",
+        "samedi: 13:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJrxkXG_zq9EcREV8LVzTzCs4",
+      "photos": [
+        "ATKogpeqg0rbD3SF2-V-_UQ66S5bPQkko_21b2zko7tV7XSKKovVf-Lgu7Ie6bfwteQLODv3cM1TKId91VWjfX3u7ZskI-Nf6mHE00bVquJQzaYMPFdpEhg_xNItwnvvi859XgQVg5mdBbNTuynbutE7PpE-Y7SOm1vt3R2iijkl6LSZdq3avOu2hNA5ZM0Bvs6ETBOlk7BF_0Ud7tCDuNc1l5CrHLOJ4glpenHhNVG0ZukPqCoRs-KBNmQFeWhW94OKAKzRKdOHSRG_xRK39m-rwB8vcgiU69AZp2H2RpfzTeZF6pYfpQJmKxUuMeOGJSX5VaRxmMyjBjZ_fJO4FtddGPm-LCfwtaTnCXq_huX6liy1RJOFZlMIe8lC48p1TbCK5i2oLfTkdj5Nuu1yv9BzxT-b8QYJKpsaTgCbS4Zz5w7rOv7g"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Solis - Boutique Créateurs Concept Multimarque femme",
+      "address": "6 Quai Jules Courmont, 69002 Lyon, France",
+      "phone": "04 72 40 93 27",
+      "website": null,
+      "rating": 5,
+      "reviews_count": 9,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 13:30 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJj_fE4LLr9EcRrgiN_sUAhfM",
+      "photos": [
+        "ATKogpeUNEr-3UUoSCbNiIXMCZcYL-mAg0pTg0CYWvNgrESGMKDxrzLKLUBArNtw1JDQZoOTj7Ar3Vpla1LCbuhnzPp2RWIVpRUd_fwmIYXKQz1TasJQwc5oGnS-Hreym-4sU0AykqKj41LohasDSSX-ZfSuU8zh1i14VZ8xJMYbbl39s0AyWNvuPAw9ynUX9DVzQMTsY155zwF1oz_fnbxM7x5Nh-b21oIjPAzyWZ0YtjZdOmcktV3D1v6wMeiCnBS4YA9hg3zKqz8qkt03EXqphHq-RhVLqTE83OBnYOQ_14pzEsGAzY-syGq_boN_alU9UMvmX7wGHImLlGUx9EzKjd3c_FF4jaxVnpfSwybiAyz0o7vUfKIyLF1DkMadL9qvWhjaXWnj3jnPl8tfYdUIIpc0xRan-yAh5hhKBBg8Nh5q8Q",
+        "ATKogpcoWDZniXeUsCp3u0MgexTrcEnj8RPU79r6yVDj1j9gGgGL1HKYYg1zYC6pD-AiGE48qgWXbQLIQaQHln4wAu07BaVDcWbKFcjx_2mG-3IpXUsM7F9Wzxp-8iS8e_P6W7JfCTADp0k09gJxKZA8PSiUqhOdLgYNgeUqwxvEN7dhsoUf8m-AxYv9_dnj-8xrAlAIIgTYqUr2LKrwdiicvU0UynOqnlToYjRZqpMb2XOUhBXezgsqkuEapTCqikITQWTfCdLnQThrUkZ7wG0GHZU329WU-mhNsn-gu4jLkfkDSA",
+        "ATKogpcAXaP5SijVVZsMKBP9b2mFXVASvKoSphpoLNhyJwUe1xfD_-z84-53tUxn333bAUZ13_6sG3kQIcYkyyERdAr14p3Pyz9KK26tLx1MRVmShEScOwksqBTIJhqoP57k9q2lPuid9mAmiED8WuaZCPfgPXg74p9fgU8pbs2dQg7ebumjAAEFJkOs_-Evewr4CBo9KJl3xW6rjjgj5Qd75wsGDwyHxCDARy6gkTjv9E2DchlMQLAyrg0BiowRURPAjru3ijJmxFFQ6rkPaB1SDFfQyY3XL-blrwAdgnD_3iAjYw"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "CLASSICHIC",
+      "address": "7 Rue de Belfort Croix-Rousse LYON, 69004 Contact@classichic, France",
+      "phone": "06 27 92 75 07",
+      "website": "http://www.classichic.fr/",
+      "rating": 5,
+      "reviews_count": 40,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 11:00 – 19:00",
+        "mercredi: 11:00 – 19:00",
+        "jeudi: 11:00 – 19:00",
+        "vendredi: 11:00 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJKwN0PS_r9EcRA2pNHkp5g_g",
+      "photos": [
+        "ATKogpeHYx2gGArRYKba4cluBZ48jyfrMvdMmeEnZkY-1-0v1uqrKiRUW7PQY_py8RL6RyU2Hhrlxna4hOrpg76wytwPFmjVW0mMMQ8E9vDFKEGn3X1rqGnlbJPaTMzBnfD0mdJ7JvA7fNeMXUVkspAV0IoFS9I-dmnQVtSYT5OB3ZjsacvCUkW59wQb6cRHusH1nfX6n_dKRobqYPO635V_t-FLNGtgS1RYN5hgvJu0QrZjZ8yOxdpCC9ksqIPlgWErgkaDHDquywPyBOM-pYSuGxuE6pg89scAK1rIZRUzfE15Ww",
+        "ATKogpcWeGxvSsEcFbz2EVNAV39qbVcvMtb1s23eTW4Q5AUsA9cHd8hTDkbxPZYrIB3-j2-kg_-N35bpo-l4yUxaBdtV8puBXgj4ueha_05Md_mWWcASNiSniXIlePap6icRMkIQ56D2uyncw5CT83ywrWbVCeKQgzwK61nUdhsC3uXoHoP96AMAhWs9y_Q09TrUwGoqFcfWF5hs-8E_z78F-LDjoEfuaSR84wEwGrlJclAgZAkCBbN0h3w_0ESuV5Ic9zew0xwvQpMFZeFxHZKvCuVSFeM4Y3MdfmxTGBenQsqZJg",
+        "ATKogpe7QdItvtBMl58FWKz7yJQI62lv43UA7niAltDB_aCkV6psTSjWt86UZNwa5HjV6Z1Y6E2juNSLIQPZTKOtuRnd3yG-c75IlPKP4eObSySwxVE8jjfNDVnapU6ehiN-FlHjqZcuo8qdFHSaAMFrbn4p9FEzV75L-yOfyyfdXHPst0x2lTKKMWoSjLfm2SxD3zXOsTUC0rGYAaAHr24uKDmdyjb_ZSNxVyzoDs6AxY6P9FTLsBs31Uc1YD8ZMN3KpUpG-YTSQffE8HUTo1f7eOjpntwyDLq6JYK7ljrbEOBMpQ"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Les Poupées",
+      "address": "10 Rue Romarin, 69001 Lyon, France",
+      "phone": "04 26 59 45 52",
+      "website": "http://www.lespoupees.com/",
+      "rating": 4.5,
+      "reviews_count": 36,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 10:00 – 12:00, 13:00 – 19:00",
+        "mercredi: 10:00 – 12:00, 13:00 – 19:00",
+        "jeudi: 10:00 – 12:00, 13:00 – 19:00",
+        "vendredi: 10:00 – 12:00, 13:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJIzwMHPzq9EcRO-gHgTzzNXs",
+      "photos": [
+        "ATKogpeXTdFOb827OE_AZ0M6gqTBmSNPfQc5APToxGre1ShQtz3FaUyMJC50MVb5j4gAh-SDk-m_FJN_K4_fVvZeIVn1Cu2N9iuEDVsaielN-H5dLdWmAokolsF3sm6BeZoAt_fzORwZ7aQA5Hz9nSLsWHMPQlJMi83etnhfHFdtTMwSXbWmk78zUSdONH36-sQ3CkHGuGgSsEDofjNJ_6kic0F_3Bg9proCrYuVOcYg96IvFA0zJubsoaOk1ygZuN7VzfyGMJaKaeE1Q6m9UIhhiz51JnDEECYS__YdpdbeVLgKpw",
+        "ATKogpcPT19Q2huYVaqa20VX68d1NdIN5cLt9ExA3HzcfloMm9bq41RsmORDDqINF6ktoKfLjV4EfvmWddGyY9fYUeq3DVvlOtpn9xzhTkUU2coFCkVQs3S3D4WRbkOrwG04xBWW5bRYbgcMUQNXiRcy35-1GTalWJfpkKnsOwFXo5bXcMJ88tBB64v9uR7YNaAbqOCZXrg8dmQUdIrXx-Mk2b4gLAKFeOI17Xmyb2_s9qM7Rv2ISv8_NIPBuZgj8KkEGeKF0M9ANzbv8XwvNyWww0JUMISxzGsiUxVXH7B_YTt9xg",
+        "ATKogpeyx3OiH3RFgZL3HxMIjNFp1VW3unXrwmJ74VFoIl-l4lSVResubeGt88Ej-E74ypK1TxpmIZNB5n56l0IGanZQbm1hSdNg6dE3jI0JatypdiAzSTWslWGQQ7QMGcemPa9EzzsuTrrYNpu-euIW6xxwE6VJUcjW55YiLPFb7L5co9_ctPPkr0ZapSCjy9fRPvFCp5YaNXptEB_DroTeTeRq3R81KLfjlMiLiEDVFR2Ni6I_dKAX9pk5CBf0q7U33xost5C9SnptzUZCOpGLvTe6A9M59FXdK1mc5xZLBBNTyw"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Gaspard & Simone Concept Store",
+      "address": "1 Rue du Griffon, 69001 Lyon, France",
+      "phone": "04 82 91 91 08",
+      "website": null,
+      "rating": 4.9,
+      "reviews_count": 24,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 11:00 – 13:00, 14:00 – 17:00",
+        "mardi: 10:00 – 13:00, 14:30 – 19:00",
+        "mercredi: 10:00 – 13:00, 14:30 – 19:00",
+        "jeudi: 10:00 – 13:00, 14:30 – 19:00",
+        "vendredi: 10:00 – 13:00, 14:30 – 19:00",
+        "samedi: 10:00 – 13:00, 14:30 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJl9mf9vvq9EcR-qnTie4SRaI",
+      "photos": [
+        "ATKogpcMjo8qEJM7vXWQTLom5NI0qA6ytinuX9hIInr9O9Aayvg2PGtIuJHqS7XLJz25IJZag00q7K1bwrhVwLF67AT1SehhH1KnQ9_gozx-jWZIljFK2nuun2PNRk_1o-EpsBYyegLhXT13Wl7wY8yu3Ou8NmOfm7WfI5OtNPg2VDqy7DcDcP10oiZSOiDIGEk65v7GDhP1edI0uPix9MwZyBiPPoWwniyjCrD37fSSyTXIChWrig5IA4rrR-fWdpxe-5NNctzViLU6407eH6zsFq0xOgbas1_6WqD5pRiPi6u2BKtxkiBiNWFiyWzu8OilStJER8JXyvZUk8R00LhfRSEUnI8ZQRTz7WZ3jUyxUuv6_PoYfKjOqW1MPSD_-PaJHUc7xZKwDBD3ni9D8WXD4H8Ks3cyDyqOQ09dI5Ff6UkSvhjC",
+        "ATKogpdlPRnGRRO5HtH1PGaROUurzjK3doxj9PsL1EB5IdIJotQoSyOL_nrJsQ2zfHMQ5iJVM4xnOOhpx1v5S4OnL56wYH0pbtrHJIjwSHrfnVyI3XMAVgtyVSUDGEgV1ShmkZogqXtH_WnOMTO_VbJSB3t6y0-TQf5yTBaIoI5Z3hlQvTjkelqd-iHQ8IkuRpCP32ppc6_XdsUmakjVlPZH2N6hJS-LV0e8jpiw14sUvbye63JEVCVUD76073pYiOitElXZ7Fm-feE3YI2Js2VsUZzCDrS7314n9eLBwD9cK7GK_w",
+        "ATKogpeEnkRa1QMb-tEgjRNa8BlnLi9CPBczum7nRxKlWz9MO8xNhqRqoLXTK9NqdXf6U0SLD16-wQy1SewEJr7RFTh_bDSiXmTwWioUbR8jVAVgm04dWgxtQ7DTzrsIilShuI98UiO9B6QY7GrG9smEKyESaPidSn88VvzrA7zR4aMyx_IlzLRhM7fWD3-JybblwNdh_ctLsuHSYMBdAPEbaQrm3grhD0KVRu68bjyeJZu1HiY5IMF-W4hbbRMzhKE54n_JOJulxMr_tBk_2hh5rnJNWT-9I7oQGd162m9IiIkN3Q"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Cigoire - Boutique de cadeaux Lyon",
+      "address": "7 Rue de l'Ancienne Préfecture, 69002 Lyon, France",
+      "phone": "04 78 82 34 16",
+      "website": "https://www.cigoire.com/",
+      "rating": 4.8,
+      "reviews_count": 104,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ2_PRJZrr9EcRRHSYdGeyYcA",
+      "photos": [
+        "ATKogpcXdioSYbNlvrhJSbfIOjXIJjAXm9e5h0N8-ElhmzoxpD6T_icZsniGI_AT2u20Q32Tfcu2Oi-y3HZAFivRPRbCSNA3yRJNAkZBR8ZdL8Z-rjqSRA7g_hMejlh_cfehsx02tHLNI7q2hJxRNnUPGGRBk54YE6YbCYk3pEe6mZxBLTmL4Mqz-MwpfXLyeYDmm_lhLaYoS2zylePHPxAe3_Z9Ttm2WPhrcwVTDglKt9mHs30hVJJqt4kxyF2C4MKBDCeWVDn7gZcHE4lrmxpnlIQehGc34J2aSgRn7j459Aj8Vw",
+        "ATKogpeQt1xyOXjUZJ0W-AscoI8SPidU8TnA62NI09powOoPrV14VER0Nil0JRs0UnEvcWwXqllWH5ZLJdmarWEBWfMPTt1bFAXhCG6ZHADV36qH4U0V_HFDpTZarF1ZAZ0bCBANodPsFemryHAuHHclK1dfUxslK415WzznNS_KTLwQytmEBeSK5rNMn5TVq8eULSxT2WRwLUgWrmMdFyWz_dfH-X-2dCFAKvzEfZt0-0YpCgt-pkloSGwgW_pZke_QHJlrkL7cX3LpVHYINT10FMb1jvNezC7Q5wmhT9nvHFZEtw",
+        "ATKogpfFGybuyScMrFrsJfzVccz-ElDpQjlK3DbWOX1gfUQKYim60LZ5MTzpvpRvrIn3fsd3e216ZGOgjQ7Iisn7PvDhmSRwuL_wdUMx585Gl8yKZtvjXNDdRm39mTgmtYcibdwlEdR10zehrudT5h1sPqYSvjXFLq_kzLlKyh6b0K_ReeWpMAW73OcvFUzVJBaIge-UBvQWEOeCugoXgnaeZKmPzQ8OVQf6zBprDTe1xijEkgZ3ZPSSb2PuQdD-HBoEzSTN8d7wOzAewxbcSTsIX2urqmpHGKl4olc-cmE07HLHAA"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Village des Créateurs Bellecour - Pop-Up Store",
+      "address": "3 Pl. Bellecour, 69002 Lyon, France",
+      "phone": "04 78 27 37 21",
+      "website": null,
+      "rating": 5,
+      "reviews_count": 1,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJRYPpFOrr9EcRLDDHbt2qhaY",
+      "photos": [
+        "ATKogpeYKCGzc_K6DB9VOqWTkBXoIHd5wDKEo8zoNedGdqQtYO7mugFD9XtAfyPubFfpU0_bu5ueogIwKLNfU-HFDCXbQujFbTZqQwBVwyayM5-YwLm4go-7AFtqgPwvxEElMUNZXjVVIKAKuUyLRrP-hL_ZCZGLtJItz7i-2duCsrNUqir_IRozduPFCLRnxhZOzXFoBEtHL72KBrk_8XmAhDFaAnmkyc_XIwBLAuC_Ba-3MJR639iU9NUTgNpXb5bOtswa8TuBpcxftUkALpaO8ECP7hTar7cLS7iLadYmu-AHqA",
+        "ATKogpepx7krLq9ZK3I9bpVMtZRY_gua90d4n-q8tH7RPu8JB2xk4Q7yIOQpzkovVKf8eYgxfNxCjEHgMGsvGMg_40FPCiDD3PHqDj8C7EByZRavX2iKaegzLxJKeaz38IMi6Me_URHe8-SMuSsHohoRFcH1afXIhXJRmypwQUtPWuMpK0nadNCNfiLB4-1d0cPxsSTaicnVu1qLNhkcLbGcKOKMTJFTGTPUq3XLNPW4jW6FpMvY82u5C62r1O_sE64ojKoVxkFopBZFqbgoLO4ijsfaWlsPUiYp9C_1UvqWEQKkWA",
+        "ATKogpeQSULzyS_wdvfb45H4JDztHqQXUb1ofXd72ZKw-zPc5kVIFAqt2M89Y_1K6rLziDzLRQuAX7agXvXZuYuaQiCimrTyvx-4yejn7c3QiDBe4138CyY1VwP2EENMDx--9qAXHFLgvMMkr1b8qwL5SpLcdnSXNuiQHPEDDJT0um1ZJX8lrWj8u33Z773s_HsK9p8MLvbkoUjRcvAU5316JPs2zMVdzUGJIfDi95_kBWa6TZq6k49OCY1YKUFpht480DmanXfXAnd8zdsVLsFQDsX5luyX4wZ3oFd7Iwxz0e1sPw"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Rose Carbone",
+      "address": "8 Rue Romarin, 69001 Lyon, France",
+      "phone": "06 50 16 67 42",
+      "website": "https://www.rosecarbone.com/?utm_medium=referral&utm_source=gmb&utm_campaign=lnk-gmb",
+      "rating": 4.6,
+      "reviews_count": 146,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 10:00 – 12:00, 13:00 – 19:00",
+        "mercredi: 10:00 – 12:00, 13:00 – 19:00",
+        "jeudi: 10:00 – 12:00, 13:00 – 19:00",
+        "vendredi: 10:00 – 12:00, 13:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJtZtwCvzq9EcRrxqBdcBozhs",
+      "photos": [
+        "ATKogpdD4kYrvdlxiU-NvPA7En-qTV0xFOJQgyy_G11WXoY_7fQ2RYZbWfdk_nx9Iv18ZCVgwt0wyH0IciZULRvV1cbFC1tK3o-grvAfcJ3yd327e3vSo4R_kAa_Ldiu-LchOP4OArcnBwH3k9F0EzpKCisVegKkQAohvkkeuC3CZ1-jcvkcRPv0ZWUTsPYAWIroX6cYs8SWH2DppbP42GGhw4IaQU3TqCfsWTDSYS7ZEcTq_U5A1omzUqeZ8LECbLOgS332Eg7mbVmxDNKXu74VnAY2xtP7Af-61Jb3GGDUo6BAsVALQdNE9UfzOKjKhCRHm2T1nt_sSUEfzJQ71G7h-vljFGnvlGSJC6pFzPETID3aZtwwi87-oeP6kUyh8Lo3BbfTH2afcWXR9m495u59uc5AN7PxC3H7hD85TykbbUm12w",
+        "ATKogpfa19M3tWMhZKoNqOuDPGuuiYsxN9ufJVp2JmVFLTR0hJuseVhzDrLDhbtuqUrmU_6zst5g4O7esATG1qQAC2t4rK6z1CarmAPcn-QcIai5IPzIXoI9iqTtmMCMFm8G2YUkhR5Rq0c-rr8ZKz6Y0kQP4_vaLOmmUb3rsUFY3yaBEGh6F1ss5MAQBq0DHEK0Cgy-lTDWT2mf3uhssW6mCux4PK1ciu-j7tEJWOprGFXg7HWpzFqEiAAe7FjkTUJzhjS1juo07PYYaVlPYkuUp88aQJezdyFYx9bckBf4jRyX8J-8N9HhJ6nLPlA8MbtDVv9fP6GVQKeX3KQRT6rkkyHmBtiwjGoVWzCqRDwC0E72mviepdJTZtxZ0eYarvOmYma87OBPqqqNf62ZVKTxlgS2AvKg7nE4NqmdsJsaRiypym4",
+        "ATKogpfIv-vAV4OABFLH-uXnaU1hCHDiJzZBIwi5oJTG6NaE6ZHgDLPiIqPw1H6d5TX6eIoRjbBym3zSfKL9-dWw4NSxqIAZE8bHjNz_pijinRFRClWzOOdt3iz3_c4y4Mglj9wuf0Xg3t7WyeNSxm50pyHk7Vt98F5bbds_lay6YoEqDjRh1-6VwztYqyj3WPKznzoCgJG2AZaJGG8GJHLTu3gYQ_51D-F7a-IzhzXnv4h5Wh-U0UJHmBKzrc7t_p-28T5q38chFBxJ2B2LUkjuPac2kjfQdMnzkaZQeeE7ZFBSnw"
+      ],
+      "zone": "Part-Dieu",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "SKFK Lyon",
+      "address": "2 Rue du Plâtre, 69001 Lyon, France",
+      "phone": "04 78 29 07 13",
+      "website": "http://www.skfk-ethical-fashion.com/",
+      "rating": 4.7,
+      "reviews_count": 32,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:30 – 19:00",
+        "mardi: 11:00 – 13:30, 14:30 – 19:00",
+        "mercredi: 11:00 – 13:30, 14:30 – 19:00",
+        "jeudi: 11:00 – 13:30, 14:30 – 19:00",
+        "vendredi: 11:00 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJrTdZG__q9EcR0vpzE8kQn8A",
+      "photos": [
+        "ATKogpeI8TBIuQ5n79-vIL557gegcGP7qpFmNlsjDneCekkhfzygFaSE03nyjLGNLt4u-nFP3PPacB5UI3V6Q_l7D1vTzeu0pWDnnrOJB716rTw5DRnoirENlZcjD4w6NvwKxHKX2L1Ed8G304CmkjZZWGIEdIGiiKO0PkYZ-V58h9pyJqf7K1S46pultua0W_iAGKL0pm9GgtmahoudZyfP-0fuyznuMCP-dVSTLiBkYIFraavntPo2h4cCeRfRIbi4E85bA8SmeJLhKMYg5c3QhGHE1bCpdAFlLnkQJbw7zktm7g",
+        "ATKogpdzgHX3-_uXR11uGy4ff2m-o1gkfq92HBOzokq55oqk4Bq0fXcNHa2e0n85nHeO5y_VPl8zaSQDUwi3047ScBKl4svRMViSHgXWBYWnbnY96yeIKOHRyw5buXogL_-pDx6lctgSvTBzlDF3BoiHXSeWkaUqE3YiYZ74WmICQQmcpTEahsvAUYIMeCij6dsgvnBYV8aeXGCaX7Ju7-LKGR9o30GfE7CVnenwPa9CpYSQwWm1W1-gdZREkBELcbXQhCK7D85Zz-WnWteEIk8M8THk9Zb7j2ywsQ4h6DPV5qEPpw",
+        "ATKogpe-KbasmaO8-Bl0FKADY7wXutsOBQ8tAhdnT3bpSF_WNAkXG8rykaDn7mkYrw5L4VLtIy6VVsh75pCTh4OVojZ8n8F804w2DfPhyjZqbTYXr3LzbUIyCf5KTfeYakqM8tPsapSCpyCvbKAYdxj90F3XK7Ge9KFZPkY8PBuEyzug8Qy3SHV2gzhRHe6GCZOrO8rSj8atdVh9Iu8_F42aB-mVrkUvvqYyfzN1lqh8FrInlaEI5_2mDFD03lLtdK8TLDqbiSvBoHKPZCtEZyZkgSS80xenkNM76z22qB8S93KT1g"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Melle D.",
+      "address": "22 Rue de Brest, 69002 Lyon, France",
+      "phone": "04 78 82 38 64",
+      "website": "https://melle-d.fr/",
+      "rating": 4.9,
+      "reviews_count": 77,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJgxpgWHzr9EcRx_tON1sMD7c",
+      "photos": [
+        "ATKogpdxwMnIuSNhp4ORoQlhoUeLFmARrbe_p5Vo3xthCfZnAZNuC220quOwhxPFFoSFvNFrcNvDakV6k5dl-Mpc9EP-e8SWHxw2oMVctDPnlBQUoNRSkD7uwlg4pM6QA11rt8W3-LWtndjhKyBr-VsQdYzeqd22VthcR3uvXs7RQzn_YLVkDEQqAKD6TS0q7Aec8inbmg7skT5hpQVMHKGmO_BsGAbvrlX47VQurVldoUMhceMQ2wkzv4pcOO5Q-qvqoNqBE3bh4cHHfZtChmIxwWTgE0qrrDMizat3FW5xBEgHhraBO_S8GYkdR_JEmPWeXPHjdGSSQnDYNj3EdsxjU9vkurJLnrMjDzzqog9iW_fbvMu_qWiLlVuIoWGPc8S-pg8gTzW0jwhGn-V-pbKHvm3jYAqX3tbZXt1sIGhk0hoi2Q",
+        "ATKogpfPeCHHS-43QebkzHx77Opn9p9j9f4VanIDFIJs16d1crc4yXnvrkFbsC165L--Nfqa9O-yjGbiRUWz-7ZqR7ZHiyPEc7ZfPf3M5Ktct2LMPmOcsMAWqGAm2L6FD7VoyUUpxOq9Ig_iCWle_WXtcrKcL_rlCib1TbWW4RVjGDJcJ8c4E24vHNnylQq_rMIZYi7_hWsQ2wCtCm114YVSM959duNknUbGjhBsz4fCSCquArMKDCR-YleIUGwJKrMEp3zX2mioz94wzhquhcnFYHWWZFgC5v06deU2_R5PJzuafQ",
+        "ATKogpeDwW_nTAs7TBdgeWIwMZiCf6HJ3QPYIJTbXyQy--eUo4iZqvVnSeOUcKnObefry4f7iDfBnJr5DW4d-8xRv-q9UkClF1AhcM3Q8rYd0pcKSpqhOtqVC69pNgrPoX2ofj_m4ihtVmyhrLSSrAG5imdqX6XM9upmqw0pbuqpVG26r6IUi-9CNtZ0riwJu99zedFCHaNqH9jPPhk42Kz871Pr296L8pBwhdQ_bEcKqmoOFvWwhbbfAVVvMuvANU18KBzr9fayPx7UZHk0xhIT8ky1ar4UIPNtG_7I0MAS3nGZVA"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "La Bonne Tenue - Boutique streetwear vintage et friperie premium",
+      "address": "7 Rue François Dauphin, 69002 Lyon, France",
+      "phone": "07 57 58 83 32",
+      "website": "http://labonnetenue.com/",
+      "rating": 4.9,
+      "reviews_count": 351,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 18:00",
+        "mardi: 13:30 – 19:00",
+        "mercredi: 13:30 – 19:00",
+        "jeudi: 13:30 – 19:00",
+        "vendredi: 11:00 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJSzJ8PTzB9EcReXKVunWMRAA",
+      "photos": [
+        "ATKogpeoDpsRg0fqN6YUaGhLgDssVoL22zebrhTJ_NIAUKdKGFMQhznSMbK-1RC0aIqaxlSHym6B4x8kT7E5t0GefAjzMwn6OW5qnFlAFw9BM_u49RSpnW4D6AEMzvjUFITMmvZuCkcz8f9mkriIaHD0MNuJI6AwP8dMNqUq3r9Kjic6IsuZaAOvgLJ2S5dToAmgVBA5Z4thk11g9ci2zfK7tdwXHG2efyH-H9DXHt9X0gBwfqlsVbqufjfPa5aA8pXvBJwkJPmjsSQ4pf0Mh291sE8JM4uNvj0Di84UjD0o72NbUw",
+        "ATKogpdpPgC1NM_kHbNhIl_J_pizFw1IS3n7p_-0GxqbIxzAUWRmXKudwF63gqRN9wT80yjY6ja3EU1FKkBTIWmAwPX8FP3rMG2zh1C88xU-tjnXB2BYy7eWMwyIQoZT9VermfJsxIOBqNKvxoTFYbuAryVuJGkKCCowS1yl2OhaVmfyAke8A8LDdgvJER53Wn6irrG8neB3fvdid2Neih0xJzeYFWMh3Yn17WlHm8P7XbwmrxiAixHs3Lo34ZP2pRqQmzt71g_DF1FhKJgsmM8918l2Z8tgb-GXmUKEEJz7hdxr4A",
+        "ATKogpcU6jJ-qmPQDTINvfRkiZv2HTbZAiXrnx39UfZJnxnL5KEf8HfMx8VWvo9ieSQYURsKXZUvozDKLqJkStEsGoVHVsGwwN4vh-b0ppBXBq3DIYw31vV-xJNx-ElbE40eL11PMM1DYGysMBz74G_fT3E_JHdkxfSGFL_mcJKV_m5yU0-HDz0o6wPnhHWiEvIplQON7pYmJM9Tsdgu3EsFwx_qiKrdLB1sJw7YlWVc9l2hXgBRsDEzHW5s4_dbYqY83RKN73umz7AHKJoVVdNq8LGbWwDgimGBfjQSlUV55TNoaFXJ-1CzwaVItIbUBuWTdIkZ6o2tkIo2bHpMdXQLJmcFZTRCPFWFDM_eE181R5pmh-VkQN1szYoDERKOPxINiIFx4NIZEqcGGJoc55g8w3byZJ0MMczrRfgQGwlw-ioz9g"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "My Fashion Gallery",
+      "address": "3 Rue de la Barre, 69002 Lyon, France",
+      "phone": "09 52 22 77 25",
+      "website": "https://www.myfashiongallery-eshop.com/",
+      "rating": 4.5,
+      "reviews_count": 37,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJHfkAa1Hq9EcRMrPPn8NNQkw",
+      "photos": [
+        "ATKogpexYlQzs9JZZ5pDQXMCE1ISz0ZuJ0ldh1mWEQJckr8uoQpk9WpbW50Ipni4LtmmTCZMNR--fMehZKdBoUxXA0nniPeUHMBnzqt5NJwMJkT1Te3Ci06Hc3DYfR17w_DsBbDmx9LSs4iozQwPmuUxeiDdGRgMsRRoYPdgNMz-b6hWuHtt2cZTf07cyO3PBy2UygRFwIZSAHRXakj38YNMlVfufe-GLQpnuNUQdWE9XmY_x0_6aS7xN-iNmILeevOZg8PmHEmkLe50xnrxK1of86AYuyNI9nngYBkaN_R1nGktDQ",
+        "ATKogpeTglCwprLam-k1CiSe9-vN1krBguXOkEVhrgT6KgNyw4rKfpsqEP2rhSlLkZbLz4cRYODzE0bfW9HzDlCEsAF9KItfvw39EmGP3e291CqwHbXb9OWvzh4nIGgOjmMrfZ_x3i6ohr6rWoRYLDGPsIFUv6vWyf9SrZ5PYIv3CFR3jiiVWnFe9WMVW5z5X_muPCdhQxzT1LyOi11vhWR2Azcagtg_0Au0PIrI6hPP3_rqa8SN38NfgoH19TFH6anpH7Ch0nV67W6ioKantfGHP_X6WmXRsey210GJs5R7UZxqTPQGMLTIjTGovsA7Tf0Zc1gxhl5fktDVP6BzKF6y81i6mfW8swXEh1CugmrMpshe4TIFuI4nkeOU-zUUNJfkih4i435kFI_ELGNIR8XaTb2pbPf3s4QPV3loSY-O45Cv0KA",
+        "ATKogpdvKkZGtyXwSKtZ-BbVkvgp76_zOwD1Phf147Cadl8a7F5K3eP_npJNaKV6xV0-DbXGkXxnWeTTVodqTHlX1NOSCkoT23XJJyqCifze2k6aBlsawEzHuyBiEM9ST5BoC130HqaqY2Bo3fD-EZQ030zz90VLgBaHhfShygykc9xNXwGkQBS0_q35KKa1hRLXeiGdZCbtb3iYvAdowGx3Qw2uTjqaPt6nQFdyMPOndpS1DthAaX1TMAh65dGwtk47bPlg4tQTAAfhLoWD2mt9eDfjHrepVrfetoFyQLVeovabk-QxmqvC4DtQu9Uk2Lx1gCWfakft_f4h85u-G-nWE6EvbxRvthCpQ7B79PRelGUEFRLPwu-ntIsu6VxxKe0azy2ub2Oc4yJw6T_EjD-sgFNeREmNb3WXbKzToAJpFZ--H6CV"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Ojji Vintage shop",
+      "address": "15 Rue Désirée, 69001 Lyon, France",
+      "phone": "07 50 95 15 20",
+      "website": "https://www.instagram.com/ojji_vintage_shop/",
+      "rating": 5,
+      "reviews_count": 204,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 13:00 – 19:00",
+        "mardi: 13:00 – 19:00",
+        "mercredi: 13:00 – 19:00",
+        "jeudi: 13:00 – 19:00",
+        "vendredi: 11:00 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: 13:00 – 18:00"
+      ],
+      "google_place_id": "ChIJMSlLGRDr9EcRe-cQWgjNwB0",
+      "photos": [
+        "ATKogpdhU8FeAWH5huevztvna4ToFPec-yLTVRWqZ-vt00y5icDoihIk-QY8fbCdnlif2V9YLNf405twjwTM2XEqApcBXfVfQyvZtKxdVz8R454wZ2XTKmTj9PKoCzFn8ywMk67KhmPgbIUhWlbX0NNpTFaRh7Q6fop0DyLUT4GSirTIJE3pfboCBE_CtXkqU_tKBYMfIpVST02TNRtSseRSocj0yF2-Pk2TrK50pMb3PfhX0sxBzkQtbIbSdxCA-_cyvFoNJBqX0FOogyY_B9UW76yT07cQXb5xHosRX4c0I2224vprzIC9S0H46-Yyb81ZiabUaldmXNGklWuw1un_Z9UBqhkyNi9MzInnUeo5oyDwz_cF9UfxQg_G8xUrIZCLtfg8Pb6pweQFWMqzC6wKUUyeCt6ISlZIRu5AbjHM0CqtSStK",
+        "ATKogpfVgWrXxdgAsigeDXVDrNRX_9oEyTfXB8DpuxDwf61cBmnCR0eos5tBHnohWw8a5TjKplhDlJPVXbN6jDdoZ3TwouJgeZjitLNzeHUkP8DcxhbDfRQ3HVIqKaaT49S5nXR-K-y2yzEAEE3iFnwjPTxCM716chreTym5ci6WQ142HQIl2hEtZzmRQbQyQ3rREYmG4vgClW4RDtwx9J6VkzU2-6zAKrHnYuF9KAmd0zYF80vlwscsljiTGAbEqkZolfAHqGdE58K-y1k7IcHGB87sIgFPCOmuFc_-83Uw7QSSidJAEdYvb1Lq3ldov1e4Sm9GHHsvKcTuHzpF-SXJIrtqiPYtn_9XbgXiQOcvCITayUHtkeW6ibXlZgoANE8zH1FW-5gOzG5vkAQzA-Q1uLo7RcDEJ5CRz9J-3PkH5PtUcxmI",
+        "ATKogpfmf6h3iIsBP6zA7HQ_LKqQ_o8kfo8-4oU2blvxTXelP5Mnw8roF_dMHRK5SgSUxGO1U84ofE2tyUfqgj7QQp6VW2onPJUbFnH5EKqNCNmQiWf9B_lOuAP2rDqnrn49kalTjbthcaS7aLfZ4hep1S0PxBuyFqGmVeV3BgCawUhldXAZQJOdS6pqKulK1zMM8kaJRFz0lgmoD0MVWIRV5tX6Eg8DIUjZQdg4eR0-5OxfOxw9DleF_sE6wI3GFG9eg__lKUuZJfnCE4ua4pcDRnV0TaDWFA5TvSh2-Ds2JI_WAfOWuyFn9ISoo3jjJ-BW8tS3lR7gbQCGoFDfhgnw6cRNoEvJa7elkQFBUcgSyFkD0YYV8b-RWq8nSPSieg0HoVIaDgpDazbNc4kCXG7fwLccXbjQIInJte1NRiKsx5U"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "BonneGueule | Marque de vêtements",
+      "address": "40 Rue du Président Édouard Herriot, 69001 Lyon, France",
+      "phone": "04 72 16 00 91",
+      "website": "https://bonnegueule.fr/",
+      "rating": 4.7,
+      "reviews_count": 192,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ2dftL03q9EcRVchsW7NKTOU",
+      "photos": [
+        "ATKogpcyULpfufQFQjbHx0KBeJxUiOrxMchALIGY_4pNxfvUwIIjaj6vTBVcPDHwiMmrGrlmW-iR5BhVhI2yjTUhIUXAXGvB36BPJ-iy1SdKkexunNJvEndhVTB9JnY38N8sG9Z7_YHzwOvVhB8W5R0ACUbgpHLDlG-LzBnRnQBVYM8rbttJDijPQ41ElkikWRF-Nnk_cI4QKO2lI3mT_KLLOMTL3G2MBXqmKM8YusXHxxdhVeL1SWuybyUm2JIcAU2IPJ75OHHtuRafb4gjLzBkaPNt7UodWSL_Cm1VTyieO638fw",
+        "ATKogpfiowN3bQYGgmTzIOpP1s1QLG8pFr3idvLwEbS3C2iYMPKHf98yTjvPpgHU0wL4Fd3T_Mzg4VO8NsuFp5ewPholBZmNu6s7thwD3cziZXy5wqiBAquORLyAResOqpsSzO_NzzSGqbWPt70fVw6wajNhPmE7iBiP-VQB-IwKoh4u_RsitMH79elAFpSWu1zZBM9Yz_qeDF1x56GshFYIfmLE9YhlNtwyH31IfzBmPveHidlopAk6DsQhCKmO7G9QIKNDD4LQs9EKpery3xQ2Dd2uAP0knPLURFV7cWIvWMdWdQ",
+        "ATKogpeXDTYxTWHDhSjbAv4HxhiQSQgsPDJRteouNC6k3G2vD0nNZ75-g7urLcJqZAokLGLdLMAC5typ9B-cMfBUZF-x60N3_VvPkHWbrLINkjru721woBOZVbfIx8VcSQ-kePv-1OBOxOOIkqSEx03_7w6IcWngKNOhZ39AVhnh6q7nktcbIJc1M-38X9KBIbzqEo7R1UxS4fyN7fNm198X1sQCBsPa4OH4cptdeBAP5PJu6YELaT5VRYPDsDeY92GB7lRdrVKyLDSqx7iF4omRv7jq__ktv2-FAWB-zjN7Kve65w"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Tout l'Monde en Parle",
+      "address": "17 Cr Franklin Roosevelt, 69006 Lyon, France",
+      "phone": "04 72 44 92 26",
+      "website": null,
+      "rating": 4.2,
+      "reviews_count": 148,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJizq9XnXq9EcRV91yqpna-KM",
+      "photos": [
+        "ATKogpf6mEat5fOQDHTzHcXnfUQFEjl7Dw0xjpNPFxJ1IxFVibDobSLkksjsjNsbXTlCGMBble-yPDlO0pdyr2J1xtai-7SVuiPAUho-Pr8YmOaTLbWG7_ICwKXpep0PlvVKtvbjSHR7R06Yhk0lsQ_f0zbOI44YUOo5O8P97Bvth5AxRomFXVxLZ6_B4w8Ay8G-qbuvWnh1IPbAn4R1H-Ec7kswZ8rVhKExo0NZwplNG4MKRf5R7B9gTtsrb3eizNzvzomqFiX-k3fW0h25ypC8jbStgptl-Jseo6_62idIae0vfearVF16LFnzBzdQ6Jp0QPiZUaYoPFo567KnIFhCJJJD8tzJ4FOlaLxaaFvY0PI9qbUJHdVKdWXT7tGJqlI6UdJwOvzmIkBEd1M668hgYN_ooods0XPVrz_f9JUjj0M",
+        "ATKogpfr6Iv0-eL-4P7iswoT3PGIpRWWABwNeefUFeaSf2-NoTUfboJtbgdJO6v3HLTQPH3SzB8XvuGFOPiNz0L6fBgW2TrxuMf_R4mQ3ogqBRp7PCgZ_KF8z92NqW3wMoNff_3gw-JdxCW2-SHY7Qp7XblJ6ZjS_GHms0le3095_65sExb-AAgsKD_9jwWKlVsRYLspNudWSTN_hiRWYlTOQj6N9j6YcKlI0kpiS5vnjV6ODjmCJqetZPRNknJXAF3NajG5wpH1e14-XF2EXKK4XF1VFIS0p62-EAH21CnJEtzXYg",
+        "ATKogpfDU6frnAp6q_Dbnbs_y6c3HYLSIPiJ76Zh1LFL5UTSE1Y-gLYgyqmy0kYa-vRHzAsSvrTN9ucMwoogbxk5odCx9j3Hrj9hgctlzQZZmUiLTCvDw9k1qG-dAu1iC2fkrJ_Vm9EbeQvIR0oiMYbi6agheboMNF5p9vGJvFsj6imyfDKpODZC9-MbSc7UQncYM1mN1s3-ofnWHqShkBUytk85PZoJEqO-4booyzTiuVzL2kiwRNI1HgL6rCPHxf4EGr4iAbU5Qdti48kFT-ZciZSuRO_Bt1zR8BUJOdc6gMmBLg"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "boutique new delhi lyon/ Nuances Bohème",
+      "address": "6 Pl. de la Baleine, 69005 Lyon, France",
+      "phone": "04 78 42 63 35",
+      "website": null,
+      "rating": 4.2,
+      "reviews_count": 89,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 11:00 – 19:00",
+        "mardi: 11:00 – 19:00",
+        "mercredi: 11:00 – 19:00",
+        "jeudi: 11:00 – 19:00",
+        "vendredi: 11:00 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: 11:00 – 19:00"
+      ],
+      "google_place_id": "ChIJPYEUlqrr9EcRSRR4l3xpGN8",
+      "photos": [
+        "ATKogpcY7lPMviB0m8t5FuSK4caG9u9S8hopkzX3XPcKVRNNFOK5sU75UqL4XtnG9bDRrixHYiym9L0JKWRF-zpwAT-Fd6fMaIB-6W_sGNXXnhAvhpaZE6l8kA9i8WoM2UOsGepNHSRf7fEmimfznFcDW-cXJ3L9bqcUmT-NbyDGeoPlQxVzsLMbU7ZYpYzZnkwGAAzvA6Q1uBdGegLH14h0llH-7Jw4tpFLsIX0jU6yTiF084ovo6sRDtxv5hg8b7w8OZt-qf0M8xbAeuSXpjsKIKEdlKmfta2EJRHve8ClT6unOw",
+        "ATKogpeplXHLREKI0f1NocxkHEQn_cbKLF_VF83cYMzDksWjAjt4UUPJDgccfm17A878ZomQxAgr1KT-8fuGlQYZ2apZ5Our5FC7y4C4y5pcjMet-2pIPBU5qNB0myne4vRSlVPWrVy4z6ILTgobfuo4N6-49eK_bBhAac4HaX8WmUaUX87IeO7Rc_8ZZvK9cAEKwLz9LDxKll3Tnzxbb0TPUJKbkFzM31JXBev9HtzZFmIUdAXJVTuZ81IttZZ7JoGUNC_H0SEj-BPz-HgHzN-lLUO9dr0a3OZDAZ2zsFh8-VSaTQ",
+        "ATKogpexCXr4-X96ex6J4TZ0X_CkMUK3v440wbwfaC13-w0lwsbYlg6grrpGRBhDuT22Dikhek2vq-Yb21P8xlp5egTgh5RbCLwArOVjmnciMUxLO-SC-68CPq-je2H9FpodnqFA0aMbact0KbeNINxb_hNrqKdDVuve_pOsWdMh-ghj30Y3JAaZZrm6m9oBDlxhOvx4Rs_9Bg7oVBY5rOpeBQ9_W0vErOyabXCkHjF--7JeKiKoH3v6LK6heRmtSwCtB0p5xH-Nhgy9g32D5XUsiJ96WiifM5yc08X8Cy2uEoLO0Q"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "WeDressFair - Mode éthique",
+      "address": "4 Rue des Capucins, 69001 Lyon, France",
+      "phone": "09 86 34 73 51",
+      "website": "https://www.wedressfair.fr/",
+      "rating": 4.7,
+      "reviews_count": 61,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 11:00 – 13:30, 14:30 – 19:00",
+        "mercredi: 11:00 – 13:30, 14:30 – 19:00",
+        "jeudi: 11:00 – 13:30, 14:30 – 19:00",
+        "vendredi: 11:00 – 13:45, 14:45 – 19:00",
+        "samedi: 11:00 – 13:30, 14:30 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJfUIvTv3r9EcRCoKJZKKkXkI",
+      "photos": [
+        "ATKogpe6x-8bVx3Ggp9g_h1Ra1ujpL6hffHpOzv486LqBHQDoon3HGG4leOx1aj04cvL7m4cfVpKGo7xv0avd66BmlrqTgT38dXcwzbZgYbjKqW9xtOTaW47py4Jzcm1joWs76oZtanRJEMkIt4ormH2zRjitWZfnTLpxBqTR490MZmdNT3FFPNCkcmnq2ZOwoBg2WKV-uMVqQsB8z2yr5ToxjToEg4bQEhhinkfcjLoQjAWmJQxVzyc76NBMy8ySrAcZt0Bi3TY5Vd9RFxycCxjh6Ry78yCh0hNv5FPGSQi3wFeeQ",
+        "ATKogpf_GgH_7eNH9flTEPFEx6cmfuFQcXt2qmNnCmoCTqedu--ipx8uIwIq6j7sdGhSqRkQHFiGQkSiW9DcGMJ1DH7N23sqk8S1SY3mTY0rt_cjvVOgndwH5-097ULq0Z5XRWQ9o7OWOC3Nht2ubtj2m5OE16WJwOF_Z9NQTg4XfoHLyYRyKjlazbB5WADsS4q4hdexVAyxqweGMQCr6yEx5MoZmN9sgH30-ZdmPh_mUxcr_UP-F6ffyfTee1ismgJSyWvac8YezMxQNJRgnCIxg1KbKlIwTa6qlA6bKRFhU56tdQ",
+        "ATKogpfHL25yU8DTRAB9SwVOr365vCygkKhzYbxK99gym4Y6U6eiCarHfeEnck5JI9B_Y5HhvSlgzBCpLn0vyjmIVeS1zsnb9d4h1Eo3QVq1knvEsYdw0MucDqcA0YZkt9DrPy87G79gDrAUA4jhJFKkwvWuUy3z5CdEKJYayAH5Rc8xAuosxXNm3gvlvZWuP_Aj3Catmrci1nccUr0U9yieaxPSmmCVp-szvyrH2_aFnSSe5rdMkIXAZRzyiPr055DNB5oQpFWeLXB03ccBdDQmwoAnkbkdYXOKA0EPxzq1BWr1Zg"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "AYNI",
+      "address": "26 Rue Grenette, 69002 Lyon, France",
+      "phone": "04 78 42 52 30",
+      "website": "https://instagram.com/ayni_lyon?utm_source=qr&igshid=ZDc4ODBmNjlmNQ%3D%3D",
+      "rating": 4.4,
+      "reviews_count": 41,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 10:00 – 13:00, 14:00 – 19:00",
+        "mercredi: 10:00 – 13:00, 14:00 – 19:00",
+        "jeudi: 10:00 – 13:00, 14:00 – 19:00",
+        "vendredi: 10:00 – 13:00, 14:00 – 19:00",
+        "samedi: 10:00 – 13:00, 14:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJqds18cPr9EcRfN7Z5qWgOXU",
+      "photos": [
+        "ATKogpdsEUpHCi0VZd56tnUxaWKQCMCx00U0DGz3U-aqJ5yPJ7Ss-sQwHSwpB9gpBo0Cc1tCbEFDNt2pSQSUlcE1FZd5fVnMZKPYXeZzWl33N7_xMxLPihHfL8gB4coOG8haD3UgFgFPrdi66A2wNDgdvBa665tp_kPx7Q87zu5bouNSQdhm0smiIAjW7t9gxURJZ9w72seOBXySskBJynepEI6DoHLea-CcnO2Mw4TmJ6cKRwSqqsG-OejUDj3ZEwqAnJcAJFR7Eu1CrvNU_G0AaVh4BPsx2ymGNBhB-qfER486JA",
+        "ATKogpcDEBmrB062irGVoklpWXHCg_7G7fkBJAHzYKXkuR2Ct5tYh7xGi7Q8yHm3s2OyE1wxBVhibB6QxuadWM3AHMirGPZ1jlRLxixVsS2_wYt2RvuSwMVDAEkP8EA1IKKVUjCkAGwJ5FpT3XYlcFyVvQ1B-mrm8TmtQHVt-LAX8-UG-Bk1W-u0PavS5i__Bttblvo9_sUhvCn0B0B7yI6F0RCRqKq2G0I5X7QW2ZccNHOjcNu1HuXPUIGyb7dFZawntmxpWPFLmTMWQPSOEpAuQl7lYSzLRjuxPJTT7NJeScWztA",
+        "ATKogpdfTjwk5gy8ZmI-9QhEZH9WkCtjsWg9DrSuCoJdNb1W9lAXbkbQPNQIzio3okD03aFMBOrQ9xiSZQiAyTas-8cd7StKtW3VU3TCV67II9pBZXakXgrDfE5KNiqpau3R9l1GLtl_h1TNybxDaKzHY7x6D9RMPAuMvC-cTf2R27kKkzAVrrEYnmF4YGh4R2oUUKkgSoWWkCRVxrkoE9O5vQYM75SaCLkOvbGORDdUrdJnZeEfDOzmX_3owgSEpTwpG-xGSu84P92AuKJi7iE6v1G9FCEpZIlSQ3bG7-vi3WX9cg"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Mes Demoiselles",
+      "address": "9 Rue des Quatre Chapeaux, 69002 Lyon, France",
+      "phone": "04 28 89 85 58",
+      "website": "https://www.mesdemoisellesparis.com/",
+      "rating": 4.8,
+      "reviews_count": 18,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:00 – 13:30, 14:30 – 19:00",
+        "mardi: 10:00 – 13:30, 14:30 – 19:00",
+        "mercredi: 10:00 – 13:30, 14:30 – 19:00",
+        "jeudi: 10:00 – 13:30, 14:30 – 19:00",
+        "vendredi: 10:00 – 13:30, 14:30 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJl8E2ulXr9EcRfoOeg9_2AK8",
+      "photos": [
+        "ATKogpf17DjxuK4Ad2HRcljveiaMGV6EXuUD-EP6w7M8uzbTClcATHceVWzfe8nPxqkw1oWrWX7pRkDCfZwv0c3cnVV67r4snNrJFd60ssOBMlT9-5c9CIwAYwQasYxonIkIbWFKOYyYhnZh_c8tMeeXLfF3bXggjuNiyay6R4ROVgMfBAh7b025FRJ1lECn_KWNHD0ecLH0ke4h47RUErGwnBC7rUvOURjRg1zA0eopM4T0tUmvyHF9VFKhY1KSijuLC6HsdpTrZ1zkZ1aAl65oqs8XeC7pKRVeldcMOCGDdlYHNw",
+        "ATKogpc_UDvfSb9xUeXK3nHbBSIziLxCvA3_WW0L43xv3vuBc3a7lKjVwijrcRSIKCroLxJQrvGItmeq0mH4FrpkRh5YmvKeIGZrKPjKT7IWFOxJdKnd2mciFqFOIdOw8VCyRYPahP__MATWHWwq-33ac6yNO2bNDerNmEpd7VPRiN-0dc_6RG2sEeThRi8q34YajTXfZlYRChbNXbCgkvJ4a_rA5IbK-6AfNMLWBsyBqf0x94GIT6AHLqU9o5-i-yvvECyP7IQ7MEyddQYZqwl8nybN5xGo-xs9AOED3HS1BJeaIA",
+        "ATKogpczF6ZdXrb3_yZcjwCf0lb9oPDvwdA8tXVYsVuh_2eGYrXAt0O8SwL2xgIflghY7lTgWxdN_D_JhKZI5ySWYBvG1le-xTleHYl9SyAb4vu3H6pB7JV47IbSK107MyKShJIiUnan-cwJ-g4A46kCXcJnlcvdSzyl9O-fwxTgaHIjg4i4HovN1_z4MYHuvj6nIpFSR1tW4Ox_jPASw9ei_Wzk9HHUEM_m83w-1M8K41U22LbCg2RKHl0Px1w72eGNEKoQg4-JDN4qtrJftYZ2l4Uu84kE7UT0Z-lwizPOIO3DKA"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Esthy Boutique Grossiste Grandes tailles Femmes Lyon",
+      "address": "11 Rue Pierre Corneille, 69006 Lyon, France",
+      "phone": "04 78 52 29 51",
+      "website": "https://www.grossiste-grande-taille.fr/",
+      "rating": 4.8,
+      "reviews_count": 15,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 08:30 – 17:30",
+        "mardi: 09:00 – 17:30",
+        "mercredi: 09:00 – 17:30",
+        "jeudi: 09:00 – 17:30",
+        "vendredi: 09:00 – 17:30",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJfaKOH_fq9EcRcoHfvqcVGzg",
+      "photos": [
+        "ATKogpfKiiP7jaYM6sg-hD8bjv5m2biw1J8Yo9bvzndvAWVpcabilv42CpHZxyledVPs0oDnC1ghBcYfmTnCdxu3dlGlGI2QepGMyyuHtuIdzZj9nyfsPScB9i35ssl4VnhJwSWqAkJ9SyNvd1tUrNR7ErVTwwEGluEzc31ifW8vAQnkTz5iW0z4rh7yJh3KCMlbECT8BHc213534Vu7EYzJkfjjkgiEAKFKdSegbyuT6TzCvoxN3Ola3ZeDhdwwX1EBA16EVBdzlOjiXAuWbxUK4qoYNr_MZILDapThql-PahNpBA",
+        "ATKogpcRbaiK8ljB7kNFNNPsABf40IgELw-R1ZpjUkwfSaTFoDI9gCwFY3vI0wDxHBFRhZg3Gqe8mLmCimAoyxCkHsQk9ZIFq9c1U5Y39K0kAlu-Ewm1qKglgaZ4CsP9JMshutyAkuYh1RZXByru75otsgljRzckdHSWExo-ffdXSzY1dR5Dsk0FZsXYeSMaPpkdkvAnH3EfELvREk5MjjEiP9y9zond4Yi5vxyJ_SxUoqx6ww6egJnealdSreID5EVcalq-SKks9Q6tuiZaTnGCEBN_Wl-hJR9uENWD05YrgBXY7w",
+        "ATKogpd7sRK28GcJziq7vbG-G-OgUFd75q77boR8HY2DF81m9Bd_c-a90CHxvTlxFUK94RyvjK1p4tDhl6Hotl1ywYWgMv0F8M3S_KPEaw8nq5mpAkkh_JU_C1lBKVzW_cDoc7uwmcrlrEszxdtuJQUWKWnT3BvuXnrNWTstf3OSAvCsH1mdTMSjVib4BY-Vvd9pMhaDOJ6Pj5wiy874SmRCD-wZO-LMqN7nV0Fqjej9YPEhFTjVvwBTl_FQ84LkBfU2ZtHdFILuiIncvHBcjN7fZreiyr3jJdd92ezD12ulqM1AiA"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "LULLI Lyon",
+      "address": "5 Rue des Quatre Chapeaux, 69002 Lyon, France",
+      "phone": "04 88 00 89 89",
+      "website": "https://www.lulli-sur-la-toile.com/toutes-nos-boutiques-mode/boutique-mode-lyon",
+      "rating": 4.1,
+      "reviews_count": 155,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJfc5zdVbq9EcR6jhMBw1GoD4",
+      "photos": [
+        "ATKogpcvu5Ftf_Uedu05htmxTu0_UrOUPdHdoaR8UtJvgl7lT-GWHdkZYPky0m3wKtY4big1XVQl9hXAGHxdFa5DCU6GXg8jqkw3aOW_qzaYo3mQOxBaZYHDSJaKtn3tHgQ4GqpatEGXknhrF2tGn-eDP42zx5knq8NEEOgOCDfCWZH3xba94tta59Bo9upsgeqOy1nkl6Fwl4TDmUSuAcZpCPFVC7UaM_cT5mk1oapfn2qn2WMXP9VmVD1B-6Yzx5qqmfRkd8-EW9J2SgMnpBv2k6I6Eg_-rh2yscnFs2ukrs8njQ",
+        "ATKogpfgvdtXJrHehiBteRU9IbYshRXLD9GOSxfRwh2MqsVuJhoh18IaJlBkwQ6CGTEHuNyV_abqGXwr5whnMWmtAmWsqX9vMqKiQC1K0-TPFiDU7rxN5mLSkkIDHw5R_BDmgGHYPUztTbC_4xk1dM12K46AuE3TmvWTJ8ZyaNc0wXq_YX3ibuS4oQge-hynq2x6PsPrN9R-mIjLZ5SpiWG4weav5fnNfYAEXBIUtzoM3CqwR8CjTvV6W36Hl-rmWLuxLNYXy_js_ivrNsqxP0hkwSRKNuWGcCK9ZIljjxFM-ohItg",
+        "ATKogpctmSFh3yzfmjza3WMjr_bSP1JppgNefjxPtEVUnjIRrWWN7o_cSSh2jAQ93jg3qFMsrKwcT7Lopyz6WOVUHbrpNdP_LOh0h1XSMd5ysooeiif2sMp57qj2P_N5LA15c1cVkBNKkVo2GucwxpKjNLO1IjXPIQa84gcBd-uupkWpwXzsXKGooDhTR9z5y-FRzeVRzd64ccbyUo7G_tcsWCSIdFr4w9gZzcx7hWc34GzOAq32seKtNvYNspPVPKfdSReFln6N7tKjEunesDo0HlrzNr9zyTJg3qxrwPayuesVRw"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Laspid",
+      "address": "3 Pl. du Griffon, 69001 Lyon, France",
+      "phone": "04 78 23 54 66",
+      "website": "http://www.laspid.com/",
+      "rating": 4.8,
+      "reviews_count": 49,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 11:00 – 13:00, 14:00 – 19:00",
+        "mercredi: 11:00 – 13:00, 14:00 – 19:00",
+        "jeudi: 11:00 – 13:00, 14:00 – 19:00",
+        "vendredi: 11:00 – 13:00, 14:00 – 19:00",
+        "samedi: 11:00 – 13:00, 14:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJeeTFB_zq9EcRv1EL49b8sFk",
+      "photos": [
+        "ATKogpctAxsevykoCaWRCdK7DeppejHgrzXcjuWlkj2Q0Nd5mmgKUq3bJW0aGO7srX2NIoEFegW8WKpTzQ7Qxs4QNMOpT5fKf2U8YERijfFZnOUizwWEQaCL2H8YtT0QGBd6eC74STTnfli1TdONcatv-ZhPNk-2gfWcqhfwxqdHcAbjKOtUKUSJbKpa6it3ilf3nYFHH4gVh4j-VlcSbNrb7pDoOaQBJFGbn27VKc4mzg9Y28hHrg4KG9kC7grGyaVzOfFCA7hDI4cGVSKmYR6hOJe9GCbNu0A7WFpY_cKn1BxYhA",
+        "ATKogpcI91ds-PMdmazYBePUjISJ1PUsotk9jSoGNlTXPxg2Ec3-v4DmIcZbKXUu88YLOFlTsHayjR4rHLBEC-lPQsiakHmgUMYkmWtWqe1J5_atJIJ7wxxEPygHrhGOm1d2lq5MBdPBo_aARQZK5rc03Kv4RUvzOFWM3lKgt_hG9WiI89yYBJQs1HEc6R6qXbiujGUGpjz2ZY5nkC4gx5kQQDGRbY03cpGSk2EVZ_fdSLTNoGZmkkLfexwqLwmGyMSERRlZoQtZ-rQgC3BzmSpr_FbUjWSaBGjslK_470WsrFwnyQ",
+        "ATKogped1NFwf2KuDMKgTbAMbohLxoHaMDtyRgPCBBARNf64CZtrowW4Odo5iC1JglrVkr-lr5qCnCaRXVIRiGQBkXpUsAo1wKTnEljGQHW9puRsTtrtNVV0PhSGaHTt912_Mx8i4k7DGacvQqz2vhi9Mqjznan2NGTGbCdxgne1akjgRzVpl99N2rXwLNywLcDx5s4PSMpgliYp_PTnhz2qbSz8sGpsaj8T-M6xJJYVnJxc5FuJrBqav7NT-Kpe27kB81qgYHl0OKAqBPM5V7txbTqWMfZnxFyjLj3Qq-sDSRjY6AgBZvEEfqQ6bCKVk_NAMDewr3iMJy9A4420rdeDCh-_txuX-RqX8PGCQGZqUPcUkIIvmKhSBOv_PUTyvvO4SgMpduNtc-61X42mV3ikiWAuqZUQ1Ej90USHroevQx0"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Ego lyon",
+      "address": "5 Rue Paul Chenavard, 69001 Lyon, France",
+      "phone": null,
+      "website": null,
+      "rating": 4.9,
+      "reviews_count": 11,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 12:00 – 19:00",
+        "mardi: 10:30 – 19:00",
+        "mercredi: 10:30 – 19:00",
+        "jeudi: 10:30 – 19:00",
+        "vendredi: 10:30 – 19:00",
+        "samedi: 10:30 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ8Vc3WSfr9EcRprqUZFZoVqk",
+      "photos": [],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "A DomiMod Dépôt-vente Femme Haut de Gamme Luxe Tendance",
+      "address": "15 Pl. Bellecour 3eme etage, 69002 Lyon, France",
+      "phone": "06 42 43 74 37",
+      "website": "https://www.adomimod.com/",
+      "rating": 4.9,
+      "reviews_count": 100,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 10:00 – 18:30",
+        "mercredi: 10:00 – 18:30",
+        "jeudi: 10:00 – 18:30",
+        "vendredi: 10:00 – 18:30",
+        "samedi: 10:00 – 18:30",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJc_n2osjr9EcRIghdGQBp33c",
+      "photos": [
+        "ATKogpfHsr47h6ztH-XLl5GkDFJXjZIUWxtBWJi044N5M94XIpq8-rp1O7UHQ2NJtmBfBG0lY5ZNbWmHgM3TlyiCLvZhzzx1apGsp1hmJnklvEVl36XJOqeFxTi21ZmDQumx1tYaI3fq45rz8UbguDLTQT5NIrH_wD2RwvapAC-y-taARhwnVqNsEolyIt0k2Pl-gY3BioutK7yjr6YAvnVnsx0oD5VlcN0Us9XIM-clhpQCnnWqTh83DcFU5pd3Wb2SjFL4VLETLeuoXeg-_keXwRZU2YFfZDkwy6rG42PDmjixYVF5YESwgTn11_n7cQsoocbxA54AiIHqJIoLybaOOEV9K90hay6OmE8-JgRy-8TEc8MDqE8gg6oSWTgWPTc1PmBl2x3W_OV6-IIet7OCNZ8zE0VVYsTzqDD25CAsd_PFOQ",
+        "ATKogpd--QFSagea0RPIRCuWw7p3HbfNC2wvl5HrvkeyJ5yJV-k-QFMMho-MIwEAXOwqlxNjicVY6YIcTvWRPBjRE3NSZD6DmuVY6SAK4CZe90VeGHSabchJMvoqgGAVm-f9iM8jC5sRKOKzUrfz1_4Pmgq9K5D-XZTZIHTVoIHKi6fCX958AbIARE4jiIQulCOGGnw5BYzMndbsilqHapMy0Ov7w89ak-lBcAYAph3YVc-BCM1T-JlYon8tt9laNRy2--B2-cij9FD2n9pRnDDcGbwOHUZYaeop33lCFhg21fcj5g",
+        "ATKogpdnswfVa6v2k8y_4K4eK3LtZsHAMQe1QrbPWgf8sw9Xest76Tknf-Rxma4YQLDEfMT_RltrH30c2CpU5u4vUzi66KPQTy8fygan46IArB9TVLmLz-lMToUGcQfyUj3peFBFPW512wIGg7hHS_6mdC2YNxIAGZEjVTGSjcGMuQYGs4uFNuMEoTtL467qVOXxmbz4xarCjX8aCiIcfM3UUDlsTmOepBNSjTx3x6I26znEBXOEbfaIwTixB4DrKldkXgqi1LaMgNlOLzu8O6O4bEufkx5NJO9Y3_uDSgSWTghaAQ"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Zen Mode",
+      "address": "82 Bd des États-Unis, 69008 Lyon, France",
+      "phone": "04 26 17 27 24",
+      "website": null,
+      "rating": 4.2,
+      "reviews_count": 38,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJOQZHoAfq9EcRNS0WW5CxFMg",
+      "photos": [
+        "ATKogpeng-PK0a21pM-4tOZJsa0WmTYEdyey31t-ufNc1ngEtBOsZvu7O_KD3WRtKjxnOhe1mlWUk0NggNuIV2wQ518L4liXS6bbWMi6jaaVaTyXE4YBHESADHj_OCfiMALlzUKtms6hmDlSRlWpvNt9jfXqfYnQ1uSNneGC4YMjqHUV7ta4Vo_6LcZvKUPty7X0G8G4T18dL9Okf7ohfu5AFoMP6PJOsNjXMmZn4WU6rQoQXfSvlObyz8mo8UmHmsytOIZ5CIZ7qGMSqLM7HLB6YFYv-9qbWl2zeA9xxSJL8f4vvqxtytKP2OJ1QYBIGwK4ecZDJQ4xCQ4F3xOkMy8b0vObZ69c_CO_VkERueReERdtqKoj6H63c-zFdh0GPRqKUbLfKnTIOpr3stzmcACW9EzxM3z4an3gZzFdGzChOwUTC0yk",
+        "ATKogpej6Ur8-7ahpHQv2yOc9hRvMUOIOHH9eDyxk8G1mqXc-mAjRmGa_b2rijAkUjL2buTlYIKwoWYzVC6YtbnI7TfUctxwi5HKlSyeLLwonLtsuKbkRFrlJ-H4Twd4seJ7UPy7nMxmXu1pkk51BleBqlCveK8v938gAgOZkQDMDM8WGNE2v2bplwqw2UQvmSk4L3-DbymiBOIlZKllCUVTCgZUpk2eSHX7s9GpZJJ_U7-r6Thipq4E9eOTa3AnbmVQLPFWehfIUlkkhwZ7-e1fy0iDI92Kmhfutl3UFV7cNle6CQ",
+        "ATKogpfv3br6mLsoYgoZ0G_Zw1sWwABAY0nU192Xq_akC60XCKK-M_RbCUpMbRBgLC1dGFaABb3UtgDusRW0ebWzxYoMXhLsXrWBG__AIyiuu5QEU3NjE7iloBqSgGJO6RskeUOekEQh0LPJ3-Amn3q5Op8gJCpPjaRAxjQ5uO9g-6rXv1poG1Ok2lb6bYIa0g4z39sx09pHU4SXuH1iYy-4XVaFhaTz-Lw3Ti6mGhXaSV1fYTLjaFb8az-1Kr9cXNh6cscI3snEXj7y-wD6Tdmlsiuq7Rm_EScGnulS0z5byJSDTQ"
+      ],
+      "zone": "Terreaux",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Grace & Mila Lyon",
+      "address": "9 Rue Ferrandière, 69002 Lyon, France",
+      "phone": "04 78 42 81 71",
+      "website": "https://www.graceandmila.com/fr/",
+      "rating": 4.6,
+      "reviews_count": 59,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJiVDyz1Xq9EcR20gdi1w-mQk",
+      "photos": [
+        "ATKogpd6-YTQ1ZOHh3_CezWZSLJ2sROee7W8Y_4xex31snehG1uzPqLaE5ObS_RpMKMheT6cLH-Xm06I_R5wj6nXqKBeuQeQpgVX0fHLD4O3wVtu1ezkLNp91g8PJxlLFbQEEDvTm2DzQO_FhNmdvvEAs_RRXavMX3kqjKhJGvHrL8xVoAnlUff0abDWAqvmAhHfB2e6rIxgNBM77hsailyQkxOsUAjxBzGjdhdUgmxuX4JjvnH5HMounnU_ApRmpC7IX0OjFXoO--6YznY0xL_OLBFQJyc_l_oc84n_U01XWpamlA",
+        "ATKogpek2mzVPo7Qf0SS0U1fChcpZT-eSnBOFkopDIvcgpxfPZvoqrTlSLzEBty-TScFEykx_VpqC2jrzc1HSNqUoG1CHv6PefQ9wBHbqtKQAerPGhNTJgdP1SkW1f3yHooX7x9lvjfD90R6ftcW_uajP9QoMK0LQnc0FHTOrpRI8Bz5g9-0Q7XxS7Lbz4e-SDbraUcanRLArfVzs7_uETH6z8zo7TSEoufRNUtKXwfLy06m3Ax2JNU4Tl5WPAAd3guhuiBITxhqbUE6nZzue_L-zX0xhX98Uz_OE2TeaYKJLlm95g",
+        "ATKogpdZtSYey9d16V28cf-hN1200UFRMXmoJS1Pcn_zdgWJte3Coj7qxP8QEM2C3O4DVHCaio163tXOq7zqp7hiiT49HW2e9HZwOlatyRcTfWTXPzCVQ-ZQADCsyQSHSMWM679zg-hB5eI4GXgffVHvROQ9lUbhAIIm8myHQNOOCYwdAt6Cxaz-1n_Kl7QIFqZ8KmRmLpz2MpNZrVyExZI5uMjthHSPMWy0bEWrogjR_qjr9GgWk7qecrRyf97tn4tP4URBjRWd5o9MfPcCzfVTF_cjbBIHhrvlDljxT_ghnuqxCQ"
+      ],
+      "zone": "Bellecour",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "Nyack",
+      "address": "7 Rue Auguste Comte, 69002 Lyon, France",
+      "phone": "04 37 57 53 26",
+      "website": "http://www.nyackboutique.fr/",
+      "rating": 5,
+      "reviews_count": 12,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 10:00 – 13:00, 14:00 – 19:00",
+        "mercredi: 10:00 – 13:00, 14:00 – 19:00",
+        "jeudi: 10:00 – 13:00, 14:00 – 19:00",
+        "vendredi: 10:00 – 13:00, 14:00 – 19:00",
+        "samedi: 10:30 – 13:00, 14:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJR6ZzRFLq9EcR-vXVMOCNqLM",
+      "photos": [
+        "ATKogpdzE1_Jrtz5-aV8NEGBDDMJhQHUZ0Qw3l_rm6zoFRdHYD5NWl0DA5d6elFZdnmxrNafhLD1VElnNrWZROfZEZziak4YW17F9_CZ0e9AQdVBah-_SCwnD3hg659HY11RAOzDJTGHKGcO6Ev1rBKY0yrRJLQXqxYoHMCM8wcbx95ixit0C_V7T44N7Ect4vX8KD9Qsc3MVeansnGfLiykXepq7w4AbxMuw_dGmph6dktvEJKXrTWt4xdztHbAApwH4EswzVdPQAyrj6CmOoWcsPEKSEcXTU0EmePdjSTV8JgX3Q",
+        "ATKogpeFrZIUGCOUJB-k2SA_2W7pv4nCI3sinkmkgnOzYAT8VQvTXIkaFoBp4wDYAFoV5DSpwoipecM6HA8adugdGfQPNBWQ4MjSfu6cZ9BRvPWLbgO_ZIAO0VCOwMcIcd-7acWM1DAHc9r-7dbd2feEUTiVRq8PBz7VAc9Wi32-70UrbIrfQMHeMRvLuaAB09n6e41WuyDSL7LavrvVcPClHfCKPkl7eVVAcy-w-1yNpljcJ4X7abK9fx-zGEQJhcBj5ccPV8YdhxvIFkZzK2zDD6notyxKHlIiC3sHX5oZr1BEEA",
+        "ATKogpcUoGrMp_nGYDPAWB5s5mHuuJA1C5aM8eGGBU5ldgL11rWKmP3QOXZIkefPsIIREOz4aNAagnJP-h1W_d3g3S4JRtvimcHG6zzwgpAPlBP_gdRc0Q0_OKZsOtoe13WhCHrAF0eUnuf7wECAMQM3-33yW34rSFzXXYzGKx0ssfD4gbTl8zhQG8gAN_DMbiQhbNsEYacg2osoaSgLaFFflg5mcCF5DyZas1RPhLgh6tJH4BclNgfWRxPgpogYQhOz-QJr77wF1DVbvsz04gH2Dn_4lSorygIOd3tMkDXWuxW_SA"
+      ],
+      "zone": "Vieux Lyon",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "K-Mu Boutique",
+      "address": "5 Rue Chavanne, 69001 Lyon, France",
+      "phone": "09 81 31 53 20",
+      "website": "http://www.k-mu-boutique.com/",
+      "rating": 4.6,
+      "reviews_count": 61,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJj3wJCv_q9EcRY81LA45j9Vk",
+      "photos": [
+        "ATKogpdaMUlVs6Y5qJ7O9xyRnqnpbIDkYpywbZX7O5fl-Xz2J7EtSI6sDox--9tiRqJJpiwkSdgvfXVVkdAAZMlILfBwzTpJZyNaocr0x-27TW0dCfAyC5FD-RjtJlrmjeIU7KSiVpeEyHZ9PSjeYLkTizAXkYPmzqMijUAet09Lfkeiyl9-Dqck-4-WEJg1_CrCWpmrOXiB5WlyUowhJcBYgrKF2vnuQ-a8KhSU2uKWhN1AttUZSBOKu26_miZhyaoGmtZ_mBbQPrD7qIYjZZ9_NsyNxPGpxz5WY5V7TnHb_1rtJAU2A0mjqktGlGlTwrb2s_U0tDaj_rzXf7CycQMtbjx3L9W-4gqEr5fiq0mjYx9fwEvBbjouh49-NJTel1EFciWET5cCUFrqxg2f_R4oWQ4TBvYVPb-cR3m5B3_UQ7zJIQ8-",
+        "ATKogpcdYFT5I6vl4LrbfHxD6zqNEG7KKVNArUgXIl2p6tZfOsP1qYl9Cnt8mThAODAsvgYiQetSVzURsHJRrHVRJ7j8qYGwcSvV08cSfgiF612xdU3Nmc3c83Q75PgIqSiZTJWNVSIEIIAs5fLonQCniJ3ObpYIL6SYaZaFRbmeNJb4Bjo_KmE_hRykv5mHeb3ZbTD0sYYH2rATAYyPF3F9ipcuMZxrg7045iC3I7tYe_IXHiro5l3S2AjhQH3Zo_wF5N_OttVxKMwO2SdA2G_hduNpqLuA1OFLnotGHWazwUX8uKnLb3cMssmVLJIPilO_q53xm1LBjB8y16ZRT135RikqwVq4LiRAJU-kLmphboMY3X7SQMeVZGc4YBefgbiRNWHpSnUhp2gVM0h-6VOaXwaHoqKpedNRbdW_6vqilnECwgM",
+        "ATKogpdtb83sDe63PK9ZGnve5DfizBv28HUS3HD2nX1AC3d_5PwUX19yGWyyajwDIrzoWixpdCDobLNWUaOTBEk7dIbfkNfLwdmGJ6T03oWW3EVBZ7HQkcSkgpvAMPSF08zxiLkfdAwC6sVclbQmnKbRjKb_lnjUZPzV_ReFWGAOeTC_7epLlLbcivMgo4PgNn__w7MWGtxZLm72rq76FTZ0dRNByZUglcpZ0YKBe0n18zO-AUlngyLkUXKCC2ANxt0UkOeJhJBydJCqQVeg0x8GYE-sJ6kJndN76_eoiFD2-1e1pIELh2LclDsrl4vdBdOEii3F2p0Q7gZEbMdCRxGGW4RISlD4Llxoe0D8OyhikTHEls8dtk2lzbHSGgbW4LLmxCS0yIf0QFJNQHLWTt_jD45k1xprZb_vBhjGFPyEoSm-kg"
+      ],
+      "zone": "Vieux Lyon",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "GRAIN DE SABLE - CONCEPT STORE",
+      "address": "83 Av. des Frères Lumière, 69008 Lyon, France",
+      "phone": "04 78 00 31 24",
+      "website": "https://welcome.littlebill.io/fr/welcome/graindesable?couponId=67ebd353541fd2adf2320399&storeId=67ea76879d347774a6ec22c2",
+      "rating": 4.5,
+      "reviews_count": 37,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 11:00 – 13:00, 14:30 – 19:00",
+        "mercredi: 11:00 – 13:00, 14:30 – 19:00",
+        "jeudi: 11:00 – 13:00, 14:30 – 19:00",
+        "vendredi: 11:00 – 13:00, 14:30 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJY-w3XXXq9EcRORYYaW02hw0",
+      "photos": [
+        "ATKogpefzkdQM5MVeyr5mKKQclr-Xqsifw36dkVkTmppMH6_so06kzTQDrwOTBceg3GVcD1wjpm2_90_1JLr_sCBIEFauHBwbh2mIIMnUBIp9GefjbrT1LecG_qVHeobshMRIo-9B31l8SinCQYGfiLa_HBAXYrrQqf_Ugx9WnbalsnIuiDKCYSKcItHeuHDdwiQu81u3WZTuVVxzK0OrCprCNmFVvPpHoKCxd-qZuIoIJP11rhlY2Jtis5D5cFoDhZEv3ZHTX3rVks2NJ47flh18PT2OnMshytjXfk1-PnOMoHM3Q",
+        "ATKogpe8-6iAq_RxKpKHEcSHd0TbCkVHMzgwI3pSAFEvavlHVLo8oruCIu1Y_vRQiEol2_dXSj7JATMQ0zmQzcofqJXSqDxqxP0uqHnd2A85weQllCB4Q1ap-VUg2RvQr-OUi9Wh9ZRElwTu4rNklAysxJRpz46mT2q296UsF5RTiS_t46F4Lh2JmkLdT7khix_IyclZXEZa6JTZDZm1IyTGzdgk4nFwUn4cj5PaPEwYJaq5_UJGaCqml89dmP3jJfLktKfCpmUcBPjrp06h9W_C-23t9Vf67e78th7XkSRClvl0rw",
+        "ATKogpcBx_qaQoP2U6ZseId3TkxfDKI4NA6wo_AY_0NImIdiK6i3GRf7uWBZDy6AY8rEeIfc_RS7MDmS-fcFBgiOFvkxwAnNhllRfS_P6zfz9T9UGHKYFqDAHCBIlZZQpKdtQ5PRgAfApljCR8LL_zu8mQUpPHTrUitA49nFI6rTOnE7TliaIRsqDo237NF8eci8J3whuNg9FeTg7EPFBnQZWKi1_k6U7sBW6tKAxA2tHfg1-mNQz4u643KOJNScODLxC0yFMwIdrr7Z0-QbKmHEPx_6nsIewErNM3NKNjVEN9B3Qg"
+      ],
+      "zone": "Monplaisir",
+      "category": "shopping-mode"
+    },
+    {
+      "name": "HYPPAIRS CONCEPT STORE LYON",
+      "address": "3 Pl. Sathonay, 69001 Lyon, France",
+      "phone": "06 67 54 20 82",
+      "website": "https://www.hyppairs.com/",
+      "rating": 4.8,
+      "reviews_count": 78,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 13:00 – 16:00",
+        "mardi: 11:00 – 19:00",
+        "mercredi: 11:00 – 19:00",
+        "jeudi: 11:00 – 19:00",
+        "vendredi: 11:00 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ8RKB-f3q9EcRelKcyz1Ym3s",
+      "photos": [
+        "ATKogpddG97pbbCJjsF8IB-sAHeDbespgsxfL7nMf7Ax4mynldJl3ob5pypaUjCqus_MaFZlSnCVB_Q1TfLe_P_wz_DuKT6sPDgLFE_9aWIkvh_9EPZLWyqUOMHGCQiTIFOmQq57xkvC3SQ6L_B8QBdDgrAGzaTSHcxoxPRRPjKk-yakDObkd-MUn64lsfycNOIooUpivDBy9dyvaIB9e6aexaMtxGnbOR29bp6xVBUDN7UNcCYz8exE3vN-qZwAd0vP_DEaE3rg0xorX7RRJxlcjc983CT7pEdfpPLHrh1jYB_Icg",
+        "ATKogpfhwQxA1QjhvR0j0dlNhdnvzubRILBWfz984ZZjU7zmHWFWhe2gKwb-ERDvfvim97GBzWmmGHrETnNT8yRVuU7T-BUIWUvo5-_F4CtEAkw2bO1ZYbovXExpyII4-6dk9UAGfSEWNIhoOHpETXXHpRHvW_EGBU_dfpT6DFy4-BDYq3Zg9Tdl3mVCB3Qzny89TkZXDNzfHLf0Qr5i4xs7lXSe9Gl2lI6SMECLLGjYnWxQXLdb1iRuQL5Wdj5hj5rbe-WbO-dK5IBKdBZj01PndSHFU5gfZJVXBv724bMUnZK14IMhFD0Vk6g7ZJ7Z93OtomaoWIGkUsMaYVmuP804Ye8uAR-K2_An-Vt0f5tKXfw78rPzKTYRxKny0fvFGSjiXFqsUrp0R8u5gRuihFMg-mxdc4OJAdugSLbIBbbzEQWtrf4G",
+        "ATKogpd7WcrpycPt7r35uZa0NhL7xRIhhn49lmON1ru4ztnn8l5xlLhkSyJA-Xy-j42yiOdyyMf_qAj11fuuR2sxx4mKyRQTZRpLUdWcMfAJU8muHLtKQU6JisggTrdL7hVBseShsVWUTHrgvKoO4bsTQ5t8EEkpQFK4ECJKjtujeXpOyzTnSI83JgVVFPpmO7PO8_r026GvTlf9U5O9rw0g17JclKAp4Yk_nLi-5zGQXpYGUDUy2icwPqghRBa9HRM2bnwxEoYlrHAuHdM3H7CH2arWG7Yk3bHyBoSM3u6K4bo2h7FHAaLLWfkHuWuDQKkx807ROzcQf3I-_PL6qvYspNe_TxC8TfX2jf04yFpgj_tUc38vEo_MmmeVOpyXPyX5NIUaxVsHekNSkPGbjHntWWXe0yPYMwgXSbOYCM1LWGxOSA"
+      ],
+      "zone": "Monplaisir",
+      "category": "shopping-mode"
+    }
+  ]
+}

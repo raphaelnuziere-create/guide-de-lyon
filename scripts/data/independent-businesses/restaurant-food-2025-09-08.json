@@ -1,0 +1,1019 @@
+{
+  "sector": "restaurant-food",
+  "count": 40,
+  "collectedAt": "2025-09-08T16:39:32.994Z",
+  "businesses": [
+    {
+      "name": "Bouchon Thomas",
+      "address": "3 Rue Laurencin, 69002 Lyon, France",
+      "phone": "04 72 60 94 53",
+      "website": "https://www.restaurant-thomas.com/le-bouchon/",
+      "rating": 4.8,
+      "reviews_count": 419,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 12:00 – 14:00, 19:00 – 22:00",
+        "mardi: 12:00 – 14:00, 19:00 – 22:00",
+        "mercredi: 12:00 – 14:00, 19:00 – 22:00",
+        "jeudi: 12:00 – 14:00, 19:00 – 22:00",
+        "vendredi: 12:00 – 14:00, 19:00 – 22:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ6SMpUynr9EcRV0QTo4w9TIs",
+      "photos": [
+        "ATKogper8kUFVrmlRxdzSbVuv8lVL_3AMDRmKwoRsMecPTNebnj74mJ0p6twq9musKtCwgvvUdNLRrPRP1L7Gv8ZlGtje6TCTYWbdfiusGnOnmESkZZ9fVtkVP7jnd16TA0H6gRT1681jlXqw71T1v1ezpeuBcwKKoW6URWi2JOfp0gbftCHwbe0P31F7uV7SXEj2PuGY2JJHYsGOufyjLgeBsn93EwOn3ik4bfxdPcHzzwTwx5QJLRmupKLG8zPNh0kdFwBm9RHNAI4tRdDaOaA7rtybDuXrWCXDz2ICLvqJ9e_3g",
+        "ATKogpdbClp3C-Mm2vXs0c-3plGYFTwjd6ZmEH3TpD7419VT2HxzSZEPdED5R0y0cFaybi6X8-diTze3B4sMCDjPWGaguM1NzZ69wWY_QRVBtwchL4fBSy7vqjBSd2UY7t3EVdYdrHgSQKUwgKJFLozkPyYQwWNw-6ahBXZyA-8qJUkfbaUnO3YQzeOzjXlGF5X3piLNR3x_P_K7XiuG7uHbVEktrwXHJw9Uv_YDzBCwG0wijFX_weZ9XgTdjPkiq07Tm383ezABTG_Lad8BT3kSDkkl_WHX5-LyM1ZkjlYz6W3MKGIgHQcjpNXeaNkvG9RlPyfvMLRyclSrsWVdxbhorJILH1RPs-vJVQcUSJIf7TkO4Bkm_Q4Nm4zTPZiSYBwQ4bD7mbQSSRgx3lHDw-Ut_vrKjMrLrUcnFCeq7nYuIHeGoSm7NKv0hLQ85Z8SKg",
+        "ATKogpejj8lcRAy1p1xMtCtBpvqmBEa5tT6vuXNNUpi12FjhJx-PxNpjVdZfsBMAVgnEgdzXh5vb7Lh8p5MGi3OrertpPAWzwZr0E1ygWOtKZWiBBxlHwjuqAfR_vVjYK26jQx7aJSVe5W-O8wYTCNyQYQJ-Hy7qzU2K3TayKk-cBXW7R286wrJmhCO29fs4sWwOpSGIKK8GBm-BNB41hLjKNma_UO2Q-5tiSp3LGV68OPWxM2Cyyk29dMXaipqpiseVGxdMIOOrxvFi9chUKPTy-OaSorMSNXogqkvt-0NGHn7skMnrsZ7ZFi4niYEIHKf942emsycsE8bqdLe2tf7-h1IyIiExVZ07R42oFGhNFxWyRjxWh2a1jfYLVqH_LlZ8j_rOGHWafLZeUQIHUPJGcSx--vZrDSHLaqhq5bXAVsH_zppsLWZbX3MTW5qj1w"
+      ],
+      "zone": "Confluence",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Le Bouche à Oreille",
+      "address": "21 Rue Saint-Jean, 69005 Lyon, France",
+      "phone": "04 72 32 94 34",
+      "website": "https://leboucheaoreillelyon.eatbu.com/",
+      "rating": 4.8,
+      "reviews_count": 339,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: 12:00 – 15:00, 19:00 – 23:00",
+        "jeudi: 12:00 – 15:00, 19:00 – 23:00",
+        "vendredi: 12:00 – 15:00, 19:00 – 23:00",
+        "samedi: 12:00 – 15:00, 19:00 – 23:00",
+        "dimanche: 12:00 – 15:00, 19:00 – 23:00"
+      ],
+      "google_place_id": "ChIJr0qg6qvr9EcRxxW-7inNHk8",
+      "photos": [
+        "ATKogpdPKtytEoAHgMM9I-24ey2oqB1j8LSCzEQGKeywaN3DsL1sSKXHnoBDRVu293js_Lw1sZ4_70DrBoBY7WbAkoOdI58XtXw-_VAM_QABuK7Dvj9Ppzs6htBtNB6MPyYIuT6sVWkcpeO6WXBSx14sfw3XbQdtsR_-ysiYAjYn6swq0T3erZMtTO9mE9q2LxLg4SL7HkI8ZGH0c7zTc8NL30ltK8MedwOX04_9l1Kazwi381HvAI38ouictAYyNT50c6zVe2kF9NIaXkrH9HFahVzePnLJykCIz5qKhNyYN8xjSg",
+        "ATKogpdzzZJ8a9RN0FT4GS_mU2p8AOwJ6IvNocyYn_2EPRyEmru2KoXgkLO_HS3JOIGZysn0JQk204lfmP66oZGDsJDcNl7jh_MQNKqlq0qvAICQ8bgST5krGIizU0pmnGLgcLJt05vhIoHawKqIzgB1PJQWnbILRCU-TgZVGgIGcibPAYR1ysgV5st4TVJBAVQpnKPUPDMdKiJUH5rPIJKmaL7bgAwSRg74D7jGg8hWiASqhQMVB4eJtFcQ1_dkTfWwkkspZEyBwjvEvBIzONfKoBo7_zibDh-vxSP5niH8YXb4h2BjeDVa6S44Achg0xNZA20sru1q_Fq8RIaT9O-0tLTbmRJysVLX6f9qC5lcGRaNHpyE6JJAEPrT4LBGlvYwzRmubPjm8Ezyg9IKe21QhwJ-VKmfC3y8yx0fc4XwbKWSvOgrj3e7MpxH1XXN9Du2",
+        "ATKogpfUvleDbiVuYD1s7mslXObMJeMWg7Ay9UFEIGTmx3we4V_l_uz1IeBsJanNsJgHCZpGa6flInnqqmo9h7vMwddqnYYSIDIENf3tbNYdKNnuzh7YalAfwfN9TOMCcW9NEZAy7YF0LBe2Di9p2ALyilUUb-Ln9jx_zreHM41BiI7Ufc8KKmwo7skdO7htirZW2TeNulPja1pV0-LAeobOlDQXaYifTme20cbbBKZOqjZD4wxWBzJCfHGEmjK6TzSnFoMz8A7cMR67BrbqiDY3jg2yo4y_ThFXfJCT05G2eQnpUyr-z2vaKJdJX_3249apl135JXVYom61rcyJcUS3b5IYx7CGgkDaC5SYP-bN3m78S8l29uHcyeFBxg_2T2iF3TT5BSPtns_UHdWtnRH_q0laNcxlFG-vtX7D3aSXn6ksXlejoavcv1Zm_0Hf3Klf"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Authentique Bouchon Lyonnais",
+      "address": "11 Rue Major Martin, 69001 Lyon, France",
+      "phone": null,
+      "website": null,
+      "rating": 4.6,
+      "reviews_count": 10,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJNX0KVv7q9EcRXOXZ4JU4O8M",
+      "photos": [
+        "ATKogpcSwj2QI4QLPkKElUQRkLvmYpNiFC7A62T6ZuvXU_2wlqCmOv1-RiGDYkLT_3BMm7xOLpvZPQw-kx2DPOR0BwC8mOacULkdzeD9V_fbP-Z601GqEs6Glmq2sycxeVdtIzv62Fd2N20Bkj--kZsVIT6BnmukQvZbaEvFl3Nt0B6T7HBv6wIXG0fltmXShBVwoZ0IVHREKFWpPJZo4heEs0Hs8WFFkMGgSriaal5wADDgnlQGprEB9P4Hxojf9vy40fkCdj-iJ9qA6I6WHd0-CDHOn1_0NKP92Orz97nIOXfdZjZINXpp11UJO18vMOQS6QYJYCboDXByqJPYSO_YuZvo7LKlzOiQMn5v8jcp9pETjGS9OQmXhZEQFdWRy9HD4B-pfElZj5Hqc_qbM2zH13WWlDzi_MhAK467wctJ2OHRpA",
+        "ATKogpdkO-JwATBgsItp6h_PJV2_qfV0kTW96ylZ6azZ78mC_RGiL52Sm5oFQVEB0Xet19wYkr_NYTjUdZZypRKDDp7kz0Of9FiVWCYrkVcFFMYEk9fCQFDm-880e53MyL8uwDCjo5OStL7DywaZrqt5ATP11gQJ_ujbmIR3oR9Ih4wQAmK_TKpK8J_D8Z_YI5eV_qju7ysAd_lyuLi4bnnwCCQZ3fQGAPjlBZOJqOX-XEoJfNXryslL13E5y61fTgX4MKBBQC2OGB_oVJQUe8ODxRGApNmvXeoFiE2ChIhn5aK3yvbZ4KRq4jHOUok4sdCCN6Kb8h0GOnn8Yd9r0Zivq9gmuIvepz5HoUEzB3b5o2Uf774d2f60fDKEZtQfGUBezAO5xqetU8hlDcUPkzGnf_kHeT8WXlEcDs_3gQMvhZP5ma0",
+        "ATKogpcVd8Fd10Ot_cSbhC2EQTZBU17CjN6DuS7kXxVY1d4CmsBGjmjzg65Mqo_0xMTGU-515vD6lvIs-hld4YIz8Q3AqOkvIURIlHZ-3oZpCgMU8STHX3P4VXRsWNrGJ-NF-3zUIJxsRfRaIkqGIKo_9wDeSscsp0H-92yEH0JYtir0zbsyO3FkVYqsii7RkrdhAXHc7x-M1N6JlYcqZKWTlQ9v4eiV8qkNvXNMNh8lqNxSnaBt30GxCPDlkHtqET8oRfqIx8FYMDbpJF18uaDRDeX-vabdRyZUCEdYAWVHgvRNSWY3hYGX0o0uHjU1GiCds7cAtlCrXDsAIPOChcRd_7z4Q2JlngB7GzbSC_BFkzRlzHiAdnNLthPprFeLnQwktYTAnd8wGXmT5YX92Jk6NgCuJ-ZgjsxqqraEIb5AIOXZnw"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Bistrot Compa",
+      "address": "20 Pl. Carnot, 69002 Lyon, France",
+      "phone": "04 78 37 29 80",
+      "website": "http://www.bistrotcompa.fr/",
+      "rating": 4.7,
+      "reviews_count": 216,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 11:00 – 14:00, 18:00 – 23:00",
+        "mardi: 11:00 – 14:00, 18:00 – 23:00",
+        "mercredi: 11:00 – 14:00, 18:00 – 23:00",
+        "jeudi: 11:00 – 14:00, 18:00 – 23:00",
+        "vendredi: 11:00 – 14:00, 18:00 – 23:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ7e4ad1Dr9EcR-0pPFckIeSI",
+      "photos": [
+        "ATKogpegoErpYrzVLXK3kKf3hBvvw1pqmrFeMiDF15CGkxrm4pnzz01O1Kn8I0HhRHRG0cRg46SI0AD0qdjbC3ENBYQ4IihJrUB_aq1ajfzjRNJvj8Syz86vVvpbGgCsToM-bQBjd3T11dx5TurpLQs3IoQkdHkYRxUBkJtZcROr-IGemSuMESqEvQhfeoJRfV_2CJs9h4FACWEpwvVd0MaM72syy8BOtb5daUTbaDsvh-jEEJSBtHt_ibV3TwW6k_zhwgum4qNulMD4epfboT8J_8PG6pwNiT8WvjlRfkVZtzySF-9Nim-Q7TjHjWLLxD45_8E30NWtpJKqcjZG2OqhfHiGEGSxHaQXhGTkJY4PG4wLz7rTCDb3lRG2_dAyZl7Rf8YacvrrdXVREI8qig6jY9bzVdvCCmvumiUPibystsRMHg",
+        "ATKogpeG0s2IwKhCCVTzwOg2gMOlAvg_KptkKr_bu9LyF8f615zkMsTF9J4T0E-tipcHNksbQEr1eeL5aeIHa0UjU0AEmlnGAOlwaYEsph6oXw8oOEZkQVhCk47yC88oSoCiFQooTK-zJlMJFAGTKWXXMHx2hlssh1TXo-OZhW3-e_dGiS_Mn3tHwEpY7HFYSfzEa1HzsbKn46eE4wggKPuME7Kg8TZsldBXYZuu8G7MC12bj4FDP05Ku-vNOViK56L85E5VVYuSWFu6Axje7-LUGi9Hd0jF8yfO6O6W-aNiLGTnssc7ElIvr88_LJ6zSXrDVVny9RO46icWAMUTI5C_eLvx_Rac6TRDtdc4AwnONPULZvrusoiLun6GqSZVzuA9VOb8J_qhpnekS4d6btIOTyH_HyhaOkL1Fbl61hV074jB8O_I5_SSRORMxocJ9k_E",
+        "ATKogpfP1ocGcYDoKTlZAzW3cjr0_I0tYajyu6UKz0zls364v9cp0hA1ZlgfqzuYVkzXizZOvp55DLz6PHX2HIUN0OZc9b4rABqKbKPJ5SPmRyGxT3L2taGJn6i13iqxXHdeCX5RWfJMGL254uD-JyK1-Yb97NkKIY20lcZN9FnkMjSKjHpElUvaZoXhqa4VMPDqMEfpWbfhJ8Muex1Kqnv82JffOQQooLZEbjHbEUSvd2tCsZz-436YfPclym0fJFGWRu_njIO90s8kFvoQR6xRgnbDygFKgNubanTFPRJZREENadfMTKJwxJL2qCqm_M0PsJIS2A3bd74ZdIbyUyWMC1s3QFtswQEiVzBp_ayW6Am8sywm3lLj6sYjtlNr8DitpOVDMcBL9pF4nd2xWGwdJo9XqNrXO152dXPKgkKF_Fw"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Bistrot Bouille",
+      "address": "92 Rue Pierre Corneille, 69003 Lyon, France",
+      "phone": "04 87 24 65 57",
+      "website": "https://www.bistrotbouille.com/",
+      "rating": 4.9,
+      "reviews_count": 470,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 12:00 – 14:00",
+        "mardi: 12:00 – 14:00",
+        "mercredi: 12:00 – 14:00, 19:30 – 21:30",
+        "jeudi: 12:00 – 14:00, 19:30 – 21:30",
+        "vendredi: 12:00 – 14:00, 19:30 – 21:30",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJVbmrU8_r9EcRYERcr4nkrLM",
+      "photos": [
+        "ATKogpc3yo7_Ta0uK4P2SUWeCd6ehYjYWX_DV-R0u3PpEFa1T6pXr78zNhr8_GHeN0jwj6RAFCl8k16OAeYmWXr4DF7CMMEzscfOJcfLZtUYyghIU2Meh95b0omms3zz4694UjLpUpkx83b4JV806Tx_DOhR9IZLErJ4wpEbBWUN2qB7z9_25Upx1UbGoRTQPQQ2LoQov9GvqgiED_oZKV8Ccns4uRm8-mMZwsorDbn2pQ-PKDaCs2yZE204wtXfyFNR06VcLOaBfpaxxCXuGT1cm-kXPiIRThiR_R5pXLwjKBa2Ng",
+        "ATKogpfnv8HxEigCOB_FqoPf62TMgTudnfJOZcOJetO_etmfSno3RUFEyoiI8tYzYAKPXnRXOyF_MvngBWx5GFWJrIVz2H2F0Yd1j8QCrEf40a7b4Qt4Te3YPvaKMmFeQFMwh1MatJrWuUPb2gsjyqcqQa4hAUs_xY_JgQItqA-Un1yjMaDuATUD3Zmudums2bWuCgrWTnKTl5xqLJ2Ux-0m2uTWihRVaPkvGRm22uaAeGS2zzhy2q7DPmOFtVdiL23QY_K6G7uJ9Hw8XtMJzkYy59pnAFb7xmbauy82j0-AT0UFlA",
+        "ATKogpevsjPN6CCJX8IoMsBjR75RmHWG_qtk3HtOCN_VwRDY5BX-R4V7pH_bzxxy1NPr6fXcegGinAaeos2zEepY-os5Uup3q4QQE7oMiQ5-Lcu_yE3Jah1HOeTEpAJPDLJ9Z1aXyfh_JOy45F8CosqqsycaPUGQj-GyxL4ugBnm1uBjtWMC_ZFm49ryEsHR9WMm9T-bzOy_yGZnzjVmH-PPVa78wMF8DUaxRtUiDwNHgwF48IyZR7INcCCDCYH-sC95DasVb0KR0G4eHiwR56JPbm-7I0fthofiVsH52hNV6ogBDOPxLZuZ-k01-ElxOScm9mqmEXptXGMmNyPEVDs2Scab0Y3CNvCduf8qa_aIJCxoyHcKSlkPxZ-_uEv5fNAlxjW3U1mTfLPPWAN378zI87HuB4eWq3Dm6ked_JI31RrWjg"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Le Bistrot d'Odette",
+      "address": "101 Av. Maréchal de Saxe, 69003 Lyon, France",
+      "phone": "09 81 60 56 17",
+      "website": "http://www.bistrotdodette.fr/",
+      "rating": 4.7,
+      "reviews_count": 472,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: 08:00 – 14:30, 18:00 – 22:30",
+        "mardi: 08:00 – 14:30, 18:00 – 22:30",
+        "mercredi: 08:00 – 14:30, 18:00 – 22:30",
+        "jeudi: 08:00 – 14:30, 18:00 – 22:30",
+        "vendredi: 08:00 – 14:30, 18:00 – 22:30",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJqYQFvF7q9EcRapBcDlqvW6g",
+      "photos": [
+        "ATKogpcU_0sd2rJVzkTgIIm_Vbus_M-BTO_UkyYtZ9VqwzqscyfueVVudExK0W-0WFzqM8-5dPSx4wFRN70zMVKb--PofXJy7LeAxS894bleE20tHMkxSP6k4t_EKhntek154nHQMdznA8PoHGIdlATgbH_2jisvuVDA8eibDSA5LvcOMsR8-5Vhtm3fuBUVRGNyz3bobHNBJqsj--_LXYvJ8yUW234TqirbImXUxhN6YehZ2Prx4F-APShQ1UeZ3CaWFS9yp3UdHvYpAN3ft9259z4JuWBUiGH3s9mejZqcyO1DEw",
+        "ATKogpd2Rf27coEULb5DS-wYy87MHpgroMk4esHfIt__OK3Qcpqjc3-2WGHcCQhNcxRAWKJhXLMH0AgJ4z_mxrXpWZW5PmtjWDUu7-79F2Ue4iRgHKp30POo0G-9W6NhcLSvlFyQpV-mv15k__Sv9wdzPwmlLvPi_J2Ap-i4dNUFPW65axinmOUhrE69LPvshJVU_GZ42lTPRlVNIexkc77FaRzEv-1nbw5z9Xvej6Bp57t3S5zFxIms0fZJK2MQ2xFU4KEXItTR0XYocYCr0bNJ4R2nLjy_3LDi9Fx7zARUYRuoZw",
+        "ATKogpe7p7NJC5xRYpmyRBft3MCLzWVgKIPykxK78S1UG7U1ORRDQoOtoonB5G5Q4y25hQF_g8QVvuIFZ9Uq0W5fLafH7LGl-44OE2DphITt-QXPvZpFojqbiIb78QnzhgiZM-9hEa_HRXVGE2Bfg3HHSIl-LVxn0m0ShzKR_yziubQ-UeNHdxddP2yfGac0cpHSJRpjtlnTn6bGuWrxsodVAGRz5yE41ie9bA99jztWaDlHRZzRmuX1Jsy5wqyAKyQjr2pjHHASQQhr7hnBhRFkQM9MGtaql8kt94pfY18e5cpxsNlmhI40VZdufNBa5l-qfzpd21Hfq7Hz2AwXESEHsPTEvAXron1exTl_3RTwSy_Bb9vtsPxVWi_LK4V1dm-5gh9c2bxLuV5rUoe9LnJGaSpSggRMUMmlMOcK8CZAQ00UDICSFvRqd4UJWJgJ6cI2"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "BISTRO B",
+      "address": "90 Rue Duguesclin, 69006 Lyon, France",
+      "phone": "04 78 89 12 21",
+      "website": "http://bistro-b.eatbu.com/",
+      "rating": 4.8,
+      "reviews_count": 293,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 12:00 – 13:45",
+        "mercredi: 12:00 – 13:45, 19:00 – 20:45",
+        "jeudi: 12:00 – 13:45, 19:00 – 20:45",
+        "vendredi: 12:00 – 13:45, 19:00 – 20:45",
+        "samedi: 12:00 – 13:45, 19:00 – 20:45",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJC-2H2_Pq9EcRmX4MCImqclU",
+      "photos": [
+        "ATKogpexZic5gR-y9v-YEfErureqgdqRezecahR1w7P3Axgwy4C4h9KhAVk8SUCdDOUEoZ4i2MZvoiplBVnDQ2DfYkjo6Hn-_54pLxRynK2GocQf0XX_4hnkGijUswiGF-udaLarBsQMUMSM0PyqL22cYJU7FqxBO4ZUZ_OPewHC6LCklZWSus5xuIxVUr0kwxWLU-XnhtbyUJw7fe8n7AbNkShjqrJ8wWbBf-JCC-TbtxpjW1z2LOnnPPl2wMflMrQ6QQCf_cVLuN7TbEIISx3XUWVTW_2UewviO-ayMd3Zifsudw",
+        "ATKogpcB21BBbAWMiOoWTX7s49zpIz-yGWaO2wVTSxZaRLefNUrQhyqleJ_hE-skbDYEYUgeZxkCWRzSaZJTqU2mu2x29nceM7toGlSRbdUYkUycpdogahi87nCx_5HfDCvpc8-LAoPI8nEKokZfrFAb42bI1vmfyFRtO2JxznX4w9rC_gY58OpJF3uPocnFlzy_hkNAdeuluwDp8nFAuCB63Z-vkg_ovXysoBNWy4XZlEnnaUVDcUj4nsYx8nkjbJLSRWXjFDBP9supuDH1Yhd94KdwRguCUblC0BaFwrSBtVAaxw",
+        "ATKogpet3nu4Iv-Xpb386HoMSZIkbPiCsWNu3RNuf3K3zDzdkx3Z3PF6mJ-oCujSfrBlaaVzUKFfGYBta4DKZvuVv8yaxxeahL6iAXa5cjAFdVHqwH4gMMja5beD77nneCoiWptB0xZLCJSe1zH9n3e6HJe9s4VrmYl_A2gi3ROq521qtmcr3bgZDG_S8iryK0JWbPmwGfWbBDaES-CHyzfzUro2cPYuQVqk6MWiYvbm0d4xE7elDQe6cLUQKxvVwnzWP7xioF6WWWiKOBnX2pKkjSh_VNBYFUBw_zAYL6xsDj05bQNkiUMYCSWd0GQagl8Aoo5IceSqfnUVTC911odB6yjMblE78PYR3FjSefL3nInwN0oZ5tUBKs-axkZIONCz3xf8ys9iskm2i1U4erkEbv6TsFTOgqOw5nwJymVDZK4v6w"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Le Bistrot",
+      "address": "82 Rue Maurice Flandin, 69003 Lyon, France",
+      "phone": "04 26 07 28 83",
+      "website": "http://www.lebistrot-lyon.com/",
+      "rating": 4.4,
+      "reviews_count": 216,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: 11:45 – 13:45",
+        "mardi: 11:45 – 13:45",
+        "mercredi: 11:45 – 13:45",
+        "jeudi: 11:45 – 13:45",
+        "vendredi: 11:45 – 13:45",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJPUkTZXvq9EcRoxZnl02eJWY",
+      "photos": [
+        "ATKogpd2nSDF-4Db4uyX5xIksErRVVGfxcnFCUE8sdXNq-JV_i3amXixOQAVhWri3ngGHkcVcQs9rMqrK_jV1AAXIutmyTuqKKw3y0hbdwB3gAYNoI9zR6iAqTZXLWcBhfR4mzYaV2nlvIlqPRLMhmu7nJ6b6dP4tUuP4j6CwiD7ktRRDmrdxdtIs0L23Na-veKbHOyu6z7G95vobZrX5kqxnl3TbhHk0A8vcL4nwnF1WgKlz4CMqgpxtdLU4ruY1ju3NUnUdyTDkwNzJ6OQbjHn6R5gnAoCXtO18vpOIlq_SJPUBg",
+        "ATKogpeR8gezPx7hmOkdNNzr8LV_e79HPYZYqc2cS_N4SyQ7x-gXgJmSSqu_flDQvW6PCRIVatqFKshBEemLbW-YbuKZ8td_SYcXgG8vYi7U0mEalVuJS_tZHOzBGPv6MopJ5-vKbMms7KqtHPTeM85oSAnRJh_XUwGtS9RTh6PttnDa3irTr8flW112vyK7G-P20xBBG4zMS9nf0XRvCIe9W4Fv9hcweFL4ClAi545pL1j2saS52zXsosdyouuRl3nHH_yhL-RVcfdl6dWrfmApTdtm9ddVXFd1TEZxqmxpUi_Gkw",
+        "ATKogpcNJJfRmyGGVjoPIKF0VXgi8DzAoA_lS8p869LaSQrftZhyqEqXp6T-WyI9A44FEtPZvPSZNZbv25Eb6KNrdS0pzL1rI79b1aMQVJ1BWlQGVwIJTv1JokS5Rc_eK_AuZAx2P3noSnK79cc79QQJkFntJoqqCZGgOyi3ffnb0P-Fv11t5Q5h8KUSWZJe_Gx6vIsRLc00VFAGwfsPpfHvUxZwujmZoLow398Tc6qKgoPyQ864rz9Tb3dymF817QDdjQr2lPnhSO6HDEiculUWSubWxMqAZjQrn09u--m1JzhDW6F1wK6DA1A5F2KSNzc5B8MEzD0sW0jOyMBlbq_60NlBxlow0lljf7ze_7iHrq5y3Aw7wkStmGAAwKvQQbhwZFtGGQO2svv11KSaGv7-01eQI5hXX99d--KOWTWrHqA"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Bistrot Tête d'Or",
+      "address": "110 Rue Tête d'Or, 69006 Lyon, France",
+      "phone": "04 78 24 46 33",
+      "website": "https://tete-d-or.fr/fr",
+      "rating": 4.8,
+      "reviews_count": 148,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 11:30 – 14:00",
+        "mardi: 11:30 – 14:00",
+        "mercredi: 11:30 – 14:00, 18:00 – 21:30",
+        "jeudi: 11:30 – 14:00, 18:00 – 21:30",
+        "vendredi: 11:30 – 14:00, 18:00 – 21:30",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJvckbuyXr9EcR4M9X0ltUFSA",
+      "photos": [
+        "ATKogpc__5sr13apgeceT18Tz4AnKzoHCp-A5YlzJW5gM-xYi2GaA_cMvUsZFOhWfg9_E38tqUID9w_dmwr26gd7t-0yAsipFiEPH_n9hnNs7d1pcE0dc4ET1DGAB-i4Jj6o2d6vmrl0UQk0e9S1v9KRk0ldXWx3DAKBpQpF48ze7uQCDZsZFIqePfxEH95C6JVA_MsxfntlXDvntyqE69FMVZ9gGTAmwIYTTShBcIZyzo2JbDJiMxXygIlpLK6waMU8C5_qdALdrYgXAhek226vqzC5mT4Y1DAdPLRyKn_buBz4vA",
+        "ATKogpcp1hZgraWISRLL3SzDbiM_cY6tc3_CfLlNNHaZRnKmnu0VefT0pF30GkOcJzExaGyuCPUvKXRETWmL1zF8DSiXmEViG3bzRq4txF_i70ZiKTQDFpeo_Jft8oR8KK-XeOou0fPxBaIy3rCynWKFFPum2CrWtx7ZZMcSgCtUU185U0APeOwYRhSLAnc8HkivyJL2fQSEOiIP66kxts7H0Tu2YUYHe9ez9A7KqMuIzunwEuYOODz5uAmnY63PFrK0iUgyUQQBUEfpMf2CAkNDjMGDMRtrQW_4DLfizouo_vriMQ",
+        "ATKogpeoqoYPS5xGqQhdPRA_j5rAU3V-Czxc6qCWWXsZ_l2FBCCurCIxp3m17vDGZ9e-or_00aRvY25MrenJaFfHbxYQguSGttX7fsWW2prGRIfGM_GO3QiMFZUy8UXdGSuKi6zjEP1H3eyeu_4qKAT91VmdV5W-dNA4QvnRFUA4-2pYvclQUJqtIPlCMsSM2xPFbQIuprkwqjsAcH6QXvZL-hQqGf9ndDP2cL33mNC5r3M9Q4X4cFy-S-Ksd7MjOVChnpIm3l202HTJsDEb5zkJEO2K6ySvYZbcW5FrXd_T0jrMceO3lqq9Rj7xo25S3Ro_eT1Ama6Yhbk7z_apDvE_3NytC2dyap9X2LAgMeMD4vjDyh6yEjLj16XOQQcxsdUCdh58jKIPzoADChGnNFp9npEB90-wBbCEmhKsVaMC-FtzJtDh2czCUJpnfMpMX9t2"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Bistrot Jaillet",
+      "address": "146 Rue Vendôme, 69006 Lyon, France",
+      "phone": "04 87 38 27 71",
+      "website": "https://bistrot-jaillet.com/",
+      "rating": 4.8,
+      "reviews_count": 294,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 09:00 – 18:30",
+        "mardi: 09:00 – 18:30",
+        "mercredi: 09:00 – 00:00",
+        "jeudi: 09:00 – 00:00",
+        "vendredi: 09:00 – 00:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJPbGSa6rr9EcRzNq_YGZituQ",
+      "photos": [
+        "ATKogpcnRt7cmM-MMSBmJ_DIfjt8nre0W38BuZpuGKEAscWazIiF6rV-AiXQzbfL4nVbgT_6SuoJH3I1A-Qqp0a9MpuTfw_gIluKDeKm5pJLwi2mAi9hsTu_GpEtpOzdVG_WSHhV7v97plHFSfaKBpySkwYXVj_M9WpNhWuUcjURQE8420rTtkCJOMv_KgymFjI4pdECZNFWwMxDRrmP6WkGqn8ysaqoDp6QocejVlJYkMv_dSjXJj4T6-0YiQq_1QAXXcTRCeZSReQCW5Ax3CjuCEUal8aKOXqPnSNEa8xod_kh0w",
+        "ATKogpcZ7PxCdmbRcGMeHVfXdD-pHVq0yrrUV_O70HSqm7HJ08Pyh88QqTe6IFg_OwpxCLqy-XMqZSIZIjiBWXY9_QGjQj_GpicPjvKngBQWxnQ1zBguWTAU5M-_MC2I2oVxvLH-m3PhFXFHrl0iFaufinBHhYFauIYQsWd8-JgtEtFtNHazFrASQ16hk9kx9XaeTyPjcVRwl3HiIL2uF2wjFv37ZzCjFuYnmQ69W-9NuMJp65MmUW7yggvf0gSAbC4dy6bYJRgeJcGQFbzaxJWGjIo6Zsos1uW0iCPyioSd9whIeA",
+        "ATKogpcYPHDpJZYcLNTRaLhhxb2SkrP-lYxVgkhQG6t2maLasERj5u4weiEC-TSLWE692YaWWn002k25rYybzENb9IFDC8ibynFSUFMPHZee6TX-yUmqeQR9P2nzhjkL5t--LiXHAXmHkhFNsZnPcRydYhc-_NTAaJaR8iZslwXZ8Rp9o29l6VJCPzEl1Bs97lVL_wIItPHDLHEzugJ7UQhanE5_ZGJ3PdqKueAdTF8wMSIyr6QGekdlBi-vZFcXmtEcbOp1W-bucb0a_Sv6de4nuvvi6DVS7YZDRhYCl7-HniDtsA"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Les Bons Vivants",
+      "address": "5 Rue Longue, 69001 Lyon, France",
+      "phone": "04 78 30 41 92",
+      "website": "https://lesbonsvivants-lyon.fr/fr",
+      "rating": 4.6,
+      "reviews_count": 496,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 19:00 – 21:30",
+        "mercredi: 19:00 – 21:30",
+        "jeudi: 19:00 – 21:30",
+        "vendredi: 12:00 – 14:30, 19:00 – 21:30",
+        "samedi: 12:00 – 14:30, 19:00 – 22:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ8d3P8YTr9EcROa0AVC3Ysak",
+      "photos": [
+        "ATKogpcFLHacYXkbMBnwF1coZaDGKOhQjH89-1TzMb_Fb9OQ01MBqAyH6UQ3kRKxrnmBkd-te7ht1wWPza72gq3q1Tm4A6RquAl7lO0opaN38OFVOluHwiFpP_EtMOFUKHUJsr8xQh0kTP1aHD8ine148BuKv7klYXSZzXu_IunGMHFwE774i2TShID3liYFYpSQjru4giBXGLYCnWSGYqIw6ozvIhjopqBxHR6CvmMyjnUHKep6IMRc5-PCFrdW572EVXOGJaM3He4pB3RevfPbiKry31hIrbItnTMSeagczSOw349bxHGjl2aFcnemK2uKA9OgFor11LEKfvfEjEiurHWiwaMClapvqYmiFgl85KZIdR7ox-ko5ji9s7js13CoMllO9HQcipQ0AOba8QpGm7TLB2VFdesWQfv8m2KSm2Ynfg",
+        "ATKogpdEFq3tqGYpJX0WzpvzgPCV5M1bBHsEepx-QO-wLB8pbAjWrS3WhUvZ6DqSzuNJ0BJddYuYpH6bwTF5MNc92wXS-4Irm2MDhn-2aX13y3HK-eg82Wulc9E_cYC25yhNQDIDKpvwbWslJ9GyF99ivzVhKW8rgWv9txHCeYPFXeZ2CmUxcVW0jXz38x13aHF9rzovMF5jhAUN8fNQAVNkXfLLBsen24vC2SLV0_4MCuDdPbcsD_fjvWUtf4bVKytt46Uql4CpeGSoibjZWsA_gAXaZBpqbv4Xe7CoP-UYluKM2A",
+        "ATKogpc9Bf50uV6kwOPNDGrWdKcxf4y9u_AVawjckZcQuU6DLNpNX0ssP7fJdoob2Osn3SpncXPTZqvkkVuHs1uaiKXL6vsPvFV7eAgMzl_nlcXnQLaFl_vQDrOp2c-3EDxBBVrrtwuFpe9AQu7miqsMZBo3BTJuIV4g31qVSVjiXEqHSZty859YP3FEA1t9eZgIVke6aREFJGc1Q14174n4DrqnnS0GCGl_zYFh0-3O-bj91eGsVY6Czg7BD0-NaXK35S5nbO1osMexAybelSaRpBauhBXms2x-CSNBEhr2EvlyATd0gGdCH30xaIObl5fbdmAWy66Ha3v_d9QLmmynOJvQistePcxdU10uIG0YNGipuWTAqSWBemmlfmWUMSdC5kc5GpvjbjzzC1QYwJAT4FdpjeSApbd98SvV4dRQKUOt3kak"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "JAJA bistro",
+      "address": "3 Rue Laurencin, 69002 Lyon, France",
+      "phone": "06 51 34 89 21",
+      "website": "https://www.instagram.com/jajabistro/",
+      "rating": 4.9,
+      "reviews_count": 84,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 10:00 – 00:00",
+        "mercredi: 10:00 – 00:00",
+        "jeudi: 10:00 – 00:00",
+        "vendredi: 10:00 – 00:00",
+        "samedi: 10:00 – 00:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ8-2W4iXr9EcRO2qkBuKKp4M",
+      "photos": [
+        "ATKogpdgOgPnD6fFKWKQKGO1yGpsgsSTeSZIA6iznP-PbRZKz7k_OJSC0F6y7SxB4hzcZngxzmHfAGmigHCiPbmvJNXZNcPjEPZiC9AxlzrWwjjLCFgVwCxYBLc1bjDm81FBtlrYRNwXI-kjNIWqYVSaSLeeLgjuB_7TzDHRLJW3eZjkO7a1kaUnOny50XTHmCyXIln4eD4_dpVUFXJJqYm4plOm2lkw6NCW-r177Knqpio16lzEmGRTk4lXHJx6fhJkstro64fH41GodVzkyX4G2yPy3pYBeVji_DrWFeCA8onvkg",
+        "ATKogpfYPM4Ql62GCCbi6OMvxFfxnkl08zVlWixbnBXy4VtAt71mhjnCSW_bk78sykJS-75x9n9PYJisYebEmLNOB-FEz9dFJsyg4gqs0w1UT6_ssFsqx7Rh-3njFiNKrbqfGYHWrkQ2e_a1fTNH3vGfgk5j7PX_hiAsEJpU4xnzH5OmlZDpqK0grZkE6vbPDzWpJ0DkApj1iFm4dm4zuL1ayQQSVfbmmNXylx3nFOMA8HM9phyKobTjIDpVubiOVcO7dt2EA9uZjJytTTiiX-nRTMrHvHvTNtbb_84UcfYIDGA3Jlibd9yvoFe1G1isDIGtMenx9chZud20dT3hpV4UXKorUkVkcdTpHmqJntAVmD2pY-DwoUtoweolsE-rEhIOmtn0G6kJ-M47UCV5tFF4p5hpe5VgMI7clvg-E1_pAj95pA",
+        "ATKogpcROlIF-JoOptoLcmCevyW6rWcq72jn0Zh_HuGB0Jo1XaR-HFjz0OHd5p7W8UczRAUQ2ey0m-TuQgc0puH9o-vZp6SgKBppOCq1Jfh_kAqvYrRJsiqv8vAK2dAPTNUEUACEQPtd70KeNfSSIRWufkQqmReuDL9pbqHRnYjpNMlpmO80ypnnjcBZJcM9X6bLQMEErh3yG4n11CudmefrDX8O59gHD7o_EbwzGd4ja1zv8Nzk-klzkLNfIl1BDyXqQQ4oR_mm2j1_Phd0xRRP_ZAVENiNH5xXpKkSBj9ZF83T8Csk5UUB02VlP7G4z2slsw7bBMehyhdC5x1lf5Gi8M-dmyUYRFE0uf0XKi9G5FynUjTv2BQw14nZOOiKC9hOQRFuukpq0OQ1cggWbfS20SxvDTKpVyOZJnF-8b_RwfFX0w"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Le Bistrot Nicéphore",
+      "address": "33 Rue de Trion, 69005 Lyon, France",
+      "phone": "04 78 36 39 48",
+      "website": "https://bistrot-nicephore-lyon.fr/",
+      "rating": 4.8,
+      "reviews_count": 314,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 17:00 – 23:00",
+        "mardi: 17:00 – 23:00",
+        "mercredi: 17:00 – 23:00",
+        "jeudi: 17:00 – 23:00",
+        "vendredi: 17:00 – 23:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJtQPiSIrr9EcRj-031mWfHTI",
+      "photos": [
+        "ATKogpfbb2Aq9PWHijcufjiUHRPuocMqp1Z1UhCXNQN36vTtiNeN3_Il71Eg5Qm_EHh9zsB48KGI-0z5qQ_TvybAz4V3Y2tzLXnGp3KxaXI_0A3OMfIHA4ukdd47Yy--RVFcsORS2jmxQsTk4wMvjnByhipSGxMks7YmRukNLB7ypGdOiaid52LTlab039hHwpu2z1pPPzaU0X25RvECqEOIIdbWBl3M9XNTijKQNt1_7fCbSY4U_Il4PCtnn7dO8oPaTd6Cv0Kdkp8rN6T3b_aWeACoeEpCxTzVDhphHqvvCYakO5LROKg8YzLLF_Wf_qNIVcGsy3NDrTuYZUtDAzVOAAZwflDeQ_uZCLfPwUWjWG-PxhXq_yoWm2J7APt2gG_UGBrmadfK6XiaY_zTxxVWU6P88tpYsQdREqzlBljlF7iQHyi6",
+        "ATKogpcOWtfo8N_Xmj7EvFaVzc-pEOg9ZbqI1YWkGG3AqO7rXVQHF8nMjaKvLkrFzJy8YngKPgiUAHxipzwied489jxfbIcygVnk9vq8IMDJvgrmQc4PRxU50UbVIEQpp6kAWezwqZdYNubJBrVLWOpxwSlHOaBdfPMoaLjMNeTK8V7R_d0ZDcOao7FymWthqyyRuZezGWAXZII2kqZn7uSPc54RIinHocdioAB-tTs5grzZj9xxTpxGLLvmBCHZwbrez_ZVfkn5BldTEaPt03A7zQBLuJNlN8JeWgJo1w6kW_hRtQ",
+        "ATKogpdIM_r_82gEb4RQU4GgYdm8v8JEXTwOALJlNyF_LdojYhtT_Xh04fmXqKZ8TBFVNeznxAp4k7M1rmFfT7Sw1wLAlsLenL9fsNkd3fmhXOFctmLM3KOebW7L5WqFhwNGT1UqPxw7IG-AqU3U5NULCWdNqaD5xx9IyvgcCIvpLrimfWM8zUUnWpBbmP883oLRFJB3OHKSyc9Ej52Yw6JfpXQ4hCwKIhk68F74lOclEDrvpmSJf1IXj67rdtonR-pyqzfoUmtI55yfTSqzGFDEGCqqUcbtlut8AmLD9zNVSM8qiA"
+      ],
+      "zone": "Bellecour",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Le Bistrot des 4 Chapeaux",
+      "address": "14 Rue des Quatre Chapeaux, 69002 Lyon, France",
+      "phone": "04 78 62 36 48",
+      "website": "https://bistrot-des4chapeaux.fr/",
+      "rating": 4.5,
+      "reviews_count": 314,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: 12:00 – 14:30",
+        "mardi: 12:00 – 14:30",
+        "mercredi: 12:00 – 14:30",
+        "jeudi: 12:00 – 14:30",
+        "vendredi: 12:00 – 14:30, 19:00 – 21:30",
+        "samedi: 12:00 – 14:30, 19:00 – 21:30",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJZdpY1lXq9EcRhMF4hR-Stfc",
+      "photos": [
+        "ATKogpe9AzJh5NDJOVNKOcNp60qAp5KZ42_1Th4A8hud7MdSLPDubzJLeqyuTJIyyEbMlMXmMTb5YTy9io5dmWuUot1B_YnBn1pqpOGkWZ6kuGx1ck8S9Nou8Y2ahjtLRcmAQ5Jw5S37GQLi8Q5zZXChubWZ0uVwRt2VAwu8LasCaOoK6IZqUMWtduLs_BDTcAhVtwI6WMcEohz4Lh7M8HmLJkji0TNa96HWDqw8XYJ7V00J8ebjDzV7NR24R0M_YnS8ZShaDfzSCMWJ6lCHeRvhfTRrQ-asa5lVfevhPU9GMd0QpA",
+        "ATKogpfgV6Lv9czIsDfTkmBVpLCMOaLehxUqazyNiVuHwvI4_xFBRkiXJiMqZsukQ87Mb2rSXDK_i4AKilXko23nqnJh97ZIfRZ9wsDB1gOq4pRQ-2Gfqr27Kxn5j0lMxfJV_SKlWcPt8DrYl3uz-wrOGdBZYFr2szxYmkgQ1GPilcMQ4FNF6DqrNUUC16zYnkg1kkdpi51Capdu_UIz68IibPoUZXCGfQNuW7kvmaLQ0QhE2ALDs4yycQ2oLvg08HfMsZluR4v33emDG8J_-A3rLONyJzCL9_rfu-dcpb2iGGyGrcAsQ27PjafTHYWzTEW6GvKnw61qgNd6UBI7n9LODFIBj7rLiXau5L0YrCHFPGTK3jzdWSc03stq0EGok4UWsZLnb-0Zqft55NwSUEczmfXrYrCd9-bqM_V8FtkiYXiZ2mC-",
+        "ATKogpfdH4XRXK9jXs1VB3J1WY3jp881Hqpnooia2xlzqjMHiKgpcQiwLU8qBFSR0DePuZUOxGNKzw_CeSpUKfT20Vdhty93D21oaWVQu_DiZBKno8SZQnPvhzPcQASSMvG_RRFJSuemo4nZUJGIOPmvqKqq9UG0hUhbrlL1BvkMr3B-Ta4WmB-0oHt5lue2xkIMAKP7F6Wq0NM37c0NikRz8IIG2rbgmAhumpa1zN4l6Aae2ypN7EGpQXhabb7jDdhN8a0wFT4tvHtrCpgBWxFcU4DlTrw5wmxzV8Z0oU4AAHgeECX7wT-3kVkpTCuhAi96u2Lh897gr0KZ7HVRGRdCA04ZMfnz9q0uavhlkR82D4uvul5j7nnBZN_mEpiM27wL64Q_JE9AjbrGCAAr_E35MK76BIT9sTLhfScsrUKd9U8Cng"
+      ],
+      "zone": "Croix-Rousse",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Bistrot & co",
+      "address": "53 Rue de Bourgogne, 69009 Lyon, France",
+      "phone": "04 78 83 76 65",
+      "website": "http://bistrot-co.com/",
+      "rating": 4.9,
+      "reviews_count": 124,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 07:00 – 18:00",
+        "mardi: 07:00 – 18:00",
+        "mercredi: 07:00 – 18:00",
+        "jeudi: 07:00 – 18:00",
+        "vendredi: 07:00 – 18:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJUYWIr3_r9EcRFtXbLUahJ2M",
+      "photos": [
+        "ATKogpfWHwhi7JLaiI7pGY_y7W6yMpsvTriW7lXxhT3GQdA-EEZEc9TvAKmovYyRwWbMXU_zpUQmb5NWnOmFWFGPPrOXC-Xk549bVb965z0bQqhG4QdxQbvy_pYDQwLFulgM9NI0ws7OC4y2udVqtwAQwvOGfVWWRgV23-4eXUa_nA_xhNd_GyQQSMP1pl03X96YxnBeFFMGJTiDTB6W-I0bkipaiV9FrsdBcJ-kk6b5-1sGxI44haaCakA6Ybv99Wny7HIEbk3M0gHfWuSZkOnkRMcMNQyXRgAXtlanp4F78dDexA",
+        "ATKogpffzJZ_sTQr6OVW2hBdpWe3jsG3hNgKrPWszQgzuWixz5B3AlQ6h5EGPgKMzjz7dyJz4UUegi6ANxoqLvQSutuh7GxwyR9P6ZW8rHzQXCgYAd8kBf5QlJ1WGXUCz-ZQXo1SFLKOI8efl-qe22EtldN_4ZUBkmfv2vQmieNdtAD6e1NEBQuxLe-LXq6_lbTCLPg8Jx7GYRZLaUzWXkYG6KXdnwJQxI_RYFzd5ldifwGZE656VOAPlrL8EmA9gSV7mxKb9iZPPVrQbRHgFAsZvze_zrSgo87Cqm7aPrPxjXuDZw",
+        "ATKogpfFRaXfwjCRm0N1UsDCiZaS5roYTCuY9miY2X7--8rtsiM43vtGSapZK2i4zhWgXys2_gKWEDczN7grI-c3GUWqSfk0qiwgaRUYx68LYV-XvpbZNgjCLSYcHgKtHyVxIF8DqQSYggaSsRcfhWAqWh3z6vI-ZhYdtsbHLdrqfY_ayuyAgI4oJ3BMxiceFy4HrFNtTPqqQ8h-PIFzdY3VCkjuvX9nT5tRhQ-nQ5GZ2p659RKdYqKTX_3cPs9Z5crhAoCAao_kTBi0v5SfSo6A4HmViB1xYLAPxs7XqFCldTigZg"
+      ],
+      "zone": "Vieux Lyon",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "La Virée Bistrot",
+      "address": "21 Rue Jean Larrivé, 69003 Lyon, France",
+      "phone": "04 78 60 57 32",
+      "website": "https://www.instagram.com/laviree_bistrot/",
+      "rating": 4.9,
+      "reviews_count": 74,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 19:00 – 00:00",
+        "mercredi: 19:00 – 00:00",
+        "jeudi: 19:00 – 00:00",
+        "vendredi: 12:00 – 14:30, 19:00 – 00:00",
+        "samedi: 12:00 – 14:30, 19:00 – 00:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ5ZBoTmrr9EcReUnAY-hNJ_E",
+      "photos": [
+        "ATKogpdG7-kAMHCz1UM0c96UfPsoqAn-1z1qWAhNNrXQz5JJsDXOiHkuvttKzzcVFOHIQNC9dgiSZDLJAXJevKo9pPq5a3-akyTMlI1F8kdasLLa6na4Waegf5KEC84LNiQgovhL8MyKezi3WJfbBCKeFYwtySqaDEpZPh5AQS-Uq6FOKWYDdrmTgiRHwh3RqHyx22YhiRSugsC7ja4ljGN7GcPDiobMaK4GfQJDRWhi69H-e-Rzb0N8viNMGdK9RjIMjDNh3Ii4-oImiorClTV6vlf45Yf20b2Jk0VY3pUpE6F0On0DgQH90E6_NudxUnCZQNRWp5YghmtXmIDD6liHiK2f-eFh6j4_DeN9xbtW-4HqM_g93ngWQYvQEGhvqZc77a4Z8gLG_t8-mOSQI_jYyizLdKEx1wUM1xPLJrxAhANNvHUh",
+        "ATKogpf-kIxR5tCjaxMo5qIKGgrFoed7Wmp9kWAH6xvL7rvYbbnQqQ4LIbzNDiBGu9PLwFZx6liyYbUbSLENC82etdWmpqTwYHOH1dXR9zVWZrJYGrclqnDs3jvDGnvd8PyI-etMTPGjdfwslHTZ1pRIAeJhOeESunkCiZvso6tGCZuOAUT3VhkvoQ6fZG5BMY2qbmwydtDM9KREkU4zoTZWYLcfQGoyD1lOuylx8cwzOSpUWOU_5MXNircW0mL4dhC1LgxKoYw9emu9aEyi3-h0D1uXoG1ZlvtUFuePt4gGI8ht2A",
+        "ATKogpc52Wf_ZV07Iz2q5fXvQKocU2hzaOKNAw7A9g7UFIVZPRZvbXMFDg-s7tzQKNIE60vSgJ6uXRQZ9JaLdTQgQnf2MNqzyiQ0nH7AcZ5Bb69K0ADJVIYWaoqo_loIjNR1eIVhusQH7KZ3QwRmNkSe07b2V7nLIphCwD5MAU-Ug8PZ9VnfSSq1AgRDRfXFyZ-A05I_61noBALBqO00KrzTxgv_d8Ha60K8oFKDEypx2bVBSl0qhTIWvr-TgnUBLd955WnfXgbAUqsvnypnCVrA8A8F_r3XKn3CrpHoauBFwUNDPWyVDU5qvLevVDn1WEjvLFo3tyQMYTtHspEIA9Ga5_E7px-wxaERpil3YUO4F6dK6Qoz4arE77gBsNEOiyH0nUE-BivThRCMyrVqMCEru0-EBlQ-ZFtW5WZaIrUIybZjTSJ-jJEN29_tQr_eT2YQ"
+      ],
+      "zone": "Part-Dieu",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Le P'tit Lucien / Bistrotier",
+      "address": "132 Rue Pierre Corneille, 69003 Lyon, France",
+      "phone": "04 78 95 32 88",
+      "website": "https://www.le-ptit-lucien.fr/",
+      "rating": 4.3,
+      "reviews_count": 208,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: 09:30 – 23:30",
+        "mardi: 09:30 – 23:30",
+        "mercredi: 09:30 – 23:30",
+        "jeudi: 09:30 – 23:30",
+        "vendredi: 09:30 – 23:30",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ11NyAxnr9EcR-ir2ypBPGTY",
+      "photos": [
+        "ATKogpcCEVZh7Lp9zYFZ09RTe0mz22PfbDNlJ7uZyH7oU44uxkFVJ3R_MxInEjwu-B5jT6mdzyteHXq979INluvjoP9fE-lapme37Vkejr3GlW789Ol6ZYCe7DsUD88RcojVT5GXxHzqvh3CIDRV3KVePc88dQNHfZEJ8EEiXIBSsQbCTOIPVzJu6qETrH41qPnpMLbNZIwGfYoPhdvv4gLe8ZzlDx97S6MHWJIPrRzlxINyI-sCbQGBG2W7n04u6MkjD-3ZTsYwO5YXbxCseIKn5eYUwt5g3XEa_MxA_wOlVhbnxg",
+        "ATKogpckiU6daumy199Vv5jTXjHL54zLoaw4jHHrCrzug99psCRTXJNdRVqj0NB4L0UdDM-rnJv7BRR7hIc-jo-l_gTd5xoPG4TF-AdgqidNHhHqqjOOh4-Ef3QvBYjyNEX63zj8p6GFVpnkrlZmQLIZ1T7_cgY0yKCmxMZ49xf9MUYNPgIJQSJpgD_lXzcWUtO4J_S76VEMja_1F1mTlAleIMfw2BwoKAPMlJmNjIt_ERRwoV9c85ldL6QcMB6i-ZKr2VqzaRMVjCulzMlXC6OKb3zCZcecEk9hk9vZTdUYhuWIuA",
+        "ATKogpfpdu93MwZvi29iu3-VYzXjijOfVfH-ABUSFLzQ5cHktijCgh7cX8l2ff4_R2_19W3Xb-sxOXvTlfGwGtiw5YftAsXYKLG67Az6dfXdnhptuVZ76Dm4jCoLRjyQ1hZNd32jK4LPrgfuiCnTKVHi4SZaW31clKCN4Xez6vilmG3BM2n9DRrBVPOb_aX2r1pbKWjPOvxc8hU6Rw2Gk9t5ygjjZRHarp8p8_8-GhnKHmQIyImF9ZWNLV5Wzj9qKP1hhYOH4OESIkl59xMGTIDBF9ZD45DInVOeS5TEqtp1EiL3x84a1rrWVWVSTfnZHt2SQsIGqXnhE_g3rBFRrlBxZS3-t49s8bX7cHwAPkAjWR9wwjbNxGU4H3hLR1Jq9GRXlK9BUbxC_Jd7BgTKuJzW12RhjU06FBZ32efeW5wgi5kWTMk"
+      ],
+      "zone": "Monplaisir",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Bistrot Thélème",
+      "address": "14 Rue Pelletier, 69004 Lyon, France",
+      "phone": "06 69 65 32 77",
+      "website": "https://www.bistrottheleme.com/",
+      "rating": 4.8,
+      "reviews_count": 89,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 12:00 – 14:30",
+        "mardi: 12:00 – 14:30, 17:00 – 22:00",
+        "mercredi: Fermé",
+        "jeudi: 12:00 – 14:30, 17:00 – 22:00",
+        "vendredi: 12:00 – 14:30, 17:00 – 23:00",
+        "samedi: 12:00 – 23:00",
+        "dimanche: 11:00 – 15:00"
+      ],
+      "google_place_id": "ChIJ99G0cSfr9EcRl6qs8pL3kFU",
+      "photos": [
+        "ATKogpeOaQDqoVHXzextidm4rI4VsMqj1DYSsl_aBQNkuScPaMPLEN3TvtWVDAzbBtbXfRhMkpbMPk5qPRGqAUtqpOpmjI1-XSCscBczus3x6X-2eZdpOxAr4P9hASvzsK5c2lyPmKrAp0XMEFSQZ0bAXXNNktvqE5hSwdxDzldm7SmUPCDQ_uAZmdWq-ejKGAM3-MAi4fMTphSx5kbSvy4K9I0kLPb4k4INj_7u9hGsJEk9am7YvsUjXYE2EK3Pk_Wb333ZC1Ifvh1wiIBsxymJZcPQYSktejsKjjiCPoigG18JWQ",
+        "ATKogpc1aDPcPHpA84Bpat93KJ5eh3GL4dSRrd2vmsDlf6flqsrA2eUMvC4kllNOhIY2TqslKPvdZ-dXTSKpeJpddbriWc6I6ZyuJf9KAqJUXphOVXZJz9hk-8OaV-S8ZKuuJZ2qG_dcMEYLYkWAyiBqOps-W_PupMMqgJlQVRLXlnYA5mYCB388_7HUYpGOMV7SkF5DY8gvdBecPmf_Fp3KphhvtkVx9BBiyUb7Pv37Xm0GZZQLgxPjnWk3z9gFev-KlEYXQJp-kYhTgPsKOToM2L1IDVsPeqlueleQRxPwDvsC6w",
+        "ATKogpfciPU9GBSUrtTK1iccqLyWLR5XrbL6Es75wvxSDsI4lfeIEgfe5ThET1RjpM3T5IjSl2ARXxCK9rifKicgBWLa1yiobi1P-sn-Xi7ARhxLRbPIYaf2CsvFKciVcs7lplwKnYlNvCAWsIlDOFRIQ4GzynlRadhTGafMZ8kEWb4unF0ekIvCygUm2betcfugSXyuJQg7oKdReCG0w5e4F8dB-v8exNTsAdQljKX3415527x1HMzjXWRvx5OLI8hCKCNiwAl-4dVnudgll_aXgaN-iR6J8IfnBy6Zii-uGRodVg"
+      ],
+      "zone": "Villeurbanne",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Totem & Tempo, Restaurant Bar Tapas - Responsable",
+      "address": "25 Rue Saint-Jérôme, 69007 Lyon, France",
+      "phone": "07 67 34 78 77",
+      "website": "https://www.totemtempo.com/",
+      "rating": 4.8,
+      "reviews_count": 449,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: 17:30 – 01:00",
+        "mardi: 17:30 – 01:00",
+        "mercredi: 17:30 – 01:00",
+        "jeudi: 17:30 – 01:00",
+        "vendredi: 17:30 – 01:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJR6n_F9Pr9EcRp79ydsYF_UM",
+      "photos": [
+        "ATKogpe3Pk-3tIRWxvRoXjTkHxQ1ST3C2mjYuA86eF1BT4X_HDZyUq-KUakB6v2XA82LfBgP8PaOKWzKQh7okI5PHPchKd9tmNkEVNZ4bK2Q4m_lBcjB3sRNxy5H_gli7d8Ipq-TqzMT6rOFJDG4_U_9f3MYRQCZIE95jwIP8vjotYXY4_xsn8_61Fl6hguusmCMpjXU40voN4ebb3LSkVBniKvJLSWU1XcJaO4mhYwPMsi5zOTkdsX1bH4C0UW5lsBIZpqtTzPJZPtLCL7U4oIY-MxaZnTV16FnOaRrIMdJAczOsA",
+        "ATKogpdBA2FfxKzXlXABdgYSCP1k_LHB-zj5pojKXClGs_xcC384sFg6rI80GiLDe2nZiniPlNds0n4tH1k4EOM6ZeVetAb6gGQcTSCeMoQECos1ZKdyByF0omRl5HJ3mjchcsRcnTcQ4SUmJsADbyl9QVDMRzDeA4B26oc28r_fh5b2oimQj-ViLxMueI2-O9FbZuuNdEJQFvQAakSkmfUDWSbFXEKfSugmuL7K3PDmRG8GkXWw0PuDCEakXUmi6-6gOR8cqgewOSMHHuGvJPe_msED_gjz4kmZ5tD1N6kQrYhMqw",
+        "ATKogpfh6ImoSVeYIBI4MO8WmFMwIf4mXiOwFu19IaKPF0WLYe8zNOe2n1OM2hDUjmLopD3tFleTJs6PCWWdKOsSU1ClQ11xEw2H_lPIlaSCX3BcHO73jT0-yCRVuEAapMzmiSixn4wwEX_F4gjdlm_rFyp8TNa1h3Glm3orbbmOmoGq8ooSvR_OhbJtWJQ4VfA_JRnTMNE63_rLFCfzUC5s6eUm60Z8kJ7k5vNSscqxn4vB23k5cKYQBkNSBP65-Yma0a1xbXIxRkSV24A_Jdmfd3vl9ylKlZWQC4dS6yftakjDGQ"
+      ],
+      "zone": "Confluence",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Restaurant L’Aventure",
+      "address": "48 Rue Pierre Corneille, 69006 Lyon, France",
+      "phone": "04 81 91 09 26",
+      "website": "http://www.restaurantlaventurelyon.fr/",
+      "rating": 4.7,
+      "reviews_count": 148,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 09:00 – 22:00",
+        "mardi: 09:00 – 22:00",
+        "mercredi: 09:00 – 22:00",
+        "jeudi: 09:00 – 22:00",
+        "vendredi: 09:00 – 22:00",
+        "samedi: 09:00 – 17:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJZap9CKnr9EcR3tizlBQksGU",
+      "photos": [
+        "ATKogpeFW8G595XCRDvSZ8UHpEtuKZJKCHIALOQisv6KqdytGTR-lHU_ZmBR-zMhVSVV1cigCVPFA7DmQg6iqSkuWyUu5262wqwtlbh6RtE5TCe5-SsLg99zF_feXM-QoRcQftjx5hiP-HBCK-GWNl1pOVeD-G1_8hG_ixc70JwQVXiNYk7m7tJb0Nw7H19oYWcyEyoyzKLh2b-feDeF2uzgd0gH4-neppixM-Z6HSZ-t3Krv9gHUWlSip6NXFCm3KnpECglrbrt6_fwr_bNUDEXh0C1wNWl7tp98T-Tm1D2W8zIXloJO7ESneMCi1mMA0KA5dUhIOepc84Ib5fI3lr8I-UopSzMjQp1pvyeACngDkHNo-7AYmzRou22e5Zr-G1Fkgg8kuFpfiot6yNXrJs7V3fCR94fsRj4g8spXWdfWrJFKif6",
+        "ATKogpc42VPTN0ZKvfYWQJLKtBAKNuB6t7NUB-H9SdEG6ioF5FTUljgou-ViuXStJshmZEtu2O7oWNN6CD1h6WP-ocTUVCPg29rxkQD3PaqZzbdMJi9J1dn31YWbZGuQRSaTKhJ3wX6G2dR9oM7x44s7cBzqeQbSK5IJxbO-OZEE9p9pcfrRLfhoB4yJiyJMoaqYUEdaUJ6EJqZ61qPw_yp6J0bA1DlswWYnUm6t1WqlTL2N7e9WPG0NQ3iaBF8CWcOm9RMocG3uh5_6qo4WkyJ7Mo0w2_M7DyadxKZ1UP71-yKNYyzTIn_mlzY7Yc97fjV-sW3gN9KlDTmXQ9oUjckg48vRdohz4W6cKRw2r5OaXABIAlK6Pk1maXlgsl1UL16N6UnofZY-rxAZFSA10Httw73IdeVDwP-PFie_1T-NfyC0jhqp",
+        "ATKogpfDCk0cfJxSrXnkfawFLNMzau3womq9QvPSW3S60XR2PkAUl_A1nc9kkv1-UbLU6R-VBQnLhC2rqwJg3sIa3d92-r6G0sHJvH0G4MKtypgbG6BmeGxPEnzrKt1RhPnbtor2JtYzgPOFUaQhMnFsrdTWcHXpnOI8m11zazf-pLrUilBN2eO6OVPX4cx7t15GQbNqynio3sPV5gFutQVyR1LSM8taZeLRPPS0figy0E9wLsOZBRFOfDrtMOkQ4a8mdU3Ja6qWdzsFHXyzPxNpC7rRx6LOiL3ztMZBodBwRcF_8jKOflt1GnPOf8eN1p13AUhEmAFoTn6pnzbRPlDE1BDfgG5DBkY-9F6ut7t_A0dd1ADTBWxvy2Y48eayZoc5zkIa6GXsC4_1ax_l4_ChvIehxLmZ2k7ipRmG97JKflX4Wg"
+      ],
+      "zone": "Part-Dieu",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "L'assiette Sur La Place",
+      "address": "59 Pl. Voltaire, 69003 Lyon, France",
+      "phone": "04 78 05 32 51",
+      "website": "http://lassiete-sur-la-place.cover.page/fr",
+      "rating": 4.5,
+      "reviews_count": 379,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: 11:45 – 14:15, 19:00 – 22:00",
+        "mardi: 11:45 – 14:15, 19:00 – 22:00",
+        "mercredi: 11:45 – 14:15, 19:00 – 22:00",
+        "jeudi: 11:45 – 14:15, 19:00 – 22:00",
+        "vendredi: 11:45 – 14:15, 19:00 – 22:00",
+        "samedi: 11:45 – 14:15, 19:00 – 22:00",
+        "dimanche: 11:45 – 14:15"
+      ],
+      "google_place_id": "ChIJKQUAvl3q9EcRAbbmriDXQ7s",
+      "photos": [
+        "ATKogpcrXgoeXJGBJb9EDrb-D19Ap7QNynIrFYAEOiGPTfkFdMlIc3P3QSMVMSs859RXJi3RkCrMX2f74d1hZ3wC4A6CdIBdPd00w9JHre0s3k0Vy85IBcbSyV0iKfcKfNAdqO81xulF8jv-yv32oQYfcjvomhuVA4GHu9lOOV5Nv4XTk3XP91BWF1coxZRaLHtC6wHf6ozZAxd4UCnSNa3ErJuoU0K1fnkxeekitMToBSH0RzdgmAfWrMkOHLtge5jNnkhZ_w-XVHnWlpsuRJjA0P45U4E2mCxXAcBzDyZuXvieGGakj6EcKdFSiKNy2uIk5fXwfbNBY-ouOBYrig4SBLWFcQqpvWAaqQ0VKMpFrESqJMY4tBOd_3KrVSNtd919S2_qEb2aVxQUCWr002bCfZu1tfO4mWXnZ-gJlwMrgzhviA",
+        "ATKogpcR97xPR_H3GdeBgl2BM2dR5GQpo29kZu9ZdIGhfkwaouF8Nk4KNjnqS31DJS_X6tzWMv5wLAYT3O6pHK_HC--idoRWXdBVzBKRflV4-kp7lpncf1oIYUhkSWirjvEsZ8LTpnWQ5hnGdQJGS6QGVRR3JyEPbyQ-xnVLwhEERV-iEa8ZxuOA23wiC6IApwD_scWAEkAtzMwWyIWlJqOmVmn2G-617pPaWCIM9xdoeTrDrkyIiPjOKk2EYQer3BWnX7Dj8lDhutI71L8kIcRZEmG74K_1IAIRnbkUqK0F9Xal_cE0n_FeLzI6aMPMSKXF2myhmn_OW0gZzZWvW5OrNAOr15AXvQZP7gbfD5HWcvFGDgDjCXMD45zwvQ30tnSavQBnauGdNOPneNpyk04jQiZzOt4YTiyaTnFKmJsUXvkCuQ",
+        "ATKogpf7AWQBWgH_qmu9YqedwvTbR2F4Oo89YV1iw8M5DKMHE0W_iPhW9M7inViDbeesKZtJcTFkp6EthT-h_3HyHPEf2pNBkxgIT0NnuElT4PCujXzZII_8TJFmx2RyAN3wQVUd6jPwDreMB-kH9YDtmDc-gOO9Dux9G6uxCXrtF5u72_8H7IP5lf0SWl-yASWvHB_IiH9c8Ew50tFkQ2GO5OvN6B_QadC2S0wfSa-vTDgbzz_yTisGQ0NyNHSzk2VoyDLt1kFWgz19IXEsEvoI8dov7VsnaeKQLEEdBiyMsPCGVkwiCiNoydipNKVZSScXfYtvqdJXYwOM9xGcIRzl-u3oRRYY7lEF_hiJqiybrDdj5iB7ZpEZ3e-3Z5Nmy-ZjnrPGgl7D2qpTGSk1fJ_iupKEC_FcDUnSs3WFcJLYqCCSwENKDnsWzeqXqVQYBRxh"
+      ],
+      "zone": "Part-Dieu",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Le Petit 6 restaurant",
+      "address": "37 Rue Tronchet, 69006 Lyon, France",
+      "phone": "04 78 89 21 02",
+      "website": "http://www.petit6.fr/",
+      "rating": 4.7,
+      "reviews_count": 136,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 09:00 – 21:30",
+        "mardi: 09:00 – 21:30",
+        "mercredi: 09:00 – 14:00",
+        "jeudi: 09:00 – 21:30",
+        "vendredi: 09:00 – 21:30",
+        "samedi: 09:00 – 21:30",
+        "dimanche: 09:00 – 14:00"
+      ],
+      "google_place_id": "ChIJO0YNz_Pq9EcR6hTqCBTQCww",
+      "photos": [
+        "ATKogpeiWEZO0tw0d4pCNuJGL4iZizK1CTTHNFKymjWtmzmzI_-z0t_XzKU8rt-7E8aMosre5wbK6XDQuG7KNG4uVsyE1vTTUt-vvwLatS_zlMTlKVSZO_F6wZblxa_fnh7lrY0Nk_3qF_jTGf9avJq_VodzWaoPEnH_nQkFJuTu3ro2VBAjT0KmySdA7Ary3M8ikKAEcAwdPMZtbjzF2Us548U9I8VfB321GbArhc8YYsfxuepmLoHsE9FyjAcYYuVvoMU-VEaLcqW94L2n3zrzrAygkl8lEfQtn7w7QiXZbFc9ng",
+        "ATKogpf3rVAstOV5dMPiG_4O_YKIblMu6nUczfYsg2sSSsd6R5ex5xlOQ7EZSSfErJJBpcRV54NUuXmP9YLuaoYtER8Bp8BRXJdlB02y290zsCT3h_IZGOFvgi6Y1k587uxJ1dSHvzvxRZrt0srJgavoYsF4Ob-iTua4wvgtVsohpgQ0WFwD91HWyuVv7e9hUb7uqrlsopTeYf41YEv6Xvs1yqVSrF8Svkf1Zc3HrDieBub0SIFJ4wK1We1EGZlAfKUcGy4xnlPyv8kz1LWwA-LNnvFJ7s29_RBgcFgMrLJWhaIcag",
+        "ATKogpeHN3IjWUh0w9kdvBE38oloCmayLY1im8z9lOSwhQeQRzvwpOWM4nXud1GT63XgqDvrMApD1YxV7lhR4ec9umMHvH0RiQLBFtG3Dt0J81IIgUOtCzvltlpODGpn4bN7iPbDuzGyKS16Uutc29cow9Y5xDwUNmDqKal_yAY9emxFMYyiy6WJ5m5QJcv-1dhbkF5QNFm03UEfjPnqZ9dW0v_sU8jOOjzHDke3Acq6bC6HBtvyNKzFiYxNHbWrdS1Qj6-YWtA6D-tmXiBIRQUbftj31kB7bZQgoT6Wi1L-Rbn0-g"
+      ],
+      "zone": "Villeurbanne",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "A la maison",
+      "address": "23 Rue de l'Arbre Sec, 69001 Lyon, France",
+      "phone": "04 72 73 14 34",
+      "website": "https://www.facebook.com/alamaisonbistromaispasque/",
+      "rating": 4.3,
+      "reviews_count": 367,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: 18:00 – 00:00",
+        "mardi: 10:00 – 15:00, 17:30 – 01:00",
+        "mercredi: 10:00 – 15:00, 17:30 – 01:00",
+        "jeudi: 10:00 – 15:00, 17:30 – 01:00",
+        "vendredi: 10:00 – 15:00, 17:00 – 01:00",
+        "samedi: 10:00 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJfSatEPnq9EcRg45FoRMiM-c",
+      "photos": [
+        "ATKogpddwBkbucrCNs-j3J3Ad3aUAO9zIgPYcLKXLJZrpnuipiA_jS_kpbYPf1q_Ta6KY13qeDXWBjqi02dVaUQtWVMnZ8WdVEGowAR6Nc29z9C2L7nIJUrioDM9TfM7FU8t3kSbQPjEa6PZQB_zGRnWz-_JN1d5xqB6jam5oZhwJjbLT1Ghti2BmEkSqcNuYSFxQifX5bmVBJYqzb5HoTj6l2XCVYHu_QDEZfCI-Qm_jRm13JU-tseLc2SAYmBFN1sCY8qb4cB4fqrUeZURWdy9jo3fAD-x5h0KkEdcXZsL-YgfMQ",
+        "ATKogpdrApIzpcmJFJM8X7A9_E8NNkkldYjySoM8eVUGQlkiUA1kYt8ABVHle6SnHLPzj6RD91F06f53vBbcCPUohCkp8b74N4vZzWQ51WYqcfGwtZVOT3Ee6wZyNQbZTjpAvbdfLQHxBuQdhJ1edBsNgTzZMlvlUEkuCwrZEVRqNKCZWMRVjHhnHr8ApXq-NtnQ_yiF6SiXkrtp3wgWf8KXEGxCZ8zGjybevVgDEv0OSKyIOj3TwFvTOHuXiGH4rVP6sEdICpmdlB9ijVIlO2UCATtrxaeWFCb7K39JKMUwML8v0g",
+        "ATKogpeio_Px9F9PoB__7LpuMqwH8lIJGqAioB2fMieikJGjbWYjWRg7kHcrdzGPrCU64HrKfOMJwO2loKDgnw2GPZDD5k6-v5EpY2DmM17Xk3s5eGJ2fwm0zAxf5jzhwbym5I6AvS39Ua2kj1SUh66VVW6FvyVaKDLvUga0bQouYQ8oyDEPgalPiQDd1fGobT6E-IdBdlYgZNVc1Pai3D4IFuvHrLvm2fTSmYF3NNPOkzyE_N_ic7SItcB_IhCo2h4oHXbAnyv8d_p3Zu_hezDnvnn6EQtMpyCK_K7hg4OTeDqbcZdACbJxMI2ShgRDH9_Tpz1m6z7rmk5ZS8er-P67UME4Om8MWaTKT1hHe8PATxtFOhSfiuHTsZoalrpOD_JRSUhJaZfGpblJxiM-EWjytYZ8vWLiea6yc3cJxnyOQ215PhhVmkiVZayY8y3W-2AH"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "La Maison Cobalte",
+      "address": "23 Rue René Leynaud, 69001 Lyon, France",
+      "phone": "04 78 31 82 55",
+      "website": "https://www.lamaisoncobalte.fr/",
+      "rating": 4.9,
+      "reviews_count": 256,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 12:00 – 17:00",
+        "mercredi: 12:00 – 23:00",
+        "jeudi: 12:00 – 23:00",
+        "vendredi: 12:00 – 23:00",
+        "samedi: 12:00 – 23:00",
+        "dimanche: 12:00 – 17:00"
+      ],
+      "google_place_id": "ChIJEYF10yrr9EcRkLVhdSXtlL0",
+      "photos": [
+        "ATKogpdy5Z8VmzuFBEvJsscsMn5JSO5piWP_DF5lZEQArfNOB3hXTSdeONQrmJzasDH3R1bi-2xBQBnoYUta4ypU_Suws33UyJuOHc0ZOcJr56tvfh-KyNVGdtoNExLUt_PBgacpnXpzyfe-1I0jCWNdRJIJAML6ghmKoAk0f5wZrGppqyWaQCppX4YSQGyyjiarDzvvkW4LQ9ZVU278yEjIXh7ML1d_-UooOtwtfvA16HPhciIbH7VOcsIZ5H9YuJ_seLZoVzSwV_93fF5l9DYcPHZAvK-2hpWNf4uRFke3-wd7vQ",
+        "ATKogpccqdXH5e-clsaTanqF65L78WjrC1VF8brrmyruNZem-Wk4xi8No3e8hn-CimFjr35kc5asau0IaGl1AaXcUM7HJx6SoZf-vshw54YVxjDeFgbFoNC4kofmHd4nt3FWfPXYTBiZ7gSVAuOPtUrsJFr84lsW2XVSdd-ma0xP0qH6_BlKMbzASJRad37ViicenboG901rlrf8HjcSK4eQfxDwLv-NOW2xy8up9d65f7W-043liirmjiInvVpP3tmvF3E5IZiAjB_W0edpBAQ0FYwx65-bP-qEWtGP9cr_6rhW9Q",
+        "ATKogpfmVtloEPgdQXKuCiG-2wIFterzo7idxHUEwxAVKpk1OVGoOuThQB6tA_yr-wyiW9tK_cXZ-1_NBvI4SUFLb4-nxot_ZXdDaIdUcnoT1E7oYztzgaDRMBQQqURQitS-SSbj7iSWjRJtnqBci0lm6OQAWH69FPUoe4OQ1B0k6Xd0nasPJGrI_vpBtQnAvFeQuUyAu0OG6BdDmtqIgj_9TVswAAwgF9q_3IUTOWmlY_89z8vaxfxzf2Lq4EqYYdmJI_zRWjeDpDkzK6_cBlg0G4RqMVysW6ueSDICotGdEnvRtw"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Maison Béguin",
+      "address": "33 Rue du Béguin, 69007 Lyon, France",
+      "phone": "04 37 24 96 49",
+      "website": "https://maisonbeguin.com/",
+      "rating": 4.7,
+      "reviews_count": 180,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: 11:00 – 14:30, 18:00 – 23:00",
+        "jeudi: 11:00 – 14:30, 18:00 – 23:00",
+        "vendredi: 11:00 – 14:30, 18:00 – 23:00",
+        "samedi: 11:00 – 14:30, 18:00 – 23:00",
+        "dimanche: 10:00 – 16:00"
+      ],
+      "google_place_id": "ChIJH-Irzyvr9EcRSqoFv7O6NBk",
+      "photos": [
+        "ATKogpcj70xhU1TXbOJfoSZbjgFs70okkYY3_aP8wiqUOKNfQk_uItgD5a_gqXoRhfnevFFclccgJatkMJ5HYZJhwRRtcO0K1FQmhoxdHecGplAjEEwhcEe2r1DT0MPd-FYRJATr0gJuJXSsyysLJBMoOJbll0yskDYKWYXbse9K9OEzOkdUkZcLTQO4Wpz5iK4wVlVuUBi6hDpR4czhUySTQIsk4xr99jIp-3b8KbGGn2L-Ruf2epbFl66xM9OgJRBCDwl2gYVgepwxiZBzhYQCCEJ4xe3XfTwdeK7CewadW93JHQ",
+        "ATKogpdnCm0ZgU62lWPWEJ7b6aNT-Bqo13HSUpIxdkLeQ6n-XrNwb-Xl2Vr8luhZWJanbkNyXOdLkLlV7nLIyAROQbXYLs2eOvRiwmVoYqUrBb1IR8w66Jhnfq_BvK4GeXRXwe5KKdyRRg1VYxTi8Azj1RvV99gPhQgFQtXNLxq4h_n5Ltw3VmBhqkGAj1lY_opQ96ZG-IlABVwswnmbo0VI5lE6AK_nOSsEU1LK4-IyXxMhlJ8akS0Kai59ap7GdTQR68IccXtQgLiapH2er-Vpy4HKPVywETn-zK9p2yYdZgmw8A",
+        "ATKogpdhkRI6DqcJ4B7byauU22W6F4z_EOKpkPSw1azjWlYWqkh0AXP6qwVQzbDfN6mj2ybbqqfya0UmMDUK1leEbECgSXFGCia0ZT7FiqBtyrG7QBpSt4X09ETA-XDVDleYzWyfOHihMJ-4bTgj7kUNm5d7RgLcJtreCpnqGNDEMmi6u-J7W_g9hHaGUCC9urcf_PwOusCCV5vg845QNmdg3RLZnaD6-u2m__58qYSD7_yX8oLepOubG9ttMIZcTodRqsA7C_nX8Gq-nfVZReX5g7bfwmkRycAy6D_yJFzTfJjzTQ"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Au repère d'Orson",
+      "address": "1 Rue Soufflot, 69005 Lyon, France",
+      "phone": "06 16 87 01 39",
+      "website": null,
+      "rating": 4.9,
+      "reviews_count": 207,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: Fermé",
+        "jeudi: 11:30 – 21:30",
+        "vendredi: 11:30 – 21:30",
+        "samedi: 11:30 – 21:30",
+        "dimanche: 11:00 – 17:30"
+      ],
+      "google_place_id": "ChIJMa28yv_r9EcRh0VfkoVk9Pg",
+      "photos": [
+        "ATKogpdO0RbQq1zWOTF4qvKNO0ftpZwH2q-ZcuLNDEVFYN_j25jP3e2R07LP_-jU85qzX7o9yOAU3CqZsIJh1ujusiBdXhJcsbL0__4CwdXrPfN1GDo8oeFa1JxcCpP2SJykGH29-DOFX-aRq0ufYTpvDwlCqmtZV9Ju2pQ4XnsOvXS4B9ZlZsGwt_6G3PWXTYHmzBVy-lu44ZR71hMuROFS_yCDlf-YWf0J4PuvxFt-oxBcx9Hcr8dcHR9hgcSNjeb0B0zIX8gG4vFAVEg5TjYh3Ho0OCBwJddxjT3CGTp8C6rhhQ",
+        "ATKogpc1wCgIQCIFaMwrTxTHWxENnxxp1tdiGqRRwQiUHMKvthOoGQ3U7CcktWFpIjdqO0Otk_0vlX3OGWuH4i0zobR4U7vgbgdlDdNqsXzY4nxFHTQlsplNslsLwg8NcHzCQV4qfcyRyGJJ9WhFQDrw9KBQ76l5GIbwIPIrprs8e_oj6RXCaSjW0yuTNCe5W4Akqpf1sw_mEbAEZqhLoPU8vvbXVXRpDnEATKdc_zI_99sJsDWPNcCCj0wqA_Jd5xwzXcbYhyXkK3AaXizOEhftgTo386Ns1dNa-UUaQDJfaF3Kvw",
+        "ATKogpd60VupK6UoiJGpYbrNNXRlW8w4-fbW-4I9_tw4t5_vbFWIHsV5y0LtI6njcwRxWd4MWA3x26uv_BTs_S9zQBIfM7r2tyoFYDGLpVj7qcNmAVit44BP7gs1UBK8kQJ1ZZa2iEfgJhliB3iGgNUOQqaRVj1BX7iXyc_2oGxuUutWAiDevAcSOeFc4kv-jtQe7hR1R7Ho5aeCzMDNIx82BCe1OD9bd-p8J_02lhP1A1jlWMddKWpgkPzFvYYoQgurfz1CdKAgjbF67Ick-3DC9ZsRymohEPPj2TA3Ulu0MUp5vA"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "La Cuisine",
+      "address": "9 Rue Saint-Polycarpe, 69001 Lyon, France",
+      "phone": "04 78 28 15 31",
+      "website": "http://www.restaurant-lacuisine.com/",
+      "rating": 4.5,
+      "reviews_count": 487,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 12:00 – 14:00",
+        "mercredi: 12:00 – 14:00",
+        "jeudi: 12:00 – 14:00, 19:30 – 21:30",
+        "vendredi: 12:00 – 14:00, 19:00 – 22:00",
+        "samedi: 12:00 – 14:30, 19:00 – 22:30",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJn5nroP7q9EcRF1B0OmS17qM",
+      "photos": [
+        "ATKogpdlOFvWO331J1L7DOO0UUkbgWOchoMILvKP4IC74avZujaVcLm5PEGd4VM8T1vpS8X9IOvNgLI6CqsqeL5RQUBy3sWlTm8I76aVj0AoKgg4sKKwhI6ZPOEe6HyJNKxtO46We7TN5VAhyA6nN9qNMDoXEEnKsKcoblhsIWAEPYEUgqQAKH8a_6wVHvPSn665UU3CKEj0kgc3Nr-I-o9FB4Ap6H9cvhRnHtdPfVBOw1IjhvJD0mSWywONrxTQ1YQMYhJxgbvth-zRB4bBShoXsqRo_bgMpAJUTw59pSX0FkRbeg",
+        "ATKogpemecfLcog1Q9X_09A1g9BSyuxYfqJMgqDOv1-pJfYpydXGniFI_BU-FLBXn3m9aXo9J8HZt5FdKagr7rORBNkTBJvWKCeoNWps66ZYn5UiMV3nNlu-PJi1lghpzBB0GWqJRKtxAPFD2AM3UlsMVeA4P9FZiydymd07qhsLauJoVS0r-pwDEjOJZUpR4zIMNXjYbjJvZyj8K33dJC_rePbt1qKg3sKBwvPqO-r3m2QKofsvQC2BEvSiGL8fX3yOEYFtIJ55Zl4iG_GBF3CZCtRB-nGPDqb1Q_B8ggoWcdLWrA",
+        "ATKogpeVjgOzyzn3n2cLIypm9S7ULjeMY2rxd0WSaaGqi_41KurkOBh6vxPtzp8rkIHUAxYRii2QK0a5v_1aEnsUbZ7xve8xr5pbx-lVlu9MwVTpbOiCuP7DlrP1juKQzfpI21YkAcvzzkttV2tH4Lahz_2RLS2kL72UaFIC20z3FczBEaN3ysw_-6e5wjmTJaOew5Pw9ZCzKFZbBYWZC7eT6FRR3MLob78EResUp970xPy7l3Rlp5Idm1x6YRKeBbQrWta5Z1MGadT3hCPjGAbPhXFH5hrGMmwRKaNQ3PgC-Z7mQuPiivq5a4F4ECxQ0_j-cKPpwzqNMB1S04A_uMJlG2nT9cEb889kGmcHfI_hEwV254mAmN-tC84no1D8YzhQILTRAlj5zqgvghApTQnlSQeUakHI6YmqaNHtV38xR8Zgng"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "LOQUA - Saladerie Bowls & Croques maison",
+      "address": "53 Rue de la Bourse, 69002 Lyon, France",
+      "phone": "07 57 76 74 25",
+      "website": "https://loqua.fr/",
+      "rating": 4.8,
+      "reviews_count": 196,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 08:30 – 20:30",
+        "mardi: 08:30 – 20:30",
+        "mercredi: 08:30 – 20:30",
+        "jeudi: 08:30 – 20:30",
+        "vendredi: 08:30 – 20:30",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJOc46jRLr9EcRpM3T-a41KtM",
+      "photos": [
+        "ATKogpf5sCdkliCjLl8h3AQYRw2tcT04UEXhuJlK9HNkM1idICltgAGXsE2ySIECOwwbdn3rftCTvF0kKEH5dPl_NRSckvKnpRpDg1FoCfD1QIMu8sr_V_RrPPJNWXbAoyvdE1r_HOatYrfI8AkIneiNbvfioQY4vZDhoG1sHzAiBNF29ly7-YaMlwjiWhdSSUqX8zn3RtpqYkzlEkGREtX9vuSpt5A8YqyQmhCr0IPVniICheWAoa5wJHiOaC_Q9InD3OpcAV1AGBHD3ZCEFbdYGpgGSRupVftT7U3wxHamfEySdg",
+        "ATKogpcdhL5GF1WEE-YFcru-z3VZJ2ZlFIabl4z3646qKrpKpaVaY9U4npu0PEMJuvtDHRmcrF8uDDP408uiu39itKNsQdKhU0_MbpxutcsOuKqaPRxdY35YIk_Zj0_Qp-g7D4HeoSlE0r0xmRCGSlVB-K9jyRyF0mqqxIs8HQmjSGagyfONFlws5d4y2vRAZwFgJOQHtKSkZfXhIdCFYpTXxRIrnve4VIS2SaNZL_w9xP8m4yAzRNmggcIitip7mdB9QrPYD1MKvSJgWL0hQwKSDmreMzhrmEONkk9VhIWmSNH_9g",
+        "ATKogpfVkWliqr7ziLFIuRxN2mzyNzrJxJ3bhuC-HgSo2mp3i2QqIDoNbQBjdXD8cktteAhcOXkEct-e4zNu4piF0cpL8ttuxVF_vpb5X7JqplFNOSLLn954B2rzf9j87mr7e856VC-kq1LAPMawtnr0rHyDa1Z3Kx71fQQnqfhOAiLy3G0Qf01oWG-5A1Ym7nk2lD01HWhStiZBn3SO7ttFkJ3obyjmZJsu7L65jMa2YDrd-Pb0VMQiUUDN4Kco3HaZsbhSDq_H7A_Nqs8kSjOCPh3sY96CaoodFS6XgPMovEknvkypCX4wilu_aFvHe6f-Hm_r3tHfntHv_scheYKeh1_zS8DMChIhEzROY09Y-KKZhrwgKImpvF5A73NXuAjb-Y6saejFLyfWXjZjchkcl8aMLQxLyTC5yc_KrSnXLsp4KQqh"
+      ],
+      "zone": "Bellecour",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "La maison thaï lyon 7",
+      "address": "2 Pl. Jules Guesde, 69007 Lyon, France",
+      "phone": "04 78 61 34 97",
+      "website": "https://la-maison-thai-lyon-7.fr/fr",
+      "rating": 4.7,
+      "reviews_count": 299,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 12:00 – 14:00, 19:00 – 21:30",
+        "mardi: 12:00 – 14:00, 19:00 – 21:30",
+        "mercredi: 12:00 – 14:00, 19:00 – 21:30",
+        "jeudi: 12:00 – 14:00, 19:00 – 21:30",
+        "vendredi: 12:00 – 14:00, 19:00 – 21:30",
+        "samedi: 12:00 – 14:00, 19:00 – 21:30",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJM_djFTDr9EcRPUtzJuO4GjA",
+      "photos": [
+        "ATKogpcOFGuOenmJq9mRKA408gzWz0dnR20lgj52CTX7jy6-20NjoF31ZZsZ71TGG5IxwxLm4Z6yIL5moDf3tr3yorYQRLQKzHeVAZZSGhubTiY0lbi37ODjnd0IsmL3e_yUqgLV1I2t0gxNXDHGWEYapGiG3vSV8mtvw-AvKY5nlRF7geEfSkNRRqbbRAGH3Pd5utF0qHm44LsjjZmB1hg7Bo3CB3mqzBlsCkl52_j-BY1IRXpDZ3Sxm8DBRwi8Spgh5NV9yrS5soU6Xpsp7heaR9Mh-P47ACay6xIkRBc2GP7x0cyEKvShWC_0ohmKjBT6fyh9ClnE-fGnjlBzo0tKkjf-Kvu9DLfBA74zR1bh03x8WLV-_thfYEMqWKQCNCbam6VoohI8Dr2tqY1BSI5HA3bnr32Xxio1engYu1OSTzXBDQ",
+        "ATKogpdTlJb7aiOMWIb0F5ZC_hqEDu-o5SdRSTPYcKEAzCYrz1Vbk8rYwNKXixYLOZCtYWP4ejfZNmwZ6u-PYlTzW6yMIVjnOjqXvP6RVkoilz2qRreGTCbXdfIVowzUXdr2N4N57H0tZV3lj8U5WX3HRzxfYk4hrWQV435nXl-dWiQBexfMpOu75i_CWq6JMKm921cu4NPby5WlElkZ-Tqmrn7XX8Q_VvACgw9wHxUa_lvewCeKJvszB23QQ-N9cLVppqKC-0AU9wodrSAeGsAC8-fZmJB3ywmfvNWLT5NkAmYr5g",
+        "ATKogpd02bMIgUGyhbJEjC11bDxorSklG1lyE_QBI28WGrraroQ5AjanfsFVCboCfAARF69sKb9ROaUEX-opLSEgRtPRE-3DOp-2uf9pubM94oM49L6gEmlAVv7O_C_Bhxl7IJG1t1rs_mU6g_E0frz9ZH5oCCNynMTs4uCSmrLLhQ-FOv_eOaoQRPHAEm3lDNatqQBn84xCnkVhLTloon8ik5HyX6xYbPyGQeCmwrqIEbIzb2bg2BBQGzreaiVTXIpcMd6Y3Xhkgyw0ai-Qef6Uldqeu9ZQp2VwaQLjs7XC7BI5Vj9klv5sQCvzN6QxcqTLAtWOpv2Yh0KuUTLR6LKqkPEgktd3ujhLy9Tj_J9LwRo28HjHQclHG-bl42DrAoLs_N7az5Xh_ZiIBNJFwspOqgv1Nb-gTDriz9ZzHxWQ5a4uLwBkRG6RhfIN9Ttagd6R"
+      ],
+      "zone": "Bellecour",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Restaurant Milprée",
+      "address": "25 Rue de Sèze, 69006 Lyon, France",
+      "phone": "04 78 24 85 23",
+      "website": "https://www.milpree.fr/",
+      "rating": 5,
+      "reviews_count": 101,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 12:00 – 14:00",
+        "mercredi: 12:00 – 14:00, 19:00 – 21:00",
+        "jeudi: 12:00 – 14:00, 19:00 – 21:00",
+        "vendredi: 12:00 – 14:00, 19:00 – 21:00",
+        "samedi: 09:00 – 14:00, 19:00 – 21:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJYV_8tiPr9EcRBF2S-vMDQDc",
+      "photos": [
+        "ATKogpcPbkL7ZuOp-BEMaopCmzq_bPOO6-AGGhjBSsdxRfk4iAOj4fCTxmg9EtSJ65ovP6rbJJxIs_7OVT28quZ1H8XlYO0kvMAdKy6YctGqobP5zKUt00lNR4fb9znJxl0Ofr0pxSCT700CpWIzjIfP2PBv48P9xfomKZ8S8rr0DDVU0f515hb_CpnOarHcGKIUiwkrIYMY7LAEMWQrv1FmXKW9DvZhub30_8NfVSu6H-uD-biQFwRgiL7dfeThE0wKMTdNM9MlntAVBlaemq4OeI98T7jl98jhErEBJZuSX4p8Ug",
+        "ATKogpfe0H_9EqvWcQOlssw_E1AWuBTgP4t526tCh9VDr1pcrnR4wo-GOzn7WeU6C3U7ew7D39bXPi17VwF9dGPyFzQTkfmkef4hfuVur945wDdl20v4h870X0l21glOoIImrXl-HiRIDNdioWlTjv2e3TQmzFqHta3n7ryZQ7oO9BGXSKcFFhpWh-vbCp9g3_oLyl_n5FJZRKnYgG_d0wjLoXlbiHGWcLsgCdrT5hIZzcHRwJwHR_wwtq5wTZs2v4494ZPNz2oqg4bTuwfRcjZfbHlyxlyjyVvrqC4Acq-46ZPqJw",
+        "ATKogpe9vvxUCRhn09ugdS1ECWjeeq-CkwAH0BEgwXiM4Sk7U9rZyLtECUn2gHL4vKPa2LAdMlyqz8nkD7ok7lc-m4rp43O57saiULRR75LfARLkwGTfRQIEHaPYpIDeftulTPm_vcZpwg89w_DYXgQHavEJOd2jWDbdos0HEAnBKrb-oKcMWD8u-YxQMvpQONTzT9DDWBj5V4qPu8WTBtg1sbX664jAWetQBj5m1sTXQhVPSkeF4gQlKXqyeUpA-4ZodzjzhcEuHJS6l0A3yD7HB6drNkMYdiz7cHmAPnrpraG5hw"
+      ],
+      "zone": "Croix-Rousse",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Cuisiné Sensée et Inspirée",
+      "address": "24 Rue Ferrandière, 69002 Lyon, France",
+      "phone": "04 78 05 29 83",
+      "website": "https://cuisinelyon.fr/",
+      "rating": 5,
+      "reviews_count": 57,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 12:00 – 15:00",
+        "mardi: 12:00 – 15:00",
+        "mercredi: 12:00 – 15:00",
+        "jeudi: 12:00 – 15:00",
+        "vendredi: 12:00 – 15:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJaQvXaWfr9EcRMCy3m2uNFEE",
+      "photos": [
+        "ATKogpexmZ7TVuqArxUAqzghbh17MmvGTNWMPXsRmaWLjAj2SCqpJpU8b8H3IM-t1ZcYSq2-oLujFdcO7Bb7wsK3Cr_eV3CPGoYLYMifKaKFM-2ZWiBJDBWNS0tnZ9IvCgQS52U6F39twk8f7rZaR44yULT-F9FkTJxJKHTEHLiNN1amHsdqenBG9K8A4yb6QvSRZTnxw2ehnrXXC2fbswXC8BTZ8mb1pMoO2POsh8H90lOJ-yui9gYY5Slq6_ElwlDExJW_ZiRVetMPHUaAgDTa-0kumMEFHVwL7PHaDkKutDnQtg",
+        "ATKogpcbbZrwuzCx_iEo6UtfgE6EmXEz9e93kBpSGpnRxDyM0h2eFbW445I4yw1XvH9DaW0iP4BFlpVIgmEYdOt-IPX4A3W7aAdSnGo8DhbsLb5gzVos8UKDAeNmWF30ZU9y73tPmpU84VTwdD9IHCP6_vO95dM1qBdTfNJxqntSy8liPvWd0E6UaA6Thb5TLoclv4H8jaJ_zK-Y7mXTlkLFLfvo-IB_USQWOJbVUNT4AbpFgLxWwKLE4Q7SRznqjKZyr_65D83B25paSYYAER9ndsTVK6N5DorFov3gF6NYOFhylQ",
+        "ATKogpc3I-tdpGSHnb8G2FN582VaXVGrCdpSjfpNibnVzvoERlQE7AE9mpBLFMeOyA2mYfil2fHfrW_1YQgYHENH41KocueRK799R5zt_GkdnxxIKrAWErrkasPRC1pqiT5dhmzK3s4M9UrnFjFaE41ljGP5aqZ-1hHUP6vRxlHE6oBpo46ck05wn2Trk9bfJlfTaXrMYlZArOBHIu0smJcnH_3lvh1o_sCiboDsMrvKSql4rlLJbcKbWB3WnKpAbjohpnM4D6ifo4ebAzC0Z1hx1KjEeKy47XXGog4Fyle-BV5ECw"
+      ],
+      "zone": "Vieux Lyon",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Comme a la maison",
+      "address": "46 Rue Marietton, 69009 Lyon, France",
+      "phone": null,
+      "website": null,
+      "rating": null,
+      "reviews_count": 0,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJndjPWQDr9EcRpjgTjcxnY2I",
+      "photos": [],
+      "zone": "Vieux Lyon",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "La Table De Jp",
+      "address": "24 Rue Jacques Monod, 69007 Lyon, France",
+      "phone": "04 78 72 47 83",
+      "website": "https://restaurant-la-table-de-jp-lyon.eatbu.com/?lang=fr",
+      "rating": 4.6,
+      "reviews_count": 115,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 07:00 – 17:00",
+        "mardi: 07:00 – 17:00",
+        "mercredi: 07:00 – 17:00",
+        "jeudi: 07:00 – 17:00",
+        "vendredi: 07:00 – 17:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJy3b0Vinq9EcRlxuvDoL812Y",
+      "photos": [
+        "ATKogpdQlj-XW61XeYI2zgdCoAcwaDSttD0oanC0Y7vu1JyFwB_Bwp3xzkI9mcPw0NjqHo82bwqKcmrT_MXKIwPiEDqwtyetuS3Dh5_EkOWhwI2oKcYNNoZF1R6Uyaa55-C1pJDWEseVKxnN44XaPp_XlbfEfGDNAFM3XvfOPHgiHjN-ZngXtFJiTqMErUvy7aY_gKARscGYdwHDaaQAB2JWoB5rRbhitdUk3Q2VTapkJVJ4-XGfyeGUfI6SuJI4_EteGA4gruipvQurYOpJsaRNJJdr6Cmh5aZKDjzkOvlZXFxfhw",
+        "ATKogpdrGVPUowKjFazoj0wbxcmA5ThPs0ZJSNPTMy3bGqNTyQYbiGZkILT3pVZqRHefH2bzUhp4br1_lbO8poEWaNxq02VWsGcEoStX_TNTLrC7N1nFSx1Q32IIRyzm4hZFvwm7IJXq0pd_qBuIgmBugKuOjKjbiloBajwdFP0gisU-ysQP-tbJYcb61UFrioyZNqgetKGIq5_TCzYV-2yu0Xclm965q389TWDuxNA2UxjKaTk-qhMlMezlISdpaNmMUmHKrqcecBSUZt96RR-vq2QF7T4mHTNspX36aZfc-HmayVNQuDYHU9e-j9UwlBueZRjuX2RwTw9zIGtKVmkZJrzpAROVn6Gtwqv9-dBLIm4iFxIBupVs4XSbLoaBdtMw222xIDivTjA1T3YScoDZLg7y7_0eevzaFoS349TcKiM",
+        "ATKogpf6hYLkgKgSaH0hi66h9prqFPC0lA3ME7bPyYyI080BtJvBzUZ-mnZYwwPM4OMGfFVQXdczsF_NKMFEjEGCcuGinuvB8wCjBEhvM_uiNVa4u021Ekf4Y3TfxdYBFKe043J_pIuVCpuR96O0fJsLIsF_qMkTd4DEFS_C6PHSySutu30HSlVgDSJy27GItmxvJ87iRKPD_x_DPNUJ_UBP4Dv700EhWjLUIIHafmlkDQZyiucV4b6YXkL7aLBJkPXiqR3h25H0ehyh1A05l6EsyqR0GouOjCJnEOE93znVM058cG_UusZeAHCNyKeeBFJn1S05bnkb_chcstztvwfh8zHnGgqfHqbt27Q9QLsz202XGhQ211yTPXM5qMQFMXhPalFEmHsXTEM8StgNyXs2DLUIY5BUXP4hGd8CDMbIlrInvc-5"
+      ],
+      "zone": "Confluence",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Maison Clovis",
+      "address": "19 Bd des Brotteaux, 69006 Lyon, France",
+      "phone": "04 72 74 44 61",
+      "website": "https://maisonclovis.com/fr",
+      "rating": 4.5,
+      "reviews_count": 284,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 12:00 – 14:30, 19:30 – 21:30",
+        "mercredi: 12:00 – 14:30, 19:30 – 21:30",
+        "jeudi: 12:00 – 14:30, 19:30 – 21:30",
+        "vendredi: 12:00 – 14:30, 19:30 – 21:30",
+        "samedi: 12:00 – 14:30, 19:30 – 21:30",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJKwyIqo7q9EcRVLM4g5TvhsE",
+      "photos": [
+        "ATKogpfYbgMX2Q9XpVBKBVFvJCasNXHSyJXd_F_BVgFx0QNcEgcwuZipcRcrU-ZYg1Zn7nD8l79gSrM6URZD3kpkC0JEUh67raiS3rlBKKEADfLszZDQfHvVTLalxhE5laamvp8LlLArDDiekMvwbosJLqnbz6k_WmPAnqJP3L_KnKjgeJYU6GJ7Npi3j7uQbPUxniXXx3lAsCJtgL_Bv1j-wFaeyBinLanSTqwcD7TzHpfcPFD-XufK0xLXlVsSY9L2IEqmFtSAkf8sydxa_P_0cTzMOFASMutwmJKLcmqszJgBWw",
+        "ATKogpdWKnCpMIE3cGtdl_UGvllYMbVocWC-9dp97vt8zMlIeTX8Xf2UogNHg5LjDCLobkoMEsPSb4BGmMGk88gaYwAOXyerk4G89_FJ9apvOTCJvAss8WDGGq6XV0FdSP8eVnoaSRVNNMT-0C0cNnLeQshDZNuumItUl8Vo8qbIJ12021D4V-PkLGk3YqH2t1pfw5r3dCmj0zCc9TRze5W4jbHpIbcu9_ufbUQkyN4s15xwWbclev2IjJlNwzUDjF-fCSNfOeBWojy9px0FOJUGBTJxnY-VOfqukVA9_X2kODbB-Q",
+        "ATKogpfNyhrLkjc6wDu4B5fxOa56CpqeGbPJzmbEnheSuQUP_w8tN4zkpK4FCHGZC_mFqnZ4zQZOD2fy78ETRDNJ6R-LXjdIYEEPTE4sWL0ozzSdAVzHSD-o8qBu-a6PwnAKM2IMXpKquirDqHp3XioS5qu60x9mGsiOHc2zP6etHW12l1s-FaXU5zaCwkm9Lhfh4qSdntbkuAYG2bkm6Iati05kczsB7qeMz95p9QxIjrRVJ7uJntB8-QEnSIGj2U1fPX9l7IKNFISpbxgnYG_pvPpFsaZWnPVd1_JsDWXUAJv6sxx1nnGDLsohsO-9DhWsYm4eKkYu04sx3wLn4A5wdN4jm1FUkD0oJ2BNebLnakBinUCg24tsHLXKMqLonTiuDBJngDEs-tbJIeh60IBQQQgIAEBlr9V6WNiLKY4QuVrnEQ"
+      ],
+      "zone": "Part-Dieu",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Fée Maison",
+      "address": "6 Grande Rue de St Rambert, 69009 Lyon, France",
+      "phone": "04 78 47 15 31",
+      "website": null,
+      "rating": 4.6,
+      "reviews_count": 195,
+      "price_level": 1,
+      "opening_hours": [
+        "lundi: 12:00 – 14:00",
+        "mardi: 12:00 – 14:00",
+        "mercredi: 12:00 – 14:00",
+        "jeudi: 12:00 – 14:00",
+        "vendredi: 12:00 – 14:00",
+        "samedi: 12:00 – 14:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJqY2_8ivr9EcRWFrZISM-ByM",
+      "photos": [
+        "ATKogpe1Sn_Oj0bYPiQtT3J5DmwHrJ8dyj_s-cSxxY25yVg1RuHgWx9NH0kgAg_sGemcQiVFS0y8XyyTkJGSgdAvTa8RLK_sAA9etMFOEp2P6iQEQTl-WoneXBThqLX6ODqiLL-Fg1GaF-sezHZZTcwmrKw7NkxAXVC6xrkv8AiAoX2PXIVjrT8FNjd4SEz8vGYfQNV4oMfxQXZ6OByyu4ldJkCcx9VmSir789S5l4qQRW31TpVHTnRdTvfCzjPTLKPXqx13pFWbEOA9KqXs1QBvv6UviGt_XRknpeK889iIMlERMM4EV3sBTqD7TFVYDPKDlLEWjZAoNaWq79rdSlXDXQEbRrnE8IwGtkY-nL-f5PmNH7wvM1d7O-WSdYT1UvYmK35zanvuDs1p1WrJcw2tQ8ImKq-KfqEJXNmecmNos8MICQ",
+        "ATKogpcDkGLlMDQw0rh8glmoHW8GxBlRyhNR8BAsO9vQnjb6dcd7VCdS4FgMV5FVJGtpqCj0UUSeHd-xX9Pp6ViK1eChqDcazyZ6cRLcKDUmdU5i3BJrsQaJ1ee9zrEdQahKb-ZNYzMZ6OVTt9YKvg3sdzPW5o7f4lymulTRDVF_1gXOBZBbf_PWbcWoFv79mOydwGIu7-CD18MO0US3ZHpIAtceSY9uGlh1NnKs_Hof-nrTVzpslRwZQdNjQ4JqB_Svaaxvv5RGzyts49qyQY8IkPU-dAEp-9C_3YfPuIGpjRb8jp4vAcwdwbdbf1v9dD6D5vqHwpElnsaMmvv6eXKgTFRMVJ1VZZOffKV97s8mPsRPYVj77GVNg_YPkuU7iYGQ0aJ1HmX0xw2xtqXshuJvi1pqOFmLwyD2OkAxP_B5cGhAN6b4",
+        "ATKogpdBolcEDP7vJzSBgMCrPFK3p_fRXlbMYE7IFmyo_tX4nS36fq7R9bBzz2k7YlomhEdLc6H8lykwoYXEN_TK7DevoxgH_XD7CU6BSD-daDk7aerOZmXKNpqlJIrUXmulv86b86jol391ZO_-8gLFFv5ahjB_ang-SAuFsCWYxj4b2FK5lqRh1FrZOp8dAhrgMLAOT4mPBy1Ui_jkzhs-1121CzwtxTn74r3EURmpeojNTJ8IqfaWpoAWAdd7CPHgKT2o8SB4obRfVpYnyCHkfrBepL07heY32ZE9awiAm5YsOMIXE7LKyhrlplDZ3sALFoKOj38gSJ9fCNn-hKRZXVT5J-HKThwBC-1Ry9EgoPCqxGo16pFShfmMC5kdOantJsK4NRxnYnyLB8FD381mCLtDXJ3bis6VGlVGuVzLZGlSRA"
+      ],
+      "zone": "Villeurbanne",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Bacchanales, restaurant gastronomique.",
+      "address": "31 Rue des Remparts d'Ainay à l'étage, 69002 Lyon, France",
+      "phone": "04 78 37 47 69",
+      "website": "https://www.bacchanales.fr/",
+      "rating": 4.9,
+      "reviews_count": 245,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 19:30 – 21:00",
+        "mercredi: 19:30 – 21:00",
+        "jeudi: 12:00 – 13:30, 19:30 – 21:00",
+        "vendredi: 12:00 – 13:30, 19:30 – 21:00",
+        "samedi: 12:00 – 13:30, 19:30 – 21:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJs2Ntmxnr9EcRiX2iY7EHRiA",
+      "photos": [
+        "ATKogpc0KblRYom6AQ6WlpiKF73lo6DtLbpFzTy5mMuzzt7icEpsSLgZeg7Fwcnbxq9xlT7dXEX6jsBUyt0IgGIhl00SEC0laW2Hhr8dlPC_eP9NWfj_nSzRJO5aIq91XU7XiKMxAewVyNMjtzm39QE_IdXfX3nTm5tHCZE8kVY7QcbFCS7qQgQG2NakXsHAfhgHz7aAAHYkZ0wltvy2wkhbF0Ql7y3vZ7WCaACOaUz9TG4snoCxv9kY19N_9FPvW90fLXtI2uf0jvSn1Wmdn7EeAd__dyLkPwfxntnlbSWdO0oPbg",
+        "ATKogpffsD1JVZ_eJ17Qw5UHBym4m77wVOI7Z_rSrGu2mrlR6WrZOyGYRvtA7zXzZ0dHmj6c6xEnm3vRMZocwNsX43ORuu0jBkKaJuQOdYIN3p9Xe1Nqa5IpuLsCColmXp4_0LgKZZHyMlRd4PPWbpXo5JYM2seICpIbvMAShlIsIQRPGdlafIdZXUAqIY9-z5ntaMtEiw8HdXGJw2enI16AKYakC3ggCcd1QnvM6lBt_bxdm2ebPzY0403PZu6oWbK9iGxrq6SzDUrjNdW8iN44dVSLoeB2D6kaTPZNQ6uHmFUksg",
+        "ATKogpfWTvCAuHKX8GhYvMBXcXEtnz36HasyK5ukJOVIf0M84Awt6vnaG_dko6cHOuM4Tkzyh4oSQVl5y6vSVoHavPEHnmJPMEDW7QLC6GDxmxx_u_wzoBxA2ScZLTduqVI4z5nEFWZHyPasYr4iyw67Qvm3TBlcMbPMyfF8jbD4JvEBqMsqD508HFDiPTmoArDYfk7KlaPI_uLxontF7cv7ydBbyTzmrvJwvmvslb7FVNYMMD24jsKfFzj-CumKkONFxLmCFbqnuZjfAg0FemVCdoaGZadzDuKn2tXL2dOPv_tVhIVUsgkfLdYwsDqmpy4-ETyTOhTL1ROfos735cXV9QfZypANWt0_BHW2UHkbHEmlsvj1aIBma73cSGalf5-xd-dVYCHvj0Tu9_vgVgj_ym_4HKgj6_D6cwsPCjTs2bApGw"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "A NOTRE TABLE",
+      "address": "28 Rue Notre Dame, 69006 Lyon, France",
+      "phone": "09 88 00 96 44",
+      "website": "https://a-notre-table.eatbu.com/?lang=fr#map",
+      "rating": 4.9,
+      "reviews_count": 207,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: 12:00 – 14:00",
+        "mardi: 12:00 – 14:00",
+        "mercredi: 12:00 – 14:00",
+        "jeudi: 12:00 – 14:00, 19:30 – 21:30",
+        "vendredi: 12:00 – 14:00, 19:30 – 21:30",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ1y1GUfzr9EcRfq5sngr6H4c",
+      "photos": [
+        "ATKogpeASLQPlnmWjNlZQJ1shJrxrKV2pngOC6tk1dyA2JX5qzwSp3jLmaZq7Oeksn6IC8-MMUzjywQ3CzFPRDsXIPFQKKybTqGldEY1sEcN1p2_ZCApTm-e0j8Ilw60JSjRJDHOSloffcfKaQX9lSXLeLB-u71kSR6kWup_m34p6yyhsBVVK3P1OIJ_OutLtrofnPl6sgc2egbp6jBY5pUHnjT2mBj85KqN329M_K8fLcfHc90EobqiZLE1WAda5EwVNRYUGJD2V3EZF4ujTVMecwg92ITZf5DDz6n77FIf5B71Ng",
+        "ATKogpfSUuPsHtFQtviYJQ6vimnCTC7KZSwA2dUAF2kSzefIp9Qb1RNeO8HG4cpzwGItxUpLBZM2RoRihkofl1ZdlYHc3T-1HZGB3uFYu9qEwJWuGdjEAi4Uznta5lcDKips2vHZp9hKpTx9FEJAxb27r7YfCWOjTu2v3Xul6xfB5L6quMPRRI5uZ9OsYdzfFoqM3t9PabeSsehXTWRfDNRISwEmEX6khcUGN2PBYN51APFrKogE4DDMGB67JFiQZcT6A7dFHq-ziq8XQ5oV5ZpIPx_ThGavfYWklWA6mYEV4AiCzQ",
+        "ATKogpcMexGtt_DCW_1CII_mFHSGv3Lp3auhH1xMGs9h9G439TubA0AvdueihIE4R3EiqCVYk8RRwQgb09aTvwpGpQuJEfR75S3tBwKI01b-zDUs-toxIxnL7hDx_oGvO77bR3s-ygdDyMN_NHcrwm2FLDt2g__jMZ3RcfBUMVcseND_NvMwoPpnUapcwzob7Q1mcz6AMEsFH-FiY_ZQvx2EmI-LWRgjZW1irXe01jA2IwYO1aH_wfYWaVb4ASoNPebeb0G9jSC0aY79VEtZiVKTwRgKtvA0rDeSShjgE9yRmttJ-g"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "La Table Rose",
+      "address": "22 Rue du Bœuf, 69005 Lyon, France",
+      "phone": null,
+      "website": null,
+      "rating": 5,
+      "reviews_count": 12,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJQZv92Rrr9EcRbWcQ5QBka4o",
+      "photos": [
+        "ATKogpf7BvpeRNO3qEbXmoi4Xvq7FpsS9UrsCP6s2ELWx5Be-N7_H31QXL224F15NhoMVoPl4AeL6ZekXI7kRX1EgTIld_j5YOeyO5fc2A5bgEoqA_KkxDTk6UaVZrHRd9-b1bhjOqGv6LGYYrydZu6b7eBtl2tt99KUacXnO7cBetpjyI7KOCbxsfmWG3PmQ_6Zuc4Ff_K3IP4rUIQxI2w2Weo_lT0oSqBQFg9dC7kWNJHVwgcq5iaJHvsbkgsHHeUNvWQY0Ibq3ufz06kZTDLwbTwJecQHqQq70nE05_CvyiY6qw",
+        "ATKogpdGX7_s9s-Rrs3zKU1N-r_dKm-li0-3ryjAms_5a0pr79k1HOLWCUv34ATRAbOVAK9pPOB7KEulx1QdBgcRXxdQrHyLqHA1umR_Sg-JAiGUeXNsc7odz8sQhKQvVBBmx-tG4iCQt3nRXdYfQPwvX1TN0PvPPLg8p_bLGHL9GEAvu7JCRrB8X-FK4FWGYSaAZG80AXY4DpxCt42g5NBYt9LCjMNCLQGm17Js38XkdbrZy6I0N3PD4rxxY1wQy7hqGUZrM7dG_jFFT1Ozf_ZPhDxvnaCs0pyNbCwNCkGxZR3CUh9idTgE2HY1B-obGUFowekW56p8a8yXZvqCg8g1Unm4zEGpyuUViKmzN_-hJMhWvhACd20_Z8bLbwgUi3vf8PoG8XyW9VnI2iTwj0aqFkZYmPsEs_Ec3kvGq8oTJYkueoyM",
+        "ATKogpdlL5NzcOkPomILByrpg4JEHIFW1E8GS10Avp_7-V1OPUNQbUsCS4wa5mFEj5z2lI1wXY_p8JQXUwZ1tYPA5x6dmvMU6GfI-GSZmTXQcWYPbMUrBwlTpVO9AdhguIjlbVjRifgCd_WpvzdIy1oJJk3RY7EzrvvTjGetn4bxQwOZXmMDKcl4gY2bjICEVvhPe5lA0DdAuAy7XCEB4k3BWBifmqUEKpYvpVDPDPszZ0h0LyUDMV07nIuHveKfl7zAYH-UqUUTpmkVmGW4F9WPxYiaN1vfnru094aXRShCHIyKQg"
+      ],
+      "zone": "Vieux Lyon",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Quartier",
+      "address": "112 Mnt de la Grande-Côte, 69001 Lyon, France",
+      "phone": "04 72 45 65 68",
+      "website": "https://www.quartier-restaurant-lyon.fr/",
+      "rating": 4.9,
+      "reviews_count": 220,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 16:00 – 00:00",
+        "mercredi: 12:00 – 00:00",
+        "jeudi: 12:00 – 01:00",
+        "vendredi: 12:00 – 01:00",
+        "samedi: 12:00 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJJarqDxHr9EcRHwYXJYFiX2w",
+      "photos": [
+        "ATKogpcushmBBdfmA1IbRisLVhrlj0W0wC6ro9eZDL9XOWT4sBF20uop5weyEMQjuOyl0f5TlaTKOP0uUFdowmuq7QwyvBetI8tPE3slOllNKDPXRAzz5TdlTsnJ5vpnjXqw37HGhLhECj7tFyiEAKBola-1ryPtrW3f9l55SaYe9NRNW7a2PP0rt5kshHm2W70S1EG9KZ4UmYOGNsv2xiZkO5DajfVMF_FcFWPP252B6R3Hyks42v5Lkql2PRafIPSLErz_darxO3cFR4DqSchgdUMTQsuwbhFGciQzgz_xnQaEAQ",
+        "ATKogpf-fpEr4hn9RfrvPZVBntAMe1gkTg9GlDkGeYBeoPqWWi1tO6iKU4f4OpbSA-f7VQxISEy3ZvJ3_ow95-Xdcrmwxc8GapdE5cymJTYM_GbL-mYZ8aUUdZfLAAP60nHnys5vaW2_bn5mCr310hudsFrNrzBDG863NmjeaGHQRCMKRk2iU_FSjm3UKeeHZfTWDS5nep7mCLRO2POcIAs67YrmPHz7ajxW_US6uvj5cxujfKqP1vBv_izNC9_TV9E_4YPyBnN4e_6-0VYu9PpgbFyUPwzKX2U4OvhZVNr8LY1sWg",
+        "ATKogpeMj4Cr2jiZFAharbsvyNWe8gdqtOsbE-OtYmIQXaN0goETzLDwlm2xpW7s_oq63CqYjeh6KBnV7P3HirwGNWA7BXDYnNrGJ9aGeFndhsWDlYWDrCSfKwf_6i7N8OMwttdPKu4J-CsrKEmoJNeyYD7WCkmLeqdkAyfnjU6HYp5u2h0MKGuEsuzirI2A38uvQ9hEL8tKMqjgwGAMOxnpnlYHqsdfWd2rWQTGiD8gezR2DiXyFZf88Fq962ok1xV8bRUM8l0JUI7DCLb40-VbvtzuPARA91x_iOEEaBZvPTdos0f81KSZKW4EXn67Zmc28uCKELLmEL2mmvbU6Bnb_3g4rStGFxPYEPlKCfg87wZB4gICM2uM2QIp5W-bjFJMiBQ-7u6TGGJ-GSgF2T530M62zhSAwtunJW7IPKw905zq3A"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    },
+    {
+      "name": "Canopée Lyon - Bistronomie de Partage",
+      "address": "12 Rue Major Martin, 69001 Lyon, France",
+      "phone": "09 75 20 11 09",
+      "website": "https://www.restaurantcanopeelyon.com/",
+      "rating": 4.8,
+      "reviews_count": 296,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: 19:00 – 22:00",
+        "jeudi: 19:00 – 22:00",
+        "vendredi: 19:00 – 22:00",
+        "samedi: 12:00 – 14:00, 19:00 – 22:00",
+        "dimanche: 12:00 – 13:30"
+      ],
+      "google_place_id": "ChIJj3LFtSPr9EcRvRllebsmDxo",
+      "photos": [
+        "ATKogpepN32pnMBecP60eQnX_LUnIPVf_vTcvPErJSQhMa3kTIzYEDLwKjEjW95c4VY8Di5pmYMSoH7BUJbuAeynzf4msLrsZ-eARQD7wKGEbKoYyQIj_xUABvpJsqvQtxIqdxuWurw3oGW6izL3rOq4hCGVVFIYRpVcgxWG4rdA0q47Cn8vuzJnNp2rAgF9Oe2tOl2PsFItq3fRB3AiL6g5QGAGpp8gT04i5Kv9RDPhTiUbaa6Rt-tDLXV1zwc-q1t6pZQcnOGVIBh0-d-uTC7SXPD60t-eeYDKZIKewXV8MupTzw",
+        "ATKogpe1deD7CN6NBrDf35eTDpJ7gG8vG-Lc8co1LLV7peku4KnZSJtUE5Y4aTL53eAx5JYqEtGgcmwBB9-GSuM4_HBmxyeFzOXna8hG7Mc-Gborw_4VKJkKCrQ-4y43to_D-62WrZgsCckT2e4yr2q0Iu0ok2ThzBgn9N5q3ItzXr-DUu5qsiK3G7Qh3e_7PM5YausyFY6k0VuWV9vG9FwLnQwGSkw38SyToS7qEiL8ycXDE5835Vcou1hy61Im3hCYGUvnTM8-dF7D0UuoZ8Rl8s7QRlp7nktJWPKIAs-Grkai-w",
+        "ATKogpcbWhkm7YPZwY41mcRu7A_rO8aa3YQHoXGiPay5WFNFvv_L1TfEI9KPK5YmDFJfbb30jztmf_k8cqmjsLtFP3Vp50kbQH1aLdolHhlvnJgmGQZNX67k4L4S64nJ-kcpXhZmIko1ctdmRKRjSAn6ux5vrvzHKOyQSM5AEDoUIFvzLe9q3s83f9r1XnQMyV2Zsd3n49G7jtTvozIma8NQFueIAtPCyP20nPW3rfqE-T2CwpIvPyk-w8uGEsqdgxRWnBu5dqk4ZP3tQFqMXufewe456aQ-zoyserjfG_uZANIM9tVg25uzE3ey-wZOeGFP8nkqLq8W1a8UtofrbXANiIG4riwvpGWP-kI365bOu-w0n-kRvp01gunIsagYxkiOdpgcOYzRR_7x1YXKH8ErkhzRWV0VpzRNK8XxtMqwzw7rC5c"
+      ],
+      "zone": "Terreaux",
+      "category": "restaurant-food"
+    }
+  ]
+}

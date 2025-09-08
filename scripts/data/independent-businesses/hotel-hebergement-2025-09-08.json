@@ -1,0 +1,845 @@
+{
+  "sector": "hotel-hebergement",
+  "count": 40,
+  "collectedAt": "2025-09-08T16:39:32.996Z",
+  "businesses": [
+    {
+      "name": "Hotel De Verdun 1882",
+      "address": "82 Rue de la Charité, 69002 Lyon, France",
+      "phone": "04 78 37 34 71",
+      "website": "http://hoteldeverdun1882.com/",
+      "rating": 4.4,
+      "reviews_count": 305,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Ouvert 24h/24",
+        "mardi: Ouvert 24h/24",
+        "mercredi: Ouvert 24h/24",
+        "jeudi: Ouvert 24h/24",
+        "vendredi: Ouvert 24h/24",
+        "samedi: Ouvert 24h/24",
+        "dimanche: Ouvert 24h/24"
+      ],
+      "google_place_id": "ChIJoV8Agkvq9EcRhVA_BzYYPM0",
+      "photos": [
+        "ATKogpeLceQ82A3qrXOyEDKqLh7C0Os1tDAfbIcwrn5m1vbYQaGh16z-pI6HGd9sMd7KVuxsjkTpPlPE4TgReoASbPbN-dIJDzI27bHiz9tqkIlOAYqgrWRzS6RgKTD61YzzGbDUBVJZDFZvmz37dldgfr_6WmKLrzSogHRy3Dtanb4fnhjPLv1Irk7bz8Q03UMxcvOllagMSlwtIkgdbTrkQF118IQ332w0UPGT7_G9LIgYJPuJF49tmdu37it9MGMsC4WpJZB76y_ommiEfDK3xVR9ZPk09cLj3L_m2NSzseiKhA",
+        "ATKogpfb9Oc3kfFTR8TKYJW3RZeC2cqpMP2w5DDhoh3XOaMBjdag7T75EnChcl5oMn60MwIa7R9uR5UXWghkbs2WauDBiG3XTVHKCv99caKzt1CGasAvzFD69xV5M4hffjXvkLI-kQRql4AbQdX5Zk8y-J42v6ZDD04rGn-lonuTG-HBa5_E4_pce4FjUb6WqTb1eEjF5pev238EhOWdGKYSkUMnqvs3akKTV3WxCgYfJJiIJyDWM6eOs3GNyt6jnCoTE1g70NA9VW6h5ZIdv4swbQAmlO7ycPI_rSwBiEulkGBW2iBj89iLjgXweHAo3G5EQZwfjfscEA0AjkY5GFzhwfFyvWnN3dbNs6zHj9MjbQqdciAuMRQ6lVmAYlGcWueQ74GFrWwlJTubpx6_g5RAFhN_CL1W_3izYGqxr6XTaZaCfA",
+        "ATKogpcUkmxeD36zhuKzIny4PtWk8muEFjQYss3gxilSIY4LkkZnbrP7WEao8M1qqSApNj2YGn06l4NM079lZdzr90fzDuT5Y3yD4vZC79fB6pM-ys8XxCjiSoWjHpwtD8E-ABc1FSXPsCsHkqd57lNi7cXyRUsP9kiLOZIuRmTot0prZk4xWDWTtP4NN27ikIR8S0pb-gp-Q9xfLNuGcBzGN8nAh1TAFKke4iWfmPL8OaQCISzjAd3GP3n2cKxlsMclYiI_rkb2rTqVyxFQg_ReojSLUMvaEnT9NrRvTl4Bt5gHiUmyQgsjG1yDKRfzWADW7mJCroD3SxLKtq2mp8XSEXj7af_z26g9L8gLeR7Jhl0_ysnMevERdjwyPSDdJXlUqmXyib8Q4qUuFmWRhwrj9vDzRF5E79n14dIOnOCU-iwvig"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "MiHotel - Hôtel Particulier Gailleton",
+      "address": "2 Pl. Gailleton, 69002 Lyon, France",
+      "phone": "04 28 29 65 94",
+      "website": "https://mihotel.fr/",
+      "rating": 4.1,
+      "reviews_count": 75,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Ouvert 24h/24",
+        "mardi: Ouvert 24h/24",
+        "mercredi: Ouvert 24h/24",
+        "jeudi: Ouvert 24h/24",
+        "vendredi: Ouvert 24h/24",
+        "samedi: Ouvert 24h/24",
+        "dimanche: Ouvert 24h/24"
+      ],
+      "google_place_id": "ChIJ-XG2iV7r9EcRPwgiMcDI0k8",
+      "photos": [
+        "ATKogpf3R3RtLxFzBlYzZUfejUpRT0y1p5mG96Ft8A1aZMGHs77luxUwQOzTgL6iXKBizrVp9VJZwcVYdm1KOuk-TfaP9iUzn42BK9LDyNgLGrWEPnDut0CQ3NZ4NM7HroO1OyxhsUCbdHNVL_QOPJj2TtnKB6uxsqwqG8b3n8oFVpDCnTZ6aVqA_yywCqtqN5hSYI7E6UTQGpDOBQ3bFhEZAmyEsaqDTQXV9f8CM3fK2bH3RHMNJhFfcTXb1cWYg2JmUTsfqR2rf1IU3NHBLgcsxyzJ4LwgY5TiZNH74feQ4efJvg",
+        "ATKogpeRhNxj794rTZnIJV188z_cq70iJ00Evx4zwgHGvzLz8zXUvuwrdmu8wfSKe08idfHf8k61bYVVVEDo2C3vNcwj51y4OaC8oJdDNXJOAtFPn2GVMJQW7kA7USSjwiMxpL0AutWSuJh_FZR4zQ-QwSIK6mHs4lmpBU8Tp7Dox8exlMYOV7rRk69iEHtroGO-wsME_oJamnM0WYZHymYjg4v8vNcWYn3rKTCsJlsK0D5WeN6tGFTKZ_Pja5wapRX8Q-O26T9HlR_DnBGRwsynQnSBdvtKAEMHivHpj8U4_4BRXQ",
+        "ATKogpdCxKker1cXuSxI3ehjwbEw8MrY1Fpp_SXZeBKTIQSnNsM0v3ikhBcBJoy1vpyIrerL9ZEY1DwxRWGch99eIMWGh3iG2fGnLxjaDjA2FpfcB4HWUpZzH_Kcf-QeVtnulHbv4bQ3V4GPCkSa1b8fitthgSI92AM8N0B7sGPipvCXKWEk_v4ekkSizlhQxUqKRQ3R9hhO0XmubUFt-0NyZuxnsxFnK5sv3Aqw8aA20G5i6cwSu-cDRBhrIZKj0SQ3fSMO8LZQj0LcFfwZtqK-dbo3Cz3FKhUzyD67hX1DsG3kig"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "VILLA MAÏA",
+      "address": "8 Rue Professeur Pierre Marion, 69005 Lyon, France",
+      "phone": "04 78 16 01 01",
+      "website": "http://www.villa-maia.com/",
+      "rating": 4.7,
+      "reviews_count": 354,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Ouvert 24h/24",
+        "mardi: Ouvert 24h/24",
+        "mercredi: Ouvert 24h/24",
+        "jeudi: Ouvert 24h/24",
+        "vendredi: Ouvert 24h/24",
+        "samedi: Ouvert 24h/24",
+        "dimanche: Ouvert 24h/24"
+      ],
+      "google_place_id": "ChIJu6NUqK7r9EcRSW5ORQ6-ODk",
+      "photos": [
+        "ATKogpeC144_mVyd8_y-Ltbl46UurVDlLb2ndtQCuXPM2DsrZjkt4NhKaKt9UPQPShY55c0B7i-O97vJ1hjXtX89Uhf1-waBbxzOE_w0OMZ5Q_KnCVfYUAzGnGgKR4g64FcHImyK-kEUGiLT-wraw1pXrZs6HeeNaKHDZbWZiVK0MHNE2MIfZ_TT1MpCSAr0FYLV51yX8IieTXm0rNYTcU8KKl7XdVX1TBfdjH4QawNhYnKyEh2MzDetcYQFS3rOdai6kMFJZv5f4SaGTKJGgMhmax0b3AxyVfKjSVbmrmAb0s_p5w",
+        "ATKogpfg0-t5vfD1cIE2ZpVt4_dxKf7bet9qJq9Bjgm01CaMDwCgRsQ0ZhqxCoDdpYWMSN3Ot2yI4Utf9I3lZph_eUijw-Vygz-u0jS6hpO5yHDFhHel9VL4PE3c0JC9ZfWTK5D8LThReZV-r6cwKp_Ko-MttRKW20Is8qtvhTNg9Sgrnf-If1IIJGv37eAhlxHYM30uFVt683vcZSlEQ5xC5uFwjLJYlDfHfJVbedkyWa-j1rrMfFErarAzeX0Q6F4wTOFyDWjXupi8MGHflgN71BrHrK6-CEZqUWmcDV1bEsPCcrK7feTloaEcjQ40KGCzcnjvUh4cri6dFf8TmQGoFVEzStyqrsvwNafyM_n-PJwvOdNDIRwv8WRHaTyx1z32_XDH2pD5oDxENjilP72_68eh3IMUTPLfzihiryE1IOwoFescqKhHRBmoWG5gAGJU",
+        "ATKogpdi44Pj-r_ENlwJN3nCspF7NsWUprrMeiAkI9rhL8hea766_jtZ4GrUNGBTAtNb-m2R8MUax-qN2jTQKCHGmdvgOoOxRAbSkJwQ9bFBVRPPqxmYgKvFeZwpfyTo93D1alz1V0XzT6ZWnyZcgVQFVoaW4aU8xeFzF4_qIAnNeZCxPJlVrWo4-ROTfhArWkPefYm2eSdAd6fpGvTT2ypN7SUi62H3dW1iClPpKmcloQ-gRc0rBfLsG4Wg6OJX47Ddf9YsBZ6IbIOpdU3kLnRX0oV82lpIF5p-z1i2x-mP928_ww"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Hôtel des Célestins",
+      "address": "4 Rue des Archers, 69002 Lyon, France",
+      "phone": "04 72 56 08 98",
+      "website": "http://www.hotelcelestins.com/",
+      "rating": 4.3,
+      "reviews_count": 318,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 06:30 – 22:00",
+        "mardi: 06:30 – 22:00",
+        "mercredi: 06:30 – 22:00",
+        "jeudi: 06:30 – 22:00",
+        "vendredi: 06:30 – 22:00",
+        "samedi: 06:30 – 22:00",
+        "dimanche: 06:30 – 22:00"
+      ],
+      "google_place_id": "ChIJlZTmc1Tq9EcRwjwlophntw0",
+      "photos": [
+        "ATKogpehofjjfxStn_yToaDSwNstlKW9PEnsfQh2eI5khBkQ_HkjuinSmOoalclIHnbm1cdEWKCthFzSPN1Qw09Y2A5D1zmPBIjpYllid6d1ptvExd8i2gQFJ-w-Wh6OMEKYYOm-JUlHoUQvdPmTN217NfjvNJCCAAeX5U9f3N4J87kyUD1Bg_KzzUtyR8SlqklhYmZShTdA0HSyaJ0kdYsiDoaBZatvRx5RVz1gInhugS2bhF1WJhtN688iyLAupIR2TXiLW2vtPy9Y-UKRi2-0eSJQm87C44NbaTQXaBrlLsbjEXZ_nE6PlLNoKnVz7NvEt09dJ_khp4qg1dPR6Wb2bKQUKFvVz8vxlOuHgA580z8BHrl8N0LAtoqc8F5I_QlXm_muPDihKmDL6Nb_jeVSckbSCwWVRfYbMYrf61tKxKc_Ig",
+        "ATKogpc5Yp9TTehC_YXmCB8bRqJWutf5dqCbmdko6ZtGVI8aQHy8YyUympse6K0wYb595VkKVHn88zrQe7qCZk3NTk9No23CRuNqtUEnPHzCC9_4WPHUwRyWmWoaSkRb2u52KIlvk-M8kun6XbGSl559FIJphPHh3AI0Z-baBiCu83H2K-Lge5eYyAlzBMppSgmWX5OAvjyLfSfI-g3lSfxnCgA8GgL13gJKNmstUNMGPRojkbbnOGHbUC9JkYwDTtDUZbudCod76w080ovkNBxRQ6vnHVgas2LDFIZ0itIrYeTILyI137aDnStN-EbK7oZLLvBzH4nHJXfJat9TF4bmIGP7FWYsULAk7wR0G7kANWEY3WXphK-0egZ8dOwEp8GJgyDjChkk0jU6hfQLNP8UFTb3BX-_dEozxSkZobAjdfv90A",
+        "ATKogpdSzgDKNj68-oGoO1OX0ax5Ium4TN4VGTOtiMcS9jsp19hL9YHPxmrKKFwz4DB6-M3Sju6BfiaYQ6AB7tMGLTtpw1v0zvdj6nAOCvsQ44Kk5lzEQ-7M34OhDy9sendi9FwBD9RzZnmkJvkORK4phce1NxHrM_CQuR2Klkm5q2Geb1c2C6-qmZESw2ruH-PLAN42ZuodB0VhfA27UXiQgjNUno6tXuENLEfW7yuk-qaqdeJqVU75lxMEHW-mMhSpGxvpbEvaMevF5d--o0AY0kJrjWSCUp_RFv5HZlQcHtgK1yK2GLJLLAYIriO2ji5XsrWEb3b-44-YbUDDmXqCjing45shslLfy15bFKCDu4kkSsEu0TLOHh5bn5-JnlrE-eVMORnTW61mEf7Hz3MOhy0J8cCtTKtA3TcQ2lhwl72htjh1"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "MOHOM - Bellecordière",
+      "address": "5 Rue de la Barre, 69002 Lyon, France",
+      "phone": "06 66 66 66 49",
+      "website": "http://www.mohom.com/",
+      "rating": 4.6,
+      "reviews_count": 21,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJlSr9yGHr9EcRTxiaM1KeANg",
+      "photos": [
+        "ATKogpecpsIF-jDMb8AG_i1auVTPopt1h7HXi4OtJVSyN-prajMQstKa2o4393ogPfnHxvby7wrak1cb2OfGWC6r1SG_WN0_FXbq_DKjAVIEmY7c9nG37DerTD6PjWvXzJIM8LVMsj_HMO_aXckc92u6grGJBUJup7a0JK9nka-rpp_9gvRLiv-PWDtZ8t4Gbhb5YyO_PKnG55gzT5bhjN0vprDKBRaHQvXBzwAwTFeevborOcAjZKZc3DEe06iChE6pF7vCjdcuIg0XOR-ISYnkwQKkmjupXPyP9-WmJjoJPyfVuw",
+        "ATKogpe70d0oBTEBsq1QwNK41rI4vXRNRhXFcfz8cpvHwWfirPYVPtqmBE8z9qxMvnU7Lxnooqp4_WzOmiogaiSUVj5D4IA6WkzunTJchxyZAW3Mu75gR9XZ4VDjIX50P3u1qmvQgKd7vtbqmnD9S9xtBU6e8Ur_ud4dIRSR14sDdmakU04cM43YtyktcPiLq_m28h9t8j7tMwYX641clAG4UcYFBXxX8vxAJuCl2X7NWXQUzx6PXtj9H3m4Np9KcJ4JBhB002zA558o9PHTJUi1NfIibZHya9tc_ZB-Z6FdhRjvqg",
+        "ATKogpdgkYMxukQKqrc2SJEdRRqLkRTscpVm-iQDz90hvwh9ee--ytr1xATpW3c6mLXXS8hTRhp7exEG529usTWeB1WWXc_YEruS82hYtlo4GPjKRs-TAz0MA-7XPMOHGXBiAHaXmbRm_wWHRulBP-VzVCZ3yqfHlKBuvWyJojiaMtFucyDNkW13Ze1Vw9Eu7SvwclhSX3HGh4xD8hVIGgyT7_i0wYAQyRbUcokJMto3_Jr9UivN3wLr08SR4kiFee5TxfbnucnRcL1RHYDd3puKnxylesAwwst-jJLuFojJDJY5vQ"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Hotel Saint-Vincent",
+      "address": "9 Rue Pareille, 69001 Lyon, France",
+      "phone": "04 78 27 22 56",
+      "website": "https://hotelsaintvincentlyon.com/",
+      "rating": 4.4,
+      "reviews_count": 286,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Ouvert 24h/24",
+        "mardi: Ouvert 24h/24",
+        "mercredi: Ouvert 24h/24",
+        "jeudi: Ouvert 24h/24",
+        "vendredi: Ouvert 24h/24",
+        "samedi: Ouvert 24h/24",
+        "dimanche: Ouvert 24h/24"
+      ],
+      "google_place_id": "ChIJZe2xnQHr9EcRXK1EqNPUj8Y",
+      "photos": [
+        "ATKogpdrhGLtTW1ewPPZzzDrI25-QKOtxRpdbd48LDO-tPXySiRrLhowK4ma1Omckhk1rbMWwKtdPuRoOzv01fD8cY-3Ixyl1Q6rUSKPdp6DvJbsocDeqfjjjGRVM-ngk1Bwr8ww83oJmoBPDWFe2xohY-e5DpbLlD_AOY02CYQ7a4WOCaIvYkJ1LJCPJ9tdplpmUTsG71cStvqKteg1M60WOeTZG0_AidMsdWnorMGQNZlNPdM23NN-60DUQxW59EwKhS7VaashSsXU3VypgtsGbQKsD6g_nzfVyfM6nhsN7fCvnA",
+        "ATKogpfzoWNVeE0jNY82y2Vh8_QAiY3Hs8Qxn26U5na12nN9tN78MsG_9qWffFO_bV_AtexorfGZikZtEss2im8Y-6hf3ifMVMEkdCySc-UPFEv38z1ESHw2LFpkhRttHG7h503bn-7B4Ji9u2joKmF2Rel7pvMdS06RNaL-Ed7k1GXEZkQ4YKSnT_rEhNkJazsOkUBxJMbAD4nlzKCnvh1JFBn8TmLUfTx2IhC9p7O7mjYTkFkUFOVdyI-s1qyDncehrN8a_ziIXIzYpvjw_-YyadWygisrY2B1cd0jcgQv30hlqU8U38s3CcagxgerP-flovAlZT-P28vFKu7eeVJfdpdmEFfDRxZwypX8gPaap9urvYJtjDqY4WKR3HlPZcxMSZYIc6q9FTO-gmZE7dtpKDTLY6Gsk63b9h-K0ZY1D99120Jw",
+        "ATKogpdx8FoKF8VdRqSSMHBsCqFpAcJnMFfUBKjIZMfy3qmOcc0GgPHDb2hNbAEkZRPYd4Zbe-6kMZWSs6gPnFH_Gj8NKznETUq23c5Sc2tfzlKYJyWYwSxuNH9U9C5pR8wgqKB7ViXURfBWgfA4BSAPl7NzXNXzxj7vAEp34AjKWR9tpXF5kx5EP5fqymudAPw5WbFMduBzu1GxVVRHTISdlhi486AHniMLdclcI9wQWorzwFA5uvKFm8K4rYgTWNZOfOjU6ZN_QeuSRiA8nCYqrhjnA2pZdxfM8PF9CSbgzs46dpdWxeuZHCTAhkqPXMpHEIaDOexWxSsMZJQ3Y4q7MXYCjre5uK-lXnOwphRJ6r4oKGcs6cqotrcPo8_9Qz20E4FeQLBiC6_ZXyV1I7saWRDJgH_gUs5gA1FmbH-1Dco"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Hotelo Lyon Ainay",
+      "address": "19 Cr de Verdun Gensoul, 69002 Lyon, France",
+      "phone": "04 78 37 44 29",
+      "website": "https://groupe-hotelo.com/",
+      "rating": 4,
+      "reviews_count": 432,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Ouvert 24h/24",
+        "mardi: Ouvert 24h/24",
+        "mercredi: Ouvert 24h/24",
+        "jeudi: Ouvert 24h/24",
+        "vendredi: Ouvert 24h/24",
+        "samedi: Ouvert 24h/24",
+        "dimanche: Ouvert 24h/24"
+      ],
+      "google_place_id": "ChIJOwuKW7Pr9EcRKNdIv8l240E",
+      "photos": [
+        "ATKogpeCpBz8eAVNkoVgun52m7CyioJpcWcrPFJ73_YPOP8Q8acgmmuIjGUdDpYqocGbajV7QaHGqrrFuIZL4rl99_rDvoTQk97kNF7SrT14DUIwTwX6QQiMlrMKKk0P5G7NOcrSBXZckXWVwJ7BSTXdHjeOKu61lwDfNeHpw468mjBxvXECmrnyu4mPoVfPRNejfS-FR2-7-MfrtJXhoRCq3Ey7Kqth8KvWGi9-7LsEbq_4RHbwmgyPS-8T_ej5wDOMHGIhkgk1YHrzjUrGPvw5r1dNO96RWlZl_A8nbiEq5jTIbg",
+        "ATKogpezY93oRpa2bAurE8MzCEPGGFjVIVFXV4UFsnoN5v418eTYM3jgfRpMSPB5_DEy3LaI_-l-8cQpG1Y0VHO03yb6-LSFMabjd-WLzgIZGSQwDMVw9jQbZii-geW9WVvcUEfb4n_PecqsGF5b4u2DvRwm4WoX6s2Iu7RNwmkf-l-UA0bjSj4cXBNkkDKNUQym02rxW8Z6Zu9fShZlsoekjNcJjJXoiPNzxFSN7nWcYB_mAlGeitGHaO6RluVpGDgqxId77jWuS2Wny9gb4fjAMARxVHK2PrQEZ0m41R0WnfTbOQ",
+        "ATKogpcHJqWg4oYM1a36S_9k9B_sCtNXrr25tYA1bifM7TKNFMgNSBIpC7G7y5LaGO8GaCFuOKZGhuOmHWjC1jLrneGKgkYH6MYIjk8HVEtBvxpQGc12AmwG5fjoCp2XjhRbXDg3W4V53VCzrzLzx1Q882lfOL4Mxd91021RsW27P5lKmH2wwhDAzxNbHKPfObzMOBeVexuUXJzSlbwDDIlNYbqgAyKnweOPS_0LEl7h7NeHONT1HKIBWq4VaM1-F4ObL3pREMdbriC3UoDL_IAc4iHck0BljrhSskt-LNR52aP-t2o3Vo7GTCDE-8ochSPVFCstXCBjQYyXqbwfXv6q0-twScty0izw_QKvjtSrzqDBtwFsViceZHI28w9SAm_QQBT9Yue7kt9WxhAVE-6CBc5ph2dEKm7aoJBAK4ub_Rw"
+      ],
+      "zone": "Bellecour",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Le Boulevardier",
+      "address": "5 Rue de la Fromagerie, 69001 Lyon, France",
+      "phone": "04 78 28 48 22",
+      "website": "https://www.leboulevardier.fr/",
+      "rating": 4.4,
+      "reviews_count": 299,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJQY_YQf_q9EcRDumZ7FAtqYM",
+      "photos": [
+        "ATKogpclr-kjh8vwYCh93iSaFgJf3WJzrY7NuHCfCBH16SbT4ZsRMAOhMrZlgfEUK-oHo7iLbRdj3-H4snCJIB3AEzuWLIt48ea3ZBTmrrYbKs3ZvC4OJ-IV8rbx_3XkZo6KfiPn9Tfsr8x2jHRhk2wvsd7q3Kmwwh15kbGORYDXsAv01L0L8IBlMyd0zBL3DGDSa4wcx5uaq7i_iWsZjvk-Gk3Spiw1P84x_N4-D7R2Rr3n829S0OLNcr5Vs8mY2UBuPXlaW5t43qTTN4ytotCjRnyHc929E9lFBSoPHLq1pIQD9Q",
+        "ATKogpf1u4E4jpxAd8cA_Sg5ELDpa7m8zrnA79QXAzPCKQq0PnNRT0BHrzMKrqqoJiOKV6adN1Oo8zlddRJsz2c1Z7FWIlH90nox1RV7qwvd9OLrnt2RFvwX0x9Z-IIM_gDgtnWgOlduAGUjNxdF-mdaAfyN5FVuAArvG7ynurVMRKljVIJpA9-34maziyUsTb49kXQXCyyNoM101_qhP5w-srjyeX7YkI9OucvO4Qeo8YmbjmQiLzp3jy6H1yGo2_h0jEgyTVM4sT7kod71AwVGLc5fBmeF6KokdydnQ4ee7V4idtmXUmZGQdMeU5XD6yasaZPMWOg4XJ9IGAJeCGh_N6wGwOK5ZGJSQXxPjDFWh6FoP1QBz-cN7oJjaMLMPhnzYbVVnALuOXAMt4ov8I_lm_e1bkLobfjbrfntA2_GyT8",
+        "ATKogpfrZgTDBkEDo9Pq0EYZshDCaXm72kbx5yoZpxGoslttX-KUsrl8fdpAQzuvGadfPDYVpfXCPeGzawtLmO-dSTle9sUmfuQe9YiC2XCifPVcMYYAIjYNQTTFXOB9sRrtLFF9S1FJIgVhRpV9aTuJ7HTymhviRibhXHXOBeWrA3n6hMomB0RATsgigdOtmHDEVfwEN-4xp0TxNgLMu47YlxBXAnB8XFWS9NyzY1j6xBKda7YoWyFzVqb4VIi7Lq0YcVUJe8Sr0jA3ppvZQambCwuvEQkHNAqlbyidroO7DNi6SA"
+      ],
+      "zone": "Croix-Rousse",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Une Nuit Au Château",
+      "address": "10 Avenue De Ménival, le Chateau, 69005 Lyon, France",
+      "phone": "06 62 74 77 37",
+      "website": "https://une-nuit-au-chateau.worhot.com/",
+      "rating": 4.3,
+      "reviews_count": 59,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJdyPc5Ifr9EcRfT4XFOkoCxI",
+      "photos": [
+        "ATKogpcl8I7g68qi-E1uOvjO0vz4unFJHdxv2PWDekQUG5K0b3i_XKc5CzCihDTMguJ5f1ZB15HNEiwC0WUKorCEyRfxl91wphP2qkzRxCYnnO-vUNY528SL-FkiOD02TpFt-ST_yV4TQGTBOfFKubddB1CeFjx-wogcLqxI13JFCeASsVJxQ39iSot3Ga2d3EUrkUw1mrlb8kjz_w4rvey1OkR-VMr9hbORAosMf8bXwGfyN3nWzVu1MRSj7FAgeNqG_epPPlMuB2f7fZD07f2wLsbAWbU617DYASc5U1fy4v3K174z-1mt9C4rK4eK_sHrthuF1bnB6N6yW5Qsp8cjhklDpmwuUgYEKPf_mj4pudIH2bKzp9v8HNdbxkwVZGFi9bI-wQcAPVIFT0W5VzITGjDW161HOuUhj2M__KEYsoCBhF4",
+        "ATKogpcgYXEYLJpiRWH-UZpiyshg9DbpQA5TtPLlVx-wPVwFUjJ4YGKKnWtTEwekFeFDyS8-c9FAzZmJZOPA869gCVpKd9ri78HRzmvca-Cfg0zI7yA6mZWPFEC_-N_4lFHNExJiwvZIarZft2gvfySQxAueQtPO2_ncqDJnje0dI5NeB-Wa9ni5cQdAUP86-pbj9hwr7pB8FHrs-LhGknfH4UIFqJGXi5khQebbgvt4Iytxfcy5f1bWBrymyE_XKpCFAYdxLWkq1JKd0IRTkJb9rEiaX5zrIxfQY8Qmk5-gfsZgBBgSQhvJKGAZvGeEvKftJXKRTNwZSSNtj9m6qNb97UvZsSFJdLeC5ztRfmn1eykkh4dQR1pG8tmzr--CsGssAHOQZRa9ICxysGuNMZwRrZz9Xg1vvgpzHYrUCcE0FPo",
+        "ATKogpfJ-SuliGRXSk_S4pZ0zgz0JTnBcme_QeTZQTC6J6QrEslBB_1RDeJkBLJuM1pCZrF4RzscYgwRkZJjFAuniIlms06snYwWuoYbA7IZsNgc3hZNABselv97PssdDjD_zl8S4SjuYyjxPzrCGH210aEAx_bPVdp8-GRP2xD3QOM56Pwx9UtmeshCtIEh2lGWEsIkgVbNi6hFO7iUagjtxfI3c54QkqcgJwuumWJABvNNp0nvuJP78woztptDcJhQ4VwvZbq1oKQkHwCVasncdGM4vuDEGV7QG8v6D8ZEbJqsIqB2-5TrZ2DFF-TLKJ_NetHXJQfWhw4hArygCNvmVjT3Or9kKJGukrAJ5mICMyje54CHNoMwHnHqyswlrd7aB9TgoTpVCakGwFslxmlaI2It-i9-ZFNFqs6THNHqupY"
+      ],
+      "zone": "Vieux Lyon",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Keystone Hôtel & Spa",
+      "address": "17 Rue Casimir Périer, 69002 Lyon, France",
+      "phone": "04 85 92 00 55",
+      "website": "http://www.hotel-keystone.com/",
+      "rating": 4.4,
+      "reviews_count": 216,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJE7VSylLr9EcRRdwLNwGf2R4",
+      "photos": [
+        "ATKogpfYoEDIaN8p422dyrPJnB-w19OqhkwCxDHXuu1T4qBYCS_wvv1s9hRCMjBiN_NLcSHbshqfAH-inyAlTRLtxtrpzs75Xjnym4eCdKSvFiWiy7NE9ttV1mAjozXV2KIk06BHB_IwPb8O2TA1zJKZ78sxWYOo7h1OLFF2gDZWdFn0PaWs_jjP-TcMKqkdNozE58xvGL3t0sJTcS4hol1Vj9FmzcCh7NR3Zx0h_eJ4TLk0ouf9AHieVU0ngSdBf3F6roOH9jZIkN101ypV0zt4qdyGWph6ZNWtsdvrdbmz8-ImMQ",
+        "ATKogpfUa6jU5kt-9Jg2_2fFr0G1bpGV_jqXlzOvRbqeH87KTZCHMIBuk_DSGmfRP-U3dN840dG7xmIvgzCfiBHh8TPB7HIC7jMbAe_RRgMtZ5q9BDM8FrZWXBYq7ncrl3TsKB8tMJeMgHDsb2kVEJ94J3txAzXke3SH15uA_108jJAc6aACTz0ZWes7X8loniGXuxpJr4yFOLEXzX8CshuVoesqvnwaEf7KFAnYel6hniY0J1KT_1KXbQrXq1taRZ466voblEnSi6_1ScD8Gu-BUNRdBENdWEvddLnO2YP_ijbDsg",
+        "ATKogpeDLTYH7hQaVbZYrMLE-mvdBM26VyEgG_cnSPyW0FOJCuEHF-Z--jZTIYstqAowhRfyBPDPv9eZfqX-l6FBMSilrt0YIsBZGGgFwEHSh5abMmzAtzcYzjpSlrxOALGRqg875kjMaC4z_knuDveKWGwYOgKnCeIMca5RbRW7zkyE2fhGR-zQ0EjYqL-4RGAcNVBpb7ZY5OHBvwD2okGm6nmcS00CpAC4roHWInbzJ_p-nGiwGpfhrhsanhatLoB-tYQcVDVbPPrCZNu1DEIQWlQhDI1CK3xCZ1rcXKEAGDv8nQ"
+      ],
+      "zone": "Confluence",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Villa 216",
+      "address": "216 Av. Félix Faure, 69003 Lyon, France",
+      "phone": "06 33 67 40 30",
+      "website": "http://www.villa216.com/",
+      "rating": 4.8,
+      "reviews_count": 71,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJn_S4DOHB9EcRBgmLoymEuC0",
+      "photos": [
+        "ATKogpexpfjYUazMs35Z2ZaKigIF_15l6eZiKHfgnxvBHmYO-yMbTMSknVGNd0AoClu6rZr2NIwUjbnbgpfL6LBmw-W_wqGG5a7QnQiq4d39Pmq7wwS4rKKJIFHg0Kh8DMrqCKY87_U8ei1KcK0BdJgqI4fqj60F2U8SX7LwoAR6xogEQjhgWaey5kledfwt1L958m3W8S-ZGOQTsRwfS2grKhmPYAmXg54j_JIgLGbFb2_4t6hmoUdglsQu5dR0n2rhbkyT1boGp6IgYJfCm218B8uRP2pk2e6HcBhwhIOjD3B7cA",
+        "ATKogpc8hLSazCPwCmI1SOjPzjsimNj8NihArLLAJFO5Rx0-b-tpPEfOp1vjb-BRLhOoDf4Z0HxTsgEVNtLo1fg1OWZ4IeAxl-CkAJW7jb1o7M-AWVEIuAwkrKmq2SpDwsyPTFJ-svDOdBq0VdsSV3HFJZWG_zkOgy-fUXzbZUVuW75__U2waR7JH-G1r1FrFVr4ZXmBiq_gpXw99DeJazRHxZb_9VY8pnD7YfFY1aD3CtAqI8udjg0z0b7dA56TPjNk5nV0z6ppA084I99f6r2Tqzygt-2SlyO1Qdnn_NQ7RCblBA",
+        "ATKogpeZ4to1igdN0b2CqGdSN9MBQVN5p1inWoJzjcrXzNqggyGPRUxkCRAPiPZ4UjUpgddNTD3N1G0vc-yl4xEH6MYuw9wx-fagI0jRAtKOI4elpg_7qdZblKlCLr3AVYESAP-pgLED9BYakfCgz3LaBsVG6K8oUr4KXpMY3HrzmHdMEtL0l1EF7cavecrSEs4YOcZ6T-5lonOT0iJYDlVnFJQC-H18sddUe_PHvh33m0dUhEJa_-UUG-_8ZrSlesEevfSn0KUSl2I3ipekHkBZEF1fVyYs1r_Nd4sO7BTqdhcQow"
+      ],
+      "zone": "Jean Macé",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Adonis Lyon Dock Ouest",
+      "address": "39 Rue des Docks, 69009 Lyon, France",
+      "phone": "04 78 22 34 34",
+      "website": "https://adonis-lyon-dockouest.com/",
+      "rating": 4,
+      "reviews_count": 222,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Ouvert 24h/24",
+        "mardi: Ouvert 24h/24",
+        "mercredi: Ouvert 24h/24",
+        "jeudi: Ouvert 24h/24",
+        "vendredi: Ouvert 24h/24",
+        "samedi: Ouvert 24h/24",
+        "dimanche: Ouvert 24h/24"
+      ],
+      "google_place_id": "ChIJWd0Ih0Dr9EcRUbGysl_zaWo",
+      "photos": [
+        "ATKogpfttpyhAcZ9Q3HGSlqktw3vB1kIqTZ0cOdZgMYCSTkveIa6FcMT5M2RVMbL4sm-cdEHIif6Z-rij4wA2nDxkVcdUtgRRUxT4VMRmmZENBy6AA9nXaOfqyzUYoKe5vNcBZHIVH0ACKzshy0UJRBacDPoW1O-D2wvO9SretmlHSVxcVTo9Q-Ey4VdjutPMig_83Nw4Adf5ipcnWwABvYfYbwgjsLIx3zapNkQVu7u-6dUMliKPOFyMpNwbgVIUopNQVNHT2kxV_8vbAO9HotKi7xXW4oVnOyyvorh_6ipfhZ4SkOxHLOQfwqNrOtzcqaX6-FK2cE7gun0kdqiRTSZ20mH8wAMfrK11hVPoawnPR8UrD_uEmAjVdjmeelA23LK3YPqD2F97lW_f8k6V9KMn8N-SSTXGlSl6rSEORQme8zjxOGP",
+        "ATKogpdJooC8SDspuXY25gx0SUmFi2S99pPlE2nqCo9X9azr2SlVGuseCLJwLmsZG5_XXb0KPGsaomM9SKIY_WFR00-DR2ChEZ9bS9uZrl4W8305c8BnBA1aWYzBLFrJh5WiN1BJFB2vGO2Pmy_-jpcgIx88lcR7-TUMR8G1RzOe3b1ar6Yoyk5AN1q0gMaDVpAVWM8HfPj8tk9j1YrQzU85dCcQkqYL3ahIH4hccFQY5W80o8Z9L5uLnxH6IEQEtTTjifG_twHWfbJLNSU3LBpCxxNzZffhlvWjjYhQwm2cA3tSHgFPIOHoALYBClkN1x7uKNZ9JcFuFp96kyQImNlINlTXZSpgUl-T5nekQePHQ-ttP6TCCPLG8JZt3fFmnwJLz8Zhb_sY-1oqMYPI4TvbX1PoHfGc5map-dh1hvWvHOM",
+        "ATKogpfkmAbCoswENvfhsltg-IkxqEQnOcIfTedzcdvlzcFnN27aAgwzAR9SVZembZGOcvKMcYUbKb-iIsABieQjXw6j8BVfifduaDWI88QsBQdrEXgHx8N-ZXf7r6GtINcjQBVB6FGikzVJ8Y6DmeMS09L3FkmQ96mxXeNwu_S13mVNKkEqmxcTB1pe8s_tLVVonnQtN6xiIC8VS2wJ5F9N7XUR-tn_OcMtDwwjMjsGEWcJjxKw5_tzKZWTHOjhQdSRc8gYvktjK7XNbgUJCnucqKk0NMKt975ULi2g5NhitswTU2lMZ4fkRBklwSqc4thQVlc58SK2gOW1EQLwmi2lzhnoWIhLRHJ3Nq9aG6h-dRzT0tOIpIU6meR7CiMGcuKHihjiPAxhuVuQxZoSGwIIeJ01fUGLunzfCrakp-f7UNLGvN6L"
+      ],
+      "zone": "Vieux Lyon",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Hôtel F1 Lyon 8ème États-Unis",
+      "address": "16 Bd Irène Joliot Curie, 69200 Vénissieux, France",
+      "phone": "0 891 70 52 90",
+      "website": "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=2306&merchantid=seo-maps-FR-2306&sourceid=aw-cen&utm_medium=seo%20maps&utm_source=google%20Maps&utm_campaign=seo%20maps",
+      "rating": 3.3,
+      "reviews_count": 500,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJJYpaUALC9EcRMNHQaqhR9bY",
+      "photos": [
+        "ATKogpeLwUKNiErUsFqVQK2KItxudvskUn8DMgpIUCHmTPoEIhxglrWBCe4jY8rJt8DiYt4QqGETmsakIVEizNQfqSZJGtgTb4U8Z2J4-fkNpYRrmzRD3tSxd_93-aTs_3kXvG9vTQ9BaxwdMtXqPCnPR_EVAzkb0333gab6N9PzslnKyHDi_1369N6W8vqs0VsF5xzAZaR_vGDyHL0JEQjhuXW9SMdOu-qEQXYOOLER6d3rZ61zOYITQ34obeC_0n5ULUFSL5eUJE2YhUCQHnMbgDCbiQk_JuTSeXNFKDM49tAr7g",
+        "ATKogpewpUIOoYPLSqUHQrVxHsxoqWoBX_qTVpgY8RV7bki5w7WAMgWZRDtzHwq3Aqt-EYU1vScBoG63UHfw0FdQzYgRBFV2fPLchS8DZphCnXpbyWhLEYcetXhx6GrWQ1zL3-o3au4Q8bSghbjLQW4_BVYUI9BUf7ZLHettskgtXFQj4Yb4513X4xVGzaE0lwVmN7BUFpwZAGNvktK6YjtSMBm-fJKKTTjbErcImFR2FyMOE1P-LAM-FltNXf-XYmg-w1xjPmAAp4riMQ0_vvSJkFrLY8DGb_1Oi4FiGZ8K7r8rRg",
+        "ATKogpceiWcgvyWzv6cqEc2TNi2_-DugH8OLWLfFspICoWZheucJCqDmEP5cJ9pXYNd6hSr6MdzxMQjEyFlAlo-VZC9JccRf_J0AET55mfXX845MtYQy7RYsSXI4LYBchtl0cnQdY1L-py2cp6mB38yyANK9_mU1wy9_LNaLHlB2J9YgIAhd-XOPBsGXpwp4FlH-7rIxPkluOOlNHrG8fYtEp5f2wZ-htmIaNjr2vOXxl_IaUOZPihlq7K8tV1RrW791yWPVs1PlD17bbV_bXozxg2W2YmhyjK9nXZkRxCZiI7Cxfw"
+      ],
+      "zone": "Jean Macé",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "NOCNOC Lyon - Immeuble Dubois",
+      "address": "4 Rue Commandant Dubois, 69003 Lyon, France",
+      "phone": null,
+      "website": "http://www.nocnoc.fr/",
+      "rating": 3.4,
+      "reviews_count": 25,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJPWPVVZPr9EcRYZtys6jf5Is",
+      "photos": [
+        "ATKogpfwmHCaR9Sv1_8Z7CsdPJKhS8qN5ZIzXVXHPeiQpvuqT5yXNNVRoQs6jhZGy3YQFOp8wRRPbC8bIK7cdMHRl-76mRfYg9Eq79BoP_U_69IC45G8aHXRd9j7gQXj7EWzFV8sZtnI8Oj-Jks1bV3o5k4WVzTZXz7SIwh92K8wVHftn8xan-UTT4fwN9Zh_sMtjQIguR8RiqmbCZQgQF_sAcphYBQs1zNfMiEEkD3Jxubwc03Hbuyw4kHFJ2tPpYYtbTAbCOl9iC3WAoQ0Fk8powQA8q5yaCXt3E-b2hY8b8Vlwg",
+        "ATKogpcy10xjzOIHLBX-LPFecolIJNRJhnsTp7CsjfEE17e1opPN9VlDbNYSVhxnhQ57DOWBBwuQfoBRhByzScRw7bXSMf6K4MBLIy-5J5eZlQlbv-qgRElRyuQmxF2Ko0D34gV5orULc5kDwGw--_xdtuux0uChd4aC1UU57rxuzdGx0h7KzEt7g8b7VXfBcC0-i2PtogxPQjlcZkPBAdsikDkLo0pFbGnMUpDjz8O-b4d9GSygXr2CQ53KE3onhSStDTyl0tvxcLrNdIcZoZYMOVwJo5tn6lVEoBZQ3Nv_vYAPVQ",
+        "ATKogpfGk7Axud7ih4EkWKp_P7JffF8h-f6ayySxe1oLQAHGP4jo33Cziw83F7vK0p87dcr9itY8gidicKT_y9JaB9RNgnwdcHRYgbyu_G8KkxZhj1V80VppoNh1UBqNPfaqZgBHlrTCBmtz0vfq5HMG0kKly1LU4yn-ZYABdgIyHp8i5ouH4sfaDU0hF_YVgYthuO8sipjebUbITNsY9xgSn9prq8ny6BmutCZ1z2wUy4F3afGIrIb7A1j99hOaDmK1S7C3PwbXKakMttIt5I5rXLD-VOTiyK2tcDrPhLHX82TTYQ"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Hotel Neptune",
+      "address": "Hotel Neptune, 08 Rue Paul Bert, 69003 Lyon, France",
+      "phone": "04 78 60 88 03",
+      "website": null,
+      "rating": 3.2,
+      "reviews_count": 23,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Ouvert 24h/24",
+        "mardi: Ouvert 24h/24",
+        "mercredi: Ouvert 24h/24",
+        "jeudi: Ouvert 24h/24",
+        "vendredi: Ouvert 24h/24",
+        "samedi: Ouvert 24h/24",
+        "dimanche: Ouvert 24h/24"
+      ],
+      "google_place_id": "ChIJDemtnVzq9EcR3Af6HX4o10w",
+      "photos": [
+        "ATKogpfUf7UplzyiiZGaSmuUvChfbQkCcKkEzrOYf_0SsvrKuImThse2v749gNZGnRXU6b9L9FVuUzslB3AEyrn8_iLkXxaFX-OfhEZPPKN2uJWXaw26AhPg5PK5Sun9NOjXZeDjzCbt4EgIn6O_PLp9HRZo274TmZTF-XiPFn9AmY8EeVzD4E9xMeiIOugNdlL_OmQf9TpyoSkZbw97d0Z7GtDgcrJGcjzN-k1VMiprPM2vxAWUJwMdd_-kZctY6-Hk1qacOg0azr4nTmZdSd7T5t5bmHHj5dCiGFWiEMdABfvWeMGiRXIxtm1-PA8x9jp87iRYYB4FDvSsF_UBBp2u8vpSTg9j-DiZxFcMsMa5hFnLR7zIz9DLxZWDZkrTAjp4JjiPo01C5vXW6lyv6WAbgcrx8mVl1CjnDkc4CQyQ2Rtr9g",
+        "ATKogpd5vI4xakB7Ebtg3nlzeQ1DDMJJXvRHVe23dKkfSxxvHDQSQeNkC5u8PtiCWUnHs7JDCNQHkLlV3M8Z6a76iG3XMCBeJ6PXT9TVypyZ_wdw2BXKgkdni-BeyVnNwA3suE8-tyzwgbvT2TZIYdjUOYC_uXv9uqmvmfvV7COdGaWNYw18fryAtKVCp5JU-ABOhuQSPo1W4IFqdZ49AJ6PZAAkRr9JvuBdf0wh3iHHzyI1QdPAlWrMKfMqr67n1tgFZx9iTbtDY0_DVrbtB_WeGMU67HhSXRgEvPOB-q2i_UQH00wJ8cqI9tbw3Wa-d6MUp1xh3IDvaikQOTGyp938UUE5MyXxa9eJDHjadumTYE1RwgU8qevblGIe9J7PE3ZClIRItVXGomyu5VehNT29stRcHXAPIA93G-oNNUufu3INZTYn",
+        "ATKogpftAP3NPZk5eDKv0HdpA1erQuWUeNe-c3yAfGEEiZIluvy42RpdE1w1bEM-zAK5yzbQzviHWHOaIoBO6MpldtX18FLyqO4SUG_n6REB0ZpBI6u-sp0tGW-TYBxZILZVhZVhgbUNt9Ae3kb76sPvdC-ILq5G6WiVf7rbPYsHYQvtaplhl7a8UuZywwlEbloOLzuELME-az_gbT-HUJoDT6ZKGHupu8QoAifjENWTWeGCN5CWtgRHlWXixO_9xLCGNA9EACNwEg_PJorgXeOYkgZOdxIByQJsjX99GYdAQWiMNbdoZbE-Ybu5RIUKjUDTNJc3mgKP6H_n5OYrWlWe455LZ26-LGRT3zmUd9FWSx_qcTW2lRwsRg9YmOzNw2RMX7ySOU8svTFSxSZWj9LgkvHSSfgbXGppYlokAthBBpc"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Bikube Lyon - Coliving Hôtel",
+      "address": "9 Rue Saint-Théodore, 69003 Lyon, France",
+      "phone": "04 51 42 04 54",
+      "website": "https://www.bikube.co/fr/residence-coliving/coliving-lyon",
+      "rating": 4.1,
+      "reviews_count": 109,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJy6wfg5br9EcRaob1Lj0L-P4",
+      "photos": [
+        "ATKogpfEEnpVOpWl7BcDookGuX2C4361ACHVgjBVYHGVHW2H3xfXs9KqS20PQCnGezsCmqv4X-MLQzNBfi1X3ULLzpDBWmUm1-1QGDyALdw9NqZ22rlaf_YRyDJ52bq3CW1miOsGnHYCmrykkjlYhw9l64DI3Wz8LE8FDH18lTaet1_SwnWFkxCMcFO78yZCtlxZQg0W2A1OrfWp2H4eftWmiPnbjvPKSeTrh38vAFAM_y3t8kHDUOEHc1hMYYEX3C1m2D9aOt5-xyph49z24AJ976PUJ6tPkAnOjdIBoLlSaB0vVQ",
+        "ATKogpcbs4IR2lSRbc4sKG-5smBjrEHNxOybldkA9q2UaQjL31AmS8QHksisbh6-Y0_JgRmOqk7UzRicq9XQU33nr7RVVE9judbyWLRU1CCqUr99bY8f6roU2IIbj9uRtf_PuW-oGTm3X1eC_cWOLNg4wKeaCurBpZJyESPeNt5c8Z-cKiWMBxjfu06C8SAuKTsLaewNIu9DgJRtDPwOhweF9LUfpNKtkxOvhpJj6TaZ4qE4vTJaGppdqdJo_zJOYK87sL2AqJ4FawEcVybhG1peZ_wIbuGRywg6DGh00wMv1jZQ0w",
+        "ATKogpcjr6w4kkz-TVU5NRPusWyBQ3hzVjTxKqYkKcNPnghqfFVbfVNPuMT9D3wruIP0IciklnsmlnN1IZMFkMSDaIP_J6IT63PwbsyAmI45WV3I3JMn52ovAESQSff-ri_f2OPzi9iL22ZycHRFEoP_d2W0Awbvuntmb5WLUYIYO4nykVya-Zb25us9PZKR27VY4rwLLc-deOEkUfeDAWMmjrjiVHxEI2Cti0h7rbai_eyGRdaW4C_RUqJrIiBXre9yIJiTl0Pf6nZNI9HqsKIkI-ZTvM4Y5C4he7HrOrhawluiOg"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "L'INDÉPENDANCE",
+      "address": "28 Av. Jean-François Raclet, 69007 Lyon, France",
+      "phone": "07 69 04 81 75",
+      "website": "https://l-39-independance.worhot.com/",
+      "rating": 4.6,
+      "reviews_count": 14,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJaTYE6CTq9EcR6lNymC3RLfY",
+      "photos": [
+        "ATKogpdz58ujR6c612-V_2M9g3VUdn-EQuym3xaEgJ-hKpj64f8nWphe9g4NQMdDZ-WQ_moCYhELmFZ5p9cUeg9obw3Z9OjekfDwdsaVOeY7HtMB9BXDmo0F_UeWJnLwkIi2T7RI5iAbXF9AP6n3XLfdPySksQkDaOrrBj6haYpoGkzkmn0ZnBOxuBJtPKLn-TDIsPG0HVhmFu00G6CcXUgNvZmG_fYttwrLjLyiAUyEVeBIvXrgGqliLtdHkPAV3zD7KN0X8CleQYoV75vmtbQ__TGkX7iACu-inkq4wZh81Y0xe4AKhGa4sXkngKDwt7snr9Gp4BXdrPy-FFs-OgQzBOQ-0PyM338S97vdnxqMs3wCbYDvQnToEhbN8SKViWMURvfXcOG8s0lWzJoXkr6gnTsBFVs6U3CrXGFoBCNDfcPK1u7V"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Ariana",
+      "address": "163 Cr Émile-Zola, 69100 Villeurbanne, France",
+      "phone": "04 78 85 32 33",
+      "website": "http://www.ariana-hotel.com/",
+      "rating": 2.3,
+      "reviews_count": 326,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Ouvert 24h/24",
+        "mardi: Ouvert 24h/24",
+        "mercredi: Ouvert 24h/24",
+        "jeudi: Ouvert 24h/24",
+        "vendredi: Ouvert 24h/24",
+        "samedi: Ouvert 24h/24",
+        "dimanche: Ouvert 24h/24"
+      ],
+      "google_place_id": "ChIJu1610ijA9EcRmpjiiFWlNKg",
+      "photos": [
+        "ATKogpdv9K1rjZilUp9X94Bh8-ZBOdmD3DUbnB5HCt2-bnRr-NKRT-5J6gX6359-NZWNuxKqKs2TJ5R9Zay_NMBPXLEASDDyvTjoB04hZZdiuQgJvzH6zyGgpCFx9qC76J9_xxoHrxGa6Qra2jkqCXZAmONmG5MBdvZMQhZ6Nkn-LPUNM_pUbTilKcsZo2K2xq9tinTlixWlRW81sLFrg6AfvgFvAuc2WaPo_nXCZhrqEoQChN-DxGlfKqsPlKZ9w0dJ-xxhBU666oX2SspYUBYWG1nPoHy991bmXC_w77bZWKnm7A",
+        "ATKogpcOLuCr3Vz2-a7d1I9OqwfahzP4ix_eJrhmxU2lUW-xdDNrJ-ZNaQW_q35v6z2VHF3L4O_nIYscpZSoZKlfMPa_zfLgaJo87cznBm4uEO6mW0tq0rhQLUENcAtECR0BQsNtfrK3sbLvycaEk18oCo0WQgUylwyrvNNd6bcn-YFYO2FhwkmC-h8q3LFmyGLNHNCzFGh6Iz5UZAD99iah2_lYjYq28Ylmz9iMlP_reGVH892AA6OlS_6GpiiLVsxISW1UM_q19LRn4_ZtlSE08vWGF9D7aUSMEGxBCcyx84QL7A",
+        "ATKogpeSiCPlsA0HIM-lYbrVvK-_yYLAE9_KmlhOD_22AmVyTkjisA1YN07wvBRg75cWKoJxRkbU_r7Bijfllp5Pa5EwROHF8N5mrAyYrPAabEdFvPcKPhu2vBCCuJNyMGYJ4UuBZv5ED3lqy-ANLCMc5_Tmde8fHpqeoZ1kJ_vY1-XkGtqGynt4egMaBTnXi7ANqr20ITazwMB25vJTeShAPS4nnB1hPXRWM-sIswWbO4vxbM8c1fZXtcC67Q1uCAMsyf7gBGKnIKL__gWaFCUgUyvc3tU7XKb3ZiQOBW2gSIC4Dg"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Le Prunelle - Lyon",
+      "address": "1 Rue Prunelle, 69001 Lyon, France",
+      "phone": null,
+      "website": "http://www.nocnoc.fr/",
+      "rating": 5,
+      "reviews_count": 3,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJp9kKTS_r9EcRpbOZJtYM7ek",
+      "photos": [],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Honorê",
+      "address": "15 Quai Romain Rolland, 69005 Lyon, France",
+      "phone": null,
+      "website": null,
+      "rating": 2.3,
+      "reviews_count": 8,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJXWpKB7_r9EcRTtjz0UdKkUU",
+      "photos": [
+        "ATKogpcPzHxCGyiHszCs_Fj3Oeh5OcTH_7tCp430vCEEe0IVUnYpgQwEwNZDekBbHT7mQhGyQCARyo3KH6gGPBUCQrOXFQl8IOjgvpaGJe-OzyoTFABTl_8N4aOfg8CeKb89KNMxJ_PM8l5z9rkVDHb84xd-MXfryxECMgdhEHzdxcArQr0yaatgBh1wTAbmxDXIyn8QhXcsWla2HSXbc8Mj3fdiFyqERtgEH2nzV6f1DlRq6TKjfM4ICjN3zCsyEIL8-SVafC7lDmupp2kKPHSsxqGTm-r40_jdB86xDIZRpxaQPVA4c7cvU2Qy6rt2M9ha_nAesPsmZVZX1AdkIWCFo7jaRhAKFwZXZ1WaRS-IrSG3l2AezfwG3YEo-AfB0Uv3Q8aLjZh9MYbqIRvvGZeZg1-_RZtCVS2o6bGtV-1TIW8Lvg",
+        "ATKogpc7TrbGl0N_2N1j8E-F9P65_KY9WWHSJ-19P9q7x0Sx_dMdZvyAuzGuLYpU1KCa7H3mlK1bvM00c-ZWjwgygriHp7dpnE7-PEGfHuB2him4iss8LW7jQUePUieTHDI1W5Dh8s_rLsGnQXZ54fZcNqWjekbJOW7rJlbv7xI6PzoH8Tww_ejhnrXYMvhylnSzj9UAfOhINvkauDE4XO0nvNgqF3wCl_PpynDGdUAAK9iYlSlyx3gVjMQdIoWybt8AFIVyFCHscsDHUWpC-8ULj7cQVq0ZznUCTqVCBYVD9_FxejmO2-tZNjt5fIjbaVrCa5qRo38hBIjU9PFXhMWYwPzXhEblCalbcNkI-ciKWGQHk5T096F0giGtn4MKalyNLE3MTkxR9nYxc3c1ryDwWOl1l4yJhtflGg2dT5PWuaOQlSKY",
+        "ATKogpcnri932Uj2mgh1knn8LYbWzgN1bLl_mbTc3lbnmGMnxCe6LpzA86hLyXQ4z1voojI6LAKSmoXwSW7YEB_lib4biykWwlllAnDxIV_4xSIKxBlKkB6PONUNbjOhex1lsPijjCj7MkxL6Sjcqm-9ZbGyBzrs-8i8bWQ0o85u5Psdl5hU5k97qMW0ZMhMRyYLh3XwKq0b2HRYfxIzYbptAJLfvJZJVDemA4YHpgIgshdMF50Cdnz-tCyVCAR6Lpc4f_sECUzf-o1xD3FIR6_Eqf0oC35kPo68--_aexApsZ1SAZfZ0zPkhCpynHpC4-r2ORSphoSpCT8qWloMYXAGAGrVfiPqDt4zet7uYDWXFldnW9Pm4i5q5CwJJ4mgRz2zNKx3PpQwzBlzIq4-aRQ3YBI321B7J7Y47v6xKKW4EgOjglg"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Maison Hotel Lyon - MHL",
+      "address": "10 Av. Maréchal de Saxe, 69006 Lyon, France",
+      "phone": "04 78 24 72 47",
+      "website": "http://www.maisonhotellyon.com/",
+      "rating": 5,
+      "reviews_count": 1,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJnWMg2Pbq9EcRzaKn6VWx9bc",
+      "photos": [],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Hotel Foch",
+      "address": "59 Av. Maréchal Foch, 69006 Lyon, France",
+      "phone": "04 78 89 14 01",
+      "website": "http://www.hotel-foch.fr/",
+      "rating": 3.7,
+      "reviews_count": 141,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJI84N4fDq9EcRLh4QZ7fVCP0",
+      "photos": [
+        "ATKogpci54Y8XKesp744-a1XMswHbCfl3y4YS3UJVoubH1ayMFohpuxTdY9rbBarlzWDFnW4pL694bSe_X91eem2gpLwsfecGcAkD9XA4Z580kxbTcuNKGbL3laRRxP3QXOFg1WQzGo6ULtfGMAFVuyxw3_48yKLmt97cytv4qafCYAOUadwgUM0wGDb2z8SN1_XXS6cLzqVRxFDvZ1U6iIcudSPvPY5GI7vd1pKeaTltmh-BdEmBjYZ04UXKZshLr5AWW1eCt7GYd_8Cmucj2AcPgJ-qclHoDDV0Uh2e-BmUcwVXr8cqrKwfGAbs2EG_WqjeFTsxFFILaTJyhwqruSgFu9f4SNFYZSJVqz0Cj-Mp-_o9fLCZ6FKeK0sl58WtihkPHYl6Pc7wJvCz4OLgUiqBecB47yGYOX-CZPW63wmRgBg2w",
+        "ATKogpfcPbtllS9GU1SpSlu3uwl-RB_D12jqzP5-Qx1vudCXVz31ISV2x2tPvbtANejDSX3CkZUAWaFWPn8cB9Sr76Vki3-CZxFNFwixLalMejsJmgFCVyqTE40x3lY3FhpNABy_aWw2OITf7phYLRPV_SMveSSdVE82_8B_jPAlf4ePucobBtMg56pJBdb57RYMFxZMXqKLFvI5BYkJgfKf-bhGWc-cCawdn-Ut5UJT6C7FqbqHsVk3c4M3_xA4vhQP6yiDkehvN55FPTiDymKDXJUO-y2AqAR1-g32iK0XJN-GTQ",
+        "ATKogpeTSEGe50OGsCFceBupRdFGLDOgOojG6SSh4h28uO0DZWUzR5A4kgFuD-eAGRDZUI_XyEYYyCx5BPU7xtuLIngrafwtokWwzBNXWu1QcfEB0sT8VKu8etr4x7OV2qgpIWuhj2hyO3Gvr36pYWPPwuS41Trhj1xjb-zc9PWr9Efj05CYN_k4CRhGXOWYx0raii0SjPRf_LvaUTyER9IyKMEF3wKxNUT6f65E-4l1HGsY9vwNmjUVyG8aGcjhdmswnjo8GW3R9ii8L4j9T1CA3FGvpWEil6ZQsE_2W91BZcKxtw"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Le Rhône Liberté",
+      "address": "13 Rue Aimé Collomb, 69003 Lyon, France",
+      "phone": "06 76 47 89 79",
+      "website": null,
+      "rating": null,
+      "reviews_count": 0,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJ1SjlrVvq9EcRqEtWA4pD70k",
+      "photos": [
+        "ATKogpe0vQRpHSHSa0JsH4bk6Et6snT-9qqlo_GP6G2eLzfh_vInY1RZBHomAgQD5CXY5lW-J7lgMZAnQgPXnNi0quBsG32-M_gbr8ou_VSyApUAS7ex4exZ2WzEwX2oxlKgYyAy0u0q9v3oP766TB6WZ7xwQQ1ZfCUUbx7PeJXhLyi2EdE1fhBLMtO66s8_OigBHUNLAUfxiitBuwx0evUWLQyARFK9tohp_ns1yPreC8mK_elH09zq0d0-YvKT15Rmh0o-X9z9baGz8qIhMh4f8zvmxzLkj1_quuE37cjxWSXhKAIlyu5I6PajaTnujkO8GFUiVZGHzSJT0KhHYuMv8b_Ly3Xkp9Wtph-Abc1k8GpYET3On2L409U1BdcVu5LoQGvSRKNugNX8jez9PF7oulsoSP8vzatcIvXxlUVDGm00XFiW",
+        "ATKogpcouOTuFT-u7Js2JJkZ5YI95wVKT1pUwM8b-dw4tujAZAI5YmqoYTg6cnZfsBR0tOVi0Iwlhs4lEubVvUV3ruRKIHARIqRg9ROSWOnpOjpAmlUz-9oFQhmlUKXN2W82PLCMHgEBVGwNYhpmQ-RDQ6PQkt-1tGxQMVIFKyaz6nl8eNg3iVV4Ba39Xe-eSNGaFMjIiL-NAuyEQZX0BoQf6GrJ1QP_8VrW74ylDvSZQH9Bqgmy14lOJYS576WYpxetsW3icOqPRM_w27clRH9BdjcmaZU9lkhdIf1vURrw_8x5rYvGSluS1hffMFURouFzO_BSyFTESkQHyiLcUSsM8E2Ezj4SrgBLXgVCSEfKewQktVWN82E_jxCdFBuON8gS01UjFp_rQ5tdLlGIWvnm14YZOiCMceG6MGynslofaG6k7rJ9",
+        "ATKogpdyZDmk82oQsUyJNvhGazF7YNTwXuweezQFhyXsfyC_QmVLp5-gyTdfyiDFiLTAWnhlJnVNn9_p61Dlns41wFjH595wgdX7ONHJ52xss0eCSS-VibJ8lNsewVHXAUwc-i9F2tLQSYV4aVMM_4EulvN1yJ0qQNRsp-nC1bU9Jlg-0la9crjwGX_BIH3p1tehKPwmlRH_THqhtGzRtRN8fNGg7Ommqa2aKPqNdIiy86kS0DCtD9U1C4xDhSMkzWee13ZmRueIwn1ZU6k1EvW4zxuZxEnNUVIMRiMV2YscDLiGfIDKenwTAi_qdkeA3-5km3nLeN4MPWoIsyyQ2uaZyI739-zFwaFKXe4HH33azpIxMFHLgwvFoPoMskzMupmggd3q1QE1QDl60L9vsLs30suwm5eFr_6AFtWWAQOSkj6kB14"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Hôtel Fort St Laurent Lyon - Handwritten Collection",
+      "address": "1 Rue Bodin, Pl. Bellevue, 69001 Lyon, France",
+      "phone": "04 28 29 16 19",
+      "website": "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=C1U0&merchantid=seo-maps-France-C1U0&sourceid=aw-cen&utm_medium=seo%20maps&utm_source=google%20Maps&utm_campaign=seo%20maps",
+      "rating": 4.5,
+      "reviews_count": 273,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJsWZooW3r9EcRPo6_sn3Zvzg",
+      "photos": [
+        "ATKogpeqbW2J51MCMaCe4edoa7xKd_XlbSNfI68EcMTR9YGE7LF-yn81d8QFvC_BjU70XTRGioA0kQ0vZcJe3GVxCCvK5tRtWMN_pqekbzNzs_M8tEz8uLORZRVJky1z_wZbp2VQyQ7Hzi4o-ytIDcbBuhJzNY_8ZY-5gB3gAmgZTRY9SO10nepKxHaInh3ISvpbUa79iyY6xev5ALznva2NBowKwFgngp8IfQEc151ZGzK-kcLzosiCFCdcJX7vwuUmnMUze0tnHJgmh2EeOw9uiAx5BcUtYUzRqaP1bp12P8zR2g",
+        "ATKogpeQRXCrPa442nmyRFGnFrSgvekaTdwvxKzOhED9tijJJA8Ev47t94OH7bjiWmRctRsD3N9VKxxlpc8UTUK6TaVpA7NTZ_MPyj5L9worfesPhgwEl7QsTvTmXa1OAqUGMwBBbRsE8pueXF4PpjpjXxbIdLj-P8xeBpQ2ItgfwMHIBPpya_kuc7Lc7tZRKVV91Oio1TgUlH4dgPt-ywZjow5Rm194weLaof3nFAE0a5WN7af93lwhlxZqyp91PKHWnrMsnHzVlG4HsGWy9cWo47WByaFI9Brg7uN2uUcsEY4LHQ",
+        "ATKogpf6Yx6tzbP50-ZS1Be4ov_Q29ie1VbxXpba3zK-wIDvULVPG1lDfCWg6hiKulq5rdg63MHqjvcd1NZo-i8wAWJSBuqFCre8TyAl-Bj4XZKEPeTUKtZRjJOtiHPMyHYtuJgtvS0CYKKpTwQAcbaVKNLbmLkJCxzo00MRDLwGC5_STIRmAjQKXiG55z2PrU-TpcpjApw2Hjqnklo72ScyUB2cCfyKXRTJjKFfsEGVg2H6foM38TmE3TkM5qElsYPRG8rTGcXHLr4Ez3ew2ChuDMj4DaBnu4vGss5jFhNh0Tfm8Q"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Hôtel Vaubecour",
+      "address": "28 Rue Vaubecour 2é étage, 69002 Lyon, France",
+      "phone": "04 78 37 44 91",
+      "website": "http://www.hotelvaubecour-lyon.com/",
+      "rating": 4.6,
+      "reviews_count": 363,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 08:00 – 20:30",
+        "mardi: 08:00 – 20:30",
+        "mercredi: 08:00 – 20:30",
+        "jeudi: 08:00 – 20:30",
+        "vendredi: 08:00 – 20:30",
+        "samedi: 08:00 – 20:30",
+        "dimanche: 08:00 – 20:30"
+      ],
+      "google_place_id": "ChIJn6jIk7Lr9EcRiVvGW06DHDw",
+      "photos": [
+        "ATKogpf1QEglFG5voebd7G_ntEYy_G7dEWIIAWVmTkVpapsKLNkxONLMtNeiYSVkf4qPjW7x4ZcS0gGQkG2Sjh-E94999FvjdovhyVaX0vnyJG0rGdmwzwMyNwAOzNuI-UB2m8RY-xw4hevi7kWr-wBcM9Ynctr7RUFYroxh0jQijrFhybwFAwm6ft9H4o_cGJgflDhk7vlPpWZ9waWq9S9o8GBsNripXoIfL_bbNxUQkJr-UFgVjPjJj7Kh5_vKstltXbcsTGa-THn955cDZgsBMB-fP3Lp9pHEyecx8sODxveheg",
+        "ATKogpf6fggyRRCARoMRN7ohF-9tEGHISVHBsQ4tPWGeyj4d0EUiQi0Vo7cx83SAx7m-TXLixRqhqJq_2TSXpQVTGkiGKuckVSOGc0FWsk0gvqDP3n_yVWiNkV2Erednettx3NbItVdSuOvwbibSsRnVt_5uyc0XXvqfDt0Id5QP34dXc1Pf0JVYn8rnkuVKYBS49FLV8TNdHbXpJiBIl7dAxVRpjUTeNBOPOL3Cg6Lm6vJIAT64YNVXjKwTJy5Py2GT-Ngq8E4FfV8sDK-17W8X6Q0vs6v-Su5xLJepycu7SDW2Qg",
+        "ATKogpde2uSHS5EjKqCAKFab7yKSfeEputkj4vSYZVMRNb7wa2JZCJn_GDHG4w767Z7X2rZIIfBcxcHg4BgWnhv_FKQ3_cWTNT9XDwFuODc6LEEeI-uT4xaqB3cXngX38lWZ6zsWiQU993loB0-nsKtjX0nLQE4zPeo6YLkMFXQ3NHzKHJcTKdC-g9I486MMAmF5SnWNWPFJKmg9l2gSNY8VZJCP7y302QGC10wd9gReDZ8pHT4NjH6gl___wN_RIdfTiItjMaskYqB2GLbcZ5JdCQVkr6bGWoLFHjgsUhJRlmjCwUzVG9yUBnZahfl4YyBfIuIsC4ng4VxwILHYa4B7vX7LFPFpYYLnbRE8PpvNU3hOkLjqgoddpA4tim-1onXVzv1w441D6nlQCW5ny5E3QeT2Yr-ES7SjiD6OhaaXl4QhGw"
+      ],
+      "zone": "Bellecour",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "TRIBE Lyon Croix Rousse",
+      "address": "16 Rue de Margnolles, 69300 Caluire-et-Cuire, France",
+      "phone": "04 87 79 00 65",
+      "website": "https://all.accor.com/hotel/B9R3/index.fr.shtml",
+      "rating": 4.5,
+      "reviews_count": 434,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJU61ltajr9EcRNzW5C4QkC5M",
+      "photos": [
+        "ATKogpfx0TFSzXotz6stM4gQK5xgd5-nZ0wklTg3Z02AvbJqUSRJcwtnADnnNBL_tEu1_1JkkTSDxkYD0_N830W8IG2XLPUJ2xtcFLvDZ1wOoPdb5A8qc--9mSQZYA8RWi__3nXFvKi_ZB_7nEXd4fRDVputwG19mKkHPWFftelYzyC4qE7KtpcJiUJolypaW1txbjx6w7XYJP2-JIiGfKvmzu8tXrqGo4IhAbSvz74xUYstnlNMEEsobhnljUTaCDsX56imQbKZ_0VkaxSOQk1QOrBKEecxu94-rM_jROeMGw2eYA",
+        "ATKogpeZFL2xHh3opogyFKN6popbIKnzBYpGtvkCt3uKDjCUWCatUtEnMamAjXfWSyhwudtJH55Iku-k7RjaO8wr9R0A8X1kNzo6hSMVgkjSr3RMdgUSXxCsO7EQN9aw8B-vIKXf_o5cVwoIZ0_XjtZ5Zrpg57JLVFHENREVbu4ew80-Rc-OmaxdtN7T4cfzOkjOj-xcmDDaBEDC35vJJgVT-QHctud1eex-7pkmLB1O_VH_wuI0q5-lkOhC07D8bk-PbLCuYiZTGrNBwRebOYw-dc1OUsr2GsolXwvN78UB1bEM4w",
+        "ATKogpcxGufYlv0UbmiZFfl1qHh04iSBD5UCky6rEOGkdTSx6yCamPXWT5Tn-AT-ve6c_SqDPXf6zkXpEhusHrNqs4KdO8s-oxgnfQhecXw4QYfjv13s9sGlM44Bnq_TY_WYO10NKYF5CiLlkIa4LYU8tV-zu9-TES4AU8Zashdrj_e9OzTvCesi4DmAUprbtPxCuypTuXypO-6aphp3nhwi4edssKNBXDgvl0a_C35DPgaXGaHsjA1pYraAluGx_1FEaP_hD9m43VDl7ttiRTVyIZZ5q5lklCoFU3m3WuKCrm5mV6zLJ6Zu2qKQWik3JC5oF8YkgaQgqmX8ohtrhixrYCqyqK1XSBk1Co7DCNiXZd3lD_qalivS9glQbrVy8UxsJy8U9567mOfhOpGR8Xq7mUom11S0qWrVbTHp9gqtPXA"
+      ],
+      "zone": "Croix-Rousse",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Hôtel Oceania Lyon",
+      "address": "4 Rue du Professeur Calmette, 69008 Lyon, France",
+      "phone": "04 48 04 13 69",
+      "website": "http://www.oceaniahotels.com/oceania-lyon",
+      "rating": 4.9,
+      "reviews_count": 16,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJw4nxnefB9EcRiSyquODNX8k",
+      "photos": [
+        "ATKogpexXWvc4FDkKeP4XXiwm2_ALoTpudLcBJr0gZ67Q7YJxpvOWlGy_VT6ZuffnSj9g_hKI_ErOv0xamXPdBbgMkhVDsmPKczcxFvlQQ4dAmQNy6zgeFOwSnczEvGpsxTn3hbGbYv7Wf-Vces8JJmG90IaXwSNu21oN2bdtldrbpeXz0S-7my-8cq5BTZS3yTB2dP7L7-k7W-vbK14YuT_YbLptRTc2Me-zYfZTPm_Vskz-zypEYsf52GoczBFo_i-R-KCotfJBsljygD4QOsZwTRKp4yHgZorqlNMdu7Ub2tJ6g",
+        "ATKogpda_Mf3tjTYf5i8RwXdFRcXXlnpQhz8sWr7BLz92e7g3XlDx11n4O0c-OzavS9tMEoQ6uvEBT76DFKJHSBPLXatqhZV3HnKfLKmB2YlMhTtw36XjCY8mXT6qWfmfNY_9gsCEHAStwmeTzcIqexsxoT6xamb7SZ84hQM4FrtxhYokq4OsRC8BDglxST0_QJ8Ws0kQIeIG3vBR445s9Z2qzjdTH3hv4G1jiF4CCXgx8AhgdWh-o7ixromgvCREq-SnDPYoUFiBoEa8eyLJuFEinXzHpwmx5qo26gcMIUMBSEPZw",
+        "ATKogpeA4niBBdmUaExGuVBeySBEt5ozzQjJ1vfLDhFpPB1bkh9w076ljNR-MULzaGxV5mnD1tNwzmS9c7g0Wl_cj2p2_vDy2Dj5SJuNQnqK6tyNRvigtN0tJ4jCgQCLyViHYsj5zuMZ73syZKEvR1BjDvEatGKOo68TFkfhhBaTLrSv3hm36bkojS19gjLEDP4Wj6wJdJZ-mGIGze1kAusOlvCOwR8rKideySL9N97_L9o-tNCKURIhj6jHLIjtE8CIplQ0b3Mm0LM8zjgRvvMPlPPmZlCScXq-7DwGyaKEpX2RCQ"
+      ],
+      "zone": "Vieux Lyon",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Kârma Hôtel",
+      "address": "21 Pt Rue Pasteur, 69100 Villeurbanne, France",
+      "phone": "06 66 55 08 70",
+      "website": "http://www.karma-hotel.fr/",
+      "rating": 5,
+      "reviews_count": 8,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJZ847INTB9EcRLpnRt8nSh6k",
+      "photos": [
+        "ATKogpfy1oMkIEV6d_M7dYroD7iqCzrMvEa_C2vrgPpQUaMzDVEb4L6_0YlO61bvnAxjlBwswEP0ao3-68WWDHBjPE7zKt3dSm_EgveDmOz-lwDvQeARhXIQpzqNF_gQ3oEHXQpRk_jRb5XwRJNhPQZ0TRreVKqww2ehkgxlnHGcuDbwuOvZT3VUiqQSHQI4yLhxyVCilCeFzFF4VFcWB_HTJ3lmgayc4MKK6NUQ-ZCQXOENnHcvA_TVgjbUuI71RQHP4kR6-CuqMMkzqi-Y-r2yPQHsmXHMruIpN7b8GrQJardxJQ",
+        "ATKogpeHmrijmDKLIN75tnP-soCkjH_GYGApHmykMCAhWPqTfAn9RmTLZRnY1lNTn4j1wqU_xChD8DzRBdkYhtjTk3lZNbBEwmNxrpB569MA_vTVYo8bMlFezmwAHFDBMdII8J6tDln90aQ8C1Fg-KX6QzzddUzbSa2KHwHx_vK0bws6yJa188Od-wKvF12f8nwJbPNdm4e8oaccxW8H02S7j-MVFv6W_jP7eA4SckRwJt78pd7EByOS7wnBJwoVaYyrzqsnS8MOr48C7GHe_foBVMqPo7QtCvxoV1Q6hHKiUoh5tQ",
+        "ATKogpdj0q9pAmfc9oGbg00DdUnLvB3tOGYaXrtRifdEFYwhFnP5pmKXWbsR7NGRr75XIIolNXtq-p5aTWnT5p67vL6t3RdHGokKZjf528T1giMB3GHiBlm4PeeZDWgUe_rLSEJB5Lw-K2MOkr2X0pwMvqrG8LDAjFzurxf4rr9-bcy-6fvO7TNu5oeSpAp4M3E_cHPyCReA9HtuRbALt9EkeAOBPs0HQHXUA2cobXC5K0-NTW4UGmQJLJIpmEraR2twv50WXP9iG0imR7H-sqd7ViJnpL8CFuuxBbKRailAsythSg"
+      ],
+      "zone": "Monplaisir",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Nos Chambres en Ville - Chambre d'hôte à Lyon",
+      "address": "12 Rue René Leynaud, 69001 Lyon, France",
+      "phone": "06 60 11 32 57",
+      "website": "https://www.maison-hote.fr/loc-chambre-d-hote/rhone-lyon-nos_chambres_en_ville-23630",
+      "rating": 4.8,
+      "reviews_count": 19,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJkf2Uy_3q9EcRzNUG_H4rwiI",
+      "photos": [
+        "ATKogpdHY8LBa8JLgVYnlqe_uzFTMCkhAdOkla-oN38QIKaDbAHS1NeEp1qC217-ATG3XjBzi_Po0U0fIcX5DtR_r9eLw6jULJS-Q_idgK9u3Zw57qxz62yj4cSFmCk5STNPEkVwUIyMFFlIexYBzsWNvGpAbES490AnWNQW7cbzETNm7gAM0btnV14WH8KETT8LWxT80KdfHIXOorbGrfbXLiZv1mPs1rT0bOBfuguQNUn6Nl3xgGu-rlXVT00srS_ipNQE1ajl6W2lx1_crOU659lpPHjCrPbMODfzA6zEPc01KQ",
+        "ATKogpdZiuXZ7TeVQM7nIgSMQN96M8p4ciZ9bS0buwI2yQclV2uyP5eTy3A2mjJ8AkzQPuRRTiIVCB51BST9GiVN09gUH8wuEKaPi73ElSbcSB997vStsolhNz4cokKQz1xgcgmbA8drYQIOdhApNWO1y7OKN-gWbloWG6UA9kuU_RMX_Uwo20BjByRNOBX2WbA6eHuFQjBaHToIP6QsItmzyz_oADjf1-WilCtZNf0tdryj_sl2-_akuHFuHDpZJwBs7Rd_lDOIHdJr8kEn4aJixTC5xUAA2CrPHkJUW2W8x9a5AQ",
+        "ATKogpdXpnYqvY0GedEJe_jvaVPcCDGjdq34yoKtbFwYmOdves6BZiypljCQqbrubFO2-qffdMxCAFEYk4BwZGpK4UOzqcYXqY3-IYdSdrwupg6_ZB47suB2TcTyD1ZsgeAPQbEPoZmC6XEe2FiW94nXQZxY437tQp23t2WKUHs4P4gDMrAS2D565ocVlgmACloOjS2ItnqDnZ66J5q1zNf0-qonygsI_x08XoyEDdDr2KemOjBWSifvDmXRDH7JbfCffexk6siZEKe1r_1kUqxCaNi-T8YdDTP1momo7Ksecm-b2Q"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Lyon Mon Amour B&B - Maison d'hôte / Hôtel - Lyon & Saint-Cyr-au-Mont-d'Or",
+      "address": "34 Rue Albert Falsan, 69009 Lyon, France",
+      "phone": "06 29 47 69 48",
+      "website": "http://www.lyonmonamour.com/",
+      "rating": 4.7,
+      "reviews_count": 66,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJ5R8HXmKV9EcRZzNO0onCVvg",
+      "photos": [
+        "ATKogpf7_OScoa1I_Yur-M9XuTIJDFQzbpum6gpK85hvjgTGbq5B9le20KI45iHsG7W5U-Vc4ZqXvmC95BnNvhCmgv1eQOmOpIZRYVx1OuFPcZ-KF-wv2rZEa2AsIKMxdUCrzjYvmmaMVwEqQjHa6194-ssgGkZTfzTu4kI93X_v5vMBybA_sT5-qcRSgz_PFrD1BgJsJWrO1Y7AeA8NbZ-IXCXRzx9nT46x1Tyjcl4eUIoXiL4tiKQUArK9Qo9b_A9Lb_X8VGOqg2AYDwbVCkqMt34pMOXQJG-JL5OBL0PfO_zYbg",
+        "ATKogpeWLdIRmo5Qzx5uMVEK-onFyzjdKHfUH-9vtTv2pS5GX2wCzBRcpPbz0FOvEAzu9FauGDd9vWrW1hpU4dXXvnTV6KHWdcoh8nVe272__LoPkjgR7xES-f__AZBbvFEiZhQeR1F-RqWZaQ5DUe9M96Yay9xsOwd71nu76QtW94se35OvfsHgtPI9DU-ZLupMhELTvafSf3ct7QzPBqK-SSc23SbUX-yPE_arHlJQjuQ3TbMioURZ4l0iyVS-vjeluM2oNRfp-F1hK-hEBZWPYDd-cSi5CffhPorMvs0jGEt4AQ",
+        "ATKogpd_fMHv_IEfBQUiNMVJr3i1N8aArpetzeStjcaBzcc1tqiw8XUoU-EqNyQUl14OJZy_Jhum08a9PegImmFsDtsYUp1V1OCcxIV-Spbqjbi7VIP0GHdKoEibFm4Ou2TSxOQtEiUR2OhKNrGqWUCpW-JDEhHErea0b4ssayZc03uY-72bimwGoE4z914XOYFWEv8BUT1BS9dRpiILkLdWsvlKvvdAQERcn6BZJpKTUO5ecNZKcU1_oQzC0zX1-wV3h4vRpZpTblfvy7v3rL2WDtGk21DvLsby5Pe9SWL5YBuoBg"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Le Chat Perché chambre d’hôtes",
+      "address": "2 Av. du Doyenné, 69005 Lyon, France",
+      "phone": "06 12 47 37 64",
+      "website": "http://www.le-chat-perche.com/",
+      "rating": 4.7,
+      "reviews_count": 26,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 08:00 – 21:00",
+        "mardi: 08:00 – 21:00",
+        "mercredi: 08:00 – 21:00",
+        "jeudi: 08:00 – 21:00",
+        "vendredi: 08:00 – 21:00",
+        "samedi: 08:00 – 21:00",
+        "dimanche: 08:00 – 21:00"
+      ],
+      "google_place_id": "ChIJedPEcKvr9EcRi56ALIUfEYc",
+      "photos": [
+        "ATKogpeUvpueWupNMTHbBXVImdE5KCPsPnmGSfrWd9mq2jMg89Xt4FjRA-ThIEgRhSGU51eB_qPUv9ap0JxD6obNn8yEGeox-FkNavoRigLp4vlr_a34Ocgu6bTi2l6ShewdSGxZ1VrCfFQFPLBQvxg9LrXJE7BNmFoXZNO1wesL6FXY3T9fIJ1WwfKItR-GTBQDApglKg-Wm3ADeT0K9lc7SGiJ4S84kB59ncweDmRhVScdH9p78SHjYP3bs7_RwG2HCYB8y8zRSQ59fS3s1SIT7fIy4mxGLtA5Ylm9tb_U1RnbHUW2KKu_MVq723yggy6Fb64PwPzqN0WpdiR8NiUtQakDKjt2sqZIe19fBvYTGqMxG_DstGv137qYlvEDeZnuzDdFZHDqA2SonvqjYLTw-gfOJ--U0sZY-1wrmUla6prGT-kXzq6rff1lkH-SHx_C",
+        "ATKogpe20yotudcixX8eUihdyu_gNCmMbaC9Pp0Vzs5D4YlViTUtOcmUA-vBxoKPcCC1paOKZVG4d2V1Q8OlzZT3ItpMzj6T195zNuxLK4VZJLUUFxBDY09GS5v625a7OCQlQuFt489G7kldHXQnxzIW4S6X8sbzpCfyr1YY1i4pqY39JdNdQY7SpFZHoNneZs4KDocj5DGsfKBJMD-ltZS5hNoyL2--nX2L9-Cc5_OrzIhTyumYl1vBFJgUWBBrVeOmtWTRfoZmTw2hpbhUnVF-XBzFM1YDo-_0K7dkbTdTH3YbYA",
+        "ATKogpfXuohefsQeFSIcRJwoY6qaVkqE1Z4phIItYZkxrCITkYy6JwuEGIUcAQyRzTJYD4XnHnlvSMjoz2XE688ghHyD_nSB1cZeeWmETwU8uwLMrJiNbFhhir0luQlSjAA-dupzfVKXwqbyzEbf4sF6KAL6rXINnsE3rD4VSy3-QSLUN5oux2ZuP0ggdiWACVTkunvEFp-xZeYvMIAlN0IUZO_qIuS2aY57xOd3VXt0fjCGDzR0xqLMgGU-N0sLNa3GKPHnZ33P0-r6uz7VpO-XyCbmTXQuNXLyKvEALcdChHBCsA"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "LYONEST chambre d'hôtes",
+      "address": "28 Rue Montaigne, 69003 Lyon, France",
+      "phone": "09 73 56 91 00",
+      "website": "http://www.lyonest.fr/",
+      "rating": 5,
+      "reviews_count": 89,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJ_cKWWJXB9EcR2OkXruHS-Kk",
+      "photos": [
+        "ATKogpcwzBrrPtv6wFNAgWDcGz4NhJnkikEifkf8D88G9CjNSMeg2kt263XddMK19Km9B8WlpcS__pqF7rgBxFBfG2bKtOhR3AHqCT0uCFHQlw9aXMkQh8ESG0zBCMjl6g4n9du_QrNy7QZFxmevJZ_3j0nZluqDlnN8YPZ4d2UtjGXo432ooaRPsZtL6CwiB50_YD4Lay6LnpWESLlFw8jv0-crjqkJYdIghLYXKxFFouG8ZMsHvVJfebuPS6iXo1I7RmlRtXG2YPcQrTw4i06rSDnEiWzITyAd3PtgAjqJZXDP4vfjSFRpLweS0j8j4WDFpfJFfSF4qGF3v7P6yB6bwuLcd82qUqR747oWJsCHu1YH7lJKYU1kfCpj6xhjYhpEQkWd1s6rW4VenWqs5jnS0uDdjmjYRR5NBLqm7YAEjZvoJhyu",
+        "ATKogpejowoaaXGOlmpKvVEh9qvb2wVK-6AoLIBGZQlytCi0aK_4eJIrOTLhyG8e0sB03Q8X-y34YCM70GjgmGwQ50K-xASRIQ9Up5_PgI27wnCjQ1Yc1DrUjvk7UZSG4XuOi_RbY-lbobHiMKIWHauZSNw5FndEc_UpLqUQUsy_oh0By8zu17dY1Wnamv8V8J-RhRHaxurtNhp2GT9YBZYARfeo819Uzfyec9eeUfZfKxokjwZkNNRdWwCL8bOCmqK1zReeLrx3wz7vYzufFzSHpDswRW0f1tTR6Tj666JPDw8Viw",
+        "ATKogpfhRP7-VykjoxnwflYhF6DYP7D_XGBRc2J0k_jlXrN6Pnv882D-sWx-zz8ONHPz2c4Y4VLH5ckOWcbL6CwI2JKiRGp7zUpw4FeIMOpeEb-irx7Mubv_5snA20yl9dZWHFKOdOmv43XO_7NjbFCcZjShL1ybF4iErdZJgtyDCqOmMhMfJa2yS91rWPwBUcSGiI4wjYILAbSC6d2--hu1MqW2rBiw8ctrjGEKAQPyxXG6A-iMOlhTtZtVooXGDAcgGyqDfEFJat6S9UDCvknz8zKpYQ14oakK4Xm8S0CnpepAzg"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Une nuit au second",
+      "address": "11 Rue Jarente, 69002 Lyon, France",
+      "phone": "07 65 54 72 20",
+      "website": "https://www.nuitausecond.fr/",
+      "rating": 4.5,
+      "reviews_count": 37,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 12:00 – 23:00",
+        "mardi: 12:00 – 23:00",
+        "mercredi: 12:00 – 23:00",
+        "jeudi: 12:00 – 23:00",
+        "vendredi: 12:00 – 23:00",
+        "samedi: 12:00 – 23:00",
+        "dimanche: 12:00 – 23:00"
+      ],
+      "google_place_id": "ChIJMz9xU03q9EcRS913-mIoH6A",
+      "photos": [
+        "ATKogpcndIzNLO5RP7sB3Gg9gScm4koETREmpM7inJu_RRRIafm_OKaHaTkvojJ6Q_2AfVN6h9CQmPUTaYuvqx2nIPOAquz1HzuFXuc1UKlfsGpl6n0OF0199kvEcYPROMASvY-MUTf3VIrUuJdOApzUyfMV_COq6FDPmDSr34OXKE_eiLfWP8s2XelTqmG4aMEggXmYVgtnLaOScZnXZwRnwzE8DtCvtT_xVySB2zzOTSL1c6mgCjh47fHU65UTx5U2Sw9E2EX4Cq8KBC-80oLXADvt0RD17wgOB4TiYajuCt6rmQgFUq7Ohi-NRuZ7ambsiGLb5u6EVN1nwps20acR--tsUDGUlF0WrZz16AmCz9BckhOgo5Df3ewTsamPiAQo-X0f3DX0smBrDo6OiNP4F1NriQ6Jkxv2LEcrzH95lJU",
+        "ATKogpcvES9qCyMgpAzQ3tKucdTHG0nDGlRh1tSGNVfpF1Re3Et2zIidgUySKYbsww6wyHFudSek0vFXCzeP8N3WGaRyKWDittzAoSxqTofrWFbWrY5q-XzK7fArxKwmXOenfWOfPoMwIukGjOjMuLkfoBIZSJuWVrc7ogiVXjOr21LiMkgxlfnvcy5JuzqtOZRcsy-NJniMjRGNayzTheeXR99jw9PkPvA-sBPISsIBHEmWMhEFhtJlIQBDrTan7d1yWo-t1Bb-RDEi-HxGqISeliusoMw1rW-zwpaWzFDs5Hy68w",
+        "ATKogpda-bI42wP64-GuSHtO26yWMmC6TWR7miPlQ6n9XQyIStPcLvrBCXVqXjzVjc5VgHBHjleivctG-40T_vDSAJjipYj1Q4pOYPPFNSugNYV2UB0acf-BLtgtTz-VdFgX7w9Yla0V_O-1_DIEY7ZYh6ke2fzhwxjDza3L4vBfHMU-l1izkwwuCeH3CakJ__E75Az8IFeExR3iIpIDqtdqpsNsEzVE8yDaM9bNl06sAYpMzSMv5ehS6HqgPWYDA7sxchWEGZyT-fvr-HapRZzjK14klvA8YCKpbFu4ur5dVlrUTQ"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Aux Tourelles 1888 - Suite BNB très proche Lyon",
+      "address": "17 Rue Professeur Deperet, 69160 Tassin-la-Demi-Lune, France",
+      "phone": "06 80 45 94 51",
+      "website": "https://docs.google.com/forms/d/e/1FAIpQLScttjzqgiCiDiMr24p0XcwN-trGtDjcWPWf5qvLfgD8_A69mw/viewform",
+      "rating": 4,
+      "reviews_count": 63,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJgZWH2Fzs9EcRIuYn5nxOfn4",
+      "photos": [
+        "ATKogpfY__QBsZMbRZRp8BwVGhxo_IhnfGjwAkRbJsbidpIXPic_86DLpGQBMyB8enW5xIEcJn8hgiuv6VgJf3RnReHrHjTtp5s2UzF8rJmsbFzygeu4N9eRb81vmMqavpkyU02b8sU6BL5a4yCtsgR07lgUKAXsPLMW4FZKuzUNrVLUSHiKXdTbBJu_9FzbxIl8b_lIbJFpwtZWeHFglpiZFiv-SlCtUu8XZcxIO4j0KyFB5WOXfOeFVWku_887a1ydGmEC21ADTNG3zCm9xodZUk9oO3S2iXCAQw19bqrWz2ZuZQ",
+        "ATKogpe69KEPZyJqsIHpHLNgmbTjINrf3xpCplTYADJDnoELosMm3Yj0p19nbJysUdTjA0egr_jBQeWbBt4C0hdVtAbTvG4hS5m3wcKo3YL5MldMzP0khQwDeaaF1ZOF2qlXUnjJZE3Qa-sgZja7K98RKGeI955ctFXCKxCOqDFrN98eMjq_NNFUp2kSJGu-IuJlW7x4oICkylmTf1xvcwG7jZ_kn5XVwAeZrHaVk1UNUKe_YIKhGQ-Qwg2-mqakwUIPSangdb1jhQx6n7RxFJIYyx2werNQh5XT6KRbUU1rl49a3A",
+        "ATKogpdb4lspYAFbK7_Sse-F7we9x6x4rDRwKCuaNlg2l19PFyqJT7-vS7Ma96lhthg2mUZcTcCAuKNiKo3Nj9ukKRho9tpU3kL0ia3nsaRAHls8N-nP0d64MMBsH28qNmJV23kpm_zmqNGno0W8PbTypFKg8WvReWfQ7aurGbwPgeldEUXQL36X-K3l1lXFHSN6Bkt8Demu7c-QmulRjwJ0jLkL_9RF6Q36Zfr6YHOe1a8Iv_Zmrf50r_04dS5abkPfun8vIKTD3P-Lizftw4y61rL3Kz8lt9ulHRRdGR97BhcEPg"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "La Maison des Monts d'or - Chambres d'hôtes & gîtes - Piscine, Climatisation - Lyon",
+      "address": "11 Rue du Lurin, 69650 Saint-Germain-au-Mont-d'Or, France",
+      "phone": "07 65 16 91 54",
+      "website": "https://www.lamaisondesmontsdor.fr/",
+      "rating": 4.9,
+      "reviews_count": 76,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJ2UHlRsWV9EcRUPylVW-VGXE",
+      "photos": [
+        "ATKogpeRhRbTqEWEvH6gVO1w3mi7u0VoLGHxY7-dxWoZKLU3QlfcsdHzcwXsduqs_u7jtG6mum7McVfnswMRVG4b6BrVDG4VKVk8kF6wJ_eONNDaYZb1_zaZeVAQhyLmXM8QYtMyfjLgCLJS9AcZ-nBFKILnRsq4mpOyWd1eWOjtWvArOaFYaF9iPtwVGOSkH0-1EB2VHYRXIUhhBCFIRg5d6EFoi8aIbLgF80VVwvfZQfFgVTZ5rjprkU1AtpcfRZRlVJzSNuZINbnCkdmqaF6jucVBiHk-jkB3s0SljDi6UTQ",
+        "ATKogpe5K3_ZrnH4hNyNBpg-2VT5RfcoCgFktdxmtCswIjg9kw5BNT1z_eSnriH4zUs-ejKigkubeyHfxOeDAJHysONybA-guzj2DNFuQFemGxczq0ac10CaX-kEzJYg8kzMmK1fBnInno1yrIcSNdE0mloogfi2WMRJlwe2-ik2XeRqQunARoeVgKY7JFhL5oDizqjEu8x1wvcsuphXqO8YMoC-e2bE4q9oTRvUZ2TXF49GVKmOsXn122AwJei4kw4JnTSjI2h-WleFGP6_e1dl8G0MeZ38_DdLTwJDLi10aps",
+        "ATKogpc0_889hGqn3ceeFfh3IJ0ZG-hIUnHLzBI5vhgtUSLIl_BwYUQ0MMB9CJJFpWcaVynbUnJeSe1jrZ9Zum7szTz-pXWjj2OA1VrnqvVrjhT3rgPRdPnMcwAXcAu5ArHGuiQzlGsz10RPBI1SLYVeIibYe6Z29zJ1GUjzpf_l9SXYIPaO06V1bObprUoC4Z7ePE75SOB7dL1nDsJ8HLHoMJB2hOG1FCYBBJrwWuc3sNBrwSOxbqvnXVEfzTHxeTCdM92btl_ywMgit3IlFa3LoVhOyjwLVGpF11ACG1S7l5g"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Bienvenue chez Sylvie",
+      "address": "18 Mnt des Épies, 69005 Lyon, France",
+      "phone": "06 62 47 68 74",
+      "website": "http://bienvenuechezsylvie.fr/",
+      "rating": 5,
+      "reviews_count": 46,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJteFHMqzr9EcRfy6g3tMo6aY",
+      "photos": [
+        "ATKogpeY3QNMx0mJo0QZjBWblsqo3HtaWNr1jnEEGh9CBSVBkzVPML3kQtUY8Sr7SFfA-fXWsT1bvGvTrT5-bfSw5JsXzeRwnElNGirLq-JfBamb1LGfODXiLOcfL52OF0SO8E4vPvGxyemGRDMtRAPfm9UdSxTEkLUj2UFnvVcqPejwuQljBvEekySEUcgdA6puELet1oqv3oSy8djVOvrOhmvfHrD4jGcMOkZZKVNHNp1rl4wQdyBZkKiGm8G7P5JoSTammlrPx-QOZ0wWg0eghajPASTRIDjRppl9SJAZm-srkg",
+        "ATKogpefSsx22X2FHEqL5RuESliutYhFiQQ_eZpdUkrQ3ocZC3DV-BQVChSyB9foQqZayF7PHc9WYNp5txUYhhzS70YFU5gnLNvF4ecrGgbcNUdcgP_8RnqMTV_aDQn07ilNQkHUv7kPG8Ii74zm1TgJBU_GBB81qKEeObSk62z_qlWmR_S0kB4P7bQdFtcJdNcYe5uGO9zdNvaKbnILDDrIDMlABRXGC4MAPjPoBWmmj_ZH5HEuoQjeapzhRilnQ9SFOW6Usa79gxpiL7WCVgrCuBkOCUvJ32hASa0GgZ3aV3Fd5g",
+        "ATKogpdzI6clSNEoiTBB3QujFXWQaZvaZJ9S30GfGnq8XhaelRN4ww3cA-HAXE1ugu_164fy2LCemIK7WMVsz2fmi1g_dc0LOBl493daEeuS9X258kJzRbghdYuVy-vCx6PDWwK9FhyEZ6_DCRj3aMTeuWYPsiBHzRKRDCDaRxBlpswsPrLi2CV_RdJRFFT-o8eKA3drzf5SL1-lzqr-vW7u8Yl2vlMq8cMpV_wcGEsy-Izq5Nd0uX3chkyxHHaSOXyBGygpqtnIcFmezWXIiFWrp5g0dH30C9DU2MFEmEijUApbTA"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Le Jardin de Beauvoir",
+      "address": "8 Rue de Trion, 69005 Lyon, France",
+      "phone": "06 03 67 27 84",
+      "website": "https://www.hotelfrcheck.com/le-jardin-de-beauvoir/",
+      "rating": 4.7,
+      "reviews_count": 20,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 00:00 – 12:00, 17:00 – 00:00",
+        "mardi: 00:00 – 12:00, 17:00 – 00:00",
+        "mercredi: 00:00 – 12:00, 17:00 – 00:00",
+        "jeudi: 00:00 – 12:00, 17:00 – 00:00",
+        "vendredi: 00:00 – 12:00, 17:00 – 00:00",
+        "samedi: 00:00 – 12:00, 17:00 – 00:00",
+        "dimanche: 00:00 – 12:00, 17:00 – 00:00"
+      ],
+      "google_place_id": "ChIJPQgD66_r9EcRJr68yamxYsQ",
+      "photos": [
+        "ATKogpfx-SPCrCE-hcYKbB7s1ZPix5mtRclPMa344GBpL9uabBWK4Qu2GydpTVt3jWKsBEr8IsNye7f-1udM2r1dH_1diPxfaKcxED31-bRjdXjIycOwaox1xT7JS9pm447R_k2aegjbltoed-ijr5acH2N_v1Vmb1MK8kJLz7p0mdesHRyMGXVP8m0AyGRGZnjMwM0aLa8ReWA7LJom3b4ae46tIXqKuJFso24RIrfd4WX0ZEfHQ0VnV5jCc9WflX5jXkZWBCT60lgV2UktdBiuynaOlB-menNMpSB33rbrTCjKuQ_ph30jUCeWRkQRHGhIjjysfUCjb2guqxu3X6yaMAZpArR24FBns7L5fjfoXjANQezPMUjO7qHTMMoqFgiyV92ldGmX0K7ZA8ewqZ9dB8UFg6CHDDmqBo-LqSmCS-y-fUMQ",
+        "ATKogpcL9rPGElw7a7SCrXlq4b2h8j_kwHlv8bNukHYh6Xz9w8FZ20xNEQyMbHXh_nACUBDSrdZZRU__PjNiSWNQNjZ3JvIoFem8iJneUUUatj_r5RsVnw0o9bzpl6xOE-i0LwHx-s0coEdh8oKe6YazumrSqxupK35ka32f2uQ_hcBL4r8Ft_46V0xHIZK065_Fsp7NTLeBlVA-xRrb-uq0mrD-96KyD0xFsmDApddpKryFZLgzJzESIXhx-d9cQTorFPrgxmOYJyDSHd6X_kwOGWCvmzvHLcWCvqOh5uRxRrEyzLKIzEj3Vi47Od57I_KozNn_f497YrZzgnC1XKJPQ4lF8ls1OYrXfTt9O32En2asMj20k4osMAm8gxRYw2XR6GzD7XNKIibVhPIx16GvA-cYdj5GVRrNWqsl6ygoxCwP_Q",
+        "ATKogpdqYhf6wLrvNNx8cPmfQITSduys2QzoYSyS6IoiaQ6Yk9valltMydMX3DrZzTqkzht6KVTEnXIeNuQjMHcZ7boNWCuZMJaUpRppeFdgLOSmzlLwgm1JhomYhveTW4hLnm4o7Suj832PgDI3NhhsuMtOfBehibRjX2S7pgWc0lIB5g5DgRGA_BQKZoCdp5pS2rMTLz_x9-0BQuXNYjf5rQWTPW9dgiYZ9TUMGHv8A_GL10iyl2th5JfBXy1vmL2VG0kesL7_MpDCXaIer1f-YTmAaK1ISwgw7u1NF21FhymoxjXVJ0XjWCKtMwbHdIq-y49Gc_OZARrWZUXb4Us0we0QtYrN8apUTlMUYgMknVZFbThuuBaaeh_fjHwPeQ_f9VxmaEgghG1Xts7IF-E4m074ry02h0FSZwQdEwVadwE"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "La Loge Du Vieux Lyon",
+      "address": "8 Rue Saint-Georges, 69005 Lyon, France",
+      "phone": "06 44 05 71 84",
+      "website": "https://www.loges.fr/",
+      "rating": 4.6,
+      "reviews_count": 180,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Ouvert 24h/24",
+        "mardi: Ouvert 24h/24",
+        "mercredi: Ouvert 24h/24",
+        "jeudi: Ouvert 24h/24",
+        "vendredi: Ouvert 24h/24",
+        "samedi: Ouvert 24h/24",
+        "dimanche: Ouvert 24h/24"
+      ],
+      "google_place_id": "ChIJNbameqzr9EcR1J8y_75BNa4",
+      "photos": [
+        "ATKogpdbQus03hc_JmDi9ZQS6SRphZ8eKS3yHukbZVJE0jzH9qO0rZvxcN2NujeA4QGNq4gyNOJsXK5HSYlGKBDK5Wb-YlRotzQ939tVaGFa_2rBsRG7hJ87PLTWIrzwhibl5qIQ1QVxcSbiWyh3haEDam99x4UMQJUzX4gkzne3he-Mrc31SiJy9uzYEmcI-3JPR3xEd6vv0z4w-DoEGmYaj3udMVoY3GfoH8shKTZya_tHEvb4PSbdPwfDlmyT-186kOvGzXZOPgy6OmgDEYMGwigHQgS75Mgk2SKBYxgvx0gNcaNQ4oF2nL21WNKxP9WN2309o61CDE8_DuvX9BMiZdFvEkLhckrDy0drFqBr-dKjwbuvnFI2_J3Ldzk5DqYaCAYDK-VxEX3vOCPMlNSvr_9AmT7yAOxB-i72eelvdqDoXzBu",
+        "ATKogpftC2LQpCT-gfhE3H63k0y8iNJftMI4_tSR6wysqccZq_nYS4zGanJjZNpY_CJPm1mV8spW_8Su9Cnzy6chj-wH9O2oYOF9z9GH0V_VLNKyhPjsCi_sENVDpWoKytYKSQULpHWBauYuy33JqmdeKsPjFwJ975FTTcmEK2bARnNvwNfyLGnVnvfwci6zu-ssLPQ1S6b13DNUsA2mt6UEBWeQWOUIa07ggcqzjeDRfCXOtgjRG8h3NS4xv2o1pY6lE6AWbrFPvsRTt9zywJ8-YJJx0yyO9Xb0tgYoxd1nnH4aNcCJX--khKuKxrujbYMqVeu3Us-3h2t70amdx_NyKlbTDxXMgODHZ2SzyqBsYai56PEnriyTIYoPXr6E658BJlUeKTq9zjQ6593B233pJQHeTjh-OHq1NtYXfIxqUB4xjw",
+        "ATKogpdJx19d7-rUUGqOyBQkWyKIfiT4cmyRpA2EIMMZXBTXdQ59LCHke876yu1Vo98hkPUbuHrTgU5i7oY6jMSf2_R9ZcvcZgTJv6VZsPhToZOTy47eEGyozsx2DhI5VrE3Viy_q_94TTGeemU1BfVWnc13qgNaW_SMSwB_iZoBtDXGHQO6BHzmkWHSzYEx6nNqPklzC-GTnSf5oDSNqY7mc_WYsbxUpuldAwoXrJcZLS9QfPQQAq4AkrzJnbIBtXBX4CaE3oDexCH2PA-fAaChEBKeTy3PusipVjvuXzWVkgtBvQQ5vJruNiAvvCyEooOW4wcvn3E5uPrqB6VJ3qhMbPba0D8KWu-Q2AE2rptDhQGtO6QS3MqneWEzzDTsHU6adkYRudMO0RZw2sf8ifMeTbpN-sdTDeoEyCRl5_NEPNgGWA"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "LODGES LAO",
+      "address": "20 Chem. de Gruges, 69210 Bully, France",
+      "phone": "04 72 54 95 31",
+      "website": "http://www.lodgeslao.fr/",
+      "rating": 4.9,
+      "reviews_count": 247,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 08:00 – 22:00",
+        "mardi: 08:00 – 22:00",
+        "mercredi: 08:00 – 22:00",
+        "jeudi: 08:00 – 22:00",
+        "vendredi: 08:00 – 22:00",
+        "samedi: 08:00 – 22:00",
+        "dimanche: 08:00 – 22:00"
+      ],
+      "google_place_id": "ChIJXx48F62L9EcRGs9voxM7FoI",
+      "photos": [
+        "ATKogpfcQjRtJbuDwdIfSlYQCCEhrJpj2GDldIDVCY8QGz09sz3uTldErUq2WfDgULLwjjnoyXhl56c-ZqgmtsTKOABqMVFTZMImH7XmOE4sPaoUtgiGfvZdSvShTrkyLnKXVEJ3BSX1t6E-aYfjDefGnQxrlv4_yhWpsefjhQ4bThG7Movgq15Z4P6VmdnkRW0epl49QIUNyQyapPTCdiOhbbZhZxM-U0ClXlqdWgPhqg3RwLDi2QFXUl3RYK70kakoiy6daaEi10K8Rkco8RmJq5SRAaGzFjCSNme1nt-njps99Q",
+        "ATKogpf1Q4WeFBqAi2cioSmZf_XmwWSsuKX6VA-xOAdPVtNckOVRmCKIdUQEm1MfHSbDNyA8ymSPa1rVebePjAwk3WQ55SheX1eUGdfokQEKuWlQBaOwqttfqG-3K40qhZdJ6IxcilFp549FFUQ7QL3kJvQg9PhbO37baqLC9sjnvq0Di7a2YVkINeMMyLLoRSwB4qhUIBH-AyuM4YQ7kPANDkNjX8veB7KdLaduivZsXaoyx5kZE8N_fQcRv6dPNGqNUJJpRCAaz1gOUb4Ng4megVno5UclQAtr3Nj-_nu8Odk-NA",
+        "ATKogpeiPpaBeX8uessLTgFdKM4zdiJgFc4Vy_SJh-SkI_IRX-quUZYJ-iR9l2ltui3v9kLGU1K7cxz4IdJA0U0t0G5WMVH0Yqh0cUMQt3V9WtKZgSDiLzyEi-euUH_aSBVTBlmtmYQRn0aLipBvKFVPzRzWEQq7Xmlw3Sox7sMqVwLU5ZXyWhUS3yafViKmIjlFjD8tkOoMTjaTd4gJPQIt1ILh17jTCo4bVRE5sN7xBovQfsy0G6UpeU-BBuk7Ogt_IeLjLnSjeSrpxOy-dv4dSQeNxMZXhMetKBbUCU0QNffyfQ"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    },
+    {
+      "name": "Effet Lodge",
+      "address": "51 Rte de Lyon, 69450 Saint-Cyr-au-Mont-d'Or, France",
+      "phone": "07 82 92 73 49",
+      "website": "http://www.effetlodge.com/",
+      "rating": 4.8,
+      "reviews_count": 38,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 07:00 – 23:30",
+        "mardi: 07:00 – 23:30",
+        "mercredi: 07:00 – 23:30",
+        "jeudi: 07:00 – 23:30",
+        "vendredi: 07:00 – 23:30",
+        "samedi: 07:00 – 23:30",
+        "dimanche: 07:00 – 23:30"
+      ],
+      "google_place_id": "ChIJpUk7rs6U9EcR4y1G-4N3ano",
+      "photos": [
+        "ATKogpfxR7H6WThSUNW9QxS9jv3zAe53mvNRWGvrD_rBQwZq0fXprif7U2WjGhsObt0IO_g_3JGFhlYFqf9BlDVRJJaSajPZcFunVvHirKopMshE39x5iTKdntTpDVH_LJqJLurRBS-sU1n0QL3dcJoHwnLqlumXp970x1Bv7aTkMZW2R_t3XsOX-c7spz0MnP_Kwft-Q1iKMwV5NG9evhelfYpiPo_fMmhoVjke6XeBHMbKESZvV1JsmsLQF-5Comobv_CkfkGdmlgl7GThzkHVnjpeJAD-AdGmzLK_3ZOxx42dFg",
+        "ATKogpckkMcjwD9bQRwRPG-RaCLP5K4xMgvABTXXa3CUrk02i1ZkZd5pGkWLZkS9ZzD2F2djrGi_s8DVb_PVbpvNlz_ADVial7zy0eIpFZVUaOq1ZJSV6gEFSKzuAFg0e1PPit3QM1knJhiBdAGJUhB6zS8n4y6vhAYbz1903bH8Lo4Y5c6TKbnB663Z4x-i3pcaahDoYw00P9mzPdmfRLEhDMo-z4SFw5Hba2KmndZFCOnBczq6GDM3pxceC9cCw3ohNGVQ0A9-IsVGASNuzxGP--0xFtsRZRDNsvubVN9g4-p_7Q",
+        "ATKogpdPYoN1BxAJZO4dlyNgwWYl65LXyFpezE36uvaa-iYnfhpOzCatB8Lsd8fr1wM_RIlG3wyaNid9CcbXzOnrNkLkHTeR5w2sqAl_MIF0pRXdT30OXrs9Y0p2lV5znty5-YxwKg0k7KBqQ7mSdJsa4Fze7V4sjY2jvXwhJ7OaCjR2yryyeeLFdfCWX-k4JLy4yMfhVX9uNg4WEqvu4SH_UHQo2XAkBaCi-1DfIKCO6zHflR-oJrxWJQ3cK-7WAdSJBgrXIhBz6uLtBvNkaOwEkoCb8E43w64IjWlkYb23VZ4tgg"
+      ],
+      "zone": "Terreaux",
+      "category": "hotel-hebergement"
+    }
+  ]
+}

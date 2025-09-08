@@ -1,0 +1,990 @@
+{
+  "sector": "culture-loisirs",
+  "count": 40,
+  "collectedAt": "2025-09-08T16:39:32.996Z",
+  "businesses": [
+    {
+      "name": "Galerie d'art Carré d'artistes",
+      "address": "57 Pass. de l'Argue, 69002 Lyon, France",
+      "phone": "04 87 25 54 37",
+      "website": "https://www.carredartistes.com/fr-fr/galerie-art-contemporain-carre-artistes-france-69002-lyon-57-passage-de-l-argue-102.htm?utm_source=Yext&utm_medium=GMB&y_source=1_MTY5NjUzOTUtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+      "rating": 4.7,
+      "reviews_count": 94,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJN7n0g1bq9EcRfu1vjucDzs0",
+      "photos": [
+        "ATKogpd4TJ4JN3vZiwf0FT0jyLLjdtWsjw2Jpl8K9axMGTZvR4tmxRSGp_rLOFk1_K1TX4rOwmOdvWDVxZFPxaGjc7S7BfFrYsvyihZQ6JNU3f-FHT2QqIHYppJy124ckIvGJy60tevbrUAJmlVZN92gIwH4btHmNnTyT6HMrT2zwr_VM8OrImSDUqoY5pyhMJFU-3apjaPs7tnJx2aRzHaeO1GVCfd1zcdVZiS5eePq0yjE4M-6rIELXLCETphQfDWstcvdxKMB3NCVGKTmorQTvyfd3ro6AFuJ-fRHBZRpkYkRxw",
+        "ATKogpdFk9Lzm6IhY1Az9QxvtG0KZgLbgKnhw6VTQVz27d7TaqvcMQ6ZAqZ97ePX765846mdBq_NiLBiZLdtoB_nQKc7sRFFSkt0eH3jibdt4VQnRmylKD_bpl41eRJSQYsTK4q8UGPEBQPgiJW8h966P8DmEWYYFbL5-C_j9FDnVCk6xSBRdY7PZwYmMpjL5VJR6Tq-L9t8TAgoXL_iTiX8zbHLd2WwaSyzAlQJWkfqyq6HHBCQ27nHzCn4Zd0C2VmlGCCmOjTwJiUjttt0QglCnjwlvvyBuYZM1ntzRDnh21Sg7Q",
+        "ATKogpeZnmpQg1QzlhL_GEtLbpsr9D0EE-_UuQZyP_WZNNKuLv_3dro6z1UOj11BJIBl9hSayyAkhU9Bo3QRJN9lZg290GBk1wqZaykX38umA6WSeJCUaGYExpD5-beuTzPkf4W9hjPbVLe421OauBr7erHtYdsXpSK6QnJVx4Nez8kOq70-iISw76xggl5I9Hgkq4rV7-U-f2shPERrht0pe3gZPqSF5n27sFbN1bquNoKK7ID6n2LaVYp8Hvw_OkBdLFA4HrtV2UveaHjL_RywBPUKJIUIwsCDph5UmkAk80nJcA"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie d'art Carré d'artistes L'Expo",
+      "address": "37 Rue de Brest, 69002 Lyon, France",
+      "phone": "04 78 37 41 33",
+      "website": "https://www.carredartistes.com/fr-fr/galerie-art-contemporain-carre-artistes-france-69002-lyon-37-rue-de-brest-112.htm?utm_source=Yext&utm_medium=GMB&y_source=1_MTY5NjU0MTYtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+      "rating": 4.9,
+      "reviews_count": 38,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 13:00, 14:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 10:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ3aRGM1Tq9EcRwq6Z5gDPfbM",
+      "photos": [
+        "ATKogpfFRb3b2ZTvtXndVf59HmA4CmyjxudCran2RQ2h8UW2qIM0O_jGbr-HDWY-0tMUQ76tOsbnbwPee4omT8cibwI2q1O9Xvj6F074TRvs5cERLBRfpu020sAoCQqsYeKCaoF6b7_VOHfQ-Qn8c6JY8rHy7jGjo03OpoTrc5mI6c96Km64dXlhCRLCnQlRxMirsQ3LnTh5ZwYBRny5ULX76kmCIN59BMByiBLXrazESNItrWjgZIsEtbgr3Oa447U_I2rI_LP3TBIpvxAQOqU7yOd9juS8tC_oY3CzjhlYCQIIhw",
+        "ATKogpc-1H5OCLJnw1mFsDc88_0_APLG34ig6O8Lk4cK9Mv842TjFgx3RpTy3Ej1ne4-ctMk9b6Ghxx09eZgFVc6qvC14J_fOvNIzQuSCAkufR7QfSmSSTG_FlX5tO-fOdK_5Lqbq2Zlwe8hBLIXjhwoxu1iKKWtSBrmBt2d8J7m46a0PjMbkr82BizKio9CTW7EI0pHqtgQhPncBBJRNw03d6W9T4ydW3oYeRVJAqaCNQshzPFBr4ZTNqpCTug6LnG2dKSel58J6vtNA2owoIqGjYw1yaPl3Ecmh6Xg14q5js1QjWbJp7pzGtuatNKhoZD1LeGELGneHm0iySG29dx8_iM7Y_5AVBeXY8k0SXNTXIxthInU69m32wmgP05uRswZ9oD7i3HWsDXQ9GvQuLW1mCNpTKhQEXkdiYgpb6sDnNkNIA",
+        "ATKogpdYSKZTv8BZ6gQwGS8dt2efOfR1ckFmN9lIA8nCfM0weJCmmAHv0RvwuH1nMgkRWyOGv4P1RwyQLmJSEv05x6_4w8hco4k_UmpPJW1R1DABXlVXGuUhFc2yH9XsZv5bZosnCagclgMHeXi4qmszuRYvFpNyGEE4M0i8XfMdilCpG5wcl3We2fs6DYYXB9DTKhBZaSGemLswuXAL-ejXi1qQkUBSmXPpWcnAxUVTjinQrjgTbt3HoxXNg38ZlrTPi2glR-yIkl3W4UOTW7nGWJc0HOODkg2XzCdCU0XpK0jAKA"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Artclub Gallery",
+      "address": "22 Pl. Bellecour, 69002 Lyon, France",
+      "phone": "04 78 37 47 37",
+      "website": "http://www.artclub.fr/",
+      "rating": 4.9,
+      "reviews_count": 34,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 10:00 – 12:00, 14:00 – 19:00",
+        "mercredi: 10:00 – 12:00, 14:00 – 19:00",
+        "jeudi: 10:00 – 12:00, 14:00 – 19:00",
+        "vendredi: 10:00 – 12:00, 14:00 – 19:00",
+        "samedi: 10:00 – 12:00, 14:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJU2bENVLq9EcRnwKeE7UT5Uk",
+      "photos": [
+        "ATKogpfp8QNgCdDmnj5jG4OrmtCtnh7_IWo0BJ1LKMuaib2yLAlNK0CMwavj-HsJrq080vZLn_DLr10neaRAW7xAI3I-2oSAmiReTXFSJwW-eGXhm0Y2oOp3CMUqWfZrK_WOYgdhSpyBYAzvDuZt3VXzGsXfuyHeACB7VjTx8aAZ9Vy5MLpi0VgfZ6NnJCZHGRueFY-kYSYbV6PQhdu8BvGHk1o76AAz68PoWifxmBqGaA-mc2mT5563mkxgLDMfponV2nCAEaxjlkVSUPk-5xlGxwIpXdy4GLTpGrpNbusi_kUDiw",
+        "ATKogpeuCotM3eJ9mcnmzkOUX0i-RlR-kAMTjlQT_o8OUTJXb3OLAj7tuwSjyO1JBy1c46CHpb7xxILZ5C2tJdasyqW0Hm17ZX1L3-qnCE1IiHPdJkO8F4ylNzi4f2dAlBVIdD37GR_E558n-P4uyuFvDXgp37JqEjlyIY35hRIT8LFJUbLctbXv3pin5KirpMmw4QmB0gAQr8SiHQCdlkWzwrNdUJxBwbjq-4ggv3VSL8e9vlfcQWY1mNFeB462mRrFOdwGC3TktzvXjRM9-c-we9xm9zER1i1RVrS13roaUS2CaD3tJK4nYOXzZX5EzL_OHMhbwTWaNJrm4uoRVI--4hygysLTbGakzr0mXsBCA4HOdWcUDx8JmB5YIH0aolNigxnuTkdo8wZ9B8optW6qtIxsNRW8WegNYqc_t2hYrYqQWQ",
+        "ATKogpdWzyW9qaZDWYZ5m1RefjEpRUZaO_cKjhA9Yq6ei_57h_hSsI4P7h8EHtNX8Atgj6ZewHBag4Kw3olrHAMsYLSEU7_Lcewwq9UJRUbtmWBQC0stXuZ2PqtVE546Bf_41O_97zj4qqp8AWc3JLLtLcVFoYoU-VDt4nknKPbJLX6X9rH2zlV2pAWwQWCx4363n7H_-E5GoDZkiSu10gWcMdtAaUQBG_5sfXXDFhPhXxvdDafLA73SdJhmQSrUNWsNvLPhFWpu2ReUs5UxSLj4eiGAf_KINLzcSLWOq-0shqxb7A"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "La Galerie Valérie Eymeric - Art Contemporain",
+      "address": "33 Rue Auguste Comte, 69002 Lyon, France",
+      "phone": "06 95 72 48 74",
+      "website": "http://lagalerievalerieeymeric.fr/",
+      "rating": 5,
+      "reviews_count": 32,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 14:00 – 19:00",
+        "mercredi: 14:00 – 19:00",
+        "jeudi: 14:00 – 19:00",
+        "vendredi: 10:00 – 18:00",
+        "samedi: 10:00 – 18:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ4_SsoU3q9EcRN9w33fOpX4c",
+      "photos": [
+        "ATKogpfQFGp8WFUYUa-ZZh5hUiCu1_2DG0eMAFkwiMT5EQpWj3GeJnBtcY_bV1t2EWe-Z00p-E0X4ETCUBVaU5E4Dwjb0Yx09TtBBZsz2j3rVxKy4zOXZDKDZ3l6OA4r0PNlwQn3OFqdJvsNHCZpb7egn16HE-h3C7_G4UATtxJwz1TdcrDYKc6PX1ac0AdVpBrOj-4vM3vvbWLSGyrC8gZyqtQ1kDf1F3NqrzC9MobZBLpMv3Fo3D9iLByXcNFDbyaIBf2iGoayity5L3Dg4syCk2yDlAPjOyUUukg-BZQxYa35oA",
+        "ATKogpdBZAsiH1BzxlJy8RAW3zeLnlLTYW8yDewAALztAqAhZrG0TNzmspA6cLn8Fv7ZkJ_TGlpdAzjANTJnDwycwxuVtvAVq93vqxkjvqolznq1zSo1J5PjrPbLv_mq-sL7wJpZn9Q3sdVbkjv4KEw34DkJkqNYVLmi1TFHiodYpypvnnJO-UClTyXlzui3NuGuPrMNt5ZnJ1XwbLhnXi9NMIet3gnFPi8w7Gx3ykRDeev1spKHbp4_pOZGUNe7UdAWGKlUjH4fXXzYVDz4enNVRcl6VcFTUeR1eEkzgy30j0lbbw",
+        "ATKogpfghP9qnXEt9tzgj3SE-HQNnKuhkHfrXHmOYX7512UjCAjITA9_PmudUVpZ2LwyBfvBJOq4Gwg4KZ9nlAbA3hwfWWnxcoCKBBiWX9pk5eVxB7SMuDqS96z8Lm9kPZaVyTUYgWkoAoor-msUF4MC-Vmu2bwXKn_hYCMP0KcmWNcI9AZsmZyq4Q4WwyLYLUpeYLPqm9se09oIpViOUFz_ZnBpQcs_yiNG4p8xjGLEVkGEdahZ1QFo1xOV5xlKvUWV_rGaxAd-89HN5bb-5x0K6vYEXzPYGaR6GFYZ0wnVOQPNyw"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie Nuances et Lumière",
+      "address": "4 Cr de la Liberté, 69003 Lyon, France",
+      "phone": "04 37 48 09 71",
+      "website": "http://nuancesetlumiere.com/",
+      "rating": 4.5,
+      "reviews_count": 55,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 19:00",
+        "mardi: 09:00 – 19:00",
+        "mercredi: 09:00 – 19:00",
+        "jeudi: 09:00 – 19:00",
+        "vendredi: 09:00 – 19:00",
+        "samedi: 09:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJz4OCRFjq9EcRLeEY9XRClu4",
+      "photos": [
+        "ATKogpcD3CV-c2dpn_aSMuyXkZAexfGuUTe14-X7jBU0qnjRzcRjFXZISEdDtM6PANwdSWIwXlWdvKJfZg6fdLoP1Rb6ad2MW89QLOrQkWfJSTmASkiaczDoy6ziTVLj-Z5N_Lu1LCXnmBlQ3ODYrsINKedEM54Raaf_5hvDt-TSJqhqlA4w4AqykePPsgJ7drXsaavmvtIKHKkMAKP_GD_FqWR9h4JMcclOcozNb9ZbHkm_cyOluNwo1g5qgqlec6VmmrmgItTeYDRYbxi_NMfbonXAunqJ7eWI8zRuF2EUJ-nHCw",
+        "ATKogpcdZmz39h_edqv7aeoGwfZCeG6ymKlVw7IqgFuiNbheUzkC0omgRPYXrMPnTLzoRsvS6C5iTctdpbZx4dio9pkeiDIjxt4xgu-OnhKZ7_3LL2wmb5_zzqH5mO3rPNXSXrLNTe9Z2-K7BouHT0sgy0n7PA1NWLEynLAQgB6RpUS5OiXQ2ZUSWpLZQMIgFsJotWNIZFW16-wGVLDoMc44CJ-MlmntOFZssf8SBWA6tOUTxvvxKYMthxtPO4ZRp6AaJ526Ies8-4Bjy-VwiXkP1Ot5ZgIyKNKEcMAtLELLlwDHBQ",
+        "ATKogpc1m-paCtVaf66XZIpakX6ZpGwyoUY-OsutSIaHWqZ5Kbp_iazQBBmwDwGKIVBHDCBylNazlQuO7dP_0OcHY4W8fnCy4Z4apE0l1yoROjL73F0MWEShsnYg6wk8UcEkNcbIGD8P2ah9ke9U4-HA3ENscp1PFmMY0kJh_VFjf-Oxiodq8kADYzH_uNn8I2ej1rqDQnUw26p8_GAauyNZ4gDI1mfimUS4MLvfNxMofCRCcMVAzr70TmfcJrMUWdsbEFbmrY_GqXwvtBF0c-ehBN0n86T-QXDB6kiNpDIYjOkgcw"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie Estades",
+      "address": "61 Quai Saint-Vincent, 69001 Lyon, France",
+      "phone": "04 78 28 65 92",
+      "website": "http://www.estades.com/",
+      "rating": 4.9,
+      "reviews_count": 46,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 19:00",
+        "mardi: 10:00 – 13:00, 14:00 – 19:00",
+        "mercredi: 10:00 – 13:00, 14:00 – 19:00",
+        "jeudi: 10:00 – 13:00, 14:00 – 19:00",
+        "vendredi: 10:00 – 13:00, 14:00 – 19:00",
+        "samedi: 10:00 – 13:00, 14:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJL5Dw2QHr9EcRDJd45ENOELY",
+      "photos": [
+        "ATKogpcLUN9AxH93-EXpM4WZHlcGCXwEqzvfZHQwzhk9-Nb8mp3AJTYHc_XvzmueEX3I6pLssd3an2f32tjnePq3mBk4QchiUHzpN4o1ogNS0tNJEW8XNIbIGED34eMqr878OK3_O5fY4nbSmktu7u9WZ8Jsx2u42wSLArhxnVB_Knnx3kBoq4fahp39FcwaISl0ULwX9E_He-WqAWL6sItyRH8JT-wgtv-dajwXmi_p8JXhny6yx9Ut0xF0MJfVF1d-aSyRuctbbo9LPRVeQjOoncs7mxLSt7L03JbgdrzHDIHt6Q",
+        "ATKogpeV3hsrfMDa7nbdZh0Hnso99tE1JgzRF6bcgmpy7Gy5S4r_TnOvmsWsGClNGUxTVNLcILXb3crfcCrBC_4hehmHhFjFCWq8AABqDDvUmDKr34XzRdtYyts0MngF1nRYGve9BTVHB6w_ynPH68l4j1YmC9IzFWw7fL5hT3Lo7xtq1zrU65YnNf7nDxuDSs1idpBixsajuLDHmNptbjN1zfncXuUgfrkPqdjJGqXJUNnuLWOr7UUGOuYyVcJWuKNTGGBPz-tIB-O346rsP-4IyyJ9slcw58nadFjIlpeRWyp1G1pygVJmPhkt9R5ww0J-WfuXMARaLpnmr4BqjBB_dNBNmVqpSb5WxWkFbzIHfhCqR9zSHv3ooVpGgwoUnHanSDGQlVw_2CYUHOuBXQFpC7RSbrHNNPc8nVDIcvNTPzHcCzoH",
+        "ATKogpcTqCTaaL8u4gM6UuUjPuNcUH-0PzJAPn8LmKvrg6cMEe0WWAdrFGYI-IGGRzFB5KJwfLg4cyG-a6jp1U4_risw7t47b3ktU4QzE-FmendlruxdvpCQ4MR-Xh4X22klJzbUlGVEtXe5bSiXi_cFpp9vZKxzaNaRJfA4EQSKjV1t5A_d6PA84f6unfBJssLltS8OtDqtbUwss5eFj-xrMRAPcIXWJrWIWKKreKBFbHNm16erO0UbjdGcmHr-HLhbskVP3n-P-iBbRmoa2h7FJHadsSsKXBv4uRqK7nigE4fO_A"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie d'art Em'Arts - street art",
+      "address": "8 Rue de la Poulaillerie, 69002 Lyon, France",
+      "phone": "06 13 22 90 04",
+      "website": "http://www.galerie-emarts.com/",
+      "rating": 4.9,
+      "reviews_count": 24,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: 14:00 – 18:30",
+        "jeudi: 14:00 – 18:30",
+        "vendredi: 11:00 – 18:30",
+        "samedi: 11:00 – 18:30",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJfwctSvLr9EcRttOwkkp-CQ8",
+      "photos": [
+        "ATKogpdtCHXJcbYxz-NoYT6klq1dyJxMAdXv9cJqIiWPDpmmNJPYMXfus2ILV81NQI6YfQARQiNEUFo8tg-fVqYUUfvla-Y9sHTZ_I3hL_sNLv8R85qXJixpssJE9zVSl7DFezbS8vB0yaMZCO5UnyPSsZS-yKnG1X95rDJ_3oSEoX2eASBLrcMt_grTeJNSQNxN_k4m1oKejtE3R-c0jL5Qbs7uErZ1MIZOv2XqwXAmpCR6BfFeu44DiOWjmwGfbnXWLaTyivWZEXsnuasxPA0wufvuWhKDarA7TXFBXhWwcZUAFg",
+        "ATKogpeY3MPLsnqz2cIxU-C_SMpZHoUOShNS3U9n0b1x8apfjVmUtks3hxqvOzvbB3ME9qN3BLzDxH2FXD8xKO-d8irQ6eFzujq95Nf0fyAcVn2vmot_nBB_HYr7rrBSqQleUY19vMAHJDnUCPiNvqDbgN5NpSRzHMkeFS-bjxHRNREkFfx5jJVkmWda3Dl0qDPzAiAqrT3wSFI5IwSRd6I36wifFc3_Kg2k_ss4vittv1kMt3LlFO-upfZXzf5Vx1yiYiCg1BA9lf72484MTpVe6kODvoA3hiC-EqRChvNbVQnIBQ",
+        "ATKogpe4WrcBQ5SCUgc87Y1HQxKk-LHES-FGgCJK-_v0lXD4m0w2VxFIMR-OYV_1WQXHUBMQdB5dZd-SV3kvO6hRe763wziTg9k5VyUSRzTW6IEmd8Ywx1320YM3XHmigzO1MUDxUtLPubXe8mrh3anbFkhVW_bXFk_X70HgkgtO41qdZ4JhBE76F8JRGIVOXXN-A-LubyzVwzUPaAuGbeCj96cVcyI1UfUWoj8GqTIfIVBxjPRvtOv_IzDUMWxV0AUFEdfRUwNH1RMCR8qyxhz5EnfHDzERdgcYTTjjDW9F3YTKjg"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Art Generation Lyon",
+      "address": "59 Quai Saint-Vincent, 69001 Lyon, France",
+      "phone": "04 78 39 32 50",
+      "website": "https://www.artgeneration.fr/",
+      "rating": 4.6,
+      "reviews_count": 21,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 11:00 – 13:30, 14:30 – 19:00",
+        "mercredi: 11:00 – 13:30, 14:30 – 19:00",
+        "jeudi: 11:00 – 13:30, 14:30 – 19:00",
+        "vendredi: 11:00 – 13:30, 14:30 – 19:00",
+        "samedi: 11:00 – 13:30, 14:30 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJvzQuZgbr9EcRZOiNsPdZAUw",
+      "photos": [
+        "ATKogpf0FLW-nOCpt3yLB_rjWlaLVIqCnyVBkffvGa_EN4ZVYeW253F4cN5bNbjW6Vx7sM2tFVPEZiMR1sshOu2Y-F6Hfmxz4elUC-sj6Xn5P3xMY2kxNgK9kkQ3oGVtwYwnFpqMBUnnOJunUWIOYa-_IW3PVjaRdsj2Xx5w2f6fkNP2qwD7o2eJeSusOH90xtV5YLk85wZNNqlWJ34tHVDsHTjHCnwerkhdh8z3mQkfCf2a3sQWiQwbqNrl6i0wJOL7SClIOKRQCcthcidv5sT4yB4_Y8X3fYcHzRnNbIQ82jJI3Q",
+        "ATKogpdxEwLktvqGijm-OsoV9LUtg9r_GMd-Q9yd-Yq6AzdgI2-T8EVaLO5XmxRNtW9T05iEhUZU-7uoCtSTGfp006oSODMwYlVmcOwxQhx9U4uFp8gv2STEASx__e4y4MAkuTVtwyKIB14ZGBT2slmBmih2CXXrQsbIg13tahIezyf9jxGf4JzgdTA5nqVhZUV42KNABplf9LfLzVDTEODRqL_Lxrn5Y3GeusHJJazapZ7AetidtcAVGCD8N92XylsJ4zXcWabe7yD0q44N52zuEFr_k8K2whSFe23L8yVG7zruWOgzvdX7pfU4Xo3NEmNWn_HmLZSUh0ptA7tlFtMLl-0oN7mT3LR2jpk_z42KASDohtNATSt8H0Ap1S9vj0GAKQszW7MlxoqFJLlOgXwiC7Udn9cyZQ52569zfOSoWv0uChyM",
+        "ATKogpeUmGU4s7RrX9sCmZGH9FQ1PaXJmh8zk6EgVBB3Td4zkmzCCamd9md0qlgngmXYbT_AndnQE6Y2VZKwdPqaKhKGI8iyG4Nd-b27SBiixgX5L6szAb9t3QexNK6XF4tEpivR9dK1tckeQJNx8O5DB5friKDdeRxWmJWeF2S9P7ZIjF1G4An7pccsSrS9kDDtoDXPGJy7yAm5m6w-ecs825wmJ-dcgrbSNGVbV54UEGHxHuTiPC6GRy9s6cA6MipoZzzjw6rMh3zMBjGVTxkamG4s12XwTl44tWIJ1cQhGS6rSFS4pkCB0GFMzV63pJcaPaWM6i3P9UKf_5qGD_vhllEK9A-XVAxlqwak6Z8MRfZ5J2dT9ivUUp_h1ARTjtcvDZz7VwbXgNUJiKSgUckus4L1WUYlfkA3-LbqB2w_QxEq5s4b"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "La Galerue",
+      "address": "17 Rue de Belfort, 69004 Lyon, France",
+      "phone": null,
+      "website": "http://www.lagalerue.fr/",
+      "rating": 4.7,
+      "reviews_count": 10,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Ouvert 24h/24",
+        "mardi: Ouvert 24h/24",
+        "mercredi: Ouvert 24h/24",
+        "jeudi: Ouvert 24h/24",
+        "vendredi: Ouvert 24h/24",
+        "samedi: Ouvert 24h/24",
+        "dimanche: Ouvert 24h/24"
+      ],
+      "google_place_id": "ChIJbzBQyePq9EcRAKtjdIpxMUk",
+      "photos": [
+        "ATKogpeB8Mr-IiNDdqEf3wJMJhOS8N0uNInt_QdGViZNtumvyhlf81MWqeJC-UMN6tKLYXGrH3a5IUhQIGdjkdkjcj1ZusyMXCCcd43QKLPz_eEg1MdVlGz2jb__Qpy1JVPbhblZyjFIDez4G2mlX2piCxoi8Tv0VraU9RotkOxt3kA7ORu_TP6pvJ5hHYAGd-RhljulVD4DQVrg6kPQTBMbFDeHYdo41vkIPC0osKxM7QVmCpbSyw60V5oHp6IHuFarwtkshc_DqwnvvfG5zgnEsCh-PqoSZxgAM1lbWreHRPsTCg",
+        "ATKogpcjC5ij0RkV5Q35phgPV4AkSMEsckii37SggrN5MbuslmOV3FhpvlfvxD5pNGaaLAA2T9O5rywNTX5HinoEs8WOL3l3rzAQUfW1WFMmdS_uK7KydxIxQ5QRLvVRNpSzGrN9R3GwHBu2r7jMYYt5hb3o70JPodGGd2rA9uG33b_r4XQUv3XJ3K5EflCzARH4EbwaM-zSpQuhYRQ0g9yWJhL4WAnaAnrIgm7QLYhwYoPLXidej_UkJw45jucQSKMFULoue7NKIuDd6xCAKw_8fvr8ngBf2-RfKyet5PyKuQgQ3A",
+        "ATKogpfhcOjRtg1xp86iKA0H0eUCjcnmPssi5pz_2aLSaiWSDx_-nj9C0vUwcaxaDsFsQ4uz5kMdM09UdMRFj234MmM6XAS_2jocXooagbyVu7fLNggVxfAr-b3gZeo84QRjbArjhtXMhA6MZ1x3bHdsI7wCKk-zkeEym4AE2ljcv0BKdQiqV2KgmZ6x4igogHLC0sSrGl66s3KhucljTxllfHb3epkz9rpcjiVT_PODzspu3BX_SgZnc3Xm8TKQMPSI4qFJ5mFSiphgYcW3N3Yzq-lnzrQWnrZN113_hmL6tUOCQQ"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie MASUREL",
+      "address": "25 Rue Auguste Comte, 69002 Lyon, France",
+      "phone": "04 78 62 92 90",
+      "website": "https://galerie-masurel.com/",
+      "rating": 4.7,
+      "reviews_count": 99,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 11:00 – 13:00, 14:00 – 19:00",
+        "mercredi: 11:00 – 13:00, 14:00 – 19:00",
+        "jeudi: 11:00 – 13:00, 14:00 – 19:00",
+        "vendredi: 11:00 – 13:00, 14:00 – 19:00",
+        "samedi: 11:00 – 13:00, 14:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJtaU2yE3q9EcR3gq7gg2pOcs",
+      "photos": [
+        "ATKogpd-Zb2l7rcGvYDi3wbzhs3QqMBKBk3noK11KnrvZkm7GV2v8Olm0QMBlG2qreuTScVQ8zMrfUCorKfeQzzl0bWTkeRvtHVcgwYYIoUxLeVeb-vaScpZbdIJYNdXrxrcli8JdnNTaN8RSWCLZms26RVNgn6G5EFCOArqyhJa7-HB4AG9-uXgkfLV9mTPSBPTGMvXICrouFoWg5a9m52FCwDtsq9L8RMISer6ZwA64JDSDA5UPEs7bzusKRYIdIZbVoL2x0PvBVAwB82-662dj5nr8lx2svVZ6__gIxH8GNCNbQ",
+        "ATKogpeSJf6YteGKTfaZzpRUblZj1rFnW_X8kZlS0kH7piQpjbsU3ga9d9ldbZ0BlKlO1wqA4FmaLl0d1SfgO-aa96lnSzhJ1KYNDI8UjU4NCa0evfTCBFcSI5bUFh5YgSgfm7me4p-khKKzPHXnxXQQlg_UK2k5biXE572fpqyggdbojzAP_ptQtOSwKdSM63umPkJ_SLl6_eKkik5eqdEF99HN-iTocUh_5DBI50fLjElTbzOxjRgRLjEUL1x5l1AzqEv6ebniPhmm8ge8dwq-STM5wJlHflqRiygTGqqJwsHjew",
+        "ATKogpdd8xT4SB8VEizGZw5811v0fofOANObxiBTPVoTR9Ja5ub1t2XIn5jXf9-acp0OmOfEuaMAMougtsXrQuSvlmlHJMKskJmOrtvpKOReUPcKo1ZzZEa5y8LeDddqbEiZ1RHdwRwQwiVFd371tixZ0myOPR9DXFqmUWF2sSR5y_XvThBxnGOtEGvTX7dFnZYPjwX8ZjKS6xbpZ6BQnwXVa8YjG2hFoDJ7UyRNIDEk2eVZzSR6QcL2Eoe1Zb0SjwtXQSW0mWj7yM17TpdKT4E9MqNiICqNv5NpcXHKO3YvYYKlYJ1hEaBn4JecMrN0RFSszvaKbNbXn8L7qZTw0Lxcj7qosWus2NzO5HdQ1LvMroFGsenTZ33bYaOhzv_rw2-5P6oQoIEKRSdABb53BDY9ELtWL4VEfTzJn3yqGxwz68weVf2L"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie d'art Baralo & Coste",
+      "address": "43 Rue Auguste Comte, 69002 Lyon, France",
+      "phone": "06 18 45 91 38",
+      "website": "https://www.galeriebaralocoste.com/",
+      "rating": 5,
+      "reviews_count": 15,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: 14:00 – 19:00",
+        "jeudi: 11:00 – 12:00, 14:00 – 19:00",
+        "vendredi: 11:00 – 12:00, 14:00 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ6_uiq8rr9EcRjhwgIpeotY4",
+      "photos": [
+        "ATKogpc5MaIx1dj9DRRttLjNoB6ie4rvwewQo-BAGYs4NJ0kUIEHSN32FU38BZh5hRuBdZ5oYbpetjRiaCHHj46io14CWS4CMmZQIg7WQXiwH2nu07wd2uzgn_q9mTOggGsvZTB3BOKkc_sAqM9Urv5DN3aEe2Tt6V-m_UxTQve61yxwqQ2FoahnGIXIb87nGEC3v6eVuHb99sT034e2edmXpxF_37LsSXogG68OqolMC-j4oil3iBtWeG0I0oT8q5-WfqkO3njdisMrYe8VqugzXdbdhBmeETZcGuFM38LnGzk5vw",
+        "ATKogpfuU1Q8444G-YMYkqlO3FocmIW1AQKvFYZx7sL818oSGDys4-9ZhhXv12heTU6eSLpVBD8-RqO5njb5p3n0zmt1sEajJqC5b5lUPdRDZp1Q8BzPyPd3-dYMywSTp5UdVOFb_fTUSFlqxEJ-HEDkMvR_Jx11hiDyKEd4Jjnic3K7PGfOo4asMfflqEQ4wWZ95CdSg2ppQqlnQGLy4yCj9wOShiN59JffrKc5ygAPRoyCc7ndPr1U74QMcMxsbqRRMs-Y5gRidRxbQgdFNlyhy2lDV6u0fm4W7cCKOSGy9gQEhg",
+        "ATKogpe8VQ0t5tiyrVRLIX4N919xjFxCgbEqLb6oAh1Ykuf_iLvP80ogTp4pnZrlFfiygoppFsN7NNfjsTMburTyHxM0zj75ArIxSnNpcot8N6dtYEb8w2NSTxynVpo2AxQ8A9a0SQ7Vd9eTUZNz7Ayg4Qg3co7ZFL9bnzeAwhxYFeL7Ulc5c1TjWvC69__fMrQmqG_49pxVyCZ5GQ_8lTHLgHSn3ZPpYvuxq-tekV_whUO6iW9N1KmwDQXZDSqwWdV2r2NlxH8z8Cmp5DaqinjucEKPk5Mb5PECITQqz0VRvTsaXQ"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie Saint Hubert",
+      "address": "7 Pl. Général Brosset, 69006 Lyon, France",
+      "phone": "04 78 52 00 51",
+      "website": "https://www.galerie-sainthubert.fr/",
+      "rating": 4.8,
+      "reviews_count": 18,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:00 – 12:00, 14:00 – 19:30",
+        "mardi: 10:00 – 12:00, 14:00 – 19:30",
+        "mercredi: 10:00 – 12:00, 14:00 – 19:30",
+        "jeudi: 10:00 – 12:00, 14:00 – 19:30",
+        "vendredi: 10:00 – 12:00, 14:00 – 19:30",
+        "samedi: 10:00 – 12:00, 14:00 – 19:30",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJa5YMLonq9EcRm7ud0xYoj6M",
+      "photos": [
+        "ATKogpdbCi1arSahckA7KOZg5NpwWzblsNQCDHxYZpcjFQJe_XvQvOtH23bdkR46Yt8_zD4n7QwWXUHMiyScD-pHhJY-nZrMVPUUPcBAep6Xj4WUzDitRSVf8aTIKaygtgiovIfSrK3uqIBm87WrozWrHwA10HLoLyi3uVq9GLetPGDCVZRVxAUa0QXviP6yp144o_36AQF2LLgXBgb9O97gEnIPwvqSAKjR27UuJAc9ATwkBAUaxuS3MLXmaiOEQK43-OCVFkfKG7OH4W2NYj1WLQHi2TzqAQ7PGY_lIF1OV9HamMKj4YtxaxPCDDIh8nYOL23Jws7d1QcSP5LjEpO9xk8LYpgCjb36xZ9Q-7OcNllSwLfm6mJFwQpGt-8h_q06H15IzI9Q4lb47AbTsam5i21peTA7oWHQbmY19lbuBWg",
+        "ATKogpeC4TkxhVCNbGUwMmEq7kuv6ZUcHHq6gM8_-mo7mpaY4meTxzTIrfulAUH9cFx6OiZxtLS9a1TsnaoKUeOkViE_mUCDlLUF_GfBRQ3dhky1kv7vPkkqxSBqp9DdEJGm895GREX7hITY7Ap7tmbillWXeGIqMsr_gZNelCYbJOMI016SCzJNxUpYDJfXwGvaU3dj5S0C5FCYWSfGarq31-tpgr0vNx8l0o1vLAYoVgVVJI8b8-VXsnOJhV_5m-QVhnXA6Y50dvl2GYEP3x8h_IgoeuqocxxAzV7373al_Fg3ImgizAt2H-C4smKjJ9PgMUvKhZWPJB8NHsN1ZNwkO-xqaVVhJS9ZeQA63RMyPoSbJcB1ODMEFHlQG_OIZQn3Kxr0PL7OUB5Ou5Y5EB2DTOJcqOvJhWKgH4FKn0978x_YFA_t",
+        "ATKogpdrIlLMLGOS5hpJh0dIjYmxLEFkokCCos_shDZXQ836FwtBDIszexjrmiUzmGLAdPCp0e7kbJCw2XLfaAcGqQy7DZ6xXB4MX_0bEITZd--2eVQf4-jx9w_8qxhf8tP8SkIFQTcgw2iBAqaVnFuyPLCJw5mouF_8w0KD4fTjeZDOLCMwnKLAChcaX6HJGxtr_gt2hV1PQOWWL3C7j1DC27VQwqGXVndinDWwK7LtQT0jy_chcXIIXs-JYnW1MghQuro9ejFwbq_Lo3ual-t_zNEEjkkbgDPSSTrDSYrDeJuC8N9q2hhTJVXErKlY1EKQtBJzxI6nKY7yyCaG5rZensNwT7QVErxuForuPdV9HshC6SI79EHJoDLjANsg7uFuHJk3cHDOfngJ1vK66-NbBXKCbUZnNB-KkxFZP3LG6NvPOw"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie Dettinger Mayer",
+      "address": "4 Pl. Gailleton, 69002 Lyon, France",
+      "phone": "04 72 41 07 80",
+      "website": null,
+      "rating": 5,
+      "reviews_count": 10,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 09:00 – 19:00",
+        "mardi: 09:00 – 19:00",
+        "mercredi: 09:00 – 19:00",
+        "jeudi: 09:00 – 19:00",
+        "vendredi: 09:00 – 19:00",
+        "samedi: 09:00 – 19:00",
+        "dimanche: 09:00 – 19:00"
+      ],
+      "google_place_id": "ChIJpwwYAVHq9EcRaipUTJbU5g4",
+      "photos": [
+        "ATKogpeR2YJN2nOsrzvBC1AvEA0TYuOq6jUfEnucHPhYRIeKkKo9uBkvbDyWdd55rCse5TqZpRIYa1NiY2urbtiXDTK1psqu2oSdlkskLszZqMnV6qgorvaMy21Rwge9A9rgQlwREb31s1vJn9f220OM9teQU8IwAkU8dGte-Bp7FsWu_Rlg0mCBd2571y3tfgNjklHo5IKQ_Y5zp5itPzAGLGGbG17XRe2krmyO-CkqfgDBpFxTav7zNgH5bFtb0fvKcdZBAdO3TajyrsVo7i13QdCNEA3fWz6ry_I6LKRzlaq-76VyHcBuO4JZMiUi2NpHxmACDQqPsuigeKLp19r6B0KX9XWnB2Ql1KzJTqBbA3NYOXfKXl3lJj7C575vT9gnn0OjR2aUn4ZfkpX7qRKtoAxUo1QNXLf3i5q2FudJbyE",
+        "ATKogpcHOFPU9eJqDPBNX_rFElJAW0KR-QO4Es5Hs15M2RYqV1m-T_aolGiF6W0VYd2tMc_ky4iDHEsVENLGSj18pW6RqaldVexUS7kaS6QbCw_nbco9mOKkFueqhEGdEyXP4IqKZ71QH1JIyxtqrn3DEo_lVLFzFs80rbE5PiptvmuzHm14PMYUtFO11seT5Fjq233fczyn4-ZtiYjsQDNarZA-u50PMhwrOALwaDoIStDXJTboi6dFkINlcJLpPkzItvGBzGznOiRRmptS1NM3KPtmn2ZDWR8JYr-QH42EMWo2L2MzcwnlQNpcSb2WSixpGstpCG7HAyUSN4VFajHZXZ2SBo43cW0XxlDjBlHMxbtL5GY5wm0qoSBaux-ZOh3mc0QvTWJQIJK_7o9BLV1Ap3PgSr27CiQDTolURUWZ1s2dmwo",
+        "ATKogpfVVenWSBNiIaY6lnNZ4QJ3yjBXB9aZIHjlRoeVHeeRlKWOCS5K0VeeO0KeVSFuSOZCo9PNdpt8GBmK26Y1dUbSAgQpJf7xuujwAP6DTQtoiG4jhjGTv97fy0WJ27SNf6Z7ddvPqqKl2Okh6gaOxtSLlIqvMkTNgi1iL9zIJroA2Pa7gRd4WDwrcN4ALUz3wPDRDudj7aGBBxsuoP7QUVPeNBT3Egpp0UYPO-MCvDhdkn0DKR5wa3F7hclJR9jjuGfawJ6AGjJ_GC55bCqdPpMnWdAFzmrAN_hLPG6ttFWegnOzBbNvOUydumHygfrTrkxxY_vEiycgjkoIcI7xh1hVWqZR2xNgoQfqXzCBjJLF-LBwF-JpwNPvOxdWMpY5tBpSgYmCgUsIsg1VIoSQuQG3tULF2iUTzmqa13d1hYA"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "AMAL Gallery",
+      "address": "9 Rue Puits Gaillot, 69001 Lyon, France",
+      "phone": "04 78 52 62 69",
+      "website": "https://www.amalgallery.com/",
+      "rating": 4.6,
+      "reviews_count": 21,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 09:00 – 19:00",
+        "mercredi: 09:00 – 19:00",
+        "jeudi: 09:00 – 19:00",
+        "vendredi: 09:00 – 19:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJy4lZsvbq9EcR0UDTRk6ZiBw",
+      "photos": [
+        "ATKogpcq2aKV-h-JOzUB_gRtIi1SukiqBmS_ZApYM0AuMOpwoa4S3HMEwys9TG-nUP7p-85at-wXunpBucvUBynkN91V4G-P2WLZIAWOrdHKWfVrJuOxnxdLnWn5fGfGojDpw2tbM3Iq-X6gM2clH6zhLeeUz-z3mHJKj5vOj1iXY0rhOtwxsB3FTqDk2W7UbcCTMlAUtPbA_PpXytIPWVcEe3j3Tws2og7dFiJhQSIbztRTCB2A4pP-XdqiOG2qAzEUYdIJVFKRBmljI2erOMeSvKWHPteiCPxCkqzgq70Dvscsh4wvNBJtUQRacbweYQd5DmhSqixnfJby3umhd3QKDugZtcuXpFGApnd4A2TSdyLUIw2ejuztnLbb8sYe81UVTXFwWx5T2mjNgHLwMmRUfulsWiYe5M7qOcpqP6XaGaf1jg",
+        "ATKogpdMDbUiDnaft53SUbyZQeWVp2YNg3xkfrbbUHfpwjRuQF3ZV6WiO7RIr74Y-bKZ2DdAbCVZVsCPblbpRFIfG0QK4TCPOyRu3G8C6wlLCzfwpKGk1RugcFIuF10cyFXQKxYmlYpn_62C_eci5DVhE58uePxLixiMajz1UkFQ1AVcZVcNQ3KFzSNxlV9Gi092a4pBz883sP9tXKwmMOVRH-eZeTmyLZyK_lkrB_S1KfP9v5ZPZN9xityxqRUFFH03bQXUEz9P5XaxP6E1DVNEKCRcKCCgA1gO-bKh1c3jzr2xWuJgnQL3bcffpa89FkHhZeZeWcHMCQXtXZAIQqAvKXZwTZQSxUfIVg91lypzWX0bFyPn-Lav5VhKxmHShhT0LtivH1RZGMsBzQ62P6blQH60SYBjUv4oocBrnHzgnlVCKg"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie Françoise Besson",
+      "address": "10 Rue de Crimée, 69001 Lyon, France",
+      "phone": "06 07 37 45 32",
+      "website": "https://www.francoisebesson.com/",
+      "rating": 4.5,
+      "reviews_count": 34,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: 14:30 – 19:00",
+        "jeudi: 14:30 – 19:00",
+        "vendredi: 14:30 – 19:00",
+        "samedi: 14:30 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJdf_DKwPr9EcRxEgogbQVxKE",
+      "photos": [
+        "ATKogpfgYOo5g_8Sck6_KBh7q9P5Wc863FsiSKKZsf0H3_KI7BYe0rLEANN2S6rv__DT8CFHCHZq5PO__0uU4rrF5m8dcNO5naruNCZHHHKEOkLUUrH-pB7kbXumebXT1Qco2wNTFEY_1OAET_1quGyJ-JbCIXTJ0_KpM6tZCoh58Z7zqHKgNYMqEv72sfqFtdMfL4CPjhdz60DMRDf3iOAqSTCWDWbx74YiFbiLiJIRP7pOEOApOCbq1m0BurJbNPfC_PGmXvgyVfcYNvIXFvhWsLaS0WMb8ovFLgdRf2ti1k0XjA",
+        "ATKogpduPhWIwvU1DQ7rqbydDcO_4lntvJOauzu5nWjp_5RXmJyQ8Oa9HKfRlx3BTuoSLIVVQLKlwh_0lbmkeT973GddFBohM3j-tJK5DAuHTLaCTP5Bla7xa1zBxYEhd3xTvWgyH1zB830cBCp0HEv7y0ikbkt5yR1UynTSYpSsJI6GExd-PI9I3e64P3K4I5SVKKgFduT06aEmMZDqd-PmuW0TU5olypfhbLdsXZGETy7AcaN-QsV1C7G4biGWhq8AhFifu7b5Ty_Xje7ubGL0Vv57Bt-HKmqIQ60b9czMVNRLqg",
+        "ATKogpcNupkB8Q2O3z_ZAY6bCAVBC4e0BAPywBqAN8bc_8sPU5stz-5Ho7cHvVvM_qv0DJbogR30RC-HpnuHm_fgmXUK5O6gbGOd_dSp6ycxv2xlxF72ZAsWUY6WeFw2_4Kcx9cE69WtV_WG3skV2gBh_4BJtMQY6UIFXjNnvz8gCT5gKSawFy7patr3j_oKZ6KTAm52c4AVYXRz_1wZqW4H_5OF8QTBf4DFgZBV7JyMWt3sRnt6QEfJIDf42c8GnAUSBguflv-8BtD9MrblZ7zi8mLdjPaZbEvjtg17f2D5jAqkWw"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Krom Galerie Lyon",
+      "address": "6 Rue du Plat, 69002 Lyon, France",
+      "phone": "04 69 16 09 96",
+      "website": "https://www.kromgalerie.fr/?utm_campaign=fiche%20etablissement&utm_source=fiche%20etablissement&utm_medium=google%20mybusiness",
+      "rating": 5,
+      "reviews_count": 74,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:30 – 19:00",
+        "mardi: 14:30 – 19:00",
+        "mercredi: 14:30 – 19:00",
+        "jeudi: 14:30 – 19:00",
+        "vendredi: 14:30 – 19:00",
+        "samedi: 10:00 – 12:30",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJCbT1Q1Pq9EcRvMVeSbAQ-gE",
+      "photos": [
+        "ATKogpcqDVkcm8xygvPdIs7ty1X_eI8VexDPAwmDftfN5Y3wrUnMhEPw3p2H3IipYOMezK2OReaCP1M1wGrG4m-p8aUOJNmbGZO1flLqOwyuWPV7fyPbQxiXwFgAP7ObYL53gYy9FSxiT3808_yGsJzh885kuTYJops_dP4ERtnmZMhIKfXPg0IC6Lb6AuhAWgkS8jO2cNXp49VBUVJevvH9VCqOnvD4M9k-QNnCMKl5--MDRJpBdnmgAlJDfW-0Z4wu-slLSKNFGRYZ1T0JquJg_7LSRo0UJ4GhBdTAjy2geDaddQ",
+        "ATKogpfh4Mt0Ga7J9hKdgPCRxEidAOy0tVMvhp0eJdNMaQ0IHQth0iHBeiAhcmcjluHcFItJcGbNfAa0gKLwOhfZr7-1aE0I2O9IzBq6u6UTNLdic7x_4vcVzhrgDCVPxOe7V9GuSFNI2pbqWB-yuGJRU5W3k4KlHx2D42neLsr9sNwmbSuwlm63bwatHNksf4AKM9JjQkN_Sb92oNBZhhBd1h8y0McWvNzs5GCm-QTTodFhbEgutUV_70-32GOC4YR9OK4iu3XZnVBN8mKjUv9Oi0ROIIamqqvfEZDTfbv5MFiUDw",
+        "ATKogpe3AFB6vAxrurGpp7xxDabP4EGj5H4X4LklBSbR_4cEdI-jr2Zdr7t6WDTb3qgLOv7DTIn1baklCJQYt4viCzmJt9UQ83xUSUjNtFey0tB54963HDDxk8enjA4SSqhgDOIgYHZUKZwkMJ2mQzoMjNaJNcz1mIGCF7hxl9QpkujZyi4SNYSPKyasqSxA24kp2T_VcHR622tnqDsvXK2zx_e5pojatbPu6Xh3pUNa21xz4kd0qvrKjE_wYv7yUqjqp-tqC-J9EYq4LGQc6l9k82CeY5uCNQU2u8CwOiUVLbeYVvpTxDACyTuImikarBdOcSocPTpQqGoe9C7YIBOCZ69JkbWwLYH-gV2AEKgLOrfM7np-_a2iHLlOeXTVI20NSFivwlCsdnG80CWlFUdFpWpcIR_ingvWZOPXFkzWm-Vwbg"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie41",
+      "address": "41 Rue Saint-Georges, 69005 Lyon, France",
+      "phone": "06 14 26 78 79",
+      "website": null,
+      "rating": 4.5,
+      "reviews_count": 17,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 11:00 – 19:00",
+        "mardi: 11:00 – 19:00",
+        "mercredi: 11:00 – 19:00",
+        "jeudi: 11:00 – 19:00",
+        "vendredi: 11:00 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: 11:00 – 19:00"
+      ],
+      "google_place_id": "ChIJX14LYsXr9EcROx1EyZD0hSw",
+      "photos": [
+        "ATKogpfgYgG8ipFgW_2QHYneqCbNO9a1oq4Sq6HRwzUMw95A_UZVqFgoUYfEY6JSfDt3JbY3lzqb6olnwu5Z8Nfe0Pm6XT6vWcFJTJ90NWkGPdqyzmNrU_57K37tuQpIfOZ1Y3m99kuRJb6gdh5utP_8gQrdKzVG4Rpnp8L-XfUYyYwZtaQtnCcd6E9hf9G3buVe5Esd4L6H85jQ42Dzf2fhaMDmmk3f7NaVvVLxf6_qtDAujCnut0SsMt7qP_181hYEBlpQpRrBvG9yHW4C0V3kHzLgNF4-1_YoFGaBZb-v4HI0bQ",
+        "ATKogpdCgQpmOu3puCB9d3JtA7qd0zB616d1NgeJsTy14t3HNOg45lf0uk-FldlgC2SQFpg3wljf__zAvY36Q4j1qk4U5Cw8OFy0TRjMKhkFf0P3C4Jw3M_OLlj1bouiitqCGQ2OH74LVXQsQ4rF-0nm3I4rp3ONjf4SbC2cW9eq2D7gIQg89TRCtj5CSL--f3NHycjkz1UrgkqJQ3xbtLQ2xb8eudMUFjDh4QHMaBhEe4leUWlWzYU66cSv00k32iVmn2y_JwdcyzHE-5SbOR3FszYI1go4vKqV5kUx6wPKT89Txw",
+        "ATKogpeB0LU9f9jTVGkN6-m0ntvXP0VmOZXNZ8P2_Ta1IblD0F9Vx_iIJ60b3wjWkd0Ikp7Y1cfeHpSLW84Laa8rBl6o9MMKpBzDymoVnfnK9jc0I6dFlP2RJFvu5grsAs-P-BUClq9Y8maCCkPT8YjgQgFQL1uhtJkvmi7ViT-48K3n8YYbYO4a9fYm57dLgXWeozwNigWSbZd1GpHT9EYn7rVXi3FGdRaDjG2Er6O8hofc8eDK6X3wJRr_Gmnfyq9cfAq9z9lw15DXeLRKZ_b-AQtUXsDDI3IuWdnpqefmnPQJpQ"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie D'art",
+      "address": "15 Rue Marietton, 69009 Lyon, France",
+      "phone": "06 63 88 59 30",
+      "website": null,
+      "rating": 5,
+      "reviews_count": 1,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJX5Ozj23r9EcRJmQcTvgaKkI",
+      "photos": [],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie d'Art Célia B. Guedj",
+      "address": "9 Rue de la Monnaie, 69002 Lyon, France",
+      "phone": "04 78 38 31 41",
+      "website": "http://www.celiabguedj.com/",
+      "rating": 5,
+      "reviews_count": 1,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 11:00 – 19:00",
+        "mardi: 11:00 – 19:00",
+        "mercredi: 11:00 – 19:00",
+        "jeudi: 11:00 – 19:00",
+        "vendredi: 11:00 – 19:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ26nTV1Tq9EcRYb8vdE8M5JU",
+      "photos": [
+        "ATKogpcau8AIEktZrUJNVRCnEnf-Cl0UmK39H-dz2_VFEymp8z1bqoz_BfCm6pM_gXVTDaMDxwvmr3AjUS0en2iZkTGYxbnrY-LiRFF0FiUanEEk0qRc01FS8KmZphf50flk8cgr-56kB76B1YkqmwhbxL51Cop04n7b4FvXPLM3snF6WlobDNX1Yl1AoGuWl_g39kIsPLfmVfFlqXcPDqufdfcNxrXFPfWoPRuEbOKzDXQILUF9CZe-gr4zSE36Vweh7dKhDxlAW34WVlORG-l7SeoA7vkkLzX6tqUbi9zGmtk6qlbh-YLoHPCSMdCrlrYZOku4zBMotlK8pFsPpIWb2FSInD8yTHorOY4SacZVqA-bYsNc-6R5SgjDlSVa6KlEHjGCL4E0dVjIuaqd2fFTYRYAHR5WsEEmyZQA6Z4lFjs",
+        "ATKogpeWYJ3Df5QiA888guA3Prw76mi2OhwX43DstbaBk0rQisFG99WaqD3au-AVen1s1ntB8X85fTzY_P0JwOeKFW7-sNpPJBWtqd_ggCwlciWwP28j3GPABSCEQNtI9iO2UdpBiSUdGu7GBKc6B5fyMkhF90ZkUR2aIBT_P1gQ4d4KG38n9exxoRE_pU0DJy75XVV-QXmi3045TWupienAY_JfgAW7HZMF8CIN1Kc6ifoTyyYmRgs9X3auoXFAiX_Sn8FS6w8z6e7HcEG-5h06vAP0z_bbdiYv-KmfEJljfsfCUT0jQxVrn8Qyq-iZMk3X_z0UZZg9LJxXi4UdnlGtMOvohdEsEB48pJF6Y84OhEJziIpC2Ci0LoAku-3QSY5apBh_eBLdwm8Cxcl3Zk2ffqJr-AW8tM_tpeevoYmvXmvTvISC",
+        "ATKogpd12eIVibkMTwThN46JnZaObQz344ngeNRb6L4hYU0z_-fvYylh5qcGsjoAHf9l5gqy47nhwf3XYKULFWglh-IOfXoxt3fH9VsIKorwGCFyEOBKnSoPAgBhboZcB3AV7LjZStG1JlzGIAaDZg31x-dC11pMkba_7Y8TfqGQGAPXsKP5vxJLuR6COl4XwzQppcloEwC3J-E-5sK-ZKOBrybMSOJTfpO9zaP8Ok98X-L6xXDMWFW7VtsarvafvjtT2kA3XUeRwZeSy7pz24b8BcnZ0DYiZiLCOU3mqJV7DSZ2PB1Hud8QDvGCGFSZ-vjJrUsJWaNDWMq_-nV2KVj5Bi0I6y4Uq_E7OMEJbfb4t72wuzEx5D1w9dpoaXXrV6uy5_rJE1KVizT4MN1OggmYaE2lPD-2Wam4P8M0WaVZjGGSaA"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "LE 1111. Laurent Giros Fine Art",
+      "address": "Premier étage, 11 Rue Chavanne Premier étage, 69001 Lyon, France",
+      "phone": "06 66 73 36 31",
+      "website": "https://galeriele1111.com/",
+      "rating": 5,
+      "reviews_count": 1,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJgyUoNJHr9EcR-RGTblT9YcE",
+      "photos": [
+        "ATKogpfcE8-gzUWIxdmhSgmSaYqAEzNZZZ472VeCU4uc0J2lRBq8510YDAiSzEiq_Md_6iCY_ISJsh5a_aJBuTHEcxF2L65COlQhMrm5A4Lem7-C4hONHbZAlnsEsbGlQf5kicvGLLtIkSDHXntcf_PLbbvLYwJ_cG4uI2Tm9IjRZRBmsDRbYsA4C0NIg00f6gv_AWu6KVMhJ68YzoNLkSpqXmnt9eGHO4st1QVnFtSQL0HAMT3xLFNcQ8nk3cHO8EcO7o_kGOvy2KDLaZs984MkSRWDNXtPH9TPlqPlana9nltmbA",
+        "ATKogpc6n0EFIQMdCgypYUMBqQj_WMTbpbEcyhsrNN0kyd5SIo-wRmDmm8rCSbMRpQrUqkIf4t3NHZZ9LzFRJ2wZQv_kKwwhNYPSZwlL2X69W8fM_gKKanBDPmc5tum4xo8k0EDpdf7ooDFPGN84k9U4SXZNkplfT3EfDdDXbW2mgZ1MF94I0aacCChUgoNkPkIh8EfDVBclT572b7hszufEiElIxLxbEINJeDj81aaTwHUmB_VGRSYllOf-mSkQvjxBBUhSLlk28eem1nl7aVR2A8R2nwQ9dAj9cHsJx-WKIGK8OA",
+        "ATKogpf88cPU5tmpOKWy27XzsWn-OXqQlzT912615zLS-JukwEFyvjOQn587kucOakXSaU3VKunk9vCTNOzmdQMh1dV08AUG8IPHgVDY-EgSevLA_Nyjmralg1rRc2CPjd5bKpcIcU6t4C6LKb7_6BPMwT7CQwC1Op1npXnzBUkup09tVJZQ_VYX2wEuRSmDyq-Mty7_ge_FrQfZUeXNJNR7__NdTfUT6K1rr4IJsah0tAMJm_iYvtMGRwZS8_OQF4zYQLYvVERxD1WFex7PVXYdM2VbpLsMSET20a0oYR9UzQYxgg"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie Houg",
+      "address": "11 bis Rue Jarente, 69002 Lyon, France",
+      "phone": "04 72 77 61 05",
+      "website": "https://www.galeriehoug.com/",
+      "rating": 5,
+      "reviews_count": 1,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:00 – 12:00, 14:00 – 18:00",
+        "mardi: 10:00 – 12:00, 14:00 – 18:00",
+        "mercredi: 10:00 – 12:00, 14:00 – 18:00",
+        "jeudi: 10:00 – 12:00, 14:00 – 18:00",
+        "vendredi: 10:00 – 12:00, 14:00 – 18:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJVX9KLt_r9EcRwOiQZjtpR7o",
+      "photos": [],
+      "zone": "Part-Dieu",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Atelier - Galerie Catherine Mainguy",
+      "address": "130 Mnt de la Grande-Côte, 69001 Lyon, France",
+      "phone": "06 23 84 37 71",
+      "website": "http://www.catherine-mainguy.fr/galerie-cmainguy/",
+      "rating": 4.7,
+      "reviews_count": 14,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 14:00 – 19:00",
+        "mercredi: 14:00 – 19:00",
+        "jeudi: 14:00 – 19:00",
+        "vendredi: 14:00 – 19:00",
+        "samedi: 14:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJZ5xY2f3q9EcRN3sX_gxnidQ",
+      "photos": [
+        "ATKogpdxs8BhLOmjwmkTIq1d7Fko1VRluqSUPDYza9bdFZBY_wqmGZ_qHUGTkWoytKxjk1x3QvC_nfbSjw7Z7ULGrPPiiEAFeV4fGk2gH0qpJHgv0bcS_RGZIgTKE0SCxfcPK8qhLVunhW9cWgkpbbOx4VTGeIbp93iCImbKfaa7xGTmqeDx4X8ZYjt7ej8TKjmfkclH--IikXWFqlEo7nw6RboEp8JEAXLtcEVzUZwpfwwN0TxdJx6Z9CMjFo2fM9sSogIghjIhUALTWVqjM8WJlchc930gOzd7lPRmvmFm3mCucA",
+        "ATKogpe8HR2ty38xFbBRUT1v6lwWdtNkCLb_vf3164e_JS7wUssoXt3PLbarRlv-pidyvu9x4OloYKoj7uhRqw2-_KNuFmsKxwUbJUtYA-e6XDD2hABEPMzI6faqRE1HfFWfIZZznpiVjkxxvua4XGMgrU47HBG3QdBpxAMbHFR91e_w0TFs9q0rfJyUnIjTwvsAMFuWEPEpy2FxeUrkyVTSpJ3N_wC1gyt8G7MhzMRVyGM0cXNF3hQIfK-XJH3HKJxwAgwio9Hd7724sVnVx6QiIz9LK28ZKEa7kExuk3MOPajhzg",
+        "ATKogpfYEi5HrrO1EdhBlZZ_jZR9oMTAiO-QMp4MAp2VSBXzxuhg3mPsOu7yH5sbzHczt0pLj68_x7jHwQqbG_E2tQUeJCP3t5ZUEwATl0ll9aUebs73dm6nwXCrSeArHYR-wFic1Lz377zUq3cX9S7p_dq7hU8dylysLjJOlDt0neHHQHliKCLPaSLL4JQLdhP3g8EQXeYqDFQ7gk_HJyYJxLp2OD3hgcaK54s8nChl0VDWHpn6CBnU9cGaUcRikJlih_hfzTQJT4GxKMd9co44Fhm7Ca8AENCoWBK1PgMNhistog"
+      ],
+      "zone": "Part-Dieu",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie du Désordre",
+      "address": "1 Rue Vaubecour, 69002 Lyon, France",
+      "phone": "06 16 46 02 94",
+      "website": "https://www.instagram.com/galeriedudesordre/?hl=fr",
+      "rating": 5,
+      "reviews_count": 15,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: 14:00 – 19:00",
+        "jeudi: 14:00 – 19:00",
+        "vendredi: 14:00 – 19:00",
+        "samedi: 14:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJR0KIRq3r9EcRCY6oMuzLCcc",
+      "photos": [
+        "ATKogpfXGVhOCczCn16lV-uvJMTfF4W1Pj2LCRQtkSAm7a8NsFNkSYAK696I0fOT4UzuNczbSX517a62mkUlnaY9-kuN8PxrkfWvfU_J4Tj9rxZH8LcKQqqDU3XcNveDsLZbIV9722ZYtiGrkrSv17p5HfD0DU9KSvtD--RTfyrsE3xJCrWRvw_kMwRv2p2_R-p73aBgR5t8XpNmmZnRFrHiBpnKLNq1ye8MLrEm8grgdOIr8YpOgtKGvAvvBZw6bULnLpgrUi2JDsialUz5y_opOZysUwPz9IJrGW5OH4c8vlmDTg",
+        "ATKogpeGDIeblUsnBZlOfAppgpDcZO_j8CgCEPvZkm07aqraFBLtysaZr-NfWtRE16EjHfPLnQX_OLQAxJ_KsgKOni_miLhgzrBBykHsnABqBzv4Q7Rnx7mmnufLES_sBTgRrUp-qMKDl1pLPRHYM7VQC-bQsnJocvlWLyxW4km5miK1KyyqAYd75V-7p6RtC44OgTUiHUhYOmd_KgqCC1AjkDo3n7fH9oJvwCPrqyO6_yaXRVx6ezOPxK1tdabKOYTaHfZjqha83bk5lpn8Ksx3p_Ah6Ms-keKE4xsXQEp8O77dKw",
+        "ATKogpcU03HbmOvqoKWjSOPE2K64tPUzqTu09VGBcf9D5ac0CPwd8UEW2iojbRsRFIE1M_dCsPuQ86qYlverUHjc2WdQV2etkHZ5VMXZLKIHJA1TGxM9dgL8wvDNeDpqnx2ZCcuBqRWws9WuWBuZQQrR0N_N7nKJFQ067Fi8k-g1Zc1z7i5QN_PrNfDN9Xb7pcvLw9jtmwekkaafVxzyePTI4ns1JQmIMqsAQgyKCpDZaKS4yPU4Ntue1QU7dtaXXF2_mrfd28w1vjcwfodcAeb1LFfMAXS9MWePU4wD88nZrcdjgw"
+      ],
+      "zone": "Part-Dieu",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "GALERIE BONNET-ABELIN",
+      "address": "36 Av. Maréchal Foch, 69006 Lyon, France",
+      "phone": "06 07 71 88 51",
+      "website": "https://www.galeriebonnetabelin.com/",
+      "rating": 4.4,
+      "reviews_count": 8,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 19:00",
+        "mardi: 14:00 – 19:00",
+        "mercredi: 14:00 – 19:00",
+        "jeudi: 14:00 – 19:00",
+        "vendredi: 14:00 – 19:00",
+        "samedi: 09:00 – 13:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJAQLxj5nr9EcRkneW_1DlCb8",
+      "photos": [
+        "ATKogpd5_wywgb33Mkt9V2OvCxBTEb-Ka99SdiTJcl5mS46yAsyovNFr4psH48ckc-MAO1VSdGAgW5Pw4EwUAJ3Yk8OX4UbsMZ8I3jW26odqNl9uYSdeSVdDGvO3_6gB-LqSyPttQYcydE5Jpy8NDtz7UNTkhMHcxZncKG0CarBovDEJDHfj9mobaw_Pf-sgV1qdUmeZZu08dTdudYFWrn3qjF9Ud4L-8jWkFKxeR5Oh5bWf7WKpnKniZyNNArEgHSjUWq0vGBlVtLfXxIFCIrxW_Jno0LchumP1-7ZdWbdNcLmYFg",
+        "ATKogpe2sUBolZmMLlM6peRdA-0J2gNJSYQvZjspYWf6rhfiVb9jgrRhfPxJguoLygnZc4qr2_AjyxjfzUM6UCtdsur17X7h6hrvPD1LdrSRRLYkB9MVcQ5y0IG2KoJ3hDqqStjnAvMMGqD3Uqpig-F2xdRXc4H06mduZnjnaSkZiiuI4d2SiQCLQjWdEJfpHspvXPuQQqavGR7dMsZkeuKY27wiexqudlSZaV69GgbVnh04rncYSrI2a4oJzK7YiLhfDy4thsnA7rTodNQ0FOFRtTC6O8c3ix3zUFWwfLCyoJBMlg",
+        "ATKogpeROXP3Ho5g1MmUzveHiqcOM-9MhcU2Kb0VgUlrx5fHXe6cpQs5RqDEH00BQOYe6Q0uxv3qJ6OlIrfH1qAJ9nXQErx5br-C4E0uVP7iANIAKUuzg_Tf_kpWR7BfJ3it5vCACg2Y06N-Cry3ZzBKIXkTV5zWsaM48TXanL8WD5d_w5R0pGMYQ5FVGxBLQ0VYJIlsOkySfj2hUA0yDI9CLpByk82_uSfHwxwjaeO43mN-g0JOg1JltDw6W1se5dvxnl6-F7TNMnAFr7xGfjzbFOHwyGAl20tAEoI1DbSmpeVvcw"
+      ],
+      "zone": "Villeurbanne",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Atelier Mory",
+      "address": "20 Rue Royale, 69001 Lyon, France",
+      "phone": "07 55 99 02 85",
+      "website": "https://ateliermory.com/",
+      "rating": 4.9,
+      "reviews_count": 49,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 00:00",
+        "mardi: 14:00 – 00:00",
+        "mercredi: 14:00 – 00:00",
+        "jeudi: 14:00 – 00:00",
+        "vendredi: 14:00 – 00:00",
+        "samedi: 14:00 – 00:00",
+        "dimanche: 14:00 – 00:00"
+      ],
+      "google_place_id": "ChIJM_e2G0fr9EcRoMnI3WS1jf4",
+      "photos": [
+        "ATKogpevnHexHUDbH8DIQCaQegApD7IW2Ao3roJqJ17dBydC3W5GaUIpReMvuX6MHGuMnWCfKxG4uDcLTq2gvLTz-9SD3BVnNtkdoYSRVaKYPUrO0Rm74hmwkzzPipEYrdTx3iCYSzaa9jzW_rDI92pG3qA0X2-4vmgi4Oj5sey3tXSAVHn3uLkTujsnnjYm3f7a6Au7UUNlp25U1Bfl2z9OxPL3AsweYUhATgmfn1Sbt4BspwOmA6F_Xd4ZH_pDVZknYSk1c_TeQk9YHwvpmBtAlYVw_Pd4ooLJQ615hWL8rtPi5Q",
+        "ATKogpcqFeVRu6g1kRlFcdkEJ4CjsJiUvH2l4UZjGqddJR1J-iU8IT0OkJ0Z3M_8UNP83NVzQaqgOmpdwmUEuiERJs5B4VrK1J2cFOgKAcRafzHw65kxX8x-kIRJErcAl7HcbEmzzr0D9fSOlvY0knr2GiuzPI_HjdTWlZCNh0iJ-YmxaR4Iz2kyo2byDDvoyJUUw0Go8rymGtDiUOd87Ug6RrnzDI6zD3-3IxR2vX1MC9ZyIt18j4GpLyukN0gaqfmXvVLqx5439MqSxQ29UwpnO-BMp9aK2J_Z80iuTeTrmsUitw",
+        "ATKogpe62qEsmA0kqCAemSDZgZOzXHUM4SD2Ty1Ky6pEAKS0GaAnUp2wB61aHMYTgrU1jSC89eemfBwovn24M6L0v9Yl-fjgUg02g1AEc4evSKm8xMrnIwn0fJPcJPxXCWmMJnjwXORn378gjcDgbu7lFVl4YKNvmh7ACqe2_wi_38vM2387QlXxomwgO70RRWAMk7C9-EAB5fe91HIq0N6RLITR07tiVis8px5AFhPagab_g3OVhYKjMgOGbCSnMFJTurmUllP7I6VKIJB_-xnGcWaIaIL-tHuIrW0s4csElwC8Qub6Gi7oA6aRY608N2uiWbrWQowkZQhwDw_l_B_hWytk8eX4mivA5yVIQXNVpv1DbuKFzCMxbrwrmdRwot_yCSQkIlvzBxggYWoR4uXjiL8HwOs0Nb76FTEY3bUnVXnG5lQy"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "ART Studio - Roman Kroke",
+      "address": "17 Rue René Leynaud, 69001 Lyon, France",
+      "phone": "07 69 33 26 99",
+      "website": "http://romankroke.com/",
+      "rating": 5,
+      "reviews_count": 15,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Ouvert 24h/24",
+        "mardi: Ouvert 24h/24",
+        "mercredi: Ouvert 24h/24",
+        "jeudi: Ouvert 24h/24",
+        "vendredi: Ouvert 24h/24",
+        "samedi: Ouvert 24h/24",
+        "dimanche: Ouvert 24h/24"
+      ],
+      "google_place_id": "ChIJWXeCitnr9EcRB1WO9lRtxgk",
+      "photos": [
+        "ATKogpd6K_z1TbmOy_cdiHg-KVPrP1Q528Tqw9Yx7vQ9KMxtZ1y9j3wir9foYA85r9hKkpAKBUxiMKuCHVuybzLdIuDcNR415vGZcL4u-wVdfkKLUzHLDO7YDdvnmiu5dP5Ut9V83K-ms3P3btIVH9hz1c8kNZiKvqW9S6SxfLUsdQ0CXFa-JAg205UEj2ew3SFq4NOYCtV7o9tk6IbVAFZlj7aq8GQQtNJqkZfWIQyoO6-J5-KxHMY-hIuSOdp11kZrH_81BF2KIZ_k57DWWaVB-GKk2alROG9BtcNSr86DrMedyf_9sU0ltWZNaO2SQh1hKuBulFIxSI8qMjXtFj-AYyzqCRE0BOY4TR1PixocFykqK96OTxApzHy1WbFAVuPUKIexNT-y7bVdwQzSUrBkX5eSlLwF8_gZfN3z7BpIZG1JiA",
+        "ATKogpePlxejHlubrxUxHpYwKn9F9MVNYaLB_pvSiOhbrz--XcFBVzU6TxrSMDuD1aom0TtcWB0Og3-8jA1wINsTOWqZpkbfdiSdFm3xvWM54AyAy03c9S09dD5LXxDKqUm7humrFTrlVaLP3cefFMuffC2VJ3heBeifEzHPLuFSF3VSDuzMH36Q17jK4W6KulBBCIIVnYGp6ZZnZQtrj0UTkLhEBhwIwB6VuY6yvFTWQXGSpPdCuYUErD52UVs7GJ867cxGyVutpmLTSMgJziozjONOAvvl6j8FhSmEHBTydLgaTliLM_RMXkmQbZ08yNzbWWn80RQz4VKYG8VJ4WzR2vKvh75xVpTWEs6u3em9uEjR4F13PXfRkv9JsTcm81lGjzIKckQaFacUBb5kpX95DHgFhYsj2xUVhIOn2Dp7bQgsl4k",
+        "ATKogpfaxxjEAILNndVQ9q5WVhnNCIdmJrhnc8sJfQOO3pAPHe_1vysAasUFrK36Puyicl0ZqZQRsd6gYck-sOZ0_bsVM25xOrcsxGr5yzymCaJGIhqaQpVmD5QpGertivoBAd-8Df2QCPZKQILDi2NmDcM8U_NDoNbp0hwllaQRxnAyBiRhfJo_Bj5MhaYFrPBV8uITOGQ6f59nnFm_5Q-94BYj4Yg-qsSs1HB75_9oLShWckS_ppxjNSwBa5nIdxQp5bSDVCNM_mrlgyIskg-KUciowI9mUfnOJq1oJbfD14BGTMDulahDVfnNzJ8u10Rqd2iLTgKlrqtjMqgbVzacfKU7hrB40qfb-i9YbfFiAVpUbSNyP5FgR_hpYqTOpPpjKtCTAqxwAMFXSyVZaushS9v67Frgp__EwmXZoy43hPjUISG8"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie Lyon - \"la pointe rouge\"",
+      "address": "23, bis Rue d'Ivry, 69004 Lyon, France",
+      "phone": "06 86 66 13 56",
+      "website": "http://www.lapointerouge.fr",
+      "rating": 5,
+      "reviews_count": 3,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJuRneyOPq9EcRn19B72zvTW0",
+      "photos": [
+        "ATKogpdAaV0_WLfbPiPqxkogCFwSdpe0mVncbiXeYviuJue_zcnnkPRmRPreEqz_KLLDdnqAV2i3HLz-XeIwFXd0wsgrhLXyOaEX_7Vnr0MXjcIQd-qvHcRSbLNg7AtZxxxdbWHkcC5O2roa621TCN4r6_TK25j260p66qitn74WINr77mb4o4fX27ZWAajtG7CUrlBFgy6cwk2NLu0684xQGkSVBL1JC8KrjWWKD8xR5lASjbpMCsIDN4UyEhFaMXVYSnRbK6BJaqm6KeDCyMj0cjpIY6lP8CvLfAnpK7oohc1m1w",
+        "ATKogpcOzJdmGKl3JKx6eDqU8OKfAODSKe1REd7M2EQvG2O1gSHxV4pJzxscjVjBEzheYM5DRFSzfI0LSayy0FW-woEDCCF42AcYv5GFH-aaXcNPFPlQGpqfhMqVgYN5ZCOWq9Y8wcuCPJmkW3afmw8vRAYSfuSpIlLYofEP52kYtL75dUMJ4B3GcsdF22JuX6GpepvPhPD9zCud4coxvljEGyLsaOiHGqSBmyb9ivqw-oaqVWZp2Ly8GghKomn7Pf9ab1236ulbz_GzhWkmvqfPIrSl8-Dx9Det1d50l0mUIR5jzoGUBrESoOFQSIDoSYMkT9te7sgwYfBGd5EqCT9K7QmyCB1u2x-OWsYAWkX1JvMJb6nJI9ZFjzSp3ll7Of7YlEqqm208ooeSPPHKh6Uzp7DKzct_-X8xxz_H29ouJPc",
+        "ATKogpftPXv3n7tvQ-Z9HKUfwutRMsHZh3qtE19CmFK4R3URwYTBaCRaktUIrbrAfARuB6Bb85KpPPas1vtodXIKv5UszmHrHeZ9TqIWvHLSBCeenxUoHEwoed6OmNy5gAJ-74J6TAqVzRrjzjUd2xVlS_OzqhPHEfIU-Hwduz1jl2sOkTnqv_7TpAAD0j-sOoTZBhDJSNa56FBEhNQAijsZulvIYUOVZ8fzcd24Yn9ybp7eyal2_CjhMVJTDMJl0hFM0-jVKDAFRLw_qebnsy3OnDHOs3iyoXp3eI_HwkZjfWQ9JlcZoUA-jqEd9XTsZ8_POESaf9oe26u885pMAmz2FHd__7blfb_nWONF-90AhVfwJlspZmJsVVIKuJWYUOGWbAB-g40p84KIjNNOO7lQMFmqhzsWXssA5W3gkQxvpORcDA"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "L'Atelier des Ombres",
+      "address": "15 Rue Saint-Georges, 69005 Lyon, France",
+      "phone": "04 72 77 59 80",
+      "website": "http://www.atelierdesombres.com/",
+      "rating": 4.4,
+      "reviews_count": 9,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 14:00 – 17:00",
+        "mardi: 10:00 – 12:00, 14:00 – 16:00",
+        "mercredi: Fermé",
+        "jeudi: 14:00 – 20:30",
+        "vendredi: 14:00 – 16:30",
+        "samedi: 13:30 – 18:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJA1bKZazr9EcRc4splaxaESo",
+      "photos": [
+        "ATKogpeLlbGdHTiLhdFgrFF87tXJKZqYXSqDk0nWmONky6lXs909iv1ffvHLUIX1pG-4cKr5P2RcmgzB5hPku8uMoa9HfPAJ3Uk39EmJXEHJddP2w0lcnMjXHPSPY8Fo2NZ-MWbseteUZf0dM_MLA5HVdzA6rE39ng9Okvq-ps-k6XfzmI3TqPViPtMf1R9DHOSF_Q1mXpM7iSypm6EN7jImJUdJuBSiiOJw-Q-UM7LL1ixcc0R9dc7oEpMMPZz1i_JuxmBWHAgTMBvMWnTBTkHgQiMRGUyk1YzCgAl-fv9t1c_cIP1GEIu-AOWUXTiEQCwbUEshekFGmDEg6LIvqeqO7G_Kxn1z5n9cuTPYbUy58D21KA6ARpZzWBpm1x-0loV_mfGOrNfMwl91XMdIfsnNRY64pLYSBnQf2qN2tohzYGrWSGg",
+        "ATKogpcY5LDTB4HdNyemtx2H_AWEuEwRbJ5lv57lCy7CukcKT9FtSwDsysvN6aCPBZFnITq1EIcOe3B6VFWhnU4ouIKOikFYex0_cNZWRtBJajGlkmR95VYUvER1dEwMndQW12K2q4olwNhwwsU3st-Ro8AFv3gsAAjw-CIidtNjuq_KSw2uVbBha5xZrEQm5nwYeYc61MYuNbjmD1uukD8gCwU3xJc1AKM9JjohnvcRuKB9BihQeWn5K4GuIhgJwyhdYd_Sp3O5DxlFrXtm5Q4wFEICVtpMo6kRLeePCVjNJi7-IvmGyUr_A5LO7bejEsmb_VlJjvXQz9o-lSpEnLwuLCZvyn-A9kX4cgJhScGN1-XxEN89uxAYm9GxQ78uRHK7xSucZlq7ZXkniMibTM4dbGBDmdMnzTRbZoZ89rAK9WY",
+        "ATKogpe0NO_Kw_yocm0lwYp2vKzA5JQujzQ3rwirRt8st5ZHAJdIvOB2_CKL2MOQp93ihpLyQXLByU6Kc3MSnpKlrKRF_Hh4ok2oMBK1X_EkhnDvMzbR6NWGJ-Egm-qHOZiU8rO3V2xeRHsWL2VJhpC4IGmrLJqoNLvO0EJWEGfm_Qyo5sIrj2m-cqSen6rKUJkstrtg7gSgkCDAofIMm4xah5ZzyzrQGaaFwLvtoMdOmKwQsEpHlitXpgHyGLk0TRgX69Foq2vfGXZFhfVceQuOb14ymS69cVvygxIrSTB6edR_lvomvOVqZcRy_mwfOmC5aQYIfCbz2ZpyMB90jZQZWFSH3Q9YwJPXvd0FLx0PkQdhJQruoQXbWwA5NGR8kKiSWm3a0UcNOVbi1tRJQKLZpCZBGoVAKJID7O3RnuT0t0ZfUw"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie Mi - Atelier Mathieu Iquel",
+      "address": "32 Rue Auguste Comte, 69002 Lyon, France",
+      "phone": "06 22 28 64 84",
+      "website": "http://www.mathieuiquel.fr/",
+      "rating": 5,
+      "reviews_count": 11,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJzdgPgk3q9EcRB_S7x1d2NWE",
+      "photos": [
+        "ATKogpevx7nTUnQy9Wc_ZOmSooGL6kREVz8lh6rg7dSpe6Ji5gGd89HlhU6s_5T7wEHd_oO5juapIgsp32gP2MDUCcbFcV4dZOtIsOfmDTEvozaZKf6-AZDqky_buDARUW5WsWzTR7jwY1RPBuLnUy2_gOnyJXYGIFItoPVtJB1OLp9QMWt8xmVohMRom0dq9sBqjiTtexzl12vkHf7wfi7iTWTWHgzuQZ6tYac9CF3S1inl1CwAJOjkhQY8Eg4Z6Q7CK3-D-SrlcYdGUA7GFl3vcHaXt-JvoIDdTxAb4tpq2Jxhzw",
+        "ATKogpdmaVOO773TZNSy32-705TblCEbGfpUrh_UOYd578Wp9hI3mm8vT30ShiV-t95TgIeSANAmjg4lGVezjsDRgMcoDT0FF0vuXDU_e1wZT3LZDSjmGR99emyKmWXNWRTYfeBpce_kwpvMjzvHxWPPo9ByslHgSSgi7oW-WQxa43uKxeGy6aUZ4MkwmXkOXpJTdXlLblxrP4HkkofXLNAecQOE-h5E6_sokMTOaViMF2q-qgY5Z3HTrD78L5O-flMV9I6Xtbq1dWINstEsBk2XfghdpolU32Sj7KLwh1mUab9YYg",
+        "ATKogpcWo7EJoUyU6fMYPrgSFdXjEuodxN_odpQDRJoSknmb3yAxJYlArAmYduX0AMfIDEZQ1DFu7vEPSz5Lt4eOZBr9700llj8Eft_OJxnSXaiFh3Y1178eqQx3Tn5VAjeggjZrxNhIxEdwHYYXtCLvVHGs7DvCZMqiGneePwRmyrmQ1sC1IglI3Pl06DYgUewV1wm_wq91SxXSwYIoC496_ZSLnhagkwdBG_hurBMy4RijHWGuMlobEBjgW2t5XtblxHMcKYJn6t089XJB7VNDDyXcpgM9eRblk5996SqfbIc1Dw"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie Ateliers d'art les Nabis",
+      "address": "8 Cr Aristide Briand, 69300 Caluire-et-Cuire, France",
+      "phone": "04 78 08 21 07",
+      "website": null,
+      "rating": 5,
+      "reviews_count": 2,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 10:00 – 12:30, 14:00 – 19:00",
+        "mercredi: 10:00 – 12:30, 14:00 – 19:00",
+        "jeudi: 10:00 – 12:30, 14:00 – 19:00",
+        "vendredi: 10:00 – 12:30, 14:00 – 19:00",
+        "samedi: 10:00 – 12:30, 14:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ61eZSubq9EcRubs1stzWDq8",
+      "photos": [
+        "ATKogpdJx5T2wFPbQ7RBN_5Ibp6HpHHiqKB9IEzaAh5e39uDZ64gKUygAwcIjJAPh-AP3oLFCYiO_yqd0KkP5B7izGs0A6YcAO6J2flskRQQZnNErN3LpYIX6QSBbt1eca9_pTfTtUwaDrZCiMVzp5-BiLGxN3j5ckWtP7gtYv6zJ_znMGjsIGPzq7cyeo-6UPMak8ncil2tbulsZXOQ2U05SZpNKLnKGRPzobVOXFQGOQkNfMgb_1Lw4z9ZgYN-TOLJJ9uXtqgozSTSKM6k4FOBXmKxpTrgZzNFZ5dJmrgJWQ08teug8bOWxUtiZloCckgi8_45ax71eP6_Q6KfHGT6NyF34qX5CGNMoDSJ10HTwcnObPkIS8DXgd1n5nI4txhFX06s65_fKKfWlzcnKf7_UTPa6h_9xbWkTx0JsE3mFNWU9g",
+        "ATKogpcMvx1MBWflmpr9_b_GnWwXqBIzJySbFFXbCVpwN9E7U6OL6UtlX7YPKnPA4Em9K-754lCC3sMKWwbitoxxqJTUiDWRqN0Rsy1-7g9onzorENw7kcicHr7GG0ekZTP_0puxvgBhFj51OYn8CzCKm_3_h8qb7TDFBo8-Y79RWI-gWxWSWrzcPg_80ti6n4snc6k16vIZc7LG91psn58vUEeMoWlTzH-myIO2xg2KXVVr_UrbLXh4sYxtjrXJOjZqcE5nWt0lbRvEnlHzCKLM50y_h1ddhgGADJHV478ZoAqeQ8zoJZUQQMm7B7SG1kgroUCN5bMHAizFga_CMLZiLVCcruzIAGk4XWjjOJ2PERmZjSAHVG1iaQFncjS8p5A1Fk5fmSYEeIgMv619ubRmfiH0Azy691jyDOjcmPXT0H4",
+        "ATKogpdRSmSIZkgJKPJGGOaBKZ0HpQncBLDoK3tORt1gsZ4TlAPLlOEfEqSm2ihKpdURTn7izaMvMGYBptdoMVlWlEXPzoaUVXn0zeIZgNReHZc1eFJl-OsVpWeRRyoTYLTCCAtHVK4bL-7zbQqA9VcFe2KZ4-szLZpLde87uNyysWN-UuQq1bIWEGjGN3a-GbpHf0qfZ0j5zcRTiktWnuakWI_DPvQ1wZ819EVaFQPD-wosJcsQV5VNXmZcL2TdkdymZPVXaiIBYEuN2YY536x8PmyHmnI45oDFilHtkIPePA_Cl-qB9iuMy-xRyEYcxDugAA_PIsxodcAW55-HOF16kClqzjoSk15OPeC_yoz6Bel4TFe08-tPoZie8w-q-KAF_NN-cuHq5rsmMaofxpRn2gErtr4psdLclU8XezqH-qJ6GQ"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "ATELIER GALERIE REMONTÉE MÉCANIQUE",
+      "address": "25 Rue Burdeau, 69001 Lyon, France",
+      "phone": "06 42 12 14 69",
+      "website": "http://www.remontee-mecanique.com/",
+      "rating": 4.8,
+      "reviews_count": 6,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJRy06bsLr9EcRc8rCo7HXqgA",
+      "photos": [
+        "ATKogpfjzqXX7xJylaD8HWEqj7RxmgLuzPy0BD8seyqlOF_MhYtW_oKa-W2Xo3KrWznRgbMtO7NUDnBQCmPw-jyNp7XFKqyLXD6qVcY1_S8VcsKvJfUmPoeYsTl0FqnKoBMp125JV6It_xhg3zSLJv7faYXN7Gh0aiW76bOgb4-UVpRiKdvIKI0Xyvcd5jOOwyZJSEAieCQL8ieJQO5ol35TfO8RMe35106mgBEeUrWqqAZrjDrGCRmWApr8i3F7fP18FZSANFWTjQkifSxTiYruZkb_a-HTXgcXMSwnZDY_OHF8pQ",
+        "ATKogpe83yCz5TV8k28Cs-pqDvEhe7qidVSiRT5hFGLjdM-TzcRCvNNLXSDB2pH61E0rTK-D_9LLLxgRZcUIhXzKwWfz-mJ5hOKU7aw58RoeWQTr3cxTBK6e5RfcrJ-pKFix0MT5NrH3OnFp-XnSRIXF-gQGoSmm_WjIjVL7v_BFqWjZzS83W_UvAjs3bwIbBaFPRr2da-yGphjmbJ_nAkUtfx3SB5Ln43CFrZNFrmcJlw0a9rM8y1Ci6kQXWAEVUm8eXqarKOFFwBkivmVlTxHHLJz0V1UEjGIpshBXLD7Rx0d0-Q",
+        "ATKogpfpMv8OYyyuEyIPjtwcbHXgEvvnN7-Ls-faNsqPhweqrZeEJ3sY-eUWOXrnYJsm3SS45fe9a6g3GgQgeeapkxmt1aBq2ZM1neIKLDP537IaKSQwxpo6fx7kkbdZbxo8wbRSJdrEk3LGPUTmzPOIhKrJrjJQdArmmZTTLbHMf8Jbwj9NLdwprUUUxflHE8EbJjR1x5KBgn-gMv-Xpz903knfqCBiupPC5zn7sRvHKATJOmrX1DY2Ky87-S0BqU64kB01szagiUSq9EHNWDsbi0Lixd9mY9TlrVV4fq0iAHZv5g"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "laMezz - Atelier partagé",
+      "address": "14 Rue de la Grande Allée, 69310 Oullins-Pierre-Bénite, France",
+      "phone": null,
+      "website": "https://www.atelier-lamezz.org/",
+      "rating": 5,
+      "reviews_count": 2,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJk0SCY57p9EcRWBRJwr5VinI",
+      "photos": [
+        "ATKogpd6IPhXI0NA-6KnWVD-jvtKDeQOmOaxbRVFPpKqsE0ihCDUCsMu88rcxzYP5jnEvA9CQMRyLksvaV91EzAqhk5S-q56t7082sF1lhG3iIwCxTiV5C7cqU5olHJDz_hgRvy9lX7eWtV587nQuw02n-ncj03dLl4ZElx0TwbXs1rcYG9GRwhx7jLnHqqTz_0ku1HTEH1f3tzIGRZ9TQwvfGw1VN1CmvRD5p-W1Nzt8lPQoSJSy5AhaMEraF46wkD49pMuIBYRjet1I9Q-9_4JW_VOGfkQlS3PryFmVQWpbaXdsA",
+        "ATKogpcbEz_hQKkfnJslhixaa_sV3UEvj1mmgJJ3fwEXX0mhTmhazrzeY0AGEwn4brN2cIy399Jze1-Sf0Bgz5wjTvcucBFbDH-uYob1lz_XfRQHf5QUXg-KILFRmPmtwkDMD8SHRCB3RISnDBw71I3IZxD-VETxdvwG_kLp_1jIHLO5sn_A2stJWz2ltj-K6V9NzHZ_3IBii8c3bdnz8o1rG4r-FLCu1AV7ait4SAqIZ13KDVtj24qsQElvz9lORuv4sJnryI8Vrucxr6uyf6YyfEAGJBBTkOuOmTi7nNQGSvfTVw",
+        "ATKogpcsJAl-X7t9BLC6XtYlR2z8xdqMnDlCUBbG33TVBKqlPqtIqtW8p4aO1Yj9hRJnrS2PQ3ji5_Cv8xsxbMUGrgieDfHqLlvYFyNk-XsRtqApzFMHr9Y-aRuft4gabvLQVKnjBfBmV7hE8pu_QFqRrnrO-F8CSxLAls_mNBKhylEePDFwIXCU3TIPuqjoZefPDsHP5xK0WJsGI2UIceylTxYZGD2k8yrbjVusCE7J8NKngANmERGoceiT2VhmJmEwaDzQwKr86OYVqZjnDJjjdVhs7nuhYAWnbzUHGZnzEOprzQ"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Vincent Jeannerot",
+      "address": "4 Rue de la Loge, 69005 Lyon, France",
+      "phone": "06 11 07 90 16",
+      "website": "https://www.vincent-jeannerot.fr/",
+      "rating": 4.9,
+      "reviews_count": 76,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 11:00 – 19:00",
+        "mardi: 12:00 – 19:00",
+        "mercredi: 12:00 – 19:00",
+        "jeudi: 12:00 – 19:00",
+        "vendredi: 12:00 – 19:00",
+        "samedi: 11:00 – 19:00",
+        "dimanche: 11:00 – 19:00"
+      ],
+      "google_place_id": "ChIJ8yi3YQDr9EcRoZonXDrbM8s",
+      "photos": [
+        "ATKogpcwBUoXKy0Lx36FAVJFdUTuL8TUxcX7NZUR2h2zeq1RUBRBfkaLgkvLPTRYoNhW7x_Qn3wFZNO9JwgdCVATc96XrQJZu7JBoSsM2Fo_ZsNm40v339VmQiaghC3y41PYMvI3Y5MVbh90yU0w6VU4kvZ6PuY8dN3G_1jXhxlb7a18_f7fwk8mbMVB7v9MVh4yXiMoqbeCZkqcYtkDYVswvuYtrWj17M18Zf98HtdSj4XYrsH60ten1Joyi1Y-WnUxkhkh3UPnU7Dp1CYC03SFwKoK30efV8mIA-UN6_ry8GY23WzdlD1vtVNa0l__Mi75udLUaTeuupheehPZVh1Tz5CUa7ZKXlSPUsALhtpCSYQ2dOTLL-GdLR2jkp5GwMQeYBo62_G-agQawIcs8tuwLBH038_47B8GCyhHMm6QXoodE7U",
+        "ATKogpd0Y_TIlA9NvQDjV-Wur4GdRH15KoSAa2MhAqZBp2uj222AdpsDUS9jboCgh6KCw_UvSMtq595aXf90FuUl-n2xEgBQ-L1QRUg7SpJSQMFMPzri-hKIOH8P_dYYZ3mrCFE4MdUqtRTP5z-UtaFDP6XC8T4__0tUD0Shp0dPpRfAdLfUZD8KrSeqayGNOH2-cCvHgbTpvqZKXqha_cleAnr67rLhaKipaGXK16g85VAILT6_qnYY2PxGBWGa-VZQCZNTh7dRucPDUbElR24AcVqLd9kcci1pXZM_hrj2SP0dSxQKLhh5oFB4qPP0Z1w9sB62ARf7dXIfJgT9MBVmaLR6pRxk6ew-6dibKvtkRqkmPXdIixi74Fydx-i555S6oA_CbA6texA0-gjZGFi0KXScmtqiQK2mpvpshdOEeg3riQ",
+        "ATKogpdIQY7SIYX62Rntamhdlpq_PjYCW8iltQg7Rky9VzFjoxGTqYSOaqG3KIXeSahG56wnjDGdQKQ_ZpuGasN9KYT701EFkPzmjKiST7cHBrO6oIz19BwP8F4Tz1pvDk2QxrydFssnnencw24BUhW7Xdo7hu1g6-xIlRd89mlLu8EVr11K9IaJa9ycnhGQZAPdpcp0lgz5HJK9rTqb5JPWVyASMnXI2Tn5A271xWgsPLgdJh7bjOYGC24eHtxoW-3b5sSlfX4mVozmyUH6y-LoEu8xc3topQtBqx_rT0oC3jp28PzmoKZnngi_tSDF0kRWMdiuHRvEp1IjWC2d8g4g0lwq9WgSQbTdORFYjcntVqdPGcZW0ZfQC92-8kNEjBP5EL42ApOMiGs43gdRHRTB0uXd76m_Cv2-FSF6E_YCAbuqsQ"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie Atelier Ahtzic Silis",
+      "address": "6 Rue Mazard, 69002 Lyon, France",
+      "phone": "06 66 52 77 57",
+      "website": "https://ahtzic.wixsite.com/galerie-atelier",
+      "rating": 4.9,
+      "reviews_count": 19,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: Fermé",
+        "jeudi: Fermé",
+        "vendredi: 14:00 – 18:00",
+        "samedi: 14:00 – 18:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJA6UXckzq9EcRH-mKiKNpC00",
+      "photos": [
+        "ATKogpeKFKbWjBmZZIjPf2i9jk5nH-eKFIs4_cv_MmLFdVzoB6ecwcRZ2mcfLzB0QCmg9zQUb0jyXRAsDUE-3Ur8e9uwmPkp3vBOLNJ_3fzKUfIuV_qQ5Vm9mLuBn8nj-Nf6-xMalX-OPgz41p8SMTMPfNyfitbxer47NlVaIIHNVLKF6yRHt-U7x31Cxar6EHQPTSDiBWGWq8ct7k1_TUpJsOhKA6Oi2hpZ-rQLCmM36D8Fo61Ifyh1hZFg5aVTOpYhPagSYXYr9loMbuBAhnPTJwfg8vM5Y9-SKoJlVSr9wTX2pA",
+        "ATKogpdvergSM5V3Ucbi4iDDdiLoKEeK-byUaRK2O_JkedkrShwtP9nU494s4HYrlrU03gXc_ve4QNzJl2CajY-39r2p_FvZFdxBxuh7sQg_tMn8ZqIgdxLkrrApxMHUWcXXGorp84qqjQFWm_7CEnPNH6rdprouJXrpcwrUaKVDYYD21yr7PQn3PilgfSb-hNYnFeLf0jChP1BQVMxvS1yQmWVu3zBbYDXBjEfuAw5kc3CVYLgWgT7EcWUu8dHn0C0SLN1rwB733oRnGW3-F4vSJKkAEomYUBBkzAc5cnQCcAVHQA",
+        "ATKogpeOQNVqmKskgxh_5X6LiwRnZOt0hgKBv_53NjN3YKoKR3Co5ZmrosVkOEHiLhzaV3mMVz5YFGlpQlLx1WpC4YWKQoEv-YQHHtWUsEo4NjzYKGNudAEt5AshASQTb9DaOddwseF-JlXwC7BBjUeLu-i3kqWuHqhCDaaUwSpK5LbGJCyxkBBfHrRD1fu9diGSBikrUiWDgk4-yQLXFY4FH1-M8filW_cLcfJsLzciyYinYVnn97Q-QHk1CI6FPby5PPeYdVX2cOgiv4C-m_5JeqOGmN3is28DaZi654xNJaotJyWrRpaA51ok1AbTDyzhvPJcK6nth-jkFdseXbj7pJvDcJvTVSrwMLAK1m0GnZr9BF7T_6wgwsVxxK1R6Pctl6Q7atjuZuYdWLQ1GTeDaieDJzVmT3ZVKYS22B2yXFzICsgO"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Galerie PARTAGE",
+      "address": "47 Rue Sala, 69002 Lyon, France",
+      "phone": "04 78 59 38 74",
+      "website": "https://partage.fr/",
+      "rating": 5,
+      "reviews_count": 3,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 09:00 – 12:30, 14:00 – 19:00",
+        "mardi: 09:00 – 12:30, 14:00 – 19:00",
+        "mercredi: 09:00 – 12:30, 14:00 – 19:00",
+        "jeudi: 09:00 – 12:30, 14:00 – 19:00",
+        "vendredi: 09:00 – 12:30, 14:00 – 19:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJIRvfUD7r9EcRge7XBS5ZUs4",
+      "photos": [
+        "ATKogpd_3IXnWlq-4EBqjc47lipSLw6GVH93sVRaumNR7zeh3wiYeVI5vCjfDtA6N8Ys7n00Gk594XnGKb623DPn0lZUJ4tXpWzL-xXxEG5_Z2Hb_TnmTiZbF8qyYg1fVlHP6E0kMUQ-T8vejaoMsgAuiwbMB8EL6MU0UaaUa9YhIrCKM-RVb3lG2lxkBYZbKbh3nydWoJl1pbGPg6iZpquxjwwI2b_nL7K7wA1hU3009wdZ0WT9sGQwbdi_QivQtrV00HNvjxfkmgIaFxJzqgeWZu620xcexd5z9Trp-ovwV3vcbg",
+        "ATKogpfrq1vGnf4H5DckKDv1JfJBv2IbIru3cLI9pLrwFAm88BuvFtYYazMtCoi1qoIwt1kcq6Yz-ZK4Ti6bYVnAJPitNEjCz-VNfDGs8RGLlGbXzsduaBR2A4vcdF-ZZLzbHR-KoERexX8fcVcr3Oufnr1ITYccsYoQ-2n9VafNY4pQOGWdcdxV7WR5IyxV5Gnih7_SmuDeeoZzOu7TmOzWkdPqOJaI19y_MdcUBZlT5jJhO_e8aX6nye38Z3u4WKGj_u5_NLiD8RDNYNyXMqp6rkj2UJo_jg0QKjBHejTiVi0rjQ",
+        "ATKogpcO6QMk07cCPsKo3W5Fo7P-62sbKZF8A5CHPDVFB57wusymPa4QBVFC8tx-hgKfO8jGTHK3CwFnqqx4zy6Amc74y2FoPzuABe3D_5cfJUOVmFhFoVmLoptiv2OAdVeRDq9z-9a3IQHnppca7GCPYUddPPA2C8X0zaZyzXr0PMQE-H68ouROJTh9NP3USOPDtnCi69pTde2VcunzEKNrHwuN8SWHrsYPkA5C6xsrToCsNlWquYq1sIWGhpymhuAVG4MH6WwM-ZPIDj8tc7dznO46fjdKDHqX5ZSGvxW8DWviHQ"
+      ],
+      "zone": "Croix-Rousse",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Autour de l'Image",
+      "address": "44 Rue Sala, 69002 Lyon, France",
+      "phone": "04 72 77 92 51",
+      "website": "http://autourdelimage.fr/",
+      "rating": 4.7,
+      "reviews_count": 63,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:00 – 19:00",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 10:00 – 19:00",
+        "jeudi: 10:00 – 19:00",
+        "vendredi: 10:00 – 19:00",
+        "samedi: 13:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJX2jR9U3q9EcREjUNrgP7dqM",
+      "photos": [
+        "ATKogpdmybaLSBQsdvDd_9qMD9S16yIYhOIYYjKESvksg3KipqXEsx5t1_fQnMHYNBJjnhYZsEET6qEV-os6QQIOC_vwgWKC3cgjF3hk3m8jKX4IMamw_ULuE8zJhqPPa-SLQ9iprUSSI4dqDH-iaQY__auFP0waEC3NC7pBz-TH8G64Qh0Eo5D4qZqLewn3wAmbpn953V-B61tpycQK7ueFsj5WcB2GuGAHgvoS_KxPHDjQzW6O4rEK_OK1L8x3PgD8InegvMAt04wmwjj0U_uGk-ck95I79a3LFmABvZ3qbu_MuA",
+        "ATKogpfe85FSXjK7U4Kjnq0BxBbyQmgsyrzFC3eDyRfnT7QTwzMo-uFYSuSqslXbBt23mBEnXH_imsmVtU8K14R2cNjwMwr6moUFxKckFbHFnZK9ajLFEHZijMjX-7fZCPUQSio4eJcRx63t6-7Nw8Na82VG-zAW9am9N9Otd9Sj4ZqoMarO2VqO1Rudynpux-9mUWItVYZpTR11eko2PnFfbfcKNwUjbskuxHicyFF4MTE-1TS5mfhnlYZCBi3ZfIR4F1LROMHT1OIxxVuAja6f4poxU01vibuU28e6ZUkg1Caeng",
+        "ATKogpf6ObL1Vi48sSw-BcZ5N4I0AXFWJN7yxbIUYJJrrwjQfA78MnnX4LZpkqfOVcq3i7ixGC4i8VMIB28dMkDZq-FipoDdPFuvT8s5oVlUNsvinJD_GbyUqJam4Q4YfhMqyhtMFjIQ4gMBtxO6w_4bYVyJICGJlulZcdckqYKlgAcn14cjwca4mFjQqzJUau0FLXxNImyZYMWXzyej806SXj5i-Mkn5ETKTVC1Fsl0qP1NaOdLd7htAHrzPw_bJvPmhhCjXFCWQj5cDQIZexhyosEWA4TaVnbDEnRJ4Gn50t_9jg"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Tomaselli Collection - Musée et galerie d'art à Lyon",
+      "address": "22 Rue Laure Diebold, 69009 Lyon, France",
+      "phone": "06 64 40 58 53",
+      "website": "https://tomaselli-collection.com/",
+      "rating": 5,
+      "reviews_count": 12,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 10:30 – 17:30",
+        "mercredi: 10:30 – 17:30",
+        "jeudi: 10:30 – 17:30",
+        "vendredi: 10:30 – 17:30",
+        "samedi: 10:30 – 17:30",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJBS0Gkwbr9EcRQg2ls0CXIBQ",
+      "photos": [
+        "ATKogpchb32XwL5EBsJ6qLtA_FxvrQtFafiV9L2xUGnm8gR9vO-2QSX8KLaXkcL-yu4QXdL8kmuAlZK47IH2rH9hMWltUBeRnu_iU4cD6a1tQaacNTrSLzWSWoyNu0oBAEiL6PfTN_YkrFvKT22o3xCuq2HNc2aP9aTU79B4rVFJ1UBz7T7oVblRMdFBtBgt5Zd5pI6DhiiZXS-8o9YHEQzKQNkepU6uKm3uQVwurp32oJjPQqtsFZwAU681x3jQjOK5cIpDEqQIRhNLmzCHihDKQg4m8JNW799TerSfGBv5xwOd4g",
+        "ATKogpdMmpp2J7Yxqi2M1VX5Xro9zMeoSCDDum5XhKivdiMdfkvaRogVl2-vqMXeWbMVHUQ647fEK5T5MeFKkp-JrlW90mjc--ULH2DIrHCALYmemKrONtBPx5UCClZ8DAxOq4X1o3l2IWYsQxPIbIbETEV2QcfahOwj5efTdFQ6uPF2SsKRG6uS5x_BmV1ODGh-s8Tm3ghcDIDuSbd-abpTm2wEMH5eCuwknn7NRnEt-wWnWVcWr3Zbst62VMCeYJbiWrHar13SFI0V6nn7CkG8kbRUTeMSg-YXHL3DcJu36gH58w",
+        "ATKogpfR1hpdrrxddKTfDIRcEP1qyFn1W4UrPOMPSr6WXSxai6EOIehWtgCYnBD4a4LqkmjF0r3YW6zuMZCrB3ZNO6PWi0ihUzpI2i_R-F0xrYm0PQNlnIX90_A7FRSV_v2m15I2A-QYJIcAO1_rasT4ca6qctfNI1pGWOK8bfZNNmVDeZVwaiZDeDXEePLxtf59c16ctGDOp8PCeQE3rabqupQ6nny3ivZ5dUcc7TJYYcetG_SHFFyuJLKRA9AbgbvL4VaokNU9v8I7ltPrdvBx9vTPQET928ija3YRVS6tQHirEmYQWBTdYeL_GC2Zbd7amiPwTzmepAwHXWXuUpF_q3sA5wcAqRF045klYxp5w51GPr3AYD1OeyuFo74RgqTlpOH7ildJiMs97dM3Te_jly8q0arK1EhtN9rcOb1tq2ZFEg"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Racont'Arts",
+      "address": "13 Quai de la Pêcherie, 69001 Lyon, France",
+      "phone": "09 70 35 54 22",
+      "website": "http://www.galerieracontarts.com/?utm_medium=referral&utm_source=gmb&utm_campaign=lnk-gmb",
+      "rating": 5,
+      "reviews_count": 8,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 11:00 – 19:00",
+        "mercredi: 11:00 – 19:00",
+        "jeudi: 11:00 – 19:00",
+        "vendredi: 11:00 – 19:00",
+        "samedi: 11:00 – 13:00, 14:30 – 19:00",
+        "dimanche: 11:00 – 13:00"
+      ],
+      "google_place_id": "ChIJj5SGl__q9EcR9MeVoucEyvo",
+      "photos": [
+        "ATKogpf1T4O6Zv-lqT-SFXlOYAGfyytTLlkbvNIl3jJL86QxC4cWD9q9SKzdhyqGCEL6Qe97gQDu54IDVS9msSHEsZrOTg1VVFk2FY_KjB5XN5x6OTETSK6rZqU5YTfrwTpoIxCyEoyWK1U0UPZZkqWYsDws0k92HXEp_68uWJeRnoYaNEXDHsvQ5E97epNDDEeEker0CRQHLThfExBWhF4NsZRLqel0gGZsglLZl_fARlfAN-mph99ygPTbZkKEGPL08vvTGyTDwIQqpSjOSbji1ZlPfuo2RG38PgzVifooH8H_D-L7zn3ukCgujJMSz4ICDNMnnAWMOKmePR6e9alP68Xw8ee1yn31dmp_FqwdL2ejVyg_-1Q2s3_OkABuv2CDhaHIYG0OI9J8OiyYgr70PeG7xPr_afgnJ0lQlHFnsyFemsMB",
+        "ATKogpdxe9xlyS4rnuWKk_icNO70KeAb5J7-Lw_jqVtp9U4d3gGtm-Ef_50Z2_M9ghtXG1InWFz9afc8DMjPHruFxVXA7bWUmteqZegvHSB3pTd6Zi-jJKGLEPeaS17RU_GSamDNOP6d_4jebO-f5JxjDEmQOy9W3UkVCGJlEJems8jW9yr_iHuw1BwKeAvk0aGfPC2xzNfqKtwf0lXZycM3yzVv2XxZSVJzg_UUok10q8suhrMmZ40qBoXhdyalpRKFht-yL8aJf9vop6xYm9C9tyDA-FTRDzrwvyV3Tlb0V3FVvA",
+        "ATKogpfFRQA30sxK2LCdoks9HexImeeq800f8rD0Kf42PkkxAXn68zzqLYZLI2tL9lpMHgDwx2nmzCAvNtp7acbCqepjIDN9EG96ZZ6NfubWI0PzaJqI9y4Xi1HRjUeqillMIqD9QW94d-3P2RLtRec2o2cOBw8tLuTHX-rK8KByH3J0Vd9hRj6Gmizknjq3APrlkX0RobgKJFis3ahip1pCr5Zmxgj9P4bNGOGzpUYGKjNfMWjpWsC3xq95pzSJOhhUXUXQWvjQWlSPAistPnHcZ89YjaZ9Ql4P8Tc6WiGtVYr2-LRk13aX0SrmuscgiLEabGSca0O5jP897k81HnUJENdI7DDXxZy5YHJSpR-418vm-5oLKoUUhDElLEP49YsHPQIDHBUk1jBgMrC6UyQJKlln6p1bIAPLvm1el8_jWIuMNg"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Superposition",
+      "address": "18 Rue Lortet, 69007 Lyon, France",
+      "phone": "06 36 10 12 39",
+      "website": null,
+      "rating": 4.7,
+      "reviews_count": 144,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: 17:00 – 22:00",
+        "jeudi: 17:00 – 22:00",
+        "vendredi: 17:00 – 22:00",
+        "samedi: 16:00 – 22:00",
+        "dimanche: 14:00 – 18:00"
+      ],
+      "google_place_id": "ChIJZxSbC__q9EcRGdvXEEZg9Y8",
+      "photos": [
+        "ATKogpcWUiY2Xik1zGSI2NxRzne4rSpd9M7MGktZy_fNcQbjx6gQXviggoTn-1YKHGhY5ESCAW3C8vOgHQqNQ12LB-XhTNmglj72zVnLCm_9KqzMW6zHPI_MUsTFehbAEprBgTUNjmdnzns5-zmyXI1HQG8dsVwZRIpI1OiVM83aytWcTNACWHO4-FqofWMjXann-kHTnjBPIEx-rf1JvzQMIw4k5J4qYVLUIZAGr6_S3yKsWmTKuSR-IvS8LB5eJn16HKtCPdsRRARU7-E8dUElHmxSJFmK2_n5DW8T8Xwkx-yVzA",
+        "ATKogpduiEkpBokTvLejunbu4wE8Du6QE1ygz_da4-zy0pCxnqnoGVgRu-crpqeItGQ6eYj0D-va7dcSSyaYduaTmF9oURL9pgDNnFwmnNgf2P2swJYk04cfYd79bZjKzal0j_jjTL6Upmm6IcfuS4LByvSRwcciEOzmpuwxgcTkDI4nxdDhmY30OcnfahQAAXKF4P2sCxfAG2u_w4B7XbKqqSekE3uSXE0nPhFsDVgozerBU-Y7-xmllamwQxZhRIvmTOQAT28GrcVBmYJ_PRUEhJHABF_SAsyTNsKjGyUMHEEFEhfQG-wrGWsWlBgrgiQETZqRIDvV291I_yxQdbFvF2j_Qcm4jXr2_vEIX1u1RewkNxRxcCB7n68nOnPw0mnxpSxXIkFgi985ChAxX786S1RyFZVpUuBMAoLC1BjOlFchjRgk",
+        "ATKogpfxw40CDoTMRnddrtiuKJgLFSW8GuhNd_KCTt8PNcr_Az5GaI5ovd3la8oCd-KYMyWtECx-hEHcWvMMwSu4pPSNXnOkwI5ZO7RpWasQ5FOCWOyFOXA8YOfq3ZenHGRqRH_4WK2M6uJA4fOqyn0IHw2CyTV0wTAEt-bfv09Q2fTJkjFlbRj6zfCk3p-LMDwsydzEs-GibCevDBxTAyfcw94tWKH-yU-D2O3WJumLPld0jmm4BFprJpcgy3iW9dinGKU6Xf3fsSMvr5mCPBdimRrQ0OC0EIXbiR1z5gATJSVxBQ"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    },
+    {
+      "name": "Regard Sud",
+      "address": "1/3 Rue des Pierres Plantées, 69001 Lyon, France",
+      "phone": "04 78 27 44 67",
+      "website": "http://www.regardsud.com/",
+      "rating": 4.6,
+      "reviews_count": 17,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 14:00 – 19:00",
+        "mercredi: 14:00 – 19:00",
+        "jeudi: 14:00 – 19:00",
+        "vendredi: 14:00 – 19:00",
+        "samedi: 14:00 – 19:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ8QcJtOLq9EcRdGqArDS1Ocs",
+      "photos": [
+        "ATKogpezY9w3Sw8kL8w4A2bg1pXjRPgyas-OEhdeBBNFZRkchvQt5WTotb3_DF7aYHQAQ6WaxzV9n3YAwMsvf4LsC8v-785ccj-TCOJHsPN7a8xVr9UEbyvuH7KOSWRQLcpSgAfqkYTxt_2bs7XLQPIRS5kQcnoplwHjat6BIDvl7yMxkS4mftSVRe9TbQDJp4-Nbm9Tvqd0vPMmM_HDT9Up7zW94Xb9721xggTIjAR5qIEZ0oOWpqMfWcN8y7SU19ljDPE425foQh9l8SuQ1NpFxtqgKQ45O-X3syqXqBjZAIWlcw",
+        "ATKogpfdEGpz8CBj-77Q7JdXpS9tJZp2yXb1CrLiUK16q3yXP-DbH6XUYIgq32xbZkp80DHo8G1uGwwr6reZkOrNo6CHDqnNCYj6g4C2OU6lhQebk76WdwoU2nx2QqDT4gPGmP4G28jk4akmhwjtcsXld-P4rgd9XRvgrfr4m1DugxILhCHqEV7zS0Pn9F-Pj1lCWvMh8BN41HR2mgzfNiHIjmIpADwzRo-FdFknzAX5Lqoc609XeEfG25pB_HLJHi8KYL2iqpe9OwrAEfzcccCSynnrFq_iP_NYOLxUR89xUrY3aQ",
+        "ATKogpf5mMaLFSYFVETSwts5-0X39WC1iS0nslU7JysaS6xNu9TusT8BBwRMRyXaCIf_FLuUHq9MAyM5g6AOqJ7iY5W5JON7i5Ja7ZzKLavwyfq-UPF3uWrzKFTl07hm2aOMU_vVyVu4tteJ6cSPlNO8HcracmIW9uKUtG0E0PGjQ2YzifYeqjlZnZqBEvn7tVuku8GZir_12Kq-i7v7-AyOM0Y0-qXqJfIx_xB-41OQN0nGvfVQJ3KdH5mrsfaY2LdJYRDSIiYRR4zUwOicL_0JhfteRaODhX0rY61DlHGJ8EFI_A"
+      ],
+      "zone": "Terreaux",
+      "category": "culture-loisirs"
+    }
+  ]
+}

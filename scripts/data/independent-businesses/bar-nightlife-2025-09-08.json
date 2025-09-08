@@ -1,0 +1,1038 @@
+{
+  "sector": "bar-nightlife",
+  "count": 40,
+  "collectedAt": "2025-09-08T16:39:32.995Z",
+  "businesses": [
+    {
+      "name": "Braise & Vin",
+      "address": "17 Rue Désirée, 69001 Lyon, France",
+      "phone": "04 78 28 64 10",
+      "website": "https://www.instagram.com/braiseetvin_lyon/",
+      "rating": 4.8,
+      "reviews_count": 220,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 17:00 – 23:00",
+        "mardi: 17:00 – 23:00",
+        "mercredi: 17:00 – 23:00",
+        "jeudi: 17:00 – 23:00",
+        "vendredi: 17:00 – 00:00",
+        "samedi: 17:00 – 00:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJYxseon3r9EcRErwrxijNyHE",
+      "photos": [
+        "ATKogpdpHraTMjk0YZOA-BfCCLNs1GHNYi2B1y8XAcW7xQIm3pk2IaF6KCVKyv9kGmn9DGg4fsMpNfSnjpIn2TgoYVLS1NHnmJZQD6fIlv56bzS8sLRiBX9s-Su56EA9VTdHbYi9pByjXQ_pg6QkbU60zOr_n6ds4HnnvEbf_u3SzBpRkDw4EFbwcP8eHu4dm7SxehiKI-6TeHC8_Q6hfmgJr4P42MkQ-ha-7mGztnICXeY6B-eJme7zsUNxCuTUQuBLfn16GaJnE_5V-FymIYPPCrpS4lB_bVL85CFZo2_67q4GOQ",
+        "ATKogpcp_CBW355H2qf1e6B_XlufeS9oaMTPyUMzftEsgWQTshREYmiMfZxiyy8Ot5s21dgzoGylf42BzH1AsfmwQk7GuHQswRwEXrbHkoDCjvn-otAUx0hYyvTk0ogUXc4BryDU5BUcoKHyyehxaReJqVgfSqiIQmNwA4xk2Q5lRsaHBueprMBY4mX4ugsQqQrpmDN7tfp7E_zLWQtZY_5CV4HZgDbGi3GLOhqqdMMT4pvmjBeZNC5dUNSbz0uT5QnJHGoek1GWcl827fon1WGw6qsLupkzaC356IhGDOfF-8pxiQ",
+        "ATKogpdfTgRltfZ3dM9LpybqHmgSB9okP8FWASzI9aSDHOYWXeLyI4l2gYcwq1ZTEZc0WUcfKtlmRmWYoM4n2AEH_4aTLe-Ac3F_CZX5I8zWI90aDCzr1Pi_Tv1p_p3VEgTMWUoSZaOKq6ieyV-dEngrQVLAKvcnd6wxqcGpdpBxPZ2w1uHjSItwXS50ug-AtXW9YdL7P0TrhumVtO-zYXOQJHgf2BY7YItSb6RevW9vlv7gd77kBG2V-MSzmRvfZ8Aet_D9IwejbRwec0LZ3h79AosaTkilXPZutffEqj9hPoHwekwiiYu_qJ4B8SGWGCZNeSed5vTeVFaoTXlTYN0vllDtzfJzLuwo8Psr8MJugRbsR0lcjIqsNCAnX1xXOk9qIJOwPayRNuGd58GBVEkpnrVkN-NdPe0NRC_IyR-4Gx6whaAlCNgVVTnx5r-JEBkN"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Le vitis bar",
+      "address": "131 Bd de la Croix-Rousse, 69004 Lyon, France",
+      "phone": "06 31 16 63 27",
+      "website": null,
+      "rating": 4.8,
+      "reviews_count": 247,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 17:00 – 01:00",
+        "mercredi: 17:00 – 01:00",
+        "jeudi: 17:00 – 01:00",
+        "vendredi: 11:00 – 01:00",
+        "samedi: 17:00 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ3-EXxebr9EcRF8WwDkI7Suw",
+      "photos": [
+        "ATKogpe0_eAPZP7Zo0N0No89PQn16Kl0Ng9VAeUfcz-T4v-WXS5sS2xmEEIzV-eBhyzDppEmJBQERXvYH2WWzBs46dy47GzpeEOd75XDE3XcqxzWluYPcpaCH2XSBRZrfrp0HpwNKYOx0cZNjHx0UvfxH7dARoFqJuJF4R8uIHa710ntLchWzUOoNeYa1jidnIuSBX7oJdEZfCt1SJPW6WK-mwOEhOCmOW0phW1tGfvfC0Nn5r-cXTgLfPmTe_ytsZfm0GtLurS9Zf6JeOX8M8f-WYB5AhbIDu8hn6o8N74lB0W0Ng",
+        "ATKogpdt5aeUV35O41AWz2jKfbrIRLi4y42zSAjKQZjwzz2RK5oG0otNoYx41IT3WBcdQAVhrXqSMFo4De7Q21Df5IRn83Dh044-CLa1jI5JHjBQ4Bw8VMviRelB_pCv6xiMFbig-stqBmZeN9zMhcIBeCdvd3YwlIXNXY5avSUWUKMT5Hq6zyrJSje_7taHjIEvCVtpuvt4gx5zHCn8BOX4s6EoBr3LprzqCyYk5sMJGGL2UcY4vSyJxak-oFNimoCu-fdhc1TKKuyczXUqXEXxijUXrYi5i97LZuHTOI4ew6G6TA",
+        "ATKogpc10qKQQutYyNnQNAJotMXYzWSXJnIKmog8DrSfRx9hk35fCrMj1CJ5ub1qvX45Lr1i-RCHFR-yG30tdjyWw5cSYDReMAkD1Q9rJt51fP9z-elS-f3UcplaF2Elp6FCNtcMD6vpSm3uwSdaqathNYz5Pl6U0_8otkqBLNhGNPua__mvNHP8J3_uZWEDlnE_Lrsq5uvOYCyFEavzOvnFVM9YwyUba4ZM_5neywfAgjpC8HYrogk35A9DxUShZVtM9O0i8WHyr-l_uXw-7mr3VFJE-FL1yG7ZxnKDnX6bLP-pWg"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Mademoiselle Rêve",
+      "address": "215 Rue Vendôme, 69003 Lyon, France",
+      "phone": "04 78 37 68 14",
+      "website": "https://m.facebook.com/baravinlyon/?ref=m_notif&notif_t=like",
+      "rating": 4.4,
+      "reviews_count": 468,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: 17:30 – 01:00",
+        "mardi: 17:30 – 01:00",
+        "mercredi: 17:30 – 01:00",
+        "jeudi: 17:30 – 01:00",
+        "vendredi: 17:30 – 01:00",
+        "samedi: 17:30 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJgyqsLVzq9EcR3BSQelHZ0m8",
+      "photos": [
+        "ATKogpebV6-bYoGPdDld01_N_Cdb9O6JyPae9PJ9f1fLGsMreLauF_PqGlf489N57p1AjRtQOPzR4txi99YrUyefHYWWI4lGgauoobgJ0rGezFbtPhy95kf6_XVSwX_Ij-zMAhNj3r3QjFel-f5NoE-io36DD-WhJw2tZKWYmKWZx_KxxFselcNhd5nzCW765lqMutqogpb3HXkRrFsOTfuEW6OnUYwC8QJJTMrKCeIcrBScU7-xesNpjrBNyrj8qE28XpiJATrz_a6bbfiIN3jRHpi7JjOVL1AKaGG0obeXcA89CNy4xQfeHdmdK0SsMmEi2vNjyWr8XJxWtdVSg5OAq7gL8JvFjHbtotjaHRfQv7iOAsOr5Xnj-EyHAzRDfkiY7romasYP4haZdunYDg7hkOPG5iLmK_kAWoD0eXdylFiLO471",
+        "ATKogpfLTghHR4WeGeJoQGxYcxGULnnqoQrr9tI7F-BZvaSRNZv-NKXW7fSafsrS8uKRstO6u4LJgVSegaj4RIs5aJWOoPeNJc97vWWS9Eue60xHWTrMWREqecMJPvQP7nseB73Q4vSpD5Q5EPqugfTnUxGGsOfGKojay0P02uLk0O0ATGh0Pkry_04RUn28sNYt5n9eQM5bJEIsqd0kULSlUydENZQsbufsbCHEd9UAuwGxqqfrrKW2n0euRP6UGPgTsjgqnx8t_AVXXPMFnetZ1TvruRGDqrZmylybaFIKYHYk1yxfLNM7ycSuSp5i_6DcZzDPVpHHQIKlEreq1DPSLs3mEGoVjbuspPzrCrhWvcVJ4xEyp6OdN23auN0z1_LlsSTZpbUndCoGfTy0fBaYzHcfuNw1VA5RpdJU_kN16kRtzIqp",
+        "ATKogpd1gUH42zrCKCZHc6wZxBrKDFr0sHu-zYCD2WeqlVW7MnnDOH7f4BfxRv1qeRsegm5MmzrLFa0lo8zGm868fLpITjNLxvgqfy7l3TrrzQrhv-LQBsbI0O2HWXT0HTSSgt-rR6weGlM_3qDhKEvZcT_be4JbCjWLtqPxb9ntc0GX2sPLsWwlBhFmY_aQJj9s8k0jMRlSJ0Azh5ZKHj4lU_tyd4q0XoBJxDYw9sqYeUEuwUzXc7PAb-5l5DbdvxyvwJUjGtWawaV1lVoiefZvLt3TB39gT2G4Hhs_oEZ6aa8Um5ezfZeh1AThpLHGTbuHmxonUM_eXplUeOv8TCom9Ey_apaFp4XDIa5j0P1WVR5g7GjIAn1tZlc5lpBDB-B8dfUzl-9wtbVhtTAJCQxnK02zacR1AvEO_fpSi08_kgkjwkY0"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Octobre caviste",
+      "address": "24 Rue de la Platière, 69001 Lyon, France",
+      "phone": "04 22 91 17 98",
+      "website": "http://www.octobrecaviste.fr/",
+      "rating": 5,
+      "reviews_count": 129,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 19:00 – 23:30",
+        "mardi: 19:00 – 23:30",
+        "mercredi: 19:00 – 23:30",
+        "jeudi: 19:00 – 00:00",
+        "vendredi: 19:00 – 00:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ5aqKgVbr9EcRKuHyuynLLTA",
+      "photos": [
+        "ATKogpfndW0RLMCveHB4-YekfCFVhCVfkVa7Duq7SVXNvpsXgLl0LK2c80hNnOIEKnIoSDtipR7bqaleozsLeRxbSHqGi-r_LACri3j2Qc9C8tX6j8-X0JBCKnzeWdVyskn3V1DBK2b3C6_WtXMSlin-W5qJ4fcPmBmhagfSPZ26hnQ0WAf2sO7PloYuHS8HUURpNyonwT5HVI5MQBqdbkXuQDtdaGKkYyyFk1BJ_XQtnvsyC7XVpYgsQPtPibCTWrk1Etmwy5aASB_Nv9IvgIW53m9oosySUqW8PYNJbxLgYCd7OQ",
+        "ATKogpeZGe9pXeqhwPsLBmkhecOCD5f4bqYy2cAS3x0kv_LHAt_BCGP8k4fRegig2496Zjtw-IhQ_NQBFI-1qwvRYRnrH_1zsa8m03gBeDDTe_ZOS9xdwduEAmnlVJdBvcdnOyltQc7nSgMn35gFLQ_L2k3eIWVqRHjjPVHZEW_n8czdCAcIGLt_Uivno_cbLuFe-kTagE00iED2Cp5LtRImklZreFvn49g40NhhAm_U72AyImOlBHJ4aCC44wCoKt5L7dAuJSPjtwry2Ol0ogYpEedsEinlLTGaYSaCaAcUQAzMXg",
+        "ATKogpf2eCiS9bLTPL0d4bZ6lGKswSOwukf2NA3VT61Icak7dnsEXo7fnDLMygbG8sUqDoDoGIbdZW16WP7dACpM7Xv5hovVQoP0ViwpndbMcDgfPcsaq7wqQFXC8EciU0lrlbi3xDjOzgTfl6NWF_d4zlgFj3U2GQwSLLPLxYLR_FQFFvb1lBM9_XwdFjTZh52LPzVOpLaj8upmHenaFs-2sKu9YTkTwJntjte_sxUgYA0b4JhFRKDt7czax8awpIKDrjBVpIw_ehkCx27JN5GYJCUpd0UdsjLf_FL1-BL8aeEMz1PuS4FENhsp3c6kKZb0ysw32zwY-tgxQhWVbL0rT44Hx9DzVLMJ9163oQgkgdjj3DiifrxiDEw_b35-i81RDFGZQHztMsIeDEaTeA1TI7Cy8wrIPtGxJ3wioQZuIjJph0A"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Chenin n°20 - Bar à vin - Planches à composer",
+      "address": "13 Rue du Général Plessier, 69002 Lyon, France",
+      "phone": "06 89 79 81 63",
+      "website": null,
+      "rating": 4.9,
+      "reviews_count": 231,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 18:00 – 00:00",
+        "mercredi: 18:30 – 00:00",
+        "jeudi: 18:00 – 00:00",
+        "vendredi: 18:00 – 00:00",
+        "samedi: 18:30 – 00:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJYdDcu57r9EcRIJl7gbU6-PI",
+      "photos": [
+        "ATKogpc3D6Wwjf0TUK43w4xWIXLRtgT3-S1mqeRo9HgxZlIcC0TYlBrjPpuMXNMfXMM1banIFZaAIv5A2rCjT5c6TosftleoUlkHqUz1X7llBYbp4es7roBXEjl3Xecw7crT4WhKAhKFxbd7IY7HzznHsW1M70QpPurRu4c8Myo8QXLm4gohjVnJNxyxhtqdT8VbQ5vUUhptxC6qMXiPWRmL2y48Ya-7AjAlWYAPZdUnPI1_1X7gH8HiRdV6xNAtvjQ57IXCxz1P2tU8tgY9hSvskPrLd1Aoe8AhTNQH33GBYM7SBA",
+        "ATKogpcMHMt-bogaKOkMubFWSjyE1Ec-80i2leYHUB9q4pYtVW-SCV7oPC9INWHAqslsD6WK1CIChkzHfRPw5zwybwt42BjDANdEk4fb9z_6OVuyb5uE8tWQP-V7iEpfsDNEbiLlzltODiC8WuJVz_bxGZKaly2yQKc-tjYK3S4t6JJM4r8G2A1si9ybDF-4XdaQz1HCNzEx3OrxE8Bdq580HKx9JKCqt0gOVAsyG943gb_77jE6lb_NY3yZobqZc_qIQ_6IbLKtqS8hzDvMU-oDi-lV-Cz93B3UmPh94M88R0toxg",
+        "ATKogpfTbVhF9j-OKGcNfo1EAPbGCPH-aEcCSVdguScRalYxIUUrQ0aHfCK26F7DQOlySk49KLbzkZYLthJrSaNMUrX01oPbqU0x73Fnc1brpLQCaQZZS3Hz4XipgHCZ-WMA8vvCfXrQL4cD2TaKFrG8GA6toO-Wtrw_jE3b25phpSmShhrV2CNm3yBOfRl2_oXrKOQwo58dZyVURbwfzI9XVjNLQ6iCKeYNlcUzr8KC5Bu3VjmhzhDu1_OfGwu-gE2nxXaw8Qkq17XPN-SlLXZ2FY8CeUo8bh41AZxLCEXkClkv-AiZpj6lMz_P7M11NVKxj3woiiekRypPqcmA9YCll5I0Rh_uke6NQULxX130-ctTwkRLZ210aUtsPEHqZuZryFI3EVVoYR_g4xvD6ZsdGai4G6mVVou-gxKhIWOnIFdsYhGKJqG0Csb6sXbm1uZc"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Sauf Imprévu cave & bar à vins",
+      "address": "15 Rue Vauban, 69006 Lyon, France",
+      "phone": "04 37 24 39 79",
+      "website": "https://www.sauf-imprevu.fr/bar-restaurant-cave-a-vins-lyon-6eme",
+      "rating": 4.8,
+      "reviews_count": 94,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:30 – 23:00",
+        "mardi: 10:30 – 23:00",
+        "mercredi: 10:30 – 00:00",
+        "jeudi: 10:30 – 00:00",
+        "vendredi: 10:30 – 00:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJnS29jpfr9EcR-iGJL9FMx0M",
+      "photos": [
+        "ATKogpc6pIDUnwOx7RRpBgCQzKZ9_wHKSwzjoNxr8yJ6lfnG1ajqWLeGKTs5e4oOIeZ8OF9mfvbN7HI_WHwz8X8x8w5ftXH4Vf3GDGvGSD5fhbZ2YlA7u-lhjwy-9zJqIKvvTjhhwpp0X-b8dnBza3QH4q-tbgtv_Pk8kSehLyNWNMJRMV-mOPMR7JLfm52lS2EvA5uoEKAUqRWWgD4f1VHT-aIJtgjRV2KDcO_W5awiYWo3TY1FQ99MKFbNqF3x6WsA3NFn1_RwWqbyH53Np5hZjHd7jwhQ34XtB68j4CdQ-oodEQ",
+        "ATKogpdUXA9RrwIkPqjavK8h4M2Kv6ZOfIgK5YGylvrnEN4V8m6W_JLkH4fgcpCPu5MzprthEA-vo_PZUfrjTmecuW0ROGykU7R9gERDR-q9tawKr-L-nMzH8_8532FCWZiMuNgXg5Vu2qb-DdfZ07npm-74TZeFoMtNEvfxBKuSrAXaScVpsxOj7Xms7AF_ntF4Lnc6rslkJLeXE9MFxDK7t3osiPQkHLzHc2GDWWhmjlKNTc-4sZlXZ3O-Nil8sYBKxvXGh7GkZuHlhBIcrrqmf7-js0TEphXZmKkh7zopz513_A",
+        "ATKogpdMlsjn47ztYgZtiR1sVO_Tf0eLvB5bpkK6OcCyUoPBPYTBjtHyy6iagBH2xX0fzbblN7QvRdrmKUtNSE78NV2sSWuKnboWhnxwB8OPyL7d8t2izFn3A9fsFONvFMt4YJiTF1LxTm6pAItxJWw2EKkwPVEo0CqLVLS_bywNXU1nMrpJiG03YBgrhYT2PPD1yONvoZ4HuRc_PGW31tTf5--shpoq0nXMJOUwoqEaxfaBGui3cFqYOLuaisxnn1KcwGwrVaoyUHJY-r-lZ4mZyMrZuQSFIMy78t8nBQTj4PcnBw"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "GRANIT Bar à Vins",
+      "address": "44 Cr Franklin Roosevelt, 69006 Lyon, France",
+      "phone": "04 37 24 44 60",
+      "website": null,
+      "rating": 5,
+      "reviews_count": 27,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 18:00 – 01:00",
+        "mercredi: 18:00 – 01:00",
+        "jeudi: 18:00 – 01:00",
+        "vendredi: 18:00 – 01:00",
+        "samedi: 18:00 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ1fdcSynr9EcROlGrf037nm8",
+      "photos": [
+        "ATKogpdsOjX7OFSI6pk50e4YBoSBoimE3cv8xW7mZkATOZO6R5QoORDzkKhrzsmmRUcK5WqHj_zrHGq34-dgaqLc2WC4DDUhC0cO9yBS3pcgxwPBVlpqqy_nOe5nQmQLrm1VkkFHSsOu0kMkG6lVLJn5i9HASJhkz8K3TjlsML83HDMs7QtaTyMP2G6FyA-Qs68bdTgBwEbNVIopKqCrrGNjZuuFi3_7Lw5xTEvqnmyR30rKXhoOYDkoZT1ZtmfBNZbjsG9GmUHOO4wJUmIu02dy-8UgbsBxkx7WM6LgEu0FIe3S5jj9xA4B2IXKIox_3T_SOCA32r5Cth3V9nBLFGJeBfVt3oKRpGB_yBORewQ-FHgmo6GbGatDmHAUq-KxSrhi9EuKLv9zIMm7FUwCK0u2JHsEWUwRxvucBsWOpcZY8XJgRPQMLGEih9odsPpqvQ",
+        "ATKogpdHp1_8Ze1LO6-jONo7U9GOuhoaq-Ti_2rEzi8ZIiiMfN9KVfL7fu0InoHPwJB6rAoNySKq5Tq9LtRV3bFsNtUDGZhwT8J7w09qHUqtuqe8c1ObP4FNHqDqnyg9KfSOsls_o2UTN_KXvZltgKZM9UmnUf_mp0Qn1ChtCN8iM53b71QxPX48YaIVNjn3NPI-GbU41i1DJsZowqONbGX1mFsBQGHUP80dYEIDthCYJ6JNfagntOZb6b1d8wufC8fMzZtY5Zez3Ynfp3QsRhFZNOgdqilTRLdUtQg5iYR_UGrVXN689zVsFFvFz5nnrqTrY0VGjnuYwakehlfOgF94XxwUFJplwniwfmQmGS_jpCJeh-ki1m1rFOv0nf7-DmLO_x1jPwkd6gXbbis67PuLxOdtKTjd0q-ejymRIiHFeHu--LVwiQln7aFLTvhdNYQL"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Le Comptoir des Buvards",
+      "address": "76 Rue Saint-Georges, 69005 Lyon, France",
+      "phone": "09 81 72 61 21",
+      "website": "https://www.lecomptoirdesbuvards.fr/",
+      "rating": 4.8,
+      "reviews_count": 44,
+      "price_level": null,
+      "opening_hours": null,
+      "google_place_id": "ChIJK6A1tK3r9EcRyZShz3IZ3Uk",
+      "photos": [
+        "ATKogpch6dqvKQ6W2OlGLKNN5CPgu2CMAez4GxHQDs1dF0x6jOR3mME3uYUVOfRPqk-g4-4i98vv2VM4SpbXTQrvDqAuM41BSK1rQQ_V7bWgS-pEXWpDxlYadkzrWAbx7n1kiOZ_Re6YBc_UsN2lFAYMQ32jOLVVqn2g1_dvNFIgL3kKRou0BWaMqoQbgCh-KstIauxSb-a-Ny68DEu4kRMmgZVhArKVlPsXPoGQDT23WJUaZ0IpLo11l1-o4HquiQ-1iN0xYgUP-0Y2ljrZLLk52Y08PFp1Ojoon6DI5DtdJTtsow",
+        "ATKogpdItguCBxOuZISAMlj0tj7os8N_0wQ3p-e-ZM_r07BQ98hE8pMozR68N1USNpbd_AYREIcD0O2_I6OVnoQBYC5UUjVKdQtEFCps5AtOJ_nouyiSd4RURnPE-UB4wt5ivtqZyA8hncNymAcbHmC43oiDQRj9DcKeToaKGCFJ4SQr7xWTTN1s_s55bkFBckmItUt350k91i3hJ2EXDIuS7hmigVNx8Iqre0l9E3fLtQAyRCEgndQlBlExlq8t1Rk1okhExox163GsqVsmqW0c4ZB9WJohRPXcz9CbOdmBo7XOzQ",
+        "ATKogpdxffPmnvEemiebgRoSGV7g18VahxGrnQ8M9kox3o5n2dmMo0CgXp-cg2ntq2L1_gaPDcJwTqvzRQNbKT01oYPJ_2hM1PqKG5h8nBKDm3oy5c29Iqj62nX69P9jcb55JZ1BeggK9vldJqSIL-0O-Ar6VHBjawuF9H84YH5ihd772OV_u66TmHOWe4Ihk14YQ4qwB5sbmrgTseKM3_s9vHzGF7LhyWy4LmueJwjChHLMTXRst_XgsiLk-FyyGY-BEc3GQJN_gnaniDE3qoPokKwP32k1_sdPK_8CzvxNd9FudPk4pxX8f0XMYpaCeo-rEIrLn2rW97ZvBAzu19ZDeSpAotitNGoyERhby_uhG2sSxFteBgegzaR-gAz4IF5ZKbUWhEFEfRy5fA0_JfWL39YohdVJ6aBiAARtO3M0YLqVLyU"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Au Pot De Vin - Bar à vin Lyon 2",
+      "address": "51 Rue de la Charité, 69002 Lyon, France",
+      "phone": "06 40 97 03 36",
+      "website": null,
+      "rating": 4.8,
+      "reviews_count": 163,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 17:00 – 23:00",
+        "mercredi: 17:00 – 23:00",
+        "jeudi: 17:00 – 23:00",
+        "vendredi: 17:00 – 01:00",
+        "samedi: 17:00 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJl9cHrFrr9EcRZwTlP6Es1b0",
+      "photos": [
+        "ATKogpcUvcpuNaRrhQTfgVBVjALV30bmaV3vxj1nriR0smDLG58-Pi9ry93oINnpQPIqrIIhIw6HFxT9YCROCb0BsFulWBDbCiDx_ohePHx7fjOLiZdyPOxyR_K6YvXcWKAIqezAsvake5p_xRW3C4PNWRMYZT4VHDnQeAyYX0XtxLlfd0ygrfx5ZpNTNzs9RWRSrprcwG0aGo2ZHSlL7UG4VrBowvPLz14EsBwJLqD15nNS2NJK3E2yBju73-Uu8oFpn-hiJ1Xv70gbKQ1j8Y0t2kUTS3r9KnSqdpUSfdELvUp-Lw",
+        "ATKogpfRsDwzxBBpUNh2NwMwE_WOw3NIDPJz4R3yWZnvVWt3ippfdjU6-VmnzPgihgAcVLCmskXWM3z_yeQthXCUXmJLkf-U5eOusCLSFVFUuZM1G3G8T7BPqRInUwItfDI80ybieynrQdXpzX9sn-y1sZgzLKxD0HyJh-DtrCDCQ844X079YmzvFKfFnhTQNZG4K4T_fyuMlLPZYvucwhMDip8ys2HlLCNUjlyuEp42Q3NkF7dij8DGN6xy9G3D0sU_4PY98mqyLw6KSxkIr64Pa_h57BtJQ1unUchGhR98XjBg4g",
+        "ATKogpe-V1A8uFr3iF84kvnxHXn-8sDyJKTmxkP5jHde91U78WwiPN5If-CN_dG12iS_IfthNXhHUukA6dM4_ELd5TnZxrkKQT7ZD0YtW7UcgYSDX_yWbTrr1qb8J3vK-SgqvfRYvfSpa4gChZcntZmfu6L4aOOVvgzY1GTTCkB7LiDQtS7bWPesSa3_NMn8NuNLbysLcNscG0jfs-n-w9PbHvZlJAfitYMGwN-WHfvORu1HIfcgsOSJrbbtcJvTSYOli7Ehrs70r9_Z9x51wYxoQpQcXFPrH6CzDyy6vwIYXHaNKw"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Micro Sillon - Bar à vin Lyon",
+      "address": "6 Pl. Fernand Rey, 69001 Lyon, France",
+      "phone": "09 84 23 52 47",
+      "website": "http://www.microsillon-cave.fr/",
+      "rating": 4.5,
+      "reviews_count": 272,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 18:00 – 00:00",
+        "mardi: Fermé",
+        "mercredi: Fermé",
+        "jeudi: 18:00 – 00:00",
+        "vendredi: 18:00 – 00:00",
+        "samedi: 12:00 – 00:00",
+        "dimanche: 12:00 – 00:00"
+      ],
+      "google_place_id": "ChIJAc2K-9rr9EcRYtkY3EXXRZE",
+      "photos": [
+        "ATKogpeVcdTYXuYO-gaUIKgK-plZJsZUBfmAVNxbGZpmjrcC6T_oE2PQV4RD8Uiqy5EQ7hnFaikcgLxde2ujzD4IqxhgGdRL8jhF3Yx0pdBF5Mm9li4C_1JlGYGRK9-j18B9Gz1ozQqAMOYsJOAL_A4SRVviGhSDUOTeVN8Kvani6f02XBVs9KSg106tpu26Wl3XDMWAqJtSSOznZt7vO_Nl8oqDzRnC6bvtuld2ol8AFGSAIj5OM8p2PCp_BCPs_yNfMRoEuhQjDjm1hJ_rneihAGC5Sm5Kn99fA_I_THdYZHTzBw",
+        "ATKogpdvyWVCvTf61tNpyQTaiEBXWesydbF3Xd8Six-iTWvCChYL9OWN21MfBOqnWOjaGEQAeSkg6xxxC3BNdqvrCpiKhvpdv_jHzCp2j7Q8N4nOiLwDgbHsEMx4KSNIgNy-vlL6XkHFFqhDMe4GzDgjNdy_4o_bn_Acb7wpT-JyzbelQX5w2-tcRi_-z0GjoUzc9ZKXPkw_r9VC-_Uu3C5YcIUSfx0QXZCPUF4HvufPzJrbpaFORlQKDQ4_bxtL5ABgGKfYNhaH4L7XQsSmBreWmA55cyFHJOJj_7MR2Ae51gNmbQ",
+        "ATKogpdRq4NNZuxHP7KCI8tWpMcDTYD3TXhNFBRcuXcW8y4ax5Q5BReG5iUIvbiyGwO3s-Zik76y09I3zerWkA_jHnZCERDVnEknDTyVuzwcjgTUMPJUrAJQfq-8KjvAe2qAWV9xEQxME-sWvPJGKbQQOLHHA6DKa1BdpBZAWPfCRxUi8UgKQYkAOzPzO1K3XC32WGAQySaxtWc55vJRDWVwz--8IvPQ2epwy0bYmWV9XBi3MCqbI5A_fuqcfj7gJx1zlugXTFCWKD6O7mHc04OD6ELa8zrzDP_1YbsgZCAzx9tE8A"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Pop and Wine - Bar à vin Lyon",
+      "address": "14 Rue Palais Grillet, 69002 Lyon, France",
+      "phone": "04 72 77 62 51",
+      "website": "https://popandwine.fr/",
+      "rating": 4.5,
+      "reviews_count": 256,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 12:00 – 14:00, 17:00 – 23:00",
+        "mercredi: 12:00 – 14:00, 17:00 – 23:00",
+        "jeudi: 12:00 – 14:00, 17:00 – 23:00",
+        "vendredi: 12:00 – 14:00, 17:00 – 23:00",
+        "samedi: 12:00 – 14:00, 17:00 – 23:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJgdMNccrr9EcR2YSxCR2r_pQ",
+      "photos": [
+        "ATKogpc2m0wsPuHsIiRyBSoKfaMIDjaAAnALZYMQB6SodotbumO1D1zoIHnBjZzOZlh_MucqykcugREOw9IbqtHUGij_qHSH0QGLgHcQL70zFFgmGfHU3VAbHsbZm1c7TDDTmW1fj8jdWhsauFXqO_5Bb3s10yETUTQZyDG6vu743eTIWOCO3GgsFum2Av01fKcKzd4Br64dSFBoBgrAckG7dj4qwa8kKn1fAx653JQpx9JhhLC64lAuZwCO4-mMLzgzREEkvlbfkrRyFE-xnFuSPhmAOEVdb8TzTw-QDaJ7pAhlVQ",
+        "ATKogpcHepTk_9cnx-WCHsz9tjSswKjiDr3c2GfbgkTFlVgn8RmJiBloyUTcadrwS2fDs5AbrIrxK1UYMCbrViNo3HCIz6jrVHfEXLbSEqbY_EsARcLR3D2GAvZvOlWFCHJiXzOQFqdzKVFwByBtUbE6ZiIDpq5maRG2sRA7LeWRBI5F2SDeEyKwZK5owiwpCSCNeJHcaKXAtL6jdEDSyS_IXj_t0OUF_khfVth95GXwLSqZ6BejtBJq-QkcB4jZkfxj02RwKcP0piz1g3qdqxIkrEWOv-Q6WmRmRge9uHpJRbZb5A",
+        "ATKogpfC8ts65guJVSIRlxR8v0-TFNLWKNkGbsvyNlORMG_qNRdcROHizc91O649S_pWeANnZXwzHdp0dKFsrt8epJmTXcCCHrQS_lMAe3YykdejAlCB7AM_adAFSC6weMDalF5-ab4MNFngC_Rxtz6kFuwv1DrA28_L6S90K_84iqgleRXMLv4-7oJ8V-_pTQRYvv1m08qJdfcnmTaQyN5Uf3zUucIXggzFHukC0IqY8c6Vqch8GWR6HlE9BECmWoIbldhwNLfeikcXL1riGnD4o95ptG0n8B2HyH4A4lXsUf0NM-GLIYO2PaOoy_zMtaEoE39aoDp23nOjCidxMtp3wuxRv5QBgTGg_taLG5yWKtaNUjHr4xvI09LvjFoxjW5mTtySZuEZYDXkM-BJDFo01AOAf75GH6jWFvDCo7HEihuCouxiwP_VKmJOYjRZew"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Les Petits Crus Lyon",
+      "address": "3 Rue des Remparts d'Ainay, 69002 Lyon, France",
+      "phone": "04 87 61 39 79",
+      "website": "https://www.lespetitscrus.com/",
+      "rating": 4.8,
+      "reviews_count": 183,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 18:00 – 00:00",
+        "mardi: 18:00 – 00:00",
+        "mercredi: 18:00 – 00:00",
+        "jeudi: 18:00 – 00:00",
+        "vendredi: 18:00 – 00:00",
+        "samedi: 18:00 – 00:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJD8agglbr9EcR5kI6hIE2i2Y",
+      "photos": [
+        "ATKogpe0tkb3MuFE-mTiiDJUNB9THjCM9pVbl2gL4mSkfBODGATgF0GqNeuE8X0253cl8qHCRHUiGA7wI0lV34raGPnn2mE-tXwSvbp79idAeHcxAVVGMoLuj347ZtUL14bnSpV9VsuOml7_DblcRyFFIiAw3M516safUYa2btnLH18__Xlzfo42djzxHEiAzlEfI0W5-4_GNHeOD1fBRYwLdPRsqIYM0dZ-7oKpW-q_gnDl9CM3VMezs_PJydc1BIUVh8XjMj6fCX1Cithb0TaI9wKU7psHZuFb2Qqz82U8G8pPcg",
+        "ATKogpcclkO3rMe7qkp3XPPUFe4kC7ZPoIVRlu_LpugAZPrLr7AZ1VwKPseQibkaRN-Wxq32Gza6pcVqol-KrbBPRGEhtpY9I4_kFjvUS2Pw8jMAfMmBu_B10cLCKb1RlJh022cS1b4O8jy9QpuTnhudq0BxlXE81e8xiujPdQ9qC84s2y6a_mMgXG3nPSSdGi2qH0grOzxPCURceFjT5I02xCIg3JdQkBCgkXinFo9wyGqg8Twxssao2HwQxoWFVJ00uTVL_WUyAIUrvlekr4e_zn4UTWDtOkagn_Ltp5RTLFcAjw",
+        "ATKogpcp8ufCxwTPB2aWl8z2UOC9YrJOcP7yTOzsqH3UMRJriBVDkY7Blk1OEozEOebRs77uf_sKRW4RDc4bMQDnX4fKmd82JI0GOoJUaPkF4YjIgcDaffj4e6qhGOPLQrNCcmr1iQP1vDWiXyEq_e6lqakDSweeHsSaLj2HSlo-x5SlbA3IvvGd2SARLRyPRUpDlP_ytpd9FMgEINzO2XBXJRsGL2Z9-6JrIqhjQhdkm255wkrQkJKImKJTqEWLLyDV-XzOlp21zHA_d3-zETBqhsXABo-Mu2g9DR27ZYJ6uU2-MA"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "L'Alibi",
+      "address": "3 Pl. François Bertras, 69005 Lyon, France",
+      "phone": "07 67 94 64 37",
+      "website": null,
+      "rating": 4.8,
+      "reviews_count": 119,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 17:30 – 00:00",
+        "mardi: 17:30 – 00:00",
+        "mercredi: 17:30 – 00:00",
+        "jeudi: 17:30 – 00:00",
+        "vendredi: 17:30 – 00:00",
+        "samedi: 11:00 – 00:00",
+        "dimanche: 12:00 – 00:00"
+      ],
+      "google_place_id": "ChIJW-czQADr9EcR7f9KhyiTUEE",
+      "photos": [
+        "ATKogpeR4DDOJ3EtoT19V9wxgP4SuXSFNNdPhnTUDokJGorDt06c5J0eDPi01V1o-4KycIomAcS153YiHM-SAvO1Qk72JKW3YxcKXGLFJcwUjnNduS0bkg9qOc28S5WmFg8w1Xs3b9M_Z39CPK5zqS4FyqasCbk99ZbayPz1y_8ZCOKt0_S8q1ZTNj7sfd4niIqJnnw6PnRgbHn91yhlyEuGfqO4gn2sKka7gfBsGL9zdslPXWmJpx_fs3jOdg-7S4IJ7O-TgjEUkTdyhSHeUpZ_kzwIgglnLQhZzHx-gPJly9h-Pw",
+        "ATKogpd4IAlBTBSSlNcABy9ndD55QITODly4W6f4j5c--LtduUclLwavmcbjpW8AlhjagiaUdJqGz9jmxrwFxhEFlxVgimA0VW8LJgAFpNCrnAIgLEhIqDx6Uzd2iddpEKdWvXt2wr7wRJ2ziCYXYPfU9FR-Poa7seF0fX4m-RFN0bg5hhkOWvYPtIhH6tDP2G4DOlI5gaIPWA14O0l7FtHlHsYZ-Yenu1ZviQxsDNkvbogiSfl1TcFQq8HHFx8QQE_de0ZD3M7ziS7jbenehtRfCeUdX6kCD1RG-1Whaileg35uQw",
+        "ATKogpfWuNbFOyKx9-sywxKHLXXzG3VHHY4AMk57t6-ny2eQkzCg2vBrlDmKQEDG3gNs5bj6Lh-lMTE3HGSZygpEZtZmuln7LfoRevNLFs6YC86sL1rAhTHsdyKspUGDV6TXNlfumo6GOwXfp1jHcywoi9zjzkGro4w087pOrB5DLPIpWH8mgRpWJV0xqT5FQB7fQMXXv4XDlAPT0aaTYqLfY30JxAr3gPtdy2K4UlIWz5Is0S9kUTZzKi5SimZ9CGi1Q8O7mryBqUZH7NL6XtKtO9Y45mcEfISmxLmgUFl00mA74Q"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Vivants",
+      "address": "26 Rue Neuve, 69002 Lyon, France",
+      "phone": "06 61 45 28 84",
+      "website": "https://www.privateaser.com/lieu/43564-vivants",
+      "rating": 4.8,
+      "reviews_count": 261,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 12:00 – 14:00, 18:00 – 01:00",
+        "mardi: 12:00 – 14:00, 18:00 – 01:00",
+        "mercredi: 12:00 – 14:00, 18:00 – 01:00",
+        "jeudi: 12:00 – 14:00, 18:00 – 01:00",
+        "vendredi: 12:00 – 14:00, 18:00 – 01:00",
+        "samedi: 18:00 – 01:00",
+        "dimanche: 17:00 – 00:00"
+      ],
+      "google_place_id": "ChIJwd8MbATr9EcRAxHy9rlGvX4",
+      "photos": [
+        "ATKogpc4Jq4iNoZeBjFvmJscRek6c1z6LLL5DrdRSQrkF_M2QKJgoEtg0cZOR63LwyjWofznlfg4APcn5mQVhLjVwNVCOOQEszI8qFIy-ZCKffjFPccQqimuc1grqYNv_U13VjxtSo7o5zGxd7XpkWOSYq0lgKqLSvy7qwatXimLePDYEYQtUK0cj70ZjPYjR2VGWq60PVkTWnuD_y_QSp5iKVGvL_TtBAlnGlAs6rwwL3PmbrV67boxGlVhxwGcJlh5vFjOwVMopZfZe1AbGjo80EaK2g1cuP_s2k_2JCH3pwMLog",
+        "ATKogpf_UACPdk0rKnTUvLXvg9dCrganfcnCqQeroHsa2XjgyB6zpofnxUnus388F5Lc6h5Vb5I7yM-BmGrthS6lnrNTXyBHZl4IWQCu-13doSFOAH1W_ZBiI3n6XjIMORXl6Yfhdnks8r13Ripao3xMjVY8rzTQ5svjXQgkXojYU-5203xweXBITtHUE-vU_D76g1_7NWr4ufQ__JvZWl9EwqPYsyuBn1JE7RnC20EWr7ZVfQwYBILPn9Fkj6IGIOdogQcjkuWiwn5EjZh-rQAfj3SCSrx9o8Jd43Pg35Yp5dTFUg",
+        "ATKogpc7quc3kIo726xyr-1uZLBz6Ulcd-LLWqbxPznmaf5C-eLimOtoFaTdbyyLBfxOV1DnUie62q0Vut6ecAFFrAuvwSr5HN3VPlz-QKywGJPm1p1kyRRobti5NNAQ0-S8duMb8X-oP1H11KMnIAEbGsYHW_dSJAOWX6pcY1nONy5695ZszTnS7FmWLqX4dPo6FECxgCTma1-kfkuV0IwQu8KfXohCHwpRGgIAvL4fx6CUU0sQ6EhKcK2-2m2_IpKTiiQvgKEOhGMeYOU8iw8i50dwmrXLzUEA79Be3C6ansN79Q"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Soif !",
+      "address": "4 Rue Terme, 69001 Lyon, France",
+      "phone": "06 43 14 83 34",
+      "website": "https://soiflyon.com/",
+      "rating": 4.8,
+      "reviews_count": 133,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 09:00 – 01:00",
+        "mardi: 09:00 – 01:00",
+        "mercredi: 09:00 – 01:00",
+        "jeudi: 09:00 – 01:00",
+        "vendredi: 09:00 – 01:00",
+        "samedi: 09:00 – 01:00",
+        "dimanche: 09:00 – 01:00"
+      ],
+      "google_place_id": "ChIJCXwQxvPr9EcRAVoY6Gro7go",
+      "photos": [
+        "ATKogpdieWrvaA86-7I1xxYSD0yF_l_ddEycFcI8gm6HWM3bybiOHPbckVl_GRnHUNXASWboum_LQUMpqyRYgFFSee738Qf-Cu1ZT6BdjwEc3gnFNERTTmwpU_KNV10UGJ2tjGEbcQyGL4MI2xM0GcpoMoyPbJ7W-_ivMvBYNH03CfMno5JdEUWw1N8RIJUi2SJbDXQS1rUKDO1rJ0mxwNlZ_jrYBkFiXJZXIuAY5D_OMM0AC51QcoPzBMci34K2GQev91eE0s6Qx_Mmn8R_q7Cqd_SMNJMVaBW6iPpmU3xsLAh9LQ",
+        "ATKogpdP-DlKoCvd4Owooz2JTwt0sbMc8rSRIdmDjk77mkeQbrCgdmQSh7sni6DV3cEwVIUJBAb0atuyHYkRGW6khMy99JdRdIUP4wCGgurZy57FvhP21N4QyTcEvsIx6b5OYnsrWgSWhs4Bq3rTNlHHLuFqKCrqr0JWfWXbbABKPLdnm_LmY5aILEZ_VyC2t2K-uv5-jnx_QudNbTpm3rcfo-qu8N4nmvLPTCk8FCPDfw4qxplhKG0D1ge6D5t8JCjVNSVGO0cMXcZj4mMRCg-lUcxDsjJxCUKF7ThG_5v-7UpnwQ",
+        "ATKogpe1pngsECx6MNMTlq5zyGc1bCUH3BaRYNobn_FPjAlpmAhDQ4wEIB8kqvJVRY3fHFpX3O2QNkXjj1H0Hx6RdraJ8rx0_zwracPrkVnIDael-aY98xOKu15MX4lJzxvXojObx1zuBWCkgw54S4yy9nJr5Cch9MdRKki3IKTKjYIHMnL04t7PHpXRlUV3lgn2JG65A2wMNcRHZhy_2S6sClINtw-tRLNcIoWUEGAjwN_7C2Co4Ptv10Iq1vwkKj7wbhgHgvoUfa0MDn-vlEmwxlElIBaq638L1UL32evWZMi9gg"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Le Biody Canon",
+      "address": "5 Pl. Fernand Rey, 69001 Lyon, France",
+      "phone": "09 60 03 79 09",
+      "website": "https://www.instagram.com/biody_canon/",
+      "rating": 5,
+      "reviews_count": 23,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: 17:00 – 20:00",
+        "jeudi: 17:00 – 20:00",
+        "vendredi: 17:00 – 20:00",
+        "samedi: 17:00 – 20:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJCThS2ljr9EcRNfy5b3MG-fc",
+      "photos": [
+        "ATKogpdAwRO0AEwxaKgV4h5fVRdibuICkauv4nc_gfkdrMlzK7HZKpRXHnxFB84J-ceohnSBJL6sqeQ67si91RJBANyJabdn_0RM9qODHYLxaa6_InajbPlGFO0rcIatAE_P7vEVMpNx09fWEkrxmW8V-pBM97ndUmkUMk8pHKvBBVF-RHjG8rwMB4AhikKJ0F4ENHIalV3wrom0aSEizE4Pexs7VlSFTCGNrda9rG50fjZ095UhdAz8vnRUx10A0q_3AMIgsKEdNQPRBZNFzVCGO3FpGnCDTwxZCEYrfJLz18rJsg",
+        "ATKogpe-lkwxnK-xbr1GCJ9RDwA840YIv_7i7I7TAi_i7nsE6jq8sLf5C6fcv1yrjnKgg0v5xc-RURG8cej3tLArXJfKAKoNcqkj5Mjfwm3XJrScFRw5_F3xCNI55doWmype5gCjA_zAuOb4MduUfJqtW3SUAP1IzHS9cVIL_iXSBIPpDZjmWKhhKuZr5go1oUJzak_0N-pvEkAycQm9yM8GQJ_YM3Jo9v4dxQX1_azpXl8Nl7ykZIdRxpluEzjILBFmc5Wv_I475ACZRtf0jHTH5Q4QX7mA_eGjb9g-l23qm2g9gw",
+        "ATKogpdU2P1BvFUMub1OG9JrdkZyI-VY3Gq64aO7F9J0J2nEyCRKGjsmwZ9tHK-95J5KokrJJIkN_YkwhOIt_xP00YzI-YjzxGW37p1dMn4i8D5uObyq9ex4I1r6aaNo-Y5_9dMKjsJQKPbfWHXGagcjLzZ3YDbjkD4irPpzTekzCbWQe1khxgDTx-dj3SG_EDE6xh4XJVZAeKZIzMXz_LhxjcXVQnIj5fgWTggkx6rQYJQbi-ukcCJz-iS9hrsnkuTNWPswwOCNUbimekiU_agA02tlMvsPE06_h1HTvrI2spIrpg"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Les Canailles de Raphael",
+      "address": "32 Rue Tête d'Or, 69006 Lyon, France",
+      "phone": "04 37 42 03 97",
+      "website": "https://www.chez-raphael.fr/les-canailles-de-rapha%C3%ABl",
+      "rating": 4.4,
+      "reviews_count": 77,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 17:00 – 01:00",
+        "mercredi: 17:00 – 01:00",
+        "jeudi: 17:00 – 01:00",
+        "vendredi: 17:00 – 01:00",
+        "samedi: 17:00 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJhVyV_TTr9EcRMxXoYqLLduA",
+      "photos": [
+        "ATKogpfD-jAdgazEtmxA1Jl2ebwP7Ke5g2SfjFL7Kwi9V_Rl-OJQGRsYVyGgP4WthxWG_5yLWYxzuNi5MIFq6pBKayfat1WbvYjx8YrcdMO4NUrs6XspSYPGO66Wy1ZJfXZpCKCR8qMMTuKV6-AVcn0N216KklRzdBKzkXZAyUlgiF5ogdszTvJUsEUZWVJ-58lhS9n966ocIbEGtlPTpd0PEZ4v4vOSBVuy-LWeJs0vs6DfICwhF8eU1cikXW3WwWPyAAibU0xFztWKFfxGskNgfXWdHf9GdS9PGBXVzBNEQy1btg",
+        "ATKogpepL36LVux2heApQlmD5UpQpA35UAT3WO8_CWqhkzGESGYYJR-ZZa191jXn7O_aK2pArhvB5YeO-4vHqFA05utpgm-oAvV_1dO6QuYN0mdC_FjW78gTII_HLIlMQIseznsiNzScaET2LbOE9P0-RSXeWtHrFX_0bg4bMf-FjCewoUGF6w2wbAfl9eioa7U-SAFtT1X7X85IJG5-GLCvGxmTaDybxCWEmOSJgCZtOiIHoGMwRCJdJSQilITPKMP8gmYodcai8d5EOhIWFIPwbPJsTVSkDgzLtkBvfCBJnY7upA",
+        "ATKogpfiUDwvq3dx1BeKPC0K3kDGLNwb9TfpMwtgFEvM7WRoXG6bT_JJyhzhx6sMXj0MX6G65imu6GrDc0npmH0RXSPgy5XkaG-8J6T-4Z6E_CLerr20pm5-sMwV75YSaWH5Du7pnPlbGVLqKP-kmjstGFwhzMKklUYrWtIPJbKfMt8z9IOFtgyvNvqea9p8lf-HKTTJ4W7je41jQCaaPAxwR0i4-9ZGUaRtilOgij-M9rP0_PmUT_4g449gMkkZZw1AhBTQeKEpiT73e9R-GMUXev2XU3bCIEBJ3CocHA0sSyn2Pw"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "La Cave Café Terroir",
+      "address": "05 Rue Montcharmont, 69002 Lyon, France",
+      "phone": "09 52 52 51 38",
+      "website": "https://www.cafeterroir.fr/la-cave-caf%C3%A9-terroir",
+      "rating": 4.5,
+      "reviews_count": 126,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 12:00 – 13:30, 18:00 – 21:30",
+        "mardi: 12:00 – 13:30, 18:00 – 21:30",
+        "mercredi: 12:00 – 13:30, 18:00 – 21:30",
+        "jeudi: 12:00 – 13:30, 18:00 – 21:30",
+        "vendredi: 12:00 – 13:30, 18:00 – 21:30",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ1Q19eFTq9EcRv-uOY7ckZeo",
+      "photos": [
+        "ATKogpdf1g7c5e6H679iA4z8_esV7pXqEIPMdsp6nVrbmnCBSIEAknT8Zz6_t-a-e-twfztDCELF1hnrRlPi2yQCMJdWNc3LhH6et4i2NGxcFiirVA8RMonNvM6ftr55rerRSDfIq75vBrEDCcxuC9Oer4YU3O9oWakNZNJllfzzTBCzCLSg-x8j4jagKEb_VFluMZizeqlkZUz8ktjgBtrtf7hPx3u8mkrFFHQDYgarbm4YAnvguxBBFof95L3yzKa36hgIpTkcff64z4-zkXZPdB0MrTqKWkhN-Za7lfoQDa5BkQ",
+        "ATKogpcgnF-vMfgaHBKKmk2U6KzgCM9kM_LiIVY4v3k0la5Du-GRPtt0BHJ9DfXtKTBsIln1UPvIV4Ur1WJ829amGHfpE7d2MlOySiK80uMbxkE4FPLuq9PGjrtd36K3gVbjb3siUzGgM_6bJoH4oq2usCNnVFjrI6jy-KB6ATNP01_rGWSItqA2BAkF6CChu80Yds_673OUl5B0t7OWR5Sx5w3xHiQdrNt-HlLJg3vaPxIMyOzPFwtPrURTqhGPVBBQT3igHYbEGeOEadUr1l3of6PMQ7gWe_y4JAKIfj2mNWtFbw",
+        "ATKogpfBFbSns-2q0gOucwscrSJfcVWx5mBQD31dnCv-Kn9HYlS6NPW4_jplzISjJMH2VzoKVMCsacXPahp6jqizUFAAYKBR0AWyKdbyiVKRQwqWRuZtc7d5iO_OW1F1ykp69hfWg-ppnOgfJ5zkoma9ZVNvx5WZY1teKSds2JBqEEGOwvFEXXuczqUJEkeFBLzJo29-IeU7lD0g6oSCZiSSRUyHku9gLlRWOtVCPM2VGCcNECycdA7k07XC4Gx18Hy5g4-hMHOnWInyuftBC6AgFr6Fnx0x0xAtyrCpaNe6y-F8nQ"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Illustre - Cave et Bar à vin naturel Vieux Lyon",
+      "address": "1 Pl. Ennemond Fousseret, 69005 Lyon, France",
+      "phone": "06 64 28 71 34",
+      "website": "https://illustre-lyon.fr/fr",
+      "rating": 4.5,
+      "reviews_count": 169,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 17:00 – 00:00",
+        "mardi: 17:00 – 00:00",
+        "mercredi: 17:00 – 01:00",
+        "jeudi: 17:00 – 01:00",
+        "vendredi: 17:00 – 01:00",
+        "samedi: 17:00 – 01:00",
+        "dimanche: 15:00 – 00:00"
+      ],
+      "google_place_id": "ChIJR4vIYJHr9EcRHLN_6RbNmW0",
+      "photos": [
+        "ATKogpc6d4SKibSwlbbSKqQLET-tAIt7yAECqoxVOPHXXe4fm7NoKYYXXgwSCOdhW51fI-7XhWCqzq3VxQUU9DON0F4J1qSewFjDvqUfljIgmlzs6nXWtSWFeinqfbsX6WOApFf1dfmnpDu7hICBr6_STdeHQa09O_Y7XlnmQFb3wl-3_M9fdG_uWh7nVKyWdvebqLKM3mcqVleCHiV4mtvHW1kdT76XCmE_d6dw9l_5uVzwmanURUEpPjfLfT1ApbbzHZuU-N1tZ1gM2UPCPtVlLbCqZdqqU93XL9ZIWYyeryj6Qg",
+        "ATKogpc6atth-L4cfGe1pUzIaO2NOFxM_LceEAG_NuckLVBL0KsUu-uAV1W7x-pGuEsW-gLmfU32qjbEKjK3PeW9munk4xJLPAZFH9m0s6bBPjXhwk3d2-Gj0e3GhWTcI2ekaZT2f0hiKhvtsZJigOfaeBHGIJVQCdTaH0cDOotGj2Pn2OAxWsJzQLZZC9jQF2B0xbI8EfNixpoGdAkN8KVNzxmQoLFRvGuq69ZdHCpcRMUNNJc_ic8O_CyVgalvsHU13ulEZcx8yyhuFDCAKDbKi0oDblk2qr9L7-Os-KbwTYr3dQ",
+        "ATKogpcbdSzdXv3RyxZ74TCX-tYEAUjnldqd3NicuZeU-plDvkvHh6P5MFuLcnX6NdwiRrBGO6Ebmx99GnbQMsWuOXHJ3woOrl5OuVFN8IbfEM_6bOil5S4f-lpMkyuCZLv39vw5AR1yUXwI6G5AHDBwyupYYSeGwwj0UvA1rbxutv0N0f5FBhWPB-FOX2HDiXjQCAG-lQ76MMU--LG-YNOMXE1t2BJshYEBVnY6f0lJmyWuJh9HZ2cXX3uEMKBfvWiB-hccP0-qo3LUFBCpDo_mL2W4OdomT3ckqEOZ1-J5VVboBQ"
+      ],
+      "zone": "Bellecour",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Le Troquet",
+      "address": "34 Rue des Remparts d'Ainay, 69002 Lyon, France",
+      "phone": "04 78 37 22 23",
+      "website": "https://www.instagram.com/letroquetlyon2?igsh=Zm16djJlZHYxNDFr",
+      "rating": 4.6,
+      "reviews_count": 409,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: 12:00 – 13:30, 19:00 – 22:00",
+        "mardi: 12:00 – 13:30, 19:00 – 22:00",
+        "mercredi: 12:00 – 13:30, 19:00 – 22:00",
+        "jeudi: 12:00 – 13:30, 19:00 – 22:00",
+        "vendredi: 12:00 – 13:30, 19:30 – 22:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJFf_fyU3q9EcRE1HMCPAjFHI",
+      "photos": [
+        "ATKogpcgodVaA-Xi1_i0PDPFM1qmP5lbHqiNipolHb6VGyNLNMicCp8DXzn3jBneu5rk_afOieSekoBKuPtKvGxBcNG7xzvqdBaEszrnrEaildxawzfm4o1pXPjG_4cGnTPPoh3HFjageKMf1F4nmOG_iKZuqmcClhB1l73azMYI1yhSaDEVNu81nZ30E5F70Kicm95WTbPEwRguOnZ8vbODR5wK2YYS3WZ4-4PfLx9lHYyicau9I6sdTuz-SY-mRO20HUFdFrBg6Oqm-xDyp7apw0sU5PmK0BAvNnijz5B2hvs80iNcq1tQBxTmvS4bGr4TTEk9WqUcgGSo14_bEbWU-gLBq0Kgnmdu8zjgerrahmOGk4VRt6ywQ8WukT-SRmfJ5LXQo-N39UxneOKU4eEn8vAUwwwKf1lOB-w7FFdUgqS0a5A",
+        "ATKogpe5tH03oIOyKhncWGsmc5Rx0SifrOhuH0si1JXkYXMiUA0rVAiMvt0uuwnRGQCRVt9QAhTxwvRds6FIL-UE0RYmwmCHIrH3Winu8uRYQANLUOd1Kjjz638gfRFm_AF5A1oSZVRVXwuktW_DSzP-uRQQ32Don5Opi9D0KEBrqB0ugRHZtgx2xJtlOyYmW9GpG3jcfDwxqrAbd8RARvg2tNBLRYqiseJmSAfTbGAlBnJgCjBrMXG5TmyKqNtT3EfVSfFv67sEyRntmAPaCOofNn_frEpcLUndX2cIltnP3eYUiA",
+        "ATKogpcjpYrz9a-o9RrjuwN03zCNqrvpXYWDswbunM3GPPA6eiEP4UBIdm5ijIWUnmKbkiVOQkhHTD95-6onzDdtmUSj2kbAcprp_6Ol7oAvoIjGIYB6SSUI1LkPM9ZuLLtQzOZBAPLLvaWX5pK4vW6ayO8L5SrpGgYG0e41oEyYKDMEwQIGJWqYur-kqVfy-a-UKltNs1WKdcAyDXlGNqhMmUiRfeTlLPna6eG9Gj2QuxY0ShfbyGdkrA9kQSxWXppD8f6WRxwKPj7Lwmcf9r6GipGULCHyAbWZaqHCafyJiHNyDiEBQm9DXlL0DmMHGxGTuW7wXpRug-4dZNW4LVh-Zw1U1PgJnsHTanZcUacl1utoClQIQy3Xha5rfxQNg0rdz8p_iBOpclw4s71tClhN_EXB7WfOUnqIo2EYFbne67oTdjFZ"
+      ],
+      "zone": "Bellecour",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "BISS & BISS : Bar à Tapas Lyon 1",
+      "address": "1 Rue Louis Vitet, 69001 Lyon, France",
+      "phone": "04 51 24 35 73",
+      "website": "https://www.bissbiss.fr/",
+      "rating": 4.6,
+      "reviews_count": 141,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 17:00 – 22:00",
+        "mardi: 17:00 – 22:00",
+        "mercredi: 17:00 – 22:00",
+        "jeudi: 17:00 – 22:00",
+        "vendredi: 16:00 – 23:00",
+        "samedi: 15:00 – 23:00",
+        "dimanche: 17:00 – 22:00"
+      ],
+      "google_place_id": "ChIJdcO7-lTr9EcRLjBAlHos9rs",
+      "photos": [
+        "ATKogpc12z_SNarP70v5uKg5EFM2IHNFDdBgZM8-Igp3UdjqkuOPb9ywJMNUBSXzjR5oOwoC5SjLmO061snduhasquNP2AG0GhC4qh1smNlQiP9M7AAAwNr-TqijZdV3nZofMAUMws9lqG7c9t3YHknZxm0XOqyyP-z1yJuOm2GHMLI5ocQoCH2lXXYi0JX3sXoa8MtCiPB-9Y-wiAj2zXZBAZ9Uix3Nr0XnlXeMvntA9jXCd2DpKHzhBMXPM-_HpfmsqCEz3_HdUeHl_We_I9m8pmv4aEZcyBhE14V84dZ4pe6yAQ",
+        "ATKogpe3hAVm5CaNWguuYa-9L1VcITyet_qUPT9r45cx3JLudTcpFwe6PIjwcj4d9Z9n0WFgE5sZDOQW4NKDJMn7hCxwPt-AF0tboCuuACd8gR4ANU5OfgG2-oBdkfnU9IJ9Q1PJt3pkoAb-FWyN6yoCWCw1i-Q4k0dS-otjHQRdx-1WOfuV5V9aM-72oUpXp_xaPG-zGNnapZySKxicKRTDoRMtDfgoblCf-CXuIiZyGzVq9CNthVpC9eSNtN2dtpHro--m8RJqXHzeS0P55yzTbAvRfDxA0Fy24V0si_tQGjKzJw",
+        "ATKogpcZiQ2ySBGPjB9oNSHE911b-jhuHPxIg0KUvLSHKodp0QdsVUZfTN1fo_0yReGyx4aRUrakC7BGBLNPmvmXaYV8BvpKfOo62OcsK74BHRIInHgbXyowZtzujIKpg9C5jqiBJwI8hg1V5UG775_3tffYJAQdcNUjd5FHsEGX-EiXMfqd_FIacuhoAaQS1ZdPVWf99GAcbDwYJTERY7AZI3pSWBQvUWJASFtMXCUe-6pF3ME9G3wvm2LmHIdIDM1qdgV6ydXFzgsMxbMEY4MOezEJK22kB9WyOGSmu0miNnC-2Q"
+      ],
+      "zone": "Vieux Lyon",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Turbine",
+      "address": "8 Rue Saint-Jérôme, 69007 Lyon, France",
+      "phone": "09 86 59 06 22",
+      "website": "https://www.instagram.com/turbine.bar/",
+      "rating": 4.9,
+      "reviews_count": 69,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 17:00 – 00:00",
+        "mardi: 17:00 – 00:00",
+        "mercredi: 17:00 – 00:00",
+        "jeudi: 17:00 – 01:00",
+        "vendredi: 17:00 – 01:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJNWIaewHr9EcRZD7-nWtm6P0",
+      "photos": [
+        "ATKogpdzc2mBx8HhJISCi_SNdVPiyOY_NAHREVziwuh3jt2EKeIzek0dmzCQf_JVeBRZkpfK35p6U95W37w28F_yCNJjAtXcrBY0Fc8qMo9j59F3dqvlLQMA0ghSH9-3X7K3zbZE7vbDm5rm6vh_9N07UrylFPYgTmYg5SqNco22auW-DAsxpnrbMuf4Trse8sb9Eh4n1rBuhDHKoSIKLIwLvJlA51lNahgLNipBE7qQgTyn3aHDrT4jnEp2hyc_WEnxxi2pn19bfcbS9u5q9EJD80KauePExO3w7FWmAyY2J091lA",
+        "ATKogpeHIF9XaCnAcDTZ9isaHtJksSZlivYkwmHWdlWDnee-4zBkmWXbMWRITvBLf3vzkAp8_1HhsP1GfKlvZMYn27QwYuB9ypjUnnRkL6l1XoD8Xz1zDa2JgMEGqr52sU4zmSeenxYjx6KA4XKWhK-UaCeFBdUDGbKccWptOJto7PpeiBfuDt1CP33Lai-gvHo4LxLE5Q2ZH2PRXKWvd1eNuO7AWmme4xAB844eTH5WaUxymLgMK2NkkTn0YgV267u1vKbX3Pzqjee3KBn0veP6ivqAukqxYdT6LYv0RO_Iauoekw",
+        "ATKogpdSf9mqzRacUjC2QxowLh2q1xXKSSHX7rOwlK7TCMEDqww3ejsOhsETt_0WiMEUvfmxdIlzlHEfR__UhJ1m7LUjDeeRo5aVMqXQw1oExh4_jx9GC6SjmT5rOUGDECS-tYRkDtNKJhqgo00JXmKcr09mF36u3y8H1ZDddYRI0nVeqKSBrZjUcs8NhsIZa4fPK-CtIsS8Se5iOhcoX6u0DBYPkKnNm6HjNPUsD8N5msTR2bGxUUamGKUPncHffp8fWos3k-5JLp2oD_FC-iXLIHfcftFBn3-_dc6VQqHBn_7lbl21G_4JQtF5FBs3hivkSD-sSWDdWgmBmiMg1Rg5iGOun1YCLIR9sio9hLUKvxbqa4o8_RwO9tgYe_kJMo9MIBDR7MO1X5mRN0ynalQ_FF2_8f3L4lTN8AFEEvyUkCTOPg"
+      ],
+      "zone": "Confluence",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "CASAVITIS - DEGUSTATION DE VIN",
+      "address": "46 Cr Franklin Roosevelt, 69006 Lyon, France",
+      "phone": "06 47 05 28 54",
+      "website": "http://www.casavitis.com/",
+      "rating": 5,
+      "reviews_count": 24,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Ouvert 24h/24",
+        "mardi: Ouvert 24h/24",
+        "mercredi: Ouvert 24h/24",
+        "jeudi: Ouvert 24h/24",
+        "vendredi: Ouvert 24h/24",
+        "samedi: Ouvert 24h/24",
+        "dimanche: Ouvert 24h/24"
+      ],
+      "google_place_id": "ChIJLdXeuarr9EcRO27eQmUi9E8",
+      "photos": [
+        "ATKogpeoWejardwWXwKQYnL3WTAFd1KcToC4nPVXZmxEs0lqoJn6wZrE6IRHl5hfRMTWPJvGuqsWRQtSJy8hpQpcY7XHW0phhXBUuwe1VveF_9lIRuCIFteh8UD-Hqqyj05HlVS0oNOrYZsX5q4xXQrqR0lKj5iCs1pX7A56-0lkJz04-XvuyTrDdL-IJWUK-wClxx8-yrEzgFtypdg_-bj1HaB25ogyXkLOrkaNjG478v14MHcNBbeSeCsIPTrNE0qoDxLw_8r4ArtVlaTRmqD0gLX3zg7c5dqMFLId8TIcTvEZrQ",
+        "ATKogpdc4oXELFofDBJn-y-vjfl-AV8IFBGnvgEg_3CVUqiAI_LVl5nzOPYWrTwqQv2lr2LXCL6YqeG-vdt208ZvO7Itb6xeKtU-vv2h-u7seUn3BYpeQcQ1URjVHtRqOLTjH3jajspc4uPwA9hvGLy3f8N6HTEiC_ULsT3EzzjQURC3plLLki1A8c_pSl1rHDbw66v9s50aow8mnog_b2Y7yU4PHp94YX6WXDWHZm2fGTxEQvITlMVdbgwpRvO_tNCnF1AjuSgoVBIClU0kCv8NEUOAKvefaoVcExIrNUI_yd7s3w",
+        "ATKogpdQItGgdixwI7vmv7mFxEFs31gF-T3QvnbO95zcR0rTxqytzfVZ8x8StfF9nKRuiZf-scjFPH6tctyPixh8FHKqwcrzb4G9Mu351Nhl5VtIdO7nK5aLgx8S2BFKD_eRhs2xyC-8igd_hMxxh9st9f4KkmmVMmYyRiAtZgb3LCd9tQxl44YqhIG2k2agGV7rcMduFc774eQYGHF1TVGkK6YWDWqKWnelGseERtGIBMOpxylpdGzgbNz1b9YOKE1z8-hlNySRwRGzKA3M3zWhQ8Rl1IBY7W2RhXTEomTt2XTOdA"
+      ],
+      "zone": "Gerland",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Hoppy Days",
+      "address": "1 Rue d'Austerlitz, 69004 Lyon, France",
+      "phone": "06 52 17 34 47",
+      "website": "https://www.hoppy-days.fr/",
+      "rating": 5,
+      "reviews_count": 76,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 10:30 – 13:00, 16:00 – 19:30",
+        "mercredi: 10:30 – 13:00, 16:00 – 19:30",
+        "jeudi: 10:30 – 13:00, 16:00 – 22:00",
+        "vendredi: 10:30 – 13:00, 16:00 – 22:30",
+        "samedi: 10:30 – 13:00, 15:45 – 22:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJp0hkQH_r9EcRnKR3I4NeoU8",
+      "photos": [
+        "ATKogpe72duU-u84FRAUCtpEgzAsPv7fz0uFcTMP5lXuUUSJxLuNME1URQHX_lcWiADVCoBVcwIMnl2AGH8sG7TwuvXPsic7mlkXx9h-vHqeNd4aic0JeRPG9WjVSQaIyf7x8pJjBDb-C8SkpgZAHaE7vOWESn99BXGBVpjFn-b2gMworxcLPDwwskLM_YaEme3ehPAjrTH9ReI0K79XUvs0ENu-G3tKLQEhx4Ul_frBydCLKTpfN3LQB25z5BkZDAcvPDQOneSi7ZhGNwx9ppwehFmYoN2NxYI1xO_pNkfAfJB92A",
+        "ATKogpcJkGGd1Wgos21FotmhkJOCsSaFRhXbuw1SR4S0dyQIus7uR51u8ctoHaDTx25XKIrEao72QKl2jTtr5wnyhuF_0IADzvEnSAr5kDEh5KefPCwJ0TdwK1ZzPTY8zvJ3w5-V0bUvQKPkaPkTRCv-jZoxQt8OpiKj56ZsuECdlAzBJHwm6_AAzbZxAaJ1Np4Z8KXlFPBpRAFwAcYB6oY_z7Yp6Kc7ZrFhpyIZmR6ogaO8M7z_vfvx5qn3YGoSeM9tXtr8WCmb4r67N3KN2i3X0DJMjlrITwKx1YZhJtyEBWOL9S2RaUtzkkVTdMM0USOtT9A-3ulSXeQg-ziJF1exOgs0ljG0A-yL2yp3p34uxJ8QKdeJimKJgK-kZjaJjiPAkoXWb5HQJrzlHGZgSIlv31N0TLbZgu2n-nPpn9f0bJBMaQ",
+        "ATKogpdj8TkD8QHMAYbXQAJq8hyUldj44CqhabV7XQm2aoxmrlSd21z7zzXJinSs6iDODiBgmndjX3c1AT06NYmFBLzR2njwv20tl0OIWC5e-Z_A3R1fbWGKQtBI8Wv2UcYlcT5JhJpC-hmm0dUkr_LQQoJfZhAH-MYwMe3l7jY9Y15kJuDqbEtJLGqkxEy2hnAdp1I5_pao5J4Mqd5q5_t8SGCF7IhiYtI1SSGevccWZo9NlcZ7l-jFEb_PQGZYRuyM-AyTGwijVTIY3i5sx2pvXPWl-tSKuQf4Cx4csiPyfVwgBg"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Mousse",
+      "address": "67 Rue de Marseille, 69007 Lyon, France",
+      "phone": "04 37 29 09 12",
+      "website": null,
+      "rating": 5,
+      "reviews_count": 244,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 16:00 – 23:00",
+        "mercredi: 10:30 – 13:00, 16:00 – 23:00",
+        "jeudi: 16:00 – 00:00",
+        "vendredi: 16:00 – 00:00",
+        "samedi: 10:30 – 13:00, 15:00 – 00:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJA9Yci4br9EcR077NH3lzD3E",
+      "photos": [
+        "ATKogpe1qVyYtihptcLQyDqIYIwAI5cuw655TOVuk0DXi7KsJFAgCaeNHtymmySbCv5rTQDzcG6lyFSLfr7fYrOieO_cdozm3xVwBwIIYcLxT12j1hyEIFuUQ1xsDu5Bw1yZIyeDHjgOXwNHFzahpVL6KQdy7_GOHorH4lkINbp5BBjubhIeaEoZe7pDK7PGYVKjKaEEnt3uamJZmMnw7NFQUW44EE0oj3diSwJyD1wAKjlSMsKBDldXX21AEMDvqlkyUIYIFvjV7YM_ZeZ-MyeMgC_yBSHnKG0adLJRn6pXgx8t8g",
+        "ATKogpdtAO8LcvXEKnts1xBR622CtCTP-47I_NiTqRBNby5MoqvMoPC5uMAYfLR9GUK_8XKAYHTWfKVZW6a1SospdBTWIqa9lnyPMHO1v76RE3iwvobwtLP9sYU8fAe5E0fQHE43tcJJ1ng-6fIHnS3_JEtKUcOzFopNNHGbwXuDJrNJAdWfyc7SewUJt6IP6w1GVs7k0JOp3uvkZw4qPxqWd969gkd2SlUnBu4L5x91L4ldCPpy7Kc7Bua-23kEzIuVe2MUSgfVmLgovWVPTZzmxFhjk_cz8Cl7fEyG3MIFw61a7g",
+        "ATKogpc7vHFfhfKGs_7i_EMmqq8sVlr4EBdAhuu_BvGFtyy_Sdo7AYNZaUI_Vpwsd6igJCGFqtmtjytniT4vpfKJ90rmE6HdFYINoaWbAKRPTKC3nU9SH0Bbxceo7mrQivZAEgT8Q_GV8AHMBbchEOiUYjqmkc-blcbXli-xK_XrKK_lQ5X_5OMWHfJXtnewn9MB41jGJvY21RJ9TNmunDPhG2Qghs49ZvkHkLZdZg0CXRQNtTlJi5sNIMNgHvDq4XWTPHeAoW2rnK92nGCUQil7VJ8XYkIDLd2pK4BUO-2M0Vr96w"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "La Chopinière",
+      "address": "24 Rue de St Cyr, 69009 Lyon, France",
+      "phone": "07 68 88 68 93",
+      "website": "http://www.caveabierelyon.com/",
+      "rating": 4.7,
+      "reviews_count": 76,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 16:00 – 23:00",
+        "mardi: 16:00 – 23:00",
+        "mercredi: 16:00 – 23:00",
+        "jeudi: 10:00 – 13:00, 16:00 – 23:00",
+        "vendredi: 10:00 – 23:00",
+        "samedi: 10:00 – 23:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJzZbfYsfr9EcReOufcZDmpOc",
+      "photos": [
+        "ATKogpf6_pg7PoofxKl_LjQGC140G1gcIYEMpFo7RX5hySw6fVqzBkv47QYsBKuj2Q2WKNg8HYv9is6LjUs9Fh-ZHw1IYdIsSvDdrJ8vX0-D68OO2EoMc6u8fCFWzARL0EHZB82uWvZ_q9Xjwwi5oCe_yDfUdJepvOZCf1dDHVpiETQoroc8emxCBJr62qsmdTeWOZN6X2DWTBjwv8Et1KIRgn2vOQYNRg-43Lg_giui5imoLR5O1MxKlRX0oPQgBWN5vocj6SqS55b9uEiOhM64o2llNiZL1j2B0_pVV7l0yppI3A",
+        "ATKogpcpOORuCy3ISWeJfr3ETitNWtKuPq7SpZy8crFnRRW3LXwdiy2YqoMwvluwFM99C9X9x7wxZzrjfArXnieyYbSN8PEcGSQD27E-8FmbvbwxWXc6Tp-YMFuGoJQVttwHFWSvE52H6LfyG92omIbcVB7Oe1qxq4iOUpQoFs8dTIUxgBQpwYQERjWTJ_hbGHb1_f-kP3hF6MzhKygvNTeEOxyNrbmr1Wgis2haCxSCI0RAL_FYb5HyBoZNn-o4XYP7AW_tSZzd0nWfAbwKrjPMHTb2J_OxvshqxIkr5b_BC_lSlA",
+        "ATKogpe5-T8uT7ug7gyiQRAlHMjbNzG5ew9U15zo8rE8SOd8trPk1YoDZk7iMIrf7LLfprRJ1dNkLBsVtIsUus2JyrvcMI548An6GPCiKeNjbhN5fo3LtwwUjBgmx5QsLWiCT-CzehyPIbf2D8Zexu-OySs5YxlNzs9x4gJi4p4gSVS7P2_lsVwUSWWwOSArqDjYRKlpJ1glhiT-zo8Yec2wr94zoEm9Et8tI-zg2JLR5RPwFjFQqQI4YK-rkCC5yGYrwLVZmHZll-9jCn7i7gjVHnBxX3SgOjtoTNaSJsI7wIY4Mg"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "La Beer Fabrique - Atelier bière et microbrasserie",
+      "address": "10 Rue Saint-Polycarpe, 69001 Lyon, France",
+      "phone": "04 87 77 04 29",
+      "website": "https://www.labeerfabrique.com/lyon/",
+      "rating": 4.9,
+      "reviews_count": 402,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 10:00 – 17:30",
+        "mardi: 10:00 – 19:00",
+        "mercredi: 09:00 – 20:30",
+        "jeudi: 09:30 – 19:00",
+        "vendredi: 09:30 – 19:30",
+        "samedi: 09:00 – 20:00",
+        "dimanche: 09:00 – 20:00"
+      ],
+      "google_place_id": "ChIJTT6PQwbr9EcRVu0Vk8Kty6o",
+      "photos": [
+        "ATKogpdO9VB_2D_tJx-YX6CEemc_Ixs3U7USZPwA3L_vUklKqzk61gSMcAeUiIoarJMntyfQ3niXfWACmiqqLt50bOpaBtaExHinzvn77ZzOMdlXBDSLBJNrkNMZDBNg0crMucEWui7r3WaLl3ACl53t7UI5bQV0hJyQgEQqfFhbPObgaQeOICWIolOoXz6gJ40GRtX39KEW260MtT9PjE9xpjAtTek0bEff80PLlKhYyTa40L6t3FN8K9AUyC8UisVno8Fs3UA9x4HOtoLe9h2w8mmasWwJXxVhINm-3KPzT3c6Ww",
+        "ATKogpeG6h4E6su_vFQ_AMpp_d-mxbTBRTGN9mSqj6Tt6c8n5NjeIuvWhNElNh_nONHKylCJRXFDkL37qUiwQu0e6WHkcBDqVNeU3NZhz0DKDVSw49Sx8r4D_cFy98YeQiScCC49Sg3oU85PW7_ksoTbB6K-AZWEGdPLcvWpTi3Wi1a81tRyV0by3gJnH4qWHu27XqwqhjLWPzA3QHcQN_N_IkFlKpnRnQpkq8MZIZ_pLZ6aIXn9vjol1xrTcGEUL2JLPpBO7E_o4y4hgXt22zP4IFZbVqJDUjWGaMZwiZrjc-uFiA",
+        "ATKogpfa2ufTVLQ6eoaO0GwMX6P3pKhX9kqGM2cnfrHRURM20fV2G6m64Cv1G_4nJndMTvzM8TBx9YtEdHG4UX2nusW-Vfs0tv2_E0pmLsAuQQlkLyEj81vHWPekFwK14Y51fXdRNxiEkbxnLOQAm2cwop5sBMzTt3mwrlRsRQrn2trKG-wZ3ZAlGmcvqEfv68bvo_U2ORTasAoJ2lFRDarrWp4hG4APJBzNL9e5B00vYBG-dLs3eEyp-RWuMB6spEw6hU97ngcpoHD3BgWOAUOe920EHJ2FUvDT8OUMMfFXpwXMrle2W1vA01m44F_OOHAv0BDEtLdPTQPjF3ueMV7skazrCmR-zzBvD96OOpamIS9Th9p9-_2ClXNqE_EAacIsB98SWZGraduTjyEhgNhsGwbdj1s3oELdJXDC9wNNGX_380wf"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "La Kave Maltée",
+      "address": "81 Rue Louis Blanc, 69006 Lyon, France",
+      "phone": "06 99 98 20 57",
+      "website": "https://www.instagram.com/lakavemaltee/",
+      "rating": 4.9,
+      "reviews_count": 338,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 17:00 – 00:00",
+        "mardi: 17:00 – 00:00",
+        "mercredi: 17:00 – 00:00",
+        "jeudi: 17:00 – 01:00",
+        "vendredi: 17:00 – 01:00",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJs3E2Grfr9EcRjc2d9tphVpM",
+      "photos": [
+        "ATKogpePmLNPDUaKon-Kk1jXaS_2me0MnFYsAHDUomy8Cu7Fq-j805X65g-q8fKQGf6XImA0O0wdmlslKP1R-HZfKRyhyxIRLPs0mjj0gUh_EZsrftIqUJ-uQqcqZ9dg1Njgd6l68Q7jsjtCkL04bIMhHKt1hMsJXIfP4vffVe0KirIlfk_mYFrRzukV13APCDilxY_pC71ecmTW6AJDurAHeRIWv59Psa4aGL8NL_aXLtKkgZmUIloT01KPyrvMQdpS9NZaHhyB3N59Sd3E-0sERd3tWO35B1yyrZrQZSpJmmU",
+        "ATKogpdEL9SDpXuTe50KcCe6F3qJBW_h8rqVb36pWgWGXmdjDZFrIp-4gyZW2nSZVI8JRdb5UHBDOIpLyE2ttju629ZGh_kgX68GqjSAc2e44LPLQuArunAT2GsnpdgXX-0DmTu0w1_SuIw8Z45RR46N5pMb5U2paN4EQUn4lY9CdYTWADhQqCOYY_7ijIG47FWZXH12J-sblrdFijyLnvNbzuf8v5SN8K1ciAaaZRXGRAVnerGhX4Nq_mPWVCDgkQhiCvU9C2LGmUhE_EhxTnBHGxAYscE2HjxNdzbDeVV7IaY",
+        "ATKogpfnEDyJKMKDgyZqp_GOTn9l1tWrujgUxrKXXAyVBREhYygqq9aCssCVnk73qi7BPcAJn9E40fi2F3hmKfIPUu_TQrmN2MiFWtCaELuMpo8dGF23THM9WE1mg-Uey56LEP-7MJ1epsaVoNtmOqaH1Wy9tqtef-shmO-tOXxvJCP1M_wkI_tUDVxoEAJLGkNNBl3FkGrk8qJ55TzJv3Brq1d5kqJGlT69es5XpZZ3Qi-SLCUn8RlGNNfE01NftdfbIuMGmy5LsKaG-POWFY0wQ8CfAvT9KimUoWDhDskLdAFjccyC4cpaq8Fhf8_BaKAjwxfFCtiV6hO-dq5RVjKAvgJ3zKRpr6F7B-fvJTjI1gkFVTLWzPE2rxKKwW7XqAB_Uaxhu8qq3cBCGNyfoAvrYMCheXrw_nqBWsa72SJe4vxc2fM6BfXjRWxAubisUK8i"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Le Welsh Beer Bar",
+      "address": "12 Rue de la Monnaie, 69002 Lyon, France",
+      "phone": "06 23 95 93 02",
+      "website": "http://www.welshbeerbar.fr/",
+      "rating": 4.6,
+      "reviews_count": 234,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 17:00 – 01:00",
+        "mardi: 17:00 – 01:00",
+        "mercredi: 17:00 – 01:00",
+        "jeudi: 17:00 – 01:00",
+        "vendredi: 17:00 – 02:00",
+        "samedi: 17:00 – 02:00",
+        "dimanche: 17:00 – 01:00"
+      ],
+      "google_place_id": "ChIJU4VYVirr9EcR2_q9DmfqZ_U",
+      "photos": [
+        "ATKogpfuHffNx9KeGK6Dym6_G_a-iY5ynkQU-kelEpFm0mNvRnK7UE7Vo6l9CPtmzh_9VbL3hK8UsFxpgD4WjQ2rVqJv9zot1GTkY31zcvP5WmUa0lpPnJik2FawKh1QxKU83XFUPn0Mc0HxsIUD3lq5wL6VO7iy69De_Ed_poPXFWLlAP9ncv497AXwnc_BAx7rkRtA685L0n3RQkwPwUDt2fHA48b7jiE-YK0Fm2ojj-TtGqb1DHP3QEi7TN42MJ18T5BF86T_6ap5Tkqsw3ODoCpz6zW-v3RAUX0XMV8wodx5cg",
+        "ATKogpeGkK17590HuOvQPueTyiKJGPIl_g6FnrIxQUZ8-en_FMHy7aSV7gLdFFn6W7hxSNE9eFvS5M1nht-aZDhq1_gHYVoQP8LU7aQgeL-74F6-ptNU4WWq3D3TCUPQBEu5p-VutfQ9DTCTSV7JFsNq90NpV4__LZdKUlQvZwr4GHOpwpOTC0bcy61hxFh_ekYAIopfNpKLSoidGJ2GY-In6Xa2q7ViEHo5wZaYYV2f2ee8hAfJrzfSnnPD6mry3B3_Wv12JWsZjcW5tARWgsGQvh5exh3IAENYTu94uN58dQxPuQ",
+        "ATKogpeb3bxQq3pL26i__GpaSaXkjh3yJeBBQgChRAziZ4PHb-magyBXDHDv0XFg-vUXl22_XLv2upnhChtbF-u3bHIpLoukUd0i3L_IMqa9_OOityr_KcUrymnd2bEClSU7tTB70ACRYWRHORkCRDCIYmHmWIeLZNCPhKeeFEcCwAtDFAdP5kC1XK7BSkjhwvjAtvwHSy-FLZGvHAEUYmVCjppBkQHGJ_128hj7eW4nQ4NN13lWeRwtziK98qSP05Hg5xYe-QcNbJXDjHj0vl7e3Y-86fmk4CNL9QPkq176tlTbIJSi0CMkRkkqILmQl0JQ2CUuqvCw-TFzyKTxuJFkOJiT56Kx8fO9KL876aSvYZ6ook2s_JqIDKlPXymj6yEuvS8nMMhd2OLHIRzLoASVwqQpvxH5nRYohTWG6y-ilZ4"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "La Cave Des Voyageurs",
+      "address": "7 Pl. Saint-Paul, 69005 Lyon, France",
+      "phone": "04 78 28 92 28",
+      "website": "https://lacavedesvoyageurs.fr/",
+      "rating": 4.1,
+      "reviews_count": 319,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 17:00 – 01:00",
+        "mercredi: 17:00 – 01:00",
+        "jeudi: 17:00 – 01:00",
+        "vendredi: 17:00 – 01:00",
+        "samedi: 17:00 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJA1vWWwDr9EcR-ndhp1KPsNw",
+      "photos": [
+        "ATKogpeiODo1l6uO-NFikrSQXpzfVKkVK3jIVjWN53SZ9QP49YILfPW4CeLp4P1WnrOB9CrX15CxyyMJ2s1yFygF2v6Ra_ISD5vaXK7id1YDrdH2T5_quw8aMGv2G9s0iKK11UERg7lcc4XmhHI82nagagRRLredc7XNjgkE7J8oGXrhyii2JrRV3gJjMCAhb2y6LmSbsLlb8azmfXfNUjPCxB6BTvUDDa2e2-2Yw976IH2Y8DdOeC8ZIQ__reszDSi8ncB7_8LHwVQZpDDQ7A1kuRzFYeb7WR-3l5XDnQITqY7oSAF7pqydnYAw3I03aQ894wzERNZCWY0chl-gXdO0AaatB08AraKqHw9eOVoxsD9Shm5LY7FyRIM2W9sH69zjz24SqMXsljqvMc4d3QSnopbsRBuCmlUn852dywjJe_w",
+        "ATKogpeHu4WY_UrISXHIA2g7kxedS8pGI1hNmpwSDmWbJiohOCGEu56q_lREKz9c-AGfJsIoW4D4bc7JqWmsBuLmCbWDnuUaIcqa7kpxBXY515EDmUS2ToZhHQOREx2Xs2aTEV7zPLz0gwYsQyOuKGAK0uFpfV2mlyOjCF57sONb7-d25Yc-aGuWL1vH779JZpTT8uTIwE_CBh14yJhRBEXg7QRJ4aOuNM60C95K81gmLg9LklMc6oHwK-Vr0YXKuJRPdDDJ3_LR3v676rvMxoC8eJb3isKr2aZUeiRnYStVt38OqZjkQUs-KbTcBVrOdZG7prVsPkOvIOta9FHWlrGeSNcTaBr2nBQrDGSlFNEAseUlrUbIVrTjQOw9n4EdkIhdq4YuU3k_sqHjSVaBby8ssooUrb0jZuS-dzUbnN8b7K0",
+        "ATKogpfDb3E87_1epn1Buf4fwZuDwOUtvkv_ui-Q6lzlcqe95FO4F5JOuQhiGECqZ9yhqkDCi-iutV-wOFY9kD-AikFXUEm7jEEExO8VlMxgghrEbfqUNrqbEMV7eaziEkjSrAt5_FdfVsQf_VowCBjHweCQeuc3srn47V2KRY70W6yVDrvejek_auqCc7KAykxi0lffnNNJ0SCW7nrOG_yxKHSMux--93V3ykvTyU1m_ssVhIba__ow1NWqSCMZ1LGgJHCJkf3KlPt3eMRyMMk1McIBlPNYqAtA1av0_uHemY7cq_NdQKy2FzXXM3m1Pq9hJXQOKJnQNfQ8S9L8DgOfaLdzlcVJ506uKWIQZZNszaUR-vXRgP46_h1TIfrLh5J8Ldv5p0BNzdJrIpGeVWNa7dlab5oXDJs-mEdy4xXZNO7Mzw"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Carousel Beer",
+      "address": "3 Pl. Marcel Bertone, 69004 Lyon, France",
+      "phone": "07 69 17 40 88",
+      "website": "https://www.carouselbeer.fr/",
+      "rating": 5,
+      "reviews_count": 64,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: 11:00 – 23:00",
+        "jeudi: 11:00 – 00:00",
+        "vendredi: 11:00 – 00:00",
+        "samedi: 11:00 – 00:00",
+        "dimanche: 11:00 – 23:00"
+      ],
+      "google_place_id": "ChIJjQvKclnr9EcRt4p763J9OlY",
+      "photos": [
+        "ATKogpfKElv3e-q1PJ_XuAyByZvYp_HfQm8ZIsv_x-oUMf9YlkMoMHlVjNqyTEXsG7qYF97o8tssHHqCrhgPor0aVIXqjlwHv6Sd06ad6O0vtTvu3CDy1AgoTGTk9SOMCliEHawwB87hzFwzDy_kQ9wE35gJHS9wPX-c8W3Vcq4eEh2rFnNMeyx7Kpe5EDjoxOuqfmC-DOtwUu7APm5hl2vP3p8o4wKz_2HhgBxVki2YCy9JHOAHhrUPeiHwo5gPJL8vUN4PxX0B_t3CbJSkxHHgTJKpz4drZxCZ10GZkrCbqlwrJg",
+        "ATKogpf2BlxBbMdSXmLevaStua8_DRjn1KsF28lSe-NL6y_gPby2dqEcZxKyTXL9bdvJBKWByIEFv8jFweblBS6yTraVMjJJ22FJI7eQB6VAu2vlIcrqjyO_yekayC2CRag_5K-WbOsIkO2BebjX8e0qB7b_vePOskfWt8VJa4co94KrkaYnfqAmorbXTYorCsuWvWAnYmLVk4l4ftsL21cqOuyUS_vLp4xC5XJ9-7WAALZgBWLXfVKu2cA0YO-cRkuvxU96f2PH7gNiJr4qw1NzKgoka52Hwo-PUl0PlVu8EGWO22pbH9qNXlfaMUJR90wkt3-Y38Qp-lBqnV7M3rNCRLGdTzsP65__lVy3bz1BkCK0TbLnhytronoY8xjFPyU81lBZSJ7039D8uHb05jMHv4Gwjry1GVIbgYxW-upx7orQydoz",
+        "ATKogpemNdX_x4Nl_uFtlouUej8Wx4Y5bW7rB0Oa7AaxgYzWmFNX4z0_hTiAfUHBg_Mk4004gOr-nLDM1lGR6mRreAwFJ1BFhyi4f86oDDVnXdpMLqrVgK4RMOQd_CodeABs6_7brr9rgUDZol061HJG7Ea3TDQtJqwEDWtce_Vu7tvo4KZ91j44dBCz9NusIbdDOKabzlIxKDjT2Btv0XZ_D8AzBdoe2Ka5DpemEHsJwN-s5688SHB8KqRByBpX1L_tzM9Gohm2_AY4gsfWU4N-N4qSn3Us-F6bQpHLnEfTJj_jA6XoYV1_fYCyHOLMWcvP9_fXfN4XxsP-6D_tlsrsv5AIl0090IAevH2rYdQOH0IghkkJ49__b4oFzwboqwQmslsDj8-1IfS1Ot9fT0ozuipnIlaFTSrhNFSeKn9towVaxE0-"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Multivers - Cave 1922 & Bar",
+      "address": "11 Rue Aimé Collomb, 69003 Lyon, France",
+      "phone": "09 74 64 13 31",
+      "website": "https://www.privateaser.com/lieu/52403-multivers-bar",
+      "rating": 4.9,
+      "reviews_count": 141,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 17:30 – 00:00",
+        "mardi: 17:30 – 01:00",
+        "mercredi: 17:30 – 01:00",
+        "jeudi: 17:30 – 01:00",
+        "vendredi: 17:30 – 01:00",
+        "samedi: 17:30 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ3wyrveDr9EcRtImSy-Y09g4",
+      "photos": [
+        "ATKogpdPpBaNnWxwOJJDZ0t9Ax029xhESER9BrHWWdxbSl856IcwkUfZ1qI22qVcfEqptuvvtBXixz-Z5ekf4-fpc4gIoC69uG9-fqI8oe0jQ8TME4Q4Bhueeqddsq_o9Q_ZKnyLbBkQ7RjC3EHQ0FaX1sqgAPuK2XJKgnvLVHrg90eQUr3ImZppqSuUKt56Q31siVg3BVC4QUXIDSF-nj-Ani_Tn-Quk91KAdVVp7rd6vrrRXSMktiMAg0Q_0lihKHUCj1iEwbXEFDNrxwRotVHC3SM2K_ypsK5st5yBMiT3AmJqA",
+        "ATKogpdUEtI8V83OcGpgfecIA3-IxFyTR5gqVcZXhzNbQEARZI4FaYF8GIJf9v4tiw3n18Q1B_bgYDxcGEyvuUTr6RztjBQMkOyRo2w99Q9gmv3r7bQMkOZFayvWu4MIpRbQpRcQ5XHUKn2jcL6NcqZqRPGW_Rgv1YHi-kiTIg5Kbg-VgQkysrxnhgYGsirIS05ECZMFqIqA86Pkyuc9FM448l1SDsIIBrcwYKyG_Ko9febXm4n6H6FLwXK71CKNk7Yoci4WfA2pXecQtIibCgYldfJngoQ-KIoKrkykn2eHvp9S2g",
+        "ATKogpdRz2lvURDcFKZboFf3EczuU7YnpO-LyvGcIcWyNlUD3_q4QAOGSt4qDNEIi-MbAMAOkXtk6zT9r6e2pbhxkbIN84D-7oF-rJOByZyqjB1JXkQKLm4FTJ7ZwHFSEY60oZ2DHlKvnPuVEMsaxhOYPwIet1YA73sGaJ1TSkJ5eNtOZD3o-LgiPfPjeD6gtvzBfLNDzglqBSGeYJTyDL_p-w7eXWOW5tdKt5UFGYsr4ror9DrPdh9GC_YKQVYaeLD2Hz11DSLgaquTZdRlZbgUC30C-XEWo6g9pbC68ec58n85ag"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "La Cave des Dominicains",
+      "address": "93 Rue Tête d'Or, 69006 Lyon, France",
+      "phone": null,
+      "website": "https://jubilatio-jeunesse-dominicaine.fr/la-cave-des-dominicains/",
+      "rating": 5,
+      "reviews_count": 30,
+      "price_level": 1,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: Fermé",
+        "mercredi: Fermé",
+        "jeudi: Fermé",
+        "vendredi: 20:30 – 23:30",
+        "samedi: Fermé",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ97OsE4vq9EcRyWE2qeySK24",
+      "photos": [
+        "ATKogpedo6mEKRMe0WzH4EPeCgh_dzSLf-AuIGWQNOcJU8fHYmzMc9xzaypoB2Kj6KQZ242L9mMsccguZr1tfCqry_M-XQ99N4nSMLOeJr06Y8Kc3bYoq-IbzYSjOZPrUzIZR9-0cZnaD_CRhH6ZlKfBgBDeGqJfGtGay-oEd-XCCifyQS7fHEpsAInSgYbqTE3MlHNggsqTAjWIu5YHuTuXIciD9rJtQU6txZa2Mo57fmy5iVxIG3NZlL_bVew1urSCkXgVWe896RGeBZIitrn231lB1avP6sLAL4GoRT4KrVcXKA",
+        "ATKogpe_nLN7rwHeQaiFo12VbZD1epfYd04pRAfl67yCRk5j4u6_5DF3yWhgVYj1V5yCFvnDHyRaK6Ry_WBJ9rMYNAJQRExAdTu7NqNP0Pl23qOHj_WTI-RNKa2a4vWxJOUXjvzx2g-zBXdsI1zWK_wDSpek_kRRZCraOTRyy01NohvdfrFdZ1oXy3R8QlXaZv3asCMMo48RUwct7kn1RgKxaEBNPM70WTD6u9iUgEGUijv_cY35xc6j4MRRSdeJT33K4ApbnF8gjggqoVX2pS_-xKjgTNvpN2AGB8kvUFNOxVTREw",
+        "ATKogpeIyCJ-vti1P2YQICN53tBJo6nbhnVZFLNqzu2ghULALY5BDB7kpC1IGLUuOr_m-_1idDyUPSd9lwnno7G4_jwz76GKi00VZyRxXP_4wteImvBL6i1IxhxzMP3aijiSb11xAlf53gdAbY_ZkqVGbRV9i3XAmc7QwxX4bri3DDhMr7TpAH4gxdPWgY20tMPfQAocjVhnpxR72f7xcUBa4TpnL_NCRfhcCjAi017alQEExqSMdWeIMkrjnkD1B_jK06OUvAyx3S7UWrgIZVZvYhWN2Ywp0cuVQ9EuaYAjyNzTzA"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Dr Yeast",
+      "address": "6 Rue de Cuire, 69004 Lyon, France",
+      "phone": "04 78 28 39 88",
+      "website": "http://facebook.com/DrYeastLyon",
+      "rating": 4.8,
+      "reviews_count": 409,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 17:00 – 00:00",
+        "mardi: 16:00 – 01:00",
+        "mercredi: 16:00 – 01:00",
+        "jeudi: 16:00 – 01:00",
+        "vendredi: 16:00 – 01:00",
+        "samedi: 16:00 – 01:00",
+        "dimanche: 16:00 – 00:00"
+      ],
+      "google_place_id": "ChIJn6brcT_r9EcRadT3NOAijEs",
+      "photos": [
+        "ATKogpcd-zZXahZ_8GUK-TwHmW0TRii0GDHlKBkQ_YkoYgiv5h2ip0APfnALK0RUYlVzGHiD9vh8qJGZ_5-m6nF_1JW0-61z7vmk9I5nSIWyzZQ2mtLEwuqttAadyCSbVX-iE6ZYGDLNXLC7BXIq5ZX5cr1jMyA7jsmQQqlwZU8pIzMN3ImfqIsggtflMKrw4Bn7u2BWe0jFxtFhlWHPvkUEMvpLiB05eMmKqt9lRmyQcm80zG-PzZz4oVbUgr_g4XqVTiIZoWc7Oy8oyaPrWisE5IY8CKwKGSXhcWz8GIZddNXG1g",
+        "ATKogpdOZ3nw4qp1pG8K2KzwYXJajeNtxAkIky8szIncB1-t1MC1UK98EtboVM9M66LPT6wTcsrNExjtY7FehoemCqVlcbcJmFJGhSYg0g3W9pisSLf6bkTS6KJ9V66zQpDPF_zA23u8XLD20vNovqB3UCYd8A1vqXqOsUEsdBsKvhCSxg21t55LdPJdT4SV-PSw7HGCHOetAsytCRDexa53G_RLXj7Bo_n1Hx46eJ__IpO5x_USvs6aGFIXrYlZAOcUbZ7CbdLeGO38nJsVxO7Sx0Cmn31jFzcEnVSLatir0lX1pQ",
+        "ATKogpfefbv7OMaA1wVbM1mnd6NCiwdeHTJmVKcXOOsM3gQkJzyP7LIjBVqeQcg3_WTpBG4e3qIE-cX2POYkZbJEI1I2C-sgQc3jvu3XqIPn_8Nm1VsFR5_2oEFr8ahgIvG0RKbRag7Yu1h0O5dtb5HT91SfBOUC9h3g3FIsMkAolDV37wOX9OyZcPIeiUnTSNbwUSexfGG3Vs4TavM4BbaQCYcMOVo0aQz5KMupEI8vj30X7sya-i02QsBbcumgaTuiprs59GVR5zys9A1OPebifOJ0huxl3dvSrxfn7Q0fSrjpFrhtXspiI4fwMHsq-Ud1G0VGabkMM92brMzLejSCs9FfK-RgFLQcpTK98HQXFAcSuc30KOSVVfPf2kfd0aHdXxDAp2CsWSlWWqjeZUh4rKJ9xoHEqsCYwD8AhZ6NNcQW-pnG"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Orgao Beer House",
+      "address": "145 Rue Sébastien Gryphe, 69007 Lyon, France",
+      "phone": "04 26 18 70 12",
+      "website": "http://orgaobeerhouse.com/",
+      "rating": 4.6,
+      "reviews_count": 398,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 17:00 – 01:00",
+        "mercredi: 17:00 – 01:00",
+        "jeudi: 17:00 – 01:00",
+        "vendredi: 17:00 – 01:00",
+        "samedi: 17:00 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJi3gulfTr9EcRG4C6ePMWSy0",
+      "photos": [
+        "ATKogpc6BdagjFDl7GEFxdNnfs5aNpmdDjjqVIXbT8Kq1KkD7WTrhz49OvgzufLD5RqXxPfAWfIam-vpyoNg9-rIZAk7qGjnaDAh2Pvjnj25aRCgP4h2RrdyE2eFRcl1lDMuvOHat-A0Egof3uhcXuSsFu3-JOK5m-wNQ62YiWbKV9dRydT29wUAwivyAd0PXYmToQaHiVIwoZTfFc3YB9CMpsHyvAWNrdZ5m1D0P_loqZ4O49XDKW39BeqGf6rGN6mWO7Qc29CVW8wOc57nzrtqUbpyW20EneY0NHwQdg9LvkXFSg",
+        "ATKogpfezoGNE68BcDRun2c1Oc1H-hSO0pqWS0xdL0KSLV9Xc6jxbXadJ0LR36NtNvRiw8SHJnWWK-skm_U3ZA7FpFF_XA-wOAfEBn8fcIQYLj0q2w68R2g7lv4OxKrnVO7oy9hTS7gqLz7MeeyARXPV7nooBR-tBHxKnhvay-43kX6y5rLNxalinvePbrHeGI7NQZmBNF3JwDCcO00Z30QS9jKuIGD9qi8RRyTSpz8IoLU92TaUPYHYyWEHhwNY40y06ufrqUbZOyMkkMpDQz4RXP5hzjrxhPCyHE_Izf9JMoW8Dg",
+        "ATKogpe4x2mbkP83JMCZ0JJB_WDQ4YLZ3ADZNKfcMc26vQ4ey8PiIh3GXLlc6QOdEi8L0lDt03x9vrjaaLFPQY7JO9HnGb-2ACc1ca_YRQGUq2BQFT6rhbRJES4beWMqbAUNSICJw44UOlpn9JDN25VwCmcMrbZKDs16oatnMrivmskiThLZyMqJlk0N04GvuV6WmdowWKoyGriSa2it-w9_nPCiTItWC_pLqhn5sIbX1PablYSiOWnKYxjgCKpJHf-gqvVG4oD_0K5LPbgoLqTCXNiEznEBaqaR7V5tve1HXGiAqQ"
+      ],
+      "zone": "Confluence",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "you cocktail bar",
+      "address": "56 Rue Ney, 69006 Lyon, France",
+      "phone": "06 23 47 00 38",
+      "website": "https://www.youfreebrand.com/",
+      "rating": 5,
+      "reviews_count": 355,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 17:00 – 01:00",
+        "mardi: 17:00 – 01:00",
+        "mercredi: 17:00 – 01:00",
+        "jeudi: 17:00 – 01:00",
+        "vendredi: 17:00 – 01:00",
+        "samedi: 13:00 – 01:00",
+        "dimanche: 17:00 – 01:00"
+      ],
+      "google_place_id": "ChIJjXXeHg7r9EcRdpxHvv2qxo4",
+      "photos": [
+        "ATKogpc5MmKsXPfPiMfILxwBfPhvltIzl9wgsSLjBrIx2GA-zXfNzKAkPXU19vCQrKhWpKSNCCAyGGXO2nPYfvlY7MdGspzJOLr_0cqFGyOUDj-J14lUkXU2WY9YdAcnf5m_OuI1kxnDTMzCTYXPLeLPCpd556LVK_uvuzpDYX2vAkhMBrZl_QgRee2N3_uCypkSCCiasNgw6UDOpdbYGkV2ft6ypMsXKyYf-vqT-s8ltgr0Ldew5V9Ti2Z9Eifx5g8lgsNYnwQRijL6pWryMWY3xbmnwv6NDKnejR45-MDbVrGSng",
+        "ATKogpedfoy4FcEl2KocUpxmZFhOCzNzkqkyMI38GQ1vze1EIaoZF-rRB-NTm1u7PYMuGaOL-XDr3Iq-qK7bhLJlD7TVcNeqrKz2tYaPCt2TZwpBqVZZHQaIklYelgyanBenUPgJ-1eWndP-lziurbvarWyOKLUcvSjdV9p5JSw5o07pklQ5I8--g4tfiqcW3L8W7ppVtyLPw4bVQTLzrcAfh1HSwUeyDtS5Q58v0epYN9-UcZzGVcSnDs3uBWztFF67Tbn781XSCRNTPgDjO5-IS0QsDyDaMvElFIKRS7lFrHB5Qw",
+        "ATKogpeC1dvZAvNDjdYWItB2yPu_YtOiv-MzfnhNACT1l9C8R1pj6GGPASSTnhJoO_pZI1V5bxcenNor1ozin3oBoSCJIEQ-BqvALVWlZ19ZHuMIFOYEVxiLfhhjkCQArA37N6VOU11etVf8NUsBJT2sm_BAmV3yLqoixiwnmnhVLZFP7g4AkY76UhZSm9f1FBh1oEyG7ODWvhWAblFxfyAjnIXJPFA_PGf37i4XUXBPp2pzfCoz1FoHnFTY0wB_7f4FjqfC3yQDtM-NmkA42oLiobC6MrBQ5_bqyWfVBgsXCa7aeg"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Contrast.",
+      "address": "32 Rue Palais Grillet, 69002 Lyon, France",
+      "phone": "04 65 84 51 21",
+      "website": "https://www.contrast-bar.com/",
+      "rating": 5,
+      "reviews_count": 169,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 18:00 – 22:30",
+        "mardi: 13:00 – 23:30",
+        "mercredi: 13:00 – 23:30",
+        "jeudi: 10:00 – 01:00",
+        "vendredi: 10:00 – 01:00",
+        "samedi: 10:00 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJBUWJIgTr9EcRw705eIVo1m4",
+      "photos": [
+        "ATKogpeGNZKTPRCjRJpP_3EBIfkHUkm0_0Y9eNPLK7Yn-O4CkZTMkM7NylCgtsVcpveS9Wj_d3fZ4GTUYMiEWbhDTC1wH9eJIyOETGRhZrdag499evpglJjLKMkABgvKCrtHvNd5oL19yOy7paKj6QHVRLCc4C_NNnGt5SFm9J7WvCJmcsP6ANdLg6FlStrjg19tutm-hcK7n8SxjlT8IfVY8MGyMjffXJDCU5jL2tRS6YXW8jimqfV9bdBF5jAQCrxSIjYfI5Yq504cmVuo_RWHjT-Ebo_Hl3NeFYpn3Lu85W0",
+        "ATKogpe7c_qgYWRNs8Gew-Y1FYUsTp26P-lZbm8ZVS9mkU5yzLBVmnQcaIED4HJZVnr8DTV2CuwHsZhzUoGydMXWTaPhGP9Akb_VYpSW7QKrOA2RUnpLIQmogz4y983aOxsyG_3HfVng1SmOgiSHEEUghWg4_ALZN0P3hw7U-x5jLib7KO7pTyOkr2nBVK3-LhnBFgjFka083LbFw0bs8lYtlOfQX09UZ0SOJn2jgUs34lPgX5Bh6ptRJwgDWacMQTrwCqsapB793s8UjYbWwYNjFdwUnvI99e5dN92QrrR647E",
+        "ATKogpde4154psubI6ZAeiKytq-LEKiUJGJ3qfPuGUd6GiKL5Lv1jGdLWVdxJ1KwtO-2G9kkEbCmrM98YUCn4V_Tf3ANVCM1DU0qk0g_I8eLyxVeUtlnMRf5U2KVrkqQ03WbOKdwLegYXRPY2901j9ZP2U_deLE4GWOTupDxEkLYApIxD4BdbPXhwbTTawO2eXAsA7zsM8bq4JOtFpgIAhV5ZB8bA3mUyAS_4UUFxwAAvZuywlKqTMljftRxsIVarshlUqkQMsaSLQX2Gk9j3-G3X4WO71PwuR_6N-9h7md71xI"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Sauvage",
+      "address": "3 Rue Montesquieu, 69007 Lyon, France",
+      "phone": "04 37 29 23 79",
+      "website": "http://www.sauvage-bar.fr/",
+      "rating": 4.6,
+      "reviews_count": 494,
+      "price_level": 2,
+      "opening_hours": [
+        "lundi: 18:00 – 01:00",
+        "mardi: 18:00 – 01:00",
+        "mercredi: 18:00 – 01:00",
+        "jeudi: 18:00 – 01:00",
+        "vendredi: 18:00 – 01:00",
+        "samedi: 18:00 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJ0VHfTEXq9EcRYHff0289YkA",
+      "photos": [
+        "ATKogpdlXmXqpqxBZTD8UxZVdsz_TeN7T6j7ZA5gaFISqe4NaoZ_UoQ4qfN01k72ZOFLEXutQUXppJNw2mf_Ki7eDSbrcOE6shy_xxXpOV6vpb1w9NRIx9Wvl8OWoDWBXyNJTSpxLfeQQP6P-ivHBr8DTjMKJQfdU1xYJpdxobn_AvNMrQvkv3N6GYbrG0CGK09iK3IVNe4o1l2jiWXDpaRzYvp0C5zFHaFcezHWV8mAy2MIh7A90a8LzMAJm4X8evnFuHVTs7va6Y8n6K-MZ-QUw40e-bYI5aaUEK5Q_QhDma-NmA",
+        "ATKogpcFO69nkQxy9JEtEHFpMIRJPk5hpl5IEF53NE_BHVtqdG3apj5U39rxakWflnhxFVgtknPM6uyGO1YSPXcor-YxdQxe1Aa1hkNjbKep700mf3egaRYVMS6P766fQ1hB-ODUaufgUXsPKC-yNId8U2y9wUUDDKjVc-XIFBI0N3ub4g_9ewL9qU9lhGyyxGrdN4z-4TAjE7DTchKn1dqpb3AJkVZ7uQAeGjxy5AeGPfMN5agUcGcm2yD5wTvqMRdTxV6ydlJxgUo1oC0kr2O6CdV8xZiYWf_1JoNh_QNxuEkyBQ",
+        "ATKogpeMPY_sab-MnMOY8F6zy4MdMBTTVEd8BjVIhOYnwevpILKlWfUcOam1jRFVYW2Y-cqSjhTcsRYgsbi6PP8n5Bomqk6WiDvmpi53AWRNMo44gn9Tive7TifhjJoj5KXdSjdptcS82mrC2z-C6zLW_oPazdeMzkFp0ll4wl9axpefhCfF1v5BTiRgxJlJ_GmCQEVE2S4ChizyXAsYogaeSJq8mh3yypTdq3XcvIH0HgndI99m0zdavBO1zAFnBaWl6kUJzV5wv7kmAD2F5ZuuekTW4SImINS21xXdAK9To1v5cpdyxx71ZyzBv_KAyO0QtLc_egjyaE79yCrm3wJUFcVQGt7uRrJblm9uF4hQijvIZL-rjIfdCG6gXM9t00O7J1BuarjgDxumEBVcvUcDWpKsnbJLfuoFaoSYgOYm3H0Usf92GsxNZxTzXYoK-A"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Pineapple Room",
+      "address": "21 Rue Juliette Récamier, 69006 Lyon, France",
+      "phone": "09 74 64 10 34",
+      "website": "https://www.privateaser.com/lieu/52290-pineapple-room",
+      "rating": 4.9,
+      "reviews_count": 193,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: 18:00 – 00:30",
+        "mardi: 17:00 – 01:00",
+        "mercredi: 17:00 – 01:00",
+        "jeudi: 17:00 – 01:00",
+        "vendredi: 17:00 – 01:00",
+        "samedi: 17:00 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJJ0bUWgDr9EcR3yc8SEqulCs",
+      "photos": [
+        "ATKogpf0_EsZv-fh8_GBrXV1n7-O23DV8l8tyXE_nj2BWmU55sK9sFml8HTFNOAerehO1NZUMbgocCYuXAvg-GpLPKzpQ-qF9Lrv4IXLJLFLQrAKD2HNfU-gv9lvhxCjzEa21yYuSyXwrw7iY7vnEwCDmMAbjHujVWJoXMxXiVKRX7D5eJmHLiAMIItLR2ZWF_1Fn_UIWOcdnHOPiP_SblLsZ17tRcFl_TRzZFxHi4GbPdmL8-eC_IARtghEKCVPdzTVlLE-zEABVeakr7GuUlG4Fb65zmFh7W7MGPScZqp1UL4",
+        "ATKogpfKIF9o0sHjIP5Lh3hRHiTU0fYlO1c2E2_9Y2fTqA4fw6qbzabMdJ1y4xwiky_UMBfBbiEPHuxiMNQ2tUu-nDe9eHAxPLkumeAlU14ts0aMdenFqm9VzhT5C5i_I5OaC6nkW8qTGMpqMkxncqvZHE1fBZdSagSKcjNm9mo1uqfrpm56kGOrZWBaHAUcoOkUpDI54AicjeMeARCe2HfQCkiDAGejVAE0fdhQVMYCZJpGlBb4VLhTlG6YMn3NfZ6xqJ8ssbEMUNmANy5lMnJrtPBEszOe4E24vcXtZVqY1TY",
+        "ATKogpe_vEunr0RicNIQARmP-OeD3l17YhZW0eB_r34cEUamIuD-pWhPDGExyFx4-6K3pZo98zw_kirFSCUXRx635zJl6BD-vE4KDYek0-EfhT2C8MIGG-8EI-VAUVX1YYKAa41afSKV-_jTT_Hmzc6aLiSb3Q6xu5H-JyFEvxAMxp5alN3UxBKNKGqCvWwNjqJy35Gf1tPDo8Lfla-KFIUYUekHg1HEidSV6eatYqlQjBx48dIN3xaERiOi9ecfIyGGRo-hNoz9i7WKtcFgaHvRADaQTYOhVpUaHOYlbJw5Sl6lcsb75Y2xAiE8KDVZHAIjbs2oem4_YDwemX_H2wREfcrXV4wvTSBlDpgk1AF_3j3y7Wb6X6aoJ5ysPc7TBecLTOZALmwJk47hsxGjOyjR90xGAT3qRAtKoDq_crjNpXeSgA"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    },
+    {
+      "name": "Le Speakeasy du Passage - Cocktail Bar",
+      "address": "8 Rue du Plâtre, 69001 Lyon, France",
+      "phone": "07 87 75 16 79",
+      "website": "https://lepassagelyon.com/fr/",
+      "rating": 4.7,
+      "reviews_count": 32,
+      "price_level": null,
+      "opening_hours": [
+        "lundi: Fermé",
+        "mardi: 19:00 – 00:00",
+        "mercredi: 19:00 – 00:00",
+        "jeudi: 19:00 – 00:00",
+        "vendredi: 19:00 – 01:00",
+        "samedi: 19:00 – 01:00",
+        "dimanche: Fermé"
+      ],
+      "google_place_id": "ChIJx0Tj0GXr9EcR8UuO_glXQgs",
+      "photos": [
+        "ATKogpdmc3EylgUV5ncIuhe19P00qFkv0bWt6yFx-QgIlkMz9R7IUcvzzON0L0TXqD3gvCuuPGp-McDxNR2EERNS_oioKrhuhCQAN2fYlZKSl7bJPQNMtvW5dEjaNRyff-3h4FUvfSoALhUtIOaRSIGCjIigFR1n7wVEMj-hk5zPtagLrcN3vMPg4zV01VWJIzxb_DoVhaP01uldBPOaT48wAdrMztPmKk-kyOl29G3MVHWJRcWnE_OGc7L3H_wfgqdAIg0pRo5LHR5yNkZRDKxiTiiXzqPWjMf_I-2nxkeFXTDp5Q",
+        "ATKogpd5JkYUUdegZ3pT-ZYoMMa6sYhc1YJz8xPL9EDTMFd0tWC6tWmyp71h8tqsTrXmDyUSfjLLMtCMqVjV8IqWsrPdWlMioEpHnch_HvtKNPLD4jGzwuCpQY1-5rqIJIMxbgvaj9L38QWTDSAhXzpUav6FjdPY-05ud_RoZh2XZA7qzJHBrZQ2iE7fSTvpz0XBXk0PNQsacjxDkDYe3RtNwq3MPhCJe2BvsQrgKCDnAv5Ee5NfbJ4pIGY91Ha_ME479120-MvWlRnkOUZl1g8Iva2X5PUJfSFFOXTuyHAzJvOcHw",
+        "ATKogpf-wtT2T-YtTdIAT5lt0z3Yg1YRDf7RNFxc7IE0kQcD6iFKapFY2BSCax6XNsoAQJ4L70V2Fp8Gt0gXd5QBDh-8qSAhDJJguHjhIo1oi-h1KHzukJfboPnxrQhE44EYdaFfwCE34TO0gviIA64xArpuJIMTFdlT-AdDP-zu66lDVm-Vkc-UdWiyCFnndm2uj3Gpq5AD3N6xnZ4wIGmPhnDe3uGLepuFLtLl-o61Uhfn8NQ1tYtCQQqUtXRycIf9PZ9Wj9ry1P6j7HVr_wOhgrNggFJwyyCRBvtgzF5aqOu_0A"
+      ],
+      "zone": "Terreaux",
+      "category": "bar-nightlife"
+    }
+  ]
+}
