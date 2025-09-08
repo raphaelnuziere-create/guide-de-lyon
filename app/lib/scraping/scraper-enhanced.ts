@@ -1,18 +1,18 @@
 // Service de scraping amélioré avec gestion des images
 import { NewsScraperService } from './scraper';
 import { ArticleRewriterService } from '../ai/rewriter';
-import { ImageServiceDirect } from '../services/image-service-direct';
+import { ImageStorageService } from '../services/image-storage';
 import { supabase } from '@/app/lib/supabase/client';
 
 export class EnhancedScraperService {
   private scraper: NewsScraperService;
   private rewriter: ArticleRewriterService;
-  private imageService: ImageServiceDirect;
+  private imageService: ImageStorageService;
 
   constructor() {
     this.scraper = new NewsScraperService();
     this.rewriter = new ArticleRewriterService();
-    this.imageService = new ImageServiceDirect();
+    this.imageService = new ImageStorageService();
   }
 
   async processSource(source: any): Promise<{ scraped: number; published: number }> {
@@ -50,13 +50,16 @@ export class EnhancedScraperService {
           // Générer le slug
           const slug = this.generateSlug(article.title);
 
-          // Obtenir l'URL de l'image (vérifiée ou par défaut)
+          // Télécharger et stocker l'image localement ou utiliser le proxy
           let storedImageUrl = null;
           if (article.image) {
-            storedImageUrl = await this.imageService.downloadAndGetUrl(article.image);
+            // Pour l'instant, on utilise le proxy API pour servir les images
+            // Plus tard on pourra stocker sur OVH ou autre CDN
+            storedImageUrl = `/api/images/proxy?url=${encodeURIComponent(article.image)}&slug=${slug}`;
+            console.log(`[EnhancedScraper] Image via proxy: ${storedImageUrl}`);
           }
           
-          // Si pas d'image ou échec, utiliser une image par défaut
+          // Si pas d'image, utiliser une image par défaut
           if (!storedImageUrl) {
             storedImageUrl = this.imageService.getDefaultImage('actualite');
           }
