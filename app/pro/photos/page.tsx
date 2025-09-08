@@ -126,84 +126,35 @@ export default function PhotosPage() {
       }
     }
   };
-        .insert({
-          establishment_id: establishment.id,
-          url: publicUrl,
-          position: photos.length,
-          is_main: photos.length === 0 // Première photo = photo principale
-        })
-        .select()
-        .single();
-
-      if (error) throw error;
-
-      // Recharger les données
-      await checkAuthAndLoadData();
-      
-    } catch (error) {
-      console.error('Error uploading photo:', error);
-      alert('Erreur lors de l\'upload de la photo');
-    } finally {
-      setUploading(false);
-    }
-  };
 
   const deletePhoto = async (photo: Photo) => {
     if (!confirm('Êtes-vous sûr de vouloir supprimer cette photo ?')) return;
-
+    
     try {
-      // Extraire le nom du fichier de l'URL
-      const urlParts = photo.url.split('/');
-      const fileName = urlParts[urlParts.length - 1];
-      const filePath = `establishments/${fileName}`;
-
-      // Supprimer de la base
-      const { error: dbError } = await supabase
-        .from('establishment_photos')
-        .delete()
-        .eq('id', photo.id);
-
-      if (dbError) throw dbError;
-
-      // Supprimer du storage
-      await supabase.storage
-        .from('photos')
-        .remove([filePath]);
-
-      // Si c'était la photo principale, définir la première photo comme principale
-      if (photo.is_main && photos.length > 1) {
-        const nextMain = photos.find(p => p.id !== photo.id);
-        if (nextMain) {
-          await setMainPhoto(nextMain);
-        }
-      }
-
-      // Recharger les données
-      await checkAuthAndLoadData();
-    } catch (error) {
-      console.error('Error deleting photo:', error);
-      alert('Erreur lors de la suppression de la photo');
+      await PhotoService.deletePhoto(photo.id);
+      
+      // Retirer de la liste locale
+      setPhotos(prev => prev.filter(p => p.id !== photo.id));
+      setPhotosRemaining(prev => prev + 1);
+      
+    } catch (error: any) {
+      console.error('Erreur suppression:', error);
+      alert(error.message || 'Erreur lors de la suppression');
     }
   };
 
   const setMainPhoto = async (photo: Photo) => {
+    if (!establishmentId) return;
+    
     try {
-      // Retirer le statut principal de toutes les photos
-      await supabase
-        .from('establishment_photos')
-        .update({ is_main: false })
-        .eq('establishment_id', establishment.id);
-
-      // Définir la nouvelle photo principale
-      await supabase
-        .from('establishment_photos')
-        .update({ is_main: true })
-        .eq('id', photo.id);
-
-      // Recharger les données
-      await checkAuthAndLoadData();
-    } catch (error) {
-      console.error('Error setting main photo:', error);
+      await PhotoService.setMainPhoto(photo.id, establishmentId);
+      
+      // Mettre à jour localement
+      setPhotos(prev => prev.map(p => ({ ...p, is_main: p.id === photo.id })));
+      
+    } catch (error: any) {
+      console.error('Erreur photo principale:', error);
+      alert(error.message || 'Erreur lors de la définition de la photo principale');
     }
   };
 
