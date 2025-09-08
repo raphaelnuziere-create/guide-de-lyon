@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Auth Supabase</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        .container { background: #f9f9f9; padding: 20px; border-radius: 8px; }
+        h1 { color: #333; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #45a049; }
+        .quick-fill { background: #2196F3; margin-right: 10px; }
+        .result { margin-top: 20px; padding: 15px; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        pre { background: white; padding: 10px; border-radius: 4px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Test d'Authentification Supabase</h1>
+        
+        <div class="form-group">
+            <button class="quick-fill" onclick="fillPro()">Remplir PRO</button>
+            <button class="quick-fill" onclick="fillExpert()">Remplir EXPERT</button>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="pro@test.com">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" placeholder="ProTest123!">
+        </div>
+
+        <div class="form-group">
+            <button onclick="testAuth()">Tester la connexion</button>
+            <button onclick="clearCache()" style="background: #ff9800; margin-left: 10px;">Vider le cache</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // Configuration Supabase
+        const SUPABASE_URL = 'https://ikefyhxelzydaogrnwxi.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlrZWZ5aHhlbHp5ZGFvZ3Jud3hpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU2OTY3NTQsImV4cCI6MjA3MTI3Mjc1NH0.vJHDlWKUK0xUoXB_CCxNkVNnWhb7Wpq-mA097blKmzc';
+        
+        // Créer le client Supabase
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        function fillPro() {
+            document.getElementById('email').value = 'pro@test.com';
+            document.getElementById('password').value = 'ProTest123!';
+        }
+
+        function fillExpert() {
+            document.getElementById('email').value = 'expert@test.com';
+            document.getElementById('password').value = 'ExpertTest123!';
+        }
+
+        function clearCache() {
+            localStorage.clear();
+            sessionStorage.clear();
+            showResult('info', 'Cache vidé ! Rechargez la page.');
+            setTimeout(() => location.reload(), 1000);
+        }
+
+        async function testAuth() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!email || !password) {
+                showResult('error', 'Veuillez entrer email et mot de passe');
+                return;
+            }
+
+            showResult('info', 'Test en cours...');
+
+            try {
+                // 1. Tester la connexion
+                console.log('Tentative de connexion:', email);
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+
+                if (error) {
+                    console.error('Erreur auth:', error);
+                    showResult('error', `❌ Erreur de connexion: ${error.message}`);
+                    return;
+                }
+
+                console.log('Connexion réussie:', data);
+                
+                // 2. Récupérer les infos utilisateur
+                const user = data.user;
+                let resultHTML = `
+                    <h3>✅ Connexion réussie!</h3>
+                    <p><strong>Email:</strong> ${user.email}</p>
+                    <p><strong>User ID:</strong> ${user.id}</p>
+                    <p><strong>Créé le:</strong> ${new Date(user.created_at).toLocaleString()}</p>
+                `;
+
+                // 3. Vérifier l'établissement
+                const { data: estData, error: estError } = await supabase
+                    .from('establishments')
+                    .select('*')
+                    .eq('user_id', user.id)
+                    .single();
+
+                if (estData) {
+                    resultHTML += `
+                        <h4>📍 Établissement trouvé:</h4>
+                        <pre>${JSON.stringify({
+                            nom: estData.name,
+                            plan: estData.plan,
+                            email: estData.email,
+                            max_events: estData.max_events,
+                            max_photos: estData.max_photos
+                        }, null, 2)}</pre>
+                    `;
+                } else if (estError) {
+                    resultHTML += `<p>⚠️ Établissement: ${estError.message}</p>`;
+                }
+
+                showResult('success', resultHTML);
+
+                // 4. Se déconnecter après le test
+                setTimeout(async () => {
+                    await supabase.auth.signOut();
+                    console.log('Déconnecté après le test');
+                }, 3000);
+
+            } catch (err) {
+                console.error('Exception:', err);
+                showResult('error', `❌ Exception: ${err.message}`);
+            }
+        }
+
+        function showResult(type, message) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = 'result ' + type;
+            resultDiv.innerHTML = message;
+        }
+
+        // Vérifier la session au chargement
+        window.addEventListener('load', async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
+                console.log('Session existante:', session.user.email);
+                showResult('info', `Session active: ${session.user.email}`);
+            }
+        });
+    </script>
+</body>
+</html>

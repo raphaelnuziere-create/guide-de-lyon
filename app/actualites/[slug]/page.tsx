@@ -54,11 +54,14 @@ export default function ActualitePage() {
         content: data.rewritten_content || data.original_content,
         excerpt: data.rewritten_excerpt || data.original_excerpt,
         category: data.category || 'actualite',
-        featured_image_url: data.featured_image_url || data.original_image_url,
+        featured_image_url: data.featured_image_url,  // Utiliser seulement featured_image_url
+        image_url: data.featured_image_url,  // Ajouter aussi dans image_url pour compatibilité
         author_name: data.author_name || 'Raphael',
         author_bio: data.author_bio || 'Rédacteur en chef du Guide de Lyon',
         author_avatar: '/images/raphael-avatar.jpg',
         published_at: data.published_at || data.created_at,
+        created_at: data.created_at,  // Ajout de created_at
+        tags: data.tags || [],  // Ajout de tags
         reading_time: Math.ceil((data.rewritten_content || data.original_content || '').split(' ').length / 200),
         keywords: data.keywords || [],
         meta_description: data.rewritten_meta_description || data.rewritten_excerpt || '',
@@ -90,11 +93,14 @@ export default function ActualitePage() {
             content: item.rewritten_content || item.original_content,
             excerpt: item.rewritten_excerpt || item.original_excerpt,
             category: item.category || 'actualite',
-            featured_image_url: item.featured_image_url || item.original_image_url,
+            featured_image_url: item.featured_image_url,  // Utiliser seulement featured_image_url
+            image_url: item.featured_image_url,  // Ajouter aussi dans image_url pour compatibilité
             author_name: item.author_name || 'Raphael',
             author_bio: item.author_bio || 'Rédacteur en chef du Guide de Lyon',
             author_avatar: '/images/raphael-avatar.jpg',
             published_at: item.published_at || item.created_at,
+            created_at: item.created_at,  // Ajout de created_at
+            tags: item.tags || [],  // Ajout de tags
             reading_time: Math.ceil((item.rewritten_content || item.original_content || '').split(' ').length / 200),
             keywords: item.keywords || [],
             meta_description: item.rewritten_meta_description || item.rewritten_excerpt || '',
