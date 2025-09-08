@@ -9,8 +9,8 @@ const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
 const path = require('path');
 
-// Configuration - REMPLACEZ PAR VOTRE CLÉ API GOOGLE
-const GOOGLE_API_KEY = 'YOUR_GOOGLE_PLACES_API_KEY';
+// Configuration - La clé API Google sera prise depuis les variables d'environnement
+let GOOGLE_API_KEY = process.env.GOOGLE_PLACES_API_KEY || 'YOUR_GOOGLE_PLACES_API_KEY';
 
 // Lire les variables d'environnement depuis .env.local
 const envPath = path.join(__dirname, '..', '.env.local');
@@ -22,6 +22,11 @@ envContent.split('\n').forEach(line => {
     envVars[key.trim()] = valueParts.join('=').trim().replace(/^["']|["']$/g, '');
   }
 });
+
+// Si la clé API n'est pas dans les variables d'environnement, essayer depuis .env.local
+if (!GOOGLE_API_KEY || GOOGLE_API_KEY === 'YOUR_GOOGLE_PLACES_API_KEY') {
+  GOOGLE_API_KEY = envVars.GOOGLE_PLACES_API_KEY || GOOGLE_API_KEY;
+}
 
 const supabase = createClient(
   envVars.NEXT_PUBLIC_SUPABASE_URL,
@@ -173,6 +178,31 @@ function extractDistrict(address) {
   return null;
 }
 
+// Fonction pour insérer les médias d'un établissement
+async function insertEstablishmentMedia(establishmentId, photos) {
+  if (!photos || photos.length === 0) return;
+
+  for (let i = 0; i < photos.length; i++) {
+    const photoUrl = photos[i];
+    
+    const mediaData = {
+      establishment_id: establishmentId,
+      type: 'image',
+      url: photoUrl,
+      display_order: i,
+      is_active: true
+    };
+
+    const { error } = await supabase
+      .from('establishment_media')
+      .insert(mediaData);
+
+    if (error) {
+      console.error(`❌ Erreur insertion média ${i + 1}:`, error.message);
+    }
+  }
+}
+
 // Fonction principale de scraping
 async function scrapeWithGooglePlaces() {
   console.log('🚀 Début du scraping Google Places...\n');
@@ -226,26 +256,62 @@ async function scrapeWithGooglePlaces() {
         let openingHours = {};
         if (placeData.opening_hours && placeData.opening_hours.weekday_text) {
           // Convertir les horaires Google en notre format
-          // Format Google: "lundi: 09:00 – 18:00"
-          // Notre format: { monday: { open: "09:00", close: "18:00", closed: false } }
+          // Format Google: "lundi: 09:00 – 18:00" ou "lundi: Fermé"
+          const dayMapping = {
+            'lundi': 'monday', 'mardi': 'tuesday', 'mercredi': 'wednesday',
+            'jeudi': 'thursday', 'vendredi': 'friday', 'samedi': 'saturday', 'dimanche': 'sunday'
+          };
+          
           placeData.opening_hours.weekday_text.forEach(dayText => {
-            // Parser les horaires (simplification, à améliorer selon les besoins)
-            // Ceci est une version simplifiée
+            // Parser le format "lundi: 09:00 – 18:00"
+            const parts = dayText.split(':');
+            if (parts.length >= 2) {
+              const dayName = parts[0].trim().toLowerCase();
+              const timeInfo = parts[1].trim();
+              
+              if (dayMapping[dayName]) {
+                if (timeInfo.toLowerCase().includes('fermé') || timeInfo.toLowerCase().includes('closed')) {
+                  openingHours[dayMapping[dayName]] = {
+                    open: null,
+                    close: null,
+                    closed: true
+                  };
+                } else {
+                  // Parser les heures "09:00 – 18:00"
+                  const timeMatch = timeInfo.match(/(\d{1,2}:\d{2})\s*[–\-]\s*(\d{1,2}:\d{2})/);
+                  if (timeMatch) {
+                    openingHours[dayMapping[dayName]] = {
+                      open: timeMatch[1],
+                      close: timeMatch[2],
+                      closed: false
+                    };
+                  }
+                }
+              }
+            }
           });
         }
         
+        // Extraire le code postal de l'adresse
+        const postalCodeMatch = placeData.formatted_address?.match(/(\d{5})/);
+        const postalCode = postalCodeMatch ? postalCodeMatch[1] : null;
+
         // Préparer les données à insérer/mettre à jour
         const establishmentData = {
           slug,
           name: placeData.name,
           description: placeData.editorial_summary?.overview || `Établissement renommé de Lyon dans la catégorie ${sector}`,
-          short_description: placeData.editorial_summary?.overview?.substring(0, 200),
+          short_description: placeData.editorial_summary?.overview?.substring(0, 500),
           phone: placeData.formatted_phone_number,
           website: placeData.website,
           address: placeData.formatted_address,
+          postal_code: postalCode,
           city: 'Lyon',
           category: sector,
           status: 'active',
+          opening_hours: openingHours,
+          latitude: placeData.geometry?.location?.lat,
+          longitude: placeData.geometry?.location?.lng,
           metadata: {
             google_place_id: placeData.place_id,
             main_image: photos[0] || null,
@@ -258,10 +324,7 @@ async function scrapeWithGooglePlaces() {
             location: placeData.geometry?.location,
             types: placeData.types,
             business_status: placeData.business_status
-          },
-          opening_hours: openingHours,
-          latitude: placeData.geometry?.location?.lat,
-          longitude: placeData.geometry?.location?.lng
+          }
         };
         
         // Vérifier si l'établissement existe déjà
@@ -282,6 +345,14 @@ async function scrapeWithGooglePlaces() {
             console.error(`❌ Erreur mise à jour ${placeData.name}:`, error.message);
             totalErrors++;
           } else {
+            // Supprimer les anciens médias et insérer les nouveaux
+            await supabase
+              .from('establishment_media')
+              .delete()
+              .eq('establishment_id', existing.id);
+            
+            await insertEstablishmentMedia(existing.id, photos);
+            
             console.log(`✅ ${placeData.name} mis à jour avec vraies données`);
             console.log(`   📷 ${photos.length} photos ajoutées`);
             if (placeData.rating) {
@@ -291,16 +362,24 @@ async function scrapeWithGooglePlaces() {
           }
         } else {
           // Insérer nouveau
-          const { error } = await supabase
+          const { data: newEstablishment, error } = await supabase
             .from('establishments')
-            .insert(establishmentData);
+            .insert(establishmentData)
+            .select('id')
+            .single();
             
           if (error) {
             console.error(`❌ Erreur insertion ${placeData.name}:`, error.message);
             totalErrors++;
           } else {
+            // Insérer les médias
+            await insertEstablishmentMedia(newEstablishment.id, photos);
+            
             console.log(`✅ ${placeData.name} ajouté avec vraies données`);
             console.log(`   📷 ${photos.length} photos ajoutées`);
+            if (placeData.rating) {
+              console.log(`   ⭐ Note: ${placeData.rating}/5 (${placeData.user_ratings_total} avis)`);
+            }
             totalUpdated++;
           }
         }

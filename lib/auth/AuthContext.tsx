@@ -1,339 +1,347 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { supabaseAuth, AuthUser } from './supabase-auth';
+import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/app/lib/supabase/client';
 
 interface AuthContextType {
-  user: AuthUser | null;
+  user: User | null;
+  session: Session | null;
   loading: boolean;
-  signIn: (email: string, password: string) => Promise<void>;
-  signUpMerchant: (email: string, password: string, companyName: string, phone?: string) => Promise<void>;
-  signUpUser: (email: string, password: string, displayName?: string) => Promise<void>;
+  signIn: (email: string, password: string) => Promise<{ error: any }>;
+  signUp: (email: string, password: string) => Promise<{ error: any }>;
   signOut: () => Promise<void>;
-  resetPassword: (email: string) => Promise<void>;
-  isAuthenticated: boolean;
-  isMerchant: boolean;
-  isAdmin: boolean;
+  refreshSession: () => Promise<void>;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType>({
+  user: null,
+  session: null,
+  loading: true,
+  signIn: async () => ({ error: null }),
+  signUp: async () => ({ error: null }),
+  signOut: async () => {},
+  refreshSession: async () => {},
+});
 
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<AuthUser | null>(null);
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
+  
+  // Refs pour éviter les boucles
+  const isRedirecting = useRef(false);
+  const lastPathname = useRef(pathname);
+  const initializationDone = useRef(false);
 
+  // Initialisation de la session (UNE SEULE FOIS)
   useEffect(() => {
-    // Si Supabase n'est pas configuré, on arrête là
-    if (!supabase) {
-      setLoading(false);
-      console.error('❌ Supabase non configuré. Vérifiez les variables d\'environnement.');
+    if (initializationDone.current) return;
+    initializationDone.current = true;
+
+    const initializeAuth = async () => {
+      try {
+        console.log('[AuthContext] Initializing auth...');
+        
+        // Vérifier que Supabase est configuré
+        if (!supabase) {
+          console.error('[AuthContext] Supabase not configured');
+          setLoading(false);
+          return;
+        }
+        
+        // Récupérer la session existante
+        const { data: { session: currentSession }, error } = await supabase.auth.getSession();
+        
+        if (error) {
+          console.error('[AuthContext] Error getting session:', error);
+          setLoading(false);
+          return;
+        }
+
+        if (currentSession) {
+          console.log('[AuthContext] Session found:', currentSession.user.email);
+          setSession(currentSession);
+          setUser(currentSession.user);
+        } else {
+          console.log('[AuthContext] No session found');
+        }
+      } catch (error) {
+        console.error('[AuthContext] Init error:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initializeAuth();
+
+    // Listener pour les changements d\'auth
+    if (supabase) {
+      const { data: { subscription } } = supabase.auth.onAuthStateChange(
+        async (event, newSession) => {
+          console.log('[AuthContext] Auth state changed:', event);
+          
+          if (event === 'SIGNED_IN' && newSession) {
+            setSession(newSession);
+            setUser(newSession.user);
+          } else if (event === 'SIGNED_OUT') {
+            setSession(null);
+            setUser(null);
+          } else if (event === 'TOKEN_REFRESHED' && newSession) {
+            setSession(newSession);
+            setUser(newSession.user);
+          }
+        }
+      );
+
+      return () => {
+        subscription.unsubscribe();
+      };
+    }
+  }, []); // PAS DE DÉPENDANCES PATHNAME !
+
+  // Gestion des redirections SÉPARÉE et CONTRÔLÉE
+  useEffect(() => {
+    // Ne pas rediriger pendant le chargement ou si déjà en cours
+    if (loading || isRedirecting.current) return;
+    
+    // Ne pas rediriger si on est sur la même page
+    if (pathname === lastPathname.current) return;
+    lastPathname.current = pathname;
+
+    // Routes publiques qui ne nécessitent pas d\'auth
+    const publicRoutes = [
+      '/',
+      '/annuaire',
+      '/blog',
+      '/auth/pro/connexion',
+      '/auth/pro/inscription',
+      '/etablissement',
+      '/evenements',
+      '/actualites',
+      '/contact',
+      '/inscription',
+      '/espace-pro'
+    ];
+
+    // Routes protégées qui nécessitent une auth
+    const protectedRoutes = [
+      '/pro/dashboard',
+      '/pro/etablissement',
+      '/pro/evenements',
+      '/pro/photos',
+      '/pro/horaires',
+      '/pro/settings',
+      '/pro/verification',
+      '/pro/upgrade'
+    ];
+
+    const isPublicRoute = publicRoutes.some(route => pathname.startsWith(route));
+    const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
+
+    // Si route protégée et pas connecté -> redirection
+    if (isProtectedRoute && !user) {
+      // Exception pour /pro/inscription qui a sa propre logique
+      if (pathname === '/pro/inscription') return;
+      
+      console.log('[AuthContext] Protected route without auth, redirecting to login');
+      isRedirecting.current = true;
+      
+      // Sauvegarder la route demandée pour redirection après login
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('redirectAfterLogin', pathname);
+      }
+      
+      router.push('/auth/pro/connexion');
+      
+      // Reset le flag après un délai
+      setTimeout(() => {
+        isRedirecting.current = false;
+      }, 1000);
       return;
     }
-    
-    // Vérifier la session au chargement
-    checkSession();
 
-    // Écouter les changements d'auth
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      console.log('Auth event:', event);
+    // Si connecté et sur page de connexion -> redirection vers dashboard
+    if (user && pathname === '/auth/pro/connexion') {
+      console.log('[AuthContext] User logged in on login page, redirecting to dashboard');
+      isRedirecting.current = true;
       
-      if (session?.user) {
-        try {
-          // Pour les professionnels, on vérifie s'ils ont un établissement
-          const { data: establishment } = await supabase
-            .from('establishments')
-            .select('*')
-            .eq('user_id', session.user.id)
-            .maybeSingle();
-          
-          // Si c'est un professionnel avec établissement
-          if (establishment) {
-            setUser({
-              id: session.user.id,
-              email: session.user.email || '',
-              role: 'merchant',
-              displayName: establishment.name,
-              merchantData: {
-                companyName: establishment.name,
-                phone: establishment.phone,
-                plan: 'free',
-                verified: establishment.status === 'active',
-                settings: {}
-              }
-            });
-          } else {
-            // Sinon, essayer de récupérer le profil standard
-            try {
-              const profile = await supabaseAuth.getProfile(session.user.id);
-              setUser(profile);
-            } catch (error) {
-              // Si pas de profil, créer un utilisateur minimal
-              setUser({
-                id: session.user.id,
-                email: session.user.email || '',
-                role: 'user',
-                displayName: session.user.email?.split('@')[0]
-              });
-            }
-          }
-        } catch (error) {
-          console.error('Erreur récupération profil:', error);
-          setUser({
-            id: session.user.id,
-            email: session.user.email || '',
-            role: 'user',
-            displayName: session.user.email?.split('@')[0]
-          });
+      // Vérifier si on a une redirection sauvegardée
+      let redirectTo = '/pro/dashboard';
+      if (typeof window !== 'undefined') {
+        const savedRedirect = sessionStorage.getItem('redirectAfterLogin');
+        if (savedRedirect) {
+          redirectTo = savedRedirect;
+          sessionStorage.removeItem('redirectAfterLogin');
         }
-      } else {
-        setUser(null);
-      }
-      setLoading(false);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  // Redirections automatiques basées sur le rôle
-  useEffect(() => {
-    // Ne rien faire pendant le chargement initial
-    if (loading) return;
-    
-    if (user) {
-      // Redirection après connexion
-      if (pathname === '/auth/pro/connexion' || pathname === '/connexion/pro' || pathname === '/professionnel/connexion') {
-        console.log('[AuthContext] User logged in on login page, redirecting to dashboard');
-        router.push('/pro/dashboard');
-      } else if ((pathname === '/connexion/admin' || pathname === '/administration/connexion') && user.role === 'admin') {
-        router.push('/admin');
-      }
-    } else {
-      // Protection des routes - seulement après chargement complet
-      // Ne PAS rediriger automatiquement depuis /pro/dashboard
-      // car il gère sa propre logique
-      if (pathname === '/pro/dashboard') {
-        // Le dashboard affichera l'invitation à se connecter
-        return;
       }
       
-      // Protéger les autres pages /pro/
-      if (pathname.startsWith('/pro/') && 
-          pathname !== '/pro' && 
-          pathname !== '/pro/inscription') {
-        console.log('[AuthContext] No user, redirecting to auth from:', pathname);
-        router.push('/auth/pro/connexion');
-      } else if (pathname.startsWith('/admin') && 
-                 pathname !== '/admin' &&
-                 !pathname.includes('/connexion')) {
-        router.push('/connexion/admin');
-      }
+      router.push(redirectTo);
+      
+      setTimeout(() => {
+        isRedirecting.current = false;
+      }, 1000);
+      return;
     }
-  }, [user, loading, pathname]);
+  }, [user, loading, pathname, router]);
 
-  const checkSession = async () => {
+  // Méthodes d\'authentification
+  const signIn = useCallback(async (email: string, password: string) => {
     try {
+      setLoading(true);
+      
       if (!supabase) {
-        setUser(null);
-        setLoading(false);
-        return;
+        return { error: new Error('Supabase not configured') };
       }
       
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (user) {
-        // Vérifier si c'est un professionnel avec établissement
-        const { data: establishment } = await supabase
-          .from('establishments')
-          .select('*')
-          .eq('user_id', user.id)
-          .maybeSingle();
-        
-        if (establishment) {
-          setUser({
-            id: user.id,
-            email: user.email || '',
-            role: 'merchant',
-            displayName: establishment.name,
-            merchantData: {
-              companyName: establishment.name,
-              phone: establishment.phone,
-              plan: 'free',
-              verified: establishment.status === 'active',
-              settings: {}
-            }
-          });
-        } else {
-          // Vérifier si c'est un admin
-          if (user.email === 'admin@guide-de-lyon.fr') {
-            setUser({
-              id: user.id,
-              email: user.email || '',
-              role: 'admin',
-              displayName: 'Administrateur'
-            });
-          } else {
-            // Utilisateur standard
-            setUser({
-              id: user.id,
-              email: user.email || '',
-              role: 'user',
-              displayName: user.email?.split('@')[0]
-            });
-          }
-        }
-      } else {
-        setUser(null);
+      const { error } = await supabase.auth.signInWithPassword({
+        email: email.trim().toLowerCase(),
+        password,
+      });
+
+      if (error) {
+        console.error('[AuthContext] Sign in error:', error);
+        return { error };
       }
+
+      // La session sera mise à jour via onAuthStateChange
+      return { error: null };
     } catch (error) {
-      console.error('Erreur vérification session:', error);
-      setUser(null);
+      console.error('[AuthContext] Sign in exception:', error);
+      return { error };
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const signIn = async (email: string, password: string) => {
-    if (!supabase) {
-      throw new Error('Service de connexion indisponible. Vérifiez la configuration.');
+  const signUp = useCallback(async (email: string, password: string) => {
+    try {
+      setLoading(true);
+      
+      if (!supabase) {
+        return { error: new Error('Supabase not configured') };
+      }
+      
+      const { error } = await supabase.auth.signUp({
+        email: email.trim().toLowerCase(),
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
+        },
+      });
+
+      if (error) {
+        console.error('[AuthContext] Sign up error:', error);
+        return { error };
+      }
+
+      return { error: null };
+    } catch (error) {
+      console.error('[AuthContext] Sign up exception:', error);
+      return { error };
+    } finally {
+      setLoading(false);
     }
-    
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: email.trim().toLowerCase(),
-      password
-    });
-    
-    if (error) throw error;
-    if (!data.user) throw new Error('Erreur de connexion');
-    
-    // Vérifier si c'est un professionnel avec établissement
-    const { data: establishment } = await supabase
-      .from('establishments')
-      .select('*')
-      .eq('user_id', data.user.id)
-      .maybeSingle();
-    
-    if (establishment) {
-      const authUser = {
-        id: data.user.id,
-        email: data.user.email || '',
-        role: 'merchant' as const,
-        displayName: establishment.name,
-        merchantData: {
-          companyName: establishment.name,
-          phone: establishment.phone,
-          plan: 'free' as const,
-          verified: establishment.status === 'active',
-          settings: {}
-        }
-      };
-      setUser(authUser);
-    } else if (data.user.email === 'admin@guide-de-lyon.fr') {
-      const authUser = {
-        id: data.user.id,
-        email: data.user.email || '',
-        role: 'admin' as const,
-        displayName: 'Administrateur'
-      };
-      setUser(authUser);
-    } else {
-      const authUser = {
-        id: data.user.id,
-        email: data.user.email || '',
-        role: 'user' as const,
-        displayName: data.user.email?.split('@')[0]
-      };
-      setUser(authUser);
+  }, []);
+
+  const signOut = useCallback(async () => {
+    try {
+      setLoading(true);
+      isRedirecting.current = true;
+      
+      if (!supabase) {
+        console.error('[AuthContext] Supabase not configured');
+        return;
+      }
+      
+      const { error } = await supabase.auth.signOut();
+      
+      if (error) {
+        console.error('[AuthContext] Sign out error:', error);
+      }
+
+      // Clear all session data
+      setUser(null);
+      setSession(null);
+      
+      // Clear any stored data
+      if (typeof window !== 'undefined') {
+        sessionStorage.clear();
+      }
+      
+      // Redirect to home
+      router.push('/');
+      
+      setTimeout(() => {
+        isRedirecting.current = false;
+      }, 1000);
+    } catch (error) {
+      console.error('[AuthContext] Sign out exception:', error);
+    } finally {
+      setLoading(false);
     }
-  };
+  }, [router]);
 
-  const signUpMerchant = async (
-    email: string, 
-    password: string, 
-    companyName: string, 
-    phone?: string
-  ) => {
-    if (!supabase) {
-      throw new Error('Service d\'inscription indisponible. Vérifiez la configuration.');
+  const refreshSession = useCallback(async () => {
+    try {
+      if (!supabase) {
+        console.error('[AuthContext] Supabase not configured');
+        return;
+      }
+      
+      const { data: { session: newSession }, error } = await supabase.auth.refreshSession();
+      
+      if (error) {
+        console.error('[AuthContext] Refresh session error:', error);
+        return;
+      }
+
+      if (newSession) {
+        setSession(newSession);
+        setUser(newSession.user);
+      }
+    } catch (error) {
+      console.error('[AuthContext] Refresh session exception:', error);
     }
-    
-    const authUser = await supabaseAuth.signUpMerchant(email, password, companyName, phone);
-    setUser(authUser);
-    // Ne pas rediriger ici - laissons la page inscription gérer la redirection
-  };
+  }, []);
 
-  const signUpUser = async (
-    email: string, 
-    password: string, 
-    displayName?: string
-  ) => {
-    const authUser = await supabaseAuth.signUpUser(email, password, displayName);
-    setUser(authUser);
-  };
-
-  const signOut = async () => {
-    if (supabase) {
-      await supabaseAuth.signOut();
-    }
-    setUser(null);
-    router.push('/');
-  };
-
-  const resetPassword = async (email: string) => {
-    await supabaseAuth.resetPassword(email);
-  };
-
-  const value: AuthContextType = {
+  const value = {
     user,
+    session,
     loading,
     signIn,
-    signUpMerchant,
-    signUpUser,
+    signUp,
     signOut,
-    resetPassword,
-    isAuthenticated: !!user,
-    isMerchant: user?.role === 'merchant',
-    isAdmin: user?.role === 'admin'
+    refreshSession,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
-export function useAuth() {
+export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
-}
+};
 
-// HOC pour protéger les pages
+// HOC pour protéger les pages (optionnel)
 export function withAuth<P extends object>(
-  Component: React.ComponentType<P>,
-  requiredRole?: 'merchant' | 'admin'
+  Component: React.ComponentType<P>
 ) {
   return function ProtectedComponent(props: P) {
     const { user, loading } = useAuth();
     const router = useRouter();
 
     useEffect(() => {
-      if (!loading) {
-        if (!user) {
-          if (requiredRole === 'admin') {
-            router.push('/connexion/admin');
-          } else if (requiredRole === 'merchant') {
-            router.push('/auth/pro');
-          } else {
-            router.push('/');
-          }
-        } else if (requiredRole && user.role !== requiredRole) {
-          router.push('/');
-        }
+      if (!loading && !user) {
+        router.push('/auth/pro/connexion');
       }
-    }, [user, loading]);
+    }, [user, loading, router]);
 
     if (loading) {
       return (
@@ -343,7 +351,7 @@ export function withAuth<P extends object>(
       );
     }
 
-    if (!user || (requiredRole && user.role !== requiredRole)) {
+    if (!user) {
       return null;
     }
 

@@ -47,26 +47,45 @@
                         </td>
                     </tr>
                     
-                    <!-- Greeting -->
+                    <!-- Salutation et intro -->
                     <tr>
                         <td style="padding: 30px 30px 20px;">
-                            <h2 style="margin: 0 0 10px 0; color: #1f2937; font-size: 20px; font-weight: bold;">
-                                Bonjour {{first_name}} ! 
+                            <h2 style="margin: 0 0 10px 0; color: #1f2937; font-size: 20px; font-weight: normal;">
+                                Salut {{first_name}} !
                             </h2>
                             <p style="margin: 0 0 20px 0; color: #6b7280; font-size: 16px;">
-                                {{current_date}} • Voici ce qui vous attend aujourd'hui à Lyon
+                                {{current_date}} • Voici ce qui t'attend aujourd'hui à Lyon
                             </p>
                             
-                            <!-- Météo (optionnel) -->
+                            <!-- Météo lyonnaise -->
                             {{#if weather}}
-                            <div style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); border-radius: 12px; padding: 20px; margin-bottom: 25px; color: white; text-align: center;">
-                                <div style="display: flex; align-items: center; justify-content: center;">
-                                    <div style="font-size: 48px; margin-right: 20px;">{{weather.icon}}</div>
-                                    <div>
-                                        <div style="font-size: 24px; font-weight: bold;">{{weather.temperature}}°C</div>
-                                        <div style="font-size: 14px; opacity: 0.9;">{{weather.description}}</div>
-                                    </div>
+                            <div style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); border-radius: 12px; padding: 20px; margin-bottom: 25px; color: white; display: flex; align-items: center; justify-content: center;">
+                                <div style="font-size: 36px; margin-right: 15px;">{{weather.icon}}</div>
+                                <div style="text-align: left;">
+                                    <div style="font-size: 20px; font-weight: bold; margin-bottom: 5px;">{{weather.temperature}}°C</div>
+                                    <div style="font-size: 14px; opacity: 0.9;">{{weather.contextualComment}}</div>
                                 </div>
+                            </div>
+                            {{/if}}
+                            
+                            <!-- Anecdote lyonnaise du jour -->
+                            {{#if daily_anecdote}}
+                            <div style="background-color: #fef3c7; border-radius: 12px; padding: 25px; margin-bottom: 25px; border-left: 4px solid #f59e0b;">
+                                <h3 style="margin: 0 0 15px 0; color: #92400e; font-size: 18px; font-weight: bold;">
+                                    💡 Le savais-tu ?
+                                </h3>
+                                <p style="margin: 0; color: #451a03; font-size: 15px; line-height: 1.6;">
+                                    {{daily_anecdote}}
+                                </p>
+                            </div>
+                            {{/if}}
+                            
+                            <!-- Bon plan du jour -->
+                            {{#if daily_tip}}
+                            <div style="background-color: #ecfdf5; border-radius: 12px; padding: 20px; margin-bottom: 25px; border-left: 4px solid #10b981;">
+                                <p style="margin: 0; color: #064e3b; font-size: 15px; line-height: 1.6;">
+                                    <strong>Bon plan :</strong> {{daily_tip}}
+                                </p>
                             </div>
                             {{/if}}
                         </td>
@@ -88,12 +107,16 @@
                                         <tr>
                                             <td style="vertical-align: top; width: 60px;">
                                                 <div style="background-color: #f59e0b; color: white; border-radius: 8px; padding: 10px; text-align: center; font-weight: bold; font-size: 12px; min-width: 50px;">
-                                                    {{#if start_time}}{{start_time}}{{else}}Toute la journée{{/if}}
+                                                    {{#if start_time}}{{start_time}}{{else}}Journée{{/if}}
                                                 </div>
                                             </td>
                                             <td style="vertical-align: top; padding-left: 15px;">
                                                 <h4 style="margin: 0 0 8px 0; color: #1f2937; font-size: 16px; font-weight: bold;">
+                                                    {{#if event_url}}
+                                                    <a href="{{event_url}}" style="color: #1f2937; text-decoration: none;">{{title}}</a>
+                                                    {{else}}
                                                     {{title}}
+                                                    {{/if}}
                                                 </h4>
                                                 {{#if location}}
                                                 <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 14px;">
@@ -101,15 +124,22 @@
                                                 </p>
                                                 {{/if}}
                                                 {{#if description}}
-                                                <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 14px; line-height: 1.4;">
-                                                    {{truncate description 100}}
+                                                <p style="margin: 0 0 12px 0; color: #4b5563; font-size: 14px; line-height: 1.4;">
+                                                    {{truncate description 80}}...
                                                 </p>
                                                 {{/if}}
-                                                {{#if price}}
-                                                <p style="margin: 0; color: #059669; font-size: 14px; font-weight: bold;">
-                                                    💰 {{price}}
-                                                </p>
-                                                {{/if}}
+                                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                                    {{#if price}}
+                                                    <span style="color: #059669; font-size: 13px; font-weight: bold;">
+                                                        {{price}}
+                                                    </span>
+                                                    {{/if}}
+                                                    {{#if event_url}}
+                                                    <a href="{{event_url}}" style="display: inline-block; padding: 6px 12px; background-color: #3b82f6; color: #ffffff; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: bold;">
+                                                        Voir détails
+                                                    </a>
+                                                    {{/if}}
+                                                </div>
                                             </td>
                                         </tr>
                                     </table>
@@ -196,22 +226,6 @@
                     {{/if}}
                     {{/if}}
                     
-                    <!-- Suggestions du jour -->
-                    <tr>
-                        <td style="padding: 0 30px 30px;">
-                            <div style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%); border-radius: 12px; padding: 25px; text-align: center;">
-                                <h3 style="margin: 0 0 15px 0; color: #ffffff; font-size: 18px; font-weight: bold;">
-                                    💡 Suggestion du jour
-                                </h3>
-                                <p style="margin: 0 0 20px 0; color: #fce7f3; font-size: 15px;">
-                                    Découvrez les derniers restaurants ajoutés à notre annuaire et trouvez votre prochaine adresse coup de cœur !
-                                </p>
-                                <a href="https://guide-lyon.com/annuaire?category=restaurants" style="display: inline-block; padding: 12px 24px; background-color: #ffffff; color: #be185d; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 15px;">
-                                    Explorer les restaurants
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
                     
                     <!-- Statistiques rapides -->
                     <tr>
@@ -239,15 +253,18 @@
                     <tr>
                         <td style="padding: 30px; background-color: #1f2937; text-align: center;">
                             <p style="margin: 0 0 15px 0; color: #9ca3af; font-size: 14px;">
-                                Votre newsletter quotidienne de Lyon
+                                Bonne journée lyonnaise !
+                            </p>
+                            <p style="margin: 0 0 10px 0; color: #d1d5db; font-size: 13px; font-style: italic;">
+                                L'équipe Guide de Lyon
                             </p>
                             <p style="margin: 0 0 20px 0; color: #6b7280; font-size: 12px;">
-                                <a href="https://guide-lyon.com/newsletter/preferences?token={{unsubscribe_token}}" style="color: #6b7280; text-decoration: underline;">Gérer mes préférences</a> • 
+                                <a href="https://guide-lyon.com/newsletter/preferences?token={{unsubscribe_token}}" style="color: #6b7280; text-decoration: underline;">Mes préférences</a> • 
                                 <a href="https://guide-lyon.com/newsletter/unsubscribe?token={{unsubscribe_token}}" style="color: #6b7280; text-decoration: underline;">Se désabonner</a>
                             </p>
                             <div style="padding-top: 20px; border-top: 1px solid #374151;">
                                 <a href="https://guide-lyon.com" style="color: #9ca3af; text-decoration: none; font-size: 12px;">
-                                    © 2025 Guide de Lyon - Tous les jours, le meilleur de Lyon
+                                    © 2025 Guide de Lyon - Ton guide quotidien de Lyon
                                 </a>
                             </div>
                             

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Mois de Lyon - Guide de Lyon</title>
+    <style>
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 100% !important;
+                padding: 0 20px !important;
+            }
+            .hero-title {
+                font-size: 32px !important;
+            }
+            .button {
+                display: block !important;
+                width: 100% !important;
+                margin: 10px 0 !important;
+            }
+            .content-block {
+                width: 100% !important;
+                margin-bottom: 20px !important;
+            }
+            .two-column {
+                display: block !important;
+                width: 100% !important;
+                margin-bottom: 15px !important;
+            }
+            .dossier-hero {
+                padding: 30px 20px !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background-color: #f5f5f5;">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #f5f5f5;">
+        <tr>
+            <td align="center" style="padding: 40px 0;">
+                <table class="container" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    
+                    <!-- Header élégant -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%); padding: 50px 30px; text-align: center; position: relative;">
+                            <h1 class="hero-title" style="margin: 0; color: #ffffff; font-size: 38px; font-weight: bold;">
+                                Le Mois de Lyon
+                            </h1>
+                            <p style="margin: 15px 0 0 0; color: #f3e8ff; font-size: 18px;">
+                                {{month_name}} {{year}} • Votre magazine mensuel
+                            </p>
+                            
+                            <!-- Badge premium -->
+                            <div style="background-color: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 8px 16px; display: inline-block; margin-top: 15px;">
+                                <span style="color: #ffffff; font-size: 14px; font-weight: bold;">✨ ÉDITION SPÉCIALE</span>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Greeting personnalisé -->
+                    <tr>
+                        <td style="padding: 40px 30px 30px;">
+                            <h2 style="margin: 0 0 15px 0; color: #1f2937; font-size: 22px; font-weight: bold;">
+                                Bonjour {{first_name}} ! 👋
+                            </h2>
+                            <p style="margin: 0 0 25px 0; color: #4b5563; font-size: 16px; line-height: 1.6;">
+                                Bienvenue dans votre magazine mensuel de Lyon ! Ce mois-ci, nous vous proposons un dossier spécial, 
+                                l'agenda complet des événements, et nos meilleures découvertes. Prenez une pause café et découvrez tout ce qui vous attend ! ☕
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Dossier spécial du mois -->
+                    <tr>
+                        <td style="padding: 0 30px 40px;">
+                            <div class="dossier-hero" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); border-radius: 16px; padding: 40px 30px; text-align: center; color: white; position: relative; overflow: hidden;">
+                                <div style="position: relative; z-index: 2;">
+                                    <div style="font-size: 48px; margin-bottom: 15px;">{{dossier_icon}}</div>
+                                    <h3 style="margin: 0 0 15px 0; font-size: 24px; font-weight: bold;">
+                                        Dossier du mois : {{dossier_title}}
+                                    </h3>
+                                    <p style="margin: 0 0 25px 0; font-size: 16px; line-height: 1.6; color: #dbeafe;">
+                                        {{dossier_description}}
+                                    </p>
+                                    
+                                    <!-- Points clés du dossier -->
+                                    <div style="background-color: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin: 25px 0; text-align: left;">
+                                        <h4 style="margin: 0 0 15px 0; font-size: 16px; font-weight: bold;">Au programme :</h4>
+                                        <ul style="margin: 0; padding-left: 20px; color: #e0e7ff;">
+                                            {{#each dossier_highlights}}
+                                            <li style="margin-bottom: 8px;">{{this}}</li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                    
+                                    <a href="{{dossier_url}}" style="display: inline-block; padding: 14px 28px; background-color: #ffffff; color: #1e40af; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
+                                        Lire le dossier complet
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Événements phares du mois -->
+                    {{#if featured_events}}
+                    <tr>
+                        <td style="padding: 0 30px 40px;">
+                            <h3 style="margin: 0 0 25px 0; color: #1f2937; font-size: 20px; font-weight: bold; text-align: center;">
+                                🎭 Les événements incontournables
+                            </h3>
+                            
+                            <div style="display: grid; gap: 15px;">
+                                {{#each featured_events}}
+                                <div class="content-block" style="background: linear-gradient(45deg, #f8fafc 0%, #f1f5f9 100%); border-radius: 12px; padding: 25px; border-left: 4px solid #8b5cf6; margin-bottom: 20px;">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                        <tr>
+                                            <td style="vertical-align: top; width: 80px;">
+                                                <div style="background-color: #8b5cf6; color: white; border-radius: 12px; padding: 15px; text-align: center; min-width: 70px;">
+                                                    <div style="font-size: 12px; font-weight: bold; margin-bottom: 5px;">{{day_name}}</div>
+                                                    <div style="font-size: 20px; font-weight: bold; margin-bottom: 2px;">{{day_number}}</div>
+                                                    <div style="font-size: 11px;">{{month_name}}</div>
+                                                </div>
+                                            </td>
+                                            <td style="vertical-align: top; padding-left: 20px;">
+                                                <h4 style="margin: 0 0 10px 0; color: #1f2937; font-size: 18px; font-weight: bold;">
+                                                    {{title}}
+                                                </h4>
+                                                {{#if location}}
+                                                <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 14px;">
+                                                    📍 {{location}}
+                                                </p>
+                                                {{/if}}
+                                                {{#if category}}
+                                                <span style="background-color: #ddd6fe; color: #6d28d9; padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: bold; margin-bottom: 10px; display: inline-block;">
+                                                    {{category}}
+                                                </span>
+                                                {{/if}}
+                                                <p style="margin: 10px 0; color: #4b5563; font-size: 15px; line-height: 1.5;">
+                                                    {{truncate description 150}}
+                                                </p>
+                                                {{#if price}}
+                                                <p style="margin: 10px 0 0 0; color: #059669; font-size: 14px; font-weight: bold;">
+                                                    💰 {{price}}
+                                                </p>
+                                                {{/if}}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                {{/each}}
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 30px;">
+                                <a href="https://guide-lyon.com/evenements" style="display: inline-block; padding: 14px 28px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
+                                    Voir l'agenda complet du mois
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/if}}
+                    
+                    <!-- Nouveautés et découvertes -->
+                    <tr>
+                        <td style="padding: 0 30px 40px;">
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td class="two-column" style="width: 48%; vertical-align: top; padding-right: 2%;">
+                                        <!-- Nouveaux restaurants -->
+                                        <div style="background-color: #fef3c7; border-radius: 12px; padding: 25px; border-left: 4px solid #f59e0b; height: 100%;">
+                                            <h4 style="margin: 0 0 15px 0; color: #92400e; font-size: 16px; font-weight: bold;">
+                                                🍽️ Nouveaux restaurants
+                                            </h4>
+                                            {{#each new_restaurants}}
+                                            <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #fed7aa;">
+                                                <h5 style="margin: 0 0 5px 0; color: #1f2937; font-size: 14px; font-weight: bold;">{{name}}</h5>
+                                                <p style="margin: 0 0 5px 0; color: #6b7280; font-size: 12px;">{{location}}</p>
+                                                <p style="margin: 0; color: #4b5563; font-size: 13px;">{{cuisine_type}}</p>
+                                            </div>
+                                            {{/each}}
+                                        </div>
+                                    </td>
+                                    <td class="two-column" style="width: 48%; vertical-align: top; padding-left: 2%;">
+                                        <!-- Nouveaux lieux -->
+                                        <div style="background-color: #ecfdf5; border-radius: 12px; padding: 25px; border-left: 4px solid #10b981; height: 100%;">
+                                            <h4 style="margin: 0 0 15px 0; color: #065f46; font-size: 16px; font-weight: bold;">
+                                                ⭐ Nouvelles adresses
+                                            </h4>
+                                            {{#each new_places}}
+                                            <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #a7f3d0;">
+                                                <h5 style="margin: 0 0 5px 0; color: #1f2937; font-size: 14px; font-weight: bold;">{{name}}</h5>
+                                                <p style="margin: 0 0 5px 0; color: #6b7280; font-size: 12px;">{{location}}</p>
+                                                <p style="margin: 0; color: #4b5563; font-size: 13px;">{{category}}</p>
+                                            </div>
+                                            {{/each}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- Articles de blog du mois -->
+                    {{#if articles}}
+                    <tr>
+                        <td style="padding: 0 30px 40px;">
+                            <div style="background-color: #fdf4ff; border-radius: 12px; padding: 25px; border-left: 4px solid #ec4899;">
+                                <h3 style="margin: 0 0 20px 0; color: #831843; font-size: 18px; font-weight: bold;">
+                                    📝 Nos derniers articles
+                                </h3>
+                                
+                                {{#each articles}}
+                                <div class="content-block" style="background-color: #ffffff; border-radius: 8px; padding: 20px; margin-bottom: 15px; border: 1px solid #e5e7eb;">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                        <tr>
+                                            {{#if image_url}}
+                                            <td style="vertical-align: top; width: 100px; padding-right: 20px;">
+                                                <img src="{{image_url}}" alt="{{title}}" style="width: 100px; height: 80px; object-fit: cover; border-radius: 8px;">
+                                            </td>
+                                            {{/if}}
+                                            <td style="vertical-align: top;">
+                                                <h4 style="margin: 0 0 8px 0; color: #1f2937; font-size: 16px; font-weight: bold; line-height: 1.3;">
+                                                    <a href="https://guide-lyon.com/blog/{{slug}}" style="color: #1f2937; text-decoration: none;">{{title}}</a>
+                                                </h4>
+                                                {{#if excerpt}}
+                                                <p style="margin: 0 0 10px 0; color: #4b5563; font-size: 14px; line-height: 1.4;">
+                                                    {{truncate excerpt 120}}
+                                                </p>
+                                                {{/if}}
+                                                <div style="display: flex; align-items: center; color: #9ca3af; font-size: 12px;">
+                                                    {{#if author}}<span>{{author}}</span> • {{/if}}
+                                                    <span>{{format_date published_at}}</span>
+                                                    {{#if read_time}} • <span>{{read_time}} min</span>{{/if}}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                {{/each}}
+                                
+                                <div style="text-align: center; margin-top: 20px;">
+                                    <a href="https://guide-lyon.com/blog" style="display: inline-block; padding: 12px 24px; background-color: #ec4899; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 14px;">
+                                        Tous nos articles
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/if}}
+                    
+                    <!-- Statistiques du mois -->
+                    <tr>
+                        <td style="padding: 0 30px 40px;">
+                            <div style="background: linear-gradient(135deg, #374151 0%, #1f2937 100%); border-radius: 16px; padding: 30px; color: white;">
+                                <h3 style="margin: 0 0 25px 0; font-size: 18px; font-weight: bold; text-align: center;">
+                                    📊 Lyon en chiffres ce mois-ci
+                                </h3>
+                                
+                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                    <tr>
+                                        <td style="width: 33%; text-align: center; padding: 15px;">
+                                            <div style="font-size: 32px; font-weight: bold; color: #fbbf24; margin-bottom: 5px;">{{stats.events_count}}</div>
+                                            <div style="color: #d1d5db; font-size: 14px;">événements</div>
+                                        </td>
+                                        <td style="width: 33%; text-align: center; padding: 15px; border-left: 1px solid #4b5563; border-right: 1px solid #4b5563;">
+                                            <div style="font-size: 32px; font-weight: bold; color: #34d399; margin-bottom: 5px;">{{stats.new_businesses}}</div>
+                                            <div style="color: #d1d5db; font-size: 14px;">nouvelles adresses</div>
+                                        </td>
+                                        <td style="width: 33%; text-align: center; padding: 15px;">
+                                            <div style="font-size: 32px; font-weight: bold; color: #f472b6; margin-bottom: 5px;">{{stats.articles_count}}</div>
+                                            <div style="color: #d1d5db; font-size: 14px;">articles publiés</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Call to action principal -->
+                    <tr>
+                        <td style="padding: 0 30px 40px;">
+                            <div style="background: linear-gradient(135deg, #059669 0%, #047857 100%); border-radius: 12px; padding: 30px; text-align: center; color: white;">
+                                <h3 style="margin: 0 0 15px 0; font-size: 20px; font-weight: bold;">
+                                    🎯 Vous êtes professionnel ?
+                                </h3>
+                                <p style="margin: 0 0 25px 0; font-size: 16px; color: #a7f3d0;">
+                                    Rejoignez les {{pro_members}} professionnels qui font confiance à Guide de Lyon 
+                                    pour développer leur visibilité et attirer de nouveaux clients.
+                                </p>
+                                <a href="https://guide-lyon.com/pro/inscription" style="display: inline-block; padding: 14px 28px; background-color: #ffffff; color: #047857; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px;">
+                                    Créer mon compte Pro
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer premium -->
+                    <tr>
+                        <td style="padding: 40px 30px; background: linear-gradient(135deg, #1f2937 0%, #111827 100%); text-align: center;">
+                            <div style="margin-bottom: 25px;">
+                                <h3 style="margin: 0 0 15px 0; color: #f9fafb; font-size: 18px; font-weight: bold;">
+                                    Merci de votre fidélité !
+                                </h3>
+                                <p style="margin: 0; color: #d1d5db; font-size: 14px; line-height: 1.6;">
+                                    Votre magazine mensuel de Lyon est réalisé avec passion par notre équipe.<br>
+                                    N'hésitez pas à nous faire vos retours et suggestions.
+                                </p>
+                            </div>
+                            
+                            <!-- Réseaux sociaux -->
+                            <div style="margin: 25px 0;">
+                                <a href="https://facebook.com/guidelyonfr" style="display: inline-block; margin: 0 10px; padding: 12px; background-color: #374151; border-radius: 50%; text-decoration: none;">
+                                    <span style="color: #d1d5db; font-size: 18px;">📘</span>
+                                </a>
+                                <a href="https://instagram.com/guidelyonfr" style="display: inline-block; margin: 0 10px; padding: 12px; background-color: #374151; border-radius: 50%; text-decoration: none;">
+                                    <span style="color: #d1d5db; font-size: 18px;">📸</span>
+                                </a>
+                                <a href="https://linkedin.com/company/guide-lyon" style="display: inline-block; margin: 0 10px; padding: 12px; background-color: #374151; border-radius: 50%; text-decoration: none;">
+                                    <span style="color: #d1d5db; font-size: 18px;">💼</span>
+                                </a>
+                            </div>
+                            
+                            <div style="padding-top: 25px; border-top: 1px solid #374151;">
+                                <p style="margin: 0 0 15px 0; color: #9ca3af; font-size: 12px;">
+                                    <a href="https://guide-lyon.com/newsletter/preferences?token={{unsubscribe_token}}" style="color: #9ca3af; text-decoration: underline;">Gérer mes préférences</a> • 
+                                    <a href="https://guide-lyon.com/newsletter/unsubscribe?token={{unsubscribe_token}}" style="color: #9ca3af; text-decoration: underline;">Se désabonner</a> • 
+                                    <a href="mailto:newsletter@guide-lyon.com" style="color: #9ca3af; text-decoration: underline;">Nous contacter</a>
+                                </p>
+                                <p style="margin: 0; color: #6b7280; font-size: 11px;">
+                                    © 2025 Guide de Lyon - Votre magazine mensuel de la capitale des Gaules
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
