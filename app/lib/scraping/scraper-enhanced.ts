@@ -30,8 +30,9 @@ export class EnhancedScraperService {
       totalScraped = articles.length;
       console.log(`[EnhancedScraper] ${articles.length} articles trouvés`);
 
-      // Traiter chaque article (limiter à 5 pour les tests)
-      const articlesToProcess = articles.slice(0, 5);
+      // Traiter chaque article (limite définie par la source)
+      const maxArticles = source.max_articles_per_run || 10;
+      const articlesToProcess = articles.slice(0, maxArticles);
 
       for (const article of articlesToProcess) {
         try {
