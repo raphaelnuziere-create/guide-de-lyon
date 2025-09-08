@@ -59,7 +59,7 @@ interface EstablishmentData {
 
 export default function DashboardPage() {
   const { user, loading: authLoading } = useAuth();
-  const { userPlan, planLimits, loading: planLoading } = useUserPlan();
+  const { plan: userPlan, planLimits, isLoading: planLoading } = useUserPlan();
   const router = useRouter();
   const [establishment, setEstablishment] = useState<EstablishmentData | null>(null);
   const [loadingEstablishment, setLoadingEstablishment] = useState(true);
@@ -371,7 +371,7 @@ export default function DashboardPage() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-gray-500">
-                      {establishment.photos_count || 0}/{currentLimits.photos}
+                      {establishment.photos_count || 0}/{planLimits.maxPhotos === -1 ? '∞' : planLimits.maxPhotos}
                     </span>
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </div>
@@ -387,7 +387,7 @@ export default function DashboardPage() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-gray-500">
-                      {establishment.events_this_month || 0}/{currentLimits.events}
+                      {establishment.events_this_month || 0}/{planLimits.maxEventsPerMonth === -1 ? '∞' : planLimits.maxEventsPerMonth}
                     </span>
                     <ChevronRight className="w-4 h-4 text-gray-400" />
                   </div>

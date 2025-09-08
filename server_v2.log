@@ -10,3 +10,5 @@
 ::1 - - [08/Sep/2025 22:57:37] "GET /sw.js HTTP/1.1" 404 -
 ::1 - - [08/Sep/2025 23:01:18] code 404, message File not found
 ::1 - - [08/Sep/2025 23:01:18] "GET /a-propos HTTP/1.1" 404 -
+::1 - - [08/Sep/2025 23:10:07] code 404, message File not found
+::1 - - [08/Sep/2025 23:10:07] "GET /annuaire/beaute HTTP/1.1" 404 -
