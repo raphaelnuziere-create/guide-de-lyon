@@ -37,7 +37,7 @@ export default function NewslettersAdminPage() {
 
   useEffect(() => {
     if (!user) {
-      router.push('/connexion/admin')
+      window.location.href = '/administration/connexion'
       return
     }
     
@@ -121,7 +121,7 @@ export default function NewslettersAdminPage() {
 
   const handleLogout = async () => {
     await signOut()
-    router.push('/connexion/admin')
+    window.location.href = '/administration/connexion'
   }
 
   const filteredNewsletters = newsletters.filter(newsletter => {
