@@ -18,7 +18,7 @@ export async function POST() {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 0, // Expire immédiatement
-      path: '/administration'
+      path: '/' // Même path que lors de la création
     });
 
     console.log('✅ Déconnexion admin réussie');

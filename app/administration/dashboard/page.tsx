@@ -1,27 +1,21 @@
 'use client'
 
-import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { 
-  Shield, Users, Calendar, Building2, TrendingUp, 
-  Settings, LogOut, Eye, CheckCircle, XCircle, Clock, Mail 
+  Users, Calendar, Building2, TrendingUp, 
+  Eye, CheckCircle, XCircle, Clock, Mail 
 } from 'lucide-react'
-import { useAuth } from '@/lib/auth/AuthContext'
 
 export default function AdminDashboardPage() {
-  const router = useRouter()
-  const { user, signOut } = useAuth()
-
-  useEffect(() => {
-    // Rediriger si pas admin
-    if (!user) {
-      window.location.href = '/administration/connexion'
-    }
-  }, [user])
+  // Le layout admin s'occupe déjà de l'authentification
+  // Pas besoin de vérifier ici
 
   const handleLogout = async () => {
-    await signOut()
+    try {
+      await fetch('/api/admin/auth/logout', { method: 'POST' })
+    } catch (error) {
+      console.error('Erreur déconnexion:', error)
+    }
     window.location.href = '/administration/connexion'
   }
 
@@ -35,51 +29,25 @@ export default function AdminDashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Header */}
-      <header className="bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Shield className="h-8 w-8 text-red-500 mr-3" />
-              <span className="text-xl font-bold">Administration</span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-300">
-                {user?.email}
-              </span>
-              <button
-                onClick={handleLogout}
-                className="text-gray-300 hover:text-white"
-              >
-                <LogOut className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
+    <div className="bg-gray-100">
       {/* Navigation */}
       <nav className="bg-gray-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex space-x-8 h-12 items-center">
-            <Link href="/admin/dashboard" className="text-white font-medium">
+            <Link href="/administration/dashboard" className="text-white font-medium">
               Dashboard
             </Link>
-            <Link href="/admin/events" className="text-gray-300 hover:text-white">
+            <Link href="/administration/events" className="text-gray-300 hover:text-white">
               Événements
             </Link>
-            <Link href="/admin/users" className="text-gray-300 hover:text-white">
-              Utilisateurs
-            </Link>
-            <Link href="/admin/merchants" className="text-gray-300 hover:text-white">
-              Merchants
-            </Link>
-            <Link href="/admin/newsletters" className="text-gray-300 hover:text-white">
+            <Link href="/administration/newsletters" className="text-gray-300 hover:text-white">
               Newsletters
             </Link>
-            <Link href="/admin/settings" className="text-gray-300 hover:text-white">
-              Paramètres
+            <Link href="/administration/emails" className="text-gray-300 hover:text-white">
+              Emails
+            </Link>
+            <Link href="/administration/scraping" className="text-gray-300 hover:text-white">
+              Scraping
             </Link>
           </div>
         </div>
