@@ -30,15 +30,17 @@ export function validateAdminCredentials(email: string, password: string): boole
   const adminEmail = ADMIN_EMAIL || FALLBACK_EMAIL;
   const adminPassword = ADMIN_PASSWORD || FALLBACK_PASSWORD;
   
-  if (!adminEmail || !adminPassword) {
-    console.error('❌ Aucun identifiant admin configuré');
-    return false;
-  }
-
-  console.log(`[AUTH] Tentative connexion: ${email} vs ${adminEmail}`);
+  console.log(`[AUTH] Variables env: ADMIN_EMAIL=${!!ADMIN_EMAIL}, ADMIN_PASSWORD=${!!ADMIN_PASSWORD}`);
+  console.log(`[AUTH] Credentials: ${adminEmail} / ${adminPassword?.slice(0,3)}***`);
+  console.log(`[AUTH] Tentative connexion: "${email}" vs "${adminEmail}"`);
+  console.log(`[AUTH] Password match: ${password === adminPassword}`);
   
-  return email.trim().toLowerCase() === adminEmail.toLowerCase() && 
-         password === adminPassword;
+  const emailMatch = email.trim().toLowerCase() === adminEmail.toLowerCase();
+  const passwordMatch = password === adminPassword;
+  
+  console.log(`[AUTH] Email match: ${emailMatch}, Password match: ${passwordMatch}`);
+  
+  return emailMatch && passwordMatch;
 }
 
 /**

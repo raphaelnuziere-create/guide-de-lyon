@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
       secure: process.env.NODE_ENV === 'production', // HTTPS en prod
       sameSite: 'lax',      // Protection CSRF
       maxAge: 24 * 60 * 60, // 24h en secondes
-      path: '/administration' // Limiter aux routes admin
+      path: '/' // Cookie disponible sur tout le site
     });
 
     console.log(`✅ Connexion admin réussie: ${email}`);
