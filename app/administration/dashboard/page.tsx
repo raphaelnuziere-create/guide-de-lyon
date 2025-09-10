@@ -1,32 +1,40 @@
 'use client'
 
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { 
   Users, Calendar, Building2, TrendingUp, 
-  Eye, CheckCircle, XCircle, Clock, Mail 
+  RefreshCw, ArrowUpRight, ArrowDownRight
 } from 'lucide-react'
+import { AdminStatsService, AdminStats } from '@/lib/services/adminStatsService'
 
 export default function AdminDashboardPage() {
-  // Le layout admin s'occupe déjà de l'authentification
-  // Pas besoin de vérifier ici
+  const [stats, setStats] = useState<AdminStats | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [refreshing, setRefreshing] = useState(false)
 
-  const handleLogout = async () => {
+  const loadStats = async () => {
     try {
-      await fetch('/api/admin/auth/logout', { method: 'POST' })
-    } catch (error) {
-      console.error('Erreur déconnexion:', error)
+      const data = await AdminStatsService.getDashboardStats()
+      setStats(data)
+    } catch (err) {
+      console.error('Erreur chargement stats:', err)
+    } finally {
+      setLoading(false)
     }
-    window.location.href = '/administration/connexion'
   }
 
-  const stats = {
-    totalUsers: 847,
-    totalMerchants: 156,
-    pendingEvents: 12,
-    activeEvents: 234,
-    monthlyRevenue: 3450,
-    growthRate: 15.3
+  const handleRefresh = async () => {
+    setRefreshing(true)
+    await loadStats()
+    setRefreshing(false)
   }
+
+  useEffect(() => {
+    loadStats()
+    const interval = setInterval(loadStats, 5 * 60 * 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div className="bg-gray-100">
@@ -54,134 +62,122 @@ export default function AdminDashboardPage() {
       </nav>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Utilisateurs</p>
-                <p className="text-3xl font-bold text-gray-900">{stats.totalUsers}</p>
-              </div>
-              <Users className="h-12 w-12 text-blue-500" />
-            </div>
-            <p className="text-sm text-green-600 mt-2">+12% ce mois</p>
+        {/* Header */}
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900">Dashboard Administration</h1>
+            <p className="text-gray-600 mt-1">Vue d'ensemble Guide de Lyon</p>
           </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Merchants</p>
-                <p className="text-3xl font-bold text-gray-900">{stats.totalMerchants}</p>
-              </div>
-              <Building2 className="h-12 w-12 text-purple-500" />
-            </div>
-            <p className="text-sm text-green-600 mt-2">+8% ce mois</p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Événements actifs</p>
-                <p className="text-3xl font-bold text-gray-900">{stats.activeEvents}</p>
-              </div>
-              <Calendar className="h-12 w-12 text-green-500" />
-            </div>
-            <p className="text-sm text-orange-600 mt-2">{stats.pendingEvents} en attente</p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">Revenus (mois)</p>
-                <p className="text-3xl font-bold text-gray-900">{stats.monthlyRevenue}€</p>
-              </div>
-              <TrendingUp className="h-12 w-12 text-green-500" />
-            </div>
-            <p className="text-sm text-green-600 mt-2">+{stats.growthRate}%</p>
-          </div>
+          <button
+            onClick={handleRefresh}
+            disabled={refreshing || loading}
+            className="flex items-center gap-2 px-4 py-2 bg-white border rounded-lg hover:bg-gray-50 disabled:opacity-50"
+          >
+            <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+            {refreshing ? 'Actualisation...' : 'Actualiser'}
+          </button>
         </div>
 
-        {/* Actions rapides */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
-              Événements en attente
-            </h2>
-            <div className="space-y-3">
-              {[1, 2, 3].map(i => (
-                <div key={i} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <div>
-                    <p className="font-medium text-gray-900">Festival Événement {i}</p>
-                    <p className="text-sm text-gray-600">Restaurant Paul Bocuse</p>
-                  </div>
-                  <div className="flex gap-2">
-                    <button className="p-2 text-green-600 hover:bg-green-100 rounded">
-                      <CheckCircle className="h-5 w-5" />
-                    </button>
-                    <button className="p-2 text-red-600 hover:bg-red-100 rounded">
-                      <XCircle className="h-5 w-5" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <Link 
-              href="/admin/events" 
-              className="mt-4 inline-block text-blue-600 hover:text-blue-700 font-medium"
-            >
-              Voir tous les événements →
-            </Link>
+        {loading ? (
+          <div className="flex items-center justify-center py-12">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-600"></div>
+            <span className="ml-3 text-gray-600">Chargement...</span>
           </div>
-
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
-              Nouveaux merchants
-            </h2>
-            <div className="space-y-3">
-              {[1, 2, 3].map(i => (
-                <div key={i} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+        ) : stats ? (
+          <>
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              <div className="bg-white rounded-lg shadow p-6">
+                <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-medium text-gray-900">Restaurant {i}</p>
-                    <p className="text-sm text-gray-600">Plan Pro Visibilité</p>
+                    <p className="text-sm font-medium text-gray-600">Utilisateurs</p>
+                    <p className="text-3xl font-bold text-gray-900">
+                      {AdminStatsService.formatNumber(stats.totalUsers)}
+                    </p>
                   </div>
-                  <button className="p-2 text-blue-600 hover:bg-blue-100 rounded">
-                    <Eye className="h-5 w-5" />
-                  </button>
+                  <Users className="h-12 w-12 text-blue-500" />
                 </div>
-              ))}
-            </div>
-            <Link 
-              href="/admin/merchants" 
-              className="mt-4 inline-block text-blue-600 hover:text-blue-700 font-medium"
-            >
-              Gérer les merchants →
-            </Link>
-          </div>
-        </div>
-
-        {/* Activit� r�cente */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Activité récente</h2>
-          <div className="space-y-3">
-            {[
-              { action: 'Nouvel événement créé', user: 'Restaurant Bocuse', time: 'Il y a 5 min', icon: Calendar },
-              { action: 'Nouveau merchant inscrit', user: 'Bouchon Lyonnais', time: 'Il y a 15 min', icon: Building2 },
-              { action: 'Événement approuvé', user: 'Admin', time: 'Il y a 1 heure', icon: CheckCircle },
-              { action: 'Paiement reçu', user: 'Restaurant Test', time: 'Il y a 2 heures', icon: TrendingUp }
-            ].map((activity, i) => (
-              <div key={i} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg">
-                <div className="flex items-center">
-                  <activity.icon className="h-5 w-5 text-gray-400 mr-3" />
-                  <div>
-                    <p className="text-gray-900">{activity.action}</p>
-                    <p className="text-sm text-gray-600">{activity.user}</p>
-                  </div>
+                <div className="flex items-center mt-2">
+                  {stats.usersGrowth >= 0 ? <ArrowUpRight className="h-4 w-4 text-green-600 mr-1" /> : <ArrowDownRight className="h-4 w-4 text-red-600 mr-1" />}
+                  <span className={`text-sm ${AdminStatsService.formatGrowth(stats.usersGrowth).color}`}>
+                    {AdminStatsService.formatGrowth(stats.usersGrowth).formatted}
+                  </span>
                 </div>
-                <span className="text-sm text-gray-500">{activity.time}</span>
               </div>
-            ))}
+
+              <div className="bg-white rounded-lg shadow p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-gray-600">Établissements</p>
+                    <p className="text-3xl font-bold text-gray-900">
+                      {AdminStatsService.formatNumber(stats.totalEstablishments)}
+                    </p>
+                  </div>
+                  <Building2 className="h-12 w-12 text-purple-500" />
+                </div>
+                <div className="flex items-center mt-2">
+                  {stats.establishmentsGrowth >= 0 ? <ArrowUpRight className="h-4 w-4 text-green-600 mr-1" /> : <ArrowDownRight className="h-4 w-4 text-red-600 mr-1" />}
+                  <span className={`text-sm ${AdminStatsService.formatGrowth(stats.establishmentsGrowth).color}`}>
+                    {AdminStatsService.formatGrowth(stats.establishmentsGrowth).formatted}
+                  </span>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-gray-600">Événements</p>
+                    <p className="text-3xl font-bold text-gray-900">
+                      {AdminStatsService.formatNumber(stats.totalEvents)}
+                    </p>
+                  </div>
+                  <Calendar className="h-12 w-12 text-green-500" />
+                </div>
+                <p className="text-sm text-orange-600 mt-2">{stats.pendingEvents} en attente</p>
+              </div>
+
+              <div className="bg-white rounded-lg shadow p-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-gray-600">Revenus estimés</p>
+                    <p className="text-3xl font-bold text-gray-900">
+                      {AdminStatsService.formatCurrency(stats.estimatedMonthlyRevenue)}
+                    </p>
+                  </div>
+                  <TrendingUp className="h-12 w-12 text-green-500" />
+                </div>
+                <p className="text-sm text-gray-600 mt-2">{stats.conversionRate}% conversion</p>
+              </div>
+            </div>
+
+            {/* Plan Distribution */}
+            <div className="bg-white rounded-lg shadow p-6 mb-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Répartition des plans</h3>
+              <div className="grid grid-cols-3 gap-4">
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-gray-900">{stats.planDistribution.basic}</p>
+                  <p className="text-sm text-gray-600">Gratuit</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-blue-600">{stats.planDistribution.pro}</p>
+                  <p className="text-sm text-blue-600">Pro</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-bold text-purple-600">{stats.planDistribution.expert}</p>
+                  <p className="text-sm text-purple-600">Expert</p>
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-gray-500">Erreur de chargement des statistiques</p>
+            <button onClick={loadStats} className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg">
+              Réessayer
+            </button>
           </div>
-        </div>
+        )}
+
       </main>
     </div>
   )
