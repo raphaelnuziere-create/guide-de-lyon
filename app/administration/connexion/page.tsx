@@ -36,7 +36,8 @@ export default function AdminLoginPage() {
       }
 
       // Rediriger vers le dashboard admin
-      router.push('/administration/dashboard')
+      console.log('✅ Connexion réussie, redirection vers dashboard...')
+      window.location.href = '/administration/dashboard'
 
     } catch (error) {
       console.error('Erreur connexion admin:', error)
