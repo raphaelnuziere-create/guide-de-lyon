@@ -95,7 +95,7 @@ export default function EmailAdminPage() {
           name: 'Event Created Premium Plan',
           event_type: 'event_created_premium',
           user_plan: 'premium',
-          subject_template: '🌟 {{event_title}} en ligne et sur la page d\\'accueil !',
+          subject_template: '🌟 {{event_title}} en ligne et sur la page d\'accueil !',
           is_active: true,
           is_system: true,
           sent_count: 38,

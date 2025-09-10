@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { supabase } from '@/app/lib/supabase/client';
 import { EstablishmentService } from '@/app/lib/services/establishmentService';
+import { PhotoService, Photo } from '@/lib/services/photoService';
 
 interface Event {
   id: string;
@@ -48,6 +49,7 @@ export default function EvenementsPage() {
   const [establishment, setEstablishment] = useState<any>(null);
   const [eventsRemaining, setEventsRemaining] = useState(0);
   const [planLimits, setPlanLimits] = useState<any>(null);
+  const [establishmentPhotos, setEstablishmentPhotos] = useState<Photo[]>([]);
 
   useEffect(() => {
     checkAuthAndLoadData();
@@ -88,6 +90,14 @@ export default function EvenementsPage() {
 
       if (!error && eventsData) {
         setEvents(eventsData);
+      }
+
+      // Charger les photos de l'établissement
+      try {
+        const photos = await PhotoService.getEstablishmentPhotos(establishmentData.id);
+        setEstablishmentPhotos(photos);
+      } catch (error) {
+        console.error('Error loading establishment photos:', error);
       }
 
       setLoading(false);
@@ -135,6 +145,12 @@ export default function EvenementsPage() {
       hour: '2-digit',
       minute: '2-digit'
     });
+  };
+
+  const getMainPhoto = () => {
+    // Priorité : photo principale, sinon première photo
+    const mainPhoto = establishmentPhotos.find(photo => photo.is_main);
+    return mainPhoto || establishmentPhotos[0] || null;
   };
 
   if (loading) {
@@ -232,11 +248,23 @@ export default function EvenementsPage() {
           </div>
         ) : (
           <div className="grid gap-4">
-            {events.map((event) => (
-              <div key={event.id} className="bg-white rounded-lg shadow-sm p-6">
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
+            {events.map((event) => {
+              const mainPhoto = getMainPhoto();
+              return (
+                <div key={event.id} className="bg-white rounded-lg shadow-sm p-6">
+                  <div className="flex justify-between items-start">
+                    {/* Photo de l'établissement */}
+                    {mainPhoto && (
+                      <div className="w-24 h-16 mr-4 flex-shrink-0">
+                        <img
+                          src={mainPhoto.url}
+                          alt={mainPhoto.caption || 'Photo établissement'}
+                          className="w-full h-full object-cover rounded-lg"
+                        />
+                      </div>
+                    )}
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
                       <h3 className="text-lg font-semibold text-gray-900">
                         {event.title}
                       </h3>
@@ -339,6 +367,7 @@ export default function EvenementsPage() {
                         </span>
                       )}
                     </div>
+                    </div>
                   </div>
 
                   {/* Actions */}
@@ -370,8 +399,8 @@ export default function EvenementsPage() {
                     </button>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
