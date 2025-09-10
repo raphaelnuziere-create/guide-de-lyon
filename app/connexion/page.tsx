@@ -23,7 +23,7 @@ export default function ConnexionPage() {
             Page de connexion en cours de reconstruction...
           </p>
           <div className="mt-4 text-center">
-            <Link href="/pro/inscription" className="text-blue-600 hover:text-blue-500">
+            <Link href="/auth/pro/signup" className="text-blue-600 hover:text-blue-500">
               Créer un compte professionnel
             </Link>
           </div>

@@ -190,7 +190,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/pro/inscription"
+              href="/auth/pro/signup"
               className="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition"
             >
               <Users className="w-5 h-5 mr-2" />

@@ -32,23 +32,9 @@ export async function POST(request: Request) {
         );
       }
 
-      // Créer l'établissement associé
-      const { error: estError } = await supabase
-        .from('establishments')
-        .insert({
-          owner_id: authData.user.id,
-          name: 'Mon Établissement',
-          email: email,
-          plan: 'basic',
-          is_active: true,
-          address: 'À compléter',
-          phone: 'À compléter'
-        });
-
-      if (estError) {
-        console.error('Erreur création établissement:', estError);
-        // On continue quand même, l'établissement peut être créé plus tard
-      }
+      // NE PAS créer l'établissement ici - sera fait dans /pro/inscription
+      // L'API de signup doit seulement créer le compte utilisateur
+      console.log('[Auth API] Compte utilisateur créé:', authData.user.email);
 
       return NextResponse.json({
         success: true,
