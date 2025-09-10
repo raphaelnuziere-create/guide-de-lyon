@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
+import Link from 'next/link'
 import { Shield, LogOut } from 'lucide-react'
 
 interface AdminLayoutProps {
@@ -14,7 +15,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  // Vérifier l'authentification admin
+  // Vérifier l'authentification admin (optimisé)
   useEffect(() => {
     const checkAuth = async () => {
       console.log('[LAYOUT] Vérification auth pour:', pathname)
@@ -22,6 +23,13 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       // Exclure la page de connexion
       if (pathname === '/administration/connexion') {
         console.log('[LAYOUT] Page de connexion, pas de vérification')
+        setLoading(false)
+        return
+      }
+
+      // Si déjà authentifié, pas besoin de revérifier
+      if (isAuthenticated) {
+        console.log('[LAYOUT] Déjà authentifié, pas de nouvelle vérification')
         setLoading(false)
         return
       }
@@ -53,7 +61,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     }
 
     checkAuth()
-  }, [pathname])
+  }, [pathname, isAuthenticated])
 
   // Déconnexion admin
   const handleLogout = async () => {
@@ -110,10 +118,22 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       <header className="bg-gray-900 text-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Shield className="h-8 w-8 text-red-500 mr-3" />
-              <span className="text-xl font-bold">Administration</span>
-              <span className="ml-3 text-sm text-gray-400">Guide de Lyon</span>
+            <div className="flex items-center space-x-6">
+              <div className="flex items-center">
+                <Shield className="h-8 w-8 text-red-500 mr-3" />
+                <span className="text-xl font-bold">Administration</span>
+                <span className="ml-3 text-sm text-gray-400">Guide de Lyon</span>
+              </div>
+              {/* Bouton retour dashboard si pas sur dashboard */}
+              {pathname !== '/administration/dashboard' && (
+                <Link 
+                  href="/administration/dashboard"
+                  className="flex items-center text-gray-300 hover:text-white transition-colors text-sm"
+                >
+                  <span className="mr-1">←</span>
+                  Dashboard
+                </Link>
+              )}
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-300">
