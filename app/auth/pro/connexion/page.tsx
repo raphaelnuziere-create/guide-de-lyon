@@ -245,7 +245,7 @@ export default function ProConnexionPage() {
               Pas encore de compte ?
             </p>
             <Link 
-              href="/auth/pro/inscription" 
+              href="/pro/inscription" 
               className="mt-3 w-full inline-flex justify-center items-center px-4 py-2 border border-red-600 text-red-600 rounded-lg hover:bg-red-50 transition"
             >
               Créer un compte professionnel
