@@ -10,14 +10,21 @@ interface ConditionalAuthProviderProps {
 export function ConditionalAuthProvider({ children }: ConditionalAuthProviderProps) {
   const pathname = usePathname()
   
-  // Exclure les routes d'administration de l'AuthProvider Supabase
+  // Routes qui ont besoin de l'AuthProvider Supabase
+  const needsAuth = pathname?.startsWith('/pro') || 
+                   pathname?.startsWith('/auth') ||
+                   pathname?.startsWith('/professionnel') ||
+                   pathname?.startsWith('/espace-pro') ||
+                   pathname?.startsWith('/inscription')
+  
+  // Routes d'administration (utilisent leur propre système auth)
   const isAdminRoute = pathname?.startsWith('/administration')
   
-  if (isAdminRoute) {
-    // Pour les routes admin, pas d'AuthProvider Supabase
+  if (isAdminRoute || !needsAuth) {
+    // Pour les routes admin ou les pages publiques, pas d'AuthProvider Supabase
     return <>{children}</>
   }
   
-  // Pour les autres routes, utiliser l'AuthProvider Supabase
+  // Seulement pour les routes qui nécessitent l'auth utilisateur
   return <AuthProvider>{children}</AuthProvider>
 }
