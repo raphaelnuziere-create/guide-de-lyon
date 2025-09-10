@@ -3,6 +3,9 @@
  * Maintient le référencement lors du changement de structure
  */
 
+
+// @deprecated - Export non utilisé détecté lors de l'audit 2025-09-10T21-46-50
+// TODO: Supprimer après vérification complète
 export const blogRedirects: Record<string, string> = {
   // Anciennes URLs vers nouvelles
   '/blog/decouvrir-vieux-lyon': '/blog/decouvrir-vieux-lyon',
@@ -28,6 +31,9 @@ export const blogRedirects: Record<string, string> = {
 /**
  * Vérifier si une URL nécessite une redirection
  */
+
+// @deprecated - Export non utilisé détecté lors de l'audit 2025-09-10T21-46-50
+// TODO: Supprimer après vérification complète
 export function checkRedirect(path: string): string | null {
   // Redirection directe
   if (blogRedirects[path]) {

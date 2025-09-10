@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide de Lyon - L'agenda des événements lyonnais, l'annuaire des entreprises</title>
+    <meta name="description" content="Guide de Lyon : 16 ans d'expérience. Découvrez les événements, l'annuaire des entreprises, actualités lyonnaises. 500+ entreprises, 50+ événements/mois.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-content">
+                <div class="logo">
+                    <h1>Guide-de-Lyon</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/actualites">Actualités</a></li>
+                    <li><a href="/annuaire">Annuaire</a></li>
+                    <li><a href="/evenements">Événements</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Weather Sub-header -->
+        <div class="weather-banner">
+            <div class="container">
+                <span>🌤️ Lyon aujourd'hui : 18°C</span>
+                <span>☀️ Demain : 22°C</span>
+                <span>🌧️ Mercredi : 16°C</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <div class="experience-badge">16 ans d'expérience</div>
+                <h1 class="hero-title">Guide de Lyon</h1>
+                <p class="hero-subtitle">L'agenda des événements lyonnais, l'annuaire des entreprises</p>
+                
+                <div class="search-container">
+                    <form class="search-form">
+                        <input type="text" placeholder="Rechercher un établissement, un événement..." class="search-input">
+                        <button type="submit" class="search-button">
+                            <span>Rechercher</span>
+                            <div class="button-gradient"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Trust Indicators -->
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <div class="trust-number">500+</div>
+                    <div class="trust-label">Entreprises</div>
+                    <div class="trust-bg"></div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">50+</div>
+                    <div class="trust-label">Événements/mois</div>
+                    <div class="trust-bg"></div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">10k+</div>
+                    <div class="trust-label">Visiteurs/mois</div>
+                    <div class="trust-bg"></div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-number">4.8/5</div>
+                    <div class="trust-label">Satisfaction</div>
+                    <div class="trust-bg"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="events-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-gradient">Événements</span> à Lyon
+                </h2>
+                
+                <div class="events-grid">
+                    <!-- Calendar Column -->
+                    <div class="calendar-column">
+                        <div id="calendar-month" class="calendar-container"></div>
+                    </div>
+                    
+                    <!-- Day Events Column -->
+                    <div class="day-events-column">
+                        <div id="day-events" class="day-events-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Directory Section -->
+        <section class="directory-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-gradient">Annuaire</span> par secteur
+                </h2>
+                
+                <div class="sectors-grid">
+                    <div class="sector-card" data-sector="shopping">
+                        <div class="sector-bg"></div>
+                        <div class="sector-gradient"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🛍️</div>
+                            <h3 class="sector-name">Shopping</h3>
+                            <div class="sector-count">85 entreprises</div>
+                        </div>
+                        <div class="sector-hover-effect"></div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="restaurant">
+                        <div class="sector-bg"></div>
+                        <div class="sector-gradient"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🍽️</div>
+                            <h3 class="sector-name">Restaurant</h3>
+                            <div class="sector-count">142 entreprises</div>
+                        </div>
+                        <div class="sector-hover-effect"></div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="culture">
+                        <div class="sector-bg"></div>
+                        <div class="sector-gradient"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🎭</div>
+                            <h3 class="sector-name">Culture</h3>
+                            <div class="sector-count">67 entreprises</div>
+                        </div>
+                        <div class="sector-hover-effect"></div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="bars">
+                        <div class="sector-bg"></div>
+                        <div class="sector-gradient"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🍺</div>
+                            <h3 class="sector-name">Bars</h3>
+                            <div class="sector-count">91 entreprises</div>
+                        </div>
+                        <div class="sector-hover-effect"></div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="fitness">
+                        <div class="sector-bg"></div>
+                        <div class="sector-gradient"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">💪</div>
+                            <h3 class="sector-name">Fitness</h3>
+                            <div class="sector-count">43 entreprises</div>
+                        </div>
+                        <div class="sector-hover-effect"></div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="sante">
+                        <div class="sector-bg"></div>
+                        <div class="sector-gradient"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🏥</div>
+                            <h3 class="sector-name">Santé</h3>
+                            <div class="sector-count">78 entreprises</div>
+                        </div>
+                        <div class="sector-hover-effect"></div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="immobilier">
+                        <div class="sector-bg"></div>
+                        <div class="sector-gradient"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🏠</div>
+                            <h3 class="sector-name">Immobilier</h3>
+                            <div class="sector-count">56 entreprises</div>
+                        </div>
+                        <div class="sector-hover-effect"></div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="auto">
+                        <div class="sector-bg"></div>
+                        <div class="sector-gradient"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🚗</div>
+                            <h3 class="sector-name">Auto</h3>
+                            <div class="sector-count">34 entreprises</div>
+                        </div>
+                        <div class="sector-hover-effect"></div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="beaute">
+                        <div class="sector-bg"></div>
+                        <div class="sector-gradient"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">💄</div>
+                            <h3 class="sector-name">Beauté</h3>
+                            <div class="sector-count">62 entreprises</div>
+                        </div>
+                        <div class="sector-hover-effect"></div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="education">
+                        <div class="sector-bg"></div>
+                        <div class="sector-gradient"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🎓</div>
+                            <h3 class="sector-name">Éducation</h3>
+                            <div class="sector-count">29 entreprises</div>
+                        </div>
+                        <div class="sector-hover-effect"></div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="services">
+                        <div class="sector-bg"></div>
+                        <div class="sector-gradient"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🛠️</div>
+                            <h3 class="sector-name">Services</h3>
+                            <div class="sector-count">73 entreprises</div>
+                        </div>
+                        <div class="sector-hover-effect"></div>
+                    </div>
+                    
+                    <div class="sector-card" data-sector="loisirs">
+                        <div class="sector-bg"></div>
+                        <div class="sector-gradient"></div>
+                        <div class="sector-content">
+                            <div class="sector-icon">🎪</div>
+                            <h3 class="sector-name">Loisirs</h3>
+                            <div class="sector-count">38 entreprises</div>
+                        </div>
+                        <div class="sector-hover-effect"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="news-section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-gradient">Actualités</span>
+                </h2>
+                
+                <div class="news-grid">
+                    <article class="news-item" data-sector="restaurant">
+                        <div class="news-image">
+                            <img src="" alt="Actualité restaurant" data-src="">
+                            <div class="news-overlay"></div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">8 janvier 2025</span>
+                                <span class="news-sector restaurant">Restaurant</span>
+                            </div>
+                            <h3 class="news-title">Nouveau restaurant gastronomique à Confluence</h3>
+                            <p class="news-excerpt">Un chef étoilé ouvre son nouvel établissement dans le quartier moderne de Confluence avec une cuisine fusion franco-asiatique...</p>
+                            <a href="#" class="news-link">
+                                <span>Lire la suite</span>
+                                <div class="link-arrow">→</div>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item" data-sector="culture">
+                        <div class="news-image">
+                            <img src="" alt="Actualité culture" data-src="">
+                            <div class="news-overlay"></div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">7 janvier 2025</span>
+                                <span class="news-sector culture">Culture</span>
+                            </div>
+                            <h3 class="news-title">Festival Street Art 2025 annoncé</h3>
+                            <p class="news-excerpt">Lyon accueillera le plus grand festival de street art de France avec plus de 50 artistes internationaux dans les rues...</p>
+                            <a href="#" class="news-link">
+                                <span>Lire la suite</span>
+                                <div class="link-arrow">→</div>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="news-item" data-sector="shopping">
+                        <div class="news-image">
+                            <img src="" alt="Actualité shopping" data-src="">
+                            <div class="news-overlay"></div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-date">6 janvier 2025</span>
+                                <span class="news-sector shopping">Shopping</span>
+                            </div>
+                            <h3 class="news-title">Soldes d'hiver : les bonnes adresses</h3>
+                            <p class="news-excerpt">Notre sélection des meilleures boutiques lyonnaises pour profiter des soldes d'hiver avec des réductions jusqu'à 70%...</p>
+                            <a href="#" class="news-link">
+                                <span>Lire la suite</span>
+                                <div class="link-arrow">→</div>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-cta">
+                    <h3>Vous êtes professionnel ?</h3>
+                    <p>Rejoignez nos 500+ partenaires</p>
+                    <a href="/pro" class="cta-button">
+                        <span>En savoir plus</span>
+                        <div class="button-gradient"></div>
+                    </a>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Guide de Lyon</h4>
+                        <ul>
+                            <li><a href="/a-propos">À propos</a></li>
+                            <li><a href="/contact">Contact</a></li>
+                            <li><a href="/mentions-legales">Mentions légales</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="/annuaire">Annuaire</a></li>
+                            <li><a href="/evenements">Événements</a></li>
+                            <li><a href="/actualites">Actualités</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Guide-de-Lyon.fr - 16 ans d'expérience à votre service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="api/pexels-integration.js"></script>
+    <script src="api/events-calendar.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

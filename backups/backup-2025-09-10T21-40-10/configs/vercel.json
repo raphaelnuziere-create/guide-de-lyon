@@ -1,0 +1,89 @@
+{
+  "buildCommand": "npm run build",
+  "framework": "nextjs",
+  "crons": [
+    {
+      "path": "/api/cron/scrape-news",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/newsletter/weekly",
+      "schedule": "0 9 * * 0"
+    },
+    {
+      "path": "/api/email/transactional/process",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/newsletter/daily/generate",
+      "schedule": "0 7 * * *"
+    },
+    {
+      "path": "/api/maintenance/cleanup",
+      "schedule": "0 2 * * *"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/actualites",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/monuments-lyon/:slug*",
+      "destination": "/blog/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/restaurants-lyon/:slug*",
+      "destination": "/blog/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/hotels-lyon/:slug*",
+      "destination": "/blog/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/bars-lyon/:slug*",
+      "destination": "/blog/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/musees-lyon/:slug*",
+      "destination": "/blog/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/parcs-lyon/:slug*",
+      "destination": "/blog/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/shopping-lyon/:slug*",
+      "destination": "/blog/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/culture-lyon/:slug*",
+      "destination": "/blog/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/visite-lyon/:slug*",
+      "destination": "/blog/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/tourisme-lyon/:slug*",
+      "destination": "/blog/:slug*",
+      "permanent": true
+    }
+  ]
+}

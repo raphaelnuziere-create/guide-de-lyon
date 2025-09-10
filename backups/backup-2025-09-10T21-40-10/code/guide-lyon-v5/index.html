@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide de Lyon - L'agenda des événements lyonnais, l'annuaire des entreprises</title>
+    <meta name="description" content="Guide de Lyon : 16 ans d'expérience. Découvrez les événements, l'annuaire des entreprises, actualités lyonnaises. 500+ entreprises, 50+ événements/mois.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-emblem">⚜️</div>
+                    <div class="logo-text">
+                        <h1>Guide de Lyon</h1>
+                        <span class="logo-tagline">Depuis 2009</span>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/actualites">Actualités</a></li>
+                    <li><a href="/annuaire">Annuaire</a></li>
+                    <li><a href="/evenements">Événements</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Weather Sub-header -->
+        <div class="weather-banner">
+            <div class="container">
+                <div class="weather-lyon">
+                    <span class="weather-title">Météo Lyon :</span>
+                    <span class="weather-today">🌤️ Aujourd'hui 18°C</span>
+                    <span class="weather-tomorrow">☀️ Demain 22°C</span>
+                    <span class="weather-day-after">🌧️ Mercredi 16°C</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background">
+                <div class="lyon-pattern"></div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="tradition-badge">
+                    <span class="tradition-text">Tradition Lyonnaise</span>
+                    <span class="tradition-years">16 ans à vos côtés</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-main">Guide de Lyon</span>
+                    <span class="title-subtitle">L'âme de la ville</span>
+                </h1>
+                
+                <div class="hero-description">
+                    <p>Depuis 2009, nous vous accompagnons dans la découverte<br>
+                    des trésors cachés et des événements authentiques de Lyon.</p>
+                </div>
+                
+                <div class="search-container">
+                    <form class="search-form">
+                        <div class="search-field">
+                            <input type="text" placeholder="Que cherchez-vous à Lyon ?" class="search-input">
+                            <button type="submit" class="search-button">
+                                <span>Rechercher</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="heritage-text">
+                    <em>"Lyon ne se visite pas, elle se vit"</em>
+                </div>
+            </div>
+            
+            <!-- Trust Indicators Lyon Style -->
+            <div class="lyon-stats">
+                <div class="container">
+                    <div class="stats-row">
+                        <div class="stat-lyon">
+                            <div class="stat-icon">🏛️</div>
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Établissements<br>partenaires</div>
+                        </div>
+                        <div class="stat-lyon">
+                            <div class="stat-icon">🎭</div>
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Événements<br>chaque mois</div>
+                        </div>
+                        <div class="stat-lyon">
+                            <div class="stat-icon">👨‍👩‍👧‍👦</div>
+                            <div class="stat-number">10 000+</div>
+                            <div class="stat-label">Lyonnais nous<br>font confiance</div>
+                        </div>
+                        <div class="stat-lyon">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-number">4,8/5</div>
+                            <div class="stat-label">Satisfaction<br>de nos lecteurs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="events-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-ornament">❦</span>
+                        L'agenda culturel lyonnais
+                        <span class="title-ornament">❦</span>
+                    </h2>
+                    <p class="section-subtitle">Découvrez les rendez-vous incontournables de notre belle ville</p>
+                </div>
+                
+                <div class="events-layout">
+                    <!-- Calendar Column -->
+                    <div class="calendar-column">
+                        <div class="calendar-header-lyon">
+                            <h3>📅 Calendrier du mois</h3>
+                            <p>Cliquez sur une date pour voir les événements</p>
+                        </div>
+                        <div id="calendar-month" class="calendar-container"></div>
+                    </div>
+                    
+                    <!-- Day Events Column -->
+                    <div class="events-column">
+                        <div class="events-header-lyon">
+                            <h3>🗓️ Programme détaillé</h3>
+                            <p>Les événements du jour sélectionné</p>
+                        </div>
+                        <div id="day-events" class="day-events-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Directory Section -->
+        <section class="directory-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-ornament">❦</span>
+                        Les bonnes adresses lyonnaises
+                        <span class="title-ornament">❦</span>
+                    </h2>
+                    <p class="section-subtitle">Notre sélection des meilleurs établissements, quartier par quartier</p>
+                </div>
+                
+                <div class="lyon-directory">
+                    <div class="directory-card" data-sector="shopping">
+                        <div class="card-header">
+                            <span class="card-icon">🛍️</span>
+                            <h3>Shopping & Boutiques</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Des Terreaux à la Part-Dieu, découvrez nos 85 adresses shopping coup de cœur</p>
+                            <div class="card-count">85 boutiques</div>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    
+                    <div class="directory-card" data-sector="restaurant">
+                        <div class="card-header">
+                            <span class="card-icon">🍽️</span>
+                            <h3>Restaurants & Bouchons</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">De la cuisine traditionnelle aux créations modernes, 142 tables d'exception</p>
+                            <div class="card-count">142 restaurants</div>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    
+                    <div class="directory-card" data-sector="culture">
+                        <div class="card-header">
+                            <span class="card-icon">🎭</span>
+                            <h3>Culture & Patrimoine</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Théâtres, musées, galeries : 67 lieux pour enrichir votre culture</p>
+                            <div class="card-count">67 lieux culturels</div>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    
+                    <div class="directory-card" data-sector="bars">
+                        <div class="card-header">
+                            <span class="card-icon">🍺</span>
+                            <h3>Bars & Cafés</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Des bistrots authentiques aux bars tendance, 91 adresses conviviales</p>
+                            <div class="card-count">91 établissements</div>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    
+                    <div class="directory-card" data-sector="fitness">
+                        <div class="card-header">
+                            <span class="card-icon">💪</span>
+                            <h3>Sport & Bien-être</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Salles de sport, spas, centres de bien-être : 43 adresses pour prendre soin de soi</p>
+                            <div class="card-count">43 centres</div>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    
+                    <div class="directory-card" data-sector="sante">
+                        <div class="card-header">
+                            <span class="card-icon">🏥</span>
+                            <h3>Santé & Médecine</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Professionnels de santé, cliniques, pharmacies : 78 adresses de confiance</p>
+                            <div class="card-count">78 professionnels</div>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    
+                    <div class="directory-card" data-sector="immobilier">
+                        <div class="card-header">
+                            <span class="card-icon">🏠</span>
+                            <h3>Immobilier</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Agences immobilières, syndics, experts : 56 professionnels de l'immobilier</p>
+                            <div class="card-count">56 agences</div>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    
+                    <div class="directory-card" data-sector="auto">
+                        <div class="card-header">
+                            <span class="card-icon">🚗</span>
+                            <h3>Automobile</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Concessionnaires, garages, carrossiers : 34 adresses pour votre véhicule</p>
+                            <div class="card-count">34 professionnels</div>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    
+                    <div class="directory-card" data-sector="beaute">
+                        <div class="card-header">
+                            <span class="card-icon">💄</span>
+                            <h3>Beauté & Esthétique</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Instituts de beauté, coiffeurs, parfumeries : 62 adresses pour votre bien-être</p>
+                            <div class="card-count">62 instituts</div>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    
+                    <div class="directory-card" data-sector="education">
+                        <div class="card-header">
+                            <span class="card-icon">🎓</span>
+                            <h3>Éducation & Formation</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Écoles, universités, centres de formation : 29 établissements d'excellence</p>
+                            <div class="card-count">29 établissements</div>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    
+                    <div class="directory-card" data-sector="services">
+                        <div class="card-header">
+                            <span class="card-icon">🛠️</span>
+                            <h3>Services</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Artisans, professionnels du service : 73 experts à votre disposition</p>
+                            <div class="card-count">73 services</div>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                    
+                    <div class="directory-card" data-sector="loisirs">
+                        <div class="card-header">
+                            <span class="card-icon">🎪</span>
+                            <h3>Loisirs & Détente</h3>
+                        </div>
+                        <div class="card-content">
+                            <p class="card-description">Activités, parcs, loisirs : 38 idées pour se divertir à Lyon</p>
+                            <div class="card-count">38 activités</div>
+                        </div>
+                        <div class="card-bg"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="news-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-ornament">❦</span>
+                        Les dernières nouvelles lyonnaises
+                        <span class="title-ornament">❦</span>
+                    </h2>
+                    <p class="section-subtitle">L'actualité de votre ville, racontée avec passion</p>
+                </div>
+                
+                <div class="news-articles">
+                    <article class="news-article featured" data-sector="restaurant">
+                        <div class="article-image">
+                            <img src="" alt="Restaurant lyonnais" data-src="">
+                            <div class="article-category">Gastronomie</div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-date">8 janvier 2025</span>
+                                <span class="article-author">Par Marie Dupont</span>
+                            </div>
+                            <h3 class="article-title">Un nouveau bouchon ouvre ses portes à Confluence</h3>
+                            <p class="article-excerpt">Dans le quartier moderne de Confluence, un chef passionné perpétue la tradition lyonnaise en ouvrant un bouchon authentique. Entre modernité et tradition, cette nouvelle adresse promet de beaux moments de convivialité autour de la cuisine de nos grand-mères revisitée avec goût...</p>
+                            <a href="#" class="article-link">
+                                <span>Lire la suite</span>
+                                <span class="link-arrow">→</span>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="news-article" data-sector="culture">
+                        <div class="article-image">
+                            <img src="" alt="Culture Lyon" data-src="">
+                            <div class="article-category">Culture</div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-date">7 janvier 2025</span>
+                                <span class="article-author">Par Jean Martin</span>
+                            </div>
+                            <h3 class="article-title">Festival de Street Art : Lyon capitale européenne</h3>
+                            <p class="article-excerpt">Pour sa 5e édition, le festival international de street art transforme Lyon en galerie à ciel ouvert. Plus de 50 artistes du monde entier investissent les murs de la ville pour créer des œuvres monumentales...</p>
+                            <a href="#" class="article-link">
+                                <span>Lire la suite</span>
+                                <span class="link-arrow">→</span>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="news-article" data-sector="shopping">
+                        <div class="article-image">
+                            <img src="" alt="Shopping Lyon" data-src="">
+                            <div class="article-category">Shopping</div>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="article-date">6 janvier 2025</span>
+                                <span class="article-author">Par Sophie Moreau</span>
+                            </div>
+                            <h3 class="article-title">Soldes d'hiver : nos bonnes adresses lyonnaises</h3>
+                            <p class="article-excerpt">Les soldes d'hiver ont commencé ! Découvrez notre sélection des meilleures boutiques lyonnaises où dénicher les bonnes affaires. Des créateurs locaux aux grandes enseignes, notre guide complet pour faire de bonnes affaires...</p>
+                            <a href="#" class="article-link">
+                                <span>Lire la suite</span>
+                                <span class="link-arrow">→</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-intro">
+                    <div class="footer-logo">
+                        <div class="footer-emblem">⚜️</div>
+                        <div>
+                            <h3>Guide de Lyon</h3>
+                            <p class="footer-tagline">L'authenticité lyonnaise depuis 2009</p>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-cta">
+                        <h4>Vous êtes commerçant ou artisan lyonnais ?</h4>
+                        <p>Rejoignez notre famille de 500+ partenaires locaux et faites rayonner votre savoir-faire dans toute la ville.</p>
+                        <a href="/pro" class="cta-link">
+                            Nous rejoindre
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h4>Notre guide</h4>
+                        <ul>
+                            <li><a href="/a-propos">Notre histoire</a></li>
+                            <li><a href="/equipe">L'équipe</a></li>
+                            <li><a href="/contact">Nous contacter</a></li>
+                            <li><a href="/partenaires">Nos partenaires</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-column">
+                        <h4>Découvrir Lyon</h4>
+                        <ul>
+                            <li><a href="/annuaire">Annuaire complet</a></li>
+                            <li><a href="/evenements">Agenda culturel</a></li>
+                            <li><a href="/actualites">Actualités</a></li>
+                            <li><a href="/quartiers">Nos quartiers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-column">
+                        <h4>Informations</h4>
+                        <ul>
+                            <li><a href="/mentions-legales">Mentions légales</a></li>
+                            <li><a href="/confidentialite">Confidentialité</a></li>
+                            <li><a href="/cookies">Gestion des cookies</a></li>
+                            <li><a href="/plan-site">Plan du site</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-text">
+                    <p>&copy; 2025 Guide-de-Lyon.fr - Avec amour pour Lyon depuis 16 ans</p>
+                    <p class="footer-heart">Fait avec ❤️ à Lyon, pour les Lyonnais</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="api/pexels-integration.js"></script>
+    <script src="api/events-calendar.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

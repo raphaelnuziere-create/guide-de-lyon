@@ -1,6 +1,9 @@
 // Service simplifié pour télécharger et stocker les images directement via URL
 import crypto from 'crypto';
 
+
+// @deprecated - Export non utilisé détecté lors de l'audit 2025-09-10T21-46-50
+// TODO: Supprimer après vérification complète
 export class ImageServiceDirect {
   
   // Télécharger une image et retourner l'URL directe

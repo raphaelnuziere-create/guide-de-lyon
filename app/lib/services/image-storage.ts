@@ -4,6 +4,9 @@ import fs from 'fs/promises';
 import path from 'path';
 import { supabase } from '@/app/lib/supabase/client';
 
+
+// @deprecated - Export non utilisé détecté lors de l'audit 2025-09-10T21-46-50
+// TODO: Supprimer après vérification complète
 export class ImageStorageService {
   private storageDir = path.join(process.cwd(), 'public', 'images', 'articles');
   

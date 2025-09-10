@@ -1,0 +1,60 @@
+{
+  "timestamp": "2025-09-10T21-40-10",
+  "environment": "production",
+  "configs": {
+    ".env.local.example": {
+      "exists": true,
+      "size": 3619,
+      "lastModified": "2025-09-08T16:19:00.522Z"
+    },
+    "package.json": {
+      "exists": true,
+      "size": 2509,
+      "lastModified": "2025-09-10T15:46:10.241Z"
+    },
+    "next.config.ts": {
+      "exists": true,
+      "size": 1590,
+      "lastModified": "2025-09-08T17:32:19.647Z"
+    },
+    "tailwind.config.ts": {
+      "exists": true,
+      "size": 395,
+      "lastModified": "2025-09-08T21:53:56.849Z"
+    },
+    "tsconfig.json": {
+      "exists": true,
+      "size": 598,
+      "lastModified": "2025-09-03T15:26:44.136Z"
+    },
+    "vercel.json": {
+      "exists": true,
+      "size": 1877,
+      "lastModified": "2025-09-09T16:24:51.523Z"
+    },
+    "firebase.json": {
+      "exists": true,
+      "size": 654,
+      "lastModified": "2025-09-03T19:34:13.792Z"
+    }
+  },
+  "environment_variables": {
+    "NEXT_PUBLIC_FIREBASE_API_KEY": "***SET***",
+    "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN": "***SET***",
+    "NEXT_PUBLIC_FIREBASE_PROJECT_ID": "***SET***",
+    "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET": "***SET***",
+    "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID": "***SET***",
+    "NEXT_PUBLIC_FIREBASE_APP_ID": "***SET***",
+    "NEXT_PUBLIC_SUPABASE_URL": "***SET***",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "***SET***",
+    "SUPABASE_SERVICE_ROLE_KEY": "***SET***",
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "***SET***",
+    "STRIPE_SECRET_KEY": "***SET***",
+    "STRIPE_WEBHOOK_SECRET": "***SET***",
+    "NEXT_PUBLIC_APP_URL": "***SET***",
+    "STRIPE_PRO_MONTHLY_PRICE_ID": "***SET***",
+    "STRIPE_PRO_YEARLY_PRICE_ID": "***SET***",
+    "STRIPE_EXPERT_MONTHLY_PRICE_ID": "***SET***",
+    "STRIPE_EXPERT_YEARLY_PRICE_ID": "***SET***"
+  }
+}

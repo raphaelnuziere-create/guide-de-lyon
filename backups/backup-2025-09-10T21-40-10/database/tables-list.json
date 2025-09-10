@@ -1,0 +1,21 @@
+[
+  "profiles",
+  "merchants",
+  "establishments",
+  "events",
+  "subscriptions",
+  "establishment_media",
+  "establishment_analytics",
+  "newsletter_preferences",
+  "quotas_usage",
+  "moderation_queue",
+  "email_logs",
+  "analytics_events",
+  "blog_posts",
+  "scraped_articles",
+  "scraping_sources",
+  "scraping_queue",
+  "email_templates",
+  "transactional_emails",
+  "email_queue"
+]

@@ -12,6 +12,9 @@ export interface QuotaInfo {
   daysUntilReset: number;
 }
 
+
+// @deprecated - Export non utilisé détecté lors de l'audit 2025-09-10T21-46-50
+// TODO: Supprimer après vérification complète
 export class QuotaService {
   /**
    * Récupère les informations de quota pour un établissement

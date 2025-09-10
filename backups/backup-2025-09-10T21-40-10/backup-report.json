@@ -1,0 +1,63 @@
+{
+  "timestamp": "2025-09-10T21:40:10.697Z",
+  "startTime": 1757540410697,
+  "status": "STARTED",
+  "components": {
+    "Database Backup": {
+      "status": "SUCCESS",
+      "message": "19 tables sauvegardées",
+      "schemaFile": "/Users/raphaellebestplusbeauquejaime/Desktop/guide-lyon-v2/backups/backup-2025-09-10T21-40-10/database/schema.sql",
+      "dataFile": "/Users/raphaellebestplusbeauquejaime/Desktop/guide-lyon-v2/backups/backup-2025-09-10T21-40-10/database/data.sql",
+      "tablesCount": 19,
+      "timestamp": "2025-09-10T21:40:10.700Z"
+    },
+    "Code Source Backup": {
+      "status": "SUCCESS",
+      "message": "Archive créée (19MB)",
+      "archivePath": "/Users/raphaellebestplusbeauquejaime/Desktop/guide-lyon-v2/backups/backup-2025-09-10T21-40-10/code/guide-lyon-source-2025-09-10T21-40-10.tar.gz",
+      "sizeBytes": 19640929,
+      "sizeMB": 19,
+      "timestamp": "2025-09-10T21:40:11.337Z"
+    },
+    "Configurations Backup": {
+      "status": "SUCCESS",
+      "message": "7 fichiers de config sauvegardés",
+      "configsCount": 7,
+      "envVarsCount": 17,
+      "timestamp": "2025-09-10T21:40:11.338Z"
+    },
+    "Assets Backup": {
+      "status": "SUCCESS",
+      "message": "145 fichiers copiés (17MB)",
+      "filesCount": 145,
+      "totalSizeMB": 17,
+      "timestamp": "2025-09-10T21:40:11.373Z"
+    },
+    "Backup Verification": {
+      "status": "SUCCESS",
+      "message": "Intégrité: 3/4 composants vérifiés",
+      "integrityScore": 3,
+      "totalChecks": 4,
+      "results": {
+        "databaseFiles": true,
+        "codeArchive": true,
+        "configFiles": true,
+        "report": false
+      },
+      "timestamp": "2025-09-10T21:40:11.374Z"
+    }
+  },
+  "errors": [],
+  "warnings": [],
+  "summary": {
+    "totalComponents": 5,
+    "successfulComponents": 5,
+    "totalErrors": 0,
+    "totalWarnings": 0,
+    "backupDirectory": "/Users/raphaellebestplusbeauquejaime/Desktop/guide-lyon-v2/backups/backup-2025-09-10T21-40-10",
+    "status": "SUCCESS"
+  },
+  "endTime": 1757540411374,
+  "durationMs": 677,
+  "durationMinutes": 0.01
+}
