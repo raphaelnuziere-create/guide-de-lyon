@@ -17,31 +17,43 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   // Vérifier l'authentification admin
   useEffect(() => {
     const checkAuth = async () => {
+      console.log('[LAYOUT] Vérification auth pour:', pathname)
+      
       // Exclure la page de connexion
       if (pathname === '/administration/connexion') {
+        console.log('[LAYOUT] Page de connexion, pas de vérification')
         setLoading(false)
         return
       }
 
       try {
-        const response = await fetch('/api/admin/auth/login')
+        const response = await fetch('/api/admin/auth/login', {
+          credentials: 'include' // Important pour envoyer les cookies
+        })
         const data = await response.json()
 
+        console.log('[LAYOUT] Réponse auth:', data)
+
         if (data.authenticated) {
+          console.log('[LAYOUT] Utilisateur authentifié')
           setIsAuthenticated(true)
         } else {
-          router.push('/administration/connexion')
+          console.log('[LAYOUT] Non authentifié, redirection connexion')
+          // Utiliser window.location pour éviter les boucles
+          window.location.href = '/administration/connexion'
+          return
         }
       } catch (error) {
-        console.error('Erreur vérification auth admin:', error)
-        router.push('/administration/connexion')
+        console.error('[LAYOUT] Erreur vérification auth admin:', error)
+        window.location.href = '/administration/connexion'
+        return
       } finally {
         setLoading(false)
       }
     }
 
     checkAuth()
-  }, [pathname, router])
+  }, [pathname])
 
   // Déconnexion admin
   const handleLogout = async () => {

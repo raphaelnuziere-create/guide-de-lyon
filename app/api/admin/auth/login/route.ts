@@ -82,14 +82,26 @@ export async function GET() {
     const sessionToken = cookieStore.get('admin-session')?.value;
 
     if (!sessionToken) {
+      console.log('[AUTH] Pas de token session trouvé');
       return NextResponse.json({ authenticated: false });
     }
 
-    // TODO: Vérifier la validité du token
-    return NextResponse.json({ 
-      authenticated: true,
-      message: 'Session admin active'
-    });
+    // Vérifier la validité du token JWT
+    try {
+      const jwt = require('jsonwebtoken');
+      const JWT_SECRET = process.env.JWT_SECRET || 'guide-lyon-admin-secret-key-2024';
+      const decoded = jwt.verify(sessionToken, JWT_SECRET);
+      
+      console.log('[AUTH] Token valide pour:', decoded.email);
+      return NextResponse.json({ 
+        authenticated: true,
+        message: 'Session admin active',
+        admin: decoded
+      });
+    } catch (tokenError) {
+      console.log('[AUTH] Token invalide:', tokenError.message);
+      return NextResponse.json({ authenticated: false });
+    }
 
   } catch (error) {
     console.error('Erreur vérification session admin:', error);
