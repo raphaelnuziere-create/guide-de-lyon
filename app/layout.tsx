@@ -138,7 +138,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
-        </AuthProvider>
+        </ConditionalAuthProvider>
       </body>
     </html>
   )
