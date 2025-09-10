@@ -34,7 +34,6 @@
     "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.57.0",
-    "@tailwindcss/postcss": "^4.1.13",
     "@types/jsonwebtoken": "^9.0.10",
     "autoprefixer": "^10.4.21",
     "cheerio": "^1.1.2",

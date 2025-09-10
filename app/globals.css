@@ -35,7 +35,7 @@ body {
   }
   
   .business-card-hover:hover {
-    @apply translate-y-[-4px] shadow-xl;
+    @apply -translate-y-1 shadow-xl;
   }
   
   /* Animation pour les badges de rang */
