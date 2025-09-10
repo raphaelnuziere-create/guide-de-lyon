@@ -8,17 +8,8 @@ import { cookies } from 'next/headers';
  */
 export async function POST(request: NextRequest) {
   try {
-    // Vérifier que les identifiants admin sont configurés
-    if (!isAdminConfigured()) {
-      console.error('❌ Variables ADMIN_EMAIL et ADMIN_PASSWORD non configurées dans .env.local');
-      return NextResponse.json(
-        { 
-          error: 'Configuration admin manquante',
-          details: 'Ajoutez ADMIN_EMAIL et ADMIN_PASSWORD dans votre fichier .env.local'
-        }, 
-        { status: 500 }
-      );
-    }
+    // Les identifiants admin sont maintenant toujours disponibles (env ou fallback)
+    console.log('🔍 Tentative de connexion admin...');
 
     const { email, password } = await request.json();
 
