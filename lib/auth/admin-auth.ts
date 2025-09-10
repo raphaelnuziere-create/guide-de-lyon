@@ -22,13 +22,23 @@ const COOKIE_NAME = 'admin-session';
  * Vérifie les identifiants admin
  */
 export function validateAdminCredentials(email: string, password: string): boolean {
-  if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
-    console.error('❌ Variables ADMIN_EMAIL et ADMIN_PASSWORD non configurées');
+  // Identifiants de fallback si les variables d'env ne sont pas configurées
+  const FALLBACK_EMAIL = 'raphael.nuziere@yahoo.com';
+  const FALLBACK_PASSWORD = 'Admin20?';
+  
+  // Utiliser les variables d'environnement ou fallback
+  const adminEmail = ADMIN_EMAIL || FALLBACK_EMAIL;
+  const adminPassword = ADMIN_PASSWORD || FALLBACK_PASSWORD;
+  
+  if (!adminEmail || !adminPassword) {
+    console.error('❌ Aucun identifiant admin configuré');
     return false;
   }
 
-  return email.trim().toLowerCase() === ADMIN_EMAIL.toLowerCase() && 
-         password === ADMIN_PASSWORD;
+  console.log(`[AUTH] Tentative connexion: ${email} vs ${adminEmail}`);
+  
+  return email.trim().toLowerCase() === adminEmail.toLowerCase() && 
+         password === adminPassword;
 }
 
 /**
@@ -61,7 +71,8 @@ export function verifyAdminSession(): AdminUser | null {
     const decoded = jwt.verify(sessionToken, JWT_SECRET) as AdminUser;
     
     // Vérifier que c'est bien un admin
-    if (decoded.role !== 'admin' || decoded.email !== ADMIN_EMAIL?.toLowerCase()) {
+    const adminEmail = ADMIN_EMAIL || 'raphael.nuziere@yahoo.com';
+    if (decoded.role !== 'admin' || decoded.email !== adminEmail?.toLowerCase()) {
       return null;
     }
 
@@ -81,7 +92,8 @@ export function verifyAdminFromRequest(request: NextRequest): AdminUser | null {
     const sessionCookie = request.cookies.get(COOKIE_NAME)?.value;
     if (sessionCookie) {
       const decoded = jwt.verify(sessionCookie, JWT_SECRET) as AdminUser;
-      if (decoded.role === 'admin' && decoded.email === ADMIN_EMAIL?.toLowerCase()) {
+      const adminEmail = ADMIN_EMAIL || 'raphael.nuziere@yahoo.com';
+      if (decoded.role === 'admin' && decoded.email === adminEmail?.toLowerCase()) {
         return decoded;
       }
     }
@@ -92,7 +104,8 @@ export function verifyAdminFromRequest(request: NextRequest): AdminUser | null {
       const token = authHeader.substring(7);
       const decoded = jwt.verify(token, JWT_SECRET) as AdminUser;
       
-      if (decoded.role === 'admin' && decoded.email === ADMIN_EMAIL?.toLowerCase()) {
+      const adminEmail = ADMIN_EMAIL || 'raphael.nuziere@yahoo.com';
+      if (decoded.role === 'admin' && decoded.email === adminEmail?.toLowerCase()) {
         return decoded;
       }
     }

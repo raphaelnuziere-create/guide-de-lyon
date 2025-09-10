@@ -279,7 +279,7 @@ export default function RegisterPage() {
 
               <div className="mt-6">
                 <Link
-                  href="/connexion/pro"
+                  href="/auth/pro/connexion"
                   className="w-full flex justify-center items-center px-4 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                 >
                   Se connecter

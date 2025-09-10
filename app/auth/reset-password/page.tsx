@@ -65,7 +65,7 @@ export default function ResetPasswordPage() {
         
         // Attendre 2 secondes puis rediriger
         setTimeout(() => {
-          router.push('/connexion/pro');
+          router.push('/auth/pro/connexion');
         }, 2000);
       }
     } catch (err: any) {
@@ -119,7 +119,7 @@ export default function ResetPasswordPage() {
               )}
               
               <a
-                href="/connexion/pro"
+                href="/auth/pro/connexion"
                 className="mt-4 inline-block text-blue-600 hover:underline"
               >
                 Retour à la connexion

@@ -62,7 +62,7 @@ export default function RootLayout({
                     Connexion
                   </Link>
                   <Link
-                    href="/inscription"
+                    href="/pro/inscription"
                     className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
                   >
                     Inscription Pro
@@ -101,7 +101,7 @@ export default function RootLayout({
                   <li><Link href="/annuaire" className="hover:text-white transition">Annuaire</Link></li>
                   <li><Link href="/evenements" className="hover:text-white transition">Événements</Link></li>
                   <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
-                  <li><Link href="/inscription" className="hover:text-white transition">Inscription Pro</Link></li>
+                  <li><Link href="/pro/inscription" className="hover:text-white transition">Inscription Pro</Link></li>
                   <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
                 </ul>
               </div>

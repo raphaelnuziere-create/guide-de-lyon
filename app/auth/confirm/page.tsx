@@ -99,13 +99,13 @@ export default function ConfirmEmailPage() {
               </p>
               <div className="space-y-3">
                 <Link
-                  href="/inscription"
+                  href="/pro/inscription"
                   className="block w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-center"
                 >
                   Créer un nouveau compte
                 </Link>
                 <Link
-                  href="/connexion/pro"
+                  href="/auth/pro/connexion"
                   className="block w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition text-center"
                 >
                   Se connecter
