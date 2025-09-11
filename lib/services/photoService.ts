@@ -20,6 +20,8 @@ export class PhotoService {
     position?: number
   ): Promise<Photo> {
     try {
+      console.log('[PhotoService] Starting upload via API route');
+      
       // Validation du fichier
       if (!file.type.startsWith('image/')) {
         throw new Error('Le fichier doit être une image');
@@ -29,49 +31,36 @@ export class PhotoService {
         throw new Error('L\'image ne peut pas dépasser 5MB');
       }
 
-      // Générer nom unique
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${establishmentId}/${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
-
-      // Upload vers Supabase Storage
-      const { data: uploadData, error: uploadError } = await supabase.storage
-        .from('establishment-photos')
-        .upload(fileName, file, {
-          cacheControl: '3600',
-          upsert: false
-        });
-
-      if (uploadError) {
-        throw new Error(`Erreur upload: ${uploadError.message}`);
+      // Obtenir le token d'authentification
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.access_token) {
+        throw new Error('Utilisateur non authentifié');
       }
 
-      // Obtenir URL publique
-      const { data: { publicUrl } } = supabase.storage
-        .from('establishment-photos')
-        .getPublicUrl(uploadData.path);
+      // Préparer FormData pour l'API
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('establishmentId', establishmentId);
+      formData.append('caption', caption || '');
+      formData.append('position', position?.toString() || '0');
 
-      // Enregistrer en base
-      const { data: photo, error: dbError } = await supabase
-        .from('establishment_photos')
-        .insert({
-          establishment_id: establishmentId,
-          url: publicUrl,
-          caption: caption || null,
-          position: position || 0,
-          is_main: false
-        })
-        .select()
-        .single();
+      // Appeler l'API route
+      const response = await fetch('/api/photos/upload', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${session.access_token}`
+        },
+        body: formData
+      });
 
-      if (dbError) {
-        // Nettoyer le fichier uploadé en cas d'erreur DB
-        await supabase.storage
-          .from('establishment-photos')
-          .remove([uploadData.path]);
-        
-        throw new Error(`Erreur base de données: ${dbError.message}`);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Erreur lors de l\'upload');
       }
 
+      const { photo } = await response.json();
+      console.log('[PhotoService] Upload successful:', photo.id);
+      
       return photo;
     } catch (error) {
       console.error('PhotoService.uploadPhoto error:', error);
