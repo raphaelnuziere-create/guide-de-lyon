@@ -20,7 +20,7 @@ export class PhotoService {
     position?: number
   ): Promise<Photo> {
     try {
-      // Validation du fichier côté client
+      // Validation du fichier
       if (!file.type.startsWith('image/')) {
         throw new Error('Le fichier doit être une image');
       }
@@ -29,34 +29,50 @@ export class PhotoService {
         throw new Error('L\'image ne peut pas dépasser 5MB');
       }
 
-      // Récupérer le token d'authentification
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        throw new Error('Session d\'authentification non trouvée');
+      // Générer nom unique
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${establishmentId}/${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+
+      // Upload vers Supabase Storage
+      const { data: uploadData, error: uploadError } = await supabase.storage
+        .from('establishment-photos')
+        .upload(fileName, file, {
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (uploadError) {
+        throw new Error(`Erreur upload: ${uploadError.message}`);
       }
 
-      // Utiliser l'API route pour contourner le problème RLS
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('establishmentId', establishmentId);
-      formData.append('caption', caption || '');
-      formData.append('position', position?.toString() || '0');
+      // Obtenir URL publique
+      const { data: { publicUrl } } = supabase.storage
+        .from('establishment-photos')
+        .getPublicUrl(uploadData.path);
 
-      const response = await fetch('/api/photos/upload', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${session.access_token}`
-        },
-        body: formData
-      });
+      // Enregistrer en base
+      const { data: photo, error: dbError } = await supabase
+        .from('establishment_photos')
+        .insert({
+          establishment_id: establishmentId,
+          url: publicUrl,
+          caption: caption || null,
+          position: position || 0,
+          is_main: false
+        })
+        .select()
+        .single();
 
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || 'Erreur lors de l\'upload');
+      if (dbError) {
+        // Nettoyer le fichier uploadé en cas d'erreur DB
+        await supabase.storage
+          .from('establishment-photos')
+          .remove([uploadData.path]);
+        
+        throw new Error(`Erreur base de données: ${dbError.message}`);
       }
 
-      return result.photo;
+      return photo;
     } catch (error) {
       console.error('PhotoService.uploadPhoto error:', error);
       throw error;
