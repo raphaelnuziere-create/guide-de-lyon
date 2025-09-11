@@ -65,6 +65,13 @@ export function useUserPlan(): UserPlanData {
       const plan = (establishment.plan || 'basic') as UserPlan;
       const planLimits = getPlanLimits(plan);
 
+      console.log('[useUserPlan] Establishment loaded:', {
+        id: establishment.id,
+        name: establishment.name,
+        user_id: establishment.user_id,
+        session_user_id: session.user.id
+      });
+
       setData(prev => ({
         ...prev,
         userId: session.user.id,

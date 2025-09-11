@@ -69,6 +69,8 @@ export default function PhotosPage() {
     try {
       setUploading(true);
       
+      console.log('[PhotosPage] Starting upload with establishmentId:', establishmentId);
+      
       if (!event.target.files || event.target.files.length === 0) {
         return;
       }
