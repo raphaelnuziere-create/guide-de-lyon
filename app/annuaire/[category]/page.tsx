@@ -253,7 +253,7 @@ export default async function CategoryPage({ params }: { params: { category: str
               Aucun établissement dans cette catégorie pour le moment
             </p>
             <Link 
-              href="/pro/inscription"
+              href="/auth/pro/signup"
               className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
             >
               <span>Soyez le premier à vous inscrire</span>

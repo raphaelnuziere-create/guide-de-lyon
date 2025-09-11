@@ -284,7 +284,7 @@ export function UpcomingEventsSection() {
                 </p>
               </div>
               <Link
-                href="/pro/inscription"
+                href="/auth/pro/signup"
                 className="mt-4 md:mt-0 inline-flex items-center px-6 py-3 bg-white text-purple-600 font-medium rounded-lg hover:bg-gray-100 transition-colors"
               >
                 <TrendingUp className="h-5 w-5 mr-2" />

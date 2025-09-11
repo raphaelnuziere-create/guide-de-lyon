@@ -562,7 +562,7 @@ export function CalendarEventsSection() {
               </div>
             </div>
             <Link
-              href="/pro/inscription"
+              href="/auth/pro/signup"
               className="mt-6 md:mt-0 inline-flex items-center px-6 py-3 bg-white text-red-600 font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-xl"
             >
               <TrendingUp className="h-5 w-5 mr-2" />
