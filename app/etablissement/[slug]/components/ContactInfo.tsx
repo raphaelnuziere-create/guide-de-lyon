@@ -35,7 +35,7 @@ export default function ContactInfo({ establishment }: ContactInfoProps) {
     if (!establishment.openingHours) return null
 
     const now = new Date()
-    const currentDay = now.toLocaleDateString('en', { weekday: 'lowercase' }) as keyof typeof establishment.openingHours
+    const currentDay = now.toLocaleDateString('en', { weekday: 'long' }).toLowerCase() as keyof typeof establishment.openingHours
     const currentTime = now.toLocaleTimeString('fr', { hour: '2-digit', minute: '2-digit' })
     const todayHours = establishment.openingHours[currentDay]
 
