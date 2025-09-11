@@ -53,20 +53,49 @@ export async function POST(request: NextRequest) {
     const caption = formData.get('caption') as string || null;
     const position = parseInt(formData.get('position') as string) || 0;
 
+    console.log('[API] FormData received:', {
+      file: !!file,
+      establishmentId,
+      caption,
+      position,
+      user_id: user.id
+    });
+
     if (!file || !establishmentId) {
+      console.log('[API] Missing data - file:', !!file, 'establishmentId:', !!establishmentId);
       return NextResponse.json({ error: 'Fichier et establishment_id requis' }, { status: 400 });
     }
 
     // Vérifier que l'utilisateur possède l'établissement avec admin client
+    console.log('[API] Searching establishment with:', {
+      establishmentId,
+      user_id: user.id
+    });
+
     const { data: establishment, error: estError } = await supabaseAdmin
       .from('establishments')
-      .select('id, user_id')
+      .select('id, user_id, name')
       .eq('id', establishmentId)
       .eq('user_id', user.id)
       .single();
 
+    console.log('[API] Establishment query result:', {
+      establishment,
+      error: estError
+    });
+
     if (estError || !establishment) {
       console.log('[API] Establishment verification failed:', estError);
+      
+      // Debug: chercher si l'établissement existe avec un autre user_id
+      const { data: debugEst } = await supabaseAdmin
+        .from('establishments')
+        .select('id, user_id, name')
+        .eq('id', establishmentId)
+        .single();
+      
+      console.log('[API] Debug - establishment exists with different user:', debugEst);
+      
       return NextResponse.json({ error: 'Établissement non trouvé ou non autorisé' }, { status: 403 });
     }
 
