@@ -20,9 +20,7 @@ export class PhotoService {
     position?: number
   ): Promise<Photo> {
     try {
-      console.log('[PhotoService] Starting upload via API route');
-      
-      // Validation du fichier
+      // Validation du fichier côté client
       if (!file.type.startsWith('image/')) {
         throw new Error('Le fichier doit être une image');
       }
@@ -31,20 +29,19 @@ export class PhotoService {
         throw new Error('L\'image ne peut pas dépasser 5MB');
       }
 
-      // Obtenir le token d'authentification
+      // Récupérer le token d'authentification
       const { data: { session } } = await supabase.auth.getSession();
-      if (!session?.access_token) {
-        throw new Error('Utilisateur non authentifié');
+      if (!session) {
+        throw new Error('Session d\'authentification non trouvée');
       }
 
-      // Préparer FormData pour l'API
+      // Utiliser l'API route pour contourner le problème RLS
       const formData = new FormData();
       formData.append('file', file);
       formData.append('establishmentId', establishmentId);
       formData.append('caption', caption || '');
       formData.append('position', position?.toString() || '0');
 
-      // Appeler l'API route
       const response = await fetch('/api/photos/upload', {
         method: 'POST',
         headers: {
@@ -53,15 +50,13 @@ export class PhotoService {
         body: formData
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Erreur lors de l\'upload');
+        throw new Error(result.error || 'Erreur lors de l\'upload');
       }
 
-      const { photo } = await response.json();
-      console.log('[PhotoService] Upload successful:', photo.id);
-      
-      return photo;
+      return result.photo;
     } catch (error) {
       console.error('PhotoService.uploadPhoto error:', error);
       throw error;
