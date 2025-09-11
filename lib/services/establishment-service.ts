@@ -142,8 +142,6 @@ export class EstablishmentService {
         .from('establishments')
         .select(`
           *,
-          reviews:reviews(count),
-          events:events(*),
           establishment_media (
             url,
             type,
@@ -214,6 +212,11 @@ export class EstablishmentService {
     try {
       if (!supabase) return [];
 
+      // Table reviews pas encore créée, retourner un tableau vide pour l'instant
+      return [];
+
+      // TODO: Réactiver quand la table reviews sera créée
+      /*
       const { data, error } = await supabase
         .from('reviews')
         .select('*')
@@ -238,6 +241,7 @@ export class EstablishmentService {
         helpful: review.helpful_count || 0,
         images: review.images || []
       })) || [];
+      */
     } catch (error) {
       console.error('Exception in getReviews:', error);
       return [];
@@ -251,6 +255,11 @@ export class EstablishmentService {
     try {
       if (!supabase) return [];
 
+      // Table events pas encore créée, retourner un tableau vide pour l'instant
+      return [];
+
+      // TODO: Réactiver quand la table events sera créée
+      /*
       const { data, error } = await supabase
         .from('events')
         .select('*')
@@ -277,6 +286,7 @@ export class EstablishmentService {
         image: event.image_url,
         category: event.category
       })) || [];
+      */
     } catch (error) {
       console.error('Exception in getEvents:', error);
       return [];
@@ -367,7 +377,7 @@ export class EstablishmentService {
       website: data.website || data.metadata?.website,
       
       rating: data.rating || data.metadata?.rating || 4.5,
-      reviewsCount: data.reviews_count || data.reviews?.count || data.metadata?.reviews_count || 0,
+      reviewsCount: data.reviews_count || data.metadata?.reviews_count || 0,
       priceRange: data.price_range || data.metadata?.price_range || '€€',
       
       openingHours: openingHours,

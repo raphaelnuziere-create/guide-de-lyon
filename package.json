@@ -35,7 +35,6 @@
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.57.0",
     "@types/jsonwebtoken": "^9.0.10",
-    "autoprefixer": "^10.4.21",
     "cheerio": "^1.1.2",
     "crypto-js": "^4.2.0",
     "firebase": "^12.2.1",
@@ -56,9 +55,11 @@
     "@types/node": "^20",
     "@types/react": "19.1.12",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
     "chalk": "^5.6.0",
     "dotenv": "^17.2.2",
     "node-fetch": "^3.3.2",
+    "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
     "typescript": "5.9.2"
   }
