@@ -33,55 +33,37 @@ export default function PhotosPage() {
   const [photosRemaining, setPhotosRemaining] = useState(0);
   const [draggedPhoto, setDraggedPhoto] = useState<Photo | null>(null);
 
-  useEffect(() => {
-    if (!planLoading && establishmentId) {
-      loadPhotos();
-    }
-  }, [planLoading, establishmentId]);
-
-  const checkAuthAndLoadData = async () => {
+  const loadPhotos = async () => {
+    if (!establishmentId) return;
+    
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (!user) {
-        router.push('/auth/pro/connexion');
-        return;
-      }
-
-      // Charger l'établissement
-      const establishmentData = await EstablishmentService.getEstablishment(user.id);
-      if (!establishmentData) {
-        router.push('/pro/inscription');
-        return;
-      }
-
-      setEstablishment(establishmentData);
-
-      // Charger les limites du plan
-      const limits = await EstablishmentService.getPlanLimits(establishmentData.plan);
-      setPlanLimits(limits);
-      
-      // Calculer les photos restantes
-      const remaining = EstablishmentService.getPhotosRemaining(establishmentData);
-      setPhotosRemaining(remaining);
-
-      // Charger les photos
+      setLoading(true);
       const { data: photosData, error } = await supabase
         .from('establishment_photos')
         .select('*')
-        .eq('establishment_id', establishmentData.id)
+        .eq('establishment_id', establishmentId)
         .order('position', { ascending: true });
 
       if (!error && photosData) {
         setPhotos(photosData);
       }
 
+      // Calculer les photos restantes
+      const maxPhotos = planLimits?.max_photos === -1 ? 999 : (planLimits?.max_photos || 1);
+      setPhotosRemaining(Math.max(0, maxPhotos - photosData.length));
+      
       setLoading(false);
     } catch (error) {
-      console.error('Error loading data:', error);
+      console.error('Error loading photos:', error);
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!planLoading && establishmentId) {
+      loadPhotos();
+    }
+  }, [planLoading, establishmentId]);
 
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
@@ -98,7 +80,7 @@ export default function PhotosPage() {
       const file = event.target.files[0];
       
       // Vérifier les limites
-      const maxPhotos = planLimits.maxPhotos === -1 ? 999 : planLimits.maxPhotos;
+      const maxPhotos = planLimits?.max_photos === -1 ? 999 : (planLimits?.max_photos || 1);
       if (photos.length >= maxPhotos) {
         throw new Error(`Vous avez atteint la limite de ${maxPhotos} photo${maxPhotos > 1 ? 's' : ''} pour votre plan ${plan}`);
       }
@@ -184,7 +166,7 @@ export default function PhotosPage() {
         .eq('id', targetPhoto.id);
 
       // Recharger les données
-      await checkAuthAndLoadData();
+      await loadPhotos();
     } catch (error) {
       console.error('Error reordering photos:', error);
     } finally {
@@ -263,14 +245,14 @@ export default function PhotosPage() {
             <div>
               <h3 className="font-medium text-amber-900">Limite de photos atteinte</h3>
               <p className="text-sm text-amber-800 mt-1">
-                Vous avez atteint votre limite de {planLimits?.max_photos} photo{planLimits?.max_photos > 1 ? 's' : ''} pour votre plan {establishment?.plan}.
+                Vous avez atteint votre limite de {planLimits?.max_photos} photo{planLimits?.max_photos > 1 ? 's' : ''} pour votre plan {plan}.
               </p>
-              {establishment?.plan !== 'expert' && (
+              {plan !== 'expert' && (
                 <Link
                   href="/pro/abonnement"
                   className="inline-flex items-center gap-1 text-sm font-medium text-amber-900 hover:text-amber-700 mt-2"
                 >
-                  Passer au plan {establishment?.plan === 'basic' ? 'Pro' : 'Expert'} pour plus de photos
+                  Passer au plan {plan === 'basic' ? 'Pro' : 'Expert'} pour plus de photos
                   <ChevronRight className="h-4 w-4" />
                 </Link>
               )}
