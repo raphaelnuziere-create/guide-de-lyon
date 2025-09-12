@@ -25,30 +25,20 @@ import {
 import { supabase } from '@/app/lib/supabase/client';
 import { EstablishmentService } from '@/app/lib/services/establishmentService';
 import { PhotoService, Photo } from '@/lib/services/photoService';
+import { EventsService, type Event as EventType, type EventQuota } from '@/lib/services/events-service';
+import { useUserPlan } from '@/lib/auth/useUserPlan';
 
-interface Event {
-  id: string;
-  title: string;
-  description: string;
-  start_date: string;
-  end_date?: string;
-  location?: string;
-  image_url?: string;
-  status: 'draft' | 'published' | 'cancelled';
-  show_on_establishment_page: boolean;
-  show_on_homepage: boolean;
-  show_in_newsletter: boolean;
-  show_on_social: boolean;
-  created_at: string;
-}
+// Utilisation du type Event du service
+type Event = EventType;
 
 export default function EvenementsPage() {
   const router = useRouter();
+  const { plan: userPlan, planLimits, isLoading: planLoading } = useUserPlan();
   const [loading, setLoading] = useState(true);
   const [events, setEvents] = useState<Event[]>([]);
   const [establishment, setEstablishment] = useState<any>(null);
-  const [eventsRemaining, setEventsRemaining] = useState(0);
-  const [planLimits, setPlanLimits] = useState<any>(null);
+  const [establishmentId, setEstablishmentId] = useState<string | null>(null);
+  const [quota, setQuota] = useState<EventQuota | null>(null);
   const [establishmentPhotos, setEstablishmentPhotos] = useState<Photo[]>([]);
 
   useEffect(() => {
@@ -72,25 +62,15 @@ export default function EvenementsPage() {
       }
 
       setEstablishment(establishmentData);
+      setEstablishmentId(establishmentData.id);
 
-      // Charger les limites du plan
-      const limits = await EstablishmentService.getPlanLimits(establishmentData.plan);
-      setPlanLimits(limits);
-      
-      // Calculer les événements restants
-      const remaining = EstablishmentService.getEventsRemaining(establishmentData);
-      setEventsRemaining(remaining);
+      // Charger les événements avec le nouveau service
+      const eventsData = await EventsService.getEstablishmentEvents(establishmentData.id, true);
+      setEvents(eventsData);
 
-      // Charger les événements
-      const { data: eventsData, error } = await supabase
-        .from('events')
-        .select('*')
-        .eq('establishment_id', establishmentData.id)
-        .order('start_date', { ascending: false });
-
-      if (!error && eventsData) {
-        setEvents(eventsData);
-      }
+      // Charger les quotas
+      const quotaData = await EventsService.checkEventQuota(establishmentData.id);
+      setQuota(quotaData);
 
       // Charger les photos de l'établissement
       try {
@@ -125,26 +105,62 @@ export default function EvenementsPage() {
   const deleteEvent = async (eventId: string) => {
     if (!confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')) return;
 
-    const { error } = await supabase
-      .from('events')
-      .delete()
-      .eq('id', eventId);
-
-    if (!error) {
-      setEvents(events.filter(e => e.id !== eventId));
-      // Recharger les données pour mettre à jour le compteur
-      checkAuthAndLoadData();
+    try {
+      const success = await EventsService.deleteEvent(eventId);
+      if (success) {
+        setEvents(events.filter(e => e.id !== eventId));
+        // Recharger les quotas
+        if (establishmentId) {
+          const quotaData = await EventsService.checkEventQuota(establishmentId);
+          setQuota(quotaData);
+        }
+      }
+    } catch (error) {
+      console.error('Error deleting event:', error);
+      alert('Erreur lors de la suppression');
     }
   };
 
   const formatDate = (date: string) => {
-    return new Date(date).toLocaleDateString('fr-FR', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
+    return EventsService.formatEventDate(date);
+  };
+
+  const getVisibilityInfo = (visibility: string) => {
+    switch (visibility) {
+      case 'newsletter':
+        return { text: 'Newsletter + Homepage + Page établissement', color: 'text-yellow-600', icon: '🌟' };
+      case 'homepage':
+        return { text: 'Homepage + Page établissement', color: 'text-blue-600', icon: '🏠' };
+      case 'establishment_only':
+        return { text: 'Page établissement uniquement', color: 'text-gray-600', icon: '📄' };
+      default:
+        return { text: 'Non défini', color: 'text-gray-400', icon: '❓' };
+    }
+  };
+
+  const getPlanBadge = (plan: string) => {
+    switch (plan) {
+      case 'expert':
+        return (
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-yellow-400 to-amber-500 text-white">
+            <Sparkles className="w-3 h-3 mr-1" />
+            EXPERT
+          </span>
+        );
+      case 'pro':
+        return (
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-500 text-white">
+            <Eye className="w-3 h-3 mr-1" />
+            PRO
+          </span>
+        );
+      default:
+        return (
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-500 text-white">
+            BASIC
+          </span>
+        );
+    }
   };
 
   const getMainPhoto = () => {
@@ -153,7 +169,7 @@ export default function EvenementsPage() {
     return mainPhoto || establishmentPhotos[0] || null;
   };
 
-  if (loading) {
+  if (loading || planLoading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
@@ -161,7 +177,8 @@ export default function EvenementsPage() {
     );
   }
 
-  const canAddEvent = eventsRemaining > 0;
+  const plan = userPlan || 'basic';
+  const canAddEvent = quota?.can_create ?? false;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -181,9 +198,12 @@ export default function EvenementsPage() {
               </h1>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-sm text-gray-600">
-                {eventsRemaining}/{planLimits?.max_events || 3} événements restants ce mois
-              </span>
+              {getPlanBadge(plan)}
+              {quota && (
+                <span className="text-sm text-gray-600">
+                  {quota.events_used}/{quota.events_limit} événements utilisés ce mois
+                </span>
+              )}
               {canAddEvent ? (
                 <Link
                   href="/pro/evenements/nouveau"
@@ -204,25 +224,80 @@ export default function EvenementsPage() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Alerte si limite atteinte */}
-        {!canAddEvent && (
-          <div className="mb-6 bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start gap-3">
-            <AlertCircle className="h-5 w-5 text-amber-600 mt-0.5" />
-            <div>
-              <h3 className="font-medium text-amber-900">Limite d'événements atteinte</h3>
-              <p className="text-sm text-amber-800 mt-1">
-                Vous avez atteint votre limite mensuelle. Les compteurs sont réinitialisés le 1er de chaque mois.
-              </p>
-              {establishment?.plan !== 'expert' && (
-                <Link
-                  href="/pro/abonnement"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-amber-900 hover:text-amber-700 mt-2"
-                >
-                  Passer au plan Expert pour plus d'événements
-                  <ChevronRight className="h-4 w-4" />
-                </Link>
-              )}
+        {/* Info quota et upgrade prompts */}
+        {quota && (
+          <div className="mb-6 bg-white rounded-lg shadow p-6">
+            <div className="flex justify-between items-center mb-4">
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900 mb-2">
+                  Quota d'événements ce mois
+                </h2>
+                <div className="flex items-center space-x-4">
+                  <div className="text-2xl font-bold">
+                    <span className={quota.events_used >= quota.events_limit ? 'text-red-600' : 'text-green-600'}>
+                      {quota.events_used}
+                    </span>
+                    <span className="text-gray-400">/{quota.events_limit}</span>
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    {quota.remaining > 0 ? (
+                      <span className="flex items-center text-green-600">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        {quota.remaining} événement{quota.remaining > 1 ? 's' : ''} restant{quota.remaining > 1 ? 's' : ''}
+                      </span>
+                    ) : (
+                      <span className="flex items-center text-red-600">
+                        <AlertCircle className="w-4 h-4 mr-1" />
+                        Quota atteint
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
+            
+            {/* Upgrade prompt selon le plan */}
+            {plan === 'basic' && (
+              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-blue-800">
+                      <strong>Plan Basic</strong> : Vos événements sont visibles uniquement sur votre page d'établissement
+                    </p>
+                    <p className="text-xs text-blue-600 mt-1">
+                      Passez au plan Pro pour apparaître sur la page d'accueil !
+                    </p>
+                  </div>
+                  <Link
+                    href="/pro/upgrade"
+                    className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition"
+                  >
+                    Passer Pro
+                  </Link>
+                </div>
+              </div>
+            )}
+            
+            {plan === 'pro' && (
+              <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-yellow-800">
+                      <strong>Plan Pro</strong> : Vos événements apparaissent sur la homepage
+                    </p>
+                    <p className="text-xs text-yellow-600 mt-1">
+                      Passez au plan Expert pour 6 événements/mois + newsletter !
+                    </p>
+                  </div>
+                  <Link
+                    href="/pro/upgrade"
+                    className="px-4 py-2 bg-yellow-600 text-white rounded-lg text-sm hover:bg-yellow-700 transition"
+                  >
+                    Passer Expert
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
         )}
 

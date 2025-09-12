@@ -18,6 +18,10 @@
     "scrape:google-places": "node tools/google-places-direct.js",
     "scrape:societe": "node tools/societe-com-scraper.js",
     "campaign:multi-sources": "node tools/multi-source-orchestrator.js",
+    "deploy": "node scripts/deploy-auto.js",
+    "deploy:vercel": "DEPLOY_PLATFORM=vercel node scripts/deploy-auto.js",
+    "deploy:netlify": "DEPLOY_PLATFORM=netlify node scripts/deploy-auto.js",
+    "deploy:railway": "DEPLOY_PLATFORM=railway node scripts/deploy-auto.js",
     "clean:emails": "node tools/email-cleaner.js",
     "test:full": "node -e \"const O = require('./tools/scraper-orchestrator'); const o = new O({maxContactsPerSource: 10}); o.runFullCampaign()\""
   },
@@ -25,6 +29,7 @@
     "@anthropic-ai/sdk": "^0.61.0",
     "@aws-sdk/client-s3": "^3.883.0",
     "@aws-sdk/s3-request-presigner": "^3.883.0",
+    "@directus/sdk": "^20.0.3",
     "@getbrevo/brevo": "^3.0.1",
     "@googlemaps/google-maps-services-js": "^3.4.2",
     "@heroicons/react": "^2.2.0",
@@ -52,7 +57,7 @@
     "stripe": "^18.5.0"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.19.13",
     "@types/react": "19.1.12",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",

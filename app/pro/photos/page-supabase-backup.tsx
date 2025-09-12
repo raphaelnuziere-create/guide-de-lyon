@@ -18,55 +18,58 @@ import {
   Grid,
   Move
 } from 'lucide-react';
-import { directusService, DirectusEstablishmentPhoto } from '@/lib/services/directus';
-import { useDirectusPermissions } from '@/lib/hooks/useDirectusAuth';
+import { supabase } from '@/app/lib/supabase/client';
+import { PhotoService, Photo } from '@/lib/services/photoService';
+import { useUserPlan } from '@/lib/auth/useUserPlan';
 
-export default function DirectusPhotosPage() {
+// Interface Photo importée depuis PhotoService
+
+export default function PhotosPage() {
   const router = useRouter();
-  const { plan, planLimits, establishmentId, isLoading: authLoading, isAuthenticated } = useDirectusPermissions();
+  const { plan, planLimits, establishmentId, isLoading: planLoading } = useUserPlan();
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
-  const [photos, setPhotos] = useState<DirectusEstablishmentPhoto[]>([]);
+  const [photos, setPhotos] = useState<Photo[]>([]);
   const [photosRemaining, setPhotosRemaining] = useState(0);
-  const [draggedPhoto, setDraggedPhoto] = useState<DirectusEstablishmentPhoto | null>(null);
+  const [draggedPhoto, setDraggedPhoto] = useState<Photo | null>(null);
 
   const loadPhotos = async () => {
     if (!establishmentId) return;
     
     try {
       setLoading(true);
-      const result = await directusService.getEstablishmentPhotos(establishmentId);
+      const { data: photosData, error } = await supabase
+        .from('establishment_photos')
+        .select('*')
+        .eq('establishment_id', establishmentId)
+        .order('position', { ascending: true });
 
-      if (result.success && result.data) {
-        setPhotos(result.data);
-        
-        // Calculer les photos restantes
-        const maxPhotos = planLimits?.maxPhotos === -1 ? 999 : (planLimits?.maxPhotos || 1);
-        setPhotosRemaining(Math.max(0, maxPhotos - result.data.length));
-      } else {
-        console.error('Erreur chargement photos:', result.error);
+      if (!error && photosData) {
+        setPhotos(photosData);
       }
+
+      // Calculer les photos restantes
+      const maxPhotos = planLimits?.max_photos === -1 ? 999 : (planLimits?.max_photos || 1);
+      setPhotosRemaining(Math.max(0, maxPhotos - photosData.length));
       
       setLoading(false);
     } catch (error) {
-      console.error('Erreur loading photos:', error);
+      console.error('Error loading photos:', error);
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    if (!authLoading && isAuthenticated && establishmentId) {
+    if (!planLoading && establishmentId) {
       loadPhotos();
-    } else if (!authLoading && !isAuthenticated) {
-      router.push('/auth/pro/login');
     }
-  }, [authLoading, isAuthenticated, establishmentId, router]);
+  }, [planLoading, establishmentId]);
 
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
       setUploading(true);
       
-      console.log('[DirectusPhotosPage] Starting upload with establishmentId:', establishmentId);
+      console.log('[PhotosPage] Starting upload with establishmentId:', establishmentId);
       
       if (!event.target.files || event.target.files.length === 0) {
         return;
@@ -79,26 +82,22 @@ export default function DirectusPhotosPage() {
       const file = event.target.files[0];
       
       // Vérifier les limites
-      const maxPhotos = planLimits?.maxPhotos === -1 ? 999 : (planLimits?.maxPhotos || 1);
+      const maxPhotos = planLimits?.max_photos === -1 ? 999 : (planLimits?.max_photos || 1);
       if (photos.length >= maxPhotos) {
         throw new Error(`Vous avez atteint la limite de ${maxPhotos} photo${maxPhotos > 1 ? 's' : ''} pour votre plan ${plan}`);
       }
 
-      // Upload via DirectusService
-      const result = await directusService.uploadPhoto(
+      // Upload via PhotoService
+      const newPhoto = await PhotoService.uploadPhoto(
         establishmentId,
         file,
         '', // caption vide pour l'instant
         photos.length // position = nombre actuel de photos
       );
 
-      if (result.success && result.data) {
-        // Mettre à jour la liste
-        setPhotos(prev => [...prev, result.data]);
-        setPhotosRemaining(prev => Math.max(0, prev - 1));
-      } else {
-        throw new Error(result.error || 'Erreur lors de l\'upload');
-      }
+      // Mettre à jour la liste
+      setPhotos(prev => [...prev, newPhoto]);
+      setPhotosRemaining(prev => Math.max(0, prev - 1));
       
     } catch (error: any) {
       console.error('Erreur upload:', error);
@@ -112,19 +111,15 @@ export default function DirectusPhotosPage() {
     }
   };
 
-  const deletePhoto = async (photo: DirectusEstablishmentPhoto) => {
+  const deletePhoto = async (photo: Photo) => {
     if (!confirm('Êtes-vous sûr de vouloir supprimer cette photo ?')) return;
     
     try {
-      const result = await directusService.deletePhoto(photo.id);
+      await PhotoService.deletePhoto(photo.id);
       
-      if (result.success) {
-        // Retirer de la liste locale
-        setPhotos(prev => prev.filter(p => p.id !== photo.id));
-        setPhotosRemaining(prev => prev + 1);
-      } else {
-        throw new Error(result.error || 'Erreur lors de la suppression');
-      }
+      // Retirer de la liste locale
+      setPhotos(prev => prev.filter(p => p.id !== photo.id));
+      setPhotosRemaining(prev => prev + 1);
       
     } catch (error: any) {
       console.error('Erreur suppression:', error);
@@ -132,18 +127,14 @@ export default function DirectusPhotosPage() {
     }
   };
 
-  const setMainPhoto = async (photo: DirectusEstablishmentPhoto) => {
+  const setMainPhoto = async (photo: Photo) => {
     if (!establishmentId) return;
     
     try {
-      const result = await directusService.setMainPhoto(photo.id, establishmentId);
+      await PhotoService.setMainPhoto(photo.id, establishmentId);
       
-      if (result.success) {
-        // Mettre à jour localement
-        setPhotos(prev => prev.map(p => ({ ...p, is_main: p.id === photo.id })));
-      } else {
-        throw new Error(result.error || 'Erreur lors de la définition de la photo principale');
-      }
+      // Mettre à jour localement
+      setPhotos(prev => prev.map(p => ({ ...p, is_main: p.id === photo.id })));
       
     } catch (error: any) {
       console.error('Erreur photo principale:', error);
@@ -151,7 +142,7 @@ export default function DirectusPhotosPage() {
     }
   };
 
-  const handleDragStart = (photo: DirectusEstablishmentPhoto) => {
+  const handleDragStart = (photo: Photo) => {
     setDraggedPhoto(photo);
   };
 
@@ -159,14 +150,24 @@ export default function DirectusPhotosPage() {
     e.preventDefault();
   };
 
-  const handleDrop = async (e: React.DragEvent, targetPhoto: DirectusEstablishmentPhoto) => {
+  const handleDrop = async (e: React.DragEvent, targetPhoto: Photo) => {
     e.preventDefault();
     
     if (!draggedPhoto || draggedPhoto.id === targetPhoto.id) return;
 
     try {
-      // TODO: Implémenter la réorganisation des positions avec Directus
-      // Pour l'instant, on recharge simplement les données
+      // Échanger les positions
+      await supabase
+        .from('establishment_photos')
+        .update({ position: targetPhoto.position })
+        .eq('id', draggedPhoto.id);
+
+      await supabase
+        .from('establishment_photos')
+        .update({ position: draggedPhoto.position })
+        .eq('id', targetPhoto.id);
+
+      // Recharger les données
       await loadPhotos();
     } catch (error) {
       console.error('Error reordering photos:', error);
@@ -175,16 +176,12 @@ export default function DirectusPhotosPage() {
     }
   };
 
-  if (authLoading || loading) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
       </div>
     );
-  }
-
-  if (!isAuthenticated) {
-    return null; // Redirection en cours
   }
 
   const canAddPhoto = photosRemaining > 0;
@@ -203,12 +200,12 @@ export default function DirectusPhotosPage() {
                 <ArrowLeft className="h-5 w-5" />
               </Link>
               <h1 className="text-xl font-semibold text-gray-900">
-                Gestion des photos (Directus)
+                Gestion des photos
               </h1>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-sm text-gray-600">
-                {photos.length}/{planLimits?.maxPhotos || 1} photos utilisées
+                {photos.length}/{planLimits?.max_photos || 1} photos utilisées
               </span>
               {canAddPhoto ? (
                 <label className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition flex items-center gap-2 cursor-pointer">
@@ -243,18 +240,6 @@ export default function DirectusPhotosPage() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Alert Directus */}
-        <div className="mb-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <div className="flex items-start gap-3">
-            <Grid className="h-5 w-5 text-blue-600 mt-0.5" />
-            <div className="text-sm text-blue-800">
-              <p className="font-medium mb-1">🚀 Migration vers Directus en cours</p>
-              <p>Cette page utilise maintenant Directus comme base de données. Les photos sont stockées dans le nouveau système.</p>
-              <p className="mt-1 font-medium">Admin Directus: <a href="http://localhost:8055" target="_blank" className="underline">http://localhost:8055</a></p>
-            </div>
-          </div>
-        </div>
-
         {/* Alerte si limite atteinte */}
         {!canAddPhoto && (
           <div className="mb-6 bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start gap-3">
@@ -262,7 +247,7 @@ export default function DirectusPhotosPage() {
             <div>
               <h3 className="font-medium text-amber-900">Limite de photos atteinte</h3>
               <p className="text-sm text-amber-800 mt-1">
-                Vous avez atteint votre limite de {planLimits?.maxPhotos} photo{planLimits?.maxPhotos > 1 ? 's' : ''} pour votre plan {plan}.
+                Vous avez atteint votre limite de {planLimits?.max_photos} photo{planLimits?.max_photos > 1 ? 's' : ''} pour votre plan {plan}.
               </p>
               {plan !== 'expert' && (
                 <Link
@@ -340,7 +325,7 @@ export default function DirectusPhotosPage() {
                 {/* Image */}
                 <div className="aspect-[4/3] relative">
                   <img
-                    src={directusService.getFileUrl(photo.image)}
+                    src={photo.url}
                     alt={photo.caption || 'Photo établissement'}
                     className="w-full h-full object-cover"
                   />
