@@ -1,124 +1,98 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback, useRef, ReactNode } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { User, Session } from '@supabase/supabase-js';
-import { supabase } from '@/app/lib/supabase/client';
+import { useDirectusAuth, UserPlan } from '@/lib/hooks/useDirectusAuth';
+import { DirectusEstablishment, DirectusProfessionalUser } from '@/lib/services/directus';
 
 interface AuthContextType {
-  user: User | null;
-  session: Session | null;
+  // Données utilisateur Directus
+  user: DirectusProfessionalUser | null;
+  establishment: DirectusEstablishment | null;
+  userId: string | null;
+  userEmail: string | null;
+  establishmentId: string | null;
+  
+  // Plan et limites
+  plan: UserPlan;
+  planLimits: {
+    maxPhotos: number;
+    maxEventsPerMonth: number;
+    hasAdvancedStats: boolean;
+    canShowOnHomepage: boolean;
+    requiresTVA: boolean;
+  };
+  
+  // États
+  isAuthenticated: boolean;
   loading: boolean;
-  signIn: (email: string, password: string) => Promise<{ error: any }>;
-  signUp: (email: string, password: string) => Promise<{ error: any }>;
+  error: string | null;
+  
+  // Données métier
+  hasVatNumber: boolean;
+  isVerified: boolean;
+  eventsThisMonth: number;
+  photosCount: number;
+  
+  // Méthodes
+  signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   signOut: () => Promise<void>;
   refreshSession: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
-  session: null,
+  establishment: null,
+  userId: null,
+  userEmail: null,
+  establishmentId: null,
+  plan: 'basic',
+  planLimits: {
+    maxPhotos: 1,
+    maxEventsPerMonth: 1,
+    hasAdvancedStats: false,
+    canShowOnHomepage: false,
+    requiresTVA: false
+  },
+  isAuthenticated: false,
   loading: true,
-  signIn: async () => ({ error: null }),
-  signUp: async () => ({ error: null }),
+  error: null,
+  hasVatNumber: false,
+  isVerified: false,
+  eventsThisMonth: 0,
+  photosCount: 0,
+  signIn: async () => ({ success: false }),
   signOut: async () => {},
   refreshSession: async () => {},
 });
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(true);
+export function AuthProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   
   // Refs pour éviter les boucles
   const isRedirecting = useRef(false);
   const lastPathname = useRef(pathname);
-  const initializationDone = useRef(false);
+  
+  // Utilisation du hook Directus
+  const directusAuth = useDirectusAuth();
 
-  // Initialisation de la session (UNE SEULE FOIS)
-  useEffect(() => {
-    if (initializationDone.current) return;
-    initializationDone.current = true;
-
-    const initializeAuth = async () => {
-      try {
-        console.log('[AuthContext] Initializing auth...');
-        
-        // Vérifier que Supabase est configuré
-        if (!supabase) {
-          console.error('[AuthContext] Supabase not configured');
-          setLoading(false);
-          return;
-        }
-        
-        // Récupérer la session existante
-        const { data: { session: currentSession }, error } = await supabase.auth.getSession();
-        
-        if (error) {
-          console.error('[AuthContext] Error getting session:', error);
-          setLoading(false);
-          return;
-        }
-
-        if (currentSession) {
-          console.log('[AuthContext] Session found:', currentSession.user.email);
-          setSession(currentSession);
-          setUser(currentSession.user);
-        } else {
-          console.log('[AuthContext] No session found');
-        }
-      } catch (error) {
-        console.error('[AuthContext] Init error:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    initializeAuth();
-
-    // Listener pour les changements d\'auth
-    if (supabase) {
-      const { data: { subscription } } = supabase.auth.onAuthStateChange(
-        async (event, newSession) => {
-          console.log('[AuthContext] Auth state changed:', event);
-          
-          if (event === 'SIGNED_IN' && newSession) {
-            setSession(newSession);
-            setUser(newSession.user);
-          } else if (event === 'SIGNED_OUT') {
-            setSession(null);
-            setUser(null);
-          } else if (event === 'TOKEN_REFRESHED' && newSession) {
-            setSession(newSession);
-            setUser(newSession.user);
-          }
-        }
-      );
-
-      return () => {
-        subscription.unsubscribe();
-      };
-    }
-  }, []); // PAS DE DÉPENDANCES PATHNAME !
-
-  // Gestion des redirections SÉPARÉE et CONTRÔLÉE
+  // Gestion des redirections
   useEffect(() => {
     // Ne pas rediriger pendant le chargement ou si déjà en cours
-    if (loading || isRedirecting.current) return;
+    if (directusAuth.isLoading || isRedirecting.current) return;
     
     // Ne pas rediriger si on est sur la même page
     if (pathname === lastPathname.current) return;
     lastPathname.current = pathname;
 
-    // Routes publiques qui ne nécessitent pas d\'auth
+    // Routes publiques qui ne nécessitent pas d'auth
     const publicRoutes = [
       '/',
       '/annuaire',
       '/blog',
       '/auth/pro/connexion',
-      '/auth/pro/inscription',
+      '/auth/pro/signup',
       '/etablissement',
       '/evenements',
       '/actualites',
@@ -143,7 +117,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
 
     // Si route protégée et pas connecté -> redirection
-    if (isProtectedRoute && !user) {
+    if (isProtectedRoute && !directusAuth.isAuthenticated) {
       // Exception pour /pro/inscription qui a sa propre logique
       if (pathname === '/pro/inscription') return;
       
@@ -165,7 +139,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     // Si connecté et sur page de connexion -> redirection vers dashboard
-    if (user && pathname === '/auth/pro/connexion') {
+    if (directusAuth.isAuthenticated && pathname === '/auth/pro/connexion') {
       console.log('[AuthContext] User logged in on login page, redirecting to dashboard');
       isRedirecting.current = true;
       
@@ -186,86 +160,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }, 1000);
       return;
     }
-  }, [user, loading, pathname, router]);
+  }, [directusAuth.isAuthenticated, directusAuth.isLoading, pathname, router]);
 
-  // Méthodes d\'authentification
+  // Méthodes d'authentification wrappées
   const signIn = useCallback(async (email: string, password: string) => {
     try {
-      setLoading(true);
-      
-      if (!supabase) {
-        return { error: new Error('Supabase not configured') };
-      }
-      
-      const { error } = await supabase.auth.signInWithPassword({
-        email: email.trim().toLowerCase(),
-        password,
-      });
-
-      if (error) {
-        console.error('[AuthContext] Sign in error:', error);
-        return { error };
-      }
-
-      // La session sera mise à jour via onAuthStateChange
-      return { error: null };
+      const result = await directusAuth.login(email, password);
+      return result;
     } catch (error) {
-      console.error('[AuthContext] Sign in exception:', error);
-      return { error };
-    } finally {
-      setLoading(false);
+      console.error('[AuthContext] Sign in error:', error);
+      return { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Erreur de connexion' 
+      };
     }
-  }, []);
-
-  const signUp = useCallback(async (email: string, password: string) => {
-    try {
-      setLoading(true);
-      
-      if (!supabase) {
-        return { error: new Error('Supabase not configured') };
-      }
-      
-      const { error } = await supabase.auth.signUp({
-        email: email.trim().toLowerCase(),
-        password,
-        options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
-        },
-      });
-
-      if (error) {
-        console.error('[AuthContext] Sign up error:', error);
-        return { error };
-      }
-
-      return { error: null };
-    } catch (error) {
-      console.error('[AuthContext] Sign up exception:', error);
-      return { error };
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  }, [directusAuth]);
 
   const signOut = useCallback(async () => {
     try {
-      setLoading(true);
       isRedirecting.current = true;
       
-      if (!supabase) {
-        console.error('[AuthContext] Supabase not configured');
-        return;
-      }
-      
-      const { error } = await supabase.auth.signOut();
-      
-      if (error) {
-        console.error('[AuthContext] Sign out error:', error);
-      }
-
-      // Clear all session data
-      setUser(null);
-      setSession(null);
+      await directusAuth.logout();
       
       // Clear any stored data
       if (typeof window !== 'undefined') {
@@ -279,41 +194,44 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isRedirecting.current = false;
       }, 1000);
     } catch (error) {
-      console.error('[AuthContext] Sign out exception:', error);
-    } finally {
-      setLoading(false);
+      console.error('[AuthContext] Sign out error:', error);
     }
-  }, [router]);
+  }, [directusAuth, router]);
 
   const refreshSession = useCallback(async () => {
     try {
-      if (!supabase) {
-        console.error('[AuthContext] Supabase not configured');
-        return;
-      }
-      
-      const { data: { session: newSession }, error } = await supabase.auth.refreshSession();
-      
-      if (error) {
-        console.error('[AuthContext] Refresh session error:', error);
-        return;
-      }
-
-      if (newSession) {
-        setSession(newSession);
-        setUser(newSession.user);
-      }
+      await directusAuth.refreshAuth();
     } catch (error) {
-      console.error('[AuthContext] Refresh session exception:', error);
+      console.error('[AuthContext] Refresh session error:', error);
     }
-  }, []);
+  }, [directusAuth]);
 
-  const value = {
-    user,
-    session,
-    loading,
+  // Valeur du contexte basée sur les données Directus
+  const value: AuthContextType = {
+    // Données utilisateur
+    user: directusAuth.user,
+    establishment: directusAuth.establishment,
+    userId: directusAuth.userId,
+    userEmail: directusAuth.userEmail,
+    establishmentId: directusAuth.establishmentId,
+    
+    // Plan et limites
+    plan: directusAuth.plan,
+    planLimits: directusAuth.planLimits,
+    
+    // États
+    isAuthenticated: directusAuth.isAuthenticated,
+    loading: directusAuth.isLoading,
+    error: directusAuth.error,
+    
+    // Données métier
+    hasVatNumber: directusAuth.hasVatNumber,
+    isVerified: directusAuth.isVerified,
+    eventsThisMonth: directusAuth.eventsThisMonth,
+    photosCount: directusAuth.photosCount,
+    
+    // Méthodes
     signIn,
-    signUp,
     signOut,
     refreshSession,
   };
@@ -329,32 +247,42 @@ export const useAuth = () => {
   return context;
 };
 
-// HOC pour protéger les pages (optionnel)
+// HOC pour protéger les pages
 export function withAuth<P extends object>(
   Component: React.ComponentType<P>
 ) {
   return function ProtectedComponent(props: P) {
-    const { user, loading } = useAuth();
+    const { isAuthenticated, loading } = useAuth();
     const router = useRouter();
 
     useEffect(() => {
-      if (!loading && !user) {
+      if (!loading && !isAuthenticated) {
         router.push('/auth/pro/connexion');
       }
-    }, [user, loading, router]);
+    }, [isAuthenticated, loading, router]);
 
     if (loading) {
       return (
         <div className="min-h-screen flex items-center justify-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
+            <p className="mt-4 text-gray-600">Chargement...</p>
+            <div className="mt-2 px-3 py-1 bg-blue-50 text-blue-700 text-xs rounded-full inline-block">
+              ✨ Powered by Directus
+            </div>
+          </div>
         </div>
       );
     }
 
-    if (!user) {
+    if (!isAuthenticated) {
       return null;
     }
 
     return <Component {...props} />;
   };
 }
+
+// Alias pour compatibilité avec l'ancien système
+export const session = null; // Directus n'utilise pas le concept de session Supabase
+export type User = DirectusProfessionalUser;

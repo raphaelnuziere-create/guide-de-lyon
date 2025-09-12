@@ -4,9 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Mail, Lock, AlertCircle, Building2, RefreshCw } from 'lucide-react';
-import { supabase } from '@/app/lib/supabase/client';
-import { clearAuthCache } from '@/app/lib/utils/cache-control';
-import { setupAuthStateListener, getSessionWithRetry } from '@/app/lib/utils/auth-persistence';
+import { useDirectusAuth } from '@/lib/hooks/useDirectusAuth';
 
 export default function ProConnexionPage() {
   const router = useRouter();
@@ -15,30 +13,15 @@ export default function ProConnexionPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showReset, setShowReset] = useState(false);
-  const [cacheCleared, setCacheCleared] = useState(false);
 
-  // Vérifier et nettoyer le cache si problème détecté
+  const { login, isAuthenticated, isLoading } = useDirectusAuth();
+
+  // Redirection si déjà connecté
   useEffect(() => {
-    // Configurer l'écoute des changements d'auth
-    setupAuthStateListener();
-    
-    const checkSession = async () => {
-      // Utiliser la fonction avec retry pour plus de robustesse
-      const session = await getSessionWithRetry();
-      if (session) {
-        router.push('/pro/dashboard');
-      }
-    };
-    checkSession();
-  }, [router]);
-
-  const handleClearCache = () => {
-    clearAuthCache();
-    setCacheCleared(true);
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
-  };
+    if (isAuthenticated) {
+      router.push('/pro/dashboard');
+    }
+  }, [isAuthenticated, router]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -53,30 +36,25 @@ export default function ProConnexionPage() {
     setShowReset(false);
 
     try {
-      // Connexion directe avec Supabase côté client
-      const { data, error: signInError } = await supabase.auth.signInWithPassword({
-        email: email.trim(),
-        password: password.trim(),
-      });
+      const result = await login(email.trim(), password.trim());
       
-      if (signInError) {
-        setError(signInError.message);
+      if (!result.success) {
+        setError(result.error || 'Erreur de connexion');
         
         // Si erreur de credentials, proposer reset
-        if (signInError.message.toLowerCase().includes('invalid') || 
-            signInError.message.toLowerCase().includes('credentials')) {
+        if (result.error?.toLowerCase().includes('invalid') || 
+            result.error?.toLowerCase().includes('credentials') ||
+            result.error?.toLowerCase().includes('unauthorized')) {
           setShowReset(true);
         }
         return;
       }
 
-      if (data.session) {
-        // Redirection après succès
-        router.push('/pro/dashboard');
-      } else {
-        setError('Erreur de connexion');
-      }
+      // Redirection après succès
+      router.push('/pro/dashboard');
+      
     } catch (err: any) {
+      console.error('Erreur login:', err);
       setError(err.message || 'Erreur de connexion');
     } finally {
       setLoading(false);
@@ -84,31 +62,21 @@ export default function ProConnexionPage() {
   };
 
   const handleReset = async () => {
-    if (!email) {
-      setError('Veuillez entrer votre email pour réinitialiser le mot de passe');
-      return;
-    }
-
-    setError('');
-    setLoading(true);
-
-    try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
-        redirectTo: 'https://www.guide-de-lyon.fr/auth/reset-password',
-      });
-
-      if (error) {
-        setError(error.message);
-      } else {
-        setShowReset(false);
-        alert('Email de réinitialisation envoyé ! Vérifiez votre boîte mail.');
-      }
-    } catch (err: any) {
-      setError('Erreur lors de l\'envoi de l\'email');
-    } finally {
-      setLoading(false);
-    }
+    setError('Fonctionnalité de réinitialisation en cours de développement.');
+    // TODO: Implémenter reset password avec Directus
   };
+
+  // Afficher un loader pendant la vérification initiale
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-red-600"></div>
+          <p className="mt-4 text-gray-600">Vérification de la session...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center px-4">
@@ -122,6 +90,9 @@ export default function ProConnexionPage() {
           <p className="mt-2 text-gray-600">
             Accédez à votre espace pro Guide de Lyon
           </p>
+          <div className="mt-2 px-3 py-1 bg-blue-50 text-blue-700 text-xs rounded-full inline-block">
+            ✨ Powered by Directus
+          </div>
         </div>
 
         {/* Formulaire */}
@@ -211,6 +182,18 @@ export default function ProConnexionPage() {
               )}
             </button>
 
+            {/* Info pour les tests */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <h4 className="text-sm font-medium text-blue-800 mb-2">Comptes de test :</h4>
+              <div className="text-xs text-blue-700 space-y-1">
+                <div><strong>PRO:</strong> pro@test.com / ProTest123!</div>
+                <div><strong>EXPERT:</strong> expert@test.com / ExpertTest123!</div>
+              </div>
+              <p className="text-xs text-blue-600 mt-2">
+                👉 Créez ces comptes dans <a href="http://localhost:8055/admin" target="_blank" className="underline">Directus Admin</a>
+              </p>
+            </div>
+
             {/* Liens utiles */}
             <div className="flex justify-between items-center">
               <button
@@ -221,22 +204,15 @@ export default function ProConnexionPage() {
                 Mot de passe oublié ?
               </button>
               
-              <button
-                type="button"
-                onClick={handleClearCache}
-                className="text-sm text-gray-600 hover:text-gray-900 flex items-center gap-1"
-                title="Si vous avez des problèmes de connexion"
+              <Link
+                href="http://localhost:8055/admin"
+                target="_blank"
+                className="text-sm text-blue-600 hover:text-blue-900 flex items-center gap-1"
               >
                 <RefreshCw className="w-3 h-3" />
-                Problème de connexion ?
-              </button>
+                Admin Directus
+              </Link>
             </div>
-            
-            {cacheCleared && (
-              <div className="mt-3 p-2 bg-green-50 text-green-700 text-sm rounded-lg text-center">
-                Cache nettoyé, rechargement...
-              </div>
-            )}
           </form>
 
           {/* Lien inscription */}
