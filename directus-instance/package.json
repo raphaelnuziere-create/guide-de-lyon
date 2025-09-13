@@ -1,0 +1,16 @@
+{
+  "name": "guide-lyon-directus",
+  "version": "1.0.0",
+  "description": "Directus CMS for Guide de Lyon",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx directus start",
+    "postinstall": "npx directus bootstrap"
+  },
+  "dependencies": {
+    "directus": "^10.8.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

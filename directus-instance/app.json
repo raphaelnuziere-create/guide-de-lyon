@@ -1,0 +1,63 @@
+{
+  "name": "Guide Lyon Directus",
+  "description": "Directus CMS for Guide de Lyon",
+  "repository": "https://github.com/raphaelnuziere-create/guide-de-lyon",
+  "logo": "https://directus.io/favicon.ico",
+  "keywords": ["directus", "cms", "guide-lyon"],
+  "image": "heroku/nodejs",
+  "env": {
+    "KEY": {
+      "description": "Unique identifier for the project",
+      "value": "255d861b-5ea1-5996-9aa3-922530ec40b1"
+    },
+    "SECRET": {
+      "description": "Secret key for JWT tokens",
+      "value": "directus-secret-key-production-guide-lyon"
+    },
+    "DB_CLIENT": {
+      "description": "Database client",
+      "value": "sqlite3"
+    },
+    "DB_FILENAME": {
+      "description": "SQLite database file",
+      "value": "/tmp/database.db"
+    },
+    "ADMIN_EMAIL": {
+      "description": "Admin email",
+      "value": "admin@guide-lyon.fr"
+    },
+    "ADMIN_PASSWORD": {
+      "description": "Admin password",
+      "value": "AdminPassword123!"
+    },
+    "CORS_ENABLED": {
+      "description": "Enable CORS",
+      "value": "true"
+    },
+    "CORS_ORIGIN": {
+      "description": "CORS origins",
+      "value": "https://www.guide-de-lyon.fr,http://localhost:3000"
+    },
+    "STORAGE_LOCATIONS": {
+      "description": "Storage locations",
+      "value": "local"
+    },
+    "STORAGE_LOCAL_DRIVER": {
+      "description": "Local storage driver",
+      "value": "local"
+    },
+    "STORAGE_LOCAL_ROOT": {
+      "description": "Local storage root",
+      "value": "/tmp/uploads"
+    },
+    "PORT": {
+      "description": "Port to run the server on",
+      "value": "8055"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
