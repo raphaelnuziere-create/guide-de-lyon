@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  directus:
+    image: directus/directus:latest
+    ports:
+      - "8055:8055"
+    volumes:
+      - ./directus/uploads:/directus/uploads
+    environment:
+      KEY: '255d861b-5ea1-5996-9aa3-922530ec40b1'
+      SECRET: 'directus-secret-key'
+      
+      DB_CLIENT: 'sqlite3'
+      DB_FILENAME: '/directus/database.db'
+      
+      ADMIN_EMAIL: 'admin@guide-lyon.fr'
+      ADMIN_PASSWORD: 'AdminPassword123!'
+      
+      PUBLIC_URL: 'https://guide-lyon-directus.onrender.com'
+      
+      # CORS Configuration
+      CORS_ENABLED: 'true'
+      CORS_ORIGIN: 'https://www.guide-de-lyon.fr,http://localhost:3000'
+      
+      # File Storage
+      STORAGE_LOCATIONS: 'local'
+      STORAGE_LOCAL_DRIVER: 'local'
+      STORAGE_LOCAL_ROOT: '/directus/uploads'
+      
+    restart: unless-stopped
+
+volumes:
+  directus_data:
