@@ -10,8 +10,8 @@ async function forceComplete() {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      email: 'raphael.nuziere@gmail.com',
-      password: 'Azerty25!'
+      email: process.env.DIRECTUS_ADMIN_EMAIL || 'admin@guide-lyon.fr',
+      password: process.env.DIRECTUS_ADMIN_PASSWORD || 'AdminPassword123!'
     })
   });
   
