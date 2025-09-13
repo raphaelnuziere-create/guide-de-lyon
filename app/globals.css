@@ -2,46 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+/* Custom styles */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #171717;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #0a0a0a;
+      --foreground: #ededed;
+    }
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Animations et effets pour l'annuaire */
 @layer components {
-  /* Effet de hover pour les cards */
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  .btn {
+    @apply inline-block px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300;
+  }
+
   .business-card-hover {
-    @apply transform transition-all duration-300;
+    @apply transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
   }
-  
-  .business-card-hover:hover {
-    @apply -translate-y-1 shadow-xl;
-  }
-  
-  /* Animation pour les badges de rang */
-  @keyframes pulse-rank {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-  
-  .rank-badge {
-    animation: pulse-rank 2s infinite;
-  }
-  
-  /* Scrollbar personnalisée pour navigation mobile */
+}
+
+@layer utilities {
   .no-scrollbar {
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -50,19 +53,18 @@ body {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-  
-  /* Line clamp utilities */
-  .line-clamp-1 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+
+  /* Rank badge animation */
+  @keyframes pulse-rank {
+    0%, 100% { 
+      transform: scale(1); 
+    }
+    50% { 
+      transform: scale(1.05); 
+    }
   }
-  
-  .line-clamp-2 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+
+  .rank-badge {
+    animation: pulse-rank 2s infinite;
   }
 }

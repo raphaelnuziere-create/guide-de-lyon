@@ -1,9 +1,10 @@
 /**
  * Service pour récupérer et gérer les données d'établissements
- * Connecté à Supabase pour des données réelles et dynamiques
+ * ⚠️  MIGRÉ VERS DIRECTUS ⚠️
+ * Utilise maintenant Directus comme source de données
  */
 
-import { supabase } from '@/lib/supabase';
+import { directusService } from './directus';
 
 export interface Establishment {
   id: string;
@@ -133,37 +134,17 @@ export class EstablishmentService {
    */
   static async getBySlug(slug: string): Promise<Establishment | null> {
     try {
-      if (!supabase) {
-        console.error('Supabase not configured');
+      const result = await directusService.getEstablishmentBySlug(slug);
+      
+      if (!result.success || !result.data) {
+        console.error('Error fetching establishment:', result.error);
         return null;
       }
-
-      const { data, error } = await supabase
-        .from('establishments')
-        .select(`
-          *,
-          establishment_media (
-            url,
-            type,
-            display_order,
-            is_active
-          )
-        `)
-        .eq('slug', slug)
-        .eq('status', 'active')
-        .single();
-
-      if (error) {
-        console.error('Error fetching establishment:', error);
-        return null;
-      }
-
-      if (!data) return null;
 
       // Incrémenter le compteur de vues
-      await this.incrementViews(data.id);
+      await this.incrementViews(result.data.id);
 
-      return this.formatEstablishment(data);
+      return this.formatDirectusEstablishment(result.data);
     } catch (error) {
       console.error('Exception in getBySlug:', error);
       return null;
@@ -175,30 +156,19 @@ export class EstablishmentService {
    */
   static async getSimilar(establishmentId: string, category: string, limit = 3): Promise<Establishment[]> {
     try {
-      if (!supabase) return [];
-
-      const { data, error } = await supabase
-        .from('establishments')
-        .select(`
-          *,
-          establishment_media (
-            url,
-            type,
-            display_order,
-            is_active
-          )
-        `)
-        .eq('category', category)
-        .neq('id', establishmentId)
-        .eq('status', 'active')
-        .limit(limit);
-
-      if (error) {
-        console.error('Error fetching similar establishments:', error);
+      const result = await directusService.getEstablishments({
+        category: { _eq: category },
+        id: { _neq: establishmentId }
+      });
+      
+      if (!result.success) {
+        console.error('Error fetching similar establishments:', result.error);
         return [];
       }
 
-      return data?.map(this.formatEstablishment) || [];
+      return (result.data || [])
+        .slice(0, limit)
+        .map(data => this.formatDirectusEstablishment(data));
     } catch (error) {
       console.error('Exception in getSimilar:', error);
       return [];
@@ -215,7 +185,7 @@ export class EstablishmentService {
       // Table reviews pas encore créée, retourner un tableau vide pour l'instant
       return [];
 
-      // TODO: Réactiver quand la table reviews sera créée
+      // TODO: Implémenter avec Directus
       /*
       const { data, error } = await supabase
         .from('reviews')
@@ -258,7 +228,7 @@ export class EstablishmentService {
       // Table events pas encore créée, retourner un tableau vide pour l'instant
       return [];
 
-      // TODO: Réactiver quand la table events sera créée
+      // TODO: Implémenter avec Directus
       /*
       const { data, error } = await supabase
         .from('events')
@@ -298,18 +268,77 @@ export class EstablishmentService {
    */
   private static async incrementViews(establishmentId: string): Promise<void> {
     try {
-      if (!supabase) return;
-
-      await supabase.rpc('increment_establishment_views', {
-        establishment_id: establishmentId
-      });
+      // TODO: Implémenter l'incrémentation des vues avec Directus
+      console.log('View increment for establishment:', establishmentId);
     } catch (error) {
       console.error('Error incrementing views:', error);
     }
   }
 
   /**
-   * Formate les données de l'établissement
+   * Formate les données de l'établissement depuis Directus
+   */
+  private static formatDirectusEstablishment(data: any): Establishment {
+    // Adapter les données Directus vers le format Establishment
+    const images: string[] = [];
+    
+    // TODO: Récupérer les photos depuis la relation establishment_photos
+    // if (data.establishment_photos) {
+    //   images = data.establishment_photos.map(photo => 
+    //     directusService.getFileUrl(photo.image)
+    //   );
+    // }
+    
+    return {
+      id: data.id,
+      name: data.name,
+      slug: data.slug,
+      category: data.category,
+      subcategory: undefined,
+      description: data.description || '',
+      shortDescription: undefined,
+      
+      address: data.address,
+      city: data.city,
+      postalCode: data.postal_code,
+      latitude: data.latitude,
+      longitude: data.longitude,
+      phone: data.phone,
+      email: data.email,
+      website: data.website,
+      
+      rating: data.rating || 4.5,
+      reviewsCount: 0, // TODO: Compter depuis les reviews
+      priceRange: (data.price_range as any) || '€€',
+      
+      openingHours: data.opening_hours,
+      
+      images: images,
+      logo: undefined,
+      coverImage: images[0],
+      
+      features: [],
+      services: [],
+      amenities: [],
+      
+      menu: undefined,
+      rooms: undefined,
+      treatments: undefined,
+      specialties: undefined,
+      
+      isVerified: data.verified,
+      isPremium: data.plan !== 'basic',
+      isClosed: data.status !== 'published',
+      
+      createdAt: data.date_created,
+      updatedAt: data.date_updated,
+      views: 0 // TODO: Implémenter le compteur de vues
+    };
+  }
+
+  /**
+   * Formate les données de l'établissement (ancienne méthode Supabase)
+   * @deprecated Utilisez formatDirectusEstablishment
    */
   private static formatEstablishment(data: any): Establishment {
     // Extraire les images depuis establishment_media

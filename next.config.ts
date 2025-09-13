@@ -3,19 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   
-  // Configuration pour Vercel
-  output: 'standalone',
-  
-  // Désactiver la vérification TypeScript en production pour éviter les erreurs de build
+  // Temporaire : ignorer les erreurs TypeScript pour test de déploiement
   typescript: {
     ignoreBuildErrors: true,
   },
   
-  // Désactiver ESLint en production
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-
   // Configuration des images
   images: {
     remotePatterns: [

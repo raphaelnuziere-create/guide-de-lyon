@@ -22,32 +22,31 @@ import {
   ChevronRight,
   Sparkles
 } from 'lucide-react';
-import { supabase } from '@/app/lib/supabase/client';
+import { useAuth } from '@/lib/auth/AuthContext';
 import { EstablishmentService } from '@/app/lib/services/establishmentService';
 import { PhotoService, Photo } from '@/lib/services/photoService';
 import { EventsService, type Event as EventType, type EventQuota } from '@/lib/services/events-service';
-import { useUserPlan } from '@/lib/auth/useUserPlan';
 
 // Utilisation du type Event du service
 type Event = EventType;
 
 export default function EvenementsPage() {
   const router = useRouter();
-  const { plan: userPlan, planLimits, isLoading: planLoading } = useUserPlan();
+  const { user, establishment, loading: authLoading, plan, planLimits } = useAuth();
   const [loading, setLoading] = useState(true);
   const [events, setEvents] = useState<Event[]>([]);
-  const [establishment, setEstablishment] = useState<any>(null);
   const [establishmentId, setEstablishmentId] = useState<string | null>(null);
   const [quota, setQuota] = useState<EventQuota | null>(null);
   const [establishmentPhotos, setEstablishmentPhotos] = useState<Photo[]>([]);
 
   useEffect(() => {
-    checkAuthAndLoadData();
-  }, []);
+    if (!authLoading) {
+      checkAuthAndLoadData();
+    }
+  }, [authLoading]);
 
   const checkAuthAndLoadData = async () => {
     try {
-      const { data: { user } } = await supabase.auth.getUser();
       
       if (!user) {
         router.push('/auth/pro/connexion');
@@ -177,7 +176,7 @@ export default function EvenementsPage() {
     );
   }
 
-  const plan = userPlan || 'basic';
+  const userPlan = plan || 'basic';
   const canAddEvent = quota?.can_create ?? false;
 
   return (

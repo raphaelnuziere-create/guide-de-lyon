@@ -358,7 +358,39 @@ export class EventsService {
   }
 
   /**
-   * Formater un événement depuis la base de données
+   * Formate un événement depuis Directus
+   */
+  private static formatDirectusEvent(data: any): Event {
+    return {
+      id: data.id,
+      establishment_id: data.establishment_id,
+      title: data.title,
+      description: data.description,
+      start_date: data.start_date,
+      end_date: data.end_date,
+      start_time: undefined, // TODO: Gérer les heures dans Directus
+      end_time: undefined,
+      location: undefined,
+      address: undefined,
+      price: data.price,
+      capacity: data.max_participants,
+      image_url: undefined,
+      visibility: 'establishment_only', // TODO: Gérer la visibilité selon le plan
+      status: data.status as any,
+      created_at: data.date_created,
+      updated_at: data.date_updated,
+      published_at: data.date_created,
+      
+      // Relations - TODO: À récupérer depuis Directus
+      establishment_name: undefined,
+      establishment_slug: undefined,
+      establishment_plan: undefined
+    };
+  }
+
+  /**
+   * Formate un événement depuis la base de données (ancienne méthode Supabase)
+   * @deprecated Utilisez formatDirectusEvent
    */
   private static formatEvent(data: any): Event {
     return {

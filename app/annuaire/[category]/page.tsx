@@ -70,8 +70,9 @@ const CATEGORY_MAP: Record<string, { dbValue: string; label: string; description
   }
 };
 
-export async function generateMetadata({ params }: { params: { category: string } }): Promise<Metadata> {
-  const categoryInfo = CATEGORY_MAP[params.category];
+export async function generateMetadata({ params }: { params: Promise<{ category: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const categoryInfo = CATEGORY_MAP[resolvedParams.category];
   
   if (!categoryInfo) {
     return {
@@ -152,14 +153,15 @@ async function getBusinessesByCategory(categorySlug: string) {
   return { experts, others };
 }
 
-export default async function CategoryPage({ params }: { params: { category: string } }) {
-  const categoryInfo = CATEGORY_MAP[params.category];
+export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+  const resolvedParams = await params;
+  const categoryInfo = CATEGORY_MAP[resolvedParams.category];
   
   if (!categoryInfo) {
     notFound();
   }
 
-  const data = await getBusinessesByCategory(params.category);
+  const data = await getBusinessesByCategory(resolvedParams.category);
   if (!data) {
     notFound();
   }

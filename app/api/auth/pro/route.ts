@@ -1,57 +1,26 @@
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { directusService } from '@/lib/services/directus';
 
-export async function POST(request: Request) {
-  const supabase = createRouteHandlerClient({ cookies });
-  
+export async function POST(request: NextRequest) {
   try {
     const { action, email, password } = await request.json();
 
     if (action === 'signup') {
-      // Créer le compte
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          emailRedirectTo: `${request.headers.get('origin')}/auth/callback`
-        }
-      });
-
-      if (authError) {
-        return NextResponse.json(
-          { success: false, error: authError.message },
-          { status: 400 }
-        );
-      }
-
-      if (!authData.user) {
-        return NextResponse.json(
-          { success: false, error: 'Erreur lors de la création du compte' },
-          { status: 400 }
-        );
-      }
-
-      // NE PAS créer l'établissement ici - sera fait dans /pro/inscription
-      // L'API de signup doit seulement créer le compte utilisateur
-      console.log('[Auth API] Compte utilisateur créé:', authData.user.email);
-
+      // Rediriger vers la page d'inscription - Plus de signup via API
+      // Car nous utilisons maintenant Directus pour la création des comptes
       return NextResponse.json({
-        success: true,
-        message: 'Compte créé avec succès. Vérifiez votre email.',
-        needsEmailConfirmation: true
-      });
+        success: false,
+        error: 'Veuillez utiliser le formulaire d\'inscription sur /auth/pro/signup',
+        redirectTo: '/auth/pro/signup'
+      }, { status: 400 });
 
     } else if (action === 'signin') {
-      // Connexion
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password
-      });
-
-      if (error) {
+      // Connexion via Directus
+      const result = await directusService.login(email, password);
+      
+      if (!result.success) {
         return NextResponse.json(
-          { success: false, error: error.message },
+          { success: false, error: result.error || 'Erreur de connexion' },
           { status: 400 }
         );
       }

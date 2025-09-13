@@ -27,14 +27,14 @@ import {
   Building,
   Car
 } from 'lucide-react';
-import { supabase } from '@/app/lib/supabase/client';
+import { useAuth } from '@/lib/auth/AuthContext';
 import AdaptiveBusinessForm from '@/components/pro/AdaptiveBusinessForm';
 
 type PlanType = 'basic' | 'pro' | 'expert';
 
 function ProInscriptionContent() {
   const router = useRouter();
-  const [user, setUser] = useState<any>(null);
+  const { user, isAuthenticated, loading: authLoading } = useAuth();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');

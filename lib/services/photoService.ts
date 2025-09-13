@@ -1,4 +1,4 @@
-import { supabase } from '@/app/lib/supabase/client';
+import { directusService } from './directus';
 
 export interface Photo {
   id: string;
@@ -29,34 +29,32 @@ export class PhotoService {
         throw new Error('L\'image ne peut pas dépasser 5MB');
       }
 
-      // Récupérer le token d'authentification
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        throw new Error('Session d\'authentification non trouvée');
-      }
+      // Upload vers Directus
+      const result = await directusService.uploadPhoto(
+        establishmentId,
+        file,
+        caption,
+        position
+      );
 
-      // Utiliser l'API route pour contourner le problème RLS
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('establishmentId', establishmentId);
-      formData.append('caption', caption || '');
-      formData.append('position', position?.toString() || '0');
-
-      const response = await fetch('/api/photos/upload', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${session.access_token}`
-        },
-        body: formData
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
+      if (!result.success || !result.data) {
         throw new Error(result.error || 'Erreur lors de l\'upload');
       }
 
-      return result.photo;
+      // Convertir le format Directus vers le format Photo
+      const directusPhoto = result.data;
+      const photoUrl = directusService.getFileUrl(directusPhoto.image);
+
+      return {
+        id: directusPhoto.id,
+        establishment_id: directusPhoto.establishment_id,
+        url: photoUrl,
+        caption: directusPhoto.caption || '',
+        position: directusPhoto.position,
+        is_main: directusPhoto.is_main,
+        created_at: directusPhoto.date_created,
+        updated_at: directusPhoto.date_updated
+      };
     } catch (error) {
       console.error('PhotoService.uploadPhoto error:', error);
       throw error;
@@ -64,81 +62,65 @@ export class PhotoService {
   }
 
   static async getEstablishmentPhotos(establishmentId: string): Promise<Photo[]> {
-    const { data, error } = await supabase
-      .from('establishment_photos')
-      .select('*')
-      .eq('establishment_id', establishmentId)
-      .order('position', { ascending: true });
+    try {
+      const result = await directusService.getEstablishmentPhotos(establishmentId);
+      
+      if (!result.success) {
+        throw new Error(result.error || 'Erreur chargement photos');
+      }
 
-    if (error) {
-      throw new Error(`Erreur chargement photos: ${error.message}`);
+      // Convertir le format Directus vers le format Photo
+      return (result.data || []).map(directusPhoto => ({
+        id: directusPhoto.id,
+        establishment_id: directusPhoto.establishment_id,
+        url: directusService.getFileUrl(directusPhoto.image),
+        caption: directusPhoto.caption || '',
+        position: directusPhoto.position,
+        is_main: directusPhoto.is_main,
+        created_at: directusPhoto.date_created,
+        updated_at: directusPhoto.date_updated
+      }));
+    } catch (error) {
+      console.error('PhotoService.getEstablishmentPhotos error:', error);
+      throw error;
     }
-
-    return data || [];
   }
 
   static async deletePhoto(photoId: string): Promise<void> {
-    // Récupérer l'URL pour supprimer du storage
-    const { data: photo, error: fetchError } = await supabase
-      .from('establishment_photos')
-      .select('url')
-      .eq('id', photoId)
-      .single();
-
-    if (fetchError) {
-      throw new Error(`Photo introuvable: ${fetchError.message}`);
-    }
-
-    // Extraire le path du storage depuis l'URL
-    const url = photo.url;
-    const path = url.split('/').slice(-2).join('/'); // establishment_id/filename
-
-    // Supprimer du storage
-    const { error: storageError } = await supabase.storage
-      .from('establishment-photos')
-      .remove([path]);
-
-    if (storageError) {
-      console.warn('Erreur suppression storage:', storageError);
-    }
-
-    // Supprimer de la base
-    const { error: dbError } = await supabase
-      .from('establishment_photos')
-      .delete()
-      .eq('id', photoId);
-
-    if (dbError) {
-      throw new Error(`Erreur suppression: ${dbError.message}`);
+    try {
+      const result = await directusService.deletePhoto(photoId);
+      
+      if (!result.success) {
+        throw new Error(result.error || 'Erreur lors de la suppression');
+      }
+    } catch (error) {
+      console.error('PhotoService.deletePhoto error:', error);
+      throw error;
     }
   }
 
   static async setMainPhoto(photoId: string, establishmentId: string): Promise<void> {
-    // D'abord retirer le flag main de toutes les photos
-    await supabase
-      .from('establishment_photos')
-      .update({ is_main: false })
-      .eq('establishment_id', establishmentId);
-
-    // Puis mettre celle-ci en main
-    const { error } = await supabase
-      .from('establishment_photos')
-      .update({ is_main: true })
-      .eq('id', photoId);
-
-    if (error) {
-      throw new Error(`Erreur photo principale: ${error.message}`);
+    try {
+      const result = await directusService.setMainPhoto(photoId, establishmentId);
+      
+      if (!result.success) {
+        throw new Error(result.error || 'Erreur lors de la définition de la photo principale');
+      }
+    } catch (error) {
+      console.error('PhotoService.setMainPhoto error:', error);
+      throw error;
     }
   }
 
   static async updatePhotoPosition(photoId: string, newPosition: number): Promise<void> {
-    const { error } = await supabase
-      .from('establishment_photos')
-      .update({ position: newPosition })
-      .eq('id', photoId);
-
-    if (error) {
-      throw new Error(`Erreur position: ${error.message}`);
+    try {
+      // Pour l'instant, utiliser la méthode directe avec updateItem
+      // TODO: Ajouter une méthode dédiée dans directusService si nécessaire
+      console.warn('PhotoService.updatePhotoPosition: Méthode non encore implémentée pour Directus');
+      throw new Error('Mise à jour de position non disponible temporairement');
+    } catch (error) {
+      console.error('PhotoService.updatePhotoPosition error:', error);
+      throw error;
     }
   }
 }

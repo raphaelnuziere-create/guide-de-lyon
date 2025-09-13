@@ -14,8 +14,6 @@ import {
   Phone,
   Mail,
   Globe,
-  Facebook,
-  Instagram,
   Bell,
   Sparkles,
   Lock,
@@ -23,139 +21,102 @@ import {
   Plus,
   Edit,
   CheckCircle,
-  XCircle,
+  AlertCircle,
   TrendingUp,
   Share2,
-  FileText,
   Shield,
   Crown,
   Zap,
-  AlertCircle,
   Store,
   Loader2
 } from 'lucide-react';
-import { supabase } from '@/app/lib/supabase/client';
-import { useUserPlan } from '@/lib/auth/useUserPlan';
 
 type UserPlan = 'basic' | 'pro' | 'expert';
 
-interface EstablishmentData {
-  id: string;
-  name: string;
-  plan: UserPlan;
-  phone?: string;
-  email?: string;
-  website?: string;
-  facebook?: string;
-  instagram?: string;
-  photos_count?: number;
-  events_this_month?: number;
-  views_this_month?: number;
-  clicks_phone?: number;
-  clicks_website?: number;
-  verified?: boolean;
-  status?: string;
-}
-
 export default function DashboardPage() {
-  const { user, loading: authLoading } = useAuth();
-  const { plan: userPlan, planLimits, isLoading: planLoading } = useUserPlan();
+  const { 
+    user, 
+    establishment, 
+    loading: authLoading,
+    isAuthenticated,
+    plan,
+    planLimits,
+    signOut,
+    error
+  } = useAuth();
+  
   const router = useRouter();
-  const [establishment, setEstablishment] = useState<EstablishmentData | null>(null);
-  const [loadingEstablishment, setLoadingEstablishment] = useState(true);
   const [hoveredSection, setHoveredSection] = useState<string | null>(null);
 
-  // Protection de route simplifiée
+  // Protection de route avec Directus
   useEffect(() => {
     // Attendre que le loading auth soit terminé
     if (authLoading) return;
 
-    // Si pas d\'utilisateur après le chargement, rediriger
-    if (!user) {
-      console.log('[Dashboard] No user, redirecting to login');
+    // Si pas d'utilisateur authentifié après le chargement
+    if (!isAuthenticated) {
+      console.log('[Dashboard] User not authenticated, redirecting to login');
       router.push('/auth/pro/connexion');
       return;
     }
 
-    // Si utilisateur, charger les données establishment
-    loadEstablishmentData();
-  }, [user, authLoading]); // PAS de router dans les dépendances !
-
-  const loadEstablishmentData = async () => {
-    if (!user || !supabase) return;
-    
-    try {
-      setLoadingEstablishment(true);
-      console.log('[Dashboard] Loading establishment data for:', user.email);
-      
-      // Essayer d\'abord avec user_id
-      let { data, error } = await supabase
-        .from('establishments')
-        .select('*')
-        .eq('user_id', user.id)
-        .maybeSingle();
-
-      // Si erreur de colonne, essayer avec owner_id
-      if (error && error.message?.includes('column')) {
-        console.log('[Dashboard] Trying with owner_id instead');
-        const result = await supabase
-          .from('establishments')
-          .select('*')
-          .eq('owner_id', user.id)
-          .maybeSingle();
-        data = result.data;
-        error = result.error;
-      }
-
-      if (error && error.code !== 'PGRST116') {
-        console.error('[Dashboard] Error loading establishment:', error);
-        return;
-      }
-
-      if (!data) {
-        console.log('[Dashboard] No establishment found, redirecting to inscription');
-        router.push('/pro/inscription');
-        return;
-      }
-
-      console.log('[Dashboard] Establishment loaded:', data.name);
-      setEstablishment(data);
-    } catch (error) {
-      console.error('[Dashboard] Exception loading establishment:', error);
-    } finally {
-      setLoadingEstablishment(false);
+    // Si pas d'établissement, rediriger vers inscription
+    if (!establishment && isAuthenticated) {
+      console.log('[Dashboard] No establishment found, redirecting to inscription');
+      router.push('/pro/inscription');
+      return;
     }
-  };
+  }, [isAuthenticated, establishment, authLoading, router]);
 
   const handleLogout = async () => {
-    if (!supabase) return;
-    
     try {
-      await supabase.auth.signOut();
-      router.push('/');
+      await signOut();
+      // La redirection est gérée par AuthContext
     } catch (error) {
       console.error('[Dashboard] Error logging out:', error);
     }
   };
 
   // Affichage pendant le chargement
-  if (authLoading || loadingEstablishment || planLoading) {
+  if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-blue-600" />
           <p className="text-gray-600">Chargement du tableau de bord...</p>
+          <div className="mt-2 px-3 py-1 bg-blue-50 text-blue-700 text-xs rounded-full inline-block">
+            ✨ Powered by Directus
+          </div>
         </div>
       </div>
     );
   }
 
-  // Si pas d\'utilisateur après chargement (ne devrait pas arriver grâce au useEffect)
-  if (!user) {
+  // Si erreur
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="bg-white rounded-lg shadow p-8 text-center max-w-md">
+          <AlertCircle className="w-16 h-16 text-red-400 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold mb-4">Erreur de chargement</h2>
+          <p className="text-gray-600 mb-6">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+          >
+            Réessayer
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Si pas d'utilisateur après chargement
+  if (!isAuthenticated) {
     return null;
   }
 
-  // Si pas d\'établissement, afficher un message
+  // Si pas d'établissement, afficher un message
   if (!establishment) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -164,7 +125,7 @@ export default function DashboardPage() {
             <Store className="w-16 h-16 text-gray-400 mx-auto mb-4" />
             <h2 className="text-2xl font-bold mb-4">Aucun établissement trouvé</h2>
             <p className="text-gray-600 mb-6">
-              Vous n\'avez pas encore créé d\'établissement. Commencez maintenant pour apparaître dans l\'annuaire.
+              Vous n'avez pas encore créé d'établissement. Commencez maintenant pour apparaître dans l'annuaire.
             </p>
             <Link
               href="/pro/inscription"
@@ -179,11 +140,8 @@ export default function DashboardPage() {
     );
   }
 
-  const plan = userPlan || 'basic';
   const isPro = plan === 'pro' || plan === 'expert';
   const isExpert = plan === 'expert';
-
-  const currentLimits = planLimits;
 
   // Render normal du dashboard
   return (
@@ -200,6 +158,9 @@ export default function DashboardPage() {
                 <span className="font-bold text-xl text-gray-900">Guide de Lyon</span>
               </Link>
               <span className="ml-4 text-sm text-gray-500">Espace Pro</span>
+              <div className="ml-4 px-3 py-1 bg-blue-50 text-blue-700 text-xs rounded-full">
+                ✨ Directus
+              </div>
             </div>
             
             <div className="flex items-center space-x-4">
@@ -306,7 +267,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Statistiques */}
+        {/* Statistiques - Données disponibles via Directus */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
           <div className="bg-white rounded-lg shadow p-4">
             <div className="flex items-center justify-between">
@@ -349,7 +310,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Actions rapides */}
+        {/* Actions rapides - Intégration des limites Directus */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Gestion du contenu */}
           <div className="bg-white rounded-lg shadow">
@@ -407,7 +368,7 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* Visibilité */}
+          {/* Visibilité basée sur le plan Directus */}
           <div className="bg-white rounded-lg shadow">
             <div className="p-6">
               <h2 className="text-lg font-semibold mb-4 flex items-center">
@@ -418,7 +379,7 @@ export default function DashboardPage() {
                 <div className={`flex items-center justify-between p-3 rounded-lg ${isPro ? 'hover:bg-gray-50' : 'opacity-50'}`}>
                   <div className="flex items-center">
                     <TrendingUp className="w-5 h-5 mr-3 text-gray-500" />
-                    <span>Page d\'accueil</span>
+                    <span>Page d'accueil</span>
                   </div>
                   {isPro ? (
                     <span className="text-sm text-green-600">Actif</span>
