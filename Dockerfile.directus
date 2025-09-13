@@ -1,0 +1,27 @@
+FROM directus/directus:latest
+
+# Create directus directory and set permissions
+RUN mkdir -p /directus/uploads && \
+    chown -R node:node /directus
+
+# Set working directory
+WORKDIR /directus
+
+# Expose port
+EXPOSE 8055
+
+# Set environment variables with defaults
+ENV KEY=255d861b-5ea1-5996-9aa3-922530ec40b1
+ENV SECRET=directus-secret-key-production
+ENV DB_CLIENT=sqlite3
+ENV DB_FILENAME=/directus/database.db
+ENV ADMIN_EMAIL=admin@guide-lyon.fr
+ENV ADMIN_PASSWORD=AdminPassword123!
+ENV CORS_ENABLED=true
+ENV CORS_ORIGIN=https://www.guide-de-lyon.fr,http://localhost:3000
+ENV STORAGE_LOCATIONS=local
+ENV STORAGE_LOCAL_DRIVER=local
+ENV STORAGE_LOCAL_ROOT=/directus/uploads
+
+# Start Directus
+CMD ["npx", "directus", "start"]

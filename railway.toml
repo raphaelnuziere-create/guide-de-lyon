@@ -1,0 +1,27 @@
+[build]
+builder = "DOCKER"
+dockerfilePath = "Dockerfile.directus"
+
+[deploy]
+startCommand = "directus start"
+healthcheckPath = "/server/health"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+[[services]]
+name = "directus"
+
+[services.variables]
+KEY = "255d861b-5ea1-5996-9aa3-922530ec40b1"
+SECRET = "directus-secret-key-production"
+DB_CLIENT = "sqlite3"
+DB_FILENAME = "/directus/database.db"
+ADMIN_EMAIL = "admin@guide-lyon.fr"
+ADMIN_PASSWORD = "AdminPassword123!"
+PUBLIC_URL = "${{RAILWAY_STATIC_URL}}"
+CORS_ENABLED = "true"
+CORS_ORIGIN = "https://www.guide-de-lyon.fr,http://localhost:3000"
+STORAGE_LOCATIONS = "local"
+STORAGE_LOCAL_DRIVER = "local"
+STORAGE_LOCAL_ROOT = "/directus/uploads"
