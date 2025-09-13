@@ -8,8 +8,8 @@
 const { createDirectus, rest, authentication, createItem, createCollection, updateCollection, createField, createUser, createRole, updateRole } = require('@directus/sdk');
 
 const DIRECTUS_URL = 'https://guide-lyon-cms.directus.app';
-const ADMIN_EMAIL = 'admin@guide-lyon.fr';
-const ADMIN_PASSWORD = 'AdminPassword123!';
+const ADMIN_EMAIL = 'raphael.nuziere@gmail.com';
+const ADMIN_PASSWORD = 'Azerty25!';
 
 class DirectusInitializer {
   constructor() {
@@ -60,10 +60,37 @@ class DirectusInitializer {
   async login() {
     console.log('🔐 Connexion admin...');
     try {
-      await this.client.login(ADMIN_EMAIL, ADMIN_PASSWORD);
+      const result = await this.client.login(ADMIN_EMAIL, ADMIN_PASSWORD, {
+        mode: 'json'
+      });
       console.log('✅ Connecté comme admin');
+      return result;
     } catch (error) {
-      throw new Error(`Connexion admin échouée: ${error.message}`);
+      // Essai avec l'API REST directe
+      try {
+        const response = await fetch(`${DIRECTUS_URL}/auth/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: ADMIN_EMAIL,
+            password: ADMIN_PASSWORD
+          })
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          console.log('✅ Connecté via API REST');
+          this.token = data.data.access_token;
+          return data;
+        } else {
+          const errorData = await response.json();
+          throw new Error(`API REST échouée: ${errorData.errors?.[0]?.message || response.statusText}`);
+        }
+      } catch (restError) {
+        throw new Error(`Connexion admin échouée: ${error.message} / REST: ${restError.message}`);
+      }
     }
   }
 
