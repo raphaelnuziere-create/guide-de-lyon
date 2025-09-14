@@ -1,0 +1,13 @@
+{
+  "export_date": "2025-09-14T12:49:55.939Z",
+  "source": "Supabase",
+  "target": "Directus Cloud",
+  "tables_exported": [
+    "events.json"
+  ],
+  "notes": [
+    "Données exportées pour migration vers Guide-Lyon v3",
+    "Structure des données adaptée pour Directus",
+    "Plans tarifaires mis à jour: Basic (0€), Pro (19€), Expert (49€)"
+  ]
+}

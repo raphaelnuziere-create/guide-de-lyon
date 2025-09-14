@@ -1,89 +1,60 @@
 {
-  "buildCommand": "npm run build",
-  "framework": "nextjs",
-  "crons": [
-    {
-      "path": "/api/cron/scrape-news",
-      "schedule": "0 9 * * *"
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.7.4"
     },
-    {
-      "path": "/api/newsletter/weekly",
-      "schedule": "0 9 * * 0"
+    "api/annuaire.php": {
+      "runtime": "vercel-php@0.7.4"
     },
-    {
-      "path": "/api/email/transactional/process",
-      "schedule": "*/5 * * * *"
+    "api/evenements.php": {
+      "runtime": "vercel-php@0.7.4"
     },
-    {
-      "path": "/api/newsletter/daily/generate",
-      "schedule": "0 7 * * *"
+    "api/tarifs.php": {
+      "runtime": "vercel-php@0.7.4"
     },
-    {
-      "path": "/api/maintenance/cleanup",
-      "schedule": "0 2 * * *"
+    "api/entreprise.php": {
+      "runtime": "vercel-php@0.7.4"
+    },
+    "api/debug-directus.php": {
+      "runtime": "vercel-php@0.7.4"
     }
-  ],
-  "headers": [
+  },
+  "rewrites": [
     {
-      "source": "/actualites",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
-        }
-      ]
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/monuments-lyon/:slug*",
-      "destination": "/blog/:slug*",
-      "permanent": true
+      "source": "/css/:path*",
+      "destination": "/public/css/:path*"
     },
     {
-      "source": "/restaurants-lyon/:slug*",
-      "destination": "/blog/:slug*",
-      "permanent": true
+      "source": "/js/:path*",
+      "destination": "/public/js/:path*"
     },
     {
-      "source": "/hotels-lyon/:slug*",
-      "destination": "/blog/:slug*",
-      "permanent": true
+      "source": "/images/:path*",
+      "destination": "/public/images/:path*"
     },
     {
-      "source": "/bars-lyon/:slug*",
-      "destination": "/blog/:slug*",
-      "permanent": true
+      "source": "/annuaire",
+      "destination": "/api/annuaire.php"
     },
     {
-      "source": "/musees-lyon/:slug*",
-      "destination": "/blog/:slug*",
-      "permanent": true
+      "source": "/entreprise/:slug",
+      "destination": "/api/entreprise.php?slug=:slug"
     },
     {
-      "source": "/parcs-lyon/:slug*",
-      "destination": "/blog/:slug*",
-      "permanent": true
+      "source": "/evenements",
+      "destination": "/api/evenements.php"
     },
     {
-      "source": "/shopping-lyon/:slug*",
-      "destination": "/blog/:slug*",
-      "permanent": true
+      "source": "/tarifs",
+      "destination": "/api/tarifs.php"
     },
     {
-      "source": "/culture-lyon/:slug*",
-      "destination": "/blog/:slug*",
-      "permanent": true
+      "source": "/debug-directus",
+      "destination": "/api/debug-directus.php"
     },
     {
-      "source": "/visite-lyon/:slug*",
-      "destination": "/blog/:slug*",
-      "permanent": true
-    },
-    {
-      "source": "/tourisme-lyon/:slug*",
-      "destination": "/blog/:slug*",
-      "permanent": true
+      "source": "/((?!api|public|_next).*)",
+      "destination": "/api/index.php"
     }
   ]
 }

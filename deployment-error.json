@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-09-14T13:41:48.595Z",
+  "status": "FAILED",
+  "error": "Tests failed - deployment aborted",
+  "recommendations": [
+    "Vérifier les variables d'environnement",
+    "Relancer npm install",
+    "Vérifier la connexion Vercel",
+    "Consulter les logs: vercel logs"
+  ]
+}

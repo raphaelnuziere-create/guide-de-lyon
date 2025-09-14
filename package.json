@@ -23,7 +23,13 @@
     "deploy:netlify": "DEPLOY_PLATFORM=netlify node scripts/deploy-auto.js",
     "deploy:railway": "DEPLOY_PLATFORM=railway node scripts/deploy-auto.js",
     "clean:emails": "node tools/email-cleaner.js",
-    "test:full": "node -e \"const O = require('./tools/scraper-orchestrator'); const o = new O({maxContactsPerSource: 10}); o.runFullCampaign()\""
+    "test:full": "node -e \"const O = require('./tools/scraper-orchestrator'); const o = new O({maxContactsPerSource: 10}); o.runFullCampaign()\"",
+    "export-data": "node scripts/export-supabase-data.js",
+    "migrate-directus": "node scripts/migrate-to-directus.js",
+    "cleanup-auto": "node scripts/auto-cleanup.js",
+    "dev:clean": "rm -rf .next && npm run dev",
+    "build:clean": "rm -rf .next && npm run build",
+    "test:directus": "node scripts/test-directus-connection.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.61.0",
@@ -34,16 +40,11 @@
     "@googlemaps/google-maps-services-js": "^3.4.2",
     "@heroicons/react": "^2.2.0",
     "@stripe/stripe-js": "^7.9.0",
-    "@supabase/auth-helpers-nextjs": "^0.10.0",
-    "@supabase/auth-ui-react": "^0.4.7",
-    "@supabase/auth-ui-shared": "^0.1.8",
-    "@supabase/ssr": "^0.7.0",
-    "@supabase/supabase-js": "^2.57.0",
+    "@supabase/supabase-js": "^2.57.4",
     "@types/jsonwebtoken": "^9.0.10",
     "cheerio": "^1.1.2",
+    "clsx": "^2.1.1",
     "crypto-js": "^4.2.0",
-    "firebase": "^12.2.1",
-    "firebase-admin": "^13.5.0",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.542.0",
     "next": "15.5.2",
@@ -54,18 +55,19 @@
     "react-dom": "19.1.0",
     "react-dropzone": "^14.3.8",
     "rss-parser": "^3.13.0",
-    "stripe": "^18.5.0"
+    "stripe": "^18.5.0",
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "@types/node": "^20.19.13",
-    "@types/react": "19.1.12",
-    "@types/react-dom": "^19",
+    "@types/react": "19.1.13",
+    "@types/react-dom": "^19.1.9",
     "autoprefixer": "^10.4.21",
     "chalk": "^5.6.0",
     "dotenv": "^17.2.2",
     "node-fetch": "^3.3.2",
     "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.3",
+    "tailwindcss": "^3.4.17",
     "typescript": "5.9.2"
   }
 }

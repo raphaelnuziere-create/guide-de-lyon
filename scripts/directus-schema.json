@@ -1,0 +1,1149 @@
+{
+  "version": 1,
+  "directus": "11.0.0",
+  "vendor": "postgres",
+  "collections": [
+    {
+      "collection": "businesses",
+      "meta": {
+        "accountability": "all",
+        "archive_field": "status",
+        "archive_value": "archived",
+        "collapse": "open",
+        "collection": "businesses",
+        "color": "#3B82F6",
+        "display_template": "{{name}} ({{plan}})",
+        "group": null,
+        "hidden": false,
+        "icon": "business",
+        "item_duplication_fields": null,
+        "note": "Établissements avec plans Basic (0€), Pro (19€), Expert (49€)",
+        "singleton": false,
+        "sort": 1,
+        "sort_field": "display_priority",
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Établissements"
+          }
+        ],
+        "unarchive_value": "active",
+        "versioning": false
+      },
+      "schema": {
+        "name": "businesses",
+        "comment": null
+      },
+      "fields": [
+        {
+          "field": "id",
+          "type": "uuid",
+          "meta": {
+            "collection": "businesses",
+            "field": "id",
+            "special": ["uuid"],
+            "interface": null,
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": true,
+            "hidden": true,
+            "sort": 1,
+            "width": "full",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "id",
+            "table": "businesses",
+            "data_type": "uuid",
+            "default_value": null,
+            "generation_expression": null,
+            "max_length": null,
+            "numeric_precision": null,
+            "numeric_scale": null,
+            "is_generated": false,
+            "is_nullable": false,
+            "is_unique": true,
+            "is_primary_key": true,
+            "has_auto_increment": false,
+            "foreign_key_column": null,
+            "foreign_key_table": null,
+            "comment": null
+          }
+        },
+        {
+          "field": "status",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "status",
+            "special": null,
+            "interface": "select-dropdown",
+            "options": {
+              "choices": [
+                {"text": "En attente", "value": "pending"},
+                {"text": "Actif", "value": "active"},
+                {"text": "Suspendu", "value": "suspended"},
+                {"text": "Archivé", "value": "archived"}
+              ]
+            },
+            "display": "labels",
+            "display_options": {
+              "choices": [
+                {"text": "En attente", "value": "pending", "foreground": "#FFFFFF", "background": "#FCD34D"},
+                {"text": "Actif", "value": "active", "foreground": "#FFFFFF", "background": "#10B981"},
+                {"text": "Suspendu", "value": "suspended", "foreground": "#FFFFFF", "background": "#EF4444"},
+                {"text": "Archivé", "value": "archived", "foreground": "#FFFFFF", "background": "#6B7280"}
+              ]
+            },
+            "readonly": false,
+            "hidden": false,
+            "sort": 2,
+            "width": "half",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": true,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "status",
+            "table": "businesses",
+            "data_type": "varchar",
+            "default_value": "pending",
+            "max_length": 20,
+            "is_nullable": false
+          }
+        },
+        {
+          "field": "name",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "name",
+            "special": null,
+            "interface": "input",
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 3,
+            "width": "full",
+            "translations": null,
+            "note": "Nom de l'établissement",
+            "conditions": null,
+            "required": true,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "name",
+            "table": "businesses",
+            "data_type": "varchar",
+            "default_value": null,
+            "max_length": 255,
+            "is_nullable": false
+          }
+        },
+        {
+          "field": "slug",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "slug",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "slug": true
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 4,
+            "width": "half",
+            "translations": null,
+            "note": "URL de l'établissement",
+            "conditions": null,
+            "required": true,
+            "group": null,
+            "validation": {
+              "_and": [
+                {
+                  "_regex": "^[a-z0-9-]+$"
+                }
+              ]
+            },
+            "validation_message": "Le slug doit contenir uniquement des lettres minuscules, chiffres et tirets"
+          },
+          "schema": {
+            "name": "slug",
+            "table": "businesses",
+            "data_type": "varchar",
+            "default_value": null,
+            "max_length": 255,
+            "is_nullable": false,
+            "is_unique": true
+          }
+        },
+        {
+          "field": "plan",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "plan",
+            "special": null,
+            "interface": "select-dropdown",
+            "options": {
+              "choices": [
+                {"text": "🆓 Basic (Gratuit)", "value": "basic"},
+                {"text": "💼 Pro (19€/mois)", "value": "pro"},
+                {"text": "⭐ Expert (49€/mois)", "value": "expert"}
+              ]
+            },
+            "display": "labels",
+            "display_options": {
+              "choices": [
+                {"text": "Basic", "value": "basic", "foreground": "#374151", "background": "#F3F4F6"},
+                {"text": "Pro", "value": "pro", "foreground": "#FFFFFF", "background": "#3B82F6"},
+                {"text": "Expert", "value": "expert", "foreground": "#FFFFFF", "background": "#F59E0B"}
+              ]
+            },
+            "readonly": false,
+            "hidden": false,
+            "sort": 5,
+            "width": "half",
+            "translations": null,
+            "note": "Plan d'abonnement - détermine les quotas et fonctionnalités",
+            "conditions": null,
+            "required": true,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "plan",
+            "table": "businesses",
+            "data_type": "varchar",
+            "default_value": "basic",
+            "max_length": 20,
+            "is_nullable": false
+          }
+        },
+        {
+          "field": "display_priority",
+          "type": "integer",
+          "meta": {
+            "collection": "businesses",
+            "field": "display_priority",
+            "special": null,
+            "interface": "select-dropdown",
+            "options": {
+              "choices": [
+                {"text": "1️⃣ Expert (affiché en premier)", "value": 1},
+                {"text": "2️⃣ Pro (milieu)", "value": 2},
+                {"text": "3️⃣ Basic (dernier)", "value": 3}
+              ]
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": true,
+            "hidden": false,
+            "sort": 6,
+            "width": "half",
+            "translations": null,
+            "note": "Ordre d'affichage automatique selon le plan",
+            "conditions": null,
+            "required": true,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "display_priority",
+            "table": "businesses",
+            "data_type": "integer",
+            "default_value": 3,
+            "is_nullable": false
+          }
+        },
+        {
+          "field": "badge_type",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "badge_type",
+            "special": null,
+            "interface": "select-dropdown",
+            "options": {
+              "choices": [
+                {"text": "Aucun badge", "value": null},
+                {"text": "✓ Vérifié (Pro)", "value": "verified"},
+                {"text": "⭐ Expert", "value": "expert"}
+              ],
+              "allowNone": true
+            },
+            "display": "labels",
+            "display_options": {
+              "choices": [
+                {"text": "Vérifié", "value": "verified", "foreground": "#FFFFFF", "background": "#3B82F6"},
+                {"text": "Expert", "value": "expert", "foreground": "#FFFFFF", "background": "#F59E0B"}
+              ]
+            },
+            "readonly": true,
+            "hidden": false,
+            "sort": 7,
+            "width": "half",
+            "translations": null,
+            "note": "Badge automatique selon le plan",
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "badge_type",
+            "table": "businesses",
+            "data_type": "varchar",
+            "default_value": null,
+            "max_length": 20,
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "description",
+          "type": "text",
+          "meta": {
+            "collection": "businesses",
+            "field": "description",
+            "special": null,
+            "interface": "input-rich-text-html",
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 8,
+            "width": "full",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "description",
+            "table": "businesses",
+            "data_type": "text",
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "category",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "category",
+            "special": null,
+            "interface": "select-dropdown",
+            "options": {
+              "choices": [
+                {"text": "🍴 Restaurant", "value": "restaurant"},
+                {"text": "🍺 Bar", "value": "bar"},
+                {"text": "☕ Café", "value": "cafe"},
+                {"text": "🛍️ Boutique", "value": "boutique"},
+                {"text": "🏥 Services", "value": "services"},
+                {"text": "🎭 Culture", "value": "culture"},
+                {"text": "🎯 Loisirs", "value": "loisirs"}
+              ]
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 9,
+            "width": "half",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": true,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "category",
+            "table": "businesses",
+            "data_type": "varchar",
+            "default_value": null,
+            "max_length": 50,
+            "is_nullable": false
+          }
+        },
+        {
+          "field": "photos_quota",
+          "type": "integer",
+          "meta": {
+            "collection": "businesses",
+            "field": "photos_quota",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "min": 1,
+              "max": 10
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": true,
+            "hidden": false,
+            "sort": 10,
+            "width": "half",
+            "translations": null,
+            "note": "1 pour Basic, 6 pour Pro, 10 pour Expert",
+            "conditions": null,
+            "required": true,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "photos_quota",
+            "table": "businesses",
+            "data_type": "integer",
+            "default_value": 1,
+            "is_nullable": false
+          }
+        },
+        {
+          "field": "events_quota",
+          "type": "integer",
+          "meta": {
+            "collection": "businesses",
+            "field": "events_quota",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "min": 3,
+              "max": 5
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": true,
+            "hidden": false,
+            "sort": 11,
+            "width": "half",
+            "translations": null,
+            "note": "3 pour Basic/Pro, 5 pour Expert",
+            "conditions": null,
+            "required": true,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "events_quota",
+            "table": "businesses",
+            "data_type": "integer",
+            "default_value": 3,
+            "is_nullable": false
+          }
+        },
+        {
+          "field": "events_used_this_month",
+          "type": "integer",
+          "meta": {
+            "collection": "businesses",
+            "field": "events_used_this_month",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "min": 0
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": true,
+            "hidden": false,
+            "sort": 12,
+            "width": "half",
+            "translations": null,
+            "note": "Compteur réinitialisé le 1er de chaque mois",
+            "conditions": null,
+            "required": true,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "events_used_this_month",
+            "table": "businesses",
+            "data_type": "integer",
+            "default_value": 0,
+            "is_nullable": false
+          }
+        },
+        {
+          "field": "gallery",
+          "type": "alias",
+          "meta": {
+            "collection": "businesses",
+            "field": "gallery",
+            "special": ["files"],
+            "interface": "files",
+            "options": {
+              "folder": "business-galleries"
+            },
+            "display": "related-values",
+            "display_options": {
+              "template": "{{directus_files_id.title}}"
+            },
+            "readonly": false,
+            "hidden": false,
+            "sort": 13,
+            "width": "full",
+            "translations": null,
+            "note": "Photos limitées selon le plan (1/6/10)",
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          }
+        },
+        {
+          "field": "email",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "email",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "iconLeft": "email"
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 14,
+            "width": "half",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": {
+              "_regex": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+            },
+            "validation_message": "Format d'email invalide"
+          },
+          "schema": {
+            "name": "email",
+            "table": "businesses",
+            "data_type": "varchar",
+            "max_length": 255,
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "phone",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "phone",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "iconLeft": "phone"
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 15,
+            "width": "half",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "phone",
+            "table": "businesses",
+            "data_type": "varchar",
+            "max_length": 20,
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "website",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "website",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "iconLeft": "link"
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 16,
+            "width": "half",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "website",
+            "table": "businesses",
+            "data_type": "varchar",
+            "max_length": 255,
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "address",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "address",
+            "special": null,
+            "interface": "input",
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 17,
+            "width": "full",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "address",
+            "table": "businesses",
+            "data_type": "varchar",
+            "max_length": 255,
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "postal_code",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "postal_code",
+            "special": null,
+            "interface": "input",
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 18,
+            "width": "half",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": {
+              "_regex": "^[0-9]{5}$"
+            },
+            "validation_message": "Code postal français (5 chiffres)"
+          },
+          "schema": {
+            "name": "postal_code",
+            "table": "businesses",
+            "data_type": "varchar",
+            "max_length": 5,
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "city",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "city",
+            "special": null,
+            "interface": "input",
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 19,
+            "width": "half",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": true,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "city",
+            "table": "businesses",
+            "data_type": "varchar",
+            "default_value": "Lyon",
+            "max_length": 100,
+            "is_nullable": false
+          }
+        },
+        {
+          "field": "latitude",
+          "type": "float",
+          "meta": {
+            "collection": "businesses",
+            "field": "latitude",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "step": 0.000001
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 20,
+            "width": "half",
+            "translations": null,
+            "note": "Géolocalisation pour la carte",
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "latitude",
+            "table": "businesses",
+            "data_type": "double precision",
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "longitude",
+          "type": "float",
+          "meta": {
+            "collection": "businesses",
+            "field": "longitude",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "step": 0.000001
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 21,
+            "width": "half",
+            "translations": null,
+            "note": "Géolocalisation pour la carte",
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "longitude",
+            "table": "businesses",
+            "data_type": "double precision",
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "opening_hours",
+          "type": "json",
+          "meta": {
+            "collection": "businesses",
+            "field": "opening_hours",
+            "special": ["json"],
+            "interface": "input-code",
+            "options": {
+              "language": "json"
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 22,
+            "width": "full",
+            "translations": null,
+            "note": "Format: {\"monday\": {\"open\": \"09:00\", \"close\": \"18:00\"}}",
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "opening_hours",
+            "table": "businesses",
+            "data_type": "json",
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "owner_email",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "owner_email",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "iconLeft": "person"
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 23,
+            "width": "half",
+            "translations": null,
+            "note": "Email du propriétaire pour l'authentification",
+            "conditions": null,
+            "required": true,
+            "group": null,
+            "validation": {
+              "_regex": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+            },
+            "validation_message": "Format d'email invalide"
+          },
+          "schema": {
+            "name": "owner_email",
+            "table": "businesses",
+            "data_type": "varchar",
+            "max_length": 255,
+            "is_nullable": false
+          }
+        },
+        {
+          "field": "owner_name",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "owner_name",
+            "special": null,
+            "interface": "input",
+            "options": null,
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 24,
+            "width": "half",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "owner_name",
+            "table": "businesses",
+            "data_type": "varchar",
+            "max_length": 255,
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "stripe_customer_id",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "stripe_customer_id",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "iconLeft": "credit_card"
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 25,
+            "width": "half",
+            "translations": null,
+            "note": "ID client Stripe pour les abonnements",
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "stripe_customer_id",
+            "table": "businesses",
+            "data_type": "varchar",
+            "max_length": 255,
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "stripe_subscription_id",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "stripe_subscription_id",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "iconLeft": "credit_card"
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 26,
+            "width": "half",
+            "translations": null,
+            "note": "ID abonnement Stripe actif",
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "stripe_subscription_id",
+            "table": "businesses",
+            "data_type": "varchar",
+            "max_length": 255,
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "plan_expires_at",
+          "type": "timestamp",
+          "meta": {
+            "collection": "businesses",
+            "field": "plan_expires_at",
+            "special": null,
+            "interface": "datetime",
+            "options": null,
+            "display": "datetime",
+            "display_options": {
+              "relative": false
+            },
+            "readonly": false,
+            "hidden": false,
+            "sort": 27,
+            "width": "half",
+            "translations": null,
+            "note": "Date d'expiration du plan payant",
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "plan_expires_at",
+            "table": "businesses",
+            "data_type": "timestamp",
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "views_count",
+          "type": "integer",
+          "meta": {
+            "collection": "businesses",
+            "field": "views_count",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "min": 0
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": true,
+            "hidden": false,
+            "sort": 28,
+            "width": "half",
+            "translations": null,
+            "note": "Nombre de vues de la fiche",
+            "conditions": null,
+            "required": true,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "views_count",
+            "table": "businesses",
+            "data_type": "integer",
+            "default_value": 0,
+            "is_nullable": false
+          }
+        },
+        {
+          "field": "seo_title",
+          "type": "string",
+          "meta": {
+            "collection": "businesses",
+            "field": "seo_title",
+            "special": null,
+            "interface": "input",
+            "options": {
+              "placeholder": "Titre SEO personnalisé (optionnel)"
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 29,
+            "width": "full",
+            "translations": null,
+            "note": "Si vide, utilise le nom de l'établissement",
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "seo_title",
+            "table": "businesses",
+            "data_type": "varchar",
+            "max_length": 255,
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "seo_description",
+          "type": "text",
+          "meta": {
+            "collection": "businesses",
+            "field": "seo_description",
+            "special": null,
+            "interface": "input-multiline",
+            "options": {
+              "placeholder": "Description SEO personnalisée (optionnel)"
+            },
+            "display": null,
+            "display_options": null,
+            "readonly": false,
+            "hidden": false,
+            "sort": 30,
+            "width": "full",
+            "translations": null,
+            "note": "Si vide, utilise le début de la description",
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "seo_description",
+            "table": "businesses",
+            "data_type": "text",
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "date_created",
+          "type": "timestamp",
+          "meta": {
+            "collection": "businesses",
+            "field": "date_created",
+            "special": ["date-created"],
+            "interface": "datetime",
+            "options": null,
+            "display": "datetime",
+            "display_options": {
+              "relative": true
+            },
+            "readonly": true,
+            "hidden": true,
+            "sort": 31,
+            "width": "half",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "date_created",
+            "table": "businesses",
+            "data_type": "timestamp",
+            "default_value": "CURRENT_TIMESTAMP",
+            "is_nullable": true
+          }
+        },
+        {
+          "field": "date_updated",
+          "type": "timestamp",
+          "meta": {
+            "collection": "businesses",
+            "field": "date_updated",
+            "special": ["date-updated"],
+            "interface": "datetime",
+            "options": null,
+            "display": "datetime",
+            "display_options": {
+              "relative": true
+            },
+            "readonly": true,
+            "hidden": true,
+            "sort": 32,
+            "width": "half",
+            "translations": null,
+            "note": null,
+            "conditions": null,
+            "required": false,
+            "group": null,
+            "validation": null,
+            "validation_message": null
+          },
+          "schema": {
+            "name": "date_updated",
+            "table": "businesses",
+            "data_type": "timestamp",
+            "default_value": "CURRENT_TIMESTAMP",
+            "is_nullable": true
+          }
+        }
+      ]
+    }
+  ]
+}
