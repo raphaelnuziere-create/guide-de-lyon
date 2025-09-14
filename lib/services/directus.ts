@@ -78,7 +78,7 @@ class DirectusService {
   private isAuthenticated = false;
 
   constructor() {
-    this.client = createDirectus<DirectusSchema>(process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055')
+    this.client = createDirectus<DirectusSchema>(process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW || process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055')
       .with(rest())
       .with(authentication());
   }
@@ -406,7 +406,7 @@ class DirectusService {
 
   // Utilitaires
   getFileUrl(fileId: string) {
-    const baseUrl = process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055';
+    const baseUrl = process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW || process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055';
     return `${baseUrl}/assets/${fileId}`;
   }
 
