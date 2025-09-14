@@ -73,12 +73,21 @@ interface DirectusSchema {
   professional_users: DirectusProfessionalUser;
 }
 
+// Utilitaire pour nettoyer les variables d'environnement (supprime \n et espaces)
+function cleanEnvVar(value: string | undefined): string | undefined {
+  return value?.replace(/\n/g, '').trim() || undefined;
+}
+
 class DirectusService {
   private client;
   private isAuthenticated = false;
 
   constructor() {
-    this.client = createDirectus<DirectusSchema>(process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW || process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055')
+    const directusUrl = cleanEnvVar(process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW) || 
+                       cleanEnvVar(process.env.NEXT_PUBLIC_DIRECTUS_URL) || 
+                       'http://localhost:8055';
+    
+    this.client = createDirectus<DirectusSchema>(directusUrl)
       .with(rest())
       .with(authentication());
   }
@@ -406,7 +415,9 @@ class DirectusService {
 
   // Utilitaires
   getFileUrl(fileId: string) {
-    const baseUrl = process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW || process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055';
+    const baseUrl = cleanEnvVar(process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW) || 
+                   cleanEnvVar(process.env.NEXT_PUBLIC_DIRECTUS_URL) || 
+                   'http://localhost:8055';
     return `${baseUrl}/assets/${fileId}`;
   }
 

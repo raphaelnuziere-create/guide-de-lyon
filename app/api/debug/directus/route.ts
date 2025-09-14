@@ -1,18 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// Utilitaire pour nettoyer les variables d'environnement
+function cleanEnvVar(value: string | undefined): string | undefined {
+  return value?.replace(/\n/g, '').trim() || undefined;
+}
+
 export async function GET() {
   try {
     console.log('🔍 DEBUG DIRECTUS CONFIG');
     
     // Vérifier les variables d'environnement
     const config = {
-      directusUrl: process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW || process.env.NEXT_PUBLIC_DIRECTUS_URL || 'NOT_SET',
+      directusUrl: cleanEnvVar(process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW) || cleanEnvVar(process.env.NEXT_PUBLIC_DIRECTUS_URL) || 'NOT_SET',
       directusUrlOld: process.env.NEXT_PUBLIC_DIRECTUS_URL || 'NOT_SET',
-      directusUrlNew: process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW || 'NOT_SET', 
-      useDirectus: process.env.NEXT_PUBLIC_USE_DIRECTUS_NEW || process.env.NEXT_PUBLIC_USE_DIRECTUS || 'NOT_SET',
+      directusUrlNew: process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW || 'NOT_SET',
+      directusUrlCleaned: cleanEnvVar(process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW) || 'NOT_SET',
+      useDirectus: cleanEnvVar(process.env.NEXT_PUBLIC_USE_DIRECTUS_NEW) || cleanEnvVar(process.env.NEXT_PUBLIC_USE_DIRECTUS) || 'NOT_SET',
       useDirectusOld: process.env.NEXT_PUBLIC_USE_DIRECTUS || 'NOT_SET',
       useDirectusNew: process.env.NEXT_PUBLIC_USE_DIRECTUS_NEW || 'NOT_SET',
-      adminEmail: process.env.DIRECTUS_ADMIN_EMAIL || 'NOT_SET',
+      adminEmail: cleanEnvVar(process.env.DIRECTUS_ADMIN_EMAIL) || 'NOT_SET',
       adminPasswordSet: !!process.env.DIRECTUS_ADMIN_PASSWORD,
       nodeEnv: process.env.NODE_ENV || 'NOT_SET'
     };
@@ -22,7 +28,7 @@ export async function GET() {
     // Tester connexion directe à Directus
     let directusHealth = null;
     try {
-      const directusUrl = process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW || process.env.NEXT_PUBLIC_DIRECTUS_URL;
+      const directusUrl = cleanEnvVar(process.env.NEXT_PUBLIC_DIRECTUS_URL_NEW) || cleanEnvVar(process.env.NEXT_PUBLIC_DIRECTUS_URL);
       if (directusUrl) {
         const response = await fetch(`${directusUrl}/server/health`, {
           method: 'GET',
